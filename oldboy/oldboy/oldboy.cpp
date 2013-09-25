@@ -7,10 +7,12 @@
 int _tmain(int argc, _TCHAR* argv[])
 {
 	printf_s("Hello old boys~! \n");
-	printf_s("Hell0 MoonChul!");
+	printf_s("Hell0 MoonChul! \n");
 
 	//////////////////////////////////////////////////////////////////////////
 	printf_s("아. 상상만 해도 참 즐거운데요. \n");
+
+	getchar();
 
 	return 0;
 }

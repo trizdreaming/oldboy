@@ -27,7 +27,19 @@
     <ClInclude Include="Resource.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
+    <ClInclude Include="RMinclude.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
     <ClInclude Include="oldboy.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMdefine.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMmacro.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMlibrary.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>

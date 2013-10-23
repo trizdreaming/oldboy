@@ -1,54 +1,119 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="소스 파일">
-      <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cc;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="리소스 파일">
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="메인 영역">
+      <UniqueIdentifier>{fd999f43-4ae7-419e-98a0-7739ac0923a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="메인 영역\헤더 파일">
+      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
+      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
+    </Filter>
+    <Filter Include="Core">
+      <UniqueIdentifier>{8e631f44-cf75-4cc7-bb38-f1b7d91c680c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Loop">
+      <UniqueIdentifier>{993ff98d-b92c-4d0d-8057-34b480c10f36}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Sound">
+      <UniqueIdentifier>{77e4b450-8f8b-423c-9433-828cd16c10a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Image">
+      <UniqueIdentifier>{11b11b70-b1e6-4d92-b7f7-b08f38df12f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Object">
+      <UniqueIdentifier>{d3fef83a-0508-47fa-97c5-2bf4dab6f003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Render">
+      <UniqueIdentifier>{0fca6d96-10cd-491f-a243-d413eaa7ea34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Label">
+      <UniqueIdentifier>{3b20cd77-6466-4fb9-a808-41fcb9960381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Input">
+      <UniqueIdentifier>{b6c7dfec-dbbc-497e-84c6-cbe7308999e8}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="stdafx.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMinclude.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="oldboy.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMdefine.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMmacro.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMlibrary.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="stdafx.h">
+      <Filter>메인 영역</Filter>
+    </ClInclude>
+    <ClInclude Include="oldboy.h">
+      <Filter>메인 영역</Filter>
+    </ClInclude>
+    <ClInclude Include="RMmainLoop.h">
+      <Filter>Core\Loop</Filter>
+    </ClInclude>
+    <ClInclude Include="RMlabel.h">
+      <Filter>Core\Label</Filter>
+    </ClInclude>
+    <ClInclude Include="RMinput.h">
+      <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="RMrender.h">
+      <Filter>Core\Render</Filter>
+    </ClInclude>
+    <ClInclude Include="RMobject.h">
+      <Filter>Core\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RMsound.h">
+      <Filter>Core\Sound</Filter>
+    </ClInclude>
+    <ClInclude Include="RMimage.h">
+      <Filter>Core\Image</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="stdafx.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="oldboy.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>메인 영역</Filter>
+    </ClCompile>
+    <ClCompile Include="stdafx.cpp">
+      <Filter>메인 영역</Filter>
+    </ClCompile>
+    <ClCompile Include="RMmainLoop.cpp">
+      <Filter>Core\Loop</Filter>
+    </ClCompile>
+    <ClCompile Include="RMlabel.cpp">
+      <Filter>Core\Label</Filter>
+    </ClCompile>
+    <ClCompile Include="RMinput.cpp">
+      <Filter>Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="RMrender.cpp">
+      <Filter>Core\Render</Filter>
+    </ClCompile>
+    <ClCompile Include="RMobject.cpp">
+      <Filter>Core\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RMsound.cpp">
+      <Filter>Core\Sound</Filter>
+    </ClCompile>
+    <ClCompile Include="RMimage.cpp">
+      <Filter>Core\Image</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

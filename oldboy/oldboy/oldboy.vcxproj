@@ -14,6 +14,10 @@
     <ProjectGuid>{B1E89841-2C70-42BE-98D3-9E45D29D14B0}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
     <RootNamespace>oldboy</RootNamespace>
+    <SccProjectName>Svn</SccProjectName>
+    <SccAuxPath>Svn</SccAuxPath>
+    <SccLocalPath>Svn</SccLocalPath>
+    <SccProvider>SubversionScc</SccProvider>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
@@ -83,16 +87,30 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="RMdefine.h" />
+    <ClInclude Include="RMimage.h" />
     <ClInclude Include="RMinclude.h" />
     <ClInclude Include="oldboy.h" />
     <ClInclude Include="Resource.h" />
+    <ClInclude Include="RMinput.h" />
+    <ClInclude Include="RMlabel.h" />
     <ClInclude Include="RMlibrary.h" />
     <ClInclude Include="RMmacro.h" />
+    <ClInclude Include="RMmainLoop.h" />
+    <ClInclude Include="RMobject.h" />
+    <ClInclude Include="RMrender.h" />
+    <ClInclude Include="RMsound.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp" />
+    <ClCompile Include="RMimage.cpp" />
+    <ClCompile Include="RMinput.cpp" />
+    <ClCompile Include="RMlabel.cpp" />
+    <ClCompile Include="RMmainLoop.cpp" />
+    <ClCompile Include="RMobject.cpp" />
+    <ClCompile Include="RMrender.cpp" />
+    <ClCompile Include="RMsound.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

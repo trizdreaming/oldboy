@@ -17,6 +17,9 @@
 *.opensdf
 *.suo
 
+*.cd
+
+
 # generated files
 ipch/
 Debug/

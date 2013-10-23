@@ -4,9 +4,9 @@
 
 CRMimage::CRMimage(void)
 {
-	int m;
-	int r;
-	int k;
+	int a;
+	int bbbbb;
+	int ccc;
 }
 
 CRMimage::~CRMimage(void)

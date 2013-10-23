@@ -1,7 +1,5 @@
 #pragma once
 
-#include "resource.h"
-
 #include "RMinclude.h"
 
 #include "RMdefine.h"

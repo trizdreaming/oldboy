@@ -1,19 +1,17 @@
-﻿빌드 시작: 2013-10-23 오후 3:58:05
-2 노드의 "C:\2013_game_project\trunk\oldboy\oldboy\oldboy.vcxproj" 프로젝트(Rebuild 대상)입니다.
-ClCompile:
-  C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"stdafx.h" /Fp"Debug\oldboy.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt stdafx.cpp
-  stdafx.cpp
-  C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"stdafx.h" /Fp"Debug\oldboy.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt oldboy.cpp
-  oldboy.cpp
-ResourceCompile:
-  C:\Program Files (x86)\Windows Kits\8.0\bin\x86\rc.exe /D _UNICODE /D UNICODE /l"0x0409" /nologo /fo"Debug\oldboy.res" oldboy.rc 
-Link:
-  C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\2013_game_project\trunk\oldboy\Debug\oldboy.exe" /INCREMENTAL /NOLOGO fmodex_vc.lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\2013_game_project\trunk\oldboy\Debug\oldboy.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\2013_game_project\trunk\oldboy\Debug\oldboy.lib" /MACHINE:X86 Debug\oldboy.res
-  Debug\oldboy.obj
-  Debug\stdafx.obj
-  oldboy.vcxproj -> C:\2013_game_project\trunk\oldboy\Debug\oldboy.exe
-"C:\2013_game_project\trunk\oldboy\oldboy\oldboy.vcxproj" 프로젝트를 빌드했습니다(Rebuild 대상).
+﻿빌드 시작: 2013-10-10 오후 3:21:19
+     1>2 노드의 "C:\Users\zrma\Documents\SVN\OLDBOY\trunk\oldboy\oldboy\oldboy.vcxproj" 프로젝트(Build 대상)입니다.
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yc"RMInclude.h" /Fp"Debug\RhythmMatch.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt RMInclude.cpp
+         RMInclude.cpp
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /sdl /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Yu"RMInclude.h" /Fp"Debug\RhythmMatch.pch" /Fo"Debug\\" /Fd"Debug\vc110.pdb" /Gd /TP /analyze- /errorReport:prompt Main.cpp
+         Main.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 11.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"C:\Users\zrma\Documents\SVN\OLDBOY\trunk\oldboy\Debug\RhythmMatch.exe" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"C:\Users\zrma\Documents\SVN\OLDBOY\trunk\oldboy\Debug\RhythmMatch.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"C:\Users\zrma\Documents\SVN\OLDBOY\trunk\oldboy\Debug\RhythmMatch.lib" /MACHINE:X86 Debug\oldboy.res
+         Debug\Main.obj
+         Debug\RMInclude.obj
+         oldboy.vcxproj -> C:\Users\zrma\Documents\SVN\OLDBOY\trunk\oldboy\Debug\RhythmMatch.exe
+     1>"C:\Users\zrma\Documents\SVN\OLDBOY\trunk\oldboy\oldboy\oldboy.vcxproj" 프로젝트를 빌드했습니다(Build 대상).
 
 빌드했습니다.
 
-경과 시간: 00:00:01.67
+경과 시간: 00:00:01.96

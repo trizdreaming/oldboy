@@ -8,10 +8,6 @@
     <Filter Include="메인 영역">
       <UniqueIdentifier>{fd999f43-4ae7-419e-98a0-7739ac0923a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="메인 영역\헤더 파일">
-      <UniqueIdentifier>{93995380-89BD-4b04-88EB-625FBE52EBFB}</UniqueIdentifier>
-      <Extensions>h;hpp;hxx;hm;inl;inc;xsd</Extensions>
-    </Filter>
     <Filter Include="Core">
       <UniqueIdentifier>{8e631f44-cf75-4cc7-bb38-f1b7d91c680c}</UniqueIdentifier>
     </Filter>
@@ -36,29 +32,14 @@
     <Filter Include="Core\Input">
       <UniqueIdentifier>{b6c7dfec-dbbc-497e-84c6-cbe7308999e8}</UniqueIdentifier>
     </Filter>
+    <Filter Include="메인 영역\헤더 파일">
+      <UniqueIdentifier>{8871a94d-9fea-45ef-b291-6d24f9ed11e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="targetver.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RMinclude.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RMdefine.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RMmacro.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RMlibrary.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="stdafx.h">
       <Filter>메인 영역</Filter>
     </ClInclude>
@@ -85,6 +66,24 @@
     </ClInclude>
     <ClInclude Include="RMimage.h">
       <Filter>Core\Image</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMdefine.h">
+      <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMinclude.h">
+      <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMlibrary.h">
+      <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMmacro.h">
+      <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="targetver.h">
+      <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

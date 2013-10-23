@@ -15,3 +15,9 @@
 *.ipch
 *.sdf
 *.opensdf
+*.suo
+
+# generated files
+ipch/
+Debug/
+Release/

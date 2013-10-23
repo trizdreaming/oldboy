@@ -6,7 +6,6 @@ CRMimage::CRMimage(void)
 {
 }
 
-
 CRMimage::~CRMimage(void)
 {
 }

@@ -33,7 +33,7 @@ void CRMmainLoop::RunMessageLoop()
 				return;
 			}
 			TranslateMessage(&msg);
-			DispatchMessage(&msg); //Wndproc과 연결되어 있음
+			DispatchMessage(&msg);	// Wndproc과 연결되어 있음
 		}
 		else
 		{
@@ -52,9 +52,10 @@ void CRMmainLoop::RunMessageLoop()
 
 			if(m_ElapsedTime % m_Fps == 0)
 			{
-				//화면에 대한 처리를 진행(objectManager -> render)
-// 				CRMRender::GetInstance()->Render();
-// 				ValidateRect(m_HWnd, NULL);
+				// 화면에 대한 처리를 진행(objectManager -> render)
+ 				// CRMRender::GetInstance()->Render();
+ 				// ValidateRect(m_HWnd, NULL);
+				// 임시로 추가함
 
 				m_PrevTime = m_NowTime;
 			}
@@ -70,21 +71,21 @@ void CRMmainLoop::RunMessageLoop()
 
 HRESULT CRMmainLoop::Init()
 {
-	//HRESULT hr = S_FALSE;
+	// HRESULT hr = S_FALSE;
 
 	WNDCLASSEX wcex;
 
 	wcex.cbSize = sizeof(WNDCLASSEX);
 
 	wcex.style			= CS_HREDRAW | CS_VREDRAW;
-	wcex.lpfnWndProc	= WndProc;
+	wcex.lpfnWndProc	= CRMmainLoop::WndProc;
 	wcex.cbClsExtra		= 0;
 	wcex.cbWndExtra		= 0;
 	wcex.hInstance		= HINST_THISCOMPONENT;
 	wcex.hIcon			= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_OLDBOY));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= (HBRUSH)(COLOR_WINDOW+1);
-	wcex.lpszMenuName	= MAKEINTRESOURCE(IDC_OLDBOY);
+	wcex.hbrBackground	= NULL; // 배경 색상 부분 NULL로 설정
+	wcex.lpszMenuName	= NULL;	// 메뉴 생성 부분 NULL로 설정
 	wcex.lpszClassName	= L"RhythmMatch";
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -94,10 +95,10 @@ HRESULT CRMmainLoop::Init()
 	m_Hwnd = CreateWindow(wcex.lpszClassName, 
 						L"Rhythm Match v0.125", 
 						WS_OVERLAPPEDWINDOW,
-						50,  //하기 4줄이 화면 시작 좌표 의미 
-						50, //
-						1024, //
-						668, //
+						50,		// 하기 4줄이 화면 시작 좌표 의미 
+						50,		//
+						1024,	//
+						668,	//
 						NULL, 
 						NULL, 
 						wcex.hInstance, 
@@ -114,11 +115,6 @@ HRESULT CRMmainLoop::Init()
 	return S_OK;
 }
 
-
-
-
-
-//
 //  함수: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
 //  목적: 주 창의 메시지를 처리합니다.
@@ -132,7 +128,6 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 {
 	switch (message)
 	{
-	
 	case WM_CREATE:
 		break;
 

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "RMrender.h"
+#include "RMmainLoop.h"
 
 
 CRMrender* CRMrender::m_pInstance = nullptr;

@@ -7,10 +7,15 @@ CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
 	m_ElapsedTime(0),
-	m_Fps(0)
+	m_Fps(0),
+	m_Sound(NULL)
 {
 	//1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = 1000/60;
+
+	//fmod 사용하기 fmodex.dll파일이 필요하다.
+	m_Sound = CRMsound::GetInstance();
+	m_Sound->InitSound();
 }
 
 
@@ -23,6 +28,9 @@ void CRMmainLoop::RunMessageLoop()
 {
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
+
+	m_Sound->LoadSound();
+	m_Sound->PLAYsound();
 
 	while(true)
 	{

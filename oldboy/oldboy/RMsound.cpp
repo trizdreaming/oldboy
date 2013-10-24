@@ -4,9 +4,9 @@
 CRMsound* CRMsound::m_pInstance = nullptr;
 
 CRMsound::CRMsound(void):
-	m_SystemS(NULL),
-	m_Sound(NULL),
-	m_Channel(NULL)
+	m_SystemS(nullptr),
+	m_Sound(nullptr),
+	m_Channel(nullptr)
 {
 }
 

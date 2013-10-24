@@ -23,7 +23,7 @@ void CRMsound::ERRCHECK(FMOD_RESULT result)
 {
 	if (result != FMOD_OK)
 	{
-		WCHAR str[256] = {0,};
+		TCHAR str[256] = {0,};
 		wprintf_s(str, L"FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
 		MessageBox(NULL, str, L"TEST", MB_OK  );
 	}

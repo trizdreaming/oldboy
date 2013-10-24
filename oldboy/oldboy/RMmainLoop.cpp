@@ -23,6 +23,7 @@ CRMmainLoop::~CRMmainLoop(void)
 {
 	// 생성자에서 생성한 것은 소멸자에서 확인 처리
 	CRMsound::ReleaseInstance();
+	m_Sound = nullptr;
 }
 
 

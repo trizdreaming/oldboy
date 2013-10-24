@@ -21,10 +21,11 @@ private:
 	void ERRCHECK(FMOD_RESULT result);
 	
 private:
-	FMOD::System* m_SystemS;
-	FMOD::Sound* m_Sound;
-	FMOD::Channel* m_Channel;
+	FMOD::System*	m_SystemS;
+	FMOD::Sound*	m_Sound;
+	FMOD::Channel*	m_Channel;
+
 	//½Ì±ÛÅæ °ü·Ã member º¯¼ö
-	static CRMsound* m_pInstance;
+	static CRMsound*	m_pInstance;
 };
 

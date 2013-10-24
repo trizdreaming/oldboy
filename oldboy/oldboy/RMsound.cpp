@@ -13,6 +13,8 @@ CRMsound::CRMsound(void):
 
 CRMsound::~CRMsound(void)
 {
+	// 소멸자에서 할당한 자원을 반납하도록 함
+	DeleteSound();
 }
 
 
@@ -21,9 +23,9 @@ void CRMsound::ERRCHECK(FMOD_RESULT result)
 {
 	if (result != FMOD_OK)
 	{
-		char str[256] = {0,};
-		sprintf_s(str, "FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
-		MessageBoxA(NULL, str, "TEST", MB_OK  );
+		WCHAR str[256] = {0,};
+		wprintf_s(str, L"FMOD error! (%d) %s\n", result, FMOD_ErrorString(result));
+		MessageBox(NULL, str, L"TEST", MB_OK  );
 	}
 }
 

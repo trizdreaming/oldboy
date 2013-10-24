@@ -8,12 +8,12 @@ CRMmainLoop::CRMmainLoop(void):
 	m_PrevTime(0),
 	m_ElapsedTime(0),
 	m_Fps(0),
-	m_Sound(NULL)
+	m_Sound(nullptr)
 {
-	//1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
+	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = 1000/60;
 
-	//fmod 사용하기 fmodex.dll파일이 필요하다.
+	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	m_Sound = CRMsound::GetInstance();
 	m_Sound->InitSound();
 }
@@ -21,6 +21,8 @@ CRMmainLoop::CRMmainLoop(void):
 
 CRMmainLoop::~CRMmainLoop(void)
 {
+	// 생성자에서 생성한 것은 소멸자에서 확인 처리
+	CRMsound::ReleaseInstance();
 }
 
 

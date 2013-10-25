@@ -12,6 +12,8 @@
 //
 #include <stdio.h>
 #include <timeapi.h>
+#include <wincodec.h>
+#include <map>
 
 //Microsoft Visual C++ generated include file.
 #include "resource.h"

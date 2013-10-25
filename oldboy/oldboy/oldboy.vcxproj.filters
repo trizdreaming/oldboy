@@ -14,9 +14,6 @@
     <Filter Include="Core\Loop">
       <UniqueIdentifier>{993ff98d-b92c-4d0d-8057-34b480c10f36}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Sound">
-      <UniqueIdentifier>{77e4b450-8f8b-423c-9433-828cd16c10a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Core\Image">
       <UniqueIdentifier>{11b11b70-b1e6-4d92-b7f7-b08f38df12f7}</UniqueIdentifier>
     </Filter>
@@ -34,6 +31,15 @@
     </Filter>
     <Filter Include="메인 영역\헤더 파일">
       <UniqueIdentifier>{8871a94d-9fea-45ef-b291-6d24f9ed11e0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Sound Manager">
+      <UniqueIdentifier>{77e4b450-8f8b-423c-9433-828cd16c10a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\img Resource Manager">
+      <UniqueIdentifier>{4a020227-bbd5-42e0-b16c-c91e838cd63d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Object\children">
+      <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,7 +68,7 @@
       <Filter>Core\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMsound.h">
-      <Filter>Core\Sound</Filter>
+      <Filter>Core\Sound Manager</Filter>
     </ClInclude>
     <ClInclude Include="RMimage.h">
       <Filter>Core\Image</Filter>
@@ -84,6 +90,12 @@
     </ClInclude>
     <ClInclude Include="targetver.h">
       <Filter>메인 영역\헤더 파일</Filter>
+    </ClInclude>
+    <ClInclude Include="RMresourceManager.h">
+      <Filter>Core\img Resource Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="RMObjectManager.h">
+      <Filter>Core\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -109,10 +121,16 @@
       <Filter>Core\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMsound.cpp">
-      <Filter>Core\Sound</Filter>
+      <Filter>Core\Sound Manager</Filter>
     </ClCompile>
     <ClCompile Include="RMimage.cpp">
       <Filter>Core\Image</Filter>
+    </ClCompile>
+    <ClCompile Include="RMresourceManager.cpp">
+      <Filter>Core\img Resource Manager</Filter>
+    </ClCompile>
+    <ClCompile Include="RMObjectManager.cpp">
+      <Filter>Core\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

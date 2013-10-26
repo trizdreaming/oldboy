@@ -11,6 +11,11 @@ CRMobjectManager::CRMobjectManager(void)
 
 CRMobjectManager::~CRMobjectManager(void)
 {
+	for(auto &iter = m_ObjectList.begin(); iter != m_ObjectList.end(); ++iter)
+	{
+		SafeDelete(*iter);
+	}
+	m_ObjectList.clear();
 }
 
 CRMobjectManager* CRMobjectManager::GetInstance()

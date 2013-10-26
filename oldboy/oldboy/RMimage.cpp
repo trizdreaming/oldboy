@@ -6,12 +6,15 @@
 
 CRMimage::CRMimage(void) :
 	m_width(0.0),
-	m_height(0.0)
+	m_height(0.0),
+	m_2DImg(nullptr)
 {
 }
 
 CRMimage::~CRMimage(void)
 {
+	SafeRelease(m_2DImg);
+	// 해당 부분 누락으로 인해서 메모리 누수가 발생하였음
 }
 
 HRESULT CRMimage::Init( std::wstring path )

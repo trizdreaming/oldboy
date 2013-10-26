@@ -2,8 +2,9 @@
 #include "RMmainLoop.h"
 #include "RMObjectManager.h"
 #include "RMresourceManager.h"
-#include "RMchildNote.h"
 #include "RMrender.h"
+
+#include "RMchildNote.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 
@@ -47,11 +48,11 @@ void CRMmainLoop::RunMessageLoop()
 	// 이미지 리소스를 불러오려면 렌더가 필요함
 	CRMrender::GetInstance()->CreateFactory();
 	CRMrender::GetInstance()->CreateRenderTarget();
-	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
+// 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
 	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
 
 	// 이미지 리소스 파일 불러오기
-	CRMresourceManager::GetInstance()->InitTexture();
+ 	CRMresourceManager::GetInstance()->InitTexture();
 
 	/**********************************************************************************/
 	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
@@ -185,9 +186,9 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 		break;
 
 	case WM_DESTROY:
-
 		PostQuitMessage(0);
 		break;
+
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}

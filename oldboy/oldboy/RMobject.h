@@ -7,11 +7,11 @@ class CRMobject
 {
 public:
 	CRMobject(void);
-	~CRMobject(void);
+	virtual ~CRMobject(void);
 
 public:
 	virtual void	Update() = 0;
-	// void			Update();
+
 	void			Render();
 	void			SetKey(EnumObjectType key) { m_key = key; }
 

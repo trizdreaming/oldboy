@@ -3,8 +3,8 @@
 
 enum EnumObjectType
 {
-	TEST_1,
-	TEST_2,
-	TEST_3,
+	BG_IMAGE,
+	NOTE_NORMAL_1,
+	NOTE_NORMAL_2,
 	NOTHING
 };

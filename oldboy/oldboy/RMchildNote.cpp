@@ -13,6 +13,14 @@ CRMchildNote::~CRMchildNote(void)
 
 void CRMchildNote::Update()
 {
-	m_xPosition = static_cast<float>(static_cast<int>(++m_xPosition) % 700);
+	if(m_yPosition >= 0)
+	{
+		m_yPosition = static_cast<float>(static_cast<int>(m_yPosition + 5) % 660);
+	}
+	else
+	{
+		m_yPosition += 5;
+	}
+	
 	return;
 }

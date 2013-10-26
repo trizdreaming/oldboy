@@ -5,6 +5,7 @@
 #include "RMrender.h"
 
 #include "RMchildNote.h"
+#include "RMchildBGImage.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 
@@ -57,19 +58,39 @@ void CRMmainLoop::RunMessageLoop()
 	/**********************************************************************************/
 	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
 	/**********************************************************************************/
-	CRMobject*	testObject = new CRMchildNote();
-	testObject->SetKey(TEST_1);
+	CRMobject*	testObject = new CRMchildBGImage();
+	testObject->SetKey(BG_IMAGE);
 	testObject->SetPosition(0, 0);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
-	testObject->SetKey(TEST_2);
-	testObject->SetPosition(300, 100);
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(400, 0);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
-	testObject->SetKey(TEST_3);
-	testObject->SetPosition(500, 300);
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(800, 0);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(400, -150);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(800, -150);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(400, -300);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(800, -300);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 

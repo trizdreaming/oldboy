@@ -103,6 +103,9 @@
     <ClInclude Include="RMchildNote.h">
       <Filter>Core\Object\children</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildBGImage.h">
+      <Filter>Core\Object\children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -139,6 +142,9 @@
       <Filter>Core\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMchildNote.cpp">
+      <Filter>Core\Object\children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildBGImage.cpp">
       <Filter>Core\Object\children</Filter>
     </ClCompile>
   </ItemGroup>

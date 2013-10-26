@@ -11,8 +11,8 @@ public:
 public:
 	HRESULT Init(std::wstring path);
 
-	float GetWidth(){return m_width;}
-	float GetHeight(){return m_height;}
+	float GetWidth() { return m_width; }
+	float GetHeight() { return m_height; }
 
 	ID2D1Bitmap* Get2DImg(){return m_2DImg;}
 

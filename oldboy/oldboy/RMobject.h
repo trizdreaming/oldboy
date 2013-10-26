@@ -1,4 +1,8 @@
 #pragma once
+
+#include "oldboy.h"
+#include "RMEnumObjectType.h"
+
 class CRMobject
 {
 public:
@@ -6,16 +10,20 @@ public:
 	~CRMobject(void);
 
 public:
-	//virtual void update();
-	void render();
+	virtual void	Update() = 0;
+	// void			Update();
+	void			Render();
+	void			SetKey(EnumObjectType key) { m_key = key; }
 
-private:
-	std::wstring m_key;
+	void			SetPosition(float x, float y) { m_xPosition = x; m_yPosition = y; }
 
-	float m_xPosition;
-	float m_yPosition;
-	float m_width;
-	float m_height;
-	float m_alpha;
+protected:
+	EnumObjectType	m_key;
+
+	float			m_xPosition;
+	float			m_yPosition;
+	float			m_width;
+	float			m_height;
+	float			m_alpha;
 };
 

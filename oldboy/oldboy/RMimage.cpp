@@ -4,7 +4,9 @@
 #include "RMrender.h"
 
 
-CRMimage::CRMimage(void)
+CRMimage::CRMimage(void) :
+	m_width(0.0),
+	m_height(0.0)
 {
 }
 
@@ -16,7 +18,7 @@ HRESULT CRMimage::Init( std::wstring path )
 {
 	IWICImagingFactory*	imageFactory = CRMresourceManager::GetInstance()->GetImageFactory();
 	IWICBitmapDecoder* bitmapDecoder = nullptr;
-	HRESULT hr = S_OK;
+	HRESULT hr = S_FALSE;
 
 	// 디코더 생성
 	hr = imageFactory->CreateDecoderFromFilename( path.c_str(), nullptr, GENERIC_READ, 

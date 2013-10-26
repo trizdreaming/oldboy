@@ -86,6 +86,8 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="RMchildNote.h" />
+    <ClInclude Include="RMEnumObjectType.h" />
     <ClInclude Include="RMdefine.h" />
     <ClInclude Include="RMimage.h" />
     <ClInclude Include="RMinclude.h" />
@@ -106,6 +108,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp" />
+    <ClCompile Include="RMchildNote.cpp" />
     <ClCompile Include="RMimage.cpp" />
     <ClCompile Include="RMinput.cpp" />
     <ClCompile Include="RMlabel.cpp" />

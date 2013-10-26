@@ -42,16 +42,16 @@ HRESULT CRMresourceManager::InitTexture()
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	texture->Init( L"Image/test1.png" );
-	m_TextureMap[L"Item1"] = texture;
+	texture->Init( L"./Resource/test1.png" );
+	m_TextureMap[TEST_1] = texture;
 	
 	texture = new CRMimage();
-	texture->Init( L"Image/test2.png" );
-	m_TextureMap[L"Item2"] = texture;
+	texture->Init( L"./Resource/test2.png" );
+	m_TextureMap[TEST_2] = texture;
 
 	texture = new CRMimage();
-	texture->Init( L"Image/test3.png" );
-	m_TextureMap[L"Item3"] = texture;
+	texture->Init( L"./Resource/test3.png" );
+	m_TextureMap[TEST_3] = texture;
 
 	return hr;
 }

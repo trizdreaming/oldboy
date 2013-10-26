@@ -1,7 +1,7 @@
 #pragma once
 #include "oldboy.h"
 #include "RMimage.h"
-
+#include "RMEnumObjectType.h"
 
 class CRMresourceManager
 {
@@ -17,19 +17,19 @@ public:
 	HRESULT								CreateFactory();
 	
 	HRESULT								InitTexture();
-	//std::map<std::wstring, CRMimage*>	GetTextureMap() { return m_TextureMap; }
-	CRMimage*							GetTexture( std::wstring key ) { return m_TextureMap[key]; }
+	std::map<EnumObjectType, CRMimage*>	GetTextureMap() { return m_TextureMap; }
+	CRMimage*							GetTexture( EnumObjectType key ) { return m_TextureMap[key]; }
 	
 	IWICImagingFactory*					GetImageFactory() { return m_pWICFactory; }
 
 
 
 private:
-	IWICImagingFactory*			m_pWICFactory;
-	std::map<std::wstring, CRMimage*> m_TextureMap;
+	IWICImagingFactory*					m_pWICFactory;
+	std::map<EnumObjectType, CRMimage*>	m_TextureMap;
 
 private:
-	static CRMresourceManager*	m_pInstance;
+	static CRMresourceManager*			m_pInstance;
 
 };
 

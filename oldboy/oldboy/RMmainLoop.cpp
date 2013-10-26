@@ -1,5 +1,9 @@
 #include "stdafx.h"
 #include "RMmainLoop.h"
+#include "RMObjectManager.h"
+#include "RMresourceManager.h"
+#include "RMchildNote.h"
+#include "RMrender.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 
@@ -24,6 +28,10 @@ CRMmainLoop::~CRMmainLoop(void)
 	// 생성자에서 생성한 것은 소멸자에서 확인 처리
 	CRMsound::ReleaseInstance();
 	m_Sound = nullptr;
+
+	CRMobjectManager::ReleaseInstance();
+	CRMresourceManager::ReleaseInstance();
+	CRMrender::ReleaseInstance();
 }
 
 
@@ -34,6 +42,35 @@ void CRMmainLoop::RunMessageLoop()
 
 	m_Sound->LoadSound();
 	m_Sound->PLAYsound();
+
+
+	// 이미지 리소스를 불러오려면 렌더가 필요함
+	CRMrender::GetInstance()->CreateFactory();
+	CRMrender::GetInstance()->CreateRenderTarget();
+	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
+	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
+
+	// 이미지 리소스 파일 불러오기
+	CRMresourceManager::GetInstance()->InitTexture();
+
+	/**********************************************************************************/
+	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
+	/**********************************************************************************/
+	CRMobject*	testObject = new CRMchildNote();
+	testObject->SetKey(TEST_1);
+	testObject->SetPosition(0, 0);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(TEST_2);
+	testObject->SetPosition(300, 100);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(TEST_3);
+	testObject->SetPosition(500, 300);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
 
 	while(true)
 	{
@@ -48,10 +85,6 @@ void CRMmainLoop::RunMessageLoop()
 		}
 		else
 		{
-			// 처리 해야 할 내부 로직들을 처리함(objectManager -> update)
-			// CRMRender::GetInstance()->MovePosition();
-			// 임시로 추가함
-
 			m_NowTime = timeGetTime();
 
 			if ( m_PrevTime == 0 )
@@ -63,11 +96,20 @@ void CRMmainLoop::RunMessageLoop()
 
 			if(m_ElapsedTime % m_Fps == 0)
 			{
-				// 화면에 대한 처리를 진행(objectManager -> render)
- 				// CRMRender::GetInstance()->Render();
- 				// ValidateRect(m_HWnd, NULL);
-				// 임시로 추가함
+				// 처리 해야 할 내부 로직들을 처리함
+				// Update
+				CRMobjectManager::GetInstance()->Update();
+				// 업데이트 주기를 화면 뿌려주는 주기와 동기화 시키기 위해서 이쪽으로 이동시킴
+				// 그렇지 않을 경우 오브젝트들 내부에서 스스로 시간 경과를 체크해서
+				// 자신이 update 되어야 할 타이밍을 계산하거나 해야 됨
 
+				CRMrender::GetInstance()->RenderInit();
+
+				// 화면에 대한 처리를 진행
+				// Render
+				CRMobjectManager::GetInstance()->Render();
+
+				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;
 			}
 

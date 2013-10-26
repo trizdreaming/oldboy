@@ -97,6 +97,12 @@
     <ClInclude Include="RMObjectManager.h">
       <Filter>Core\Object</Filter>
     </ClInclude>
+    <ClInclude Include="RMEnumObjectType.h">
+      <Filter>Core\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RMchildNote.h">
+      <Filter>Core\Object\children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -131,6 +137,9 @@
     </ClCompile>
     <ClCompile Include="RMObjectManager.cpp">
       <Filter>Core\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildNote.cpp">
+      <Filter>Core\Object\children</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

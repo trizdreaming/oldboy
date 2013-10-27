@@ -59,11 +59,11 @@ HRESULT CRMresourceManager::InitTexture()
 	ErrorCheck(hr);
 	if(hr == S_OK)
 	{
-		m_TextureMap[NOTE_NORMAL_1] = nullptr;
 		m_TextureMap[NOTE_NORMAL_1] = texture;
 	}
 	else
 	{
+		m_TextureMap[NOTE_NORMAL_1] = nullptr;
 		SafeDelete(texture);
 	}
 

@@ -17,6 +17,10 @@ CRMmainLoop::CRMmainLoop(void):
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = 1000/60;
+
+	// fmod 사용하기 fmodex.dll파일이 필요하다.
+	CRMsound::GetInstance()->InitSound();
+	CRMsound::GetInstance()->LoadSound();
 }
 
 
@@ -34,17 +38,9 @@ void CRMmainLoop::RunMessageLoop()
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
 
-	LoadResource();
-
-	// fmod를 하단으로 내린 이유
-	// 이미지보다 먼저 fmod를 초기화 할 경우, 음원 파일이 존재하지 않으면
-	// 이미지가 제대로 불러와지지 않는 문제가 발생함
-	// fmod가 별도의 스레드로 작동하는데, MessageBox() 메소드로 mainLoop쪽이 블록 상태가 
-	// 되는 것 때문이 아닌가 추측 됨
-
-	// fmod 사용하기 fmodex.dll파일이 필요하다.
-	CRMsound::GetInstance()->InitSound();
-	CRMsound::GetInstance()->LoadSound();
+	CreateObject();
+	// 오브젝트 생성 부분을 리팩토링
+	
 	CRMsound::GetInstance()->PLAYsound();
 
 	while(true)
@@ -187,7 +183,7 @@ void CRMmainLoop::ReleaseInstance()
 	}
 }
 
-void CRMmainLoop::LoadResource()
+void CRMmainLoop::CreateObject()
 {
 	// 이미지 리소스를 불러오려면 렌더가 필요함
 	CRMrender::GetInstance()->CreateFactory();

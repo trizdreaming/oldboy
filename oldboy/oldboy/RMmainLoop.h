@@ -23,7 +23,7 @@ public:
 
 
 private:
-	void	LoadResource();
+	void	CreateObject();
 
 	HWND	m_Hwnd;
 	

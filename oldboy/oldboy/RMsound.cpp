@@ -5,7 +5,6 @@ CRMsound* CRMsound::m_pInstance = nullptr;
 
 CRMsound::CRMsound(void):
 	m_SystemS(nullptr),
-	m_Sound(nullptr),
 	m_Channel(nullptr),
 	m_Result(FMOD_ERR_UNINITIALIZED)
 {
@@ -45,35 +44,54 @@ void CRMsound::InitSound()
 
 
 // 리소스 생성 - 재생하고자 하는 음원 로딩
-void CRMsound::LoadSound()
+void CRMsound::LoadSound(std::string fileName)
 {
 	// 사운드로딩
 	if(m_Result == FMOD_OK)
 	{
-		m_Result = m_SystemS->createSound("./Resource/test.mp3", FMOD_LOOP_NORMAL, 0, &m_Sound);  // FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
+		FMOD::Sound* m_Sound;
+		std::string filePath = "./Resource/"+fileName;
+		m_Result = m_SystemS->createSound(filePath.c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_Sound);  // FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
 		ErrorCheck();
+		m_SoundMap[fileName] = m_Sound;
 	}
 }
 
 // 재생
-void CRMsound::PLAYsound()
+void CRMsound::PLAYsound(std::string fileName)
 {
 	if(m_Result == FMOD_OK)
 	{
-		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_Sound, false, &m_Channel);
+		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
+		m_Channel->setVolume(0.5);
+		m_Channel->setMode(FMOD_LOOP_NORMAL);
+		ErrorCheck();
+	}
+}
+
+// 효과음 재생
+void CRMsound::PLAYSEsound(std::string fileName)
+{
+	if(m_Result == FMOD_OK)
+	{
+		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
 		m_Channel->setVolume(0.5);
 		ErrorCheck();
 	}
 }
 
+
 // 해제 처리
 void CRMsound::DeleteSound()
 {
+	/*
+	맵의 데이터 없애야함...
 	if(m_Sound)
 	{
 		m_Sound->release();
 		m_Sound = NULL;
 	}
+	*/
 	if(m_SystemS)
 	{
 		m_SystemS->release();
@@ -99,3 +117,4 @@ void CRMsound::ReleaseInstance()
 		m_pInstance = nullptr;
 	}
 }
+

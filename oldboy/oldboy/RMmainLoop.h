@@ -34,5 +34,8 @@ private:
 
 	//½Ì±ÛÅæ °ü·Ã member º¯¼ö
 	static CRMmainLoop* m_pInstance;
+
+
+	void testSound();
 };
 

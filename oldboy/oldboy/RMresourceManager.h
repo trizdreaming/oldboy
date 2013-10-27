@@ -13,7 +13,7 @@ public:
 	static CRMresourceManager*	GetInstance();
 	static void					ReleaseInstance();
 
-public:
+	// 팩토리 초기화
 	HRESULT								CreateFactory();
 	
 	HRESULT								InitTexture();
@@ -25,10 +25,11 @@ public:
 
 
 private:
+	void								ErrorCheck(HRESULT);
+
 	IWICImagingFactory*					m_pWICFactory;
 	std::map<EnumObjectType, CRMimage*>	m_TextureMap;
 
-private:
 	static CRMresourceManager*			m_pInstance;
 
 };

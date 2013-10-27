@@ -18,12 +18,14 @@ public:
 	static void			ReleaseInstance();
 
 private:
-	void ERRCHECK(FMOD_RESULT result);
+	void ErrorCheck();
 	
 private:
 	FMOD::System*	m_SystemS;
 	FMOD::Sound*	m_Sound;
 	FMOD::Channel*	m_Channel;
+
+	FMOD_RESULT		m_Result;
 
 	//½Ì±ÛÅæ °ü·Ã member º¯¼ö
 	static CRMsound*	m_pInstance;

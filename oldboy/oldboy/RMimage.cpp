@@ -28,7 +28,9 @@ HRESULT CRMimage::Init( std::wstring path )
 		WICDecodeMetadataCacheOnDemand, &bitmapDecoder );
 
 	if(FAILED(hr))
+	{
 		return hr;
+	}
 
 	// 디코더에서 프레임 추출
 	IWICBitmapFrameDecode* bitmapFrameDecode = nullptr;

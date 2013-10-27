@@ -37,17 +37,35 @@ HRESULT CRMresourceManager::CreateFactory()
 
 HRESULT CRMresourceManager::InitTexture()
 {
-	HRESULT hr = S_OK;
+	HRESULT hr = S_FALSE;
 
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	texture->Init( L"./Resource/image_bg_01_01.png" );
-	m_TextureMap[BG_IMAGE] = texture;
+	hr = texture->Init( L"./Resource/image_bg_01_01.png" );
+	ErrorCheck(hr);
+	if(hr == S_OK)
+	{
+		m_TextureMap[BG_IMAGE] = texture;
+	}
+	else
+	{
+		m_TextureMap[BG_IMAGE] = nullptr;
+		SafeDelete(texture);
+	}
 	
 	texture = new CRMimage();
-	texture->Init( L"./Resource/image_nt_01_01.png" );
-	m_TextureMap[NOTE_NORMAL_1] = texture;
+	hr = texture->Init( L"./Resource/image_nt_01_01.png" );
+	ErrorCheck(hr);
+	if(hr == S_OK)
+	{
+		m_TextureMap[NOTE_NORMAL_1] = nullptr;
+		m_TextureMap[NOTE_NORMAL_1] = texture;
+	}
+	else
+	{
+		SafeDelete(texture);
+	}
 
 	return hr;
 }
@@ -68,5 +86,15 @@ void CRMresourceManager::ReleaseInstance()
 	{
 		delete m_pInstance;
 		m_pInstance = nullptr;
+	}
+}
+
+void CRMresourceManager::ErrorCheck(HRESULT hr)
+{
+	if (hr != S_OK)
+	{
+		TCHAR str[256] = {0,};
+		wprintf_s(str, L"Image Loading Error! (%d) \n", hr);
+		MessageBox(NULL, str, L"TEST", MB_OK  );
 	}
 }

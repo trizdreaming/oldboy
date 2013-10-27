@@ -29,6 +29,12 @@ void CRMobject::Render()
 
 	CRMimage* thisTexture = CRMresourceManager::GetInstance()->GetTexture(m_key);
 
+	if(thisTexture == nullptr)
+	{
+		return;
+	}
+	// 방어적 프로그래밍 - 텍스쳐가 없을 경우
+
 	if(m_width == 0)
 	{
 		m_width = thisTexture->GetWidth();

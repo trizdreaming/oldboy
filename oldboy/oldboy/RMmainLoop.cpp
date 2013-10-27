@@ -13,24 +13,16 @@ CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
 	m_ElapsedTime(0),
-	m_Fps(0),
-	m_Sound(nullptr)
+	m_Fps(0)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = 1000/60;
-
-	// fmod 사용하기 fmodex.dll파일이 필요하다.
-	m_Sound = CRMsound::GetInstance();
-	m_Sound->InitSound();
 }
 
 
 CRMmainLoop::~CRMmainLoop(void)
 {
-	// 생성자에서 생성한 것은 소멸자에서 확인 처리
 	CRMsound::ReleaseInstance();
-	m_Sound = nullptr;
-
 	CRMobjectManager::ReleaseInstance();
 	CRMresourceManager::ReleaseInstance();
 	CRMrender::ReleaseInstance();
@@ -42,57 +34,18 @@ void CRMmainLoop::RunMessageLoop()
 	MSG msg;
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
 
-	m_Sound->LoadSound();
-	m_Sound->PLAYsound();
+	LoadResource();
 
+	// fmod를 하단으로 내린 이유
+	// 이미지보다 먼저 fmod를 초기화 할 경우, 음원 파일이 존재하지 않으면
+	// 이미지가 제대로 불러와지지 않는 문제가 발생함
+	// fmod가 별도의 스레드로 작동하는데, MessageBox() 메소드로 mainLoop쪽이 블록 상태가 
+	// 되는 것 때문이 아닌가 추측 됨
 
-	// 이미지 리소스를 불러오려면 렌더가 필요함
-	CRMrender::GetInstance()->CreateFactory();
-	CRMrender::GetInstance()->CreateRenderTarget();
-// 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
-	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
-
-	// 이미지 리소스 파일 불러오기
- 	CRMresourceManager::GetInstance()->InitTexture();
-
-	/**********************************************************************************/
-	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
-	/**********************************************************************************/
-	CRMobject*	testObject = new CRMchildBGImage();
-	testObject->SetKey(BG_IMAGE);
-	testObject->SetPosition(0, 0);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
-	testObject = new CRMchildNote();
-	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(400, 0);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
-	testObject = new CRMchildNote();
-	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(800, 0);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
-	testObject = new CRMchildNote();
-	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(400, -150);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
-	testObject = new CRMchildNote();
-	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(800, -150);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
-	testObject = new CRMchildNote();
-	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(400, -300);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
-	testObject = new CRMchildNote();
-	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(800, -300);
-	CRMobjectManager::GetInstance()->AddObject(testObject);
-
+	// fmod 사용하기 fmodex.dll파일이 필요하다.
+	CRMsound::GetInstance()->InitSound();
+	CRMsound::GetInstance()->LoadSound();
+	CRMsound::GetInstance()->PLAYsound();
 
 	while(true)
 	{
@@ -232,4 +185,55 @@ void CRMmainLoop::ReleaseInstance()
 		delete m_pInstance;
 		m_pInstance = nullptr;
 	}
+}
+
+void CRMmainLoop::LoadResource()
+{
+	// 이미지 리소스를 불러오려면 렌더가 필요함
+	CRMrender::GetInstance()->CreateFactory();
+	CRMrender::GetInstance()->CreateRenderTarget();
+	// 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
+	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
+
+	// 이미지 리소스 파일 불러오기
+	CRMresourceManager::GetInstance()->InitTexture();
+
+	/**********************************************************************************/
+	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
+	/**********************************************************************************/
+	CRMobject*	testObject = new CRMchildBGImage();
+	testObject->SetKey(BG_IMAGE);
+	testObject->SetPosition(0, 0);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(400, 0);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(800, 0);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(400, -150);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(800, -150);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(400, -300);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
+	testObject = new CRMchildNote();
+	testObject->SetKey(NOTE_NORMAL_1);
+	testObject->SetPosition(800, -300);
+	CRMobjectManager::GetInstance()->AddObject(testObject);
+
 }

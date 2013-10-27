@@ -23,14 +23,14 @@ public:
 
 
 private:
+	void	LoadResource();
+
 	HWND	m_Hwnd;
 	
 	UINT	m_NowTime;
 	UINT	m_PrevTime;
 	UINT	m_ElapsedTime;
 	UINT	m_Fps;
-
-	CRMsound* m_Sound;
 
 	//½Ì±ÛÅæ °ü·Ã member º¯¼ö
 	static CRMmainLoop* m_pInstance;

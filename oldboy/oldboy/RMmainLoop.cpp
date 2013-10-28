@@ -90,7 +90,11 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 
 				// test sound
-				testSound();
+				//testSound();
+
+				//test Key
+				testKey();
+
 			}
 
 			if(m_ElapsedTime > m_Fps)
@@ -269,7 +273,9 @@ void CRMmainLoop::CreateObject()
 
 // ================================================================
 
-int testSoundCount = 0;
+/*
+
+
 void CRMmainLoop::testSound()
 {
 	
@@ -298,6 +304,20 @@ void CRMmainLoop::testSound()
 	}
 
 	
+}
+*/
+
+void CRMmainLoop::testKey()
+{
+
+	if(CRMinput::GetInstance()->InputKeyboard() == P1TARGET1)
+	{
+		GoNextScene();
+
+		CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
+		//뭔가 멀티 쓰레드 관련 문제가 있어 보입니다!
+		//버튼 인식하고 넘어가는 건 되는데, 창을 쥐고 흔들어야 음악이 나오네요.
+	}
 }
 
 void CRMmainLoop::GoNextScene()

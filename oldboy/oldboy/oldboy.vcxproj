@@ -92,12 +92,14 @@
     <ClInclude Include="RMEnumLayerType.h" />
     <ClInclude Include="RMEnumObjectType.h" />
     <ClInclude Include="RMdefine.h" />
+    <ClInclude Include="RMenumOfKeyTable.h" />
     <ClInclude Include="RMEnumSceneType.h" />
     <ClInclude Include="RMimage.h" />
     <ClInclude Include="RMinclude.h" />
     <ClInclude Include="oldboy.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RMinput.h" />
+    <ClInclude Include="RMkeyMapping.h" />
     <ClInclude Include="RMlabel.h" />
     <ClInclude Include="RMlibrary.h" />
     <ClInclude Include="RMmacro.h" />
@@ -135,6 +137,9 @@
   <ItemGroup>
     <Image Include="oldboy.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

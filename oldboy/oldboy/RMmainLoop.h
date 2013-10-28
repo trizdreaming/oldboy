@@ -43,6 +43,8 @@ private:
 	static CRMmainLoop* m_pInstance;
 
 
-	void testSound();
+public:
+	//void testSound();
+	void testKey();
 };
 

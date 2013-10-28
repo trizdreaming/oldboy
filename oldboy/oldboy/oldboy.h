@@ -8,6 +8,8 @@
 
 #include "RMmacro.h"
 
+#include "RMinput.h"
+
 #include <crtdbg.h>
 
 

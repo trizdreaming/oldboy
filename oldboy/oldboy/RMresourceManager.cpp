@@ -42,15 +42,28 @@ HRESULT CRMresourceManager::InitTexture()
 	CRMimage* texture;
 
 	texture = new CRMimage();
+	hr = texture->Init( L"./Resource/image_bg_00_01.png" );
+	ErrorCheck(hr);
+	if(hr == S_OK)
+	{
+		m_TextureMap[BG_IMAGE_TITLE] = texture;
+	}
+	else
+	{
+		m_TextureMap[BG_IMAGE_TITLE] = nullptr;
+		SafeDelete(texture);
+	}
+
+	texture = new CRMimage();
 	hr = texture->Init( L"./Resource/image_bg_01_01.png" );
 	ErrorCheck(hr);
 	if(hr == S_OK)
 	{
-		m_TextureMap[BG_IMAGE] = texture;
+		m_TextureMap[BG_IMAGE_PLAY] = texture;
 	}
 	else
 	{
-		m_TextureMap[BG_IMAGE] = nullptr;
+		m_TextureMap[BG_IMAGE_PLAY] = nullptr;
 		SafeDelete(texture);
 	}
 	

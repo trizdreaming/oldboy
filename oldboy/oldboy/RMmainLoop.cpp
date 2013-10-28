@@ -205,45 +205,51 @@ void CRMmainLoop::CreateObject()
 	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
 	/**********************************************************************************/
 	CRMobject*	testObject = new CRMchildBGImage();
-	testObject->SetKey(BG_IMAGE);
+	testObject->SetKey(BG_IMAGE_TITLE);
 	testObject->SetPosition(0, 0);
 	testObject->SetVisible(true);
+	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_1);
+
+	testObject = new CRMchildBGImage();
+	testObject->SetKey(BG_IMAGE_PLAY);
+	testObject->SetPosition(0, 0);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_1);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, 0);
-	testObject->SetVisible(true);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, 0);
-	testObject->SetVisible(true);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -150);
-	testObject->SetVisible(true);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -150);
-	testObject->SetVisible(true);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -300);
-	testObject->SetVisible(true);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 	
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -300);
-	testObject->SetVisible(true);
+	testObject->SetVisible(false);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 }

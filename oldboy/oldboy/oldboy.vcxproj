@@ -88,6 +88,7 @@
   <ItemGroup>
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildNote.h" />
+    <ClInclude Include="RMEnumLayerType.h" />
     <ClInclude Include="RMEnumObjectType.h" />
     <ClInclude Include="RMdefine.h" />
     <ClInclude Include="RMEnumSceneType.h" />

@@ -109,6 +109,9 @@
     <ClInclude Include="RMEnumSceneType.h">
       <Filter>Core\Loop</Filter>
     </ClInclude>
+    <ClInclude Include="RMEnumLayerType.h">
+      <Filter>Core\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">

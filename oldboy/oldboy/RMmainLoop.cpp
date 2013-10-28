@@ -21,6 +21,7 @@ CRMmainLoop::CRMmainLoop(void):
 
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->InitSound();
+	CRMsound::GetInstance()->LoadSound("test.mp3");
 	CRMsound::GetInstance()->LoadSound("Dengue_Fever-Integration.mp3");
 	CRMsound::GetInstance()->LoadSound("se1.wav");
 	CRMsound::GetInstance()->LoadSound("se2.wav");
@@ -45,7 +46,7 @@ void CRMmainLoop::RunMessageLoop()
 	CreateObject();
 	// 오브젝트 생성 부분을 리팩토링
 	
-	CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
+	CRMsound::GetInstance()->PLAYsound("test.mp3");
 
 	while(true)
 	{
@@ -259,25 +260,41 @@ void CRMmainLoop::CreateObject()
 int testSoundCount = 0;
 void CRMmainLoop::testSound()
 {
+	
+
 	++testSoundCount;
-	if(testSoundCount==300)
+	if(testSoundCount==600)
 	{
+		CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
+
 		CRMsound::GetInstance()->PLAYSEsound("se1.wav");
-		//testSoundCount = 0;
+		
+		auto &iter = CRMobjectManager::GetInstance()->GetObjectListLayer(Layer_1)->begin();
+		(*iter)->SetVisible(false);
+
+		++iter;
+		(*iter)->SetVisible(true);
+
+		for(iter = CRMobjectManager::GetInstance()->GetObjectListLayer(Layer_2)->begin(); 
+			iter != CRMobjectManager::GetInstance()->GetObjectListLayer(Layer_2)->end(); ++iter)
+		{
+			(*iter)->SetVisible(true);
+		}
+
 	}
-	if(testSoundCount==450)
+	if(testSoundCount==750)
 	{
 		CRMsound::GetInstance()->PLAYSEsound("se2.wav");
-		//testSoundCount = 0;
 	}
-	if(testSoundCount==640)
+	if(testSoundCount==940)
 	{
 		CRMsound::GetInstance()->PLAYSEsound("se3.wav");
-		//testSoundCount = 0;
 	}
-	if(testSoundCount==663)
+	if(testSoundCount==963)
 	{
 		CRMsound::GetInstance()->PLAYSEsound("se3.wav");
-		testSoundCount = 0;
+		testSoundCount = 601;
 	}
+
+	
 }

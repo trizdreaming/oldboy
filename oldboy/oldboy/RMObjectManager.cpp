@@ -125,6 +125,26 @@ void CRMobjectManager::Render()
 	}
 }
 
+std::list<CRMobject*>* CRMobjectManager::GetObjectListLayer( LayerType layer )
+{
+	switch (layer)
+	{
+	case Layer_1:
+		return &m_ObjectListLayer1;
+	case Layer_2:
+		return &m_ObjectListLayer2;
+	case Layer_3:
+		return &m_ObjectListLayer3;
+	case Layer_4:
+		return &m_ObjectListLayer4;
+	case NO_Layer:
+		return &m_ObjectListLayer1;
+	default:
+		return &m_ObjectListLayer1;
+	}
+	return &m_ObjectListLayer1;
+}
+
 
 
 

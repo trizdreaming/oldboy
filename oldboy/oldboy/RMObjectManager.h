@@ -18,7 +18,7 @@ public:
 	void	Render();
 
 	void	AddObject(CRMobject* object, LayerType layer);
-
+	std::list<CRMobject*>*		GetObjectListLayer(LayerType layer);
 private:
 	std::list<CRMobject*>		m_ObjectListLayer1;
 	std::list<CRMobject*>		m_ObjectListLayer2;

@@ -62,6 +62,7 @@ void CRMsound::PLAYsound(std::string fileName)
 {
 	if(m_Result == FMOD_OK)
 	{
+		m_Channel->stop();
 		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
 		m_Channel->setVolume(0.5);
 		m_Channel->setMode(FMOD_LOOP_NORMAL);
@@ -74,6 +75,7 @@ void CRMsound::PLAYSEsound(std::string fileName)
 {
 	if(m_Result == FMOD_OK)
 	{
+		
 		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
 		m_Channel->setVolume(0.5);
 		ErrorCheck();
@@ -84,14 +86,13 @@ void CRMsound::PLAYSEsound(std::string fileName)
 // 해제 처리
 void CRMsound::DeleteSound()
 {
-	/*
-	맵의 데이터 없애야함...
-	if(m_Sound)
+
+	for(auto &iter = m_SoundMap.begin(); iter != m_SoundMap.end(); ++iter)
 	{
-		m_Sound->release();
-		m_Sound = NULL;
+		iter->second->release(); // m_Sound
 	}
-	*/
+	m_SoundMap.clear();
+
 	if(m_SystemS)
 	{
 		m_SystemS->release();

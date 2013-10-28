@@ -6,6 +6,7 @@
 
 #include "RMchildNote.h"
 #include "RMchildBGImage.h"
+#include "RMchildShutter.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 
@@ -253,6 +254,17 @@ void CRMmainLoop::CreateObject()
 	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
+	testObject = new CRMchildShutter();
+	testObject->SetKey(SHUTTER_IMAGE);
+	testObject->SetPosition(0, -660);
+	testObject->SetScene(PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_3);
+
+	testObject = new CRMchildShutter();
+	testObject->SetKey(SHUTTER_IMAGE);
+	testObject->SetPosition(515, -880);
+	testObject->SetScene(PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_3);
 }
 
 // ================================================================

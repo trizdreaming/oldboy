@@ -112,6 +112,9 @@
     <ClInclude Include="RMEnumLayerType.h">
       <Filter>Core\Object</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildShutter.h">
+      <Filter>Core\Object\children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -151,6 +154,9 @@
       <Filter>Core\Object\children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildBGImage.cpp">
+      <Filter>Core\Object\children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildShutter.cpp">
       <Filter>Core\Object\children</Filter>
     </ClCompile>
   </ItemGroup>

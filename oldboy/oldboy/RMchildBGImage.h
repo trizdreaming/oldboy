@@ -8,6 +8,6 @@ public:
 	CRMchildBGImage(void);
 	~CRMchildBGImage(void);
 
-	void	Update();
+	virtual void	Update();
 };
 

@@ -66,6 +66,19 @@ HRESULT CRMresourceManager::InitTexture()
 		m_TextureMap[BG_IMAGE_PLAY] = nullptr;
 		SafeDelete(texture);
 	}
+
+	texture = new CRMimage();
+	hr = texture->Init( L"./Resource/image_sh_temp1.png" );
+	ErrorCheck(hr);
+	if(hr == S_OK)
+	{
+		m_TextureMap[SHUTTER_IMAGE] = texture;
+	}
+	else
+	{
+		m_TextureMap[SHUTTER_IMAGE] = nullptr;
+		SafeDelete(texture);
+	}
 	
 	texture = new CRMimage();
 	hr = texture->Init( L"./Resource/image_nt_01_01.png" );

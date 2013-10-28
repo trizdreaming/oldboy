@@ -1,6 +1,6 @@
 enum KeyTable
 {
-	NONE,
+	NO_INPUT,
 
 	ESCAPE,
 

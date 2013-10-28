@@ -44,7 +44,7 @@ private:
 
 
 public:
-	//void testSound();
+	void testSound();
 	void testKey();
 };
 

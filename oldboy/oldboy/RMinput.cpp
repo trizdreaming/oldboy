@@ -4,7 +4,7 @@
 CRMinput* CRMinput::m_pInstance = nullptr;
 
 CRMinput::CRMinput(void):
-	m_inputKey(NONE)
+	m_inputKey(NO_INPUT)
 {
 }
 
@@ -15,6 +15,9 @@ CRMinput::~CRMinput(void)
 
 KeyTable CRMinput::InputKeyboard()
 {
+	m_inputKey = NO_INPUT;
+	// 여기 초기화 부분이 빠져서 추가함
+
 	if(GetAsyncKeyState(VK_A) & 0x8000)
 	{
 		m_inputKey = P1TARGET1;

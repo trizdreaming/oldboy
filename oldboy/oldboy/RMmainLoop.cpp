@@ -90,9 +90,9 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 
 				// test sound
-				//testSound();
+				testSound();
 
-				//test Key
+				// test Key
 				testKey();
 
 			}
@@ -273,50 +273,56 @@ void CRMmainLoop::CreateObject()
 
 // ================================================================
 
-/*
-
-
+int testSoundCount = 0;
 void CRMmainLoop::testSound()
 {
 	
-
-	++testSoundCount;
-	if(testSoundCount==600)
+	if(m_SceneType == PLAY)
 	{
-		CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
-
-		CRMsound::GetInstance()->PLAYSEsound("se1.wav");
-
-		GoNextScene();
+		++testSoundCount;
 	}
-	if(testSoundCount==750)
+
+	if(testSoundCount==300)
+	{
+		CRMsound::GetInstance()->PLAYSEsound("se1.wav");
+	}
+	if(testSoundCount==450)
 	{
 		CRMsound::GetInstance()->PLAYSEsound("se2.wav");
 	}
-	if(testSoundCount==940)
+	if(testSoundCount==540)
 	{
 		CRMsound::GetInstance()->PLAYSEsound("se3.wav");
 	}
-	if(testSoundCount==963)
+	if(testSoundCount==663)
 	{
 		CRMsound::GetInstance()->PLAYSEsound("se3.wav");
-		testSoundCount = 601;
+		testSoundCount = 200;
 	}
 
 	
 }
-*/
 
 void CRMmainLoop::testKey()
 {
 
 	if(CRMinput::GetInstance()->InputKeyboard() == P1TARGET1)
 	{
-		GoNextScene();
+		// 'A'키 입력을 받은 후 씬이 넘어가고 음악 재생에 문제가 있었던 이유 
+		// RMinput.cpp 확인 해 보면 현재 Key Status를 초기화 하지 않았음
 
-		CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
-		//뭔가 멀티 쓰레드 관련 문제가 있어 보입니다!
-		//버튼 인식하고 넘어가는 건 되는데, 창을 쥐고 흔들어야 음악이 나오네요.
+		// 그 결과 키가 한 번 눌린 상태면 계속 눌려 있다 라고 인식이 되어서
+		// 이 if 구문의 결과가 참으로 인식 되어 계속 내부로 들어옴
+		
+		// 그래서 하단의 GoNextScene() 메소드를 계속 반복 호출(1/60초에 1회씩 미친듯이...)
+		// 그 결과 음악이 1/60초에 한 번씩 계속 반복 시작 되느라 멈춘 것처럼 느껴진 것이고
+
+		// 마우스를 드래그 할 때에는 메인루프 로직이 멈춰 있으니
+		// (우리 게임에서는 WM_MOVE나 기타 메시지 처리를 안 하므로 이동처리시 흐름 진행이 안 됨)
+		// 하단의 GoNextScene() 메소드 호출이 멈추게 되어서
+		// 마치 마우스를 드래그 할 때에만 정상적으로 노래가 나오는 것처럼 느껴진 것임
+		
+		GoNextScene();
 	}
 }
 
@@ -325,5 +331,8 @@ void CRMmainLoop::GoNextScene()
 	if(m_SceneType == TITLE)
 	{
 		m_SceneType = PLAY;
+
+		CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
+		// 문맥 의미상 배경 음악 재생을 변경 시작하는 것은 이곳에 배치 되는 것이 맞음
 	}
 }

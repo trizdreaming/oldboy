@@ -2,6 +2,7 @@
 
 #include "oldboy.h"
 #include "RMEnumObjectType.h"
+#include "RMEnumSceneType.h"
 
 class CRMobject
 {
@@ -10,23 +11,29 @@ public:
 	virtual ~CRMobject(void);
 
 public:
-	virtual void	Update() = 0;
+	virtual void	Update();		// 자식에서 오버라이딩 후 부모 호출
 
 	void			Render();
-	void			SetKey(EnumObjectType key) { m_key = key; }
-	void			SetVisible(bool visible) { m_visible = visible; }
+	void			SetKey(EnumObjectType key) { m_Key = key; }
 
-	void			SetPosition(float x, float y) { m_xPosition = x; m_yPosition = y; }
+	void			SetScene(SCENE_TYPE scene) { m_Scene = scene; }
+	
+	void			SetVisible(bool visible) { m_Visible = visible; }
+	void			SetPosition(float x, float y) { m_PositionX = x; m_PositionY = y; }
 
 protected:
-	EnumObjectType	m_key;
 
-	bool			m_visible;
+	void			SetVisibleByScene();
 
-	float			m_xPosition;
-	float			m_yPosition;
-	float			m_width;
-	float			m_height;
-	float			m_alpha;
+	EnumObjectType	m_Key;
+
+	bool			m_Visible;
+	SCENE_TYPE		m_Scene;
+
+	float			m_PositionX;
+	float			m_PositionY;
+	float			m_Width;
+	float			m_Height;
+	float			m_Alpha;
 };
 

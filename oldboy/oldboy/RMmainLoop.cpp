@@ -208,49 +208,49 @@ void CRMmainLoop::CreateObject()
 	CRMobject*	testObject = new CRMchildBGImage();
 	testObject->SetKey(BG_IMAGE_TITLE);
 	testObject->SetPosition(0, 0);
-	testObject->SetVisible(true);
+	testObject->SetScene(TITLE);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_1);
 
 	testObject = new CRMchildBGImage();
 	testObject->SetKey(BG_IMAGE_PLAY);
 	testObject->SetPosition(0, 0);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_1);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, 0);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, 0);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -150);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -150);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -300);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 	
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -300);
-	testObject->SetVisible(false);
+	testObject->SetScene(PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 }
@@ -268,19 +268,8 @@ void CRMmainLoop::testSound()
 		CRMsound::GetInstance()->PLAYsound("Dengue_Fever-Integration.mp3");
 
 		CRMsound::GetInstance()->PLAYSEsound("se1.wav");
-		
-		auto &iter = CRMobjectManager::GetInstance()->GetObjectListLayer(Layer_1)->begin();
-		(*iter)->SetVisible(false);
 
-		++iter;
-		(*iter)->SetVisible(true);
-
-		for(iter = CRMobjectManager::GetInstance()->GetObjectListLayer(Layer_2)->begin(); 
-			iter != CRMobjectManager::GetInstance()->GetObjectListLayer(Layer_2)->end(); ++iter)
-		{
-			(*iter)->SetVisible(true);
-		}
-
+		GoNextScene();
 	}
 	if(testSoundCount==750)
 	{
@@ -297,4 +286,12 @@ void CRMmainLoop::testSound()
 	}
 
 	
+}
+
+void CRMmainLoop::GoNextScene()
+{
+	if(m_SceneType == TITLE)
+	{
+		m_SceneType = PLAY;
+	}
 }

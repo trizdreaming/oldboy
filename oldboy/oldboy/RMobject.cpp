@@ -3,15 +3,16 @@
 #include "RMimage.h"
 #include "RMresourceManager.h"
 #include "RMrender.h"
+#include "RMmainLoop.h"
 
 CRMobject::CRMobject(void):
-	m_key(NOTHING),
-	m_visible(false),
-	m_xPosition(0.0f),
-	m_yPosition(0.0f),
-	m_width(0.0f),
-	m_height(0.0f),
-	m_alpha(0.0f)
+	m_Key(NOTHING),
+	m_Visible(false),
+	m_PositionX(0.0f),
+	m_PositionY(0.0f),
+	m_Width(0.0f),
+	m_Height(0.0f),
+	m_Alpha(0.0f)
 {
 }
 
@@ -23,12 +24,12 @@ CRMobject::~CRMobject(void)
 void CRMobject::Render()
 {
 
-	if(m_key == NOTHING || m_visible == false)
+	if(m_Key == NOTHING || m_Visible == false)
 	{
 		return;
 	}
 
-	CRMimage* thisTexture = CRMresourceManager::GetInstance()->GetTexture(m_key);
+	CRMimage* thisTexture = CRMresourceManager::GetInstance()->GetTexture(m_Key);
 
 	if(thisTexture == nullptr)
 	{
@@ -36,16 +37,33 @@ void CRMobject::Render()
 	}
 	// 방어적 프로그래밍 - 텍스쳐가 없을 경우
 
-	if(m_width == 0)
+	if(m_Width == 0)
 	{
-		m_width = thisTexture->GetWidth();
+		m_Width = thisTexture->GetWidth();
 	}
-	if(m_height == 0)
+	if(m_Height == 0)
 	{
-		m_height = thisTexture->GetHeight();
+		m_Height = thisTexture->GetHeight();
 	}
 
-	D2D1_RECT_F dxArea = D2D1::RectF( m_xPosition, m_yPosition, m_xPosition + m_width, m_yPosition + m_height);
+	D2D1_RECT_F dxArea = D2D1::RectF( m_PositionX, m_PositionY, m_PositionX + m_Width, m_PositionY + m_Height);
 	
 	CRMrender::GetInstance()->GetRenderTarget()->DrawBitmap(thisTexture->Get2DImg(), dxArea);
+}
+
+void CRMobject::SetVisibleByScene()
+{
+	if(m_Scene == CRMmainLoop::GetInstance()->GetNowScene())
+	{
+		m_Visible = true;
+	}
+	else
+	{
+		m_Visible = false;
+	}
+}
+
+void CRMobject::Update()
+{
+	CRMobject::SetVisibleByScene();
 }

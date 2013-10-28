@@ -13,6 +13,7 @@ CRMchildBGImage::~CRMchildBGImage(void)
 
 void CRMchildBGImage::Update()
 {
+	CRMobject::Update();
 	return;
 }
 

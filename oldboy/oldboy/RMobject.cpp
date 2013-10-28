@@ -6,6 +6,7 @@
 
 CRMobject::CRMobject(void):
 	m_key(NOTHING),
+	m_visible(false),
 	m_xPosition(0.0f),
 	m_yPosition(0.0f),
 	m_width(0.0f),
@@ -22,7 +23,7 @@ CRMobject::~CRMobject(void)
 void CRMobject::Render()
 {
 
-	if(m_key == NOTHING)
+	if(m_key == NOTHING || m_visible == false)
 	{
 		return;
 	}

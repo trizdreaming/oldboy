@@ -207,36 +207,43 @@ void CRMmainLoop::CreateObject()
 	CRMobject*	testObject = new CRMchildBGImage();
 	testObject->SetKey(BG_IMAGE);
 	testObject->SetPosition(0, 0);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_1);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, 0);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, 0);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -150);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -150);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -300);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 	
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -300);
+	testObject->SetVisible(true);
 	CRMobjectManager::GetInstance()->AddObject(testObject, Layer_2);
 
 }

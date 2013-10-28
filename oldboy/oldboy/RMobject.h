@@ -14,11 +14,14 @@ public:
 
 	void			Render();
 	void			SetKey(EnumObjectType key) { m_key = key; }
+	void			SetVisible(bool visible) { m_visible = visible; }
 
 	void			SetPosition(float x, float y) { m_xPosition = x; m_yPosition = y; }
 
 protected:
 	EnumObjectType	m_key;
+
+	bool			m_visible;
 
 	float			m_xPosition;
 	float			m_yPosition;

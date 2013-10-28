@@ -106,6 +106,9 @@
     <ClInclude Include="RMchildBGImage.h">
       <Filter>Core\Object\children</Filter>
     </ClInclude>
+    <ClInclude Include="RMEnumSceneType.h">
+      <Filter>Core\Loop</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">

@@ -13,7 +13,8 @@ CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
 	m_ElapsedTime(0),
-	m_Fps(0)
+	m_Fps(0),
+	m_SceneType(TITLE)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = 1000/60;
@@ -232,7 +233,7 @@ void CRMmainLoop::CreateObject()
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(395, -300);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
-
+	
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
 	testObject->SetPosition(910, -300);

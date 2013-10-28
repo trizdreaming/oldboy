@@ -127,8 +127,8 @@ HRESULT CRMmainLoop::Init()
 						WS_OVERLAPPEDWINDOW,
 						50,		// 하기 4줄이 화면 시작 좌표 의미 
 						50,		//
-						1024,	//
-						668,	//
+						1040,	// 1024 + 16
+						700,	// 668 + 32
 						NULL, 
 						NULL, 
 						wcex.hInstance, 
@@ -210,32 +210,32 @@ void CRMmainLoop::CreateObject()
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(400, 0);
+	testObject->SetPosition(395, 0);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(800, 0);
+	testObject->SetPosition(910, 0);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(400, -150);
+	testObject->SetPosition(395, -150);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(800, -150);
+	testObject->SetPosition(910, -150);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(400, -300);
+	testObject->SetPosition(395, -300);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 	testObject = new CRMchildNote();
 	testObject->SetKey(NOTE_NORMAL_1);
-	testObject->SetPosition(800, -300);
+	testObject->SetPosition(910, -300);
 	CRMobjectManager::GetInstance()->AddObject(testObject);
 
 }

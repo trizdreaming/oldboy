@@ -27,7 +27,7 @@ HRESULT CRMimage::Init( std::wstring path )
 	hr = imageFactory->CreateDecoderFromFilename( path.c_str(), nullptr, GENERIC_READ, 
 		WICDecodeMetadataCacheOnDemand, &bitmapDecoder );
 
-	if(FAILED(hr))
+	if(FAILED(hr)) //SM9: if와 같은 예약 키워드 뒤에는 괄호를 한 칸 띄우고 시작할 것.
 	{
 		return hr;
 	}

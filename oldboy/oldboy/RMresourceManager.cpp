@@ -6,7 +6,7 @@ CRMresourceManager*	CRMresourceManager::m_pInstance = nullptr;
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
 {
-	CreateFactory();
+	CreateFactory(); //SM9 생성자에서는 에러 핸들링 가능성이 있는 함수들은 쓰지 말 것.
 	m_TextureMap.clear();
 }
 
@@ -15,7 +15,7 @@ CRMresourceManager::~CRMresourceManager(void)
 {
 	SafeRelease(m_pWICFactory);
 
-	for(auto &iter = m_TextureMap.begin(); iter != m_TextureMap.end(); ++iter)
+	for(auto &iter = m_TextureMap.begin(); iter != m_TextureMap.end(); ++iter) //SM9: for (auto& iter : m_TextureMap ) 처럼 해도 된다.
 	{
 		SafeDelete(iter->second);
 	}

@@ -17,7 +17,7 @@ public:
 	HRESULT								CreateFactory();
 	
 	HRESULT								InitTexture();
-	std::map<EnumObjectType, CRMimage*>	GetTextureMap() { return m_TextureMap; }
+	std::map<EnumObjectType, CRMimage*>	GetTextureMap() { return m_TextureMap; } //SM9: 맵이 통째로 복사 일어나네? 헐...
 	CRMimage*							GetTexture( EnumObjectType key ) { return m_TextureMap[key]; }
 	
 	IWICImagingFactory*					GetImageFactory() { return m_pWICFactory; }

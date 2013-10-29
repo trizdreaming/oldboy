@@ -9,7 +9,7 @@ public:
 	~CRMimage(void);
 
 public:
-	HRESULT Init(std::wstring path);
+	HRESULT Init(std::wstring path); //SM9: path가 내부에서 변화가 없다면 const std::wstring& 으로 넘길 것.
 
 	float GetWidth() { return m_width; }
 	float GetHeight() { return m_height; }

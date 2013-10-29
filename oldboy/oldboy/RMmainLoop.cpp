@@ -71,7 +71,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			m_ElapsedTime = m_NowTime - m_PrevTime;
 
-			if(m_ElapsedTime % m_Fps == 0)
+			if(m_ElapsedTime % m_Fps == 0) //SM9: 이게 0으로 딱 안떨어지면 어떻할려고??
 			{
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update

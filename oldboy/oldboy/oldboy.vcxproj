@@ -45,8 +45,8 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <IncludePath>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Programmers API Windows\api\inc;C:\2013_game_project\trunk\oldboy\oldboy;$(IncludePath)</IncludePath>
-    <LibraryPath>C:\Program Files %28x86%29\FMOD SoundSystem\FMOD Programmers API Windows\api\lib;C:\2013_game_project\trunk\oldboy\oldboy;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -62,7 +62,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>fmodex_vc.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -86,6 +86,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Dependency\fmod.h" />
+    <ClInclude Include="Dependency\fmod.hpp" />
+    <ClInclude Include="Dependency\fmod_codec.h" />
+    <ClInclude Include="Dependency\fmod_dsp.h" />
+    <ClInclude Include="Dependency\fmod_errors.h" />
+    <ClInclude Include="Dependency\fmod_memoryinfo.h" />
+    <ClInclude Include="Dependency\fmod_output.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildShutter.h" />

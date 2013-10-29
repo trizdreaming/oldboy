@@ -38,6 +38,9 @@
     <Filter Include="Core\Object\children">
       <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Fmod">
+      <UniqueIdentifier>{f8e3df5f-250f-49c0-99b7-31b6fb6d08b3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -108,6 +111,27 @@
     </ClInclude>
     <ClInclude Include="RMenumSet.h">
       <Filter>Core</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod.hpp">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod_codec.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod_dsp.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod_errors.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod_memoryinfo.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="Dependency\fmod_output.h">
+      <Filter>Fmod</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

@@ -5,9 +5,9 @@
 #include <d2d1helper.h>
 
 //Sound - fmod°ü·Ã include file
-#include "fmod.h"
-#include "fmod.hpp"
-#include "fmod_errors.h"
+#include "Dependency/fmod.h"
+#include "Dependency/fmod.hpp"
+#include "Dependency/fmod_errors.h"
 
 //
 #include <stdio.h>

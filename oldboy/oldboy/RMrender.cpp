@@ -66,7 +66,7 @@ HRESULT CRMrender::RenderEnd()
 
 	hr =m_pDisplayRenderTarget->EndDraw();
 
-	if(hr == D2DERR_RECREATE_TARGET)
+	if ( hr == D2DERR_RECREATE_TARGET )
 	{
 		hr = S_OK;
 		SafeRelease(m_pDisplayRenderTarget);
@@ -80,7 +80,7 @@ HRESULT CRMrender::RenderEnd()
 
 CRMrender* CRMrender::GetInstance()
 {
-	if(m_pInstance == nullptr)
+	if ( m_pInstance == nullptr )
 	{
 		m_pInstance = new CRMrender();
 	}
@@ -89,7 +89,7 @@ CRMrender* CRMrender::GetInstance()
 
 void CRMrender::ReleaseInstance()
 {
-	if(m_pInstance != nullptr)
+	if ( m_pInstance != nullptr )
 	{
 		delete m_pInstance;
 		m_pInstance = nullptr;

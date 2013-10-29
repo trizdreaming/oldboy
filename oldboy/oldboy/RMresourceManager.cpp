@@ -6,7 +6,6 @@ CRMresourceManager*	CRMresourceManager::m_pInstance = nullptr;
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
 {
-	CreateFactory();
 	m_TextureMap.clear();
 }
 
@@ -15,9 +14,9 @@ CRMresourceManager::~CRMresourceManager(void)
 {
 	SafeRelease(m_pWICFactory);
 
-	for(auto &iter = m_TextureMap.begin(); iter != m_TextureMap.end(); ++iter)
+	for ( auto& iter : m_TextureMap )
 	{
-		SafeDelete(iter->second);
+		SafeDelete( iter.second );
 	}
 	m_TextureMap.clear();
 }
@@ -26,7 +25,7 @@ HRESULT CRMresourceManager::CreateFactory()
 {
 	HRESULT hr = S_FALSE;
 
-	if(m_pWICFactory == nullptr)
+	if ( m_pWICFactory == nullptr )
 	{
 		hr = CoCreateInstance( CLSID_WICImagingFactory, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&m_pWICFactory) );
 	}
@@ -35,61 +34,61 @@ HRESULT CRMresourceManager::CreateFactory()
 }
 
 
-HRESULT CRMresourceManager::InitTexture()
+HRESULT CRMresourceManager::CreateTexture()
 {
 	HRESULT hr = S_FALSE;
 
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	hr = texture->Init( L"./Resource/image_bg_00_01.png" );
-	ErrorCheck(hr);
-	if(hr == S_OK)
+	hr = texture->CreateImage( L"./Resource/image_bg_00_01.png" );
+	CheckError(hr);
+	if ( hr == S_OK )
 	{
-		m_TextureMap[BG_IMAGE_TITLE] = texture;
+		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
 	}
 	else
 	{
-		m_TextureMap[BG_IMAGE_TITLE] = nullptr;
+		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
 		SafeDelete(texture);
 	}
 
 	texture = new CRMimage();
-	hr = texture->Init( L"./Resource/image_bg_01_01.png" );
-	ErrorCheck(hr);
-	if(hr == S_OK)
+	hr = texture->CreateImage( L"./Resource/image_bg_01_01.png" );
+	CheckError(hr);
+	if ( hr == S_OK )
 	{
-		m_TextureMap[BG_IMAGE_PLAY] = texture;
+		m_TextureMap[OBJECT_BG_IMAGE_PLAY] = texture;
 	}
 	else
 	{
-		m_TextureMap[BG_IMAGE_PLAY] = nullptr;
+		m_TextureMap[OBJECT_BG_IMAGE_PLAY] = nullptr;
 		SafeDelete(texture);
 	}
 
 	texture = new CRMimage();
-	hr = texture->Init( L"./Resource/image_sh_temp1.png" );
-	ErrorCheck(hr);
-	if(hr == S_OK)
+	hr = texture->CreateImage( L"./Resource/image_sh_temp1.png" );
+	CheckError(hr);
+	if ( hr == S_OK )
 	{
-		m_TextureMap[SHUTTER_IMAGE] = texture;
+		m_TextureMap[OBJECT_SHUTTER] = texture;
 	}
 	else
 	{
-		m_TextureMap[SHUTTER_IMAGE] = nullptr;
+		m_TextureMap[OBJECT_SHUTTER] = nullptr;
 		SafeDelete(texture);
 	}
 	
 	texture = new CRMimage();
-	hr = texture->Init( L"./Resource/image_nt_01_01.png" );
-	ErrorCheck(hr);
-	if(hr == S_OK)
+	hr = texture->CreateImage( L"./Resource/image_nt_01_01.png" );
+	CheckError(hr);
+	if ( hr == S_OK )
 	{
-		m_TextureMap[NOTE_NORMAL_1] = texture;
+		m_TextureMap[OBJECT_NOTE_NORMAL_1] = texture;
 	}
 	else
 	{
-		m_TextureMap[NOTE_NORMAL_1] = nullptr;
+		m_TextureMap[OBJECT_NOTE_NORMAL_1] = nullptr;
 		SafeDelete(texture);
 	}
 
@@ -98,9 +97,11 @@ HRESULT CRMresourceManager::InitTexture()
 
 CRMresourceManager* CRMresourceManager::GetInstance()
 {
-	if(m_pInstance == nullptr)
+	if ( m_pInstance == nullptr )
 	{
 		m_pInstance = new CRMresourceManager();
+		
+		m_pInstance->CreateFactory();
 	}
 
 	return m_pInstance;
@@ -108,16 +109,16 @@ CRMresourceManager* CRMresourceManager::GetInstance()
 
 void CRMresourceManager::ReleaseInstance()
 {
-	if(m_pInstance != nullptr)
+	if ( m_pInstance != nullptr )
 	{
 		delete m_pInstance;
 		m_pInstance = nullptr;
 	}
 }
 
-void CRMresourceManager::ErrorCheck(HRESULT hr)
+void CRMresourceManager::CheckError(HRESULT hr)
 {
-	if (hr != S_OK)
+	if ( hr != S_OK )
 	{
 		TCHAR str[256] = {0,};
 		wprintf_s(str, L"Image Loading Error! (%d) \n", hr);

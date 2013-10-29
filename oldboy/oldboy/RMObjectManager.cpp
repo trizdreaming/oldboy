@@ -5,40 +5,43 @@ CRMobjectManager*	CRMobjectManager::m_pInstance = nullptr;
 
 CRMobjectManager::CRMobjectManager(void)
 {
-	m_ObjectListLayer1.clear();
-	m_ObjectListLayer2.clear();
-	m_ObjectListLayer3.clear();
-	m_ObjectListLayer4.clear();
+	m_ObjectListLayerBackground.clear();
+	m_ObjectListLayerNote.clear();
+	m_ObjectListLayerShutter.clear();
+	m_ObjectListLayerLabel.clear();
 }
 
 
 CRMobjectManager::~CRMobjectManager(void)
 {
-	for(auto &iter = m_ObjectListLayer1.begin(); iter != m_ObjectListLayer1.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerBackground )
 	{
-		SafeDelete(*iter);
+		SafeDelete( iter );
 	}
-	m_ObjectListLayer1.clear();
-	for(auto &iter = m_ObjectListLayer2.begin(); iter != m_ObjectListLayer2.end(); ++iter)
+	m_ObjectListLayerBackground.clear();
+
+	for ( auto &iter : m_ObjectListLayerNote )
 	{
-		SafeDelete(*iter);
+		SafeDelete( iter );
 	}
-	m_ObjectListLayer2.clear();
-	for(auto &iter = m_ObjectListLayer3.begin(); iter != m_ObjectListLayer3.end(); ++iter)
+	m_ObjectListLayerNote.clear();
+
+	for ( auto &iter : m_ObjectListLayerShutter )
 	{
-		SafeDelete(*iter);
+		SafeDelete( iter );
 	}
-	m_ObjectListLayer3.clear();
-	for(auto &iter = m_ObjectListLayer4.begin(); iter != m_ObjectListLayer4.end(); ++iter)
+	m_ObjectListLayerShutter.clear();
+
+	for ( auto &iter : m_ObjectListLayerLabel )
 	{
-		SafeDelete(*iter);
+		SafeDelete( iter );
 	}
-	m_ObjectListLayer4.clear();
+	m_ObjectListLayerLabel.clear();
 }
 
 CRMobjectManager* CRMobjectManager::GetInstance()
 {
-	if(m_pInstance == nullptr)
+	if ( m_pInstance == nullptr )
 	{
 		m_pInstance = new CRMobjectManager();
 	}
@@ -48,7 +51,7 @@ CRMobjectManager* CRMobjectManager::GetInstance()
 
 void CRMobjectManager::ReleaseInstance()
 {
-	if(m_pInstance != nullptr)
+	if ( m_pInstance != nullptr )
 	{
 		delete m_pInstance;
 		m_pInstance = nullptr;
@@ -57,23 +60,23 @@ void CRMobjectManager::ReleaseInstance()
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 {
-	if(object != nullptr)
+	if ( object != nullptr )
 	{
-		switch (layer)
+		switch ( layer )
 		{
-		case Layer_1:
-			m_ObjectListLayer1.push_back(object);
+		case LAYER_BACKGROUND:
+			m_ObjectListLayerBackground.push_back(object);
 			break;
-		case Layer_2:
-			m_ObjectListLayer2.push_back(object);
+		case LAYER_NOTE:
+			m_ObjectListLayerNote.push_back(object);
 			break;
-		case Layer_3:
-			m_ObjectListLayer3.push_back(object);
+		case LAYER_SHUTTER:
+			m_ObjectListLayerShutter.push_back(object);
 			break;
-		case Layer_4:
-			m_ObjectListLayer4.push_back(object);
+		case LAYER_LABEL:
+			m_ObjectListLayerLabel.push_back(object);
 			break;
-		case NO_Layer:
+		case NO_LAYER:
 			break;
 		default:
 			break;
@@ -85,64 +88,64 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 
 void CRMobjectManager::Update()
 {
-	for(auto &iter = m_ObjectListLayer1.begin(); iter != m_ObjectListLayer1.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerBackground )
 	{
-		(*iter)->Update();
+		iter->Update();
 	}
-	for(auto &iter = m_ObjectListLayer2.begin(); iter != m_ObjectListLayer2.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerNote )
 	{
-		(*iter)->Update();
+		iter->Update();
 	}
-	for(auto &iter = m_ObjectListLayer3.begin(); iter != m_ObjectListLayer3.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerShutter )
 	{
-		(*iter)->Update();
+		iter->Update();
 	}
-	for(auto &iter = m_ObjectListLayer4.begin(); iter != m_ObjectListLayer4.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerLabel )
 	{
-		(*iter)->Update();
+		iter->Update();
 	}
 }
 
 void CRMobjectManager::Render()
 {
-	m_ObjectListLayer1.sort();
+	m_ObjectListLayerBackground.sort();
 
-	for(auto &iter = m_ObjectListLayer1.begin(); iter != m_ObjectListLayer1.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerBackground )
 	{
-		(*iter)->Render();
+		iter->Render();
 	}
-	for(auto &iter = m_ObjectListLayer2.begin(); iter != m_ObjectListLayer2.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerNote )
 	{
-		(*iter)->Render();
+		iter->Render();
 	}
-	for(auto &iter = m_ObjectListLayer3.begin(); iter != m_ObjectListLayer3.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerShutter )
 	{
-		(*iter)->Render();
+		iter->Render();
 	}
-	for(auto &iter = m_ObjectListLayer4.begin(); iter != m_ObjectListLayer4.end(); ++iter)
+	for ( auto &iter : m_ObjectListLayerLabel )
 	{
-		(*iter)->Render();
+		iter->Render();
 	}
 }
 
 std::list<CRMobject*>* CRMobjectManager::GetObjectListLayer( LayerType layer )
 {
-	switch (layer)
+	switch ( layer )
 	{
-	case Layer_1:
-		return &m_ObjectListLayer1;
-	case Layer_2:
-		return &m_ObjectListLayer2;
-	case Layer_3:
-		return &m_ObjectListLayer3;
-	case Layer_4:
-		return &m_ObjectListLayer4;
-	case NO_Layer:
-		return &m_ObjectListLayer1;
+	case LAYER_BACKGROUND:
+		return &m_ObjectListLayerBackground;
+	case LAYER_NOTE:
+		return &m_ObjectListLayerNote;
+	case LAYER_SHUTTER:
+		return &m_ObjectListLayerShutter;
+	case LAYER_LABEL:
+		return &m_ObjectListLayerLabel;
+	case NO_LAYER:
+		return &m_ObjectListLayerBackground;
 	default:
-		return &m_ObjectListLayer1;
+		return &m_ObjectListLayerBackground;
 	}
-	return &m_ObjectListLayer1;
+	return &m_ObjectListLayerBackground;
 }
 
 

@@ -1,7 +1,7 @@
 #pragma once
 #include "oldboy.h"
 #include "RMimage.h"
-#include "RMEnumObjectType.h"
+#include "RMobject.h"
 
 class CRMresourceManager
 {
@@ -14,21 +14,17 @@ public:
 	static void					ReleaseInstance();
 
 	// 팩토리 초기화
-	HRESULT								CreateFactory();
+	HRESULT						CreateFactory();
+	IWICImagingFactory*			GetImageFactory() { return m_pWICFactory; }
+
+	HRESULT						CreateTexture();
+	CRMimage*					GetTexture( Object_Type key ) { return m_TextureMap[key]; }
 	
-	HRESULT								InitTexture();
-	std::map<EnumObjectType, CRMimage*>	GetTextureMap() { return m_TextureMap; }
-	CRMimage*							GetTexture( EnumObjectType key ) { return m_TextureMap[key]; }
-	
-	IWICImagingFactory*					GetImageFactory() { return m_pWICFactory; }
-
-
-
 private:
-	void								ErrorCheck(HRESULT);
+	void								CheckError(HRESULT);
 
 	IWICImagingFactory*					m_pWICFactory;
-	std::map<EnumObjectType, CRMimage*>	m_TextureMap;
+	std::map<Object_Type, CRMimage*>	m_TextureMap;
 
 	static CRMresourceManager*			m_pInstance;
 

@@ -2,7 +2,6 @@
 #include "oldboy.h"
 #include "RMobject.h"
 #include <list>
-#include "RMEnumLayerType.h"
 
 class CRMobjectManager
 {
@@ -13,17 +12,20 @@ private:
 public:
 	static CRMobjectManager*	GetInstance();
 	static void					ReleaseInstance();
+	
+	std::list<CRMobject*>*		GetObjectListLayer(LayerType layer);
+
+	void	AddObject(CRMobject*	object, LayerType layer);
 
 	void	Update();
 	void	Render();
 
-	void	AddObject(CRMobject* object, LayerType layer);
-	std::list<CRMobject*>*		GetObjectListLayer(LayerType layer);
+
 private:
-	std::list<CRMobject*>		m_ObjectListLayer1;
-	std::list<CRMobject*>		m_ObjectListLayer2;
-	std::list<CRMobject*>		m_ObjectListLayer3;
-	std::list<CRMobject*>		m_ObjectListLayer4;
+	std::list<CRMobject*>		m_ObjectListLayerBackground;
+	std::list<CRMobject*>		m_ObjectListLayerNote;
+	std::list<CRMobject*>		m_ObjectListLayerShutter;
+	std::list<CRMobject*>		m_ObjectListLayerLabel;
 
 	static	CRMobjectManager*	m_pInstance;
 };

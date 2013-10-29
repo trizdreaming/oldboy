@@ -9,12 +9,12 @@ private:
 
 public:
 	// ½Ì±ÛÅæ °ü·Ã ¸Þ¼Òµå
-	static CRMrender*	GetInstance();
-	static void			ReleaseInstance();
+	static CRMrender*		GetInstance();
+	static void				ReleaseInstance();
 
 	// ÆÑÅä¸® & ·£´õ Å¸°Ù »ý¼º ¹× ¹ÝÈ¯
-	HRESULT	CreateFactory();
-	HRESULT	CreateRenderTarget();
+	HRESULT					CreateFactory();
+	HRESULT					CreateRenderTarget();
 	ID2D1Factory*			GetRenderFactory() { return m_pDisplayFactory; }
 	ID2D1HwndRenderTarget*	GetRenderTarget() { return m_pDisplayRenderTarget; }
 

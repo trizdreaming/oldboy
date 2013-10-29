@@ -1,7 +1,6 @@
 #pragma once
 #include "oldboy.h"
 
-
 class CRMimage
 {
 public:
@@ -9,19 +8,19 @@ public:
 	~CRMimage(void);
 
 public:
-	HRESULT Init(std::wstring path);
+	HRESULT			CreateImage( const std::wstring& path );
 
-	float GetWidth() { return m_width; }
-	float GetHeight() { return m_height; }
+	float			GetWidth() { return m_Width; }
+	float			GetHeight() { return m_Height; }
 
-	ID2D1Bitmap* Get2DImg(){return m_2DImg;}
-
-private:
-	ID2D1Bitmap* m_2DImg;
+	ID2D1Bitmap*	Get2DImg() { return m_D2DImg; }
 
 private:
-	float m_width;
-	float m_height;
+	ID2D1Bitmap*	m_D2DImg;
+
+private:
+	float			m_Width;
+	float			m_Height;
 
 };
 

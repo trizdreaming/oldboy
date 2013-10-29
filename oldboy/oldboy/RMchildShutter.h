@@ -1,5 +1,6 @@
 #pragma once
 #include "rmobject.h"
+
 class CRMchildShutter :
 	public CRMobject
 {

@@ -1,32 +1,5 @@
 #pragma once
-
-#include "oldboy.h"
-
-enum SCENE_TYPE{
-	SCENE_TITLE,
-	SCENE_PLAY,
-	SCENE_RESULT,
-	NO_SCENE
-};
-
-enum LayerType
-{
-	LAYER_BACKGROUND,
-	LAYER_NOTE,
-	LAYER_SHUTTER,
-	LAYER_LABEL,
-	NO_LAYER
-};
-
-enum Object_Type
-{
-	OBJECT_BG_IMAGE_TITLE,
-	OBJECT_BG_IMAGE_PLAY,
-	OBJECT_NOTE_NORMAL_1,
-	OBJECT_NOTE_NORMAL_2,
-	OBJECT_SHUTTER,
-	NO_OBJECT
-};
+#include "RMenumSet.h"
 
 class CRMobject
 {

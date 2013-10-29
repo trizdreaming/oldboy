@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "oldboy.h"
 #include "RMchildShutter.h"
 #include "RMmainLoop.h"
 

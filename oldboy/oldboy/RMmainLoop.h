@@ -1,7 +1,6 @@
 #pragma once
 #include "oldboy.h"
-#include "RMobject.h"
-#include "RMsound.h"
+#include "RMenumSet.h"
 
 class CRMmainLoop
 {

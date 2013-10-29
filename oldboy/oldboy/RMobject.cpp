@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "oldboy.h"
 #include "RMobject.h"
 #include "RMimage.h"
 #include "RMresourceManager.h"

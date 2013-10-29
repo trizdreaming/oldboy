@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "oldboy.h"
 #include "RMinput.h"
 
 CRMinput* CRMinput::m_pInstance = nullptr;

@@ -90,6 +90,7 @@
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildShutter.h" />
     <ClInclude Include="RMdefine.h" />
+    <ClInclude Include="RMenumSet.h" />
     <ClInclude Include="RMimage.h" />
     <ClInclude Include="RMinclude.h" />
     <ClInclude Include="oldboy.h" />

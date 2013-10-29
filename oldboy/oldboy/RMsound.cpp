@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "oldboy.h"
 #include "RMsound.h"
 
 CRMsound* CRMsound::m_pInstance = nullptr;

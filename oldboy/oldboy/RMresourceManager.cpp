@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "oldboy.h"
 #include "RMresourceManager.h"
 
 CRMresourceManager*	CRMresourceManager::m_pInstance = nullptr;
@@ -16,7 +17,8 @@ CRMresourceManager::~CRMresourceManager(void)
 
 	for ( auto& iter : m_TextureMap )
 	{
-		SafeDelete( iter.second );
+		auto toBeDelete = iter.second ;
+		SafeDelete( toBeDelete );
 	}
 	m_TextureMap.clear();
 }

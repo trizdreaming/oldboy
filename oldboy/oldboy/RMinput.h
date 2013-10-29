@@ -1,20 +1,6 @@
 #pragma once
 #include "RMkeyMapping.h"
-
-enum KeyTable
-{
-	NO_INPUT,
-
-	ESCAPE,
-
-	P1TARGET1,
-	P1TARGET2,
-	P1ATTACK,
-
-	P2TARGET1,
-	P2TARGET2,
-	P2ATTACK
-};
+#include "RMenumSet.h"
 
 class CRMinput
 {

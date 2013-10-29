@@ -7,6 +7,7 @@
 #include "RMchildNote.h"
 #include "RMchildBGImage.h"
 #include "RMchildShutter.h"
+#include "RMsound.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 

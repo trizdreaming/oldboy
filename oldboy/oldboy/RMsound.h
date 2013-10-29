@@ -1,5 +1,6 @@
 #pragma once
-#include "oldboy.h"
+
+#include "RMinclude.h"
 
 class CRMsound
 {

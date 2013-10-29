@@ -106,6 +106,9 @@
     <ClInclude Include="RMresourceManager.h">
       <Filter>Core\Image</Filter>
     </ClInclude>
+    <ClInclude Include="RMenumSet.h">
+      <Filter>Core</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">

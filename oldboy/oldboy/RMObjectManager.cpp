@@ -17,25 +17,29 @@ CRMobjectManager::~CRMobjectManager(void)
 {
 	for ( auto &iter : m_ObjectListLayerBackground )
 	{
-		SafeDelete( iter );
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerBackground.clear();
 
 	for ( auto &iter : m_ObjectListLayerNote )
 	{
-		SafeDelete( iter );
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerNote.clear();
 
 	for ( auto &iter : m_ObjectListLayerShutter )
 	{
-		SafeDelete( iter );
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerShutter.clear();
 
 	for ( auto &iter : m_ObjectListLayerLabel )
 	{
-		SafeDelete( iter );
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerLabel.clear();
 }

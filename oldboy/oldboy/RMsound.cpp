@@ -92,7 +92,8 @@ void CRMsound::DeleteSound()
 
 	for ( auto &iter : m_SoundMap )
 	{
-		iter.second->release(); // m_Sound
+		auto toBeRelease = iter.second;
+		toBeRelease->release(); // m_Sound
 	}
 	m_SoundMap.clear();
 

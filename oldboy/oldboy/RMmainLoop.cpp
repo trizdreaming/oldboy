@@ -11,6 +11,7 @@
 #include "RMchildShutter.h"
 #include "RMsound.h"
 #include "RMJudgeManager.h"
+#include "RMchildEffectImage.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 
@@ -257,6 +258,13 @@ void CRMmainLoop::CreateObject()
 	testObject->SetPosition(515, -890);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+
+	testObject = new CRMchildEffectImage();
+	testObject->SetObjectType(OBJECT_SHUTTER);
+	testObject->SetPosition(515, -890);
+	testObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+	
 }
 
 // ================================================================

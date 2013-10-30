@@ -34,7 +34,7 @@ CRMjudgeManager::~CRMjudgeManager(void)
 // 	}
 // }
 
-void CRMjudgeManager::StartNote( PlayerNumber player )
+void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 {
 	if ( CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->size() == 0 )
 	{
@@ -48,17 +48,17 @@ void CRMjudgeManager::StartNote( PlayerNumber player )
 	{
 	case PLAYER_ONE:
 		
-		(*thisNote)->SetObjectType(OBJECT_NOTE_NORMAL_1);
-		(*thisNote)->SetPosition(395, -100);
-		(*thisNote)->SetSceneType(SCENE_PLAY);
+		(*thisNote)->SetObjectType( objectType );
+		(*thisNote)->SetPosition( 395, -100 );
+		(*thisNote)->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE1 );
 		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->
 			erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin());
 		break;
 	case PLAYER_TWO:
-		(*thisNote)->SetObjectType(OBJECT_NOTE_NORMAL_1);
-		(*thisNote)->SetPosition(910, -100);
-		(*thisNote)->SetSceneType(SCENE_PLAY);
+		(*thisNote)->SetObjectType( objectType );
+		(*thisNote)->SetPosition( 910, -100 );
+		(*thisNote)->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE2 );
 		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->
 			erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin());
@@ -94,11 +94,21 @@ void CRMjudgeManager::JudgeNote()
 		// 메모리 풀로 넣어주는 코드
 		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-1 )
 		{
-			CRMobjectManager::GetInstance()->AddObject( *thisNoteP1 , LAYER_MEMORY_POOL );
-			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->
-				erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->begin());
-			printf("pi end\n");
+			DeleteNote(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 ));
+		} 
+		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-110 )
+		{
+			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			{
+				//key input check
+			}
+			DeleteNote(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 ));
 		}
+		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-150 )
+		{
+			DeleteNote(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 ));
+		}
+
 	}
 	
 	if(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->size() > 0)
@@ -109,9 +119,13 @@ void CRMjudgeManager::JudgeNote()
 
 		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y-1 )
 		{
-			CRMobjectManager::GetInstance()->AddObject( *thisNoteP2 , LAYER_MEMORY_POOL );
-			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->
-				erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->begin());
+			DeleteNote(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 ));
 		}
 	}
+}
+
+void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
+{
+	CRMobjectManager::GetInstance()->AddObject( *objectList->begin() , LAYER_MEMORY_POOL );
+	objectList->erase(objectList->begin());
 }

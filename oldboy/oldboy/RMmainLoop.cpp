@@ -272,13 +272,13 @@ void CRMmainLoop::TestSound()
 
 	if ( testSoundCount==300 )
 	{
-		CRMjudgeManager::GetInstance()->StartNote(PLAYER_ONE);
+		CRMjudgeManager::GetInstance()->StartNote(PLAYER_TWO , OBJECT_NOTE_NORMAL_2 );
 
 		CRMsound::GetInstance()->PlayEffect("se1.wav");
 	}
 	if ( testSoundCount==450 )
 	{
-		CRMjudgeManager::GetInstance()->StartNote(PLAYER_TWO);
+		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
 		CRMsound::GetInstance()->PlayEffect("se2.wav");
 	}
 	if ( testSoundCount==540 )

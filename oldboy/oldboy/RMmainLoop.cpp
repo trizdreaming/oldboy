@@ -261,11 +261,16 @@ void CRMmainLoop::CreateObject()
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
 
 	testObject = new CRMchildEffectImage();
-	testObject->SetObjectType(OBJECT_SHUTTER);
-	testObject->SetPosition(515, -890);
+	testObject->SetObjectType(OBJECT_NOTE_HIT);
+	testObject->SetPosition(DEFAULT_POSITION_X, DEFAULT_POSITION_Y);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE_HIT);
 	
+	testObject = new CRMchildEffectImage();
+	testObject->SetObjectType(OBJECT_NOTE_HIT);
+	testObject->SetPosition(DEFAULT_POSITION_X, DEFAULT_POSITION_Y);
+	testObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE_HIT);
 }
 
 // ================================================================

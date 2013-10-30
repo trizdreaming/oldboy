@@ -19,6 +19,7 @@ CRMmainLoop::CRMmainLoop(void):
 	m_PrevTime(0),
 	m_ElapsedTime(0),
 	m_Fps(0),
+	m_FpsCheckTime(0),
 	m_SceneType(SCENE_TITLE)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
@@ -38,6 +39,8 @@ CRMmainLoop::~CRMmainLoop(void)
 void CRMmainLoop::RunMessageLoop()
 {
 	MSG msg;
+	UINT fps = 0;
+
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
 
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
@@ -73,6 +76,11 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 			}
 
+			if( m_NowTime - m_FpsCheckTime == 1000 )
+			{
+				printf_s("FPS : %d \n", fps);
+			}
+
 			m_ElapsedTime = m_NowTime - m_PrevTime;
 
 			if( m_ElapsedTime == m_Fps )
@@ -89,6 +97,7 @@ void CRMmainLoop::RunMessageLoop()
 				// 화면에 대한 처리를 진행
 				// Render
 				CRMobjectManager::GetInstance()->Render();
+				++fps;
 
 				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;

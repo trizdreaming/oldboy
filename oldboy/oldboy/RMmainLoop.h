@@ -41,6 +41,8 @@ private:
 	UINT	m_ElapsedTime;
 	UINT	m_Fps;
 
+	UINT	m_FpsCheckTime;
+
 	SceneType		m_SceneType;
 
 	//½Ì±ÛÅæ °ü·Ã member º¯¼ö

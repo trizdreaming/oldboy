@@ -31,8 +31,6 @@ enum Object_Type
 
 enum KeyTable
 {
-	NO_INPUT,
-
 	ESCAPE,
 
 	P1TARGET1,
@@ -41,12 +39,26 @@ enum KeyTable
 
 	P2TARGET1,
 	P2TARGET2,
-	P2ATTACK
+	P2ATTACK,
+
+	NO_INPUT
 };
 
 enum PLAYER_NUMBER
 {
 	PLAYER_ONE,
 	PLAYER_TWO,
-	PLAYER_NO
+	
+	NO_PLAYER
+};
+
+enum CountType
+{
+	PERFECT_COUNT,
+	GOOD_COUNT,
+	MISS_COUNT,
+	COMBO_COUNT,
+	SCORE_COUNT,
+
+	NO_COUNT
 };

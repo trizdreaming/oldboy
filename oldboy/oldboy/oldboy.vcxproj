@@ -111,6 +111,7 @@
     <ClInclude Include="RMmainLoop.h" />
     <ClInclude Include="RMobject.h" />
     <ClInclude Include="RMobjectManager.h" />
+    <ClInclude Include="RMplayer.h" />
     <ClInclude Include="RMrender.h" />
     <ClInclude Include="RMresourceManager.h" />
     <ClInclude Include="RMsound.h" />
@@ -129,6 +130,7 @@
     <ClCompile Include="RMmainLoop.cpp" />
     <ClCompile Include="RMobject.cpp" />
     <ClCompile Include="RMobjectManager.cpp" />
+    <ClCompile Include="RMplayer.cpp" />
     <ClCompile Include="RMrender.cpp" />
     <ClCompile Include="RMresourceManager.cpp" />
     <ClCompile Include="RMsound.cpp" />

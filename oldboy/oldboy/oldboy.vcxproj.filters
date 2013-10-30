@@ -35,11 +35,14 @@
     <Filter Include="Core\Sound Manager">
       <UniqueIdentifier>{77e4b450-8f8b-423c-9433-828cd16c10a2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Object\children">
-      <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fmod">
       <UniqueIdentifier>{f8e3df5f-250f-49c0-99b7-31b6fb6d08b3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Object\Player">
+      <UniqueIdentifier>{bc2568e7-a1f7-4223-bde5-9b0e3250d20e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Core\Object\Children">
+      <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -92,13 +95,13 @@
       <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMchildNote.h">
-      <Filter>Core\Object\children</Filter>
+      <Filter>Core\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMchildBGImage.h">
-      <Filter>Core\Object\children</Filter>
+      <Filter>Core\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMchildShutter.h">
-      <Filter>Core\Object\children</Filter>
+      <Filter>Core\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMkeyMapping.h">
       <Filter>Core\Input</Filter>
@@ -134,6 +137,9 @@
       <Filter>Core\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMjudgeManager.h" />
+    <ClInclude Include="RMplayer.h">
+      <Filter>Core\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -164,13 +170,13 @@
       <Filter>Core\Image</Filter>
     </ClCompile>
     <ClCompile Include="RMchildNote.cpp">
-      <Filter>Core\Object\children</Filter>
+      <Filter>Core\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildBGImage.cpp">
-      <Filter>Core\Object\children</Filter>
+      <Filter>Core\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildShutter.cpp">
-      <Filter>Core\Object\children</Filter>
+      <Filter>Core\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMresourceManager.cpp">
       <Filter>Core\Image</Filter>
@@ -179,6 +185,9 @@
       <Filter>Core\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMjudgeManager.cpp" />
+    <ClCompile Include="RMplayer.cpp">
+      <Filter>Core\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

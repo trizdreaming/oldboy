@@ -20,6 +20,7 @@ public:
 
 	float			GetPositionX() { return m_PositionX; }
 	float			GetPositionY() { return m_PositionY; }
+	ObjectType		GetObjectType() { return m_ObjectType; }
 
 protected:
 

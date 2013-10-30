@@ -13,9 +13,9 @@ public:
 	static void			ReleaseInstance();
 
 public:
-	KeyTable			GetKeyboardInput();
+	bool*				GetKeyboardInput();
 
 private:
-	KeyTable			m_InputKey;
+	bool				m_InputKey[MAX_INPUT_KEY];
 	static CRMinput*	m_pInstance;
 };

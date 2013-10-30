@@ -4,9 +4,9 @@
 
 CRMinput* CRMinput::m_pInstance = nullptr;
 
-CRMinput::CRMinput(void):
-	m_InputKey(NO_INPUT)
+CRMinput::CRMinput(void)
 {
+	ZeroMemory(m_InputKey, sizeof(m_InputKey[MAX_INPUT_KEY]));
 }
 
 
@@ -14,19 +14,44 @@ CRMinput::~CRMinput(void)
 {
 }
 
-KeyTable CRMinput::GetKeyboardInput()
+bool* CRMinput::GetKeyboardInput()
 {
-	m_InputKey = NO_INPUT;
-	// 여기 초기화 부분이 빠져서 추가함
+	m_InputKey[P1_TARGET1] = false;
+	m_InputKey[P1_TARGET2] = false;
+	m_InputKey[P1_ATTACK] = false;
+	m_InputKey[P2_TARGET1] = false;
+	m_InputKey[P2_TARGET2] = false;
+	m_InputKey[P2_ATTACK] = false;
 
 	if ( GetAsyncKeyState(VK_A) & 0x8000 )
 	{
-		m_InputKey = P1_TARGET1;
+		m_InputKey[P1_TARGET1] = true;
 	}
 
-	////////////////////////////////////
-	//일단 테스트로 대문자 A키만 둠
-	//키 설정을 추후 결정하도록 함
+	if ( GetAsyncKeyState(VK_S) & 0x8000 )
+	{
+		m_InputKey[P1_ATTACK] = true;
+	}
+
+	if ( GetAsyncKeyState(VK_D) & 0x8000 )
+	{
+		m_InputKey[P1_TARGET2] = true;
+	}
+
+	if ( GetAsyncKeyState(VK_LEFT) & 8000 )
+	{
+		m_InputKey[P2_TARGET1] = true;
+	}
+
+	if ( GetAsyncKeyState(VK_DOWN) & 8000 )
+	{
+		m_InputKey[P2_ATTACK] = true;
+	}
+
+	if ( GetAsyncKeyState(VK_RIGHT) & 8000 )
+	{
+		m_InputKey[P2_TARGET2] = true;
+	}
 
 	return m_InputKey;
 }

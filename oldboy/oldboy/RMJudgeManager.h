@@ -1,4 +1,5 @@
 #pragma once
+#include "RMobject.h"
 class CRMjudgeManager
 {
 	SINGLETON(CRMjudgeManager);
@@ -14,12 +15,12 @@ public:
 	// static void					ReleaseInstance();
 
 	//노트 관리
-	void						StartNote( PlayerNumber player );
+	void						StartNote( PlayerNumber player , ObjectType objectType );
 	
 	//노트 판정
 	void						JudgeNote();
 
 private:
-	//static CRMjudgeManager*		m_pInstance;
+	void						DeleteNote( std::list<CRMobject*>* objectList );
 };
 

@@ -152,7 +152,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	{
 		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
 		{
-			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 			DeleteNote( objectList );
 			return true;
 		}
@@ -161,7 +160,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	{
 		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
 		{
-			CRMsound::GetInstance()->PlayEffect( "se2.wav" );
 			DeleteNote( objectList );
 			return true;
 		}

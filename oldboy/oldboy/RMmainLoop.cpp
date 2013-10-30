@@ -229,37 +229,37 @@ void CRMmainLoop::CreateObject()
 	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
 	testObject->SetPosition(395, 0);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE1);
 
 	testObject = new CRMchildNote();
 	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(910, 0);
+	testObject->SetPosition(910, -100);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE2);
 
 	testObject = new CRMchildNote();
 	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
 	testObject->SetPosition(395, -150);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE1);
 
 	testObject = new CRMchildNote();
 	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
 	testObject->SetPosition(910, -150);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE2);
 
 	testObject = new CRMchildNote();
 	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
 	testObject->SetPosition(395, -300);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE1);
 	
 	testObject = new CRMchildNote();
 	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(910, -300);
+	testObject->SetPosition(910, -160);
 	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE2);
 
 	testObject = new CRMchildShutter();
 	testObject->SetObjectType(OBJECT_SHUTTER);

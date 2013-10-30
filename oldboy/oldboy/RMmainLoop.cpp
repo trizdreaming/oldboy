@@ -10,6 +10,7 @@
 #include "RMchildBGImage.h"
 #include "RMchildShutter.h"
 #include "RMsound.h"
+#include "RMJudgeManager.h"
 
 CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
 
@@ -224,42 +225,14 @@ void CRMmainLoop::CreateObject()
 	testObject->SetPosition(0, 0);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
-
-	testObject = new CRMchildNote();
-	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(395, 0);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE1);
-
-	testObject = new CRMchildNote();
-	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(910, -100);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE2);
-
-	testObject = new CRMchildNote();
-	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(395, -150);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE1);
-
-	testObject = new CRMchildNote();
-	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(910, -150);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE2);
-
-	testObject = new CRMchildNote();
-	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(395, -300);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE1);
-	
-	testObject = new CRMchildNote();
-	testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-	testObject->SetPosition(910, -160);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE2);
+	for ( int i = 0; i < 100; ++i )
+	{
+		testObject = new CRMchildNote();
+		testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
+		testObject->SetPosition(0, 0);
+		testObject->SetSceneType(SCENE_PLAY);
+		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_MEMORY_PULL);
+	}
 
 	testObject = new CRMchildShutter();
 	testObject->SetObjectType(OBJECT_SHUTTER);
@@ -287,6 +260,8 @@ void CRMmainLoop::TestSound()
 
 	if ( testSoundCount==300 )
 	{
+		CRMjudgeManager::GetInstance()->StartNote(PLAYER_ONE);
+
 		CRMsound::GetInstance()->PlayEffect("se1.wav");
 	}
 	if ( testSoundCount==450 )

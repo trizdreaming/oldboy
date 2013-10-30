@@ -91,9 +91,6 @@
     <ClInclude Include="targetver.h">
       <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="RMObjectManager.h">
-      <Filter>Core\Object</Filter>
-    </ClInclude>
     <ClInclude Include="RMchildNote.h">
       <Filter>Core\Object\children</Filter>
     </ClInclude>
@@ -133,6 +130,10 @@
     <ClInclude Include="Library\fmod_output.h">
       <Filter>Fmod</Filter>
     </ClInclude>
+    <ClInclude Include="RMobjectManager.h">
+      <Filter>Core\Object</Filter>
+    </ClInclude>
+    <ClInclude Include="RMjudgeManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -162,9 +163,6 @@
     <ClCompile Include="RMimage.cpp">
       <Filter>Core\Image</Filter>
     </ClCompile>
-    <ClCompile Include="RMObjectManager.cpp">
-      <Filter>Core\Object</Filter>
-    </ClCompile>
     <ClCompile Include="RMchildNote.cpp">
       <Filter>Core\Object\children</Filter>
     </ClCompile>
@@ -177,6 +175,10 @@
     <ClCompile Include="RMresourceManager.cpp">
       <Filter>Core\Image</Filter>
     </ClCompile>
+    <ClCompile Include="RMobjectManager.cpp">
+      <Filter>Core\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RMjudgeManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

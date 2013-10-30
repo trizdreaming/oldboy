@@ -74,8 +74,11 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_BACKGROUND:
 			m_ObjectListLayerBackground.push_back(object);
 			break;
-		case LAYER_NOTE:
+		case LAYER_NOTE1:
 			m_ObjectListLayerNotePlayer1.push_back(object);
+			break;
+		case LAYER_NOTE2:
+			m_ObjectListLayerNotePlayer2.push_back(object);
 			break;
 		case LAYER_SHUTTER:
 			m_ObjectListLayerShutter.push_back(object);

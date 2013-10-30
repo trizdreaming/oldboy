@@ -1,30 +1,31 @@
 #include "stdafx.h"
 #include "oldboy.h"
-#include "RMJudgeManager.h"
+#include "RMjudgeManager.h"
+#include "RMobjectManager.h"
 
-CRMJudgeManager* CRMJudgeManager::m_pInstance = nullptr;
+CRMjudgeManager* CRMjudgeManager::m_pInstance = nullptr;
 
-CRMJudgeManager::CRMJudgeManager(void)
+CRMjudgeManager::CRMjudgeManager(void)
 {
 }
 
 
-CRMJudgeManager::~CRMJudgeManager(void)
+CRMjudgeManager::~CRMjudgeManager(void)
 {
 }
 
 
-CRMJudgeManager* CRMJudgeManager::GetInstance()
+CRMjudgeManager* CRMjudgeManager::GetInstance()
 {
 	if ( m_pInstance == nullptr )
 	{
-		m_pInstance = new CRMJudgeManager();
+		m_pInstance = new CRMjudgeManager();
 	}
 
 	return m_pInstance;
 }
 
-void CRMJudgeManager::ReleaseInstance()
+void CRMjudgeManager::ReleaseInstance()
 {
 	if ( m_pInstance != nullptr )
 	{
@@ -33,13 +34,21 @@ void CRMJudgeManager::ReleaseInstance()
 	}
 }
 
-void CRMJudgeManager::StartNote(PLAYER_NUMBER player)
+void CRMjudgeManager::StartNote( PLAYER_NUMBER player )
 {
-	switch (player)
+	
+
+	switch ( player )
 	{
 	case PLAYER_ONE:
+		auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->begin();
+		CRMobjectManager::GetInstance()->AddObject( *iter , LAYER_NOTE1 );
+		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->remove(0);
 		break;
 	case PLAYER_TWO:
+		auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->begin();
+		CRMobjectManager::GetInstance()->AddObject( *iter , LAYER_NOTE2 );
+		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->remove(0);
 		break;
 	case PLAYER_NO:
 	default:
@@ -47,7 +56,7 @@ void CRMJudgeManager::StartNote(PLAYER_NUMBER player)
 	}
 }
 
-void CRMJudgeManager::JudgeNote()
+void CRMjudgeManager::JudgeNote()
 {
 
 }

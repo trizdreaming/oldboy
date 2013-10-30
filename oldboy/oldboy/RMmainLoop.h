@@ -1,20 +1,14 @@
 #pragma once
-
 #include "RMenumSet.h"
 
 class CRMmainLoop
 {
-
+	SINGLETON(CRMmainLoop);
 private:
 	CRMmainLoop(void);
 	~CRMmainLoop(void);
 
-
 public:
-	// 싱글톤 관련 method
-	static CRMmainLoop*		GetInstance();
-	static void				ReleaseInstance();
-
 	// 초기화 및 무한루프
 	HRESULT					CreateMainLoopWindow();
 	void					RunMessageLoop();
@@ -44,8 +38,5 @@ private:
 	UINT	m_FpsCheckTime;
 
 	SceneType		m_SceneType;
-
-	//싱글톤 관련 member 변수
-	static CRMmainLoop* m_pInstance;
 };
 

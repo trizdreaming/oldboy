@@ -6,17 +6,17 @@ class CRMobject;
 
 class CRMobjectManager
 {
+	SINGLETON(CRMobjectManager);
+
 private:
 	CRMobjectManager(void);
 	~CRMobjectManager(void);
 
 public:
-	static CRMobjectManager*	GetInstance();
-	static void					ReleaseInstance();
-	
+
 	std::list<CRMobject*>*		GetObjectList(LayerType layer);
 
-	void	AddObject(CRMobject*	object, LayerType layer);
+	void	AddObject(CRMobject* bject, LayerType layer);
 
 	void	Update();
 	void	Render();
@@ -34,7 +34,5 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
 
 	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote;
-
-	static	CRMobjectManager*	m_pInstance;
 };
 

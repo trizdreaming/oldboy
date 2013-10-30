@@ -1,7 +1,7 @@
 #include "stdafx.h"
+#include "oldboy.h"
 #include "RMchildEffectImage.h"
 #include "RMmainLoop.h"
-#include "oldboy.h"
 
 //////////////////////////////////////////////////////////////////
 //BitFlag 사용법													//
@@ -25,8 +25,8 @@ void CRMchildEffectImage::Update()
 	if( m_pBitFlag & 0x80 || m_pBitFlag & 0x08) //1p || 2p 첫 번째 타격
 	{
 		CRMobject::SetVisibleByScene();
-
-		if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
+		
+		if ( CRMmainLoop::GetInstance()->GetNowScene() == m_Scene)
 		{
 			return;
 		}

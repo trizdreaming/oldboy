@@ -4,8 +4,6 @@
 #include "RMobject.h"
 #include "RMObjectManager.h"
 
-CRMobjectManager*	CRMobjectManager::m_pInstance = nullptr;
-
 CRMobjectManager::CRMobjectManager(void)
 {
 	m_ObjectListLayerBackground.clear();
@@ -20,73 +18,54 @@ CRMobjectManager::CRMobjectManager(void)
 
 CRMobjectManager::~CRMobjectManager(void)
 {
-	for ( auto &iter : m_ObjectListLayerBackground )
+	for ( auto& iter : m_ObjectListLayerBackground )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerBackground.clear();
 
-	for ( auto &iter : m_ObjectListLayerNotePlayer1 )
+	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerNotePlayer1.clear();
 
-	for ( auto &iter : m_ObjectListLayerNotePlayer2 )
+	for ( auto& iter : m_ObjectListLayerNotePlayer2 )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerNotePlayer2.clear();
 
-	for ( auto &iter : m_ObjectListLayerEffect )
+	for ( auto& iter : m_ObjectListLayerEffect )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerEffect.clear();
 
-	for ( auto &iter : m_ObjectListLayerNoteHit )
+	for ( auto& iter : m_ObjectListLayerNoteHit )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerNoteHit.clear();
 
-	for ( auto &iter : m_ObjectListLayerShutter )
+	for ( auto& iter : m_ObjectListLayerShutter )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerShutter.clear();
 
-	for ( auto &iter : m_ObjectListLayerLabel )
+	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerLabel.clear();
-}
-
-CRMobjectManager* CRMobjectManager::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMobjectManager();
-	}
-
-	return m_pInstance;
-}
-
-void CRMobjectManager::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
 }
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
@@ -131,31 +110,31 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 
 void CRMobjectManager::Update()
 {
-	for ( auto &iter : m_ObjectListLayerBackground )
+	for ( auto& iter : m_ObjectListLayerBackground )
 	{
 		iter->Update();
 	}
-	for ( auto &iter : m_ObjectListLayerNotePlayer1 )
+	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
 		iter->Update();
 	}
-	for ( auto &iter : m_ObjectListLayerNotePlayer2 )
+	for ( auto& iter : m_ObjectListLayerNotePlayer2 )
 	{
 		iter->Update();
 	}
-	for ( auto &iter : m_ObjectListLayerEffect )
+	for ( auto& iter : m_ObjectListLayerEffect )
 	{
 		iter->Update();
 	}
-	for ( auto &iter : m_ObjectListLayerNoteHit )
+	for ( auto& iter : m_ObjectListLayerNoteHit )
 	{
 		iter->Update();
 	}
-	for ( auto &iter : m_ObjectListLayerShutter )
+	for ( auto& iter : m_ObjectListLayerShutter )
 	{
 		iter->Update();
 	}
-	for ( auto &iter : m_ObjectListLayerLabel )
+	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		iter->Update();
 	}
@@ -163,31 +142,31 @@ void CRMobjectManager::Update()
 
 void CRMobjectManager::Render()
 {
-	for ( auto &iter : m_ObjectListLayerBackground )
+	for ( auto& iter : m_ObjectListLayerBackground )
 	{
 		iter->Render();
 	}
-	for ( auto &iter : m_ObjectListLayerNotePlayer1 )
+	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
 		iter->Render();
 	}
-	for ( auto &iter : m_ObjectListLayerNotePlayer2 )
+	for ( auto& iter : m_ObjectListLayerNotePlayer2 )
 	{
 		iter->Render();
 	}
-	for ( auto &iter : m_ObjectListLayerEffect )
+	for ( auto& iter : m_ObjectListLayerEffect )
 	{
 		iter->Render();
 	}
-	for ( auto &iter : m_ObjectListLayerNoteHit )
+	for ( auto& iter : m_ObjectListLayerNoteHit )
 	{
 		iter->Render();
 	}
-	for ( auto &iter : m_ObjectListLayerShutter )
+	for ( auto& iter : m_ObjectListLayerShutter )
 	{
 		iter->Render();
 	}
-	for ( auto &iter : m_ObjectListLayerLabel )
+	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		iter->Render();
 	}

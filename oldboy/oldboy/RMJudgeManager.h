@@ -6,10 +6,11 @@ class CRMjudgeManager
 {
 	SINGLETON(CRMjudgeManager);
 
-public:
+private:
 	CRMjudgeManager(void);
 	~CRMjudgeManager(void);
 
+public:
 	//노트 관리
 	void						StartNote( PlayerNumber player , ObjectType objectType );
 	

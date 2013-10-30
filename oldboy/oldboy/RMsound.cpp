@@ -2,8 +2,6 @@
 #include "oldboy.h"
 #include "RMsound.h"
 
-CRMsound* CRMsound::m_pInstance = nullptr;
-
 CRMsound::CRMsound(void):
 	m_SystemS(nullptr),
 	m_Channel(nullptr),
@@ -24,9 +22,7 @@ void CRMsound::CheckError()
 {
 	if ( m_Result != FMOD_OK )
 	{
-		TCHAR str[256] = {0,};
-		wprintf_s(str, L"FMOD error! (%d) %s\n", m_Result, FMOD_ErrorString(m_Result));
-		MessageBox(NULL, str, L"TEST", MB_OK  );
+		printf_s("FMOD error! (%d) %s\n", m_Result, FMOD_ErrorString(m_Result));
 	}
 }
 
@@ -90,7 +86,7 @@ void CRMsound::PlayEffect( const std::string& fileName )
 void CRMsound::DeleteSound()
 {
 
-	for ( auto &iter : m_SoundMap )
+	for ( auto& iter : m_SoundMap )
 	{
 		auto toBeRelease = iter.second;
 		toBeRelease->release(); // m_Sound
@@ -104,22 +100,3 @@ void CRMsound::DeleteSound()
 		m_SystemS = NULL;
 	}
 }
-
-CRMsound* CRMsound::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMsound();
-	}
-	return m_pInstance;
-}
-
-void CRMsound::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
-}
-

@@ -5,8 +5,6 @@
 #include "RMobject.h"
 #include "RMsound.h"
 
-// CRMjudgeManager* CRMjudgeManager::m_pInstance = nullptr;
-
 CRMjudgeManager::CRMjudgeManager(void)
 {
 }
@@ -15,25 +13,6 @@ CRMjudgeManager::CRMjudgeManager(void)
 CRMjudgeManager::~CRMjudgeManager(void)
 {
 }
-
-// CRMjudgeManager* CRMjudgeManager::GetInstance()
-// {
-// 	if ( m_pInstance == nullptr )
-// 	{
-// 		m_pInstance = new CRMjudgeManager();
-// 	}
-// 
-// 	return m_pInstance;
-// }
-// 
-// void CRMjudgeManager::ReleaseInstance()
-// {
-// 	if ( m_pInstance != nullptr )
-// 	{
-// 		delete m_pInstance;
-// 		m_pInstance = nullptr;
-// 	}
-// }
 
 void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 {
@@ -100,7 +79,7 @@ void CRMjudgeManager::JudgeNote()
 		// Player1 Miss 575
 		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-125 )
 		{
-			printf("1.miss");
+			printf_s("1.miss");
 			//score up
 			DeleteNote( note1List );
 		}
@@ -109,7 +88,7 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				printf("1.Perfect");
+				printf_s("1.Perfect");
 				//score up
 			}
 		}
@@ -118,7 +97,7 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				printf("1.Good");
+				printf_s("1.Good");
 				//score up
 			}
 		}
@@ -127,7 +106,7 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				printf("2.Early Miss");
+				printf_s("2.Early Miss");
 				//score up
 			}
 		}

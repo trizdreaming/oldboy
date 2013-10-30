@@ -13,8 +13,6 @@
 #include "RMJudgeManager.h"
 #include "RMchildEffectImage.h"
 
-CRMmainLoop* CRMmainLoop::m_pInstance = nullptr;
-
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
@@ -27,15 +25,9 @@ CRMmainLoop::CRMmainLoop(void):
 	m_Fps = 1000 / 60;
 }
 
-
 CRMmainLoop::~CRMmainLoop(void)
 {
-	CRMsound::ReleaseInstance();
-	CRMobjectManager::ReleaseInstance();
-	CRMresourceManager::ReleaseInstance();
-	CRMrender::ReleaseInstance();
 }
-
 
 void CRMmainLoop::RunMessageLoop()
 {
@@ -122,7 +114,6 @@ void CRMmainLoop::RunMessageLoop()
 	}
 }
 
-
 HRESULT CRMmainLoop::CreateMainLoopWindow()
 {
 	// HRESULT hr = S_FALSE;
@@ -195,24 +186,6 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 	return 0;
 }
 
-CRMmainLoop* CRMmainLoop::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMmainLoop();
-	}
-	return m_pInstance;
-}
-
-void CRMmainLoop::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
-}
-
 void CRMmainLoop::CreateObject()
 {
 	// 이미지 리소스를 불러오려면 렌더가 필요함
@@ -222,6 +195,7 @@ void CRMmainLoop::CreateObject()
 	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
 
 	// 이미지 리소스 파일 불러오기
+	CRMresourceManager::GetInstance()->CreateFactory();
 	CRMresourceManager::GetInstance()->CreateTexture();
 
 	/**********************************************************************************/

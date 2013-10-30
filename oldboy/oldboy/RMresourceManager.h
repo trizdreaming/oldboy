@@ -5,14 +5,13 @@ class CRMimage;
 
 class CRMresourceManager
 {
+	SINGLETON(CRMresourceManager);
+
 private:
 	CRMresourceManager(void);
 	~CRMresourceManager(void);
-
+	
 public:
-	static CRMresourceManager*	GetInstance();
-	static void					ReleaseInstance();
-
 	// 팩토리 초기화
 	HRESULT						CreateFactory();
 	IWICImagingFactory*			GetImageFactory() { return m_pWICFactory; }
@@ -24,9 +23,6 @@ private:
 	void								CheckError(HRESULT);
 
 	IWICImagingFactory*					m_pWICFactory;
-	std::map<ObjectType, CRMimage*>	m_TextureMap;
-
-	static CRMresourceManager*			m_pInstance;
-
+	std::map<ObjectType, CRMimage*>		m_TextureMap;
 };
 

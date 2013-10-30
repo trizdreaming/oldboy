@@ -2,15 +2,13 @@
 
 class CRMrender
 {
+	SINGLETON(CRMrender);
+
 private:
 	CRMrender(void);
 	~CRMrender(void);
 
 public:
-	// ½Ì±ÛÅæ °ü·Ã ¸Þ¼Òµå
-	static CRMrender*		GetInstance();
-	static void				ReleaseInstance();
-
 	// ÆÑÅä¸® & ·£´õ Å¸°Ù »ý¼º ¹× ¹ÝÈ¯
 	HRESULT					CreateFactory();
 	HRESULT					CreateRenderTarget();
@@ -24,8 +22,5 @@ public:
 private:
 	ID2D1Factory*			m_pDisplayFactory;
 	ID2D1HwndRenderTarget*	m_pDisplayRenderTarget;
-
-	// ½Ì±ÛÅæ ¸â¹ö º¯¼ö
-	static CRMrender* m_pInstance;
 };
 

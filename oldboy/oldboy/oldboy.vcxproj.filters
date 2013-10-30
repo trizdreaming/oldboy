@@ -136,12 +136,14 @@
     <ClInclude Include="RMobjectManager.h">
       <Filter>Core\Object</Filter>
     </ClInclude>
-    <ClInclude Include="RMjudgeManager.h" />
     <ClInclude Include="RMplayer.h">
       <Filter>Core\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="RMchildEffectImage.h">
       <Filter>Core\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMjudgeManager.h">
+      <Filter>Core\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -187,12 +189,14 @@
     <ClCompile Include="RMobjectManager.cpp">
       <Filter>Core\Object</Filter>
     </ClCompile>
-    <ClCompile Include="RMjudgeManager.cpp" />
     <ClCompile Include="RMplayer.cpp">
       <Filter>Core\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="RMchildEffectImage.cpp">
       <Filter>Core\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMjudgeManager.cpp">
+      <Filter>Core\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

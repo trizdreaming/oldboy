@@ -2,8 +2,6 @@
 #include "oldboy.h"
 #include "RMinput.h"
 
-CRMinput* CRMinput::m_pInstance = nullptr;
-
 CRMinput::CRMinput(void)
 {
 	ZeroMemory(m_InputKey, sizeof(m_InputKey[MAX_INPUT_KEY]));
@@ -54,23 +52,4 @@ bool* CRMinput::GetKeyboardInput()
 	}
 
 	return m_InputKey;
-}
-
-CRMinput* CRMinput::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMinput();
-	}
-
-	return m_pInstance;
-}
-
-void CRMinput::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
 }

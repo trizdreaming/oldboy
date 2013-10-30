@@ -3,9 +3,6 @@
 #include "RMrender.h"
 #include "RMmainLoop.h"
 
-
-CRMrender* CRMrender::m_pInstance = nullptr;
-
 CRMrender::CRMrender(void):
 	m_pDisplayFactory(nullptr),
 	m_pDisplayRenderTarget(nullptr)
@@ -75,24 +72,4 @@ HRESULT CRMrender::RenderEnd()
 	}
 
 	return hr;
-}
-
-///////////////////////////////////////////////////////////////////////////////
-
-CRMrender* CRMrender::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMrender();
-	}
-	return m_pInstance;
-}
-
-void CRMrender::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
 }

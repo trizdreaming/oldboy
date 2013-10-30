@@ -3,8 +3,6 @@
 #include "RMimage.h"
 #include "RMresourceManager.h"
 
-CRMresourceManager*	CRMresourceManager::m_pInstance = nullptr;
-
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
 {
@@ -124,33 +122,10 @@ HRESULT CRMresourceManager::CreateTexture()
 	return hr;
 }
 
-CRMresourceManager* CRMresourceManager::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMresourceManager();
-		
-		m_pInstance->CreateFactory();
-	}
-
-	return m_pInstance;
-}
-
-void CRMresourceManager::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
-}
-
 void CRMresourceManager::CheckError(HRESULT hr)
 {
 	if ( hr != S_OK )
 	{
-		TCHAR str[256] = {0,};
-		wprintf_s(str, L"Image Loading Error! (%d) \n", hr);
-		MessageBox(NULL, str, L"TEST", MB_OK  );
+		printf_s("Image Loading Error! (%d) \n", hr);
 	}
 }

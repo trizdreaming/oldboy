@@ -33,11 +33,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		if(SUCCEEDED(CRMmainLoop::GetInstance()->CreateMainLoopWindow()))
 		{
 			CRMmainLoop::GetInstance()->RunMessageLoop();
-			CRMmainLoop::ReleaseInstance();
-
 		}
-
-	
 
 		CoUninitialize();
 	}

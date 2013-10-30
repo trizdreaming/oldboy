@@ -5,4 +5,4 @@
 #pragma comment(lib, "dwrite")
 #pragma comment(lib, "WindowsCodecs")
 
-#pragma comment( lib, "Dependency/fmodex_vc.lib" )
+#pragma comment( lib, "Library/fmodex_vc.lib" )

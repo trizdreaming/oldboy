@@ -47,7 +47,7 @@ void CRMchildEffectImage::Update()
 
 void CRMchildEffectImage::HitEffectFlag()
 {
-	m_pBitFlag = 0x80;
+	m_pBitFlag = (char) 0x80;
 	//테스트용 비트 확인 및 입력 추가
 }
 

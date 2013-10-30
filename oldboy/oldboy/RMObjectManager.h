@@ -26,6 +26,7 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
 	std::list<CRMobject*>		m_ObjectListLayerNotePlayer1;
 	std::list<CRMobject*>		m_ObjectListLayerNotePlayer2;
+	std::list<CRMobject*>		m_ObjectListLayerEffect;
 	std::list<CRMobject*>		m_ObjectListLayerShutter;
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
 

@@ -238,6 +238,7 @@ void CRMmainLoop::CreateObject()
 	testObject->SetPosition(0, 0);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
+	
 	for ( int i = 0; i < 100; ++i )
 	{
 		testObject = new CRMchildNote();

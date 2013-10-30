@@ -137,8 +137,8 @@ HRESULT CRMmainLoop::CreateMainLoopWindow()
 						WS_OVERLAPPEDWINDOW,
 						50,		// 하기 4줄이 화면 시작 좌표 의미 
 						50,		//
-						1040,	// 1024 + 16
-						700,	// 668 + 32
+						SCREEN_SIZE_X,	// 1024 + 16
+						SCREEN_SIZE_Y,	// 668 + 32
 						NULL, 
 						NULL, 
 						wcex.hInstance, 

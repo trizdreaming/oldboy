@@ -78,7 +78,7 @@ void CRMjudgeManager::JudgeNote()
 	{
 		auto& iterP1 = note1List->begin();
 		auto thisNoteP1 = iterP1;
-
+		IsKeyInputRight(*thisNoteP1);
 		/*
 			1. 노트한테 너 위치 어디야?
 
@@ -182,8 +182,29 @@ void CRMjudgeManager::JudgeNote()
 	}
 }
 
+bool CRMjudgeManager::IsKeyInputRight( CRMobject* note )
+{
+	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+	{
+		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+		{
+			return true;
+		}
+	}
+	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
+	{
+		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
+
 void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
 {
 	CRMobjectManager::GetInstance()->AddObject( *objectList->begin() , LAYER_MEMORY_POOL );
 	objectList->erase(objectList->begin());
 }
+

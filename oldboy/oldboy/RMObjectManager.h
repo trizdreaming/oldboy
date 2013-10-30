@@ -1,8 +1,8 @@
 #pragma once
-#include "oldboy.h"
-#include <list>
+
 #include "RMenumSet.h"
-#include "RMobject.h"
+
+class CRMobject;
 
 class CRMobjectManager
 {

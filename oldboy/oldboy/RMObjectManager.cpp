@@ -1,5 +1,7 @@
 #include "stdafx.h"
 #include "oldboy.h"
+
+#include "RMobject.h"
 #include "RMObjectManager.h"
 
 CRMobjectManager*	CRMobjectManager::m_pInstance = nullptr;

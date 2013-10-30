@@ -1,4 +1,6 @@
 #include "stdafx.h"
+#include "oldboy.h"
+
 #include "RMmainLoop.h"
 #include "RMObjectManager.h"
 #include "RMresourceManager.h"

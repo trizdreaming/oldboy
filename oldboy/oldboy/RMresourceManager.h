@@ -1,6 +1,7 @@
 #pragma once
 #include "RMenumSet.h"
-#include "RMimage.h"
+
+class CRMimage;
 
 class CRMresourceManager
 {

@@ -1,5 +1,6 @@
 #include "stdafx.h"
 #include "oldboy.h"
+#include "RMimage.h"
 #include "RMresourceManager.h"
 
 CRMresourceManager*	CRMresourceManager::m_pInstance = nullptr;

@@ -14,7 +14,7 @@ public:
 	static CRMobjectManager*	GetInstance();
 	static void					ReleaseInstance();
 	
-	std::list<CRMobject*>*		GetObjectListLayer(LayerType layer);
+	std::list<CRMobject*>*		GetObjectList(LayerType layer);
 
 	void	AddObject(CRMobject*	object, LayerType layer);
 

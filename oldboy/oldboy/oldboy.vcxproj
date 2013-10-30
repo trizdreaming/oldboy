@@ -93,22 +93,20 @@
     <ClInclude Include="Dependency\fmod_errors.h" />
     <ClInclude Include="Dependency\fmod_memoryinfo.h" />
     <ClInclude Include="Dependency\fmod_output.h" />
-    <ClInclude Include="Library\fmod.h" />
-    <ClInclude Include="Library\fmod.hpp" />
-    <ClInclude Include="Library\fmod_codec.h" />
-    <ClInclude Include="Library\fmod_dsp.h" />
-    <ClInclude Include="Library\fmod_errors.h" />
-    <ClInclude Include="Library\fmod_memoryinfo.h" />
-    <ClInclude Include="Library\fmod_output.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildShutter.h" />
+    <ClInclude Include="RMdefine.h" />
     <ClInclude Include="RMenumSet.h" />
     <ClInclude Include="RMimage.h" />
+    <ClInclude Include="RMinclude.h" />
     <ClInclude Include="oldboy.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="RMinput.h" />
     <ClInclude Include="RMkeyMapping.h" />
     <ClInclude Include="RMlabel.h" />
+    <ClInclude Include="RMlibrary.h" />
+    <ClInclude Include="RMmacro.h" />
     <ClInclude Include="RMmainLoop.h" />
     <ClInclude Include="RMobject.h" />
     <ClInclude Include="RMObjectManager.h" />
@@ -116,6 +114,7 @@
     <ClInclude Include="RMresourceManager.h" />
     <ClInclude Include="RMsound.h" />
     <ClInclude Include="stdafx.h" />
+    <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp" />

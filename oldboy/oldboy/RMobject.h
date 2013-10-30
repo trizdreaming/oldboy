@@ -12,8 +12,8 @@ public:
 
 	void			Render();
 
-	void			SetObjectType(Object_Type objectType) { m_ObjectType = objectType; }
-	void			SetSceneType(SCENE_TYPE scene) { m_Scene = scene; }
+	void			SetObjectType(ObjectType objectType) { m_ObjectType = objectType; }
+	void			SetSceneType(SceneType scene) { m_Scene = scene; }
 	
 	void			SetVisible(bool visible) { m_Visible = visible; }
 	void			SetPosition(float x, float y) { m_PositionX = x; m_PositionY = y; }
@@ -25,10 +25,10 @@ protected:
 
 	void			SetVisibleByScene();
 
-	Object_Type		m_ObjectType;
+	ObjectType		m_ObjectType;
 
 	bool			m_Visible;
-	SCENE_TYPE		m_Scene;
+	SceneType		m_Scene;
 
 	float			m_PositionX;
 	float			m_PositionY;

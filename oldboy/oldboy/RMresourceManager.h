@@ -18,13 +18,13 @@ public:
 	IWICImagingFactory*			GetImageFactory() { return m_pWICFactory; }
 
 	HRESULT						CreateTexture();
-	CRMimage*					GetTexture( Object_Type key ) { return m_TextureMap[key]; }
+	CRMimage*					GetTexture( ObjectType key ) { return m_TextureMap[key]; }
 	
 private:
 	void								CheckError(HRESULT);
 
 	IWICImagingFactory*					m_pWICFactory;
-	std::map<Object_Type, CRMimage*>	m_TextureMap;
+	std::map<ObjectType, CRMimage*>	m_TextureMap;
 
 	static CRMresourceManager*			m_pInstance;
 

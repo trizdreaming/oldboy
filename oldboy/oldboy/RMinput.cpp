@@ -21,7 +21,7 @@ KeyTable CRMinput::GetKeyboardInput()
 
 	if ( GetAsyncKeyState(VK_A) & 0x8000 )
 	{
-		m_InputKey = P1TARGET1;
+		m_InputKey = P1_TARGET1;
 	}
 
 	////////////////////////////////////

@@ -10,7 +10,7 @@ public:
 	static void					ReleaseInstance();
 
 	//노트 관리
-	void						StartNote( PLAYER_NUMBER player );
+	void						StartNote( PlayerNumber player );
 	
 	//노트 판정
 	void						JudgeNote();

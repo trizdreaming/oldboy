@@ -1,6 +1,6 @@
 #pragma once
 
-enum SCENE_TYPE
+enum SceneType
 {
 	SCENE_TITLE,
 	SCENE_PLAY,
@@ -19,7 +19,7 @@ enum LayerType
 	NO_LAYER
 };
 
-enum Object_Type
+enum ObjectType
 {
 	OBJECT_BG_IMAGE_TITLE,
 	OBJECT_BG_IMAGE_PLAY,
@@ -32,22 +32,34 @@ enum Object_Type
 
 enum KeyTable
 {
-	NO_INPUT,
-
 	ESCAPE,
 
-	P1TARGET1,
-	P1TARGET2,
-	P1ATTACK,
+	P1_TARGET1,
+	P1_TARGET2,
+	P1_ATTACK,
 
-	P2TARGET1,
-	P2TARGET2,
-	P2ATTACK
+	P2_TARGET1,
+	P2_TARGET2,
+	P2_ATTACK,
+
+	NO_INPUT
 };
 
-enum PLAYER_NUMBER
+enum PlayerNumber
 {
 	PLAYER_ONE,
 	PLAYER_TWO,
-	PLAYER_NO
+
+	NO_PLAYER
+};
+
+enum CountType
+{
+	PERFECT_COUNT,
+	GOOD_COUNT,
+	MISS_COUNT,
+	COMBO_COUNT,
+	SCORE_COUNT,
+
+	NO_COUNT
 };

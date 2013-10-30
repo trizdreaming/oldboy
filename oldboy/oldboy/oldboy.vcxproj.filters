@@ -138,7 +138,7 @@
     </ClInclude>
     <ClInclude Include="RMjudgeManager.h" />
     <ClInclude Include="RMplayer.h">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>Core\Object\Player</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -186,7 +186,7 @@
     </ClCompile>
     <ClCompile Include="RMjudgeManager.cpp" />
     <ClCompile Include="RMplayer.cpp">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>Core\Object\Player</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

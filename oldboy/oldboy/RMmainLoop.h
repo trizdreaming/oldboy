@@ -20,7 +20,7 @@ public:
 	void					RunMessageLoop();
 
 	// 씬 관리
-	SCENE_TYPE				GetNowScene() { return m_SceneType; }
+	SceneType				GetNowScene() { return m_SceneType; }
 	void					GoNextScene();
 	
 	HWND					GetHwnd() { return m_Hwnd; }				// 윈도우 핸들 반환
@@ -41,7 +41,7 @@ private:
 	UINT	m_ElapsedTime;
 	UINT	m_Fps;
 
-	SCENE_TYPE		m_SceneType;
+	SceneType		m_SceneType;
 
 	//싱글톤 관련 member 변수
 	static CRMmainLoop* m_pInstance;

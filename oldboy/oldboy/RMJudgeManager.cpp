@@ -35,7 +35,7 @@ void CRMjudgeManager::ReleaseInstance()
 	}
 }
 
-void CRMjudgeManager::StartNote( PLAYER_NUMBER player )
+void CRMjudgeManager::StartNote( PlayerNumber player )
 {
 	
 	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->begin();
@@ -57,7 +57,7 @@ void CRMjudgeManager::StartNote( PLAYER_NUMBER player )
 		CRMobjectManager::GetInstance()->AddObject( *iter , LAYER_NOTE2 );
 		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->remove(0);
 		break;
-	case PLAYER_NO:
+	case NO_PLAYER:
 	default:
 		break;
 	}

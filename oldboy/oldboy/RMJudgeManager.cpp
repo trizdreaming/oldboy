@@ -36,7 +36,9 @@ CRMjudgeManager::~CRMjudgeManager(void)
 
 void CRMjudgeManager::StartNote( PlayerNumber player )
 {
-	
+	if(CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->size() == 0)
+		return; 
+
 	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin();
 	auto thisNote = iter;
 	switch ( player )
@@ -64,23 +66,29 @@ void CRMjudgeManager::StartNote( PlayerNumber player )
 
 void CRMjudgeManager::JudgeNote()
 {
-	auto& iterP1 = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->begin();
-	auto thisNoteP1 = iterP1;
-
-	auto& iterP2 = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->begin();
-	auto thisNoteP2 = iterP2;
-
-	if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y )
+	if(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->size() > 0)
 	{
-		CRMobjectManager::GetInstance()->AddObject( *thisNoteP1 , LAYER_MEMORY_POOL );
-		CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->remove(0);
-		printf("pi end\n");
+		auto& iterP1 = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->begin();
+		auto thisNoteP1 = iterP1;
+		/*printf("pi end\n");*/
+		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y )
+		{
+			CRMobjectManager::GetInstance()->AddObject( *thisNoteP1 , LAYER_MEMORY_POOL );
+			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->remove(0);
+			printf("pi end\n");
+		}
 	}
-
-	if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y )
+	
+	if(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->size() > 0)
 	{
-		CRMobjectManager::GetInstance()->AddObject( *thisNoteP2 , LAYER_MEMORY_POOL );
-		CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->remove(0);
-	}
+		auto& iterP2 = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->begin();
+		auto thisNoteP2 = iterP2;
 
+
+		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y )
+		{
+			CRMobjectManager::GetInstance()->AddObject( *thisNoteP2 , LAYER_MEMORY_POOL );
+			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->remove(0);
+		}
+	}
 }

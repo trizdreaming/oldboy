@@ -24,7 +24,7 @@ void CRMchildNote::Update()
 
 	m_PositionY += 5;
 
-	if (m_PositionY > 660)
+	if (m_PositionY > SCREEN_SIZE_Y)
 	{
 		m_PositionY = -150;
 	}

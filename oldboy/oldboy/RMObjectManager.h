@@ -24,9 +24,12 @@ public:
 
 private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
-	std::list<CRMobject*>		m_ObjectListLayerNote;
+	std::list<CRMobject*>		m_ObjectListLayerNotePlayer1;
+	std::list<CRMobject*>		m_ObjectListLayerNotePlayer2;
 	std::list<CRMobject*>		m_ObjectListLayerShutter;
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
+
+	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote;
 
 	static	CRMobjectManager*	m_pInstance;
 };

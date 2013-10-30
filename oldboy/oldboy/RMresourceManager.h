@@ -1,6 +1,5 @@
 #pragma once
 #include "oldboy.h"
-#include "RMimage.h"
 #include "RMenumSet.h"
 
 class CRMresourceManager

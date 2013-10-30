@@ -86,13 +86,13 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Dependency\fmod.h" />
-    <ClInclude Include="Dependency\fmod.hpp" />
-    <ClInclude Include="Dependency\fmod_codec.h" />
-    <ClInclude Include="Dependency\fmod_dsp.h" />
-    <ClInclude Include="Dependency\fmod_errors.h" />
-    <ClInclude Include="Dependency\fmod_memoryinfo.h" />
-    <ClInclude Include="Dependency\fmod_output.h" />
+    <ClInclude Include="Library\fmod.h" />
+    <ClInclude Include="Library\fmod.hpp" />
+    <ClInclude Include="Library\fmod_codec.h" />
+    <ClInclude Include="Library\fmod_dsp.h" />
+    <ClInclude Include="Library\fmod_errors.h" />
+    <ClInclude Include="Library\fmod_memoryinfo.h" />
+    <ClInclude Include="Library\fmod_output.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildShutter.h" />

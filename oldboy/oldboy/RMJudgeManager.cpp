@@ -92,43 +92,26 @@ void CRMjudgeManager::JudgeNote()
 			3-2 판별 => 노트의 종류를 겟 
 
 			3-3 이펙트 발동! (by 신동찬 - "char형 비트연산으로 하겠습니다.")
+
+			//545 퍼펙
+			//+- 10   535 퍼팩시작, 555퍼펙끝
+			//+- 30   515 굳 시작, 575굳 끝 
 		*/
 
-		printf( "note:%f \n" , (*thisNoteP1)->GetPositionY() );
-
-		// Player1 Miss
-		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-1 )
+		// Player1 Miss 575
+		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-125 )
 		{
+			printf("1.miss");
 			DeleteNote( note1List );
 		}
-		// Player1 Good
-		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-110 )
+		// Player1 Perfect 
+		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 )
 		{
 			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 			{
 				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
 				{
-					CRMsound::GetInstance()->PlayEffect("se2.wav");
-					DeleteNote( note1List );
-				}
-			}
-			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
-			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
-				{
-					CRMsound::GetInstance()->PlayEffect("se2.wav");
-					DeleteNote( note1List );
-				}
-			}
-			
-		}
-		// Player1 Perfect
-		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-130 )
-		{
-			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
-			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
-				{
+					printf("1.perfect %f ",(*thisNoteP1)->GetPositionY());
 					CRMsound::GetInstance()->PlayEffect("se2.wav");
 					DeleteNote( note1List );
 				}
@@ -144,12 +127,13 @@ void CRMjudgeManager::JudgeNote()
 
 		}
 		// Player1 Good
-		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-150 )
+		else if ( ( (*thisNoteP1)->GetPositionY() > 514 && (*thisNoteP1)->GetPositionY() < 576 ) )
 		{
 			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 			{
 				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
 				{
+					printf("2.good %f ",(*thisNoteP1)->GetPositionY());
 					CRMsound::GetInstance()->PlayEffect("se2.wav");
 					DeleteNote( note1List );
 				}

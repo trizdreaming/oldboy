@@ -16,7 +16,12 @@ CRMinput::~CRMinput(void)
 
 bool* CRMinput::GetKeyboardInput()
 {
-	ZeroMemory(m_InputKey, sizeof(m_InputKey[MAX_INPUT_KEY]));
+	m_InputKey[P1_TARGET1] = false;
+	m_InputKey[P1_TARGET2] = false;
+	m_InputKey[P1_ATTACK] = false;
+	m_InputKey[P2_TARGET1] = false;
+	m_InputKey[P2_TARGET2] = false;
+	m_InputKey[P2_ATTACK] = false;
 
 	if ( GetAsyncKeyState(VK_A) & 0x8000 )
 	{

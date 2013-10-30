@@ -261,41 +261,34 @@ void CRMmainLoop::CreateObject()
 
 // ================================================================
 
-int testSoundCount = 0;
 void CRMmainLoop::TestSound()
 {
 	
-	if ( m_SceneType == SCENE_PLAY )
+	if ( m_SceneType != SCENE_PLAY )
 	{
-		++testSoundCount;
+		return;
 	}
 
-	if ( testSoundCount==300 )
+	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_ATTACK] == true )
 	{
-		CRMjudgeManager::GetInstance()->StartNote(PLAYER_TWO , OBJECT_NOTE_NORMAL_2 );
-
 		CRMsound::GetInstance()->PlayEffect("se1.wav");
 	}
-	if ( testSoundCount==450 )
+
+	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
 	{
-		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
 		CRMsound::GetInstance()->PlayEffect("se2.wav");
 	}
-	if ( testSoundCount==540 )
+
+	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
 	{
 		CRMsound::GetInstance()->PlayEffect("se3.wav");
-	}
-	if ( testSoundCount==663 )
-	{
-		CRMsound::GetInstance()->PlayEffect("se3.wav");
-		testSoundCount = 200;
 	}
 }
 
 void CRMmainLoop::TestKeyboard()
 {
 
-	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true && m_SceneType == SCENE_TITLE )
 	{
 		GoNextScene();
 	}

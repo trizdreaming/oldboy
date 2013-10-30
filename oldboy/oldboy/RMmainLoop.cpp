@@ -110,7 +110,7 @@ void CRMmainLoop::RunMessageLoop()
 
 				// test Key
 				TestKeyboard();
-
+				CRMjudgeManager::GetInstance()->JudgeNote();
 			}
 
 			if ( m_ElapsedTime > m_Fps )

@@ -278,6 +278,7 @@ void CRMmainLoop::TestSound()
 	}
 	if ( testSoundCount==450 )
 	{
+		CRMjudgeManager::GetInstance()->StartNote(PLAYER_TWO);
 		CRMsound::GetInstance()->PlayEffect("se2.wav");
 	}
 	if ( testSoundCount==540 )

@@ -36,8 +36,11 @@ CRMjudgeManager::~CRMjudgeManager(void)
 
 void CRMjudgeManager::StartNote( PlayerNumber player )
 {
-	if(CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->size() == 0)
+	if ( CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->size() == 0 )
+	{
 		return; 
+	}
+		
 
 	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin();
 	auto thisNote = iter;
@@ -49,14 +52,16 @@ void CRMjudgeManager::StartNote( PlayerNumber player )
 		(*thisNote)->SetPosition(395, -100);
 		(*thisNote)->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE1 );
-		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->remove(0);
+		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->
+			erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin());
 		break;
 	case PLAYER_TWO:
 		(*thisNote)->SetObjectType(OBJECT_NOTE_NORMAL_1);
 		(*thisNote)->SetPosition(910, -100);
 		(*thisNote)->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE2 );
-		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->remove(0);
+		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->
+			erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin());
 		break;
 	case NO_PLAYER:
 	default:
@@ -70,11 +75,11 @@ void CRMjudgeManager::JudgeNote()
 	{
 		auto& iterP1 = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->begin();
 		auto thisNoteP1 = iterP1;
-		/*printf("pi end\n");*/
-		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y )
+		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-1 )
 		{
 			CRMobjectManager::GetInstance()->AddObject( *thisNoteP1 , LAYER_MEMORY_POOL );
-			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->remove(0);
+			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->
+				erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 )->begin());
 			printf("pi end\n");
 		}
 	}
@@ -85,10 +90,11 @@ void CRMjudgeManager::JudgeNote()
 		auto thisNoteP2 = iterP2;
 
 
-		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y )
+		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y-1 )
 		{
 			CRMobjectManager::GetInstance()->AddObject( *thisNoteP2 , LAYER_MEMORY_POOL );
-			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->remove(0);
+			CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->
+				erase(CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 )->begin());
 		}
 	}
 }

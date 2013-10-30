@@ -15,7 +15,7 @@ public:
 	
 	//노트 판정
 	void						JudgeNote();
-	bool						IsKeyInputRight( CRMobject* note );
+	bool						IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* objectList );
 
 private:
 	void						DeleteNote( std::list<CRMobject*>* objectList );

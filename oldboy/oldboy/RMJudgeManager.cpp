@@ -78,7 +78,6 @@ void CRMjudgeManager::JudgeNote()
 	{
 		auto& iterP1 = note1List->begin();
 		auto thisNoteP1 = iterP1;
-		IsKeyInputRight(*thisNoteP1);
 		/*
 			1. 노트한테 너 위치 어디야?
 
@@ -102,69 +101,34 @@ void CRMjudgeManager::JudgeNote()
 		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-125 )
 		{
 			printf("1.miss");
+			//score up
 			DeleteNote( note1List );
 		}
 		// Player1 Perfect 
 		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 )
 		{
-			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
-				{
-					printf("1.perfect %f ",(*thisNoteP1)->GetPositionY());
-					CRMsound::GetInstance()->PlayEffect("se2.wav");
-					DeleteNote( note1List );
-				}
+				printf("1.Perfect");
+				//score up
 			}
-			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
-			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
-				{
-					CRMsound::GetInstance()->PlayEffect("se2.wav");
-					DeleteNote( note1List );
-				}
-			}
-
 		}
 		// Player1 Good
 		else if ( ( (*thisNoteP1)->GetPositionY() > 514 && (*thisNoteP1)->GetPositionY() < 576 ) )
 		{
-			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
-				{
-					printf("2.good %f ",(*thisNoteP1)->GetPositionY());
-					CRMsound::GetInstance()->PlayEffect("se2.wav");
-					DeleteNote( note1List );
-				}
-			}
-			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
-			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
-				{
-					CRMsound::GetInstance()->PlayEffect("se2.wav");
-					DeleteNote( note1List );
-				}
+				printf("1.Good");
+				//score up
 			}
 		}
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
 		else if ( (*thisNoteP1)->GetPositionY() > 504 )
 		{
-			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
-				{
-					printf("2.MISS %f ",(*thisNoteP1)->GetPositionY());
-					DeleteNote( note1List );
-				}
-			}
-			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
-			{
-				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
-				{
-					printf("2.MISS %f ",(*thisNoteP1)->GetPositionY());
-					DeleteNote( note1List );
-				}
+				printf("2.Early Miss");
+				//score up
 			}
 		}
 	}
@@ -182,12 +146,14 @@ void CRMjudgeManager::JudgeNote()
 	}
 }
 
-bool CRMjudgeManager::IsKeyInputRight( CRMobject* note )
+bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* objectList )
 {
 	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 	{
 		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
 		{
+			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+			DeleteNote( objectList );
 			return true;
 		}
 	}
@@ -195,6 +161,8 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note )
 	{
 		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
 		{
+			CRMsound::GetInstance()->PlayEffect( "se2.wav" );
+			DeleteNote( objectList );
 			return true;
 		}
 	}

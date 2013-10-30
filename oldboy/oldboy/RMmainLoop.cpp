@@ -295,7 +295,7 @@ void CRMmainLoop::TestSound()
 void CRMmainLoop::TestKeyboard()
 {
 
-	if ( CRMinput::GetInstance()->GetKeyboardInput() == P1_TARGET1 )
+	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
 	{
 		GoNextScene();
 	}

@@ -4,7 +4,7 @@
 #include "RMobjectManager.h"
 #include "RMobject.h"
 
-CRMjudgeManager* CRMjudgeManager::m_pInstance = nullptr;
+// CRMjudgeManager* CRMjudgeManager::m_pInstance = nullptr;
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -15,30 +15,29 @@ CRMjudgeManager::~CRMjudgeManager(void)
 {
 }
 
-
-CRMjudgeManager* CRMjudgeManager::GetInstance()
-{
-	if ( m_pInstance == nullptr )
-	{
-		m_pInstance = new CRMjudgeManager();
-	}
-
-	return m_pInstance;
-}
-
-void CRMjudgeManager::ReleaseInstance()
-{
-	if ( m_pInstance != nullptr )
-	{
-		delete m_pInstance;
-		m_pInstance = nullptr;
-	}
-}
+// CRMjudgeManager* CRMjudgeManager::GetInstance()
+// {
+// 	if ( m_pInstance == nullptr )
+// 	{
+// 		m_pInstance = new CRMjudgeManager();
+// 	}
+// 
+// 	return m_pInstance;
+// }
+// 
+// void CRMjudgeManager::ReleaseInstance()
+// {
+// 	if ( m_pInstance != nullptr )
+// 	{
+// 		delete m_pInstance;
+// 		m_pInstance = nullptr;
+// 	}
+// }
 
 void CRMjudgeManager::StartNote( PlayerNumber player )
 {
 	
-	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->begin();
+	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin();
 	auto thisNote = iter;
 	switch ( player )
 	{
@@ -48,14 +47,14 @@ void CRMjudgeManager::StartNote( PlayerNumber player )
 		(*thisNote)->SetPosition(395, -100);
 		(*thisNote)->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE1 );
-		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->remove(0);
+		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->remove(0);
 		break;
 	case PLAYER_TWO:
 		(*iter)->SetObjectType(OBJECT_NOTE_NORMAL_1);
 		(*iter)->SetPosition(910, -100);
 		(*iter)->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject( *iter , LAYER_NOTE2 );
-		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->remove(0);
+		CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->remove(0);
 		break;
 	case NO_PLAYER:
 	default:
@@ -65,6 +64,6 @@ void CRMjudgeManager::StartNote( PlayerNumber player )
 
 void CRMjudgeManager::JudgeNote()
 {
-	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_PULL )->begin();
+	auto& iter = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL )->begin();
 	auto thisNote = iter;
 }

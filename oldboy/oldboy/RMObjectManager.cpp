@@ -92,7 +92,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_LABEL:
 			m_ObjectListLayerLabel.push_back(object);
 			break;
-		case LAYER_MEMORY_PULL:
+		case LAYER_MEMORY_POOL:
 			m_ObjectListMemeoryPullOfNote.push_back(object);
 			break;
 		case NO_LAYER:
@@ -169,7 +169,7 @@ std::list<CRMobject*>* CRMobjectManager::GetObjectList( LayerType layer )
 		return &m_ObjectListLayerShutter;
 	case LAYER_LABEL:
 		return &m_ObjectListLayerLabel;
-	case LAYER_MEMORY_PULL:
+	case LAYER_MEMORY_POOL:
 		return &m_ObjectListMemeoryPullOfNote;
 	case NO_LAYER:
 	default:

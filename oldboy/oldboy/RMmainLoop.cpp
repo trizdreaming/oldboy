@@ -231,7 +231,7 @@ void CRMmainLoop::CreateObject()
 		testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
 		testObject->SetPosition(0, 0);
 		testObject->SetSceneType(SCENE_PLAY);
-		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_MEMORY_PULL);
+		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_MEMORY_POOL);
 	}
 
 	testObject = new CRMchildShutter();

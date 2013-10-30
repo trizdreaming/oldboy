@@ -1,13 +1,17 @@
 #pragma once
 class CRMjudgeManager
 {
+	SINGLETON(CRMjudgeManager);
+
 public:
 	CRMjudgeManager(void);
 	~CRMjudgeManager(void);
 
+
+
 	// ½Ì±ÛÅæ
-	static CRMjudgeManager*		GetInstance();
-	static void					ReleaseInstance();
+	// static CRMjudgeManager*		GetInstance();
+	// static void					ReleaseInstance();
 
 	//³ëÆ® °ü¸®
 	void						StartNote( PlayerNumber player );
@@ -16,7 +20,6 @@ public:
 	void						JudgeNote();
 
 private:
-	static CRMjudgeManager*		m_pInstance;
-
+	//static CRMjudgeManager*		m_pInstance;
 };
 

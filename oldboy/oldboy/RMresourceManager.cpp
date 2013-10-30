@@ -95,6 +95,19 @@ HRESULT CRMresourceManager::CreateTexture()
 		SafeDelete(texture);
 	}
 
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/image_nt_01_02.png" );
+	CheckError(hr);
+	if ( hr == S_OK )
+	{
+		m_TextureMap[OBJECT_NOTE_HIT] = texture;
+	}
+	else
+	{
+		m_TextureMap[OBJECT_NOTE_HIT] = nullptr;
+		SafeDelete(texture);
+	}
+
 	return hr;
 }
 

@@ -146,7 +146,26 @@ void CRMjudgeManager::JudgeNote()
 					DeleteNote( note1List );
 				}
 			}
-
+		}
+		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
+		else if ( (*thisNoteP1)->GetPositionY() > 504 )
+		{
+			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+				{
+					printf("2.MISS %f ",(*thisNoteP1)->GetPositionY());
+					DeleteNote( note1List );
+				}
+			}
+			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
+				{
+					printf("2.MISS %f ",(*thisNoteP1)->GetPositionY());
+					DeleteNote( note1List );
+				}
+			}
 		}
 	}
 	

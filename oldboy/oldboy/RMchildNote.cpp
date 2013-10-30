@@ -24,7 +24,13 @@ void CRMchildNote::Update()
 
 	if ( m_PositionY >= 0 )
 	{
-		m_PositionY = static_cast<float>(static_cast<int>(m_PositionY + 5) % 660);
+		//m_PositionY = static_cast<float>(static_cast<int>(m_PositionY + 5) % 660);
+		m_PositionY += 5;
+
+		if (m_PositionY > 660)
+		{
+			m_PositionY = -150;
+		}
 	}
 	else
 	{

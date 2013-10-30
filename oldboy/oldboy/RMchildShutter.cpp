@@ -23,7 +23,7 @@ void CRMchildShutter::Update()
 		return;
 	}
 
-	++m_Tick;
+	//++m_Tick;
 
 	if ( m_Tick >= 780 )
 	{

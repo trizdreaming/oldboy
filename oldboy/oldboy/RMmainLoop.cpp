@@ -279,13 +279,10 @@ void CRMmainLoop::TestSound()
 
 	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_ATTACK] == true )
 	{
-		CRMsound::GetInstance()->PlayEffect("se1.wav");
+		CRMjudgeManager::GetInstance()->StartNote(PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
 	}
 
-	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
-	{
-		CRMsound::GetInstance()->PlayEffect("se2.wav");
-	}
+	
 
 	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
 	{

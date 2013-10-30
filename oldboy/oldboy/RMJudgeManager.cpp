@@ -3,6 +3,7 @@
 #include "RMjudgeManager.h"
 #include "RMobjectManager.h"
 #include "RMobject.h"
+#include "RMsound.h"
 
 // CRMjudgeManager* CRMjudgeManager::m_pInstance = nullptr;
 
@@ -49,7 +50,6 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 	switch ( player )
 	{
 	case PLAYER_ONE:
-		
 		(*thisNote)->SetObjectType( objectType );
 		(*thisNote)->SetPosition( 395, -100 );
 		(*thisNote)->SetSceneType( SCENE_PLAY );
@@ -94,24 +94,76 @@ void CRMjudgeManager::JudgeNote()
 			3-3 이펙트 발동! (by 신동찬 - "char형 비트연산으로 하겠습니다.")
 		*/
 
-		// 메모리 풀로 넣어주는 코드
+		printf( "note:%f \n" , (*thisNoteP1)->GetPositionY() );
+
+		// Player1 Miss
 		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-1 )
 		{
 			DeleteNote( note1List );
-		} 
+		}
+		// Player1 Good
 		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-110 )
 		{
 			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 			{
-				//key input check
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+				{
+					CRMsound::GetInstance()->PlayEffect("se2.wav");
+					DeleteNote( note1List );
+				}
 			}
-			DeleteNote( note1List );
+			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
+				{
+					CRMsound::GetInstance()->PlayEffect("se2.wav");
+					DeleteNote( note1List );
+				}
+			}
+			
 		}
+		// Player1 Perfect
+		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-130 )
+		{
+			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+				{
+					CRMsound::GetInstance()->PlayEffect("se2.wav");
+					DeleteNote( note1List );
+				}
+			}
+			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
+				{
+					CRMsound::GetInstance()->PlayEffect("se2.wav");
+					DeleteNote( note1List );
+				}
+			}
+
+		}
+		// Player1 Good
 		else if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-150 )
 		{
-			DeleteNote( note1List );
-		}
+			if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+				{
+					CRMsound::GetInstance()->PlayEffect("se2.wav");
+					DeleteNote( note1List );
+				}
+			}
+			else if ( (*thisNoteP1)->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
+			{
+				if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
+				{
+					CRMsound::GetInstance()->PlayEffect("se2.wav");
+					DeleteNote( note1List );
+				}
+			}
 
+		}
 	}
 	
 	if( note2List->size() > 0 )

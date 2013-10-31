@@ -111,11 +111,11 @@ void CRMjudgeManager::JudgeNote()
 				//score up
 			}
 		}else{
-			if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET1 ) )
+			if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 			{
-				CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+				CRMsound::GetInstance()->PlayEffect( "se2.wav" );
 			}
-			if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET2 ) )
+			if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
 			{
 				CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 			}
@@ -130,7 +130,7 @@ void CRMjudgeManager::JudgeNote()
 		auto thisNoteP2 = iterP2;
 
 
-		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y-1 )
+		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y - 1 )
 		{
 			DeleteNote( note2List );
 		}
@@ -147,16 +147,16 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 {
 	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET1 ) )
+		if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 		{
-			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+			CRMsound::GetInstance()->PlayEffect( "se2.wav" );
 			DeleteNote( objectList );
 			return true;
 		}
 	}
 	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET2 ) )
+		if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
 		{
 			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 			DeleteNote( objectList );

@@ -69,7 +69,7 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 			}
 
-			if( m_NowTime - m_FpsCheckTime > 1000 )
+			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
 				printf_s("FPS : %d \n", fps);
 
@@ -84,9 +84,8 @@ void CRMmainLoop::RunMessageLoop()
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
 				CRMobjectManager::GetInstance()->Update();
-				// 업데이트 주기를 화면 뿌려주는 주기와 동기화 시키기 위해서 이쪽으로 이동시킴
-				// 그렇지 않을 경우 오브젝트들 내부에서 스스로 시간 경과를 체크해서
-				// 자신이 update 되어야 할 타이밍을 계산하거나 해야 됨
+
+				CRMinput::GetInstance()->UpdateKeyState();
 
 				CRMrender::GetInstance()->RenderInit();
 
@@ -213,7 +212,7 @@ void CRMmainLoop::CreateObject()
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 	
-	for ( int i = 0; i < 100; ++i )
+	for ( int i = 0 ; i < 100 ; ++i )
 	{
 		testObject = new CRMchildNote();
 		testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
@@ -257,17 +256,23 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 
-	if ( CRMinput::GetInstance()->GetKeyboardInput( P1_ATTACK ) == true )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_ATTACK ) == KEY_DOWN )
 	{
 		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
 	}
-
-
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect("se3.wav");
+	}
 }
 
 void CRMmainLoop::TestKeyboard()
 {
-	if ( CRMinput::GetInstance()->GetKeyboardInput(P2_ATTACK) == true && m_SceneType == SCENE_TITLE )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_ATTACK ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		GoNextScene();
 	}

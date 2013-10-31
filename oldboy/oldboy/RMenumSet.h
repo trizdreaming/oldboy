@@ -35,7 +35,8 @@ enum ObjectType
 
 enum KeyTable
 {
-	ESCAPE,
+	KEY_ESCAPE,
+	KEY_RETURN,
 
 	P1_TARGET1,
 	P1_TARGET2,
@@ -65,4 +66,14 @@ enum CountType
 	SCORE_COUNT,
 
 	NO_COUNT
+};
+
+enum KeyStatus
+{
+	KEY_DOWN,
+	KEY_PRESSED,
+	KEY_UP,
+	KEY_NOTPRESSED,
+
+	NO_KEYSTATUS
 };

@@ -11,9 +11,14 @@ private:
 	~CRMinput(void);
 
 public:
-	bool				GetKeyboardInput( KeyTable keyCode );
+	void				UpdateKeyState();
+	KeyStatus			GetKeyStatusByKey( KeyTable key );
 
 private:
-	int					GetKeyCode( KeyTable keyCode );
+	KeyStatus			m_InputKey[MAX_INPUT_KEY];
 
+	bool				m_PrevKeyState[MAX_INPUT_KEY];
+	bool				m_NowKeyState[MAX_INPUT_KEY];
+
+	std::map<KeyTable, int>			m_KeyMap;
 };

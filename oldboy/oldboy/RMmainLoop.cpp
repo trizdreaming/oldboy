@@ -272,7 +272,7 @@ void CRMmainLoop::TestSound()
 
 void CRMmainLoop::TestKeyboard()
 {
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_ATTACK ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		GoNextScene();
 	}

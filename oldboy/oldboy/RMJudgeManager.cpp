@@ -110,17 +110,7 @@ void CRMjudgeManager::JudgeNote()
 				printf_s( "1.EarlyLate Miss \n" );
 				//score up
 			}
-		}else{
-			if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
-			{
-				CRMsound::GetInstance()->PlayEffect( "se2.wav" );
-			}
-			if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
-			{
-				CRMsound::GetInstance()->PlayEffect( "se3.wav" );
-			}
 		}
-		
 
 	}
 	
@@ -149,7 +139,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	{
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 		{
-			CRMsound::GetInstance()->PlayEffect( "se2.wav" );
 			DeleteNote( objectList );
 			return true;
 		}
@@ -158,7 +147,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	{
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
 		{
-			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 			DeleteNote( objectList );
 			return true;
 		}

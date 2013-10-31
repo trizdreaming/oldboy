@@ -262,11 +262,11 @@ void CRMmainLoop::TestSound()
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+		CRMsound::GetInstance()->PlayEffect( "se2.wav" );
 	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect("se3.wav");
+		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 	}
 }
 

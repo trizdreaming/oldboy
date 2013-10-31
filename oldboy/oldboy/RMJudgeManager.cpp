@@ -50,13 +50,6 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 
 void CRMjudgeManager::JudgeNote()
 {
-	std::list<CRMobject*>* note1List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 );
-	std::list<CRMobject*>* note2List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 );
-
-	if( note1List->size() > 0 )
-	{
-		auto& iterP1 = note1List->begin();
-		auto thisNoteP1 = iterP1;
 		/*
 			1. 노트한테 너 위치 어디야?
 
@@ -76,6 +69,13 @@ void CRMjudgeManager::JudgeNote()
 			//+- 30   515 굳 시작, 575굳 끝 
 		*/
 
+	std::list<CRMobject*>* note1List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 );
+	std::list<CRMobject*>* note2List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 );
+
+	if( note1List->size() > 0 )
+	{
+		auto& iterP1 = note1List->begin();
+		auto thisNoteP1 = iterP1;
 
 		// Player1 Miss 575
 		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
@@ -87,7 +87,7 @@ void CRMjudgeManager::JudgeNote()
 		// Player1 Perfect 
 		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
+			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
 				printf_s( "1.Perfect \n" );
 				//score up
@@ -96,7 +96,7 @@ void CRMjudgeManager::JudgeNote()
 		// Player1 Good
 		else if ( ( (*thisNoteP1)->GetPositionY() > 514 && (*thisNoteP1)->GetPositionY() < 576 ) )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
+			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
 				printf_s( "1.Good \n" );
 				//score up
@@ -105,7 +105,7 @@ void CRMjudgeManager::JudgeNote()
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
 		else if ( (*thisNoteP1)->GetPositionY() > 504 )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
+			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
 				printf_s( "1.EarlyLate Miss \n" );
 				//score up
@@ -114,16 +114,49 @@ void CRMjudgeManager::JudgeNote()
 
 	}
 	
+
+	// Player2============================================================
+
 	if( note2List->size() > 0 )
 	{
 		auto& iterP2 = note2List->begin();
 		auto thisNoteP2 = iterP2;
 
-
-		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y - 1 )
+		// Player2 Miss 575
+		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
 		{
+			printf_s( "2.miss \n" );
+			//score up
 			DeleteNote( note2List );
 		}
+		// Player2 Perfect 
+		else if ( (*thisNoteP2)->GetPositionY() > 534 && (*thisNoteP2)->GetPositionY() < 556 )
+		{
+			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
+			{
+				printf_s( "2.Perfect \n" );
+				//score up
+			}
+		}
+		// Player2 Good
+		else if ( ( (*thisNoteP2)->GetPositionY() > 514 && (*thisNoteP2)->GetPositionY() < 576 ) )
+		{
+			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
+			{
+				printf_s( "2.Good \n" );
+				//score up
+			}
+		}
+		// Player2 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
+		else if ( (*thisNoteP2)->GetPositionY() > 504 )
+		{
+			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
+			{
+				printf_s( "2.EarlyLate Miss \n" );
+				//score up
+			}
+		}
+
 	}
 
 
@@ -133,11 +166,28 @@ void CRMjudgeManager::JudgeNote()
 }
 
 
-bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* objectList )
+bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* objectList , PlayerNumber player )
 {
+	KeyTable target1;
+	KeyTable target2;
+	switch ( player )
+	{
+	case PLAYER_ONE:
+		target1 = P1_TARGET1;
+		target2 = P1_TARGET2;
+		break;
+	case PLAYER_TWO:
+		target1 = P2_TARGET1;
+		target2 = P1_TARGET2;
+		break;
+	case NO_PLAYER:
+	default:
+		break;
+	}
+
 	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
+		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_DOWN )
 		{
 			DeleteNote( objectList );
 			return true;
@@ -145,7 +195,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	}
 	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
+		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_DOWN )
 		{
 			DeleteNote( objectList );
 			return true;

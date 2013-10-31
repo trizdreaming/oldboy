@@ -260,11 +260,23 @@ void CRMmainLoop::TestSound()
 	{
 		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
 	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_ATTACK ) == KEY_DOWN )
+	{
+		CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , OBJECT_NOTE_NORMAL_1 );
+	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( "se2.wav" );
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "se2.wav" );
+	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET2 ) == KEY_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 	}

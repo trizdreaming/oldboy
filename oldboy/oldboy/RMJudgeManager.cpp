@@ -76,10 +76,11 @@ void CRMjudgeManager::JudgeNote()
 			//+- 30   515 ±» ½ÃÀÛ, 575±» ³¡ 
 		*/
 
+
 		// Player1 Miss 575
-		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y-125 )
+		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
 		{
-			printf_s("1.miss");
+			printf_s( "1.miss \n" );
 			//score up
 			DeleteNote( note1List );
 		}
@@ -88,7 +89,7 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				printf_s("1.Perfect");
+				printf_s( "1.Perfect \n" );
 				//score up
 			}
 		}
@@ -97,7 +98,7 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				printf_s("1.Good");
+				printf_s( "1.Good \n" );
 				//score up
 			}
 		}
@@ -106,10 +107,21 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List ) )
 			{
-				printf_s("2.Early Miss");
+				printf_s( "1.EarlyLate Miss \n" );
 				//score up
 			}
+		}else{
+			if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET1 ) )
+			{
+				CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+			}
+			if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET2 ) )
+			{
+				CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+			}
 		}
+		
+
 	}
 	
 	if( note2List->size() > 0 )
@@ -123,26 +135,35 @@ void CRMjudgeManager::JudgeNote()
 			DeleteNote( note2List );
 		}
 	}
+
+
+
+	
+
 }
+
 
 bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* objectList )
 {
 	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
+		if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET1 ) )
 		{
+			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 			DeleteNote( objectList );
 			return true;
 		}
 	}
 	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
+		if ( CRMinput::GetInstance()->GetKeyboardInput( P1_TARGET2 ) )
 		{
+			CRMsound::GetInstance()->PlayEffect( "se3.wav" );
 			DeleteNote( objectList );
 			return true;
 		}
 	}
+
 	return false;
 }
 

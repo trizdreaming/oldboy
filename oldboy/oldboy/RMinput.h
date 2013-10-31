@@ -11,8 +11,9 @@ private:
 	~CRMinput(void);
 
 public:
-	bool*				GetKeyboardInput();
+	bool				GetKeyboardInput( KeyTable keyCode );
 
 private:
-	bool				m_InputKey[MAX_INPUT_KEY];
+	int					GetKeyCode( KeyTable keyCode );
+
 };

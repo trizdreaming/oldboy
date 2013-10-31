@@ -257,25 +257,17 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 
-	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_ATTACK] == true )
+	if ( CRMinput::GetInstance()->GetKeyboardInput( P1_ATTACK ) == true )
 	{
-		CRMjudgeManager::GetInstance()->StartNote(PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
+		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
 	}
 
-	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true )
-	{
-		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
-	}
-	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET2] == true )
-	{
-		CRMsound::GetInstance()->PlayEffect("se3.wav");
-	}
+
 }
 
 void CRMmainLoop::TestKeyboard()
 {
-
-	if ( CRMinput::GetInstance()->GetKeyboardInput()[P1_TARGET1] == true && m_SceneType == SCENE_TITLE )
+	if ( CRMinput::GetInstance()->GetKeyboardInput(P2_ATTACK) == true && m_SceneType == SCENE_TITLE )
 	{
 		GoNextScene();
 	}

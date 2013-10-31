@@ -4,7 +4,6 @@
 
 CRMinput::CRMinput(void)
 {
-	ZeroMemory(m_InputKey, sizeof(m_InputKey[MAX_INPUT_KEY]));
 }
 
 
@@ -12,44 +11,38 @@ CRMinput::~CRMinput(void)
 {
 }
 
-bool* CRMinput::GetKeyboardInput()
+bool CRMinput::GetKeyboardInput( KeyTable keyCode )
 {
-	m_InputKey[P1_TARGET1] = false;
-	m_InputKey[P1_TARGET2] = false;
-	m_InputKey[P1_ATTACK] = false;
-	m_InputKey[P2_TARGET1] = false;
-	m_InputKey[P2_TARGET2] = false;
-	m_InputKey[P2_ATTACK] = false;
-
-	if ( GetAsyncKeyState(VK_A) & 0x8000 )
+	
+	if ( GetAsyncKeyState( GetKeyCode( keyCode ) ) & 0x0001 )
 	{
-		m_InputKey[P1_TARGET1] = true;
+		return true;
 	}
 
-	if ( GetAsyncKeyState(VK_S) & 0x8000 )
+	return false;
+}
+
+int CRMinput::GetKeyCode( KeyTable keyCode )
+{
+	switch (keyCode)
 	{
-		m_InputKey[P1_ATTACK] = true;
+	case ESCAPE:
+		return VK_ESCAPE;
+	case P1_TARGET1:
+		return VK_A;
+	case P1_TARGET2:
+		return VK_D;
+	case P1_ATTACK:
+		return VK_S;
+	case P2_TARGET1:
+		return VK_LEFT;
+	case P2_TARGET2:
+		return VK_RIGHT;
+	case P2_ATTACK:
+		return VK_DOWN;
+	case NO_INPUT:
+	default:
+		return VK_RETURN;
 	}
 
-	if ( GetAsyncKeyState(VK_D) & 0x8000 )
-	{
-		m_InputKey[P1_TARGET2] = true;
-	}
-
-	if ( GetAsyncKeyState(VK_LEFT) & 8000 )
-	{
-		m_InputKey[P2_TARGET1] = true;
-	}
-
-	if ( GetAsyncKeyState(VK_DOWN) & 8000 )
-	{
-		m_InputKey[P2_ATTACK] = true;
-	}
-
-	if ( GetAsyncKeyState(VK_RIGHT) & 8000 )
-	{
-		m_InputKey[P2_TARGET2] = true;
-	}
-
-	return m_InputKey;
 }

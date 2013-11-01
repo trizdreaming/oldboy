@@ -73,6 +73,10 @@ void CRMjudgeManager::JudgeNote()
 
 	std::list<CRMobject*>* note1List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 );
 	std::list<CRMobject*>* note2List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 );
+	
+	////////////////////////
+	//버그 해결 필요 : 겹치는 노트의 간격이 좁은 경우 첫 번째 노트 때문에 두번째 노트가 판정되지 않음
+	////////////////////////
 
 	if( note1List->size() > 0 )
 	{

@@ -107,6 +107,7 @@
     <ClInclude Include="RMjudgeManager.h" />
     <ClInclude Include="RMkeyMapping.h" />
     <ClInclude Include="RMlabel.h" />
+    <ClInclude Include="RMlabelManager.h" />
     <ClInclude Include="RMlibrary.h" />
     <ClInclude Include="RMmacro.h" />
     <ClInclude Include="RMmainLoop.h" />
@@ -131,6 +132,7 @@
     <ClCompile Include="RMinput.cpp" />
     <ClCompile Include="RMjudgeManager.cpp" />
     <ClCompile Include="RMlabel.cpp" />
+    <ClCompile Include="RMlabelManager.cpp" />
     <ClCompile Include="RMmainLoop.cpp" />
     <ClCompile Include="RMobject.cpp" />
     <ClCompile Include="RMobjectManager.cpp" />

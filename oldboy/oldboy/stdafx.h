@@ -16,7 +16,17 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
+#include <dwrite.h>
 #include <string>
 #include <list>
+
+//Display - Direct 2D관련 include file
+#include <d2d1.h>
+#include <d2d1helper.h>
+
+#include <stdio.h>
+#include <timeapi.h>
+#include <wincodec.h>
+#include <map>
 
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.

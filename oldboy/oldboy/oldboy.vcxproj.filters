@@ -151,6 +151,9 @@
     <ClInclude Include="RMplayer2P.h">
       <Filter>Core\Object\Player</Filter>
     </ClInclude>
+    <ClInclude Include="RMlabelManager.h">
+      <Filter>Core\Label</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -209,6 +212,9 @@
     </ClCompile>
     <ClCompile Include="RMplayer2P.cpp">
       <Filter>Core\Object\Player</Filter>
+    </ClCompile>
+    <ClCompile Include="RMlabelManager.cpp">
+      <Filter>Core\Label</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

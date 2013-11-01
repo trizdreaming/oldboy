@@ -3,9 +3,9 @@
 class CRMplayer1P :
 	public CRMplayer
 {
-public:
 	SINGLETON(CRMplayer1P);
 
+private:
 	CRMplayer1P(void);
 	~CRMplayer1P(void);
 };

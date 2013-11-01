@@ -20,6 +20,6 @@ public:
 
 private:
 	void						DeleteNote( std::list<CRMobject*>* objectList );
-
+	void						PrintScore();
 };
 

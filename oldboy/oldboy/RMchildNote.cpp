@@ -15,14 +15,21 @@ CRMchildNote::~CRMchildNote(void)
 
 void CRMchildNote::Update()
 {
-	CRMobject::SetVisibleByScene();
+	// CRMobject::SetVisibleByScene();
 
 	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
 	{
 		return;
 	}
 	
-	m_PositionY += 5;
+	if ( m_PositionY < SCREEN_SIZE_Y + NOTE_SIZE )
+	{
+		m_PositionY += 5;
+	}
+	else
+	{
+		m_Visible = false;
+	}
 
 	return;
 }

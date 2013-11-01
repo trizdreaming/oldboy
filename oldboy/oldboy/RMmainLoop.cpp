@@ -71,7 +71,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
-				printf_s("FPS : %d \n", fps);
+				// printf_s("FPS : %d \n", fps);
 
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
@@ -216,7 +216,7 @@ void CRMmainLoop::CreateObject()
 	{
 		testObject = new CRMchildNote();
 		testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
-		testObject->SetPosition(0, 0);
+		testObject->SetPosition( DEFAULT_POSITION_X, DEFAULT_POSITION_Y );
 		testObject->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_MEMORY_POOL);
 	}

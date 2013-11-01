@@ -24,7 +24,7 @@ void CRMchildEffectImage::Update()
 {
 	if( m_pBitFlag & 0x80) //1p 첫 번째 타격
 	{
-		CRMobject::SetVisibleByScene();
+		// CRMobject::SetVisibleByScene();
 		
 		if ( CRMmainLoop::GetInstance()->GetNowScene() == m_Scene)
 		{

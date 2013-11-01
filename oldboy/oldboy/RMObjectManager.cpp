@@ -114,6 +114,10 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
+	for ( auto& iter : m_ObjectListMemeoryPullOfNote )
+	{
+		iter->Update();
+	}
 	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
 		iter->Update();
@@ -143,6 +147,10 @@ void CRMobjectManager::Update()
 void CRMobjectManager::Render()
 {
 	for ( auto& iter : m_ObjectListLayerBackground )
+	{
+		iter->Render();
+	}
+	for ( auto& iter : m_ObjectListMemeoryPullOfNote )
 	{
 		iter->Render();
 	}

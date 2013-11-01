@@ -33,6 +33,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 	case PLAYER_ONE:
 		(*thisNote)->SetObjectType( objectType );
 		(*thisNote)->SetPosition( 395, -100 );
+		(*thisNote)->SetVisible(true);
 		(*thisNote)->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE1 );
 		notePoolList->erase(notePoolList->begin());
@@ -40,6 +41,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 	case PLAYER_TWO:
 		(*thisNote)->SetObjectType( objectType );
 		(*thisNote)->SetPosition( 910, -100 );
+		(*thisNote)->SetVisible(true);
 		(*thisNote)->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE2 );
 		notePoolList->erase(notePoolList->begin());
@@ -84,12 +86,14 @@ void CRMjudgeManager::JudgeNote()
 		auto thisNoteP1 = iterP1;
 
 		// Player1 Miss 575
-		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
+		/*if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )*/
+		if ( (*thisNoteP1)->GetPositionY() > 555 )
 		{
 			printf_s( "1P NoteOut Miss \n" );
 			
 			//score up
 			CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
+			PrintScore();
 
 			DeleteNote( note1List );
 		}
@@ -102,6 +106,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_PERFECT );
+				PrintScore();
 			}
 		}
 		// Player1 Good
@@ -113,6 +118,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_GOOD );
+				PrintScore();
 			}
 		}
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
@@ -124,6 +130,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up;
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
+				PrintScore();
 			}
 		}
 
@@ -143,6 +150,7 @@ void CRMjudgeManager::JudgeNote()
 
 			//score up
 			CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
+			PrintScore();
 
 			DeleteNote( note2List );
 		}
@@ -155,6 +163,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_PERFECT );
+				PrintScore();
 			}
 		}
 		// Player2 Good
@@ -166,6 +175,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_GOOD );
+				PrintScore();
 			}
 		}
 		// Player2 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
@@ -177,16 +187,10 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
+				PrintScore();
 			}
 		}
 	}
-
-	printf_s("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
-				CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
-				CRMplayer1P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ),
-				CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 
-				CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
-				);
 }
 
 
@@ -213,6 +217,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	{
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_DOWN )
 		{
+			note->SetVisible( false );
 			DeleteNote( objectList );
 			return true;
 		}
@@ -221,6 +226,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 	{
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_DOWN )
 		{
+			note->SetVisible( false );
 			DeleteNote( objectList );
 			return true;
 		}
@@ -235,4 +241,15 @@ void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
 	CRMobjectManager::GetInstance()->AddObject( *objectList->begin() , LAYER_MEMORY_POOL );
 	objectList->erase(objectList->begin());
 }
+
+void CRMjudgeManager::PrintScore()
+{
+	printf_s("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
+			CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
+			CRMplayer1P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ),
+			CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 
+			CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
+			);
+}
+
 

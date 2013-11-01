@@ -11,7 +11,7 @@
 
 
 CRMchildEffectImage::CRMchildEffectImage(void):
-	m_pBitFlag(0)
+	m_pBitFlag((char)0x00)
 {
 }
 
@@ -22,7 +22,7 @@ CRMchildEffectImage::~CRMchildEffectImage(void)
 
 void CRMchildEffectImage::Update()
 {
-	if( m_pBitFlag & 0x80 || m_pBitFlag & 0x08) //1p || 2p 첫 번째 타격
+	if( m_pBitFlag & 0x80) //1p 첫 번째 타격
 	{
 		CRMobject::SetVisibleByScene();
 		
@@ -32,22 +32,86 @@ void CRMchildEffectImage::Update()
 		}
 		
 		//이쪽은 좌표 움직임 관련이라 움직임봐서 바꾸자
-		for( int deltaTime = 0 ; deltaTime < 4 ; ++ deltaTime)
-		{
-			m_PositionY -= 3;
-			m_PositionX -= 3;
-		}
+		m_PositionY -= 3;
+		m_PositionX -= 3;
 
 		m_PositionX = DEFAULT_POSITION_X;
 		m_PositionY = DEFAULT_POSITION_Y;
+
+		m_pBitFlag = m_pBitFlag & 0x7f;
 	}
 
-	//2,3,4 항목 추가할 것
+	else if( m_pBitFlag & 0x40)
+	{
+		CRMobject::SetVisibleByScene();
+
+		if ( CRMmainLoop::GetInstance()->GetNowScene() == m_Scene)
+		{
+			return;
+		}
+
+		//이쪽은 좌표 움직임 관련이라 움직임봐서 바꾸자
+		m_PositionY -= 3;
+		m_PositionX += 3;
+
+		m_PositionX = DEFAULT_POSITION_X;
+		m_PositionY = DEFAULT_POSITION_Y;
+
+		m_pBitFlag = m_pBitFlag & 0xbf;
+	}
+
+	else if( m_pBitFlag & 0x20)
+	{
+		CRMobject::SetVisibleByScene();
+
+		if ( CRMmainLoop::GetInstance()->GetNowScene() == m_Scene)
+		{
+			return;
+		}
+
+		//이쪽은 좌표 움직임 관련이라 움직임봐서 바꾸자
+		m_PositionY -= 3;
+		m_PositionX -= 3;
+
+		m_PositionX = DEFAULT_POSITION_X;
+		m_PositionY = DEFAULT_POSITION_Y;
+
+		m_pBitFlag = m_pBitFlag & 0xdf;
+	}
+
+	else if( m_pBitFlag & 0x10)
+	{
+		CRMobject::SetVisibleByScene();
+
+		if ( CRMmainLoop::GetInstance()->GetNowScene() == m_Scene)
+		{
+			return;
+		}
+
+		//이쪽은 좌표 움직임 관련이라 움직임봐서 바꾸자
+		m_PositionY -= 3;
+		m_PositionX += 3;
+
+		m_PositionX = DEFAULT_POSITION_X;
+		m_PositionY = DEFAULT_POSITION_Y;
+
+		m_pBitFlag = m_pBitFlag & 0xef;
+	}
+
+	
+
+	//2p 동일한 형태로 비트 순서만 변경해서 추가 할 것(예정)
+	//1p 테스트 후 진행
 }
 
 void CRMchildEffectImage::HitEffectFlag()
 {
+
+
+
 	m_pBitFlag = (char) 0x80;
 	//테스트용 비트 확인 및 입력 추가
+
+
 }
 

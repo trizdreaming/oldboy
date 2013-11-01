@@ -6,6 +6,7 @@
 #include "RMsound.h"
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
+#include "RMchildEffectImage.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -107,6 +108,10 @@ void CRMjudgeManager::JudgeNote()
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_PERFECT );
 				PrintScore();
+
+				//effect Àû¿ë
+				CRMchildEffectImage::GetInstance()->HitEffectFlag();
+
 			}
 		}
 		// Player1 Good

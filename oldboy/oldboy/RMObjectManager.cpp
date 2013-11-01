@@ -39,19 +39,19 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListLayerNotePlayer2.clear();
 
-	for ( auto& iter : m_ObjectListLayerEffect )
-	{
-		auto toBeDelete = iter;
-		SafeDelete( toBeDelete );
-	}
-	m_ObjectListLayerEffect.clear();
-
 	for ( auto& iter : m_ObjectListLayerNoteHit )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerNoteHit.clear();
+
+	for ( auto& iter : m_ObjectListLayerEffect )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+	m_ObjectListLayerEffect.clear();
 
 	for ( auto& iter : m_ObjectListLayerShutter )
 	{
@@ -83,11 +83,11 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_NOTE2:
 			m_ObjectListLayerNotePlayer2.push_back(object);
 			break;
-		case LAYER_EFFECT:
-			m_ObjectListLayerEffect.push_back(object);
-			break;
 		case LAYER_NOTE_HIT:
 			m_ObjectListLayerNoteHit.push_back(object);
+			break;
+		case LAYER_EFFECT:
+			m_ObjectListLayerEffect.push_back(object);
 			break;
 		case LAYER_SHUTTER:
 			m_ObjectListLayerShutter.push_back(object);

@@ -11,7 +11,7 @@
 
 
 CRMchildEffectImage::CRMchildEffectImage(void):
-	m_pBitFlag((char)0x00)
+	m_pBitFlag(0x00)
 {
 }
 
@@ -21,10 +21,10 @@ CRMchildEffectImage::~CRMchildEffectImage(void)
 }
 
 void CRMchildEffectImage::Update()
-{
-	if( m_pBitFlag & 0x80) //1p 첫 번째 타격
+{	
+	if( m_pBitFlag == 0x80 ) //1p 첫 번째 타격
 	{
-		// CRMobject::SetVisibleByScene();
+		 CRMobject::SetVisibleByScene();
 		
 		if ( CRMmainLoop::GetInstance()->GetNowScene() == m_Scene)
 		{
@@ -109,7 +109,7 @@ void CRMchildEffectImage::HitEffectFlag()
 
 
 
-	m_pBitFlag = (char) 0x80;
+	m_pBitFlag = 0x80;
 	//테스트용 비트 확인 및 입력 추가
 
 

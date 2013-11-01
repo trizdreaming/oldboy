@@ -68,6 +68,15 @@ enum CountType
 	NO_COUNT
 };
 
+enum JudgeType
+{
+	JUDGE_PERFECT,
+	JUDGE_GOOD,
+	JUDGE_MISS,
+
+	NO_JUDGE
+};
+
 enum KeyStatus
 {
 	KEY_DOWN,

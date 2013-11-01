@@ -2,7 +2,13 @@
 #include "RMplayer.h"
 
 
-CRMplayer::CRMplayer(void)
+CRMplayer::CRMplayer(void) :
+	m_PerfectCount(0),
+	m_GoodCount(0),
+	m_MissCount(0),
+	m_ComboCount(0),
+	m_ScoreCount(0),
+	m_PrevIsCombo(false)
 {
 }
 
@@ -11,26 +17,38 @@ CRMplayer::~CRMplayer(void)
 {
 }
 
-void CRMplayer::SetCount( CountType countType, UINT score /*= 1*/ )
+void CRMplayer::CalcCombo()
 {
-	switch ( countType )
+	if ( m_PrevIsCombo == false )
 	{
-	case PERFECT_COUNT:
-		m_PerfectCount = score;
+		m_ComboCount = 1;
+		m_PrevIsCombo = true;
+	}
+	else
+	{
+		++m_ComboCount;
+		m_ScoreCount += m_ComboCount;
+	}
+}
+
+void CRMplayer::AddEvent( JudgeType judgeEventType )
+{
+	switch ( judgeEventType )
+	{
+	case JUDGE_PERFECT:
+		++m_PerfectCount;
+		m_ScoreCount += 5;
+		CalcCombo();
 		break;
-	case GOOD_COUNT:
-		m_GoodCount = score;
+	case JUDGE_GOOD:
+		++m_GoodCount;
+		m_ScoreCount += 3;
+		CalcCombo();
 		break;
-	case MISS_COUNT:
-		m_MissCount = score;
-		break;
-	case COMBO_COUNT:
-		m_ComboCount = score;
-		break;
-	case SCORE_COUNT:
-		m_ScoreCount = score;
-		break;
-	case NO_COUNT:
+	case JUDGE_MISS:
+		m_ComboCount = 0;
+		m_PrevIsCombo = false;
+		++m_MissCount;
 		break;
 	default:
 		break;
@@ -39,23 +57,52 @@ void CRMplayer::SetCount( CountType countType, UINT score /*= 1*/ )
 
 UINT CRMplayer::GetCount( CountType countType )
 {
+	UINT count = 0;
+
 	switch ( countType )
 	{
 	case PERFECT_COUNT:
-		return m_PerfectCount;
+		count = m_PerfectCount;
+		break;
 	case GOOD_COUNT:
-		return m_GoodCount;
+		count = m_GoodCount;
+		break;
 	case MISS_COUNT:
-		return m_MissCount;
+		count = m_MissCount;
+		break;
 	case COMBO_COUNT:
-		return m_ComboCount;
+		count = m_ComboCount;
+		break;
 	case SCORE_COUNT:
-		return m_ScoreCount;
-	case NO_COUNT:
+		count = m_ScoreCount;
 		break;
 	default:
 		break;
 	}
 
-	return 0;
+	return count;
+}
+
+void CRMplayer::SetCount( CountType countType, UINT count )
+{
+	switch ( countType )
+	{
+	case PERFECT_COUNT:
+		m_PerfectCount = count;
+		break;
+	case GOOD_COUNT:
+		m_GoodCount = count;
+		break;
+	case MISS_COUNT:
+		m_MissCount = count;
+		break;
+	case COMBO_COUNT:
+		m_ComboCount = count;
+		break;
+	case SCORE_COUNT:
+		m_ScoreCount = count;
+		break;
+	default:
+		break;
+	}
 }

@@ -4,6 +4,8 @@
 #include "RMobjectManager.h"
 #include "RMobject.h"
 #include "RMsound.h"
+#include "RMplayer1P.h"
+#include "RMplayer2P.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -80,8 +82,11 @@ void CRMjudgeManager::JudgeNote()
 		// Player1 Miss 575
 		if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
 		{
-			printf_s( "1.miss \n" );
+			printf_s( "1P NoteOut Miss \n" );
+			
 			//score up
+			CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
+
 			DeleteNote( note1List );
 		}
 		// Player1 Perfect 
@@ -89,8 +94,10 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
-				printf_s( "1.Perfect \n" );
+				printf_s( "1P Perfect \n" );
+
 				//score up
+				CRMplayer1P::GetInstance()->AddEvent( JUDGE_PERFECT );
 			}
 		}
 		// Player1 Good
@@ -98,8 +105,10 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
-				printf_s( "1.Good \n" );
+				printf_s( "1P Good \n" );
+
 				//score up
+				CRMplayer1P::GetInstance()->AddEvent( JUDGE_GOOD );
 			}
 		}
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
@@ -107,14 +116,15 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
-				printf_s( "1.EarlyLate Miss \n" );
-				//score up
+				printf_s( "1P Time Miss \n" );
+
+				//score up;
+				CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
 			}
 		}
 
 	}
 	
-
 	// Player2============================================================
 
 	if( note2List->size() > 0 )
@@ -125,8 +135,11 @@ void CRMjudgeManager::JudgeNote()
 		// Player2 Miss 575
 		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
 		{
-			printf_s( "2.miss \n" );
+			printf_s( "2P NoteOut miss \n" );
+
 			//score up
+			CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
+
 			DeleteNote( note2List );
 		}
 		// Player2 Perfect 
@@ -134,8 +147,10 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
 			{
-				printf_s( "2.Perfect \n" );
+				printf_s( "2P Perfect \n" );
+
 				//score up
+				CRMplayer2P::GetInstance()->AddEvent( JUDGE_PERFECT );
 			}
 		}
 		// Player2 Good
@@ -143,8 +158,10 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
 			{
-				printf_s( "2.Good \n" );
+				printf_s( "2P Good \n" );
+
 				//score up
+				CRMplayer2P::GetInstance()->AddEvent( JUDGE_GOOD );
 			}
 		}
 		// Player2 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
@@ -152,17 +169,20 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
 			{
-				printf_s( "2.EarlyLate Miss \n" );
+				printf_s( "2P Time Miss \n" );
+
 				//score up
+				CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
 			}
 		}
-
 	}
 
-
-
-	
-
+	printf_s("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
+				CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
+				CRMplayer1P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ),
+				CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 
+				CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
+				);
 }
 
 
@@ -178,7 +198,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 		break;
 	case PLAYER_TWO:
 		target1 = P2_TARGET1;
-		target2 = P1_TARGET2;
+		target2 = P2_TARGET2;
 		break;
 	case NO_PLAYER:
 	default:

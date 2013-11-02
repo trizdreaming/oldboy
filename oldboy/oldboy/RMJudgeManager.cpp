@@ -37,7 +37,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 		(*thisNote)->SetVisible(true);
 		(*thisNote)->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE1 );
-		notePoolList->erase(notePoolList->begin());
+		notePoolList->pop_front();
 		break;
 	case PLAYER_TWO:
 		(*thisNote)->SetObjectType( objectType );
@@ -45,7 +45,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 		(*thisNote)->SetVisible(true);
 		(*thisNote)->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE2 );
-		notePoolList->erase(notePoolList->begin());
+		notePoolList->pop_front();
 		break;
 	case NO_PLAYER:
 	default:
@@ -244,7 +244,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
 {
 	CRMobjectManager::GetInstance()->AddObject( *objectList->begin() , LAYER_MEMORY_POOL );
-	objectList->erase(objectList->begin());
+	objectList->pop_front();
 }
 
 void CRMjudgeManager::PrintScore()

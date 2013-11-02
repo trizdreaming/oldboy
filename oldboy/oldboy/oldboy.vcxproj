@@ -86,6 +86,9 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="BandiVideoLibrary.h" />
+    <ClInclude Include="BandiVideoTexture.h" />
+    <ClInclude Include="BandiVideoTexture_DX9.h" />
     <ClInclude Include="Library\fmod.h" />
     <ClInclude Include="Library\fmod.hpp" />
     <ClInclude Include="Library\fmod_codec.h" />
@@ -123,6 +126,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="BandiVideoLibrary.cpp" />
+    <ClCompile Include="BandiVideoTexture_DX9.cpp" />
     <ClCompile Include="oldboy.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />

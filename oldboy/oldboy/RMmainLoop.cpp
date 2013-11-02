@@ -14,6 +14,9 @@
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
 
+#include "BandiVideoLibrary.h"
+#include "BandiVideoTexture_DX9.h"
+
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
@@ -36,6 +39,148 @@ void CRMmainLoop::RunMessageLoop()
 	UINT fps = 0;
 
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
+
+	CBandiVideoLibrary		m_bvl;
+	CBandiVideoDevice*		m_bvd = NULL;
+	CBandiVideoTexture*		m_bvt = NULL;
+	BVL_VIDEO_INFO			m_videoInfo;
+
+	
+	if(FAILED(m_bvl.Create(BANDIVIDEO_DLL_FILE_NAME, NULL, NULL)))
+	{
+		MessageBox(NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP);
+		DestroyWindow(m_Hwnd);
+	}
+
+	if(FAILED(m_bvl.Open("./Resource/test.avi", FALSE)))
+	{
+		MessageBox(NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP);
+		DestroyWindow(m_Hwnd);
+	}
+
+	if(FAILED(m_bvl.GetVideoInfo(m_videoInfo)))
+	{
+		MessageBox(NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP);
+		DestroyWindow(m_Hwnd);
+	}
+
+
+	m_bvd = new CBandiVideoDevice_DX9();
+
+	if(!m_bvd || FAILED(m_bvd->Open(m_Hwnd)))
+	{
+		MessageBox(NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP);
+		DestroyWindow(m_Hwnd);
+		if(m_bvd) delete m_bvd;
+	}
+
+	int count=0;
+	do
+	{
+	
+		if(PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		{
+			if(msg.message == WM_QUIT)
+				break;
+
+			TranslateMessage(&msg);
+			DispatchMessage(&msg);
+		}
+		else
+		{
+			BVL_STATUS		status;
+			m_bvl.GetStatus(status);
+
+			if(status == BVL_STATUS_READY)
+			{
+				// 재생할 준비가 완료되었다면, 재생 시작
+				m_bvl.GetVideoInfo(m_videoInfo);
+				m_bvl.Play();
+
+				if(m_bvt == NULL)
+				{
+					m_bvt = new CBandiVideoTexture_DX9((CBandiVideoDevice_DX9*)m_bvd);
+					if(!m_bvt || FAILED(m_bvt->Open(m_videoInfo.width , m_videoInfo.height)))
+					{
+						MessageBox(NULL, L"Error opening texture...",  L"ERROR!", MB_OK | MB_ICONSTOP);
+						DestroyWindow(m_Hwnd);
+						if(m_bvd) delete m_bvd;
+						if(m_bvt) delete m_bvt;
+						m_bvd = nullptr;
+						m_bvt = nullptr;
+					}
+				}
+			}
+
+
+			// 새 프레임을 출력할 시간인가?
+			if(m_bvl.IsNextFrame())
+			{
+				INT		pitch;
+				BYTE*	buf = m_bvt->Lock(pitch);
+				if(buf)
+				{
+					// Get frame
+					BVL_FRAME frame;
+					frame.frame_buf = buf;
+					frame.frame_buf_size = m_videoInfo.height*pitch;
+					frame.pitch = pitch;
+					frame.width = m_videoInfo.width;
+					frame.height = m_videoInfo.height;
+					frame.pixel_format = m_bvt->GetFormat();
+
+					m_bvl.GetFrame(frame, TRUE);
+
+					m_bvt->Unlock();
+
+					// Show frame
+					m_bvd->StartFrame();
+					m_bvt->Draw(0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y);
+					m_bvd->EndFrame();
+					++count;
+					
+					
+				}
+			}
+			else
+			{
+				Sleep(1);
+			}
+
+			if(status == BVL_STATUS_PLAYEND)
+			{
+				printf_s("END! \n");
+				break;
+			}
+			if( GetAsyncKeyState( VK_A ) & 0x8000 )
+			{
+				break;
+			}
+			else
+			{
+				printf_s("frame: %d \n",count);
+			}
+		}
+	}
+	while(1);
+
+	m_bvl.Destroy();
+
+	if(m_bvd) 
+	{
+		m_bvd->Close();
+		delete m_bvd;
+		m_bvd = nullptr;
+	}
+
+	if(m_bvt)
+	{
+		m_bvt->Close();
+		delete m_bvt;
+		m_bvt = nullptr;
+	}
+	//===================================================================
+	
 
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();

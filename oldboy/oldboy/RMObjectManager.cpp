@@ -3,6 +3,8 @@
 
 #include "RMobject.h"
 #include "RMObjectManager.h"
+#include "RMlabelManager.h"
+#include "RMlabel.h"
 
 CRMobjectManager::CRMobjectManager(void)
 {
@@ -60,11 +62,14 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListLayerShutter.clear();
 
+	/*
 	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
+	라벨 매니저에서 이미 해당 영역 메모리 해제하였음
+	*/
 	m_ObjectListLayerLabel.clear();
 }
 
@@ -138,9 +143,21 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
+	/*
 	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		iter->Update();
+	}
+	*/
+	m_ObjectListLayerLabel.clear();
+	CRMlabel* thisLabel = nullptr;
+
+	auto thisLabelMap = CRMlabelManager::GetInstance()->GetLabelMap();
+	for ( auto& iter : *thisLabelMap )
+	{
+		thisLabel = iter.second;
+		thisLabel->Update();
+		m_ObjectListLayerLabel.push_back( thisLabel );
 	}
 }
 

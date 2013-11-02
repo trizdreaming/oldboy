@@ -10,7 +10,7 @@ public:
 public:
 	virtual void	Update() = 0;
 
-	void			Render();
+	virtual void	Render();
 
 	void			SetObjectType(ObjectType objectType) { m_ObjectType = objectType; }
 	void			SetSceneType(SceneType scene) { m_Scene = scene; }

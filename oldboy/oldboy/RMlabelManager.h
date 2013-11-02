@@ -1,5 +1,7 @@
 #pragma once
 
+class CRMlabel;
+
 class CRMlabelManager
 {
 	SINGLETON(CRMlabelManager);
@@ -12,17 +14,13 @@ public:
 	// 팩토리 초기화
  	HRESULT						CreateFactory();
 	IDWriteFactory*				GetTextFactory() { return m_DWriteFactory; }
-// 
-// 	HRESULT						CreateTexture();
-// 	CRMimage*					GetTexture( ObjectType key ) { return m_TextureMap[key]; }
+
+	std::map<std::wstring, CRMlabel*>*	GetLabelMap() { return &m_LabelMap; }
 
 private:
-	void						CheckError(HRESULT);
+	void								CheckError(HRESULT);
 
-	IDWriteFactory*				m_DWriteFactory;
-
-	// 	IDWriteTextFormat*		m_TextFormat;
-	// 	ID2D1SolidColorBrush*	m_Brush;
-	// 이 두개는 각 라벨로.
+	IDWriteFactory*						m_DWriteFactory;
+	std::map<std::wstring, CRMlabel*>	m_LabelMap;
 };
 

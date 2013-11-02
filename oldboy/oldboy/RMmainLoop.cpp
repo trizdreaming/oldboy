@@ -12,6 +12,7 @@
 #include "RMsound.h"
 #include "RMJudgeManager.h"
 #include "RMchildEffectImage.h"
+#include "RMlabel.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -81,6 +82,11 @@ void CRMmainLoop::RunMessageLoop()
 
 			if( m_ElapsedTime == m_Fps )
 			{
+				// 테스트 
+				CRMlabel* testLabel = new CRMlabel();
+				testLabel->CreateLabel(L"테스트", L"테스트다옹", L"맑은 고딕", 35.0F );
+				testLabel->SetRGBA( 255.f, 255.f, 255.f, 1.f );
+				
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
 				CRMobjectManager::GetInstance()->Update();

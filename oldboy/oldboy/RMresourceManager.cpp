@@ -16,7 +16,7 @@ CRMresourceManager::~CRMresourceManager(void)
 
 	for ( auto& iter : m_TextureMap )
 	{
-		auto toBeDelete = iter.second ;
+		auto toBeDelete = iter.second;
 		SafeDelete( toBeDelete );
 	}
 	m_TextureMap.clear();

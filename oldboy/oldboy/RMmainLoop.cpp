@@ -85,7 +85,9 @@ void CRMmainLoop::RunMessageLoop()
 				// 테스트 
 				CRMlabel* testLabel = new CRMlabel();
 				testLabel->CreateLabel(L"테스트", L"테스트다옹", L"맑은 고딕", 35.0F );
-				testLabel->SetRGBA( 255.f, 255.f, 255.f, 1.f );
+				testLabel->SetRGBA( 0.8f, 0.5f, 0.3f, 1.f );
+				testLabel->SetSceneType( SCENE_TITLE );
+				testLabel->SetPosition( 50, 50 );
 				
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update

@@ -21,5 +21,8 @@ public:
 private:
 	void						DeleteNote( std::list<CRMobject*>* objectList );
 	void						PrintScore();
+
+	JudgeType					m_Player1Judge;
+	JudgeType					m_Player2Judge;
 };
 

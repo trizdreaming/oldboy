@@ -16,6 +16,7 @@ public:
 	void			SetSceneType(SceneType scene) { m_Scene = scene; }
 	
 	void			SetVisible(bool visible) { m_Visible = visible; }
+	bool			GetVisible() { return m_Visible; }
 	void			SetPosition(float x, float y) { m_PositionX = x; m_PositionY = y; }
 
 	float			GetPositionX() { return m_PositionX; }

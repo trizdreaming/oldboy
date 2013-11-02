@@ -150,12 +150,18 @@ void CRMobjectManager::Update()
 	}
 	*/
 	m_ObjectListLayerLabel.clear();
-	CRMlabel* thisLabel = nullptr;
+	CRMobject* thisLabel = nullptr;
 
 	auto thisLabelMap = CRMlabelManager::GetInstance()->GetLabelMap();
 	for ( auto& iter : *thisLabelMap )
 	{
 		thisLabel = iter.second;
+
+		if ( thisLabel->GetVisible() == false )
+		{
+			continue;
+		}
+
 		thisLabel->Update();
 		m_ObjectListLayerLabel.push_back( thisLabel );
 	}

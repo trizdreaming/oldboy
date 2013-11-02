@@ -8,7 +8,7 @@ public:
 	CRMlabel(void);
 	~CRMlabel(void);
 
-	void		CreateLabel( wchar_t* key, wchar_t* string, wchar_t* fontFace, float fontSize );
+	void		CreateLabel( std::wstring key, std::wstring string, wchar_t* fontFace, float fontSize );
 
 	virtual void	Update();
 	virtual void	Render();
@@ -23,7 +23,7 @@ public:
 	bool		IsItalic() { return m_Italic; }
 	bool		IsBold() { return m_Bold; }
 
-	void		SetString( wchar_t* string ) { m_String = string; }
+	// void		SetString( wchar_t* string ) { m_String = string; }
 	void		SetFontSize( float fontsize ) { m_FontSize = fontsize; }
 	void		SetFontFace( wchar_t* fontface ) { m_FontFace = fontface; }
 	void		SetBold( bool bold ) { m_Bold = bold; }
@@ -42,7 +42,9 @@ private:
 	ID2D1SolidColorBrush*	m_Brush;
 
 	wchar_t*	m_FontFace;
-	wchar_t*	m_String;
+	// wchar_t*	m_String;
+	wchar_t		m_String[255];
+
 	float		m_FontSize;
 	float		m_ColorR, m_ColorG, m_ColorB;
 	float		m_Opacity;

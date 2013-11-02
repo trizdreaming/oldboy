@@ -7,8 +7,10 @@
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
 #include "RMchildEffectImage.h"
+#include "RMlabel.h"
 
-CRMjudgeManager::CRMjudgeManager(void)
+CRMjudgeManager::CRMjudgeManager(void) :
+	m_Player1Judge(NO_JUDGE), m_Player2Judge(NO_JUDGE)
 {
 }
 
@@ -77,10 +79,6 @@ void CRMjudgeManager::JudgeNote()
 	std::list<CRMobject*>* note1List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 );
 	std::list<CRMobject*>* note2List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 );
 	
-	////////////////////////
-	//버그 해결 필요 : 겹치는 노트의 간격이 좁은 경우 첫 번째 노트 때문에 두번째 노트가 판정되지 않음
-	////////////////////////
-
 	if( note1List->size() > 0 )
 	{
 		auto& iterP1 = note1List->begin();
@@ -94,6 +92,7 @@ void CRMjudgeManager::JudgeNote()
 			
 			//score up
 			CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
+			m_Player1Judge = JUDGE_MISS;
 			PrintScore();
 
 			DeleteNote( note1List );
@@ -107,6 +106,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_PERFECT );
+				m_Player1Judge = JUDGE_PERFECT;
 				PrintScore();
 
 				//effect 적용
@@ -123,6 +123,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_GOOD );
+				m_Player1Judge = JUDGE_GOOD;
 				PrintScore();
 			}
 		}
@@ -135,6 +136,7 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up;
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
+				m_Player1Judge = JUDGE_MISS;
 				PrintScore();
 			}
 		}
@@ -255,6 +257,52 @@ void CRMjudgeManager::PrintScore()
 			CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 
 			CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
 			);
+
+	// 테스트 
+	wchar_t		score[255] = { 0, };
+	wchar_t		judge[255] = { 0, };
+
+	switch ( m_Player1Judge )
+	{
+	case JUDGE_PERFECT:
+		swprintf_s( judge, L"PERFECT!!" );
+		break;
+	case JUDGE_GOOD:
+		swprintf_s( judge, L"  GOOD!  " );
+		break;
+	case JUDGE_MISS:
+		swprintf_s( judge, L" MISS... " );
+		break;
+	default:
+		break;
+	}
+
+	swprintf_s( score, L"%12d \n  %10s", CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ), judge );
+
+	CRMlabel* player1Score = new CRMlabel();
+	player1Score->CreateLabel(L"플레이어1점수", score, L"맑은 고딕", 35.0F );
+	player1Score->SetRGBA( 0.8f, 0.8f, 0.8f, 1.f );
+	player1Score->SetSceneType( SCENE_PLAY );
+	player1Score->SetPosition( 100, 300 );
+
+	if ( CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ) > 0 )
+	{
+		swprintf_s( score, L"%8s \n  %10d", L"COMBO", CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ) );
+
+		CRMlabel* player1Combo = new CRMlabel();
+		player1Combo->CreateLabel(L"플레이어1콤보", score, L"맑은 고딕", 35.0F );
+		player1Combo->SetRGBA( 0.3f, 0.5f, 0.5f, 1.f );
+		player1Combo->SetSceneType( SCENE_PLAY );
+		player1Combo->SetPosition( 100, 400 );
+	}
+	else
+	{
+		CRMlabel* player1Combo = new CRMlabel();
+		player1Combo->CreateLabel(L"플레이어1콤보", L"", L"맑은 고딕", 35.0F );
+		player1Combo->SetRGBA( 0.f, 0.f, 0.f, 1.f );
+		player1Combo->SetSceneType( SCENE_PLAY );
+		player1Combo->SetPosition( 100, 400 );
+	}
 }
 
 

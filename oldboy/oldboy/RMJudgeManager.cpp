@@ -93,7 +93,7 @@ void CRMjudgeManager::JudgeNote()
 			//score up
 			CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
 			m_Player1Judge = JUDGE_MISS;
-			PrintScore();
+			PrintScore( PLAYER_ONE );
 
 			DeleteNote( note1List );
 		}
@@ -107,7 +107,7 @@ void CRMjudgeManager::JudgeNote()
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_PERFECT );
 				m_Player1Judge = JUDGE_PERFECT;
-				PrintScore();
+				PrintScore( PLAYER_ONE );
 
 				//effect 적용
 				CRMchildEffectImage::GetInstance()->HitEffectFlag();
@@ -124,7 +124,7 @@ void CRMjudgeManager::JudgeNote()
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_GOOD );
 				m_Player1Judge = JUDGE_GOOD;
-				PrintScore();
+				PrintScore( PLAYER_ONE );
 			}
 		}
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
@@ -137,7 +137,7 @@ void CRMjudgeManager::JudgeNote()
 				//score up;
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
 				m_Player1Judge = JUDGE_MISS;
-				PrintScore();
+				PrintScore( PLAYER_ONE );
 			}
 		}
 
@@ -151,13 +151,15 @@ void CRMjudgeManager::JudgeNote()
 		auto thisNoteP2 = iterP2;
 
 		// Player2 Miss 575
-		if ( (*thisNoteP2)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )
+		if ( (*thisNoteP2)->GetPositionY() > 555 )
 		{
+
 			printf_s( "2P NoteOut miss \n" );
 
 			//score up
 			CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
-			PrintScore();
+			m_Player2Judge = JUDGE_MISS;
+			PrintScore( PLAYER_TWO );
 
 			DeleteNote( note2List );
 		}
@@ -170,7 +172,11 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_PERFECT );
-				PrintScore();
+				m_Player2Judge = JUDGE_PERFECT;
+				PrintScore( PLAYER_TWO );
+
+				// effect 적용
+				// CRMchildEffectImage::GetInstance()->HitEffectFlag();
 			}
 		}
 		// Player2 Good
@@ -182,7 +188,8 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_GOOD );
-				PrintScore();
+				m_Player2Judge = JUDGE_GOOD;
+				PrintScore( PLAYER_TWO );
 			}
 		}
 		// Player2 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
@@ -194,7 +201,8 @@ void CRMjudgeManager::JudgeNote()
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
-				PrintScore();
+				m_Player2Judge = JUDGE_MISS;
+				PrintScore( PLAYER_TWO );
 			}
 		}
 	}
@@ -249,7 +257,7 @@ void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
 	objectList->pop_front();
 }
 
-void CRMjudgeManager::PrintScore()
+void CRMjudgeManager::PrintScore( PlayerNumber player )
 {
 	printf_s("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 			CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
@@ -258,11 +266,39 @@ void CRMjudgeManager::PrintScore()
 			CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
 			);
 
-	// 테스트 
+	CRMplayer*	thisPlayer = nullptr;
+	wchar_t		*playerScoreLabelName;
+	wchar_t		*playerComboLabelName;
+	float		positionX = 0;
+	float		positionY = 100;
+	JudgeType	thisPlayerJudge = NO_JUDGE;
+
+	switch ( player )
+	{
+	case PLAYER_ONE:
+		thisPlayer = CRMplayer1P::GetInstance();
+		playerScoreLabelName = L"플레이어1점수";
+		playerComboLabelName = L"플레이어1콤보";
+		positionX = 100;
+		thisPlayerJudge = m_Player1Judge;
+
+		break;
+	case PLAYER_TWO:
+		thisPlayer = CRMplayer2P::GetInstance();
+		playerScoreLabelName = L"플레이어2점수";
+		playerComboLabelName = L"플레이어2콤보";
+		positionX = 600;
+		thisPlayerJudge = m_Player2Judge;
+
+		break;
+	default:
+		return;
+	}
+
 	wchar_t		score[255] = { 0, };
 	wchar_t		judge[255] = { 0, };
-
-	switch ( m_Player1Judge )
+	
+	switch ( thisPlayerJudge )
 	{
 	case JUDGE_PERFECT:
 		swprintf_s( judge, L"PERFECT!!" );
@@ -277,32 +313,33 @@ void CRMjudgeManager::PrintScore()
 		break;
 	}
 
-	swprintf_s( score, L"%12d \n  %10s", CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ), judge );
+	swprintf_s( score, L"%10s \n %10d \n  %8s", L"SCORE", thisPlayer->GetCount( SCORE_COUNT ), judge );
 
-	CRMlabel* player1Score = new CRMlabel();
-	player1Score->CreateLabel(L"플레이어1점수", score, L"맑은 고딕", 35.0F );
-	player1Score->SetRGBA( 0.8f, 0.8f, 0.8f, 1.f );
-	player1Score->SetSceneType( SCENE_PLAY );
-	player1Score->SetPosition( 100, 300 );
+	CRMlabel* playerScoreLabel = new CRMlabel();
+	playerScoreLabel->CreateLabel( playerScoreLabelName , score, L"맑은 고딕", 35.0F );
+	playerScoreLabel->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+	playerScoreLabel->SetSceneType( SCENE_PLAY );
+	playerScoreLabel->SetPosition( positionX , positionY );
 
-	if ( CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ) > 0 )
+	if ( thisPlayer->GetCount( COMBO_COUNT ) > 0 )
 	{
-		swprintf_s( score, L"%8s \n  %10d", L"COMBO", CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ) );
+		swprintf_s( score, L"%8s \n  %10d", L"COMBO", thisPlayer->GetCount( COMBO_COUNT ) );
 
-		CRMlabel* player1Combo = new CRMlabel();
-		player1Combo->CreateLabel(L"플레이어1콤보", score, L"맑은 고딕", 35.0F );
-		player1Combo->SetRGBA( 0.3f, 0.5f, 0.5f, 1.f );
-		player1Combo->SetSceneType( SCENE_PLAY );
-		player1Combo->SetPosition( 100, 400 );
+		CRMlabel* playerComboLabel = new CRMlabel();
+		playerComboLabel->CreateLabel( playerComboLabelName , score, L"맑은 고딕", 35.0F );
+		playerComboLabel->SetRGBA( 0.8f, 0.5f, 0.2f, 1.f );
+		playerComboLabel->SetSceneType( SCENE_PLAY );
+		playerComboLabel->SetPosition( positionX, positionY + 250 );
 	}
 	else
 	{
-		CRMlabel* player1Combo = new CRMlabel();
-		player1Combo->CreateLabel(L"플레이어1콤보", L"", L"맑은 고딕", 35.0F );
-		player1Combo->SetRGBA( 0.f, 0.f, 0.f, 1.f );
-		player1Combo->SetSceneType( SCENE_PLAY );
-		player1Combo->SetPosition( 100, 400 );
+		CRMlabel* playerComboLabel = new CRMlabel();
+		playerComboLabel->CreateLabel( playerComboLabelName , L"", L"맑은 고딕", 35.0F );
+		playerComboLabel->SetRGBA( 0.f, 0.f, 0.f, 1.f );
+		playerComboLabel->SetSceneType( SCENE_PLAY );
+		playerComboLabel->SetPosition( positionX, positionY + 250 );
 	}
+
 }
 
 

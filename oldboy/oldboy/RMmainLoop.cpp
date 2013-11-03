@@ -45,20 +45,20 @@ void CRMmainLoop::RunMessageLoop()
 	
 	if ( FAILED ( bandiVideoLibrary.Create( BANDIVIDEO_DLL_FILE_NAME, NULL, NULL ) ) )
 	{
-		MessageBox(NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP);
-		DestroyWindow(m_Hwnd);
+		MessageBox( NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP );
+		DestroyWindow( m_Hwnd );
 	}
 
 	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/test.avi", FALSE ) ) )
 	{
-		MessageBox(NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP);
-		DestroyWindow(m_Hwnd);
+		MessageBox( NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP );
+		DestroyWindow( m_Hwnd );
 	}
 
 	if ( FAILED ( bandiVideoLibrary.GetVideoInfo( bandiVideoLibraryVideoInfo ) ) )
 	{
-		MessageBox(NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP);
-		DestroyWindow(m_Hwnd);
+		MessageBox( NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP );
+		DestroyWindow( m_Hwnd );
 	}
 
 
@@ -66,10 +66,8 @@ void CRMmainLoop::RunMessageLoop()
 
 	if ( !bandiVideoDevice || FAILED ( bandiVideoDevice->Open( m_Hwnd ) ) )
 	{
-		MessageBox(NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP);
-		DestroyWindow(m_Hwnd);
-		
-		// if(m_bvd) delete m_bvd;
+		MessageBox( NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP );
+		DestroyWindow( m_Hwnd );
 
 		SafeDelete( bandiVideoDevice );
 	}
@@ -81,7 +79,11 @@ void CRMmainLoop::RunMessageLoop()
 		if ( PeekMessage( &msg, 0, 0, 0, PM_REMOVE ) )
 		{
 			if ( msg.message == WM_QUIT )
-				break;
+			{
+				return;
+				// 이 부분에서 리턴이 아닌 break; 를 하면 동영상 재생 중 프로그램 종료 시
+				// 창은 닫힌 상태인데 프로그램은 진행 중이므로 치명적인 문제 발생
+			}
 
 			TranslateMessage(&msg);
 			DispatchMessage(&msg);
@@ -99,7 +101,7 @@ void CRMmainLoop::RunMessageLoop()
 
 				if ( bandiVideoTexture == NULL )
 				{
-					bandiVideoTexture = new CBandiVideoTexture_DX9((CBandiVideoDevice_DX9*)bandiVideoDevice);
+					bandiVideoTexture = new CBandiVideoTexture_DX9( (CBandiVideoDevice_DX9* ) bandiVideoDevice );
 					
 					if ( !bandiVideoTexture || FAILED( bandiVideoTexture->Open( bandiVideoLibraryVideoInfo.width , bandiVideoLibraryVideoInfo.height ) ) )
 					{

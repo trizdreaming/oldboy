@@ -194,7 +194,7 @@ void CRMmainLoop::RunMessageLoop()
 
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
-	CRMsound::GetInstance()->LoadSound("test.mp3");
+	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
 	CRMsound::GetInstance()->LoadSound("Dengue_Fever-Integration.mp3");
 	CRMsound::GetInstance()->LoadSound("se1.wav");
 	CRMsound::GetInstance()->LoadSound("se2.wav");
@@ -203,7 +203,7 @@ void CRMmainLoop::RunMessageLoop()
 	CreateObject();
 	// 오브젝트 생성 부분을 리팩토링
 	
-	CRMsound::GetInstance()->PlaySound("test.mp3");
+	CRMsound::GetInstance()->PlaySound("bgm_title_00_01.mp3");
 
 	while ( true )
 	{

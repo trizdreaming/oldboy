@@ -10,12 +10,15 @@
 -------------------------------------------------
 <br>You must have this files to run oldboy project
 <br>
-<br>fmodex.dll
+<br>All files under 'DLL' folder
 <br>All files under 'Resource' folder
+<br>
+<br>Copy them to same folder where Execute file
 
 -------------------------------------------------
 <br>프로그램 구동을 위해 필요한 것
 <br>
-<br>해당 프로젝트를 구동하기 위해 fmodex.dll 파일과 
+<br>DLL 폴더의 라이브러리 파일들과
 <br>Resource 폴더의 리소스 파일들이 필요합니다.
 <br>
+<br>실행 파일과 같은 폴더에 위의 파일들을 복사하세요.

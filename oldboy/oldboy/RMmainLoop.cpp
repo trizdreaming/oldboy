@@ -40,47 +40,50 @@ void CRMmainLoop::RunMessageLoop()
 
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
 
-	CBandiVideoLibrary		m_bvl;
-	CBandiVideoDevice*		m_bvd = NULL;
-	CBandiVideoTexture*		m_bvt = NULL;
-	BVL_VIDEO_INFO			m_videoInfo;
+	CBandiVideoLibrary		bandiVideoLibrary;
+	CBandiVideoDevice*		bandiVideoDevice = NULL;
+	CBandiVideoTexture*		bandiVideoTexture = NULL;
+	BVL_VIDEO_INFO			bandiVideoLibraryVideoInfo;
 
 	
-	if(FAILED(m_bvl.Create(BANDIVIDEO_DLL_FILE_NAME, NULL, NULL)))
+	if ( FAILED ( bandiVideoLibrary.Create( BANDIVIDEO_DLL_FILE_NAME, NULL, NULL ) ) )
 	{
 		MessageBox(NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP);
 		DestroyWindow(m_Hwnd);
 	}
 
-	if(FAILED(m_bvl.Open("./Resource/test.avi", FALSE)))
+	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/test.avi", FALSE ) ) )
 	{
 		MessageBox(NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP);
 		DestroyWindow(m_Hwnd);
 	}
 
-	if(FAILED(m_bvl.GetVideoInfo(m_videoInfo)))
+	if ( FAILED ( bandiVideoLibrary.GetVideoInfo( bandiVideoLibraryVideoInfo ) ) )
 	{
 		MessageBox(NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP);
 		DestroyWindow(m_Hwnd);
 	}
 
 
-	m_bvd = new CBandiVideoDevice_DX9();
+	bandiVideoDevice = new CBandiVideoDevice_DX9();
 
-	if(!m_bvd || FAILED(m_bvd->Open(m_Hwnd)))
+	if ( !bandiVideoDevice || FAILED ( bandiVideoDevice->Open( m_Hwnd ) ) )
 	{
 		MessageBox(NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP);
 		DestroyWindow(m_Hwnd);
-		if(m_bvd) delete m_bvd;
+		
+		// if(m_bvd) delete m_bvd;
+
+		SafeDelete( bandiVideoDevice );
 	}
 
 	int count=0;
 	do
 	{
 	
-		if(PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
+		if ( PeekMessage( &msg, 0, 0, 0, PM_REMOVE ) )
 		{
-			if(msg.message == WM_QUIT)
+			if ( msg.message == WM_QUIT )
 				break;
 
 			TranslateMessage(&msg);
@@ -89,54 +92,60 @@ void CRMmainLoop::RunMessageLoop()
 		else
 		{
 			BVL_STATUS		status;
-			m_bvl.GetStatus(status);
+			bandiVideoLibrary.GetStatus(status);
 
-			if(status == BVL_STATUS_READY)
+			if ( status == BVL_STATUS_READY )
 			{
 				// 재생할 준비가 완료되었다면, 재생 시작
-				m_bvl.GetVideoInfo(m_videoInfo);
-				m_bvl.Play();
+				bandiVideoLibrary.GetVideoInfo( bandiVideoLibraryVideoInfo );
+				bandiVideoLibrary.Play();
 
-				if(m_bvt == NULL)
+				if ( bandiVideoTexture == NULL )
 				{
-					m_bvt = new CBandiVideoTexture_DX9((CBandiVideoDevice_DX9*)m_bvd);
-					if(!m_bvt || FAILED(m_bvt->Open(m_videoInfo.width , m_videoInfo.height)))
+					bandiVideoTexture = new CBandiVideoTexture_DX9((CBandiVideoDevice_DX9*)bandiVideoDevice);
+					
+					if ( !bandiVideoTexture || FAILED( bandiVideoTexture->Open( bandiVideoLibraryVideoInfo.width , bandiVideoLibraryVideoInfo.height ) ) )
 					{
 						MessageBox(NULL, L"Error opening texture...",  L"ERROR!", MB_OK | MB_ICONSTOP);
 						DestroyWindow(m_Hwnd);
+						/*
 						if(m_bvd) delete m_bvd;
 						if(m_bvt) delete m_bvt;
 						m_bvd = nullptr;
 						m_bvt = nullptr;
+						*/
+
+						SafeDelete( bandiVideoDevice );
+						SafeDelete( bandiVideoTexture );
 					}
 				}
 			}
 
 
 			// 새 프레임을 출력할 시간인가?
-			if(m_bvl.IsNextFrame())
+			if ( bandiVideoLibrary.IsNextFrame() )
 			{
 				INT		pitch;
-				BYTE*	buf = m_bvt->Lock(pitch);
-				if(buf)
+				BYTE*	buf = bandiVideoTexture->Lock( pitch );
+				if ( buf )
 				{
 					// Get frame
 					BVL_FRAME frame;
 					frame.frame_buf = buf;
-					frame.frame_buf_size = m_videoInfo.height*pitch;
+					frame.frame_buf_size = bandiVideoLibraryVideoInfo.height*pitch;
 					frame.pitch = pitch;
-					frame.width = m_videoInfo.width;
-					frame.height = m_videoInfo.height;
-					frame.pixel_format = m_bvt->GetFormat();
+					frame.width = bandiVideoLibraryVideoInfo.width;
+					frame.height = bandiVideoLibraryVideoInfo.height;
+					frame.pixel_format = bandiVideoTexture->GetFormat();
 
-					m_bvl.GetFrame(frame, TRUE);
+					bandiVideoLibrary.GetFrame(frame, TRUE);
 
-					m_bvt->Unlock();
+					bandiVideoTexture->Unlock();
 
 					// Show frame
-					m_bvd->StartFrame();
-					m_bvt->Draw(0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y);
-					m_bvd->EndFrame();
+					bandiVideoDevice->StartFrame();
+					bandiVideoTexture->Draw( 0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y );
+					bandiVideoDevice->EndFrame();
 					++count;
 					
 					
@@ -147,37 +156,41 @@ void CRMmainLoop::RunMessageLoop()
 				Sleep(1);
 			}
 
-			if(status == BVL_STATUS_PLAYEND)
+			if ( status == BVL_STATUS_PLAYEND )
 			{
 				printf_s("END! \n");
 				break;
 			}
-			if( GetAsyncKeyState( VK_A ) & 0x8000 )
+			if ( GetAsyncKeyState( VK_A ) & 0x8000 )
 			{
 				break;
 			}
 			else
 			{
-				printf_s("frame: %d \n",count);
+				printf_s( "frame: %d \n", count );
 			}
 		}
 	}
-	while(1);
+	while(true);	// do~while(true)
 
-	m_bvl.Destroy();
+	bandiVideoLibrary.Destroy();
 
-	if(m_bvd) 
+	if ( bandiVideoDevice ) 
 	{
-		m_bvd->Close();
-		delete m_bvd;
-		m_bvd = nullptr;
+		bandiVideoDevice->Close();
+		// delete m_bvd;
+		// m_bvd = nullptr;
+
+		SafeDelete( bandiVideoDevice );
 	}
 
-	if(m_bvt)
+	if ( bandiVideoTexture )
 	{
-		m_bvt->Close();
-		delete m_bvt;
-		m_bvt = nullptr;
+		bandiVideoTexture->Close();
+		// delete m_bvt;
+		// m_bvt = nullptr;
+
+		SafeDelete( bandiVideoTexture );
 	}
 	//===================================================================
 	

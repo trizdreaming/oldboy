@@ -44,6 +44,9 @@
     <Filter Include="Core\Object\Children">
       <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
     </Filter>
+    <Filter Include="BandiVideo">
+      <UniqueIdentifier>{826ee267-37db-4a02-bdd3-185f6deb304b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -154,9 +157,15 @@
     <ClInclude Include="RMlabelManager.h">
       <Filter>Core\Label</Filter>
     </ClInclude>
-    <ClInclude Include="BandiVideoLibrary.h" />
-    <ClInclude Include="BandiVideoTexture.h" />
-    <ClInclude Include="BandiVideoTexture_DX9.h" />
+    <ClInclude Include="BandiVideoLibrary.h">
+      <Filter>BandiVideo</Filter>
+    </ClInclude>
+    <ClInclude Include="BandiVideoTexture.h">
+      <Filter>BandiVideo</Filter>
+    </ClInclude>
+    <ClInclude Include="BandiVideoTexture_DX9.h">
+      <Filter>BandiVideo</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -219,8 +228,12 @@
     <ClCompile Include="RMlabelManager.cpp">
       <Filter>Core\Label</Filter>
     </ClCompile>
-    <ClCompile Include="BandiVideoLibrary.cpp" />
-    <ClCompile Include="BandiVideoTexture_DX9.cpp" />
+    <ClCompile Include="BandiVideoLibrary.cpp">
+      <Filter>BandiVideo</Filter>
+    </ClCompile>
+    <ClCompile Include="BandiVideoTexture_DX9.cpp">
+      <Filter>BandiVideo</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

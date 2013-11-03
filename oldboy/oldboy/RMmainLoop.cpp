@@ -421,11 +421,27 @@ void CRMmainLoop::TestSound()
 
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_ATTACK ) == KEY_DOWN )
 	{
-		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
+		int testRand1 = rand();
+		if( testRand1%2 == 0 )
+		{
+			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
+		}
+		else
+		{
+			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_2 );
+		}
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_ATTACK ) == KEY_DOWN )
 	{
-		CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_2 );
+		int testRand2 = rand();
+		if( testRand2%2 == 0 )
+		{
+			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , OBJECT_NOTE_NORMAL_1 );
+		}
+		else
+		{
+			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , OBJECT_NOTE_NORMAL_2 );
+		}
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 	{

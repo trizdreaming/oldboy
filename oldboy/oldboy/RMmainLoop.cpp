@@ -218,9 +218,8 @@ void CRMmainLoop::RunMessageLoop()
 	CRMsound::GetInstance()->CreateSound();
 	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
 	CRMsound::GetInstance()->LoadSound("Dengue_Fever-Integration.mp3");
-	CRMsound::GetInstance()->LoadSound("se1.wav");
-	CRMsound::GetInstance()->LoadSound("se2.wav");
-	CRMsound::GetInstance()->LoadSound("se3.wav");
+	CRMsound::GetInstance()->LoadSound("sound_effect_01_01.wav");
+	CRMsound::GetInstance()->LoadSound("sound_effect_02_01.wav");
 
 	CreateObject();
 	// 오브젝트 생성 부분을 리팩토링
@@ -467,19 +466,19 @@ void CRMmainLoop::TestSound()
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "se2.wav" );
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "se2.wav" );
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET2 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "se3.wav" );
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
 	}
 }
 

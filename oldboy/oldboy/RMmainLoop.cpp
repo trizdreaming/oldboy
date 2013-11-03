@@ -80,6 +80,26 @@ void CRMmainLoop::RunMessageLoop()
 		{
 			if ( msg.message == WM_QUIT )
 			{
+				bandiVideoLibrary.Destroy();
+
+				if ( bandiVideoDevice ) 
+				{
+					bandiVideoDevice->Close();
+					// delete m_bvd;
+					// m_bvd = nullptr;
+
+					SafeDelete( bandiVideoDevice );
+				}
+
+				if ( bandiVideoTexture )
+				{
+					bandiVideoTexture->Close();
+					// delete m_bvt;
+					// m_bvt = nullptr;
+
+					SafeDelete( bandiVideoTexture );
+				}
+
 				return;
 				// 이 부분에서 리턴이 아닌 break; 를 하면 동영상 재생 중 프로그램 종료 시
 				// 창은 닫힌 상태인데 프로그램은 진행 중이므로 치명적인 문제 발생

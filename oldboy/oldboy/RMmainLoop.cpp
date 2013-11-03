@@ -14,9 +14,6 @@
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
 
-#include "BandiVideoLibrary.h"
-#include "BandiVideoTexture_DX9.h"
-
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),

@@ -115,27 +115,6 @@
     <ClInclude Include="RMenumSet.h">
       <Filter>Core</Filter>
     </ClInclude>
-    <ClInclude Include="Library\fmod.h">
-      <Filter>Fmod</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\fmod.hpp">
-      <Filter>Fmod</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\fmod_codec.h">
-      <Filter>Fmod</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\fmod_dsp.h">
-      <Filter>Fmod</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\fmod_errors.h">
-      <Filter>Fmod</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\fmod_memoryinfo.h">
-      <Filter>Fmod</Filter>
-    </ClInclude>
-    <ClInclude Include="Library\fmod_output.h">
-      <Filter>Fmod</Filter>
-    </ClInclude>
     <ClInclude Include="RMobjectManager.h">
       <Filter>Core\Object</Filter>
     </ClInclude>
@@ -157,13 +136,37 @@
     <ClInclude Include="RMlabelManager.h">
       <Filter>Core\Label</Filter>
     </ClInclude>
-    <ClInclude Include="BandiVideoLibrary.h">
+    <ClInclude Include="LibraryFmod\fmod.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryFmod\fmod.hpp">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryFmod\fmod_codec.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryFmod\fmod_dsp.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryFmod\fmod_errors.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryFmod\fmod_memoryinfo.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryFmod\fmod_output.h">
+      <Filter>Fmod</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryBandi\BandiVid.h">
       <Filter>BandiVideo</Filter>
     </ClInclude>
-    <ClInclude Include="BandiVideoTexture.h">
+    <ClInclude Include="LibraryBandi\BandiVideoLibrary.h">
       <Filter>BandiVideo</Filter>
     </ClInclude>
-    <ClInclude Include="BandiVideoTexture_DX9.h">
+    <ClInclude Include="LibraryBandi\BandiVideoTexture.h">
+      <Filter>BandiVideo</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryBandi\BandiVideoTexture_DX9.h">
       <Filter>BandiVideo</Filter>
     </ClInclude>
   </ItemGroup>
@@ -228,10 +231,10 @@
     <ClCompile Include="RMlabelManager.cpp">
       <Filter>Core\Label</Filter>
     </ClCompile>
-    <ClCompile Include="BandiVideoLibrary.cpp">
+    <ClCompile Include="LibraryBandi\BandiVideoLibrary.cpp">
       <Filter>BandiVideo</Filter>
     </ClCompile>
-    <ClCompile Include="BandiVideoTexture_DX9.cpp">
+    <ClCompile Include="LibraryBandi\BandiVideoTexture_DX9.cpp">
       <Filter>BandiVideo</Filter>
     </ClCompile>
   </ItemGroup>

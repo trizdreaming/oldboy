@@ -3,6 +3,8 @@
 
 #include "RMobject.h"
 #include "RMObjectManager.h"
+#include "RMlabelManager.h"
+#include "RMlabel.h"
 
 CRMobjectManager::CRMobjectManager(void)
 {
@@ -13,6 +15,7 @@ CRMobjectManager::CRMobjectManager(void)
 	m_ObjectListLayerEffect.clear();
 	m_ObjectListLayerShutter.clear();
 	m_ObjectListLayerLabel.clear();
+	m_ObjectListMemeoryPullOfNote.clear();
 }
 
 
@@ -60,12 +63,22 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListLayerShutter.clear();
 
+	/*
 	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
+	라벨 매니저에서 이미 해당 영역 메모리 해제하였음
+	*/
 	m_ObjectListLayerLabel.clear();
+
+	for ( auto& iter : m_ObjectListMemeoryPullOfNote )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+	m_ObjectListMemeoryPullOfNote.clear();
 }
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
@@ -138,9 +151,27 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
+	/*
 	for ( auto& iter : m_ObjectListLayerLabel )
 	{
 		iter->Update();
+	}
+	*/
+	m_ObjectListLayerLabel.clear();
+	CRMobject* thisLabel = nullptr;
+
+	auto thisLabelMap = CRMlabelManager::GetInstance()->GetLabelMap();
+	for ( auto& iter : *thisLabelMap )
+	{
+		thisLabel = iter.second;
+
+		if ( thisLabel->GetVisible() == false )
+		{
+			continue;
+		}
+
+		thisLabel->Update();
+		m_ObjectListLayerLabel.push_back( thisLabel );
 	}
 }
 

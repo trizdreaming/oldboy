@@ -16,7 +16,7 @@ CRMresourceManager::~CRMresourceManager(void)
 
 	for ( auto& iter : m_TextureMap )
 	{
-		auto toBeDelete = iter.second ;
+		auto toBeDelete = iter.second;
 		SafeDelete( toBeDelete );
 	}
 	m_TextureMap.clear();
@@ -68,7 +68,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_sh_temp1.png" );
+	hr = texture->CreateImage( L"./Resource/image_sh_01_01.png" );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{
@@ -94,7 +94,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_nt_01_01.png" );
+	hr = texture->CreateImage( L"./Resource/image_nt_02_01.png" );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{

@@ -86,13 +86,17 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Library\fmod.h" />
-    <ClInclude Include="Library\fmod.hpp" />
-    <ClInclude Include="Library\fmod_codec.h" />
-    <ClInclude Include="Library\fmod_dsp.h" />
-    <ClInclude Include="Library\fmod_errors.h" />
-    <ClInclude Include="Library\fmod_memoryinfo.h" />
-    <ClInclude Include="Library\fmod_output.h" />
+    <ClInclude Include="LibraryBandi\BandiVid.h" />
+    <ClInclude Include="LibraryBandi\BandiVideoLibrary.h" />
+    <ClInclude Include="LibraryBandi\BandiVideoTexture.h" />
+    <ClInclude Include="LibraryBandi\BandiVideoTexture_DX9.h" />
+    <ClInclude Include="LibraryFmod\fmod.h" />
+    <ClInclude Include="LibraryFmod\fmod.hpp" />
+    <ClInclude Include="LibraryFmod\fmod_codec.h" />
+    <ClInclude Include="LibraryFmod\fmod_dsp.h" />
+    <ClInclude Include="LibraryFmod\fmod_errors.h" />
+    <ClInclude Include="LibraryFmod\fmod_memoryinfo.h" />
+    <ClInclude Include="LibraryFmod\fmod_output.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildEffectManager.h" />
@@ -124,6 +128,8 @@
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="LibraryBandi\BandiVideoLibrary.cpp" />
+    <ClCompile Include="LibraryBandi\BandiVideoTexture_DX9.cpp" />
     <ClCompile Include="oldboy.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />

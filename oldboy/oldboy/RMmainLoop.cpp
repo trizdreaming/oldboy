@@ -51,7 +51,7 @@ void CRMmainLoop::RunMessageLoop()
 		// 방어 코드 추가해야 됨
 	}
 
-	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/test.avi", FALSE ) ) )
+	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/sample.avi", FALSE ) ) )
 	{
 		MessageBox( NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP );
 		DestroyWindow( m_Hwnd );
@@ -265,12 +265,14 @@ void CRMmainLoop::RunMessageLoop()
 			if( m_ElapsedTime == m_Fps )
 			{
 				// 테스트 
+				/*
 				CRMlabel* testLabel = new CRMlabel();
-				testLabel->CreateLabel(L"테스트", L"테스트다옹", L"맑은 고딕", 35.0F );
+				testLabel->CreateLabel(L"테스트", L"테스트 라벨입니다.", L"맑은 고딕", 35.0F );
 				testLabel->SetRGBA( 0.8f, 0.5f, 0.3f, 1.f );
 				testLabel->SetSceneType( SCENE_TITLE );
 				testLabel->SetPosition( 50, 50 );
-				
+				*/
+
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
 				CRMobjectManager::GetInstance()->Update();

@@ -8,6 +8,7 @@
 #include "RMplayer2P.h"
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
+#include "RMchildEffectManager.h"
 
 CRMjudgeManager::CRMjudgeManager(void) :
 	m_Player1Judge(NO_JUDGE), m_Player2Judge(NO_JUDGE)
@@ -88,6 +89,7 @@ void CRMjudgeManager::JudgeNote()
 		/*if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )*/
 		if ( (*thisNoteP1)->GetPositionY() > 555 )
 		{
+
 			printf_s( "1P NoteOut Miss \n" );
 			
 			//score up
@@ -102,6 +104,24 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
+
+				//effect 플래그 세팅
+				//플래그만 세팅하면 이펙트 노출은 알아서 되게끔 하자
+				//플래그 세팅하는 곳은 effect manager(싱글톤)를 따로 두고 진행합시다
+				/*
+						1. judge에서 effect Manager flag세팅
+						2. childeffectimage에서 flag 확인
+						3. childeffectimage에서 flag 확인 후 다시 flag 초기화
+				*/
+				float hitPositionX = (*thisNoteP1)->GetPositionX();
+				float hitPositionY = (*thisNoteP1)->GetPositionY();
+				CRMchildEffectManager::GetInstance()->SetFlag(PLAYER_ONE, hitPositionX, hitPositionY);
+                                
+				//키 누르면서 바로 지우면 플래그 세팅이 안됨
+				//키를 누르면 무조건 세팅이 되면 miss 처리 불가
+				//deleteNote 이동
+				DeleteNote( note1List );
+
 				printf_s( "1P Perfect \n" );
 
 				//score up
@@ -109,8 +129,6 @@ void CRMjudgeManager::JudgeNote()
 				m_Player1Judge = JUDGE_PERFECT;
 				PrintScore( PLAYER_ONE );
 
-				//effect 적용
-				CRMchildEffectImage::GetInstance()->HitEffectFlag();
 
 			}
 		}
@@ -119,6 +137,12 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
+				float hitPositionX = (*thisNoteP1)->GetPositionX();
+				float hitPositionY = (*thisNoteP1)->GetPositionY();
+				CRMchildEffectManager::GetInstance()->SetFlag(PLAYER_ONE, hitPositionX, hitPositionY);
+
+				DeleteNote( note1List );
+
 				printf_s( "1P Good \n" );
 
 				//score up
@@ -132,6 +156,8 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
+				DeleteNote( note1List );
+
 				printf_s( "1P Time Miss \n" );
 
 				//score up;
@@ -142,6 +168,8 @@ void CRMjudgeManager::JudgeNote()
 		}
 
 	}
+
+	//2p는 키 이펙트 추가 안 함
 	
 	// Player2============================================================
 
@@ -233,7 +261,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_DOWN )
 		{
 			note->SetVisible( false );
-			DeleteNote( objectList );
+			//DeleteNote( objectList );
 			return true;
 		}
 	}
@@ -242,7 +270,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* 
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_DOWN )
 		{
 			note->SetVisible( false );
-			DeleteNote( objectList );
+			//DeleteNote( objectList );
 			return true;
 		}
 	}

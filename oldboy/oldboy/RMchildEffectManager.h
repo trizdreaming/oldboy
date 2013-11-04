@@ -1,8 +1,6 @@
 #pragma once
-#include "oldboy.h" 
-//왜 다른 매니저들은 cpp에 include해도 singletone이 되는가? 덕철이형 알려줘요.
 #include "RMenumSet.h"
-#include "RMobject.h"
+#include "oldboy.h"
 
 class CRMchildEffectManager
 {

@@ -99,6 +99,7 @@
     <ClInclude Include="LibraryFmod\fmod_output.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
+    <ClInclude Include="RMchildEffectManager.h" />
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildShutter.h" />
     <ClInclude Include="RMdefine.h" />
@@ -132,6 +133,7 @@
     <ClCompile Include="oldboy.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
+    <ClCompile Include="RMchildEffectManager.cpp" />
     <ClCompile Include="RMchildNote.cpp" />
     <ClCompile Include="RMchildShutter.cpp" />
     <ClCompile Include="RMimage.cpp" />

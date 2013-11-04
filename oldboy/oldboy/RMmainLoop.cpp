@@ -47,18 +47,24 @@ void CRMmainLoop::RunMessageLoop()
 	{
 		MessageBox( NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP );
 		DestroyWindow( m_Hwnd );
+
+		// 방어 코드 추가해야 됨
 	}
 
 	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/test.avi", FALSE ) ) )
 	{
 		MessageBox( NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP );
 		DestroyWindow( m_Hwnd );
+
+		// 방어 코드 추가해야 됨
 	}
 
 	if ( FAILED ( bandiVideoLibrary.GetVideoInfo( bandiVideoLibraryVideoInfo ) ) )
 	{
 		MessageBox( NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP );
 		DestroyWindow( m_Hwnd );
+
+		// 방어 코드 추가해야 됨
 	}
 
 

@@ -154,6 +154,9 @@
     <ClInclude Include="RMlabelManager.h">
       <Filter>Core\Label</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildEffectManager.h">
+      <Filter>Core\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -216,6 +219,9 @@
     <ClCompile Include="RMlabelManager.cpp">
       <Filter>Core\Label</Filter>
     </ClCompile>
+    <ClCompile Include="RMchildEffectManager.cpp">
+      <Filter>Core\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">
@@ -229,5 +235,8 @@
     <Image Include="oldboy.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

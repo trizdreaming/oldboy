@@ -307,7 +307,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player )
 		swprintf_s( judge, L"  GOOD!  " );
 		break;
 	case JUDGE_MISS:
-		swprintf_s( judge, L" MISS... " );
+		swprintf_s( judge, L"  MISS..." );
 		break;
 	default:
 		break;

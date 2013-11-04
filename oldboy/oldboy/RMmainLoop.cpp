@@ -269,8 +269,6 @@ void CRMmainLoop::RunMessageLoop()
 				// Update
 				CRMobjectManager::GetInstance()->Update();
 
-				CRMinput::GetInstance()->UpdateKeyState();
-
 				CRMrender::GetInstance()->RenderInit();
 
 				// 화면에 대한 처리를 진행
@@ -280,6 +278,10 @@ void CRMmainLoop::RunMessageLoop()
 
 				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;
+
+
+				// 소리 밀림을 방지하기 위해 UpdateKeyState와 TestSound를 묶어 둠
+				CRMinput::GetInstance()->UpdateKeyState();
 
 				// test sound
 				TestSound();

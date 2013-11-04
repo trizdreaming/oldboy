@@ -68,7 +68,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_sh_temp1.png" );
+	hr = texture->CreateImage( L"./Resource/image_sh_01_01.png" );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{

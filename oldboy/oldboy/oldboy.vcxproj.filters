@@ -136,10 +136,6 @@
     <ClInclude Include="RMlabelManager.h">
       <Filter>Core\Label</Filter>
     </ClInclude>
-<<<<<<< HEAD
-    <ClInclude Include="RMchildEffectManager.h">
-      <Filter>Core\Object\Children</Filter>
-=======
     <ClInclude Include="LibraryFmod\fmod.h">
       <Filter>Fmod</Filter>
     </ClInclude>
@@ -172,7 +168,6 @@
     </ClInclude>
     <ClInclude Include="LibraryBandi\BandiVideoTexture_DX9.h">
       <Filter>BandiVideo</Filter>
->>>>>>> 1b7c5c8213347dd5bdadc6cb4fa74c650b69fa10
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -236,16 +231,11 @@
     <ClCompile Include="RMlabelManager.cpp">
       <Filter>Core\Label</Filter>
     </ClCompile>
-<<<<<<< HEAD
-    <ClCompile Include="RMchildEffectManager.cpp">
-      <Filter>Core\Object\Children</Filter>
-=======
     <ClCompile Include="LibraryBandi\BandiVideoLibrary.cpp">
       <Filter>BandiVideo</Filter>
     </ClCompile>
     <ClCompile Include="LibraryBandi\BandiVideoTexture_DX9.cpp">
       <Filter>BandiVideo</Filter>
->>>>>>> 1b7c5c8213347dd5bdadc6cb4fa74c650b69fa10
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -260,8 +250,5 @@
     <Image Include="oldboy.ico">
       <Filter>리소스 파일</Filter>
     </Image>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
 </Project>

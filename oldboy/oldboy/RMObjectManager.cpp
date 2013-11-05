@@ -2,9 +2,10 @@
 #include "oldboy.h"
 
 #include "RMobject.h"
-#include "RMObjectManager.h"
-#include "RMlabelManager.h"
 #include "RMlabel.h"
+#include "RMobjectManager.h"
+#include "RMlabelManager.h"
+
 
 CRMobjectManager::CRMobjectManager(void)
 {

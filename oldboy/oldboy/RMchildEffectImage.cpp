@@ -1,8 +1,8 @@
 #include "stdafx.h"
 #include "oldboy.h"
 #include "RMchildEffectImage.h"
-#include "RMmainLoop.h"
 #include "RMchildEffectManager.h"
+#include "RMmainLoop.h"
 
 CRMchildEffectImage::CRMchildEffectImage(void):
 	m_EffectTime(0),

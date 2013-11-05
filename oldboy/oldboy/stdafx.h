@@ -32,11 +32,8 @@
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
 
 // bandi
-#pragma comment(lib, "dsound.lib")
-#pragma comment(lib, "dxguid.lib")
-#pragma comment(lib, "d3d9.lib")
-
-// bandi
 #include <mmsystem.h>
 #include <dsound.h>
+
+#include <crtdbg.h>
 

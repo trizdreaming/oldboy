@@ -1,5 +1,6 @@
 #pragma once
-#include "rmobject.h"
+
+#include "RMobject.h"
 
 class CRMchildEffectImage:
 	public CRMobject

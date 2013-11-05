@@ -85,12 +85,6 @@
     <ClInclude Include="RMdefine.h">
       <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="RMinclude.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
-    <ClInclude Include="RMlibrary.h">
-      <Filter>메인 영역\헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="RMmacro.h">
       <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
@@ -170,7 +164,7 @@
       <Filter>BandiVideo</Filter>
     </ClInclude>
     <ClInclude Include="RMchildEffectManager.h">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>Core\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -241,7 +235,7 @@
       <Filter>BandiVideo</Filter>
     </ClCompile>
     <ClCompile Include="RMchildEffectManager.cpp">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>Core\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

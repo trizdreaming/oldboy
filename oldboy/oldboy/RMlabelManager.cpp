@@ -27,7 +27,9 @@ void CRMlabelManager::CheckError( HRESULT hr )
 {
 	if ( hr != S_OK )
 	{
+#ifdef DEBUG
 		printf_s("Text Loading Error! (%d) \n", hr);
+#endif // DEBUG
 	}
 }
 

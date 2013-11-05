@@ -89,9 +89,10 @@ void CRMjudgeManager::JudgeNote()
 		/*if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )*/
 		if ( (*thisNoteP1)->GetPositionY() > 555 )
 		{
-
+#ifdef DEBUG
 			printf_s( "1P NoteOut Miss \n" );
-			
+#endif // DEBUG
+
 			//score up
 			CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
 			m_Player1Judge = JUDGE_MISS;
@@ -117,7 +118,9 @@ void CRMjudgeManager::JudgeNote()
 				float hitPositionY = (*thisNoteP1)->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( PLAYER_ONE , hitPositionX , hitPositionY );
 
+#ifdef DEBUG
 				printf_s( "1P Perfect \n" );
+#endif // DEBUG
 
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_PERFECT );
@@ -138,9 +141,11 @@ void CRMjudgeManager::JudgeNote()
 				float hitPositionX = (*thisNoteP1)->GetPositionX();
 				float hitPositionY = (*thisNoteP1)->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( PLAYER_ONE , hitPositionX , hitPositionY );
-
+#ifdef DEBUG
 				printf_s( "1P Good \n" );
+#endif // DEBUG
 
+				
 				//score up
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_GOOD );
 				m_Player1Judge = JUDGE_GOOD;
@@ -154,7 +159,10 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
 			{
+
+#ifdef DEBUG
 				printf_s( "1P Time Miss \n" );
+#endif // DEBUG
 
 				//score up;
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
@@ -180,7 +188,9 @@ void CRMjudgeManager::JudgeNote()
 		if ( (*thisNoteP2)->GetPositionY() > 555 )
 		{
 
+#ifdef DEBUG
 			printf_s( "2P NoteOut miss \n" );
+#endif // DEBUG
 
 			//score up
 			CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
@@ -194,7 +204,9 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
 			{
+#ifdef DEBUG
 				printf_s( "2P Perfect \n" );
+#endif // DEBUG
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_PERFECT );
@@ -212,7 +224,9 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
 			{
+#ifdef DEBUG
 				printf_s( "2P Good \n" );
+#endif // DEBUG
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_GOOD );
@@ -227,7 +241,9 @@ void CRMjudgeManager::JudgeNote()
 		{
 			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
 			{
+#ifdef DEBUG
 				printf_s( "2P Time Miss \n" );
+#endif // DEBUG
 
 				//score up
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
@@ -291,12 +307,14 @@ void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
 
 void CRMjudgeManager::PrintScore( PlayerNumber player )
 {
+#ifdef DEBUG
 	printf_s("Á¡¼öÇ¥ - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 			CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
 			CRMplayer1P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ),
 			CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 
 			CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
 			);
+#endif // DEBUG
 
 	CRMplayer*	thisPlayer = nullptr;
 	wchar_t		*playerScoreLabelName;

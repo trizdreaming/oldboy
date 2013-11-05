@@ -102,7 +102,7 @@ void CRMjudgeManager::JudgeNote()
 		// Player1 Perfect 
 		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
+			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
 			{
 
 				//effect 플래그 세팅
@@ -115,12 +115,7 @@ void CRMjudgeManager::JudgeNote()
 				*/
 				float hitPositionX = (*thisNoteP1)->GetPositionX();
 				float hitPositionY = (*thisNoteP1)->GetPositionY();
-				CRMchildEffectManager::GetInstance()->SetFlag(PLAYER_ONE, hitPositionX, hitPositionY);
-                                
-				//키 누르면서 바로 지우면 플래그 세팅이 안됨
-				//키를 누르면 무조건 세팅이 되면 miss 처리 불가
-				//deleteNote 이동
-				DeleteNote( note1List );
+				CRMchildEffectManager::GetInstance()->SetFlag( PLAYER_ONE , hitPositionX , hitPositionY );
 
 				printf_s( "1P Perfect \n" );
 
@@ -129,19 +124,20 @@ void CRMjudgeManager::JudgeNote()
 				m_Player1Judge = JUDGE_PERFECT;
 				PrintScore( PLAYER_ONE );
 
-
+				//키 누르면서 바로 지우면 플래그 세팅이 안됨
+				//키를 누르면 무조건 세팅이 되면 miss 처리 불가
+				//deleteNote 이동
+				DeleteNote( note1List );
 			}
 		}
 		// Player1 Good
 		else if ( ( (*thisNoteP1)->GetPositionY() > 514 && (*thisNoteP1)->GetPositionY() < 576 ) )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
+			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
 			{
 				float hitPositionX = (*thisNoteP1)->GetPositionX();
 				float hitPositionY = (*thisNoteP1)->GetPositionY();
-				CRMchildEffectManager::GetInstance()->SetFlag(PLAYER_ONE, hitPositionX, hitPositionY);
-
-				DeleteNote( note1List );
+				CRMchildEffectManager::GetInstance()->SetFlag( PLAYER_ONE , hitPositionX , hitPositionY );
 
 				printf_s( "1P Good \n" );
 
@@ -149,21 +145,23 @@ void CRMjudgeManager::JudgeNote()
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_GOOD );
 				m_Player1Judge = JUDGE_GOOD;
 				PrintScore( PLAYER_ONE );
+
+				DeleteNote( note1List );
 			}
 		}
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
 		else if ( (*thisNoteP1)->GetPositionY() > 504 )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
+			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
 			{
-				DeleteNote( note1List );
-
 				printf_s( "1P Time Miss \n" );
 
 				//score up;
 				CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
 				m_Player1Judge = JUDGE_MISS;
 				PrintScore( PLAYER_ONE );
+
+				DeleteNote( note1List );
 			}
 		}
 
@@ -194,7 +192,7 @@ void CRMjudgeManager::JudgeNote()
 		// Player2 Perfect 
 		else if ( (*thisNoteP2)->GetPositionY() > 534 && (*thisNoteP2)->GetPositionY() < 556 )
 		{
-			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
+			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
 			{
 				printf_s( "2P Perfect \n" );
 
@@ -205,12 +203,14 @@ void CRMjudgeManager::JudgeNote()
 
 				// effect 적용
 				// CRMchildEffectImage::GetInstance()->HitEffectFlag();
+
+				DeleteNote( note2List );
 			}
 		}
 		// Player2 Good
 		else if ( ( (*thisNoteP2)->GetPositionY() > 514 && (*thisNoteP2)->GetPositionY() < 576 ) )
 		{
-			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
+			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
 			{
 				printf_s( "2P Good \n" );
 
@@ -218,12 +218,14 @@ void CRMjudgeManager::JudgeNote()
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_GOOD );
 				m_Player2Judge = JUDGE_GOOD;
 				PrintScore( PLAYER_TWO );
+
+				DeleteNote( note2List );
 			}
 		}
 		// Player2 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
 		else if ( (*thisNoteP2)->GetPositionY() > 504 )
 		{
-			if ( IsKeyInputRight( *thisNoteP2 , note2List , PLAYER_TWO ) )
+			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
 			{
 				printf_s( "2P Time Miss \n" );
 
@@ -231,13 +233,15 @@ void CRMjudgeManager::JudgeNote()
 				CRMplayer2P::GetInstance()->AddEvent( JUDGE_MISS );
 				m_Player2Judge = JUDGE_MISS;
 				PrintScore( PLAYER_TWO );
+
+				DeleteNote( note2List );
 			}
 		}
 	}
 }
 
 
-bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , std::list<CRMobject*>* objectList , PlayerNumber player )
+bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 {
 	KeyTable target1;
 	KeyTable target2;

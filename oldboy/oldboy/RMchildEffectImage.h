@@ -11,5 +11,6 @@ public:
 	virtual void        Update();
 
 private:
-	int m_EffectTime;
+	int	m_EffectTime;
+	int	m_EffectType;
 };

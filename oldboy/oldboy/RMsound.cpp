@@ -22,9 +22,9 @@ void CRMsound::CheckError()
 {
 	if ( m_Result != FMOD_OK )
 	{
-#ifdef DEBUG
+#ifdef _DEBUG		
 		printf_s("FMOD error! (%d) %s\n", m_Result, FMOD_ErrorString(m_Result));
-#endif // DEBUG
+#endif // _DEBUG
 	}
 }
 

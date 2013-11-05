@@ -35,9 +35,9 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 	int flagPosition1 = 0;
 	int flagPosition2 = 0;
 
-#ifdef DEBUG
+#ifdef _DEBUG
 	printf_s( "1P flag : %d , 2P flag: %d \n", m_FlagSetter1P, m_FlagSetter2P );
-#endif // DEBUG
+#endif // _DEBUG
 
 	switch ( targetPlayer )
 	{
@@ -62,9 +62,9 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 			++m_FlagSetter1P;
 			break;
 		default:
-#ifdef DEBUG
+#ifdef _DEBUG
 			printf_s( "Flag Setting Error\n" );
-#endif // DEBUG
+#endif // _DEBUG
 
 			break;
 		}
@@ -90,9 +90,9 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 			++m_FlagSetter2P;
 			break;
 		default:
-#ifdef DEBUG
+#ifdef _DEBUG
 			printf_s( "Flag Setting Error\n" );
-#endif // DEBUG
+#endif // _DEBUG
 			break;
 		}
 		break;

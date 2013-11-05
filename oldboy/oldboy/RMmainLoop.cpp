@@ -183,9 +183,9 @@ void CRMmainLoop::RunMessageLoop()
 
 			if ( status == BVL_STATUS_PLAYEND )
 			{
-#ifdef DEBUG
+#ifdef _DEBUG
 				printf_s("END! \n");
-#endif // DEBUG
+#endif // _DEBUG
 				break;
 			}
 			if ( GetAsyncKeyState( VK_A ) & 0x8000 )
@@ -194,9 +194,9 @@ void CRMmainLoop::RunMessageLoop()
 			}
 			else
 			{
-#ifdef DEBUG
+#ifdef _DEBUG
 				printf_s( "frame: %d \n", count );
-#endif // DEBUG
+#endif // _DEBUG
 			}
 		}
 	}

@@ -30,8 +30,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 	}
 		
 
-	auto& iter = notePoolList->begin();
-	auto thisNote = iter;
+	auto& thisNote = notePoolList->begin();
 	switch ( player )
 	{
 	case PLAYER_ONE:

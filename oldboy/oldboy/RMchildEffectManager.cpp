@@ -22,13 +22,13 @@ CRMchildEffectManager::~CRMchildEffectManager(void)
 //한 화면에 최대 8개까지 판정 가능											//
 //////////////////////////////////////////////////////////////////////////////
 
-void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_PositionX, float m_PositionY )
+void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX, float positionY )
 {
 	//노트를 뿌려줄 포지션 결정
 	//judgeManager에서 위치값을 던져주면 저장 했다가
 	//이펙트 업데이터가 포지션을 받아 쓸 수 있도록 함
-	m_EffectStartPositionX = m_PositionX;
-	m_EffectStartPositionY = m_PositionY;
+	m_EffectStartPositionX = positionX;
+	m_EffectStartPositionY = positionY;
 	
 	//잉여로운 BitFlag 설정
 	//모듈러 연산을 통해서 각 비트에 플래그를 세울 수 있도록 함
@@ -42,8 +42,8 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 	switch ( targetPlayer )
 	{
 	case PLAYER_ONE:
-		flagPosition1 = m_FlagSetter1P % 4;
-		switch ( flagPosition1 )
+		m_FlagSetter1P = m_FlagSetter1P % 4;
+		switch ( m_FlagSetter1P )
 		{
 		case 0:
 			m_BitFlag = ( m_BitFlag | 0x80 );
@@ -70,8 +70,8 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 		}
 		break;
 	case PLAYER_TWO:
-		flagPosition2 = m_FlagSetter2P % 4;
-		switch ( flagPosition2 )
+		m_FlagSetter2P = m_FlagSetter2P % 4;
+		switch ( m_FlagSetter2P )
 		{
 		case 0:
 			m_BitFlag = ( m_BitFlag | 0x08 );
@@ -105,14 +105,7 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 
 void CRMchildEffectManager::ResetFlag()
 {
-	if( !m_BitFlag )
-	{
-		return;
-	}
-	else
-	{
-		m_BitFlag = 0x00;
-	}
+	m_BitFlag = 0x00;
 }
 
 

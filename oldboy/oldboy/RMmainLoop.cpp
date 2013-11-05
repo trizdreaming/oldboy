@@ -42,13 +42,15 @@ void CRMmainLoop::RunMessageLoop()
 	CBandiVideoTexture*		bandiVideoTexture = NULL;
 	BVL_VIDEO_INFO			bandiVideoLibraryVideoInfo;
 
-	
+	//SM9: 사실 이런 초기화에 관련된 부분은 RunMessageLoop() 함수 밖에서 먼저 해주는게 맞다. 
+	// 메세지 루프는 말 그대로 메세지 PeekMessage 이하 부분만 가지고 있어야 헷갈리지 않는다.
+
 	if ( FAILED ( bandiVideoLibrary.Create( BANDIVIDEO_DLL_FILE_NAME, NULL, NULL ) ) )
 	{
 		MessageBox( NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP );
 		DestroyWindow( m_Hwnd );
 
-		// 방어 코드 추가해야 됨
+		// 방어 코드 추가해야 됨 //SM9: 그래
 	}
 
 	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/sample.avi", FALSE ) ) )
@@ -86,6 +88,7 @@ void CRMmainLoop::RunMessageLoop()
 		{
 			if ( msg.message == WM_QUIT )
 			{
+				//SM9: 이렇게 자원 해제에 관련된 것들도 밖에서 해주는게 맞음..
 				bandiVideoLibrary.Destroy();
 
 				if ( bandiVideoDevice ) 
@@ -127,6 +130,7 @@ void CRMmainLoop::RunMessageLoop()
 
 				if ( bandiVideoTexture == NULL )
 				{
+					//SM9: 루프 안에서 이렇게 자원 할당 하는것은 좋지 못함. 루프 진입전에 다 해놓고 진입하는게 좋다.
 					bandiVideoTexture = new CBandiVideoTexture_DX9( (CBandiVideoDevice_DX9* ) bandiVideoDevice );
 					
 					if ( !bandiVideoTexture || FAILED( bandiVideoTexture->Open( bandiVideoLibraryVideoInfo.width , bandiVideoLibraryVideoInfo.height ) ) )
@@ -219,10 +223,11 @@ void CRMmainLoop::RunMessageLoop()
 	}
 	//===================================================================
 	
+	//SM9: RunMessageLoop가 하는 일이 왤케 많은가? 리팩토링 및 모듈화 잘 할 것
 
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
-	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
+	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3"); //SM9: 이런 데이터 이름들은 config.h같은걸로 빼던가 설정 파일로 빼는게 좋다
 	CRMsound::GetInstance()->LoadSound("Dengue_Fever-Integration.mp3");
 	CRMsound::GetInstance()->LoadSound("sound_effect_01_01.wav");
 	CRMsound::GetInstance()->LoadSound("sound_effect_02_01.wav");
@@ -232,6 +237,7 @@ void CRMmainLoop::RunMessageLoop()
 	
 	CRMsound::GetInstance()->PlaySound("bgm_title_00_01.mp3");
 
+	//SM9: PeekMessage 또나오네..  (dirty하게 만들고 빠르게 테스트하는 철학에 의거하여 당장은 아니더라도..) 뭔가 구조적으로 정리가 필요해 보임. 
 	while ( true )
 	{
 		if ( PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) ) // PeekMessage는 대기 없이 무한 루프 상태로 진행(non blocked function)

@@ -32,7 +32,7 @@
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
 
 // bandi
-#pragma comment(lib, "dsound.lib")
+#pragma comment(lib, "dsound.lib") //SM9: 이런 애들은 stdafx.h에 넣지 말기..
 #pragma comment(lib, "dxguid.lib")
 #pragma comment(lib, "d3d9.lib")
 

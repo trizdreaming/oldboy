@@ -43,12 +43,14 @@ private:
 
 	wchar_t*	m_FontFace;
 	// wchar_t*	m_String;
-	wchar_t		m_String[255];
+	wchar_t		m_String[255]; //SM9: 이런 상수는 따로 config.h 같은데 빼놓기.
 
 	float		m_FontSize;
 	float		m_ColorR, m_ColorG, m_ColorB;
 	float		m_Opacity;
 	bool		m_Bold;
 	bool		m_Italic;
+
+	friend class CRMlabelManager ;  //SM9: 보통 이런식으로 레이블을 관리하는 메니저가 있다면, 매니저에서는 레이블 안에 그냥 접근가능하게 이런 방식을 많이 쓴다.
 };
 

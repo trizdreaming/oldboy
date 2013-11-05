@@ -88,7 +88,7 @@ void CRMplayer::SetCount( CountType countType, UINT count )
 	switch ( countType )
 	{
 	case PERFECT_COUNT:
-		m_PerfectCount = count;
+		m_PerfectCount = count; //SM9: m_PerfectCount m_GoodCount m_MissCount 이런것들 그냥 m_Count[MAX_COUNT] 처럼 배열 만들어 놓고 쓰는게 깔끔하다.
 		break;
 	case GOOD_COUNT:
 		m_GoodCount = count;

@@ -42,8 +42,8 @@ HRESULT CRMresourceManager::CreateTexture()
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_bg_00_01.png" );
-	CheckError(hr);
+	hr = texture->CreateImage( L"./Resource/image_bg_00_01.png" ); //SM9: 이런 상수 문자열은 따로 빼는거 알쟈?
+	CheckError(hr); //SM9: CheckError이 S_OK 리턴 여부 결정하면 될 것을...
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;

@@ -5,11 +5,12 @@ enum SceneType
 	SCENE_TITLE,
 	SCENE_PLAY,
 	SCENE_RESULT,
-	NO_SCENE
+	NO_SCENE //SM9: 보통 ENUM 정의할 때, 의미 없는 원소는 ST_NONE 이런식으로 하고 가장 첫번째에 넣는다. (0부터 시작하니까)
 };
 
 enum LayerType
 {
+	LT_NONE, //SM9:  그러니까 아래 NO_LAYER는 이런식으로 네이밍을 하고 맨 앞에. 
 	LAYER_BACKGROUND,
 	LAYER_NOTE1,
 	LAYER_NOTE2,
@@ -18,7 +19,7 @@ enum LayerType
 	LAYER_SHUTTER,
 	LAYER_LABEL,
 	LAYER_MEMORY_POOL,
-	NO_LAYER
+	NO_LAYER  
 };
 
 enum ObjectType
@@ -30,7 +31,7 @@ enum ObjectType
 	OBJECT_EFFECT,
 	OBJECT_NOTE_HIT,
 	OBJECT_SHUTTER,
-	NO_OBJECT
+	NO_OBJECT //SM9: OT_NONE
 };
 
 enum KeyTable
@@ -38,7 +39,7 @@ enum KeyTable
 	KEY_ESCAPE,
 	KEY_RETURN,
 
-	P1_TARGET1,
+	P1_TARGET1, //SM9: KT_P1_TARGET1 이렇게 enum의 약어를 따와서 prefix로 붙이는 네이밍..
 	P1_TARGET2,
 	P1_ATTACK,
 

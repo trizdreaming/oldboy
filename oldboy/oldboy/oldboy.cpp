@@ -28,7 +28,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 	HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
 
-	if(SUCCEEDED(CoInitialize(NULL)))
+	if(SUCCEEDED(CoInitialize(NULL))) //SM9: keyword 다음에는 괄호 띄우는 습관을 들일 것: if (...)
 	{
 		if(SUCCEEDED(CRMmainLoop::GetInstance()->CreateMainLoopWindow()))
 		{

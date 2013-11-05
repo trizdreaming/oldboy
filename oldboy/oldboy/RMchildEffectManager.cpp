@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMchildEffectManager.h"
 
 CRMchildEffectManager::CRMchildEffectManager(void):
@@ -17,21 +17,21 @@ CRMchildEffectManager::~CRMchildEffectManager(void)
 
 
 //////////////////////////////////////////////////////////////////
-//BitFlag »ç¿ë¹ı													//
-//°¢ ºñÆ®´Â ¾î¶² ÀÌÆåÆ®¸¦ play È­¸é¿¡ º¸¿©Áà¾ßÇÒÁö ¸»¾Æ¾ß ÇÒÁö ½ºÀ§Äª		//
-//ÇÑ È­¸é¿¡ ÃÖ´ë 8°³±îÁö ÆÇÁ¤ °¡´É								    //
+//BitFlag ì‚¬ìš©ë²•													//
+//ê° ë¹„íŠ¸ëŠ” ì–´ë–¤ ì´í™íŠ¸ë¥¼ play í™”ë©´ì— ë³´ì—¬ì¤˜ì•¼í• ì§€ ë§ì•„ì•¼ í• ì§€ ìŠ¤ìœ„ì¹­		//
+//í•œ í™”ë©´ì— ìµœëŒ€ 8ê°œê¹Œì§€ íŒì • ê°€ëŠ¥								    //
 //////////////////////////////////////////////////////////////////
 
 void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_PositionX, float m_PositionY )
 {
-	//³ëÆ®¸¦ »Ñ·ÁÁÙ Æ÷Áö¼Ç °áÁ¤
-	//judgeManager¿¡¼­ À§Ä¡°ªÀ» ´øÁ®ÁÖ¸é ÀúÀå Çß´Ù°¡
-	//ÀÌÆåÆ® ¾÷µ¥ÀÌÅÍ°¡ Æ÷Áö¼ÇÀ» ¹Ş¾Æ ¾µ ¼ö ÀÖµµ·Ï ÇÔ
+	//ë…¸íŠ¸ë¥¼ ë¿Œë ¤ì¤„ í¬ì§€ì…˜ ê²°ì •
+	//judgeManagerì—ì„œ ìœ„ì¹˜ê°’ì„ ë˜ì ¸ì£¼ë©´ ì €ì¥ í–ˆë‹¤ê°€
+	//ì´í™íŠ¸ ì—…ë°ì´í„°ê°€ í¬ì§€ì…˜ì„ ë°›ì•„ ì“¸ ìˆ˜ ìˆë„ë¡ í•¨
 	m_EffectStartPositionX = m_PositionX;
 	m_EffectStartPositionY = m_PositionY;
 	
-	//À×¿©·Î¿î BitFlag ¼³Á¤
-	//¸ğµâ·¯ ¿¬»êÀ» ÅëÇØ¼­ °¢ ºñÆ®¿¡ ÇÃ·¡±×¸¦ ¼¼¿ï ¼ö ÀÖµµ·Ï ÇÔ
+	//ì‰ì—¬ë¡œìš´ BitFlag ì„¤ì •
+	//ëª¨ë“ˆëŸ¬ ì—°ì‚°ì„ í†µí•´ì„œ ê° ë¹„íŠ¸ì— í”Œë˜ê·¸ë¥¼ ì„¸ìš¸ ìˆ˜ ìˆë„ë¡ í•¨
 	int flagPosition1 = 0;
 	int flagPosition2 = 0;
 	switch (targetPlayer)
@@ -41,11 +41,11 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 		switch (flagPosition1)
 		{
 		case 0:
-			m_BitFlag = ( m_BitFlag | 0x80);
+			m_BitFlag = ( m_BitFlag | 0x80); //SM9:  m_BitFlag |= 0x0080 ì´ëŸ°ì‹ìœ¼ë¡œ
 			++m_FlagSetter1P;
 			break;
 		case 1:
-			m_BitFlag = ( m_BitFlag | 0x40);
+			m_BitFlag = ( m_BitFlag | 0x40); 
 			++m_FlagSetter1P;
 			break;
 		case 2:
@@ -63,6 +63,10 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float m_Positio
 		break;
 	case PLAYER_TWO:
 		flagPosition2 = m_FlagSetter2P % 4;
+
+		//SM9: switch ê°™ì€ê±° ì•ˆì“°ê³  ì´ëŸ°ì‹ìœ¼ë¡œ ì¼ë°˜í™” ë  ê²ƒ ê°™ì€ë°?   m_BitFlag |= ( 0x1 << (3-flagPosition2) )
+		// ìœ„ì˜ flagPosition1ë„ ë§ˆì°¬ê°€ì§€
+
 		switch (flagPosition2)
 		{
 		case 0:

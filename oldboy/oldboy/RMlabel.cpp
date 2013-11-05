@@ -33,7 +33,8 @@ void CRMlabel::CreateLabel( std::wstring key, std::wstring string, wchar_t* font
 	auto labelMap = CRMlabelManager::GetInstance()->GetLabelMap();
 
 	SafeDelete( (*labelMap)[key] );
-	(*labelMap)[key] = this;
+	(*labelMap)[key] = this; //SM9: 이건 뭔가 좋은 방법이 아니다. labelMap.Register(key, this) 처럼 등록하게끔 맡기는게 바람직
+	//SM9: 그리고 CRMlabelManager에서 CRMlabel의 멤버에 바로 접근할 수 있도록 friend class CRMlabelManager를 선언해주는게 일반적.
 }
 
 

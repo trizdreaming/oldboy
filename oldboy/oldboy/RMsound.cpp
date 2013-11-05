@@ -20,6 +20,7 @@ CRMsound::~CRMsound(void)
 // 에러 체크
 void CRMsound::CheckError()
 {
+	//SM9: 이건 에러 체크가 아니라 로그 남기려는거 아닌가? 함수 네이밍 바꿀 것.
 	if ( m_Result != FMOD_OK )
 	{
 		printf_s("FMOD error! (%d) %s\n", m_Result, FMOD_ErrorString(m_Result));
@@ -50,10 +51,12 @@ void CRMsound::LoadSound( const std::string& fileName )
 		std::string filePath = "./Resource/"+fileName;
 		m_Result = m_SystemS->createSound(filePath.c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_Sound);
 		// FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
-		
+	
+		//SM9:  만일 이 부분이 실패한다면? 거기에 대한 처리는? 최소한 프로그램 종료라도 시킬 수 있어야 함
 		CheckError();
 		m_SoundMap[fileName] = m_Sound;
 	}
+
 }
 
 // 재생

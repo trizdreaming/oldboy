@@ -14,7 +14,8 @@ private:
 
 public:
 
-	std::list<CRMobject*>*		GetObjectList(LayerType layer);
+	std::list<CRMobject*>*		GetObjectList(LayerType layer);  //SM9: 사실 이렇게 내부 자료구조를 통째로 외부에서 iterate 도는 것도 좋은 구조는 아니다.
+																	// 정 안되면, 오브젝트 하나씩 꺼내서 처리할 수 있도록 GetObjectFirst(), GetObjectNext()식으로 쓰는게 좋다
 
 	void	AddObject(CRMobject* bject, LayerType layer);
 

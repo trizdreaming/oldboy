@@ -18,7 +18,7 @@ void CRMchildEffectImage::Update()
 {
 	++m_EffectTime;
 
-	if( (CRMchildEffectManager::GetInstance()->GetFlag() & 0x80) || (CRMchildEffectManager::GetInstance()->GetFlag() & 0x20))
+	if ( (CRMchildEffectManager::GetInstance()->GetFlag() & 0x80) || (CRMchildEffectManager::GetInstance()->GetFlag() & 0x20))
 	{
 
 		m_EffectTime = 0;
@@ -32,7 +32,7 @@ void CRMchildEffectImage::Update()
 	}
 
 
-	if( (CRMchildEffectManager::GetInstance()->GetFlag() & 0x40) || (CRMchildEffectManager::GetInstance()->GetFlag() & 0x01))
+	if ( (CRMchildEffectManager::GetInstance()->GetFlag() & 0x40) || (CRMchildEffectManager::GetInstance()->GetFlag() & 0x01))
 	{
 
 		m_EffectTime = 0;
@@ -50,7 +50,7 @@ void CRMchildEffectImage::Update()
 	m_PositionX -= 10;
 	m_PositionY -= 10;
 
-	if(m_EffectTime>10)
+	if (m_EffectTime>10)
 	{
 		CRMobject::m_Visible = false;
 	}

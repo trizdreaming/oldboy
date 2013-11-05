@@ -23,7 +23,7 @@ CRMjudgeManager::~CRMjudgeManager(void)
 void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 {
 	std::list<CRMobject*>* notePoolList = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL );
-
+	//SM9: 풀을 통째로 가져오지 말고 그냥 노트를 하나씩 가져올 수 있도록 CRMobjectManager를 리팩토링 하는게 깔끔.
 	if ( notePoolList->size() == 0 )
 	{
 		return; 
@@ -80,18 +80,21 @@ void CRMjudgeManager::JudgeNote()
 	std::list<CRMobject*>* note1List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 );
 	std::list<CRMobject*>* note2List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 );
 	
-	if( note1List->size() > 0 )
+	if ( note1List->size() > 0 )
 	{
 		auto& iterP1 = note1List->begin();
-		auto thisNoteP1 = iterP1;
+		auto thisNoteP1 = iterP1; //SM9: 이거 복사 왜하는겨?
 
 		// Player1 Miss 575
 		/*if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )*/
 		if ( (*thisNoteP1)->GetPositionY() > 555 )
 		{
-
+			//SM9: 콘솔창에 찍는거는 디버그시에만 쓸거니까.. 릴리스에서는 동작 하지 않도록 이렇게 감싸주는게 좋다.
+			// 나머지 printf있는곳도 모두 바꾸삼.
+#ifdef DEBUG
 			printf_s( "1P NoteOut Miss \n" );
-			
+#endif // DEBUG			
+
 			//score up
 			CRMplayer1P::GetInstance()->AddEvent( JUDGE_MISS );
 			m_Player1Judge = JUDGE_MISS;
@@ -99,8 +102,10 @@ void CRMjudgeManager::JudgeNote()
 
 			DeleteNote( note1List );
 		}
+
+		//SM9: 아래를 보면 비슷한 코드의 패턴이 나오고 있네.. 판정 로직을 함수 하나로 일반화 할 수 있을것 같은데? perfect/good/miss 때마다 다른것만 변수로 빼면 될 듯.
 		// Player1 Perfect 
-		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 )
+		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 ) //SM9: 534, 556같은 상수는 다른곳에 define이나 const int로 빼는게 좋겠지?
 		{
 			if ( IsKeyInputRight( *thisNoteP1 , note1List , PLAYER_ONE ) )
 			{
@@ -314,7 +319,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player )
 	case PLAYER_TWO:
 		thisPlayer = CRMplayer2P::GetInstance();
 		playerScoreLabelName = L"플레이어2점수";
-		playerComboLabelName = L"플레이어2콤보";
+		playerComboLabelName = L"플레이어2콤보"; //SM9: 이런 상수 문자열은 코드내에 박지 말고 모두 빼서 한군데 모으쟈..
 		positionX = 600;
 		thisPlayerJudge = m_Player2Judge;
 
@@ -362,7 +367,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player )
 	else
 	{
 		CRMlabel* playerComboLabel = new CRMlabel();
-		playerComboLabel->CreateLabel( playerComboLabelName , L"", L"맑은 고딕", 35.0F );
+		playerComboLabel->CreateLabel( playerComboLabelName , L"", L"맑은 고딕", 35.0F );  //SM9: 사실 이런 "맑은 고딕"같은 상수 문자열은 코드내에 박는거 좋지 않다. 모두 밖으로 뺄 것 최소한 config.h같은데 모아 놓을 것
 		playerComboLabel->SetRGBA( 0.f, 0.f, 0.f, 1.f );
 		playerComboLabel->SetSceneType( SCENE_PLAY );
 		playerComboLabel->SetPosition( positionX, positionY + 250 );

@@ -152,12 +152,7 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
-	/*
-	for ( auto& iter : m_ObjectListLayerLabel )
-	{
-		iter->Update();
-	}
-	*/
+	
 	m_ObjectListLayerLabel.clear();
 	CRMobject* thisLabel = nullptr;
 

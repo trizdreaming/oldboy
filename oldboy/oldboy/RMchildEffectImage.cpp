@@ -17,10 +17,7 @@ CRMchildEffectImage::~CRMchildEffectImage(void)
 
 void CRMchildEffectImage::Update()
 {
-	CRMobject::SetVisibleByScene();
-	++m_EffectTime;
-
-	if ( CRMchildEffectManager::GetInstance()->GetFlag() )
+	if ( m_Visible == false && CRMchildEffectManager::GetInstance()->GetFlag() )
 	{
 		m_EffectTime = 0;
 
@@ -44,13 +41,18 @@ void CRMchildEffectImage::Update()
 		CRMchildEffectManager::GetInstance()->ResetFlag();
 	}
 
+	if ( m_Visible == false )
+	{
+		return;
+	}
+
 	//2p 추가 필요 없음
 
 	m_PositionX -= 10 * m_EffectTime;;
 	m_PositionY -= ( 7 - ( m_EffectType * 2) ) * m_EffectTime;
-	
+
 	// 8보다 커지면 2P의 이펙트 효과 이미지가 1P 공간을 침범함
-	if ( m_EffectTime > 8 )
+	if ( ++m_EffectTime > 8 )
 	{
 		CRMobject::m_Visible = false;
 	}

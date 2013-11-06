@@ -25,7 +25,7 @@ CRMmainLoop::CRMmainLoop(void):
 	m_Hwnd(NULL)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
-	m_Fps = 1000 / 60;
+	m_Fps = ( 1000 / 60 ) + 1;
 }
 
 CRMmainLoop::~CRMmainLoop(void)
@@ -93,8 +93,9 @@ void CRMmainLoop::RunMessageLoop()
 
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
-				// printf_s("FPS : %d \n", fps);
-
+// #ifdef _DEBUG
+// 				printf_s("FPS : %d \n", fps);
+// #endif
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
 			}

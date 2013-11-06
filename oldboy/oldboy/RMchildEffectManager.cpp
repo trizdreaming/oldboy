@@ -30,11 +30,6 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 	m_EffectStartPositionX = positionX;
 	m_EffectStartPositionY = positionY;
 	
-	//잉여로운 BitFlag 설정
-	//모듈러 연산을 통해서 각 비트에 플래그를 세울 수 있도록 함
-	int flagPosition1 = 0;
-	int flagPosition2 = 0;
-
 #ifdef _DEBUG
 	printf_s( "1P flag : %d , 2P flag: %d \n", m_FlagSetter1P, m_FlagSetter2P );
 #endif // _DEBUG
@@ -42,62 +37,23 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 	switch ( targetPlayer )
 	{
 	case PLAYER_ONE:
-		m_FlagSetter1P = m_FlagSetter1P % 4;
-		switch ( m_FlagSetter1P )
-		{
-		case 0:
-			m_BitFlag = ( m_BitFlag | 0x80 );
-			++m_FlagSetter1P;
-			break;
-		case 1:
-			m_BitFlag = ( m_BitFlag | 0x40 );
-			++m_FlagSetter1P;
-			break;
-		case 2:
-			m_BitFlag = ( m_BitFlag | 0x20 );
-			++m_FlagSetter1P;
-			break;
-		case 3:
-			m_BitFlag = ( m_BitFlag | 0x10 );
-			++m_FlagSetter1P;
-			break;
-		default:
-#ifdef _DEBUG
-			printf_s( "Flag Setting Error\n" );
-#endif // _DEBUG
+		m_FlagSetter1P = ++m_FlagSetter1P % 4;
 
-			break;
-		}
-		break;
-	case PLAYER_TWO:
-		m_FlagSetter2P = m_FlagSetter2P % 4;
-		switch ( m_FlagSetter2P )
-		{
-		case 0:
-			m_BitFlag = ( m_BitFlag | 0x08 );
-			++m_FlagSetter2P;
-			break;
-		case 1:
-			m_BitFlag = ( m_BitFlag | 0x04 );
-			++m_FlagSetter2P;
-			break;
-		case 2:
-			m_BitFlag = ( m_BitFlag | 0x02 );
-			++m_FlagSetter2P;
-			break;
-		case 3:
-			m_BitFlag = ( m_BitFlag | 0x01 );
-			++m_FlagSetter2P;
-			break;
-		default:
+		m_BitFlag |= ( 0x0010 << (3 - m_FlagSetter1P) );
 #ifdef _DEBUG
-			printf_s( "Flag Setting Error\n" );
-#endif // _DEBUG
-			break;
-		}
+		printf_s("1P BitFlag 발동! %x \n", m_BitFlag);
+#endif
+		break;		
+	case PLAYER_TWO:
+		m_FlagSetter2P = ++m_FlagSetter2P % 4;
+
+		m_BitFlag |= ( 0x0001 << (3 - m_FlagSetter2P) );
+#ifdef _DEBUG
+		printf_s("2P BitFlag 발동! %x \n", m_BitFlag);
+#endif
 		break;
+
 	case NO_PLAYER:
-		break;
 	default:
 		break;
 	}

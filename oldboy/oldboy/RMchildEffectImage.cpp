@@ -20,9 +20,6 @@ void CRMchildEffectImage::Update()
 	CRMobject::SetVisibleByScene();
 	++m_EffectTime;
 
-	// 	if ( ( CRMchildEffectManager::GetInstance()->GetFlag() & 0x80 ) || ( CRMchildEffectManager::GetInstance()->GetFlag() & 0x20 ) )
-	// 	{
-
 	if ( CRMchildEffectManager::GetInstance()->GetFlag() )
 	{
 		m_EffectTime = 0;
@@ -32,12 +29,13 @@ void CRMchildEffectImage::Update()
 
 		m_Visible = true;
 		
-		while ( ( ( CRMchildEffectManager::GetInstance()->GetFlag() ) << m_EffectType ) )
+		for ( int i = 0 ; i < 8 ; ++i )
 		{
-			++m_EffectType;
-		} // 교수님 예제 보고 수정
-
-		m_EffectType = ( m_EffectType % 4 ) + 1;
+			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
+			{
+				m_EffectType = m_EffectType++ % 4;
+			}
+		}
 #ifdef _DEBUG
 		printf_s( "테스트 출력 플래그 [ %x ] 좌표 [ %f , %f ] 타입 [ %d ] \n", 
 			CRMchildEffectManager::GetInstance()->GetFlag(), 
@@ -75,7 +73,8 @@ void CRMchildEffectImage::Update()
 		break;
 	}
 	
-	if ( m_EffectTime > 10 )
+	// 8보다 커지면 2P의 이펙트 효과 이미지가 1P 공간을 침범함
+	if ( m_EffectTime > 8 )
 	{
 		CRMobject::m_Visible = false;
 	}

@@ -23,7 +23,7 @@ void CRMchildEffectImage::Update()
 	// 	if ( ( CRMchildEffectManager::GetInstance()->GetFlag() & 0x80 ) || ( CRMchildEffectManager::GetInstance()->GetFlag() & 0x20 ) )
 	// 	{
 
-	if ( CRMchildEffectManager::GetInstance()->GetFlag() & 0xF0 )
+	if ( CRMchildEffectManager::GetInstance()->GetFlag() )
 	{
 		m_EffectTime = 0;
 
@@ -32,10 +32,10 @@ void CRMchildEffectImage::Update()
 
 		m_Visible = true;
 		
-		while ( ( ( CRMchildEffectManager::GetInstance()->GetFlag() & 0xF0 ) << m_EffectType ) )
+		while ( ( ( CRMchildEffectManager::GetInstance()->GetFlag() ) << m_EffectType ) )
 		{
 			++m_EffectType;
-		}
+		} // 교수님 예제 보고 수정
 
 		m_EffectType = ( m_EffectType % 4 ) + 1;
 #ifdef _DEBUG
@@ -46,7 +46,7 @@ void CRMchildEffectImage::Update()
 		CRMchildEffectManager::GetInstance()->ResetFlag();
 	}
 
-	//2p 추가 필요
+	//2p 추가 필요 없음
 
 	switch ( m_EffectType )
 	{

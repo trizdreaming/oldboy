@@ -28,39 +28,29 @@ HRESULT CRMvideoPlayer::CreateFactory()
 	if ( FAILED ( m_BandiVideoLibrary.Create( BANDIVIDEO_DLL_FILE_NAME, NULL, NULL ) ) )
 	{
 		MessageBox( NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		// 방어 코드 추가해야 됨
 		return S_FALSE;
 	}
 
 	if ( FAILED ( m_BandiVideoLibrary.Open( "./Resource/sample.avi", FALSE ) ) )
 	{
 		MessageBox( NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		// 방어 코드 추가해야 됨
 		return S_FALSE;
 	}
 
 	if ( FAILED ( m_BandiVideoLibrary.GetVideoInfo( m_BandiVideoLibraryVideoInfo ) ) )
 	{
 		MessageBox( NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		// 방어 코드 추가해야 됨
 		return S_FALSE;
 	}
-
 
 	m_BandiVideoDevice = new CBandiVideoDevice_DX9();
 
 	if ( !m_BandiVideoDevice || FAILED ( m_BandiVideoDevice->Open( m_Hwnd ) ) )
 	{
 		MessageBox( NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
 		SafeDelete( m_BandiVideoDevice );
+
+		return S_FALSE;
 	}
 
 	m_BandiVideoTexture = new CBandiVideoTexture_DX9( (CBandiVideoDevice_DX9* ) m_BandiVideoDevice );
@@ -72,6 +62,8 @@ HRESULT CRMvideoPlayer::CreateFactory()
 		
 		SafeDelete( m_BandiVideoDevice );
 		SafeDelete( m_BandiVideoTexture );
+
+		return S_FALSE;
 	}
 
 	return S_OK;

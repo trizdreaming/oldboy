@@ -11,7 +11,8 @@
 #include "RMchildEffectManager.h"
 
 CRMjudgeManager::CRMjudgeManager(void) :
-	m_Player1Judge(NO_JUDGE), m_Player2Judge(NO_JUDGE)
+	m_Player1Judge(NO_JUDGE),
+	m_Player2Judge(NO_JUDGE)
 {
 }
 
@@ -102,7 +103,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		break;
 	case NO_PLAYER:
 	default:
-		break;
+		return;
 	}
 
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( playerLayer );
@@ -120,7 +121,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 
 			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 		}
-		// Player1 Perfect 
+		// Perfect 
 		else if ( thisNote->GetPositionY() > 534 && thisNote->GetPositionY() < 556 )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
@@ -152,7 +153,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
 		}
-		// Player1 Good
+		// Good
 		else if ( ( thisNote->GetPositionY() > 514 && thisNote->GetPositionY() < 576 ) )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
@@ -163,8 +164,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 #ifdef _DEBUG
 				printf_s( "%dP Good \n", playerLayer );
 #endif // _DEBUG
-
-				
+	
 				//score up
 				playerClass->AddEvent( JUDGE_GOOD );
 				PrintScore( playerNumber, JUDGE_GOOD );
@@ -172,7 +172,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
 		}
-		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
+		// 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
 		else if ( thisNote->GetPositionY() > 504 )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
@@ -190,12 +190,6 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 			}
 		}
 	}
-
-
-
-	
-
-
 }
 
 

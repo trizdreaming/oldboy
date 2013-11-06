@@ -36,23 +36,31 @@ void CRMmainLoop::RunMessageLoop()
 {
 	MSG msg;
 	UINT fps = 0;
+	HRESULT hr = S_FALSE;
 
-	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
+	ZeroMemory( &msg, sizeof(msg) ); //msg 초기화 함수
 
 	//===================================================================
-
-	// 동영상 출력 부분
-	CRMvideoPlayer::GetInstance()->CreateFactory();
-	CRMvideoPlayer::GetInstance()->StartVideo();
-	
-	//===================================================================
-
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
 	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
 	CRMsound::GetInstance()->LoadSound("Dengue_Fever-Integration.mp3");
 	CRMsound::GetInstance()->LoadSound("sound_effect_01_01.wav");
 	CRMsound::GetInstance()->LoadSound("sound_effect_02_01.wav");
+
+	//===================================================================
+	// 동영상 출력 부분
+	hr = CRMvideoPlayer::GetInstance()->CreateFactory();
+	
+	if ( hr == S_OK )
+	{
+		CRMvideoPlayer::GetInstance()->StartVideo();
+	}
+	else
+	{
+		GoNextScene();
+		// 동영상 재생을 위한 초기화에 실패 했을 경우 동영상 재생 패스
+	}
 
 	CreateObject();
 	// 오브젝트 생성 부분을 리팩토링

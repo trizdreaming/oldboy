@@ -271,7 +271,6 @@ CRMobject* CRMobjectManager::GetObjectFront( LayerType layer )
 
 void CRMobjectManager::DeleteNoteListFront( LayerType layer )
 {
-
 	switch ( layer )
 	{
 	case LAYER_NOTE1:

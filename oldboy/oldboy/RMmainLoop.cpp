@@ -75,7 +75,8 @@ void CRMmainLoop::RunMessageLoop()
 			{
 				CRMvideoPlayer::GetInstance()->RenderVideo();
 
-				if ( GetAsyncKeyState( VK_A ) & 0x0001 )
+				CRMinput::GetInstance()->UpdateKeyState();
+				if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_UP )
 				{
 					CRMvideoPlayer::GetInstance()->DestoryFactory();
 					GoNextScene();

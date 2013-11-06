@@ -36,9 +36,10 @@ HRESULT CRMrender::CreateRenderTarget()
 
 	hr = m_pDisplayFactory->CreateHwndRenderTarget(
 		D2D1::RenderTargetProperties(),
-		D2D1::HwndRenderTargetProperties(CRMmainLoop::GetInstance()->GetHwnd(),size),
+		D2D1::HwndRenderTargetProperties(CRMmainLoop::GetInstance()->GetHwnd(), size, D2D1_PRESENT_OPTIONS_IMMEDIATELY),
 		&m_pDisplayRenderTarget
 		);
+	// D2D1_PRESENT_OPTIONS_IMMEDIATELY - FPS 제한 해제(리프레쉬를 기다리지 않음)
 
 	return hr;
 }

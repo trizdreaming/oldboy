@@ -5,6 +5,8 @@
 #include "oldboy.h"
 #include "RMmainLoop.h"
 
+#include "RMprintConsole.h"
+
 #pragma comment(lib, "d2d1")
 #pragma comment(lib, "winmm")
 #pragma comment(lib, "dwrite")
@@ -30,9 +32,9 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	// 메모리 디버깅 옵션 부분
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	AllocConsole();
-	FILE* pFile; 
-	freopen_s(&pFile, "CONOUT$", "wb", stdout);
+// 	AllocConsole();
+// 	FILE* pFile; 
+// 	freopen_s(&pFile, "CONOUT$", "wb", stdout);
 
 	//HACCEL hAccelTable;
 	//hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_OLDBOY));
@@ -49,7 +51,7 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 		CoUninitialize();
 	}
 
-	FreeConsole();
+	// FreeConsole();
 
 	return 0;
 }

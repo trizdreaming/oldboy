@@ -51,23 +51,23 @@ void CRMchildEffectImage::Update()
 	switch ( m_EffectType )
 	{
 	case 1:
-		m_PositionX -= 5;
-		m_PositionY -= 10;
+		m_PositionX -= 10 * m_EffectTime;
+		m_PositionY -= 7 * m_EffectTime;
 
 		break;
 	case 2:
-		m_PositionX -= 5;
-		m_PositionY -= 5;
+		m_PositionX -= 10 * m_EffectTime;
+		m_PositionY -= 5 * m_EffectTime;
 
 		break;
 	case 3:
-		m_PositionX += 5;
-		m_PositionY -= 5;
+		m_PositionX -= 10 * m_EffectTime;
+		m_PositionY -= 3 * m_EffectTime;
 
 		break;
 	case 4:
-		m_PositionX += 5;
-		m_PositionY -= 10;
+		m_PositionX -= 10 * m_EffectTime;
+		m_PositionY -= 1 * m_EffectTime;
 
 		break;
 

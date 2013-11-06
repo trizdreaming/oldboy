@@ -166,6 +166,7 @@
     <ClInclude Include="RMchildEffectManager.h">
       <Filter>Core\Object</Filter>
     </ClInclude>
+    <ClInclude Include="RMprintConsole.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -237,6 +238,7 @@
     <ClCompile Include="RMchildEffectManager.cpp">
       <Filter>Core\Object</Filter>
     </ClCompile>
+    <ClCompile Include="RMprintConsole.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

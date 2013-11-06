@@ -2,6 +2,7 @@
 
 enum SceneType
 {
+	SCENE_OPENING,
 	SCENE_TITLE,
 	SCENE_PLAY,
 	SCENE_RESULT,

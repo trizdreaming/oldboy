@@ -56,7 +56,7 @@ void CRMrender::RenderInit()
 	HRESULT hr = S_FALSE;
 
 	m_pDisplayRenderTarget->BeginDraw();
-	m_pDisplayRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Aqua));
+	m_pDisplayRenderTarget->Clear(D2D1::ColorF(D2D1::ColorF::Black));
 }
 
 HRESULT CRMrender::RenderEnd()

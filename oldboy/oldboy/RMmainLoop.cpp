@@ -13,6 +13,7 @@
 #include "RMJudgeManager.h"
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
+#include "RMvideoPlayer.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -20,7 +21,8 @@ CRMmainLoop::CRMmainLoop(void):
 	m_ElapsedTime(0),
 	m_Fps(0),
 	m_FpsCheckTime(0),
-	m_SceneType(SCENE_TITLE)
+	m_SceneType(SCENE_OPENING),
+	m_Hwnd(NULL)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = 1000 / 60;
@@ -37,192 +39,13 @@ void CRMmainLoop::RunMessageLoop()
 
 	ZeroMemory(&msg, sizeof(msg)); //msg 초기화 함수
 
-	CBandiVideoLibrary		bandiVideoLibrary;
-	CBandiVideoDevice*		bandiVideoDevice = NULL;
-	CBandiVideoTexture*		bandiVideoTexture = NULL;
-	BVL_VIDEO_INFO			bandiVideoLibraryVideoInfo;
-
-	
-	if ( FAILED ( bandiVideoLibrary.Create( BANDIVIDEO_DLL_FILE_NAME, NULL, NULL ) ) )
-	{
-		MessageBox( NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		// 방어 코드 추가해야 됨
-	}
-
-	if ( FAILED ( bandiVideoLibrary.Open( "./Resource/sample.avi", FALSE ) ) )
-	{
-		MessageBox( NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		// 방어 코드 추가해야 됨
-	}
-
-	if ( FAILED ( bandiVideoLibrary.GetVideoInfo( bandiVideoLibraryVideoInfo ) ) )
-	{
-		MessageBox( NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		// 방어 코드 추가해야 됨
-	}
-
-
-	bandiVideoDevice = new CBandiVideoDevice_DX9();
-
-	if ( !bandiVideoDevice || FAILED ( bandiVideoDevice->Open( m_Hwnd ) ) )
-	{
-		MessageBox( NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP );
-		DestroyWindow( m_Hwnd );
-
-		SafeDelete( bandiVideoDevice );
-	}
-
-	int count=0;
-	do
-	{
-	
-		if ( PeekMessage( &msg, 0, 0, 0, PM_REMOVE ) )
-		{
-			if ( msg.message == WM_QUIT )
-			{
-				bandiVideoLibrary.Destroy();
-
-				if ( bandiVideoDevice ) 
-				{
-					bandiVideoDevice->Close();
-					// delete m_bvd;
-					// m_bvd = nullptr;
-
-					SafeDelete( bandiVideoDevice );
-				}
-
-				if ( bandiVideoTexture )
-				{
-					bandiVideoTexture->Close();
-					// delete m_bvt;
-					// m_bvt = nullptr;
-
-					SafeDelete( bandiVideoTexture );
-				}
-
-				return;
-				// 이 부분에서 리턴이 아닌 break; 를 하면 동영상 재생 중 프로그램 종료 시
-				// 창은 닫힌 상태인데 프로그램은 진행 중이므로 치명적인 문제 발생
-			}
-
-			TranslateMessage(&msg);
-			DispatchMessage(&msg);
-		}
-		else
-		{
-			BVL_STATUS		status;
-			bandiVideoLibrary.GetStatus(status);
-
-			if ( status == BVL_STATUS_READY )
-			{
-				// 재생할 준비가 완료되었다면, 재생 시작
-				bandiVideoLibrary.GetVideoInfo( bandiVideoLibraryVideoInfo );
-				bandiVideoLibrary.Play();
-
-				if ( bandiVideoTexture == NULL )
-				{
-					bandiVideoTexture = new CBandiVideoTexture_DX9( (CBandiVideoDevice_DX9* ) bandiVideoDevice );
-					
-					if ( !bandiVideoTexture || FAILED( bandiVideoTexture->Open( bandiVideoLibraryVideoInfo.width , bandiVideoLibraryVideoInfo.height ) ) )
-					{
-						MessageBox(NULL, L"Error opening texture...",  L"ERROR!", MB_OK | MB_ICONSTOP);
-						DestroyWindow(m_Hwnd);
-						/*
-						if(m_bvd) delete m_bvd;
-						if(m_bvt) delete m_bvt;
-						m_bvd = nullptr;
-						m_bvt = nullptr;
-						*/
-
-						SafeDelete( bandiVideoDevice );
-						SafeDelete( bandiVideoTexture );
-					}
-				}
-			}
-
-
-			// 새 프레임을 출력할 시간인가?
-			if ( bandiVideoLibrary.IsNextFrame() )
-			{
-				INT		pitch;
-				BYTE*	buf = bandiVideoTexture->Lock( pitch );
-				if ( buf )
-				{
-					// Get frame
-					BVL_FRAME frame;
-					frame.frame_buf = buf;
-					frame.frame_buf_size = bandiVideoLibraryVideoInfo.height*pitch;
-					frame.pitch = pitch;
-					frame.width = bandiVideoLibraryVideoInfo.width;
-					frame.height = bandiVideoLibraryVideoInfo.height;
-					frame.pixel_format = bandiVideoTexture->GetFormat();
-
-					bandiVideoLibrary.GetFrame(frame, TRUE);
-
-					bandiVideoTexture->Unlock();
-
-					// Show frame
-					bandiVideoDevice->StartFrame();
-					bandiVideoTexture->Draw( 0, 0, SCREEN_SIZE_X, SCREEN_SIZE_Y );
-					bandiVideoDevice->EndFrame();
-					++count;
-					
-					
-				}
-			}
-			else
-			{
-				Sleep(1);
-			}
-
-			if ( status == BVL_STATUS_PLAYEND )
-			{
-#ifdef _DEBUG
-				printf_s("END! \n");
-#endif // _DEBUG
-				break;
-			}
-			if ( GetAsyncKeyState( VK_A ) & 0x8000 )
-			{
-				break;
-			}
-			else
-			{
-#ifdef _DEBUG
-				printf_s( "frame: %d \n", count );
-#endif // _DEBUG
-			}
-		}
-	}
-	while(true);	// do~while(true)
-
-	bandiVideoLibrary.Destroy();
-
-	if ( bandiVideoDevice ) 
-	{
-		bandiVideoDevice->Close();
-		// delete m_bvd;
-		// m_bvd = nullptr;
-
-		SafeDelete( bandiVideoDevice );
-	}
-
-	if ( bandiVideoTexture )
-	{
-		bandiVideoTexture->Close();
-		// delete m_bvt;
-		// m_bvt = nullptr;
-
-		SafeDelete( bandiVideoTexture );
-	}
 	//===================================================================
+
+	// 동영상 출력 부분
+	CRMvideoPlayer::GetInstance()->CreateFactory();
+	CRMvideoPlayer::GetInstance()->StartVideo();
 	
+	//===================================================================
 
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
@@ -234,14 +57,13 @@ void CRMmainLoop::RunMessageLoop()
 	CreateObject();
 	// 오브젝트 생성 부분을 리팩토링
 	
-	CRMsound::GetInstance()->PlaySound("bgm_title_00_01.mp3");
-
 	while ( true )
 	{
 		if ( PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) ) // PeekMessage는 대기 없이 무한 루프 상태로 진행(non blocked function)
 		{
 			if ( msg.message == WM_QUIT )
 			{
+				CRMvideoPlayer::GetInstance()->DestoryFactory();
 				return;
 			}
 			TranslateMessage(&msg);
@@ -249,6 +71,18 @@ void CRMmainLoop::RunMessageLoop()
 		}
 		else
 		{
+			if ( m_SceneType == SCENE_OPENING )
+			{
+				CRMvideoPlayer::GetInstance()->RenderVideo();
+
+				if ( GetAsyncKeyState( VK_A ) & 0x0001 )
+				{
+					CRMvideoPlayer::GetInstance()->DestoryFactory();
+					GoNextScene();
+				}
+				continue;
+			}
+
 			m_NowTime = timeGetTime();
 
 			if ( m_PrevTime == 0 )
@@ -506,10 +340,19 @@ void CRMmainLoop::TestKeyboard()
 
 void CRMmainLoop::GoNextScene()
 {
+	if ( m_SceneType == SCENE_OPENING )
+	{
+		m_SceneType = SCENE_TITLE;
+
+		CRMsound::GetInstance()->PlaySound("bgm_title_00_01.mp3");
+		return;
+	}
+
 	if ( m_SceneType == SCENE_TITLE )
 	{
 		m_SceneType = SCENE_PLAY;
 
 		CRMsound::GetInstance()->PlaySound("Dengue_Fever-Integration.mp3");
+		return;
 	}
 }

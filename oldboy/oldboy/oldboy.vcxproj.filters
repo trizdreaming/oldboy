@@ -73,9 +73,6 @@
     <ClInclude Include="RMobject.h">
       <Filter>Core\Object</Filter>
     </ClInclude>
-    <ClInclude Include="RMsound.h">
-      <Filter>Core\Sound Manager</Filter>
-    </ClInclude>
     <ClInclude Include="RMimage.h">
       <Filter>Core\Image</Filter>
     </ClInclude>
@@ -167,6 +164,12 @@
       <Filter>Core\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMprintConsole.h" />
+    <ClInclude Include="RMsound.h">
+      <Filter>Core\Sound Manager</Filter>
+    </ClInclude>
+    <ClInclude Include="RMvideoPlayer.h">
+      <Filter>Core\Loop</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -239,6 +242,9 @@
       <Filter>Core\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMprintConsole.cpp" />
+    <ClCompile Include="RMvideoPlayer.cpp">
+      <Filter>Core\Loop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

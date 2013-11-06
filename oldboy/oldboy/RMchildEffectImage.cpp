@@ -33,7 +33,7 @@ void CRMchildEffectImage::Update()
 		{
 			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
 			{
-				m_EffectType = m_EffectType++ % 4;
+				m_EffectType = i % 4;
 			}
 		}
 #ifdef _DEBUG
@@ -46,32 +46,8 @@ void CRMchildEffectImage::Update()
 
 	//2p 추가 필요 없음
 
-	switch ( m_EffectType )
-	{
-	case 1:
-		m_PositionX -= 10 * m_EffectTime;
-		m_PositionY -= 7 * m_EffectTime;
-
-		break;
-	case 2:
-		m_PositionX -= 10 * m_EffectTime;
-		m_PositionY -= 5 * m_EffectTime;
-
-		break;
-	case 3:
-		m_PositionX -= 10 * m_EffectTime;
-		m_PositionY -= 3 * m_EffectTime;
-
-		break;
-	case 4:
-		m_PositionX -= 10 * m_EffectTime;
-		m_PositionY -= 1 * m_EffectTime;
-
-		break;
-
-	default:
-		break;
-	}
+	m_PositionX -= 10 * m_EffectTime;;
+	m_PositionY -= ( 7 - ( m_EffectType * 2) ) * m_EffectTime;
 	
 	// 8보다 커지면 2P의 이펙트 효과 이미지가 1P 공간을 침범함
 	if ( m_EffectTime > 8 )

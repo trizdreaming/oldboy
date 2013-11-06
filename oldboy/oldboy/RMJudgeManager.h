@@ -21,7 +21,6 @@ public:
 	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player );
 
 private:
-	void						DeleteNote( std::list<CRMobject*>* objectList );
 	void						PrintScore( PlayerNumber player );
 
 	JudgeType					m_Player1Judge;

@@ -13,13 +13,17 @@ private:
 	~CRMobjectManager(void);
 
 public:
+	
+	CRMobject*					GetObjectFront( LayerType layer );
 
-	std::list<CRMobject*>*		GetObjectList(LayerType layer);
+	void						ChargeNoteList( LayerType layer );
+	void						DeleteNoteListFront( LayerType layer );
 
-	void	AddObject(CRMobject* bject, LayerType layer);
+	void						AddObject( CRMobject* bject, LayerType layer );
 
-	void	Update();
-	void	Render();
+	void						Update();
+	void						Render();
+
 
 
 private:

@@ -211,7 +211,7 @@ void CRMobjectManager::Render()
 		iter->Render();
 	}
 }
-
+/*
 std::list<CRMobject*>* CRMobjectManager::GetObjectList( LayerType layer )
 {
 	switch ( layer )
@@ -237,4 +237,53 @@ std::list<CRMobject*>* CRMobjectManager::GetObjectList( LayerType layer )
 		return &m_ObjectListLayerBackground;
 	}
 	return &m_ObjectListLayerBackground;
+}
+*/
+
+CRMobject* CRMobjectManager::GetObjectFront( LayerType layer )
+{
+	switch ( layer )
+	{
+	case LAYER_NOTE1:
+		if ( m_ObjectListLayerNotePlayer1.size() == 0 )
+		{
+			return nullptr;
+		}
+		return *( m_ObjectListLayerNotePlayer1.begin() );
+	case LAYER_NOTE2:
+		if ( m_ObjectListLayerNotePlayer2.size() == 0 )
+		{
+			return nullptr;
+		}
+		return *( m_ObjectListLayerNotePlayer2.begin() );
+	case LAYER_MEMORY_POOL:
+		if ( m_ObjectListMemeoryPullOfNote.size() == 0 )
+		{
+			return nullptr;
+		}
+		return *( m_ObjectListMemeoryPullOfNote.begin() );
+	case NO_LAYER:
+	default:
+		return nullptr;
+	}
+}
+
+
+void CRMobjectManager::DeleteNoteListFront( LayerType layer )
+{
+
+	switch ( layer )
+	{
+	case LAYER_NOTE1:
+		m_ObjectListMemeoryPullOfNote.push_back( GetObjectFront( layer ) );
+		m_ObjectListLayerNotePlayer1.pop_front();
+		break;
+	case LAYER_NOTE2:
+		m_ObjectListMemeoryPullOfNote.push_back( GetObjectFront( layer ) );
+		m_ObjectListLayerNotePlayer2.pop_front();
+		break;
+	case LAYER_MEMORY_POOL:
+		m_ObjectListMemeoryPullOfNote.pop_front();
+		break;
+	}
 }

@@ -22,32 +22,30 @@ CRMjudgeManager::~CRMjudgeManager(void)
 
 void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 {
-	std::list<CRMobject*>* notePoolList = CRMobjectManager::GetInstance()->GetObjectList( LAYER_MEMORY_POOL );
-
-	if ( notePoolList->size() == 0 )
+		
+	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_MEMORY_POOL );
+	if ( thisNote == nullptr )
 	{
 		return; 
 	}
-		
 
-	auto& thisNote = notePoolList->begin();
 	switch ( player )
 	{
 	case PLAYER_ONE:
-		(*thisNote)->SetObjectType( objectType );
-		(*thisNote)->SetPosition( 395, -100 );
-		(*thisNote)->SetVisible(true);
-		(*thisNote)->SetSceneType( SCENE_PLAY );
-		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE1 );
-		notePoolList->pop_front();
+		thisNote->SetObjectType( objectType );
+		thisNote->SetPosition( 395, -100 );
+		thisNote->SetVisible(true);
+		thisNote->SetSceneType( SCENE_PLAY );
+		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE1 );
+		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 		break;
 	case PLAYER_TWO:
-		(*thisNote)->SetObjectType( objectType );
-		(*thisNote)->SetPosition( 910, -100 );
-		(*thisNote)->SetVisible(true);
-		(*thisNote)->SetSceneType( SCENE_PLAY );
-		CRMobjectManager::GetInstance()->AddObject( *thisNote , LAYER_NOTE2 );
-		notePoolList->pop_front();
+		thisNote->SetObjectType( objectType );
+		thisNote->SetPosition( 910, -100 );
+		thisNote->SetVisible(true);
+		thisNote->SetSceneType( SCENE_PLAY );
+		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE2 );
+		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 		break;
 	case NO_PLAYER:
 	default:
@@ -76,17 +74,11 @@ void CRMjudgeManager::JudgeNote()
 			//+- 30   515 굳 시작, 575굳 끝 
 		*/
 
-	std::list<CRMobject*>* note1List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE1 );
-	std::list<CRMobject*>* note2List = CRMobjectManager::GetInstance()->GetObjectList( LAYER_NOTE2 );
-	
-	if( note1List->size() > 0 )
-	{
-		auto& iterP1 = note1List->begin();
-		auto thisNoteP1 = iterP1;
 
-		// Player1 Miss 575
-		/*if ( (*thisNoteP1)->GetPositionY() > SCREEN_SIZE_Y - 125 + NOTE_SIZE )*/
-		if ( (*thisNoteP1)->GetPositionY() > 555 )
+	CRMobject* thisNoteP1 = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_NOTE1 );
+	if ( thisNoteP1 != nullptr )
+	{
+		if ( thisNoteP1->GetPositionY() > 555 )
 		{
 #ifdef _DEBUG
 			printf_s( "1P NoteOut Miss \n" );
@@ -97,12 +89,12 @@ void CRMjudgeManager::JudgeNote()
 			m_Player1Judge = JUDGE_MISS;
 			PrintScore( PLAYER_ONE );
 
-			DeleteNote( note1List );
+			CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE1 );
 		}
 		// Player1 Perfect 
-		else if ( (*thisNoteP1)->GetPositionY() > 534 && (*thisNoteP1)->GetPositionY() < 556 )
+		else if ( thisNoteP1->GetPositionY() > 534 && thisNoteP1->GetPositionY() < 556 )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
+			if ( IsKeyInputRight( thisNoteP1 , PLAYER_ONE ) )
 			{
 
 				//effect 플래그 세팅
@@ -113,8 +105,8 @@ void CRMjudgeManager::JudgeNote()
 						2. childeffectimage에서 flag 확인
 						3. childeffectimage에서 flag 확인 후 다시 flag 초기화
 				*/
-				float hitPositionX = (*thisNoteP1)->GetPositionX();
-				float hitPositionY = (*thisNoteP1)->GetPositionY();
+				float hitPositionX = thisNoteP1->GetPositionX();
+				float hitPositionY = thisNoteP1->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( PLAYER_ONE , hitPositionX , hitPositionY );
 
 #ifdef _DEBUG
@@ -129,16 +121,16 @@ void CRMjudgeManager::JudgeNote()
 				//키 누르면서 바로 지우면 플래그 세팅이 안됨
 				//키를 누르면 무조건 세팅이 되면 miss 처리 불가
 				//deleteNote 이동
-				DeleteNote( note1List );
+				CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE1 );
 			}
 		}
 		// Player1 Good
-		else if ( ( (*thisNoteP1)->GetPositionY() > 514 && (*thisNoteP1)->GetPositionY() < 576 ) )
+		else if ( ( thisNoteP1->GetPositionY() > 514 && thisNoteP1->GetPositionY() < 576 ) )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
+			if ( IsKeyInputRight( thisNoteP1 , PLAYER_ONE ) )
 			{
-				float hitPositionX = (*thisNoteP1)->GetPositionX();
-				float hitPositionY = (*thisNoteP1)->GetPositionY();
+				float hitPositionX = thisNoteP1->GetPositionX();
+				float hitPositionY = thisNoteP1->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( PLAYER_ONE , hitPositionX , hitPositionY );
 #ifdef _DEBUG
 				printf_s( "1P Good \n" );
@@ -150,13 +142,13 @@ void CRMjudgeManager::JudgeNote()
 				m_Player1Judge = JUDGE_GOOD;
 				PrintScore( PLAYER_ONE );
 
-				DeleteNote( note1List );
+				CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE1 );
 			}
 		}
 		// Player1 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
-		else if ( (*thisNoteP1)->GetPositionY() > 504 )
+		else if ( thisNoteP1->GetPositionY() > 504 )
 		{
-			if ( IsKeyInputRight( *thisNoteP1 , PLAYER_ONE ) )
+			if ( IsKeyInputRight( thisNoteP1 , PLAYER_ONE ) )
 			{
 
 #ifdef _DEBUG
@@ -168,23 +160,27 @@ void CRMjudgeManager::JudgeNote()
 				m_Player1Judge = JUDGE_MISS;
 				PrintScore( PLAYER_ONE );
 
-				DeleteNote( note1List );
+				CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE1 );
 			}
 		}
-
 	}
+
+
+
+	
+
 
 	//2p는 키 이펙트 추가 안 함
 	
 	// Player2============================================================
 
-	if( note2List->size() > 0 )
+	CRMobject* thisNoteP2 = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_NOTE2 );
+
+	if( thisNoteP2 != nullptr )
 	{
-		auto& iterP2 = note2List->begin();
-		auto thisNoteP2 = iterP2;
 
 		// Player2 Miss 575
-		if ( (*thisNoteP2)->GetPositionY() > 555 )
+		if ( thisNoteP2->GetPositionY() > 555 )
 		{
 
 #ifdef _DEBUG
@@ -196,12 +192,12 @@ void CRMjudgeManager::JudgeNote()
 			m_Player2Judge = JUDGE_MISS;
 			PrintScore( PLAYER_TWO );
 
-			DeleteNote( note2List );
+			CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE2 );
 		}
 		// Player2 Perfect 
-		else if ( (*thisNoteP2)->GetPositionY() > 534 && (*thisNoteP2)->GetPositionY() < 556 )
+		else if ( thisNoteP2->GetPositionY() > 534 && thisNoteP2->GetPositionY() < 556 )
 		{
-			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
+			if ( IsKeyInputRight( thisNoteP2 , PLAYER_TWO ) )
 			{
 #ifdef _DEBUG
 				printf_s( "2P Perfect \n" );
@@ -215,13 +211,13 @@ void CRMjudgeManager::JudgeNote()
 				// effect 적용
 				// CRMchildEffectImage::GetInstance()->HitEffectFlag();
 
-				DeleteNote( note2List );
+				CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE2 );
 			}
 		}
 		// Player2 Good
-		else if ( ( (*thisNoteP2)->GetPositionY() > 514 && (*thisNoteP2)->GetPositionY() < 576 ) )
+		else if ( ( thisNoteP2->GetPositionY() > 514 && thisNoteP2->GetPositionY() < 576 ) )
 		{
-			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
+			if ( IsKeyInputRight( thisNoteP2 , PLAYER_TWO ) )
 			{
 #ifdef _DEBUG
 				printf_s( "2P Good \n" );
@@ -232,13 +228,13 @@ void CRMjudgeManager::JudgeNote()
 				m_Player2Judge = JUDGE_GOOD;
 				PrintScore( PLAYER_TWO );
 
-				DeleteNote( note2List );
+				CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE2 );
 			}
 		}
 		// Player2 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
-		else if ( (*thisNoteP2)->GetPositionY() > 504 )
+		else if ( thisNoteP2->GetPositionY() > 504 )
 		{
-			if ( IsKeyInputRight( *thisNoteP2 , PLAYER_TWO ) )
+			if ( IsKeyInputRight( thisNoteP2 , PLAYER_TWO ) )
 			{
 #ifdef _DEBUG
 				printf_s( "2P Time Miss \n" );
@@ -249,7 +245,7 @@ void CRMjudgeManager::JudgeNote()
 				m_Player2Judge = JUDGE_MISS;
 				PrintScore( PLAYER_TWO );
 
-				DeleteNote( note2List );
+				CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_NOTE2 );
 			}
 		}
 	}
@@ -297,12 +293,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 	return false;
 }
 
-
-void CRMjudgeManager::DeleteNote( std::list<CRMobject*>* objectList )
-{
-	CRMobjectManager::GetInstance()->AddObject( *objectList->begin() , LAYER_MEMORY_POOL );
-	objectList->pop_front();
-}
 
 void CRMjudgeManager::PrintScore( PlayerNumber player )
 {

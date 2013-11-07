@@ -29,18 +29,15 @@ void CRMchildEffectImage::Update()
 		{
 			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
 			{				
-#ifdef _DEBUG
-				printf_s("테스트!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
-#endif
+				// printf_s("테스트!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
+
 				m_EffectType = i % 4;
 				highMask = i / 4;
 			}
 		}
-#ifdef _DEBUG
-		printf_s( "테스트 출력 플래그 [ %x ] 좌표 [ %f , %f ] 타입 [ %d ] \n", 
-			CRMchildEffectManager::GetInstance()->GetFlag(), 
-			m_PositionX, m_PositionY, m_EffectType );
-#endif
+
+		// printf_s( "테스트 출력 플래그 [ %x ] 좌표 [ %f , %f ] 타입 [ %d ] \n", 
+		//				CRMchildEffectManager::GetInstance()->GetFlag(), m_PositionX, m_PositionY, m_EffectType );
 
 		CRMchildEffectManager::GetInstance()->ResetFlag( highMask );
 

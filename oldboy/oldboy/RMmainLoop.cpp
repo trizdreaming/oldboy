@@ -99,14 +99,17 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 			}
 
+			/*
+
+			// FPS 출력용 계산
+
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
-// #ifdef _DEBUG
-// 				printf_s("FPS : %d \n", fps);
-// #endif
+				printf_s("FPS : %d \n", fps);
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
 			}
+			*/
 
 			m_ElapsedTime = m_NowTime - m_PrevTime;
 

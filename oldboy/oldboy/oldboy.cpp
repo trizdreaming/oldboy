@@ -5,7 +5,15 @@
 #include "oldboy.h"
 #include "RMmainLoop.h"
 
+//////////////////////////////////////////////////////////////////////////
+// 디버깅용 콘솔 제어
+
+#ifdef _DEBUG
 #include "RMprintConsole.h"
+#endif // _DEBUG
+
+// 콘솔을 없애려면 위의 헤더를 주석처리
+//////////////////////////////////////////////////////////////////////////
 
 #pragma comment(lib, "d2d1")
 #pragma comment(lib, "winmm")
@@ -32,12 +40,10 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	// 메모리 디버깅 옵션 부분
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-// 	AllocConsole();
-// 	FILE* pFile; 
-// 	freopen_s(&pFile, "CONOUT$", "wb", stdout);
-
-	//HACCEL hAccelTable;
-	//hAccelTable = LoadAccelerators(hInstance, MAKEINTRESOURCE(IDC_OLDBOY));
+#ifdef _PRINT_CONSOLE
+	// 디버깅용 콘솔 헤더가 포함 되어 있을 때에만 싱글톤으로 콘솔을 생성함
+	CRMprintConsole::GetInstance();
+#endif // _PRINT_CONSOLE
 
 	HeapSetInformation(NULL, HeapEnableTerminationOnCorruption, NULL, 0);
 
@@ -50,8 +56,6 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 
 		CoUninitialize();
 	}
-
-	// FreeConsole();
 
 	return 0;
 }

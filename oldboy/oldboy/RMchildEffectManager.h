@@ -11,17 +11,18 @@ private:
 
 public:
 	void	SetFlag( PlayerNumber targetPlayer , float m_PositionX, float m_PositionY );
-	void	ResetFlag();
+	void	ResetFlag( int highMask );
 
-	float	GetStartPositionX() { return m_EffectStartPositionX; }
-	float	GetStartPositionY() { return m_EffectStartPositionY; }
+	void	GetStartPosition( PlayerNumber targetPlayer, float* x, float* y );
 	char	GetFlag() { return m_BitFlag; }
 
 private:
 	int		m_FlagSetter1P; //어떤 비트 포지션에 넣을지 모듈러 연산으로 확인
 	int		m_FlagSetter2P; //어떤 비트 포지션에 넣을지 모듈러 연산으로 확인
 	char	m_BitFlag;
-	float	m_EffectStartPositionX;
-	float	m_EffectStartPositionY;
+	float	m_Effect1PStartPositionX;
+	float	m_Effect1PStartPositionY;
+	float	m_Effect2PStartPositionX;
+	float	m_Effect2PStartPositionY;
 };
 

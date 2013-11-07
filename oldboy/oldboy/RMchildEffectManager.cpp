@@ -4,8 +4,8 @@
 
 CRMchildEffectManager::CRMchildEffectManager(void):
 	m_BitFlag(0x00),
-	m_EffectStartPositionX(0.f),
-	m_EffectStartPositionY(0.f),
+	m_Effect1PStartPositionX(0.f),
+	m_Effect1PStartPositionY(0.f),
 	m_FlagSetter1P(0),
 	m_FlagSetter2P(0)
 {
@@ -27,8 +27,6 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 	//노트를 뿌려줄 포지션 결정
 	//judgeManager에서 위치값을 던져주면 저장 했다가
 	//이펙트 업데이터가 포지션을 받아 쓸 수 있도록 함
-	m_EffectStartPositionX = positionX;
-	m_EffectStartPositionY = positionY;
 	
 #ifdef _DEBUG
 	printf_s( "1P flag : %d , 2P flag: %d \n", m_FlagSetter1P, m_FlagSetter2P );
@@ -39,6 +37,9 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 	case PLAYER_ONE:
 		m_FlagSetter1P = ++m_FlagSetter1P % 4;
 
+		m_Effect1PStartPositionX = positionX;
+		m_Effect1PStartPositionY = positionY;
+
 		m_BitFlag |= ( 0x0010 << (3 - m_FlagSetter1P) );
 #ifdef _DEBUG
 		printf_s("1P BitFlag 발동! %x \n", m_BitFlag);
@@ -46,6 +47,9 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 		break;		
 	case PLAYER_TWO:
 		m_FlagSetter2P = ++m_FlagSetter2P % 4;
+
+		m_Effect2PStartPositionX = positionX;
+		m_Effect2PStartPositionY = positionY;
 
 		m_BitFlag |= ( 0x0001 << (3 - m_FlagSetter2P) );
 #ifdef _DEBUG
@@ -59,9 +63,35 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 	}
 }
 
-void CRMchildEffectManager::ResetFlag()
+void CRMchildEffectManager::ResetFlag( int highMask )
 {
-	m_BitFlag = 0x00;
+	if ( highMask == 1 )
+	{
+		m_BitFlag &= 0x000F;
+	}
+	else
+	{
+		m_BitFlag &= 0x00F0;
+	}
 }
+
+void CRMchildEffectManager::GetStartPosition( PlayerNumber targetPlayer, float* x, float* y )
+{
+	switch ( targetPlayer )
+	{
+	case PLAYER_ONE:
+		*x = m_Effect1PStartPositionX;
+		*y = m_Effect1PStartPositionY;
+		break;
+	case PLAYER_TWO:
+		*x = m_Effect2PStartPositionX;
+		*y = m_Effect2PStartPositionY;
+		break;
+	case NO_PLAYER:
+	default:
+		break;
+	}
+}
+
 
 

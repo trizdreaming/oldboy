@@ -17,20 +17,23 @@ CRMchildEffectImage::~CRMchildEffectImage(void)
 
 void CRMchildEffectImage::Update()
 {
+	int highMask = 0;
+
 	if ( m_Visible == false && CRMchildEffectManager::GetInstance()->GetFlag() )
 	{
 		m_EffectTime = 0;
-
-		m_PositionX = CRMchildEffectManager::GetInstance()->GetStartPositionX() - 22;
-		m_PositionY = CRMchildEffectManager::GetInstance()->GetStartPositionY() - 22;
 
 		m_Visible = true;
 		
 		for ( int i = 0 ; i < 8 ; ++i )
 		{
 			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
-			{
+			{				
+#ifdef _DEBUG
+				printf_s("Å×½ºÆ®!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
+#endif
 				m_EffectType = i % 4;
+				highMask = i / 4;
 			}
 		}
 #ifdef _DEBUG
@@ -38,7 +41,18 @@ void CRMchildEffectImage::Update()
 			CRMchildEffectManager::GetInstance()->GetFlag(), 
 			m_PositionX, m_PositionY, m_EffectType );
 #endif
-		CRMchildEffectManager::GetInstance()->ResetFlag();
+
+		CRMchildEffectManager::GetInstance()->ResetFlag( highMask );
+
+		if ( highMask > 0)
+		{
+			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_ONE, &m_PositionX, &m_PositionY );
+		}
+		else
+		{
+			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO, &m_PositionX, &m_PositionY );
+		}
+		
 	}
 
 	if ( m_Visible == false )

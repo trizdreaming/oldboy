@@ -53,6 +53,8 @@ void CRMchildEffectImage::Update()
 			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO, &m_PositionX, &m_PositionY );
 		}
 		
+		m_PositionX = m_PositionX-90;
+		m_PositionY = m_PositionY-80;
 	}
 
 	if ( m_Visible == false )

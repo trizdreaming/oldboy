@@ -14,11 +14,7 @@ public:
 private:
 	void		CalcCombo();
 
-	UINT		m_PerfectCount;
-	UINT		m_GoodCount;
-	UINT		m_MissCount;
-	UINT		m_ComboCount;
-	UINT		m_ScoreCount;
+	UINT		m_Count[MAX_COUNT];
 	
 	bool		m_PrevIsCombo;
 };

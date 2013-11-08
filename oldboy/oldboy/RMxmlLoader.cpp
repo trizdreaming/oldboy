@@ -23,8 +23,9 @@ CRMxmlLoader::~CRMxmlLoader(void)
 
 void CRMxmlLoader::LoadMusicData( std::string folderName )
 {
+
 	std::string filePath = "";
-	filePath.append("./Resource/");
+	filePath.append("./Music/");
 	filePath.append( folderName );
 	filePath.append("/index.xml");
 	TiXmlDocument m_Document = TiXmlDocument( filePath.c_str() );
@@ -51,9 +52,9 @@ void CRMxmlLoader::LoadMusicData( std::string folderName )
 
 		std::string note = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Note/text()").c_str();
 
-		m_MusicDataMap["SingleBell_folder_name"] = new CRMmusicData( title, artist, level, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
+		m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
 
-		printf_s("Test XML:%s \n", title.c_str());
+		printConsole("Loaded Music :%s \n", title.c_str());
 	}
 
 }

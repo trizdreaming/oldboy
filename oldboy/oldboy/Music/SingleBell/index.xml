@@ -1,8 +1,8 @@
 <?xml version="1.0" ?>
 <Music>
     <!-- Settings for Music -->
-	<Title>Integration</Title>
-	<Artist>Dengue_Fever</Artist>
+	<Title>SingleBell</Title>
+	<Artist>DuckChul</Artist>
 	<Level>3</Level>
     <Image>
         <imageBackground>image_bg_01_01.png</imageBackground>

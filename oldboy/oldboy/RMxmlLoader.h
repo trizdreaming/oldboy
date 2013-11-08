@@ -9,10 +9,11 @@ class CRMxmlLoader
 public:
 	CRMxmlLoader(void);
 	~CRMxmlLoader(void);
-
-	void		TestXML();
+	
+	void				LoadMusicData( std::string folderName );
+	CRMmusicData*		GetMusicData( std::string folderName ) { return m_MusicDataMap[folderName]; }
 private:
-	//           음악이름  음악개체
+	//           폴더이름  음악개체
 	std::map<std::string, CRMmusicData*>	m_MusicDataMap;
 };
 

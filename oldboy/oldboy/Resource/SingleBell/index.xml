@@ -1,0 +1,20 @@
+<?xml version="1.0" ?>
+<Music>
+    <!-- Settings for Music -->
+	<Title>Integration</Title>
+	<Artist>Dengue_Fever</Artist>
+	<Level>3</Level>
+    <Image>
+        <imageBackground>image_bg_01_01.png</imageBackground>
+        <imageShutter>image_sh_temp1.png</imageShutter>
+        <imageNote1>image_nt_01_01.png</imageNote1>
+        <imageNote2>image_nt_02_01.png</imageNote2>
+        <imageNoteEffect>image_nt_01_02.png</imageNoteEffect>
+    </Image>
+    <Sound>
+        <soundBackground>Dengue_Fever-Integration.mp3</soundBackground>
+        <soundNoteEffect1>se1.wav</soundNoteEffect1>
+        <soundNoteEffect2>se2.wav</soundNoteEffect2>
+    </Sound>
+    <Note>note.txt</Note>
+</Music>

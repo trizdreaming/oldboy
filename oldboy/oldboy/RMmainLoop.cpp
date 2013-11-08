@@ -346,7 +346,7 @@ void CRMmainLoop::TestKeyboard()
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		GoNextScene();
-		CRMxmlLoader::GetInstance()->TestXML();
+		CRMxmlLoader::GetInstance()->LoadMusicData( "SingleBell" );
 	}
 }
 

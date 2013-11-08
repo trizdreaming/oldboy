@@ -138,18 +138,22 @@ void CRMmainLoop::RunMessageLoop()
 
 				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;
-
-
-				// 소리 밀림을 방지하기 위해 UpdateKeyState와 TestSound를 묶어 둠
-				CRMinput::GetInstance()->UpdateKeyState();
-
-				// test sound
-				TestSound();
-
-				// test Key
-				TestKeyboard();
-				CRMjudgeManager::GetInstance()->JudgeNote();
 			}
+
+			//////////////////////////////////////////////////////////////////////////
+			// 소리 밀림 방지를 위해 FPS = 60에 맞추던 부분에서 빼옴
+			//////////////////////////////////////////////////////////////////////////
+			CRMinput::GetInstance()->UpdateKeyState();
+
+			// test sound
+			TestSound();
+
+			// test Key
+			TestKeyboard();
+			CRMjudgeManager::GetInstance()->JudgeNote();
+			//////////////////////////////////////////////////////////////////////////
+			// 여기까지
+			//////////////////////////////////////////////////////////////////////////
 
 			if ( m_ElapsedTime > m_Fps )
 			{

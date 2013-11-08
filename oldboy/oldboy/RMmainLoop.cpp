@@ -14,6 +14,7 @@
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
 #include "RMvideoPlayer.h"
+#include "RMxmlLoader.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -44,7 +45,7 @@ void CRMmainLoop::RunMessageLoop()
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
 	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
-	CRMsound::GetInstance()->LoadSound("SingleBell.mp3");
+	CRMsound::GetInstance()->LoadSound("Dengue_Fever-Integration.mp3");
 	CRMsound::GetInstance()->LoadSound("sound_effect_01_01.wav");
 	CRMsound::GetInstance()->LoadSound("sound_effect_02_01.wav");
 
@@ -138,23 +139,17 @@ void CRMmainLoop::RunMessageLoop()
 				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;
 
+
+				// 소리 밀림을 방지하기 위해 UpdateKeyState와 TestSound를 묶어 둠
+				CRMinput::GetInstance()->UpdateKeyState();
+
+				// test sound
+				TestSound();
+
+				// test Key
+				TestKeyboard();
+				CRMjudgeManager::GetInstance()->JudgeNote();
 			}
-
-			//////////////////////////////////////////////////////////////////////////
-			// 소리 밀림을 방지하기 위해 FPS 동기화 하단으로 뽑아냄
-			//////////////////////////////////////////////////////////////////////////
-
-			// 키 입력 상태 갱신
-			CRMinput::GetInstance()->UpdateKeyState();
-
-			// 소리 출력
-			TestSound();
-
-			// 씬 이동 체크
-			TestKeyboard();
-
-			// 노트 판정
-			CRMjudgeManager::GetInstance()->JudgeNote();
 
 			if ( m_ElapsedTime > m_Fps )
 			{
@@ -351,6 +346,7 @@ void CRMmainLoop::TestKeyboard()
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		GoNextScene();
+		CRMxmlLoader::GetInstance()->TestXML();
 	}
 }
 
@@ -368,7 +364,7 @@ void CRMmainLoop::GoNextScene()
 	{
 		m_SceneType = SCENE_PLAY;
 
-		CRMsound::GetInstance()->PlaySound("SingleBell.mp3");
+		CRMsound::GetInstance()->PlaySound("Dengue_Fever-Integration.mp3");
 		return;
 	}
 }

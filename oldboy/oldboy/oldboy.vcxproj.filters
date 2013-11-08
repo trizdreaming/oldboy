@@ -47,6 +47,9 @@
     <Filter Include="BandiVideo">
       <UniqueIdentifier>{826ee267-37db-4a02-bdd3-185f6deb304b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="TinyXML">
+      <UniqueIdentifier>{0be61913-ac69-4c08-af03-688490ad4e53}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
@@ -172,6 +175,61 @@
     <ClInclude Include="RMprintConsole.h">
       <Filter>메인 영역</Filter>
     </ClInclude>
+    <ClInclude Include="LibraryTinyXML\tinystr.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\tinyxml.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="RMxmlLoader.h">
+      <Filter>Core\Input</Filter>
+    </ClInclude>
+    <ClInclude Include="RMmusicData.h" />
+    <ClInclude Include="LibraryTinyXML\action_store.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\byte_stream.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\htmlutil.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\lex_token.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\lex_util.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\node_set.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\tinyxpath_conf.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\tokenlist.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xml_util.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xpath_expression.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xpath_processor.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xpath_stack.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xpath_static.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xpath_stream.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="LibraryTinyXML\xpath_syntax.h">
+      <Filter>TinyXML</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -248,6 +306,58 @@
     </ClCompile>
     <ClCompile Include="RMprintConsole.cpp">
       <Filter>메인 영역</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\tinystr.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\tinyxml.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\tinyxmlerror.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\tinyxmlparser.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="RMxmlLoader.cpp">
+      <Filter>Core\Input</Filter>
+    </ClCompile>
+    <ClCompile Include="RMmusicData.cpp" />
+    <ClCompile Include="LibraryTinyXML\action_store.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\htmlutil.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\lex_util.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\node_set.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\tokenlist.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xml_util.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xpath_expression.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xpath_processor.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xpath_stack.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xpath_static.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xpath_stream.cpp">
+      <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="LibraryTinyXML\xpath_syntax.cpp">
+      <Filter>TinyXML</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

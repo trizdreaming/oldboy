@@ -97,6 +97,23 @@
     <ClInclude Include="LibraryFmod\fmod_errors.h" />
     <ClInclude Include="LibraryFmod\fmod_memoryinfo.h" />
     <ClInclude Include="LibraryFmod\fmod_output.h" />
+    <ClInclude Include="LibraryTinyXML\action_store.h" />
+    <ClInclude Include="LibraryTinyXML\byte_stream.h" />
+    <ClInclude Include="LibraryTinyXML\htmlutil.h" />
+    <ClInclude Include="LibraryTinyXML\lex_token.h" />
+    <ClInclude Include="LibraryTinyXML\lex_util.h" />
+    <ClInclude Include="LibraryTinyXML\node_set.h" />
+    <ClInclude Include="LibraryTinyXML\tinystr.h" />
+    <ClInclude Include="LibraryTinyXML\tinyxml.h" />
+    <ClInclude Include="LibraryTinyXML\tinyxpath_conf.h" />
+    <ClInclude Include="LibraryTinyXML\tokenlist.h" />
+    <ClInclude Include="LibraryTinyXML\xml_util.h" />
+    <ClInclude Include="LibraryTinyXML\xpath_expression.h" />
+    <ClInclude Include="LibraryTinyXML\xpath_processor.h" />
+    <ClInclude Include="LibraryTinyXML\xpath_stack.h" />
+    <ClInclude Include="LibraryTinyXML\xpath_static.h" />
+    <ClInclude Include="LibraryTinyXML\xpath_stream.h" />
+    <ClInclude Include="LibraryTinyXML\xpath_syntax.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildEffectManager.h" />
@@ -114,6 +131,7 @@
     <ClInclude Include="RMlabelManager.h" />
     <ClInclude Include="RMmacro.h" />
     <ClInclude Include="RMmainLoop.h" />
+    <ClInclude Include="RMmusicData.h" />
     <ClInclude Include="RMobject.h" />
     <ClInclude Include="RMobjectManager.h" />
     <ClInclude Include="RMplayer.h" />
@@ -124,12 +142,29 @@
     <ClInclude Include="RMresourceManager.h" />
     <ClInclude Include="RMsound.h" />
     <ClInclude Include="RMvideoPlayer.h" />
+    <ClInclude Include="RMxmlLoader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="LibraryBandi\BandiVideoLibrary.cpp" />
     <ClCompile Include="LibraryBandi\BandiVideoTexture_DX9.cpp" />
+    <ClCompile Include="LibraryTinyXML\action_store.cpp" />
+    <ClCompile Include="LibraryTinyXML\htmlutil.cpp" />
+    <ClCompile Include="LibraryTinyXML\lex_util.cpp" />
+    <ClCompile Include="LibraryTinyXML\node_set.cpp" />
+    <ClCompile Include="LibraryTinyXML\tinystr.cpp" />
+    <ClCompile Include="LibraryTinyXML\tinyxml.cpp" />
+    <ClCompile Include="LibraryTinyXML\tinyxmlerror.cpp" />
+    <ClCompile Include="LibraryTinyXML\tinyxmlparser.cpp" />
+    <ClCompile Include="LibraryTinyXML\tokenlist.cpp" />
+    <ClCompile Include="LibraryTinyXML\xml_util.cpp" />
+    <ClCompile Include="LibraryTinyXML\xpath_expression.cpp" />
+    <ClCompile Include="LibraryTinyXML\xpath_processor.cpp" />
+    <ClCompile Include="LibraryTinyXML\xpath_stack.cpp" />
+    <ClCompile Include="LibraryTinyXML\xpath_static.cpp" />
+    <ClCompile Include="LibraryTinyXML\xpath_stream.cpp" />
+    <ClCompile Include="LibraryTinyXML\xpath_syntax.cpp" />
     <ClCompile Include="oldboy.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
@@ -142,6 +177,7 @@
     <ClCompile Include="RMlabel.cpp" />
     <ClCompile Include="RMlabelManager.cpp" />
     <ClCompile Include="RMmainLoop.cpp" />
+    <ClCompile Include="RMmusicData.cpp" />
     <ClCompile Include="RMobject.cpp" />
     <ClCompile Include="RMobjectManager.cpp" />
     <ClCompile Include="RMplayer.cpp" />
@@ -152,6 +188,7 @@
     <ClCompile Include="RMresourceManager.cpp" />
     <ClCompile Include="RMsound.cpp" />
     <ClCompile Include="RMvideoPlayer.cpp" />
+    <ClCompile Include="RMxmlLoader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">Create</PrecompiledHeader>

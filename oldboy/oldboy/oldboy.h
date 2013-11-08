@@ -11,6 +11,9 @@
 #include "LibraryBandi/BandiVideoLibrary.h"
 #include "LibraryBandi/BandiVideoTexture_DX9.h"
 
+#include "LibraryTinyXML/tinyxml.h"
+#include "LibraryTinyXML/xpath_static.h"
+
 #include "RMdefine.h"
 #include "RMmacro.h"
 #include "RMinput.h"

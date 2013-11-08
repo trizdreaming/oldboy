@@ -148,9 +148,11 @@ void CRMmainLoop::RunMessageLoop()
 			// test sound
 			TestSound();
 
+			CRMjudgeManager::GetInstance()->JudgeNote();
+
 			// test Key
 			TestKeyboard();
-			CRMjudgeManager::GetInstance()->JudgeNote();
+
 			//////////////////////////////////////////////////////////////////////////
 			// 여기까지
 			//////////////////////////////////////////////////////////////////////////
@@ -303,6 +305,27 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
+		return;
+	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
+		return;
+	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
+		return;
+	}
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET2 ) == KEY_DOWN )
+	{
+		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
+		return;
+	}
+
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_ATTACK ) == KEY_DOWN )
 	{
 		int testRand1 = rand();
@@ -314,6 +337,7 @@ void CRMmainLoop::TestSound()
 		{
 			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_2 );
 		}
+		return;
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_ATTACK ) == KEY_DOWN )
 	{
@@ -326,22 +350,7 @@ void CRMmainLoop::TestSound()
 		{
 			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , OBJECT_NOTE_NORMAL_2 );
 		}
-	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
-	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
-	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
-	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
-	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN )
-	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
-	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET2 ) == KEY_DOWN )
-	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
+		return;
 	}
 }
 

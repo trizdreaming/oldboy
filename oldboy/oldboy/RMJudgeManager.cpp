@@ -111,7 +111,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 	{
 		if ( thisNote->GetPositionY() > 555 )
 		{
-			printf_s( "%dP NoteOut Miss \n",playerLayer );
+			printConsole( "%dP NoteOut Miss \n", playerLayer );
 
 			//score up
 			playerClass->AddEvent( JUDGE_MISS );
@@ -137,7 +137,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
-				printf_s( "%dP Perfect \n", playerLayer );
+				printConsole( "%dP Perfect \n", playerLayer );
 
 				//score up
 				playerClass->AddEvent( JUDGE_PERFECT );
@@ -158,7 +158,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
-				printf_s( "%dP Good \n", playerLayer );
+				printConsole( "%dP Good \n", playerLayer );
 	
 				//score up
 				playerClass->AddEvent( JUDGE_GOOD );
@@ -172,7 +172,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
-				printf_s( "%dP Time Miss \n", playerLayer );
+				printConsole( "%dP Time Miss \n", playerLayer );
 
 				//score up;
 				playerClass->AddEvent( JUDGE_MISS );
@@ -229,7 +229,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 
 void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 {
-	printf_s("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
+	printConsole("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 			CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
 			CRMplayer1P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ),
 			CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 

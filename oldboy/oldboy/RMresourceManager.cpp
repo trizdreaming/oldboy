@@ -126,6 +126,6 @@ void CRMresourceManager::CheckError(HRESULT hr)
 {
 	if ( hr != S_OK )
 	{
-		printf_s("Image Loading Error! (%d) \n", hr);
+		printConsole("Image Loading Error! (%d) \n", hr);
 	}
 }

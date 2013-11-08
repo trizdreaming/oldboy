@@ -105,7 +105,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
-				printf_s("FPS : %d \n", fps);
+				printConsole("FPS : %d \n", fps);
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
 			}

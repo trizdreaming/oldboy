@@ -132,11 +132,11 @@ void CRMvideoPlayer::RenderVideo()
 		Sleep(1);
 	}
 
-	printf_s( "frame: %d \n", m_Count );
+	printConsole( "frame: %d \n", m_Count );
 
 	if ( m_Status == BVL_STATUS_PLAYEND )
 	{
-		printf_s("END! \n");
+		printConsole("END! \n");
 		
 		DestoryFactory();
 		CRMmainLoop::GetInstance()->GoNextScene();

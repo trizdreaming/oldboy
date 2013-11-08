@@ -29,14 +29,14 @@ void CRMchildEffectImage::Update()
 		{
 			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
 			{				
-				// printf_s("테스트!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
+				// printConsole("테스트!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
 
 				m_EffectType = i % 4;
 				highMask = i / 4;
 			}
 		}
 
-		// printf_s( "테스트 출력 플래그 [ %x ] 좌표 [ %f , %f ] 타입 [ %d ] \n", 
+		// printConsole( "테스트 출력 플래그 [ %x ] 좌표 [ %f , %f ] 타입 [ %d ] \n", 
 		//				CRMchildEffectManager::GetInstance()->GetFlag(), m_PositionX, m_PositionY, m_EffectType );
 
 		CRMchildEffectManager::GetInstance()->ResetFlag( highMask );

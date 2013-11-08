@@ -24,3 +24,9 @@ inline void SafeDelete(T* &p)
 #define SINGLETON(type) \
 	public: \
 	static type* GetInstance() { static type s; return &s; }
+
+#ifdef _DEBUG
+#define printConsole( c, ... ) printf_s( c, ##__VA_ARGS__ )
+#else
+#define printConsole( c, ... )
+#endif // !_DEBUG

@@ -76,7 +76,7 @@ void CRMsound::PlayEffect( const std::string& fileName )
 	{
 		
 		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
-		m_Channel->setVolume(0.5f);
+		m_Channel->setVolume(0.7f);
 		CheckError();
 	}
 }

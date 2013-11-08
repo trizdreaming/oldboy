@@ -45,7 +45,7 @@ void CRMmainLoop::RunMessageLoop()
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
 	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
-	CRMsound::GetInstance()->LoadSound("SingleBell.mp3");
+	CRMsound::GetInstance()->LoadSound("SingleBell_BGM.mp3");
 	CRMsound::GetInstance()->LoadSound("sound_effect_01_01.wav");
 	CRMsound::GetInstance()->LoadSound("sound_effect_02_01.wav");
 
@@ -368,7 +368,7 @@ void CRMmainLoop::GoNextScene()
 	{
 		m_SceneType = SCENE_PLAY;
 
-		CRMsound::GetInstance()->PlaySound("SingleBell.mp3");
+		CRMsound::GetInstance()->PlaySound("SingleBell_BGM.mp3");
 		return;
 	}
 }

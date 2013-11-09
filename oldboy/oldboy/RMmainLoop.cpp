@@ -103,31 +103,33 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 			}
 
-			/*
+			
 
 			// FPS 출력용 계산
-
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
-				printConsole("FPS : %d \n", fps);
+			//	printConsole("FPS : %d \n", fps);
+
+#ifdef _DEBUG
+				CRMlabel*	testLabel = new CRMlabel();
+				wchar_t		testChar[255] = {0, };
+				swprintf_s(testChar, L"FPS : %d ", fps);
+
+				testLabel->CreateLabel(L"FPS", testChar, L"맑은 고딕", 15.0F );
+				testLabel->SetRGBA( 1.0f, 1.0f, 1.0f, 1.f );
+				testLabel->SetSceneType( SCENE_PLAY );
+				testLabel->SetPosition( 20, 20 );
+#endif
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
 			}
-			*/
 
 			m_ElapsedTime = m_NowTime - m_PrevTime;
 
 			if( m_ElapsedTime == m_Fps )
 			{
 				// 테스트 
-				/*
-				CRMlabel* testLabel = new CRMlabel();
-				testLabel->CreateLabel(L"테스트", L"테스트 라벨입니다.", L"맑은 고딕", 35.0F );
-				testLabel->SetRGBA( 0.8f, 0.5f, 0.3f, 1.f );
-				testLabel->SetSceneType( SCENE_TITLE );
-				testLabel->SetPosition( 50, 50 );
-				*/
-
+				
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
 				CRMobjectManager::GetInstance()->Update();

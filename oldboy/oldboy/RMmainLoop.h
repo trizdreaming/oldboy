@@ -28,7 +28,7 @@ private:
 	void	TestSound();
 	HRESULT	TestKeyboard();
 
-	void	CreateObject();
+	HRESULT	CreateObject();
 
 
 private:

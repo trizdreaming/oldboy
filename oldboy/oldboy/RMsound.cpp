@@ -44,14 +44,14 @@ HRESULT CRMsound::CreateSound()
 {
 	m_Result = FMOD::System_Create(&m_SystemS);  // Create the main system object.
 	
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		return S_FALSE;
 	}
 	
 	m_Result = m_SystemS->init(2, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
 		
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		return S_FALSE;
 	}
@@ -63,7 +63,7 @@ HRESULT CRMsound::CreateSound()
 // 角力 府家胶 积己
 HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 {
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		return S_FALSE;
 	}
@@ -73,7 +73,7 @@ HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 	m_Result = m_SystemS->createSound(filePath.c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_Sound);
 	// FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
 	
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		return S_FALSE;
 	}
@@ -92,7 +92,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 
 	std::string filePath;
 	hr = LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		DeleteSound();
 		return hr;
@@ -103,7 +103,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	filePath.append("/");
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() ) );
 	hr = LoadSound( filePath, SOUND_BG_PLAY );
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		DeleteSound();
 		return hr;
@@ -114,7 +114,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	filePath.append("/");
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() ) );
 	hr = LoadSound( filePath, SOUND_NOTE_1 );
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		DeleteSound();
 		return hr;
@@ -125,7 +125,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	filePath.append("/");
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() ) );
 	hr = LoadSound( filePath, SOUND_NOTE_2 );
-	if ( CheckError() == S_FALSE )
+	if ( CheckError() != S_OK )
 	{
 		DeleteSound();
 		return hr;

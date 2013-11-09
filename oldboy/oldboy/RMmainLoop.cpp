@@ -50,13 +50,13 @@ void CRMmainLoop::RunMessageLoop()
 	//===================================================================
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	hr = CRMsound::GetInstance()->CreateSound();
-	if ( hr == S_FALSE )
+	if ( hr != S_OK )
 	{
 		MessageBox( NULL, L"Error Sound Initialize....", L"ERROR!", MB_OK | MB_ICONSTOP );
 		return;
 	}
 	hr = CRMsound::GetInstance()->LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
-	if ( hr == S_FALSE )
+	if ( hr != S_OK )
 	{
 		MessageBox( NULL, L"Error Loading Sound Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
 		return;
@@ -74,14 +74,20 @@ void CRMmainLoop::RunMessageLoop()
 	{
 		hr = GoNextScene();
 		// 동영상 재생을 위한 초기화에 실패 했을 경우 동영상 재생 패스
-		if ( hr == S_FALSE )
+		if ( hr != S_OK )
 		{
 			MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
 			return;
 		}
 	}
 
-	CreateObject();
+	hr = CreateObject();
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, L"Error to Create Object Resources", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return;
+	}
+
 	// 오브젝트 생성 부분을 리팩토링
 	
 	while ( true )
@@ -108,7 +114,7 @@ void CRMmainLoop::RunMessageLoop()
 					CRMvideoPlayer::GetInstance()->DestoryFactory();
 					hr = GoNextScene();
 
-					if ( hr == S_FALSE )
+					if ( hr != S_OK )
 					{
 						MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
 						return;
@@ -178,7 +184,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			// test Key
 			hr = TestKeyboard();
-			if ( hr == S_FALSE )
+			if ( hr != S_OK )
 			{
 				MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
 				return;
@@ -298,17 +304,39 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 	return 0;
 }
 
-void CRMmainLoop::CreateObject()
+HRESULT CRMmainLoop::CreateObject()
 {
+	HRESULT hr = S_FALSE;
+
 	// 이미지 리소스를 불러오려면 렌더가 필요함
-	CRMrender::GetInstance()->CreateFactory();
-	CRMrender::GetInstance()->CreateRenderTarget();
+	hr = CRMrender::GetInstance()->CreateFactory();
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, L"Error to Create Renderer", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return hr;
+	}
+	hr = CRMrender::GetInstance()->CreateRenderTarget();
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, L"Error to Create Render Target", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return hr;
+	}
 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
 	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
 
 	// 이미지 리소스 파일 불러오기
-	CRMresourceManager::GetInstance()->CreateFactory();
-	CRMresourceManager::GetInstance()->CreateTexture();
+	hr = CRMresourceManager::GetInstance()->CreateFactory();
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, L"Error to Create WIC Factory", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return hr;
+	}
+	hr = CRMresourceManager::GetInstance()->CreateTexture();
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, L"Error to Create BackGround Texture", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return hr;
+	}
 
 	/**********************************************************************************/
 	// 화면 출력을 시험 하기 위해 임시로 추가 해 둠
@@ -354,6 +382,8 @@ void CRMmainLoop::CreateObject()
 		testObject->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE_HIT);
 	}
+
+	return hr;
 }
 
 // ================================================================
@@ -446,10 +476,16 @@ HRESULT CRMmainLoop::GoNextScene()
 
 	if ( m_SceneType == SCENE_TITLE )
 	{
-		CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
+		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, L"Error Loading Image Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
 		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
 
-		if ( hr == S_FALSE )
+		if ( hr != S_OK )
 		{
 			MessageBox( NULL, L"Error Loading Sound Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
 			return hr;

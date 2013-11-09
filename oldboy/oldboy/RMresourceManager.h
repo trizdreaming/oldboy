@@ -22,7 +22,7 @@ public:
 	CRMimage*					GetTexture( ObjectType key ) { return m_TextureMap[key]; }
 	
 private:
-	void								CheckError(HRESULT);
+	void								LogError(HRESULT);
 	void								InitializeMap();
 	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName );
 

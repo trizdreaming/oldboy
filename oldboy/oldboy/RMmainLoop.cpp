@@ -52,13 +52,13 @@ void CRMmainLoop::RunMessageLoop()
 	hr = CRMsound::GetInstance()->CreateSound();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error Sound Initialize....", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_SOUND_INIT, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return;
 	}
-	hr = CRMsound::GetInstance()->LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+	hr = CRMsound::GetInstance()->LoadSound(BGM_TITLE, SOUND_BG_TITLE );
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error Loading Sound Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_SOUND_LOADING, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return;
 	}
 
@@ -76,7 +76,7 @@ void CRMmainLoop::RunMessageLoop()
 		// 동영상 재생을 위한 초기화에 실패 했을 경우 동영상 재생 패스
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 			return;
 		}
 	}
@@ -84,7 +84,7 @@ void CRMmainLoop::RunMessageLoop()
 	hr = CreateObject();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error to Create Object Resources", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_RESOURCE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return;
 	}
 
@@ -116,7 +116,7 @@ void CRMmainLoop::RunMessageLoop()
 
 					if ( hr != S_OK )
 					{
-						MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
+						MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 						return;
 					}
 				}
@@ -142,7 +142,7 @@ void CRMmainLoop::RunMessageLoop()
 				wchar_t		testChar[255] = {0, };
 				swprintf_s(testChar, L"FPS : %d ", fps);
 
-				testLabel->CreateLabel(L"FPS", testChar, L"맑은 고딕", 15.0F );
+				testLabel->CreateLabel(LABEL_FPS, testChar, LABEL_FONT_NORMAL, 15.0F );
 				testLabel->SetRGBA( 1.0f, 1.0f, 1.0f, 1.f );
 				testLabel->SetSceneType( SCENE_PLAY );
 				testLabel->SetPosition( 20, 20 );
@@ -186,7 +186,7 @@ void CRMmainLoop::RunMessageLoop()
 			hr = TestKeyboard();
 			if ( hr != S_OK )
 			{
-				MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
+				MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 				return;
 			}
 
@@ -207,7 +207,7 @@ void CRMmainLoop::RunMessageLoop()
 void CRMmainLoop::LoadMusicData()
 {
 	WIN32_FIND_DATAA findFileData;
-	HANDLE hFind = FindFirstFileA( "./Music/.\\*", &findFileData );
+	HANDLE hFind = FindFirstFileA( MUSIC_FOLDER_SEARCH, &findFileData );
 
 	if ( hFind == INVALID_HANDLE_VALUE )
 	{
@@ -249,14 +249,14 @@ HRESULT CRMmainLoop::CreateMainLoopWindow()
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
 	wcex.hbrBackground	= NULL; // 배경 색상 부분 NULL로 설정
 	wcex.lpszMenuName	= NULL;	// 메뉴 생성 부분 NULL로 설정
-	wcex.lpszClassName	= L"RhythmMatch";
+	wcex.lpszClassName	= CLASS_NAME;
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
 	RegisterClassEx(&wcex);
 
 
 	m_Hwnd = CreateWindow(wcex.lpszClassName, 
-						L"Rhythm Match v0.125", 
+						GAME_NAME, 
 						WS_OVERLAPPEDWINDOW,
 						50,		// 하기 4줄이 화면 시작 좌표 의미 
 						50,		//
@@ -312,13 +312,13 @@ HRESULT CRMmainLoop::CreateObject()
 	hr = CRMrender::GetInstance()->CreateFactory();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error to Create Renderer", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_RENDER, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 	hr = CRMrender::GetInstance()->CreateRenderTarget();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error to Create Render Target", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_RENDER_TARGET, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
@@ -328,13 +328,13 @@ HRESULT CRMmainLoop::CreateObject()
 	hr = CRMresourceManager::GetInstance()->CreateFactory();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error to Create WIC Factory", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_WIC_FACTORY, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 	hr = CRMresourceManager::GetInstance()->CreateTexture();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, L"Error to Create BackGround Texture", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_BG_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 
@@ -479,7 +479,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, L"Error Loading Image Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -487,7 +487,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, L"Error Loading Sound Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 

@@ -31,7 +31,7 @@ HRESULT CRMsound::CheckError()
 {
 	if ( m_Result != FMOD_OK )
 	{
-		printConsole("FMOD error! (%d) %s\n", m_Result, FMOD_ErrorString(m_Result));
+		printConsole(ERROR_FMOD_CONSOLE, m_Result, FMOD_ErrorString(m_Result));
 
 		return S_FALSE;
 	}
@@ -91,16 +91,16 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	DeleteSound();
 
 	std::string filePath;
-	hr = LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+	hr = LoadSound( BGM_TITLE, SOUND_BG_TITLE );
 	if ( CheckError() != S_OK )
 	{
 		DeleteSound();
 		return hr;
 	}
 
-	filePath = "./Music/";
-	filePath.append(musicFolderName);
-	filePath.append("/");
+	filePath = MUSIC_FOLDER;
+	filePath.append( musicFolderName );
+	filePath.append( FOLDER_SLASH );
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() ) );
 	hr = LoadSound( filePath, SOUND_BG_PLAY );
 	if ( CheckError() != S_OK )
@@ -109,9 +109,9 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
-	filePath = "./Music/";
+	filePath = MUSIC_FOLDER;
 	filePath.append(musicFolderName);
-	filePath.append("/");
+	filePath.append(FOLDER_SLASH);
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() ) );
 	hr = LoadSound( filePath, SOUND_NOTE_1 );
 	if ( CheckError() != S_OK )
@@ -120,9 +120,9 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
-	filePath = "./Music/";
-	filePath.append(musicFolderName);
-	filePath.append("/");
+	filePath = MUSIC_FOLDER;
+	filePath.append( musicFolderName );
+	filePath.append( FOLDER_SLASH );
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() ) );
 	hr = LoadSound( filePath, SOUND_NOTE_2 );
 	if ( CheckError() != S_OK )

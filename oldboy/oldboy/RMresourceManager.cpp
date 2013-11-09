@@ -52,7 +52,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_bg_00_01.png" );
+	hr = texture->CreateImage( BG_IMAGE_DEFAULT );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -74,7 +74,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_bg_00_01.png" );
+	hr = texture->CreateImage( BG_IMAGE_DEFAULT );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -170,15 +170,15 @@ void CRMresourceManager::LogError(HRESULT hr)
 {
 	if ( hr != S_OK )
 	{
-		printConsole("Image Loading Error! (%d) \n", hr);
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 	}
 }
 
 std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName )
 {
-	std::string str = "./Music/";
+	std::string str = MUSIC_FOLDER;
 	str.append( folderName );
-	str.append( "/" );
+	str.append( FOLDER_SLASH );
 	str.append( resourceName );
 
 	std::wstring wstr(str.length(),L' ');

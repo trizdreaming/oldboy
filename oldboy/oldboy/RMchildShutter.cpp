@@ -16,7 +16,7 @@ CRMchildShutter::~CRMchildShutter(void)
 
 void CRMchildShutter::Update()
 {
-	// CRMobject::SetVisibleByScene();
+	// SetVisibleByScene();
 
 	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
 	{

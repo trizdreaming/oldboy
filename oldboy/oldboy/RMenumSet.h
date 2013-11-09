@@ -34,6 +34,18 @@ enum ObjectType
 	NO_OBJECT
 };
 
+enum SoundType
+{
+	NO_SOUND,
+	SOUND_BG_TITLE,
+	SOUND_BG_PLAY,
+	SOUND_BG_RESULT,
+	SOUND_NOTE_1,
+	SOUND_NOTE_2,
+	SOUND_NOTE_EFFECT,
+	SOUND_SHUTTER
+};
+
 enum KeyTable
 {
 	KEY_ESCAPE,

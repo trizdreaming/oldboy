@@ -45,5 +45,7 @@ private:
 	SceneType						m_SceneType;
 
 	std::list<std::string>			m_MusicList;
+
+	std::string						m_PlayMusicName;
 };
 

@@ -2,6 +2,8 @@
 #include "oldboy.h"
 #include "RMimage.h"
 #include "RMresourceManager.h"
+#include "RMxmlLoader.h"
+#include "RMmusicData.h"
 
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
@@ -14,6 +16,13 @@ CRMresourceManager::~CRMresourceManager(void)
 {
 	SafeRelease(m_pWICFactory);
 
+	InitializeMap();
+
+}
+
+
+void CRMresourceManager::InitializeMap()
+{
 	for ( auto& iter : m_TextureMap )
 	{
 		auto toBeDelete = iter.second;
@@ -21,6 +30,7 @@ CRMresourceManager::~CRMresourceManager(void)
 	}
 	m_TextureMap.clear();
 }
+
 
 HRESULT CRMresourceManager::CreateFactory()
 {
@@ -37,8 +47,33 @@ HRESULT CRMresourceManager::CreateFactory()
 
 HRESULT CRMresourceManager::CreateTexture()
 {
-	HRESULT hr = S_FALSE;
 
+	InitializeMap();
+
+	HRESULT hr = S_FALSE;
+	CRMimage* texture;
+
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/image_bg_00_01.png" );
+	CheckError(hr);
+	if ( hr == S_OK )
+	{
+		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
+	}
+	else
+	{
+		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
+		SafeDelete(texture);
+	}
+	return hr;
+}
+
+HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
+{
+	
+	InitializeMap();
+
+	HRESULT hr = S_FALSE;
 	CRMimage* texture;
 
 	texture = new CRMimage();
@@ -55,7 +90,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_bg_01_01.png" );
+	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) ) );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{
@@ -68,7 +103,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_sh_01_01.png" );
+	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageShutter() ) ) );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{
@@ -79,9 +114,9 @@ HRESULT CRMresourceManager::CreateTexture()
 		m_TextureMap[OBJECT_SHUTTER] = nullptr;
 		SafeDelete(texture);
 	}
-	
+
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_nt_01_01.png" );
+	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote1() ) ) );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{
@@ -94,7 +129,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_nt_02_01.png" );
+	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote2() ) ) );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{
@@ -107,7 +142,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_nt_01_02.png" );
+	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNoteEffect() ) ) );
 	CheckError(hr);
 	if ( hr == S_OK )
 	{
@@ -128,4 +163,17 @@ void CRMresourceManager::CheckError(HRESULT hr)
 	{
 		printConsole("Image Loading Error! (%d) \n", hr);
 	}
+}
+
+std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName )
+{
+	std::string str = "./Music/";
+	str.append( folderName );
+	str.append( "/" );
+	str.append( resourceName );
+
+	std::wstring wstr(str.length(),L' ');
+	copy(str.begin(),str.end(),wstr.begin());
+
+	return wstr;
 }

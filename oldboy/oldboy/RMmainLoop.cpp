@@ -23,7 +23,8 @@ CRMmainLoop::CRMmainLoop(void):
 	m_Fps(0),
 	m_FpsCheckTime(0),
 	m_SceneType(SCENE_OPENING),
-	m_Hwnd(NULL)
+	m_Hwnd(NULL),
+	m_PlayMusicName("")
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = ( 1000 / 60 ) + 1;
@@ -44,13 +45,12 @@ void CRMmainLoop::RunMessageLoop()
 	// 음악 데이터를 불러온다.
 	LoadMusicData();
 
+	// test 음악선택하기
+	m_PlayMusicName = *( m_MusicList.begin() );
 	//===================================================================
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	CRMsound::GetInstance()->CreateSound();
-	CRMsound::GetInstance()->LoadSound("bgm_title_00_01.mp3");
-	CRMsound::GetInstance()->LoadSound("SingleBell_BGM.mp3");
-	CRMsound::GetInstance()->LoadSound("sound_effect_01_01.wav");
-	CRMsound::GetInstance()->LoadSound("sound_effect_02_01.wav");
+	CRMsound::GetInstance()->LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
 
 	//===================================================================
 	// 동영상 출력 부분
@@ -342,22 +342,22 @@ void CRMmainLoop::TestSound()
 
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
+		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );
 		return;
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
+		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_2 );
 		return;
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_01_01.wav" );
+		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );
 		return;
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET2 ) == KEY_DOWN )
 	{
-		CRMsound::GetInstance()->PlayEffect( "sound_effect_02_01.wav" );
+		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_2 );
 		return;
 	}
 
@@ -403,15 +403,16 @@ void CRMmainLoop::GoNextScene()
 	{
 		m_SceneType = SCENE_TITLE;
 
-		CRMsound::GetInstance()->PlaySound("bgm_title_00_01.mp3");
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
 		return;
 	}
 
 	if ( m_SceneType == SCENE_TITLE )
 	{
+		CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
+		CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
 		m_SceneType = SCENE_PLAY;
-
-		CRMsound::GetInstance()->PlaySound("SingleBell_BGM.mp3");
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY );
 		return;
 	}
 }

@@ -12,9 +12,11 @@ public:
 	// fmod¿ë ÇÔ¼ö
 	void				CreateSound();
 	
-	void				LoadSound( const std::string& fileName );
-	void				PlaySound( const std::string& fileName );
-	void				PlayEffect( const std::string& fileName );
+	void				LoadSound( const std::string& fileName, SoundType soundType );
+	void				LoadPlaySound( const std::string& musicFolderName );
+
+	void				PlaySound( SoundType soundType );
+	void				PlayEffect( SoundType soundType );
 	
 private:
 	void				DeleteSound();
@@ -26,6 +28,6 @@ private:
 	FMOD_RESULT			m_Result;
 
 	//FMOD::Sound*	m_Sound;
-	std::map<std::string, FMOD::Sound*>	m_SoundMap;
+	std::map<SoundType, FMOD::Sound*>	m_SoundMap;
 };
 

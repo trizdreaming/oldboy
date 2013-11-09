@@ -2,7 +2,6 @@
 #include "oldboy.h"
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
-#include <iostream>
 
 CRMxmlLoader::CRMxmlLoader(void)
 {
@@ -40,7 +39,7 @@ void CRMxmlLoader::LoadMusicData( std::string folderName )
 		std::string artist = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Artist/text()").c_str();
 		std::string level = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Level/text()").c_str();
 
-		std::string imageBackground = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/image_background/text()").c_str();
+		std::string imageBackground = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageBackground/text()").c_str();
 		std::string imageShutter = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageShutter/text()").c_str();
 		std::string imageNote1 = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageNote1/text()").c_str();
 		std::string imageNote2 = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageNote2/text()").c_str();

@@ -1,6 +1,8 @@
 #include "stdafx.h"
 #include "oldboy.h"
 #include "RMsound.h"
+#include "RMxmlLoader.h"
+#include "RMmusicData.h"
 
 CRMsound::CRMsound(void):
 	m_SystemS(nullptr),
@@ -14,6 +16,15 @@ CRMsound::~CRMsound(void)
 {
 	// 소멸자에서 할당한 자원을 반납하도록 함
 	DeleteSound();
+
+
+	if ( m_SystemS )
+	{
+		m_SystemS->release();
+		m_SystemS->close();
+		m_SystemS = NULL;
+	}
+
 }
 
 
@@ -41,28 +52,54 @@ void CRMsound::CreateSound()
 
 
 // 리소스 생성 - 재생하고자 하는 음원 로딩
-void CRMsound::LoadSound( const std::string& fileName )
+void CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 {
 	// 사운드로딩
 	if ( m_Result == FMOD_OK )
 	{
 		FMOD::Sound* m_Sound;
-		std::string filePath = "./Resource/"+fileName;
 		m_Result = m_SystemS->createSound(filePath.c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_Sound);
 		// FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
 		
 		CheckError();
-		m_SoundMap[fileName] = m_Sound;
+		m_SoundMap[soundType] = m_Sound;
 	}
 }
 
+void CRMsound::LoadPlaySound( const std::string& musicFolderName )
+{
+	DeleteSound();
+	std::string filePath;
+	LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+
+	filePath = "./Music/";
+	filePath.append(musicFolderName);
+	filePath.append("/");
+	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() ) );
+	LoadSound( filePath, SOUND_BG_PLAY );
+
+	filePath = "./Music/";
+	filePath.append(musicFolderName);
+	filePath.append("/");
+	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() ) );
+	LoadSound( filePath, SOUND_NOTE_1 );
+
+	filePath = "./Music/";
+	filePath.append(musicFolderName);
+	filePath.append("/");
+	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() ) );
+
+	LoadSound( filePath, SOUND_NOTE_2 );
+
+}
+
 // 재생
-void CRMsound::PlaySound( const std::string& fileName )
+void CRMsound::PlaySound( SoundType soundType )
 {
 	if ( m_Result == FMOD_OK )
 	{
 		m_Channel->stop();
-		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
+		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_Channel);
 		m_Channel->setVolume(0.8f);
 		m_Channel->setMode(FMOD_LOOP_NORMAL);
 
@@ -71,12 +108,12 @@ void CRMsound::PlaySound( const std::string& fileName )
 }
 
 // 효과음 재생
-void CRMsound::PlayEffect( const std::string& fileName )
+void CRMsound::PlayEffect( SoundType soundType )
 {
 	if ( m_Result == FMOD_OK )
 	{
 		
-		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[fileName], false, &m_Channel);
+		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_Channel);
 		m_Channel->setVolume(0.7f);
 		CheckError();
 	}
@@ -94,10 +131,4 @@ void CRMsound::DeleteSound()
 	}
 	m_SoundMap.clear();
 
-	if ( m_SystemS )
-	{
-		m_SystemS->release();
-		m_SystemS->close();
-		m_SystemS = NULL;
-	}
 }

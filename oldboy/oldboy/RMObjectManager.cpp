@@ -112,7 +112,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_MEMORY_POOL:
 			m_ObjectListMemeoryPullOfNote.push_back(object);
 			break;
-		case NO_LAYER:
+		case LAYER_NONE:
 			break;
 		default:
 			break;
@@ -257,7 +257,7 @@ CRMobject* CRMobjectManager::GetObjectFront( LayerType layer )
 			return nullptr;
 		}
 		return *( m_ObjectListMemeoryPullOfNote.begin() );
-	case NO_LAYER:
+	case LAYER_NONE:
 	default:
 		return nullptr;
 	}

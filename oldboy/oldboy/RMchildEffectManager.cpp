@@ -55,7 +55,7 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 
 		break;
 
-	case NO_PLAYER:
+	case PLAYER_NONE:
 	default:
 		break;
 	}
@@ -85,7 +85,7 @@ void CRMchildEffectManager::GetStartPosition( PlayerNumber targetPlayer, float* 
 		*x = m_Effect2PStartPositionX;
 		*y = m_Effect2PStartPositionY;
 		break;
-	case NO_PLAYER:
+	case PLAYER_NONE:
 	default:
 		break;
 	}

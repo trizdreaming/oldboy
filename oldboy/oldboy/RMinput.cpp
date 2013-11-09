@@ -8,14 +8,14 @@ CRMinput::CRMinput(void)
 	ZeroMemory(m_NowKeyState, sizeof(m_NowKeyState[MAX_INPUT_KEY]));
 
 	m_KeyMap.clear();
-	m_KeyMap[P1_ATTACK] = VK_S;
-	m_KeyMap[P1_TARGET1] = VK_A;
-	m_KeyMap[P1_TARGET2] = VK_D;
-	m_KeyMap[P2_ATTACK] = VK_DOWN;
-	m_KeyMap[P2_TARGET1] = VK_LEFT;
-	m_KeyMap[P2_TARGET2] = VK_RIGHT;
-	m_KeyMap[KEY_RETURN] = VK_RETURN;
-	m_KeyMap[KEY_ESCAPE] = VK_ESCAPE;
+	m_KeyMap[KEY_TABLE_P1_ATTACK] = VK_S;
+	m_KeyMap[KEY_TABLE_P1_TARGET1] = VK_A;
+	m_KeyMap[KEY_TABLE_P1_TARGET2] = VK_D;
+	m_KeyMap[KEY_TABLE_P2_ATTACK] = VK_DOWN;
+	m_KeyMap[KEY_TABLE_P2_TARGET1] = VK_LEFT;
+	m_KeyMap[KEY_TABLE_P2_TARGET2] = VK_RIGHT;
+	m_KeyMap[KEY_TABLE_RETURN] = VK_RETURN;
+	m_KeyMap[KEY_TABLE_ESCAPE] = VK_ESCAPE;
 }
 
 
@@ -47,16 +47,16 @@ KeyStatus CRMinput::GetKeyStatusByKey( KeyTable key )
 {
 	if ( m_PrevKeyState[key] == false && m_NowKeyState[key] == true )
 	{
-		return KEY_DOWN;
+		return KEY_STATUS_DOWN;
 	}
 	else if ( m_PrevKeyState[key] == true && m_NowKeyState[key] == true )
 	{
-		return KEY_PRESSED;
+		return KEY_STATUS_PRESSED;
 	}
 	else if ( m_PrevKeyState[key] == true && m_NowKeyState[key] == false )
 	{
-		return KEY_UP;
+		return KEY_STATUS_UP;
 	}
 
-	return KEY_NOTPRESSED;
+	return KEY_STATUS_NOT_PRESSED;
 }

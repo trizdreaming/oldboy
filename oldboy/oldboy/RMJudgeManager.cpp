@@ -11,8 +11,8 @@
 #include "RMchildEffectManager.h"
 
 CRMjudgeManager::CRMjudgeManager(void) :
-	m_Player1Judge(NO_JUDGE),
-	m_Player2Judge(NO_JUDGE)
+	m_Player1Judge(JUDGE_NONE),
+	m_Player2Judge(JUDGE_NONE)
 {
 }
 
@@ -48,7 +48,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE2 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 		break;
-	case NO_PLAYER:
+	case PLAYER_NONE:
 	default:
 		break;
 	}
@@ -101,7 +101,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		playerLayer = LAYER_NOTE2;
 		playerClass = CRMplayer2P::GetInstance();
 		break;
-	case NO_PLAYER:
+	case PLAYER_NONE:
 	default:
 		return;
 	}
@@ -192,21 +192,21 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 	switch ( player )
 	{
 	case PLAYER_ONE:
-		target1 = P1_TARGET1;
-		target2 = P1_TARGET2;
+		target1 = KEY_TABLE_P1_TARGET1;
+		target2 = KEY_TABLE_P1_TARGET2;
 		break;
 	case PLAYER_TWO:
-		target1 = P2_TARGET1;
-		target2 = P2_TARGET2;
+		target1 = KEY_TABLE_P2_TARGET1;
+		target2 = KEY_TABLE_P2_TARGET2;
 		break;
-	case NO_PLAYER:
+	case PLAYER_NONE:
 	default:
 		break;
 	}
 
 	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_DOWN )
+		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_STATUS_DOWN )
 		{
 			note->SetVisible( false );
 			//DeleteNote( objectList );
@@ -215,7 +215,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 	}
 	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_DOWN )
+		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_STATUS_DOWN )
 		{
 			note->SetVisible( false );
 			//DeleteNote( objectList );
@@ -230,10 +230,10 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 {
 	printConsole("Á¡¼öÇ¥ - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
-			CRMplayer1P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer1P::GetInstance()->GetCount( GOOD_COUNT ), 
-			CRMplayer1P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer1P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer1P::GetInstance()->GetCount( SCORE_COUNT ),
-			CRMplayer2P::GetInstance()->GetCount( PERFECT_COUNT ), CRMplayer2P::GetInstance()->GetCount( GOOD_COUNT ), 
-			CRMplayer2P::GetInstance()->GetCount( MISS_COUNT ), CRMplayer2P::GetInstance()->GetCount( COMBO_COUNT ), CRMplayer2P::GetInstance()->GetCount( SCORE_COUNT )
+			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 
+			CRMplayer1P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer1P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer1P::GetInstance()->GetCount( COUNT_SCORE ),
+			CRMplayer2P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer2P::GetInstance()->GetCount( COUNT_GOOD ), 
+			CRMplayer2P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer2P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer2P::GetInstance()->GetCount( COUNT_SCORE )
 			);
 
 	CRMplayer*	thisPlayer = nullptr;
@@ -280,7 +280,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 		break;
 	}
 
-	swprintf_s( score, L"%10s \n %10d \n  %8s", L"SCORE", thisPlayer->GetCount( SCORE_COUNT ), judge );
+	swprintf_s( score, L"%10s \n %10d \n  %8s", L"SCORE", thisPlayer->GetCount( COUNT_SCORE ), judge );
 
 	CRMlabel* playerScoreLabel = new CRMlabel();
 	playerScoreLabel->CreateLabel( playerScoreLabelName , score, L"¸¼Àº °íµñ", 35.0F );
@@ -288,9 +288,9 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 	playerScoreLabel->SetSceneType( SCENE_PLAY );
 	playerScoreLabel->SetPosition( positionX , positionY );
 
-	if ( thisPlayer->GetCount( COMBO_COUNT ) > 0 )
+	if ( thisPlayer->GetCount( COUNT_COMBO ) > 0 )
 	{
-		swprintf_s( score, L"%8s \n  %10d", L"COMBO", thisPlayer->GetCount( COMBO_COUNT ) );
+		swprintf_s( score, L"%8s \n  %10d", L"COMBO", thisPlayer->GetCount( COUNT_COMBO ) );
 
 		CRMlabel* playerComboLabel = new CRMlabel();
 		playerComboLabel->CreateLabel( playerComboLabelName , score, L"¸¼Àº °íµñ", 35.0F );

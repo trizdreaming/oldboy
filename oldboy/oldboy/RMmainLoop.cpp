@@ -109,7 +109,7 @@ void CRMmainLoop::RunMessageLoop()
 				CRMvideoPlayer::GetInstance()->RenderVideo();
 
 				CRMinput::GetInstance()->UpdateKeyState();
-				if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_UP )
+				if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP )
 				{
 					CRMvideoPlayer::GetInstance()->DestoryFactory();
 					hr = GoNextScene();
@@ -396,28 +396,28 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );
 		return;
 	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET2 ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET2 ) == KEY_STATUS_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_2 );
 		return;
 	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET1 ) == KEY_STATUS_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );
 		return;
 	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET2 ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET2 ) == KEY_STATUS_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_2 );
 		return;
 	}
 
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_ATTACK ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN )
 	{
 		int testRand1 = rand();
 		if( testRand1%2 == 0 )
@@ -430,7 +430,7 @@ void CRMmainLoop::TestSound()
 		}
 		return;
 	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_ATTACK ) == KEY_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN )
 	{
 		int testRand2 = rand();
 		if( testRand2%2 == 0 )
@@ -449,12 +449,12 @@ HRESULT CRMmainLoop::TestKeyboard()
 {
 	HRESULT hr = S_OK;
 
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		m_PlayMusicName = *( m_MusicList.rbegin() );
 		hr = GoNextScene();
 	}
-	else if( ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
+	else if( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		m_PlayMusicName = *( m_MusicList.begin() );
 		hr = GoNextScene();

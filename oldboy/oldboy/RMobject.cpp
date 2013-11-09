@@ -7,7 +7,7 @@
 #include "RMmainLoop.h"
 
 CRMobject::CRMobject(void):
-	m_ObjectType(NO_OBJECT),
+	m_ObjectType(OBJECT_NONE),
 	m_Visible(false),
 	m_PositionX(0.0f),
 	m_PositionY(0.0f),
@@ -25,7 +25,7 @@ CRMobject::~CRMobject(void)
 void CRMobject::Render()
 {
 
-	if ( m_ObjectType == NO_OBJECT || m_Visible == false )
+	if ( m_ObjectType == OBJECT_NONE || m_Visible == false )
 	{
 		return;
 	}

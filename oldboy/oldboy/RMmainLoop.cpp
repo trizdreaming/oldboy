@@ -393,6 +393,12 @@ void CRMmainLoop::TestKeyboard()
 {
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
+		m_PlayMusicName = *( m_MusicList.rbegin() );
+		GoNextScene();
+	}
+	else if( ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
+	{
+		m_PlayMusicName = *( m_MusicList.begin() );
 		GoNextScene();
 	}
 }

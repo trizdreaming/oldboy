@@ -92,10 +92,10 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			m_ObjectListLayerBackground.push_back(object);
 			break;
 		case LAYER_NOTE1:
-			m_ObjectListLayerNotePlayer1.push_back(object);
+			m_ObjectListLayerNotePlayer1.push_front(object);
 			break;
 		case LAYER_NOTE2:
-			m_ObjectListLayerNotePlayer2.push_back(object);
+			m_ObjectListLayerNotePlayer2.push_front(object);
 			break;
 		case LAYER_NOTE_HIT:
 			m_ObjectListLayerNoteHit.push_back(object);
@@ -110,7 +110,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			m_ObjectListLayerLabel.push_back(object);
 			break;
 		case LAYER_MEMORY_POOL:
-			m_ObjectListMemeoryPullOfNote.push_back(object);
+			m_ObjectListMemeoryPullOfNote.push_front(object);
 			break;
 		case LAYER_NONE:
 			break;
@@ -244,19 +244,19 @@ CRMobject* CRMobjectManager::GetObjectFront( LayerType layer )
 		{
 			return nullptr;
 		}
-		return *( m_ObjectListLayerNotePlayer1.begin() );
+		return *( m_ObjectListLayerNotePlayer1.rbegin() );
 	case LAYER_NOTE2:
 		if ( m_ObjectListLayerNotePlayer2.size() == 0 )
 		{
 			return nullptr;
 		}
-		return *( m_ObjectListLayerNotePlayer2.begin() );
+		return *( m_ObjectListLayerNotePlayer2.rbegin() );
 	case LAYER_MEMORY_POOL:
 		if ( m_ObjectListMemeoryPullOfNote.size() == 0 )
 		{
 			return nullptr;
 		}
-		return *( m_ObjectListMemeoryPullOfNote.begin() );
+		return *( m_ObjectListMemeoryPullOfNote.rbegin() );
 	case LAYER_NONE:
 	default:
 		return nullptr;
@@ -270,14 +270,14 @@ void CRMobjectManager::DeleteNoteListFront( LayerType layer )
 	{
 	case LAYER_NOTE1:
 		m_ObjectListMemeoryPullOfNote.push_back( GetObjectFront( layer ) );
-		m_ObjectListLayerNotePlayer1.pop_front();
+		m_ObjectListLayerNotePlayer1.pop_back();
 		break;
 	case LAYER_NOTE2:
 		m_ObjectListMemeoryPullOfNote.push_back( GetObjectFront( layer ) );
-		m_ObjectListLayerNotePlayer2.pop_front();
+		m_ObjectListLayerNotePlayer2.pop_back();
 		break;
 	case LAYER_MEMORY_POOL:
-		m_ObjectListMemeoryPullOfNote.pop_front();
+		m_ObjectListMemeoryPullOfNote.pop_back();
 		break;
 	}
 }

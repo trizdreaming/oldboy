@@ -184,7 +184,6 @@
     <ClInclude Include="RMxmlLoader.h">
       <Filter>Core\Input</Filter>
     </ClInclude>
-    <ClInclude Include="RMmusicData.h" />
     <ClInclude Include="LibraryTinyXML\action_store.h">
       <Filter>TinyXML</Filter>
     </ClInclude>
@@ -229,6 +228,9 @@
     </ClInclude>
     <ClInclude Include="LibraryTinyXML\xpath_syntax.h">
       <Filter>TinyXML</Filter>
+    </ClInclude>
+    <ClInclude Include="RMmusicData.h">
+      <Filter>Core\Loop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -322,7 +324,6 @@
     <ClCompile Include="RMxmlLoader.cpp">
       <Filter>Core\Input</Filter>
     </ClCompile>
-    <ClCompile Include="RMmusicData.cpp" />
     <ClCompile Include="LibraryTinyXML\action_store.cpp">
       <Filter>TinyXML</Filter>
     </ClCompile>
@@ -358,6 +359,9 @@
     </ClCompile>
     <ClCompile Include="LibraryTinyXML\xpath_syntax.cpp">
       <Filter>TinyXML</Filter>
+    </ClCompile>
+    <ClCompile Include="RMmusicData.cpp">
+      <Filter>Core\Loop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

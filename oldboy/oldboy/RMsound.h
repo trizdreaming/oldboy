@@ -10,17 +10,17 @@ private:
 
 public:
 	// fmod¿ë ÇÔ¼ö
-	void				CreateSound();
+	HRESULT				CreateSound();
 	
-	void				LoadSound( const std::string& fileName, SoundType soundType );
-	void				LoadPlaySound( const std::string& musicFolderName );
+	HRESULT				LoadSound( const std::string& fileName, SoundType soundType );
+	HRESULT				LoadPlaySound( const std::string& musicFolderName );
 
 	void				PlaySound( SoundType soundType );
 	void				PlayEffect( SoundType soundType );
 	
 private:
 	void				DeleteSound();
-	void				CheckError();
+	HRESULT				CheckError();
 	
 
 	FMOD::System*		m_SystemS;

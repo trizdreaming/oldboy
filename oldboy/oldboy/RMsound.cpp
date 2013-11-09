@@ -17,80 +17,121 @@ CRMsound::~CRMsound(void)
 	// 소멸자에서 할당한 자원을 반납하도록 함
 	DeleteSound();
 
-
 	if ( m_SystemS )
 	{
 		m_SystemS->release();
 		m_SystemS->close();
 		m_SystemS = NULL;
 	}
-
 }
 
 
 // 에러 체크
-void CRMsound::CheckError()
+HRESULT CRMsound::CheckError()
 {
 	if ( m_Result != FMOD_OK )
 	{
 		printConsole("FMOD error! (%d) %s\n", m_Result, FMOD_ErrorString(m_Result));
+
+		return S_FALSE;
 	}
+
+	return S_OK;
 }
 
 // 팩토리 생성
-void CRMsound::CreateSound()
+HRESULT CRMsound::CreateSound()
 {
 	m_Result = FMOD::System_Create(&m_SystemS);  // Create the main system object.
-	CheckError();
-
-	if ( m_Result == FMOD_OK )
+	
+	if ( CheckError() == S_FALSE )
 	{
-		m_Result = m_SystemS->init(2, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
-		CheckError();
+		return S_FALSE;
 	}
-}
-
-
-// 리소스 생성 - 재생하고자 하는 음원 로딩
-void CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
-{
-	// 사운드로딩
-	if ( m_Result == FMOD_OK )
-	{
-		FMOD::Sound* m_Sound;
-		m_Result = m_SystemS->createSound(filePath.c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_Sound);
-		// FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
+	
+	m_Result = m_SystemS->init(2, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
 		
-		CheckError();
-		m_SoundMap[soundType] = m_Sound;
+	if ( CheckError() == S_FALSE )
+	{
+		return S_FALSE;
 	}
+	
+	return S_OK;
 }
 
-void CRMsound::LoadPlaySound( const std::string& musicFolderName )
+
+// 실제 리소스 생성
+HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 {
+	if ( CheckError() == S_FALSE )
+	{
+		return S_FALSE;
+	}
+	
+	FMOD::Sound* m_Sound;
+
+	m_Result = m_SystemS->createSound(filePath.c_str(), FMOD_SOFTWARE | FMOD_2D | FMOD_CREATESTREAM, 0, &m_Sound);
+	// FMOD_DEFAULT uses the defaults.  These are the same as FMOD_LOOP_OFF | FMOD_2D | FMOD_HARDWARE.
+	
+	if ( CheckError() == S_FALSE )
+	{
+		return S_FALSE;
+	}
+
+	m_SoundMap[soundType] = m_Sound;
+	
+	return S_OK;
+}
+
+// 곡에 맞춰 폴더의 음악을 로딩
+HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
+{
+	HRESULT hr = S_FALSE;
+
 	DeleteSound();
+
 	std::string filePath;
-	LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+	hr = LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+	if ( CheckError() == S_FALSE )
+	{
+		DeleteSound();
+		return hr;
+	}
 
 	filePath = "./Music/";
 	filePath.append(musicFolderName);
 	filePath.append("/");
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() ) );
-	LoadSound( filePath, SOUND_BG_PLAY );
+	hr = LoadSound( filePath, SOUND_BG_PLAY );
+	if ( CheckError() == S_FALSE )
+	{
+		DeleteSound();
+		return hr;
+	}
 
 	filePath = "./Music/";
 	filePath.append(musicFolderName);
 	filePath.append("/");
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() ) );
-	LoadSound( filePath, SOUND_NOTE_1 );
+	hr = LoadSound( filePath, SOUND_NOTE_1 );
+	if ( CheckError() == S_FALSE )
+	{
+		DeleteSound();
+		return hr;
+	}
 
 	filePath = "./Music/";
 	filePath.append(musicFolderName);
 	filePath.append("/");
 	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() ) );
+	hr = LoadSound( filePath, SOUND_NOTE_2 );
+	if ( CheckError() == S_FALSE )
+	{
+		DeleteSound();
+		return hr;
+	}
 
-	LoadSound( filePath, SOUND_NOTE_2 );
-
+	return hr;
 }
 
 // 재생

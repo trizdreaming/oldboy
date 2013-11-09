@@ -49,8 +49,18 @@ void CRMmainLoop::RunMessageLoop()
 	m_PlayMusicName = *( m_MusicList.begin() );
 	//===================================================================
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
-	CRMsound::GetInstance()->CreateSound();
-	CRMsound::GetInstance()->LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+	hr = CRMsound::GetInstance()->CreateSound();
+	if ( hr == S_FALSE )
+	{
+		MessageBox( NULL, L"Error Sound Initialize....", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return;
+	}
+	hr = CRMsound::GetInstance()->LoadSound("./Resource/bgm_title_00_01.mp3", SOUND_BG_TITLE );
+	if ( hr == S_FALSE )
+	{
+		MessageBox( NULL, L"Error Loading Sound Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
+		return;
+	}
 
 	//===================================================================
 	// 동영상 출력 부분
@@ -62,8 +72,13 @@ void CRMmainLoop::RunMessageLoop()
 	}
 	else
 	{
-		GoNextScene();
+		hr = GoNextScene();
 		// 동영상 재생을 위한 초기화에 실패 했을 경우 동영상 재생 패스
+		if ( hr == S_FALSE )
+		{
+			MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
+			return;
+		}
 	}
 
 	CreateObject();
@@ -91,7 +106,13 @@ void CRMmainLoop::RunMessageLoop()
 				if ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_UP )
 				{
 					CRMvideoPlayer::GetInstance()->DestoryFactory();
-					GoNextScene();
+					hr = GoNextScene();
+
+					if ( hr == S_FALSE )
+					{
+						MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
+						return;
+					}
 				}
 				continue;
 			}
@@ -156,7 +177,12 @@ void CRMmainLoop::RunMessageLoop()
 			CRMjudgeManager::GetInstance()->JudgeNote();
 
 			// test Key
-			TestKeyboard();
+			hr = TestKeyboard();
+			if ( hr == S_FALSE )
+			{
+				MessageBox( NULL, L"Error to Change Scene", L"ERROR!", MB_OK | MB_ICONSTOP );
+				return;
+			}
 
 			//////////////////////////////////////////////////////////////////////////
 			// 여기까지
@@ -389,36 +415,51 @@ void CRMmainLoop::TestSound()
 	}
 }
 
-void CRMmainLoop::TestKeyboard()
+HRESULT CRMmainLoop::TestKeyboard()
 {
+	HRESULT hr = S_OK;
+
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( P1_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		m_PlayMusicName = *( m_MusicList.rbegin() );
-		GoNextScene();
+		hr = GoNextScene();
 	}
 	else if( ( CRMinput::GetInstance()->GetKeyStatusByKey( P2_TARGET1 ) == KEY_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		m_PlayMusicName = *( m_MusicList.begin() );
-		GoNextScene();
+		hr = GoNextScene();
 	}
+
+	return hr;
 }
 
-void CRMmainLoop::GoNextScene()
+HRESULT CRMmainLoop::GoNextScene()
 {
+	HRESULT hr = S_FALSE;
+
 	if ( m_SceneType == SCENE_OPENING )
 	{
 		m_SceneType = SCENE_TITLE;
-
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
-		return;
+		return S_OK;
 	}
 
 	if ( m_SceneType == SCENE_TITLE )
 	{
 		CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
-		CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr == S_FALSE )
+		{
+			MessageBox( NULL, L"Error Loading Sound Files....", L"ERROR!", MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
 		m_SceneType = SCENE_PLAY;
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY );
-		return;
+		
+		return S_OK;
 	}
+
+	return S_FALSE;
 }

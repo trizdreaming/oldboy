@@ -22,21 +22,28 @@ public:
 
 private:
 
+	void	LoadMusicData();
+
 	// 임시 테스트 함수
 	void	TestSound();
 	void	TestKeyboard();
 
 	void	CreateObject();
 
-	HWND	m_Hwnd;
+
+private:
+
+	HWND							m_Hwnd;
 	
-	UINT	m_NowTime;
-	UINT	m_PrevTime;
-	UINT	m_ElapsedTime;
-	UINT	m_Fps;
+	UINT							m_NowTime;
+	UINT							m_PrevTime;
+	UINT							m_ElapsedTime;
+	UINT							m_Fps;
 
-	UINT	m_FpsCheckTime;
+	UINT							m_FpsCheckTime;
 
-	SceneType		m_SceneType;
+	SceneType						m_SceneType;
+
+	std::list<std::string>			m_MusicList;
 };
 

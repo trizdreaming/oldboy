@@ -42,27 +42,7 @@ void CRMmainLoop::RunMessageLoop()
 	ZeroMemory( &msg, sizeof(msg) ); //msg 초기화 함수
 	//===================================================================
 	// 음악 데이터를 불러온다.
-	WIN32_FIND_DATAA findFileData;
-	HANDLE hFind = FindFirstFileA( "./Music/.\\*", &findFileData );
-
-	if ( hFind == INVALID_HANDLE_VALUE )
-	{
-		CloseHandle(hFind);
-		return;
-	}
-
-	do 
-	{
-		if ( (findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) )
-		{
-			std::string folderName = findFileData.cFileName;
-			if ( folderName.compare(".") != 0 && folderName.compare("..") != 0 )
-			{
-				CRMxmlLoader::GetInstance()->LoadMusicData( folderName );
-			}
-		}
-	} while ( FindNextFileA(hFind, &findFileData) != 0);
-	FindClose(hFind);
+	LoadMusicData();
 
 	//===================================================================
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
@@ -187,6 +167,36 @@ void CRMmainLoop::RunMessageLoop()
 		}
 	}
 }
+
+
+
+void CRMmainLoop::LoadMusicData()
+{
+	WIN32_FIND_DATAA findFileData;
+	HANDLE hFind = FindFirstFileA( "./Music/.\\*", &findFileData );
+
+	if ( hFind == INVALID_HANDLE_VALUE )
+	{
+		CloseHandle(hFind);
+		return;
+	}
+
+	do 
+	{
+		if ( (findFileData.dwFileAttributes & FILE_ATTRIBUTE_DIRECTORY) )
+		{
+			std::string folderName = findFileData.cFileName;
+			if ( folderName.compare(".") != 0 && folderName.compare("..") != 0 )
+			{
+				CRMxmlLoader::GetInstance()->LoadMusicData( folderName );
+				m_MusicList.push_back( folderName );
+			}
+		}
+	} while ( FindNextFileA(hFind, &findFileData) != 0);
+	FindClose(hFind);
+
+}
+
 
 HRESULT CRMmainLoop::CreateMainLoopWindow()
 {

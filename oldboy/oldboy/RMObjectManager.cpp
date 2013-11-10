@@ -177,15 +177,15 @@ void CRMobjectManager::Render()
 	{
 		iter->Render();
 	}
-	for ( auto& iter : m_ObjectListMemeoryPullOfNote )
-	{
-		iter->Render();
-	}
 	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
 		iter->Render();
 	}
 	for ( auto& iter : m_ObjectListLayerNotePlayer2 )
+	{
+		iter->Render();
+	}
+	for ( auto& iter : m_ObjectListMemeoryPullOfNote )
 	{
 		iter->Render();
 	}

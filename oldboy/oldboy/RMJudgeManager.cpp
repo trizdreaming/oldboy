@@ -74,10 +74,6 @@ void CRMjudgeManager::JudgeNote()
 			//+- 10   535 퍼팩시작, 555퍼펙끝
 			//+- 30   515 굳 시작, 575굳 끝 
 		*/
-
-
-
-	//2p는 키 이펙트 추가 안 함
 	
 	// Player2============================================================
 
@@ -109,6 +105,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( playerLayer );
 	if ( thisNote != nullptr )
 	{
+		//note bottom miss
 		if ( thisNote->GetPositionY() > NOTE_JUDGE_LATE_MISS_LINE )
 		{
 			printConsole( "%dP NoteOut Miss \n", playerLayer );
@@ -154,6 +151,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
+				//effect 플래그 세팅
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
@@ -168,10 +166,14 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 			}
 		}
 		// 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
+
 		else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
+				//time miss에서도 노트가 사라지지 않고 계속 유지되도록 함
+				thisNote->SetVisible( true );
+
 				printConsole( "%dP Time Miss \n", playerLayer );
 
 				//score up;

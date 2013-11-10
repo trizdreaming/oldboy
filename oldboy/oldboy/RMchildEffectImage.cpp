@@ -18,7 +18,7 @@ CRMchildEffectImage::~CRMchildEffectImage(void)
 void CRMchildEffectImage::Update()
 {
 	int highMask = 0;
-
+	
 	if ( m_Visible == false && CRMchildEffectManager::GetInstance()->GetFlag() )
 	{
 		m_EffectTime = 0;

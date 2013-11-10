@@ -5,7 +5,7 @@
 	<Artist>DuckChul</Artist>
 	<Level>3</Level>
     <Image>
-        <imageBackground>image_bg_01_01.png</imageBackground>
+        <imageBackground>image_bg_single_bell.png</imageBackground>
         <imageShutter>image_sh_temp1.png</imageShutter>
         <imageNote1>image_nt_01_01.png</imageNote1>
         <imageNote2>image_nt_02_01.png</imageNote2>

@@ -288,7 +288,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 	playerScoreLabel->SetSceneType( SCENE_PLAY );
 	playerScoreLabel->SetPosition( positionX , positionY );
 
-	if ( thisPlayer->GetCount( COUNT_COMBO ) > 0 )
+	if ( thisPlayer->GetCount( COUNT_COMBO ) > 1 )
 	{
 		swprintf_s( score, L"%8s \n  %10d", LABEL_PLAY_COMBO, thisPlayer->GetCount( COUNT_COMBO ) );
 

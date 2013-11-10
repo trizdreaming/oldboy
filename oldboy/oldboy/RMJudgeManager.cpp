@@ -171,8 +171,6 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
-				//time miss에서도 노트가 사라지지 않고 계속 유지되도록 함
-				thisNote->SetVisible( true );
 
 				printConsole( "%dP Time Miss \n", playerLayer );
 

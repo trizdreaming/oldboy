@@ -43,11 +43,11 @@ void CRMchildEffectImage::Update()
 
 		if ( highMask > 0)
 		{
-			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_ONE, &m_PositionX, &m_PositionY );
+			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO, &m_PositionX, &m_PositionY );
 		}
 		else
 		{
-			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO, &m_PositionX, &m_PositionY );
+			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_ONE, &m_PositionX, &m_PositionY );
 		}
 		
 		m_PositionX = m_PositionX-90;

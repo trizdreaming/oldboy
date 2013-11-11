@@ -30,10 +30,7 @@ void CRMlabel::CreateLabel( std::wstring key, std::wstring string, wchar_t* font
 	CRMlabelManager::GetInstance()->CreateFactory();
 	SetTextFormat();
 
-	auto labelMap = CRMlabelManager::GetInstance()->GetLabelMap();
-
-	SafeDelete( (*labelMap)[key] );
-	(*labelMap)[key] = this;
+	CRMlabelManager::GetInstance()->AddLabel( key, this );
 }
 
 

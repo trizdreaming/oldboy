@@ -156,8 +156,8 @@ void CRMobjectManager::Update()
 	m_ObjectListLayerLabel.clear();
 	CRMobject* thisLabel = nullptr;
 
-	auto thisLabelMap = CRMlabelManager::GetInstance()->GetLabelMap();
-	for ( auto& iter : *thisLabelMap )
+	// friend class로 라벨 매니저에 접근해서 라벨 맵의 원소를 직접 읽어옴
+	for ( auto& iter : CRMlabelManager::GetInstance()->m_LabelMap )
 	{
 		thisLabel = iter.second;
 
@@ -168,6 +168,7 @@ void CRMobjectManager::Update()
 
 		thisLabel->Update();
 		m_ObjectListLayerLabel.push_back( thisLabel );
+		// 렌더링을 하기 위해 렌더링 레이어에 집어 넣음
 	}
 }
 

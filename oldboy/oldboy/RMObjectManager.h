@@ -38,5 +38,7 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
 
 	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote;
+
+	friend class CRMlabelManager;
 };
 

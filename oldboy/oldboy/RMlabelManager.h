@@ -15,12 +15,14 @@ public:
  	HRESULT						CreateFactory();
 	IDWriteFactory*				GetTextFactory() { return m_DWriteFactory; }
 
-	std::map<std::wstring, CRMlabel*>*	GetLabelMap() { return &m_LabelMap; }
+	void						AddLabel( std::wstring key , CRMlabel* label );
+
+	// CRMobjectManager에서 friend class로 라벨 맵에 접근
+	std::map<std::wstring, CRMlabel*>	m_LabelMap;
 
 private:
 	void								CheckError(HRESULT);
 
 	IDWriteFactory*						m_DWriteFactory;
-	std::map<std::wstring, CRMlabel*>	m_LabelMap;
 };
 

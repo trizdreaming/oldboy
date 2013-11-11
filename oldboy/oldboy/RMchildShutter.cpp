@@ -27,17 +27,17 @@ void CRMchildShutter::Update()
 
 	m_Visible = true;
 
-	if ( m_PositionY < 0)
+	if ( m_PositionY < -10 )
 	{
 		switch (m_playerNumber)
 		{
 		case PLAYER_ONE:
 			m_PositionX = SHUTTER_P1_START_POSITION_X;
-			m_PositionY = SHUTTER_START_POSITION_Y + (10-(float)CRMplayer1P::GetInstance()->GetHP()) * 66.8;
+			m_PositionY = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
 			break;
 		case PLAYER_TWO:
 			m_PositionX = SHUTTER_P2_START_POSITION_X;
-			m_PositionY = SHUTTER_START_POSITION_Y + (10-(float)CRMplayer2P::GetInstance()->GetHP()) * 66.8;
+			m_PositionY = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer2P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
 			break;
 		default:
 			break;

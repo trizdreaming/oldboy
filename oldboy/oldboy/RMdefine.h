@@ -39,6 +39,9 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define SHUTTER_P2_START_POSITION_X 515
 #define SHUTTER_START_POSITION_Y -668
 
+// shutter 관련 플레이어 HP 설정
+#define PLAYER_HP_MAX		10
+
 // Label 관련 define
 #define LABEL_JUDGE_PERFECT	L"PERFECT!!"
 #define LABEL_JUDGE_GOOD	L"  GOOD!  "

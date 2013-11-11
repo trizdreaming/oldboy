@@ -34,6 +34,10 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define NOTE_JUDGE_FAST_MISS_LINE		504
 #define NOTE_JUDGE_LATE_MISS_LINE		555
 
+// shutter 에서 사용하는 값으로 노트의 시작 위치를 담당
+#define SHUTTER_P1_START_POSITION_X 0
+#define SHUTTER_P2_START_POSITION_X 515
+#define SHUTTER_START_POSITION_Y -668
 
 // Label 관련 define
 #define LABEL_JUDGE_PERFECT	L"PERFECT!!"

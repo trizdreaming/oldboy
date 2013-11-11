@@ -108,10 +108,11 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		//note bottom miss
 		if ( thisNote->GetPositionY() > NOTE_JUDGE_LATE_MISS_LINE )
 		{
-			printConsole( "%dP NoteOut Miss \n", playerLayer );
+			printConsole( "%dP NoteOut Miss HP:%d \n", playerLayer, playerClass->GetHP() );
 
 			//score up
 			playerClass->AddEvent( JUDGE_MISS );
+			playerClass->SubHP();
 			PrintScore( playerNumber, JUDGE_MISS );
 
 			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
@@ -172,10 +173,11 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
 
-				printConsole( "%dP Time Miss \n", playerLayer );
+				printConsole( "%dP Time Miss HP:%d \n", playerLayer, playerClass->GetHP() );
 
 				//score up;
 				playerClass->AddEvent( JUDGE_MISS );
+				playerClass->SubHP();
 				PrintScore( playerNumber, JUDGE_MISS );
 
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );

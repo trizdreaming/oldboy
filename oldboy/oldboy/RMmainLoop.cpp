@@ -362,17 +362,19 @@ HRESULT CRMmainLoop::CreateObject()
 		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_MEMORY_POOL);
 	}
 
-	testObject = new CRMchildShutter();
-	testObject->SetObjectType(OBJECT_SHUTTER);
-	testObject->SetPosition(0, -670);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+	CRMchildShutter* shutterObject = new CRMchildShutter();
+	shutterObject->SetObjectType(OBJECT_SHUTTER);
+	shutterObject->SetPosition(0, -670);
+	shutterObject->SetSceneType(SCENE_PLAY);
+	shutterObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
 
-	testObject = new CRMchildShutter();
-	testObject->SetObjectType(OBJECT_SHUTTER);
-	testObject->SetPosition(515, -890);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+	shutterObject = new CRMchildShutter();
+	shutterObject->SetObjectType(OBJECT_SHUTTER);
+	shutterObject->SetPosition(515, -890);
+	shutterObject->SetSceneType(SCENE_PLAY);
+	shutterObject->SetPlayer(PLAYER_TWO);
+	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
 
 	for ( int i = 0 ; i < 20 ; ++ i )
 	{

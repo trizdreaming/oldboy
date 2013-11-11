@@ -2,6 +2,8 @@
 #include "oldboy.h"
 #include "RMchildShutter.h"
 #include "RMmainLoop.h"
+#include "RMplayer1P.h"
+#include "RMplayer2P.h"
 
 
 CRMchildShutter::CRMchildShutter(void) :
@@ -23,16 +25,23 @@ void CRMchildShutter::Update()
 		return;
 	}
 
-	//++m_Tick;
+	m_Visible = true;
 
-	if ( m_Tick >= 780 )
+	if ( m_PositionY < 0)
 	{
-		m_PositionY = static_cast<float>(static_cast<int>(m_PositionY + 112));
-
-		if ( m_PositionY > 10 )
-			m_PositionY = -670;
-
-		m_Tick = 600;
+		switch (m_playerNumber)
+		{
+		case PLAYER_ONE:
+			m_PositionX = SHUTTER_P1_START_POSITION_X;
+			m_PositionY = SHUTTER_START_POSITION_Y + (10-(float)CRMplayer1P::GetInstance()->GetHP()) * 66.8;
+			break;
+		case PLAYER_TWO:
+			m_PositionX = SHUTTER_P2_START_POSITION_X;
+			m_PositionY = SHUTTER_START_POSITION_Y + (10-(float)CRMplayer2P::GetInstance()->GetHP()) * 66.8;
+			break;
+		default:
+			break;
+		}
 	}
 
 	return;

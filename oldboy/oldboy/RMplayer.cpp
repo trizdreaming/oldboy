@@ -4,7 +4,8 @@
 
 
 CRMplayer::CRMplayer(void) :
-	m_PrevIsCombo(false)
+	m_PrevIsCombo(false),
+	m_HP(10)
 {
 	ZeroMemory( m_Count, sizeof(m_Count) );
 }

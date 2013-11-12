@@ -16,11 +16,11 @@ public:
 		std::string SoundNoteEffect1,
 		std::string SoundNoteEffect2,
 		std::string Note
-		);
+		); //SM9: 이것들도 const string& 으로 넘기지?
 	~CRMmusicData(void);
 
 public:
-	const std::string*		GetTitle() { return &m_title; }
+	const std::string*		GetTitle() { return &m_title; } // SM9: const string&으로 리턴하는게 쓰기 편할듯?
 	const std::string*		GetArtist() { return &m_artist; }
 	const std::string*		GetLevel() { return &m_level; }
 	const std::string*		GetImageBackground() { return &m_ImageBackground; }

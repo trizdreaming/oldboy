@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "oldboy.h"
 
 #include "RMvideoPlayer.h"
@@ -90,7 +90,7 @@ void CRMvideoPlayer::StartVideo()
 {
 	m_BandiVideoLibrary.GetStatus( m_Status );
 
-	// ����� �غ� �Ϸ�Ǿ��ٸ�, ��� ����
+	// 재생할 준비가 완료되었다면, 재생 시작
 	if ( m_Status == BVL_STATUS_READY )
 	{
 		m_BandiVideoLibrary.GetVideoInfo( m_BandiVideoLibraryVideoInfo );
@@ -104,7 +104,7 @@ void CRMvideoPlayer::RenderVideo()
 
 	if ( m_BandiVideoLibrary.IsNextFrame() )
 	{
-		m_Buffer = m_BandiVideoTexture->Lock( m_Pitch );
+		m_Buffer = m_BandiVideoTexture->Lock( m_Pitch ); //SM9: 반드시 Unlock됨을 보장하는가? m_Buffer값으로 판단이 되남?
 
 		if ( m_Buffer )
 		{
@@ -129,7 +129,7 @@ void CRMvideoPlayer::RenderVideo()
 	}
 	else
 	{
-		Sleep(1);
+		Sleep(1); //SM9: 이유는?
 	}
 
 	printConsole( "frame: %d \n", m_Count );

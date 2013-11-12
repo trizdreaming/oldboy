@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "oldboy.h"
 #include "RMimage.h"
 #include "RMresourceManager.h"
@@ -53,7 +53,7 @@ HRESULT CRMresourceManager::CreateTexture()
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_DEFAULT );
-	LogError(hr);
+	LogError(hr); //SM9: 과도한 엔지니어링.. 에러시 로그 찍는게 간단한거면 아래의 else구문에 넣는것이 더 보기 좋다.
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
@@ -75,7 +75,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_DEFAULT );
-	LogError(hr);
+	LogError(hr); //SM9: 마찬가지
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
@@ -176,6 +176,10 @@ void CRMresourceManager::LogError(HRESULT hr)
 
 std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName )
 {
+	//SM9: 왜? ascii str로 선언하고 리소스 위치 붙이고 유니코드 str로 반환하지? 
+	// 스트링을 이렇게 막 혼용해서 쓰지 말고 웬만하면 모두 통일할 것 unicode가 쓰이면 모두 unicode. 
+	// unicode가 전혀 쓰이지 않는다면, ascii로 써도 상관 없음.
+
 	std::string str = MUSIC_FOLDER;
 	str.append( folderName );
 	str.append( FOLDER_SLASH );

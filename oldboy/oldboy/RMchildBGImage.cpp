@@ -15,6 +15,6 @@ void CRMchildBGImage::Update()
 {
 	SetVisibleByScene();
 
-	return;
+	return; //SM9: what?
 }
 

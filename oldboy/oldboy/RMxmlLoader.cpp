@@ -20,7 +20,7 @@ CRMxmlLoader::~CRMxmlLoader(void)
 }
 
 
-void CRMxmlLoader::LoadMusicData( std::string folderName )
+void CRMxmlLoader::LoadMusicData(const std::string& folderName ) //SM9: folderName이 아래에서 바뀌지 않으므로 이렇게 const..
 {
 
 	std::string filePath = "";

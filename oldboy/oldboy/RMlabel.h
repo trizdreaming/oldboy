@@ -43,7 +43,7 @@ private:
 
 	wchar_t*	m_FontFace;
 	// wchar_t*	m_String;
-	wchar_t		m_String[255];
+	wchar_t		m_String[255]; //SM9: 255 이런거 define으로 빼던가 (나중에 버퍼 오버플로의 주범이 될 수있는 코드) 그냥 string 쓰던가..
 
 	float		m_FontSize;
 	float		m_ColorR, m_ColorG, m_ColorB;

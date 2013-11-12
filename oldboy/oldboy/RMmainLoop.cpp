@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "oldboy.h"
 
 #include "RMmainLoop.h"
@@ -24,9 +24,9 @@ CRMmainLoop::CRMmainLoop(void):
 	m_FpsCheckTime(0),
 	m_SceneType(SCENE_OPENING),
 	m_Hwnd(NULL),
-	m_PlayMusicName("")
+	m_PlayMusicName("") //SM9: ìŠ¤íŠ¸ë§ ê°™ì€ ì• ë“¤ì€ ì´ë ‡ê²Œ ì´ˆê¸°í™” í•  í•„ìš” ì—†ë‹¤. ìžì²´ ìƒì„±ìžì—ì„œ ì´ˆê¸°í™” í•´ì¤Œ.
 {
-	// 1000ms¸¦ 60À¸·Î ³ª´² 60Fps¸¦ À¯ÁöÇÒ ¼ö ÀÖµµ·Ï ÇÔ
+	// 1000msë¥¼ 60ìœ¼ë¡œ ë‚˜ëˆ  60Fpsë¥¼ ìœ ì§€í•  ìˆ˜ ìžˆë„ë¡ í•¨
 	m_Fps = ( 1000 / 60 ) + 1;
 }
 
@@ -40,15 +40,17 @@ void CRMmainLoop::RunMessageLoop()
 	UINT fps = 0;
 	HRESULT hr = S_FALSE;
 
-	ZeroMemory( &msg, sizeof(msg) ); //msg ÃÊ±âÈ­ ÇÔ¼ö
+	ZeroMemory( &msg, sizeof(msg) ); //msg ì´ˆê¸°í™” í•¨ìˆ˜
 	//===================================================================
-	// À½¾Ç µ¥ÀÌÅÍ¸¦ ºÒ·¯¿Â´Ù.
+	// ìŒì•… ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì˜¨ë‹¤.
+	//SM9: ì´ëŸ°ê±°ëŠ” ì—ëŸ¬ì²˜ë¦¬ ìž˜ í•´ì£¼ì–´ì•¼ í•œë‹¤. ë§Œì¼ ìŒì•… ë°ì´í„° ë¶ˆëŸ¬ì˜¤ëŠ”ê²Œ ì‹¤íŒ¨í•˜ë”ë¼ë„ ë¬¸ì œ ì—†ëŠ”ì§€? 
 	LoadMusicData();
 
-	// test À½¾Ç¼±ÅÃÇÏ±â
+	// test ìŒì•…ì„ íƒí•˜ê¸°
+	//SM9: ìœ„ì—ì„œ LoadMusicDataê°€ ì‹¤íŒ¨í–ˆë‹¤ë©´ ì—¬ê¸°ì„œ í¬ì¸í„° ì°¸ì¡° ì—ëŸ¬ ë‚˜ê² ì§€...
 	m_PlayMusicName = *( m_MusicList.begin() );
 	//===================================================================
-	// fmod »ç¿ëÇÏ±â fmodex.dllÆÄÀÏÀÌ ÇÊ¿äÇÏ´Ù.
+	// fmod ì‚¬ìš©í•˜ê¸° fmodex.dllíŒŒì¼ì´ í•„ìš”í•˜ë‹¤.
 	hr = CRMsound::GetInstance()->CreateSound();
 	if ( hr != S_OK )
 	{
@@ -63,7 +65,7 @@ void CRMmainLoop::RunMessageLoop()
 	}
 
 	//===================================================================
-	// µ¿¿µ»ó Ãâ·Â ºÎºÐ
+	// ë™ì˜ìƒ ì¶œë ¥ ë¶€ë¶„
 	hr = CRMvideoPlayer::GetInstance()->CreateFactory();
 	
 	if ( hr == S_OK )
@@ -73,7 +75,7 @@ void CRMmainLoop::RunMessageLoop()
 	else
 	{
 		hr = GoNextScene();
-		// µ¿¿µ»ó Àç»ýÀ» À§ÇÑ ÃÊ±âÈ­¿¡ ½ÇÆÐ ÇßÀ» °æ¿ì µ¿¿µ»ó Àç»ý ÆÐ½º
+		// ë™ì˜ìƒ ìž¬ìƒì„ ìœ„í•œ ì´ˆê¸°í™”ì— ì‹¤íŒ¨ í–ˆì„ ê²½ìš° ë™ì˜ìƒ ìž¬ìƒ íŒ¨ìŠ¤
 		if ( hr != S_OK )
 		{
 			MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
@@ -88,11 +90,11 @@ void CRMmainLoop::RunMessageLoop()
 		return;
 	}
 
-	// ¿ÀºêÁ§Æ® »ý¼º ºÎºÐÀ» ¸®ÆÑÅä¸µ
+	// ì˜¤ë¸Œì íŠ¸ ìƒì„± ë¶€ë¶„ì„ ë¦¬íŒ©í† ë§
 	
 	while ( true )
 	{
-		if ( PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) ) // PeekMessage´Â ´ë±â ¾øÀÌ ¹«ÇÑ ·çÇÁ »óÅÂ·Î ÁøÇà(non blocked function)
+		if ( PeekMessage(&msg, NULL, 0, 0, PM_REMOVE) ) // PeekMessageëŠ” ëŒ€ê¸° ì—†ì´ ë¬´í•œ ë£¨í”„ ìƒíƒœë¡œ ì§„í–‰(non blocked function)
 		{
 			if ( msg.message == WM_QUIT )
 			{
@@ -100,7 +102,7 @@ void CRMmainLoop::RunMessageLoop()
 				return;
 			}
 			TranslateMessage(&msg);
-			DispatchMessage(&msg);	// Wndproc°ú ¿¬°áµÇ¾î ÀÖÀ½
+			DispatchMessage(&msg);	// Wndprocê³¼ ì—°ê²°ë˜ì–´ ìžˆìŒ
 		}
 		else
 		{
@@ -132,7 +134,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			
 
-			// FPS Ãâ·Â¿ë °è»ê
+			// FPS ì¶œë ¥ìš© ê³„ì‚°
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
 			//	printConsole("FPS : %d \n", fps);
@@ -140,7 +142,7 @@ void CRMmainLoop::RunMessageLoop()
 #ifdef _DEBUG
 				CRMlabel*	testLabel = new CRMlabel();
 				wchar_t		testChar[255] = {0, };
-				swprintf_s(testChar, L"FPS : %d ", fps);
+				swprintf_s(testChar, L"FPS : %d ", fps); //SM9: fps ê°™ì€ ì§€ì—­ ë³€ìˆ˜ëŠ” ê°€ìž¥ ì²˜ìŒ ì“°ì´ëŠ” ê³³ ë°”ë¡œ ìœ—ìª½ì— ë‘ëŠ”ê²Œ ì½”ë“œ ë³´ê¸° íŽ¸í•˜ë‹¤.
 
 				testLabel->CreateLabel(LABEL_FPS, testChar, LABEL_FONT_NORMAL, 15.0F );
 				testLabel->SetRGBA( 1.0f, 1.0f, 1.0f, 1.f );
@@ -155,15 +157,15 @@ void CRMmainLoop::RunMessageLoop()
 
 			if( m_ElapsedTime == m_Fps )
 			{
-				// Å×½ºÆ® 
+				// í…ŒìŠ¤íŠ¸ 
 				
-				// Ã³¸® ÇØ¾ß ÇÒ ³»ºÎ ·ÎÁ÷µéÀ» Ã³¸®ÇÔ
+				// ì²˜ë¦¬ í•´ì•¼ í•  ë‚´ë¶€ ë¡œì§ë“¤ì„ ì²˜ë¦¬í•¨
 				// Update
 				CRMobjectManager::GetInstance()->Update();
 
 				CRMrender::GetInstance()->RenderInit();
 
-				// È­¸é¿¡ ´ëÇÑ Ã³¸®¸¦ ÁøÇà
+				// í™”ë©´ì— ëŒ€í•œ ì²˜ë¦¬ë¥¼ ì§„í–‰
 				// Render
 				CRMobjectManager::GetInstance()->Render();
 				++fps;
@@ -173,7 +175,7 @@ void CRMmainLoop::RunMessageLoop()
 			}
 
 			//////////////////////////////////////////////////////////////////////////
-			// ¼Ò¸® ¹Ð¸² ¹æÁö¸¦ À§ÇØ FPS = 60¿¡ ¸ÂÃß´ø ºÎºÐ¿¡¼­ »©¿È
+			// ì†Œë¦¬ ë°€ë¦¼ ë°©ì§€ë¥¼ ìœ„í•´ FPS = 60ì— ë§žì¶”ë˜ ë¶€ë¶„ì—ì„œ ë¹¼ì˜´
 			//////////////////////////////////////////////////////////////////////////
 			CRMinput::GetInstance()->UpdateKeyState();
 
@@ -191,7 +193,7 @@ void CRMmainLoop::RunMessageLoop()
 			}
 
 			//////////////////////////////////////////////////////////////////////////
-			// ¿©±â±îÁö
+			// ì—¬ê¸°ê¹Œì§€
 			//////////////////////////////////////////////////////////////////////////
 
 			if ( m_ElapsedTime > m_Fps )
@@ -207,7 +209,7 @@ void CRMmainLoop::RunMessageLoop()
 void CRMmainLoop::LoadMusicData()
 {
 	WIN32_FIND_DATAA findFileData;
-	HANDLE hFind = FindFirstFileA( MUSIC_FOLDER_SEARCH, &findFileData );
+	HANDLE hFind = FindFirstFileA( MUSIC_FOLDER_SEARCH, &findFileData ); //SM9: ASCII ì „ìš© í•¨ìˆ˜ë¥¼ ì“°ëŠ” ì´ìœ ëŠ”? ë¼ì´ë¸ŒëŸ¬ë¦¬ í˜¸í™˜ì„± ë•Œë¬¸ì— ê·¸ëŸ°ê°€?
 
 	if ( hFind == INVALID_HANDLE_VALUE )
 	{
@@ -247,8 +249,8 @@ HRESULT CRMmainLoop::CreateMainLoopWindow()
 	wcex.hInstance		= HINST_THISCOMPONENT;
 	wcex.hIcon			= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_OLDBOY));
 	wcex.hCursor		= LoadCursor(NULL, IDC_ARROW);
-	wcex.hbrBackground	= NULL; // ¹è°æ »ö»ó ºÎºÐ NULL·Î ¼³Á¤
-	wcex.lpszMenuName	= NULL;	// ¸Þ´º »ý¼º ºÎºÐ NULL·Î ¼³Á¤
+	wcex.hbrBackground	= NULL; // ë°°ê²½ ìƒ‰ìƒ ë¶€ë¶„ NULLë¡œ ì„¤ì •
+	wcex.lpszMenuName	= NULL;	// ë©”ë‰´ ìƒì„± ë¶€ë¶„ NULLë¡œ ì„¤ì •
 	wcex.lpszClassName	= CLASS_NAME;
 	wcex.hIconSm		= LoadIcon(wcex.hInstance, MAKEINTRESOURCE(IDI_SMALL));
 
@@ -258,7 +260,7 @@ HRESULT CRMmainLoop::CreateMainLoopWindow()
 	m_Hwnd = CreateWindow(wcex.lpszClassName, 
 						GAME_NAME, 
 						WS_OVERLAPPEDWINDOW,
-						50,		// ÇÏ±â 4ÁÙÀÌ È­¸é ½ÃÀÛ ÁÂÇ¥ ÀÇ¹Ì 
+						50,		// í•˜ê¸° 4ì¤„ì´ í™”ë©´ ì‹œìž‘ ì¢Œí‘œ ì˜ë¯¸ 
 						50,		//
 						SCREEN_SIZE_X,	// 1024 + 16
 						SCREEN_SIZE_Y,	// 668 + 32
@@ -278,13 +280,13 @@ HRESULT CRMmainLoop::CreateMainLoopWindow()
 	return S_OK;
 }
 
-//  ÇÔ¼ö: WndProc(HWND, UINT, WPARAM, LPARAM)
+//  í•¨ìˆ˜: WndProc(HWND, UINT, WPARAM, LPARAM)
 //
-//  ¸ñÀû: ÁÖ Ã¢ÀÇ ¸Þ½ÃÁö¸¦ Ã³¸®ÇÕ´Ï´Ù.
+//  ëª©ì : ì£¼ ì°½ì˜ ë©”ì‹œì§€ë¥¼ ì²˜ë¦¬í•©ë‹ˆë‹¤.
 //
-//  WM_COMMAND	- ÀÀ¿ë ÇÁ·Î±×·¥ ¸Þ´º¸¦ Ã³¸®ÇÕ´Ï´Ù.
-//  WM_PAINT	- ÁÖ Ã¢À» ±×¸³´Ï´Ù.
-//  WM_DESTROY	- Á¾·á ¸Þ½ÃÁö¸¦ °Ô½ÃÇÏ°í ¹ÝÈ¯ÇÕ´Ï´Ù.
+//  WM_COMMAND	- ì‘ìš© í”„ë¡œê·¸ëž¨ ë©”ë‰´ë¥¼ ì²˜ë¦¬í•©ë‹ˆë‹¤.
+//  WM_PAINT	- ì£¼ ì°½ì„ ê·¸ë¦½ë‹ˆë‹¤.
+//  WM_DESTROY	- ì¢…ë£Œ ë©”ì‹œì§€ë¥¼ ê²Œì‹œí•˜ê³  ë°˜í™˜í•©ë‹ˆë‹¤.
 //
 //
 LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
@@ -308,7 +310,7 @@ HRESULT CRMmainLoop::CreateObject()
 {
 	HRESULT hr = S_FALSE;
 
-	// ÀÌ¹ÌÁö ¸®¼Ò½º¸¦ ºÒ·¯¿À·Á¸é ·»´õ°¡ ÇÊ¿äÇÔ
+	// ì´ë¯¸ì§€ ë¦¬ì†ŒìŠ¤ë¥¼ ë¶ˆëŸ¬ì˜¤ë ¤ë©´ ë Œë”ê°€ í•„ìš”í•¨
 	hr = CRMrender::GetInstance()->CreateFactory();
 	if ( hr != S_OK )
 	{
@@ -321,10 +323,10 @@ HRESULT CRMmainLoop::CreateObject()
 		MessageBox( NULL, ERROR_CREATE_RENDER_TARGET, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
-	// ·»´õ¸¦ ¸ÞÀÎ·çÇÁÀÇ »ý¼ºÀÚ¿¡ ¸ø ³Ö´Â ÀÌÀ¯´Â?
-	// ·»´õ ÂÊ¿¡¼­ ¸ÞÀÎ·çÇÁ ½Ì±ÛÅæÀ» È£ÃâÇÏ¹Ç·Î ¸Þ¸ð¸® Á¢±Ù ¿À·ù ¹ß»ý!
+	// ë Œë”ë¥¼ ë©”ì¸ë£¨í”„ì˜ ìƒì„±ìžì— ëª» ë„£ëŠ” ì´ìœ ëŠ”?
+	// ë Œë” ìª½ì—ì„œ ë©”ì¸ë£¨í”„ ì‹±ê¸€í†¤ì„ í˜¸ì¶œí•˜ë¯€ë¡œ ë©”ëª¨ë¦¬ ì ‘ê·¼ ì˜¤ë¥˜ ë°œìƒ!
 
-	// ÀÌ¹ÌÁö ¸®¼Ò½º ÆÄÀÏ ºÒ·¯¿À±â
+	// ì´ë¯¸ì§€ ë¦¬ì†ŒìŠ¤ íŒŒì¼ ë¶ˆëŸ¬ì˜¤ê¸°
 	hr = CRMresourceManager::GetInstance()->CreateFactory();
 	if ( hr != S_OK )
 	{
@@ -339,7 +341,7 @@ HRESULT CRMmainLoop::CreateObject()
 	}
 
 	/**********************************************************************************/
-	// È­¸é Ãâ·ÂÀ» ½ÃÇè ÇÏ±â À§ÇØ ÀÓ½Ã·Î Ãß°¡ ÇØ µÒ
+	// í™”ë©´ ì¶œë ¥ì„ ì‹œí—˜ í•˜ê¸° ìœ„í•´ ìž„ì‹œë¡œ ì¶”ê°€ í•´ ë‘ 
 	/**********************************************************************************/
 	CRMobject*	testObject = new CRMchildBGImage();
 	testObject->SetObjectType(OBJECT_BG_IMAGE_TITLE);
@@ -376,7 +378,7 @@ HRESULT CRMmainLoop::CreateObject()
 	shutterObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
 
-	for ( int i = 0 ; i < 20 ; ++ i )
+	for ( int i = 0 ; i < 20 ; ++ i ) //SM9: 20?? DEFINEê°™ì€ê±°ë¡œ ë¹¼ê³ , ë„¤ì´ë° ìž˜ í•´ì•¼ ì˜ë¯¸ê°€ ëª…ë°±í•´ì§„ë‹¤.
 	{
 		testObject = new CRMchildEffectImage();
 		testObject->SetObjectType(OBJECT_NOTE_HIT);

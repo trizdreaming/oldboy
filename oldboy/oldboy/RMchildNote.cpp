@@ -31,5 +31,5 @@ void CRMchildNote::Update()
 		m_Visible = false;
 	}
 
-	return;
+	return; //SM9: ???
 }

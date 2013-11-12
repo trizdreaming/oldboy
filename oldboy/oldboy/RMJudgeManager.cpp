@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "oldboy.h"
 #include "RMjudgeManager.h"
 #include "RMobjectManager.h"
@@ -57,22 +57,22 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 void CRMjudgeManager::JudgeNote()
 {
 		/*
-			1. ³ëÆ®ÇÑÅ× ³Ê À§Ä¡ ¾îµğ¾ß?
+			1. ë…¸íŠ¸í•œí…Œ ë„ˆ ìœ„ì¹˜ ì–´ë””ì•¼?
 
-			2. À§Ä¡°¡ ÆÇº° ¹üÀ§ ¾ÈÀÌ¸é 
-			Å°º¸µå ¸Å´ÏÀúÇÑÅ× ¹¯±â => ´­·È³Ä?  -> ±¸ÇöÇØ¾ß ÇÒ °Í - ÀÎÇ²¸Å´ÏÀúÀÇ Å° ¹öÆ° Çª½Ã
+			2. ìœ„ì¹˜ê°€ íŒë³„ ë²”ìœ„ ì•ˆì´ë©´ 
+			í‚¤ë³´ë“œ ë§¤ë‹ˆì €í•œí…Œ ë¬»ê¸° => ëˆŒë ¸ëƒ?  -> êµ¬í˜„í•´ì•¼ í•  ê²ƒ - ì¸í’‹ë§¤ë‹ˆì €ì˜ í‚¤ ë²„íŠ¼ í‘¸ì‹œ
 
-			3. ´­·ÈÀ¸¸é?
+			3. ëˆŒë ¸ìœ¼ë©´?
 			
-			3-1 ÇÏ´ÜÀÇ »ç¶óÁü ÄÚµåÃ³·³ ¸¶Âù°¡Áö·Î ¸Ş¸ğ¸®Ç®·Î ³Ö¾îÁÜ
+			3-1 í•˜ë‹¨ì˜ ì‚¬ë¼ì§ ì½”ë“œì²˜ëŸ¼ ë§ˆì°¬ê°€ì§€ë¡œ ë©”ëª¨ë¦¬í’€ë¡œ ë„£ì–´ì¤Œ
 
-			3-2 ÆÇº° => ³ëÆ®ÀÇ Á¾·ù¸¦ °Ù 
+			3-2 íŒë³„ => ë…¸íŠ¸ì˜ ì¢…ë¥˜ë¥¼ ê²Ÿ 
 
-			3-3 ÀÌÆåÆ® ¹ßµ¿! (by ½Åµ¿Âù - "charÇü ºñÆ®¿¬»êÀ¸·Î ÇÏ°Ú½À´Ï´Ù.")
+			3-3 ì´í™íŠ¸ ë°œë™! (by ì‹ ë™ì°¬ - "charí˜• ë¹„íŠ¸ì—°ì‚°ìœ¼ë¡œ í•˜ê² ìŠµë‹ˆë‹¤.")
 
-			//545 ÆÛÆå
-			//+- 10   535 ÆÛÆÑ½ÃÀÛ, 555ÆÛÆå³¡
-			//+- 30   515 ±» ½ÃÀÛ, 575±» ³¡ 
+			//545 í¼í™
+			//+- 10   535 í¼íŒ©ì‹œì‘, 555í¼í™ë
+			//+- 30   515 êµ³ ì‹œì‘, 575êµ³ ë 
 		*/
 	
 	// Player2============================================================
@@ -123,13 +123,13 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
 
-				//effect ÇÃ·¡±× ¼¼ÆÃ
-				//ÇÃ·¡±×¸¸ ¼¼ÆÃÇÏ¸é ÀÌÆåÆ® ³ëÃâÀº ¾Ë¾Æ¼­ µÇ°Ô²û ÇÏÀÚ
-				//ÇÃ·¡±× ¼¼ÆÃÇÏ´Â °÷Àº effect manager(½Ì±ÛÅæ)¸¦ µû·Î µÎ°í ÁøÇàÇÕ½Ã´Ù
+				//effect í”Œë˜ê·¸ ì„¸íŒ…
+				//í”Œë˜ê·¸ë§Œ ì„¸íŒ…í•˜ë©´ ì´í™íŠ¸ ë…¸ì¶œì€ ì•Œì•„ì„œ ë˜ê²Œë” í•˜ì
+				//í”Œë˜ê·¸ ì„¸íŒ…í•˜ëŠ” ê³³ì€ effect manager(ì‹±ê¸€í†¤)ë¥¼ ë”°ë¡œ ë‘ê³  ì§„í–‰í•©ì‹œë‹¤
 				/*
-						1. judge¿¡¼­ effect Manager flag¼¼ÆÃ
-						2. childeffectimage¿¡¼­ flag È®ÀÎ
-						3. childeffectimage¿¡¼­ flag È®ÀÎ ÈÄ ´Ù½Ã flag ÃÊ±âÈ­
+						1. judgeì—ì„œ effect Manager flagì„¸íŒ…
+						2. childeffectimageì—ì„œ flag í™•ì¸
+						3. childeffectimageì—ì„œ flag í™•ì¸ í›„ ë‹¤ì‹œ flag ì´ˆê¸°í™”
 				*/
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
@@ -141,9 +141,9 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 				playerClass->AddEvent( JUDGE_PERFECT );
 				PrintScore( playerNumber, JUDGE_PERFECT );
 
-				//Å° ´©¸£¸é¼­ ¹Ù·Î Áö¿ì¸é ÇÃ·¡±× ¼¼ÆÃÀÌ ¾ÈµÊ
-				//Å°¸¦ ´©¸£¸é ¹«Á¶°Ç ¼¼ÆÃÀÌ µÇ¸é miss Ã³¸® ºÒ°¡
-				//deleteNote ÀÌµ¿
+				//í‚¤ ëˆ„ë¥´ë©´ì„œ ë°”ë¡œ ì§€ìš°ë©´ í”Œë˜ê·¸ ì„¸íŒ…ì´ ì•ˆë¨
+				//í‚¤ë¥¼ ëˆ„ë¥´ë©´ ë¬´ì¡°ê±´ ì„¸íŒ…ì´ ë˜ë©´ miss ì²˜ë¦¬ ë¶ˆê°€
+				//deleteNote ì´ë™
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
 		}
@@ -152,7 +152,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 		{
 			if ( IsKeyInputRight( thisNote , playerNumber ) )
 			{
-				//effect ÇÃ·¡±× ¼¼ÆÃ
+				//effect í”Œë˜ê·¸ ì„¸íŒ…
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
@@ -166,7 +166,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
 		}
-		// ³Ê¹« »¡¸® ´­·¯ MISS (aÅ°¸¦ ´©¸£°í ÀÖÀ»¶§ good³ª¿À´Â ¹ö±× È¸ÇÇ)
+		// ë„ˆë¬´ ë¹¨ë¦¬ ëˆŒëŸ¬ MISS (aí‚¤ë¥¼ ëˆ„ë¥´ê³  ìˆì„ë•Œ goodë‚˜ì˜¤ëŠ” ë²„ê·¸ íšŒí”¼)
 
 		else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
 		{
@@ -231,7 +231,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 
 void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 {
-	printConsole("Á¡¼öÇ¥ - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
+	printConsole("ì ìˆ˜í‘œ - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 
 			CRMplayer1P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer1P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer1P::GetInstance()->GetCount( COUNT_SCORE ),
 			CRMplayer2P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer2P::GetInstance()->GetCount( COUNT_GOOD ), 
@@ -239,7 +239,10 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 			);
 
 	CRMplayer*	thisPlayer = nullptr;
-	wchar_t		*playerScoreLabelName;
+	wchar_t		*playerScoreLabelName; //SM9: ë³„ë¡œ ì¢‹ì§€ ëª»í•œ ìŠµê´€. ë°˜ë“œì‹œ defaultë¡œ ì´ˆê¸°í™” í•  ê²ƒ. ì´ ê²½ìš°ëŠ” LABEL_NAME_P1_SCORE ê°™ì€ê±¸ë¡œ í•´ë†“ê³ ,
+	// í”Œë ˆì´ì–´ 2ì¼ ê²½ìš°ë§Œ ë‹¤ë¥¸ê±¸ë¡œ êµì²´í•˜ëŠ” ì‹ìœ¼ë¡œ í•´ë¼.. ê´œíˆ ì•„ë˜ì˜ ìŠ¤ìœ„ì¹˜ ë¬¸ì„ ì“¸ í•„ìš” ì—†ì´ if í•œë²ˆì´ë©´ ëœë‹¤.
+	// ê·¸ë¦¬ê³  LABEL_NAME_P1_SCORE LABEL_NAME_P1_COMBO ê°™ì€ ì• ë“¤ì„ ì´ë ‡ê²Œ í¬ì¸í„° ëŒ€ì…í•´ì„œ ì“¸ í•„ìš” ì—†ì´
+	// ì €ê¸° ì•„ë˜ CreateLabel í•  ë•Œ ( player1 ? LABEL_NAME_P1_SCORE : LABEL_NAME_P2_SCORE) ì´ëŸ°ì‹ìœ¼ë¡œ ì“°ëŠ”ê²Œ ë” ê¹”ë”í•˜ê² ì§€?
 	wchar_t		*playerComboLabelName;
 	float		positionX = 0;
 	float		positionY = 100;

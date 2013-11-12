@@ -43,7 +43,7 @@ HRESULT CRMlabelManager::CreateFactory()
 	return hr;
 }
 
-void CRMlabelManager::AddLabel( std::wstring key , CRMlabel* label )
+void CRMlabelManager::AddLabel( const std::wstring& key , CRMlabel* label )
 {
 	SafeDelete( m_LabelMap[key] );
 	m_LabelMap[key] = label;

@@ -9,6 +9,7 @@
 
 CRMobjectManager::CRMobjectManager(void)
 {
+	//SM9: 멤버 변수로 존재하는 STL 컨테이너의 경우에 생성자에서 이렇게 일일이 clear 해줄 필요 없다.
 	m_ObjectListLayerBackground.clear();
 	m_ObjectListLayerNotePlayer1.clear();
 	m_ObjectListLayerNotePlayer2.clear();
@@ -119,7 +120,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		}
 	}
 
-	return;
+	return; //SM9: 괜히 이런거 하지 말고..
 }
 
 void CRMobjectManager::Update()
@@ -157,6 +158,7 @@ void CRMobjectManager::Update()
 	CRMobject* thisLabel = nullptr;
 
 	// friend class로 라벨 매니저에 접근해서 라벨 맵의 원소를 직접 읽어옴
+	//SM9: 오브젝트 매니저가 라벨 매니저를 관리하는 녀석인가?   
 	for ( auto& iter : CRMlabelManager::GetInstance()->m_LabelMap )
 	{
 		thisLabel = iter.second;

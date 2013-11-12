@@ -14,12 +14,12 @@ private:
 public:
 	// 팩토리 초기화
 	HRESULT						CreateFactory();
-	IWICImagingFactory*			GetImageFactory() { return m_pWICFactory; }
+	IWICImagingFactory*			GetImageFactory() const { return m_pWICFactory; } //SM9: 이것도  const 붙이는게 좋겠지?
 
 	HRESULT						CreateTexture();
 	HRESULT						CreateTexture( const std::string& folderName );
 
-	CRMimage*					GetTexture( ObjectType key ) { return m_TextureMap[key]; }
+	CRMimage*					GetTexture( ObjectType key ) { return m_TextureMap[key]; } 
 	
 private:
 	void								LogError(HRESULT);

@@ -9,10 +9,10 @@ public:
 public:
 	HRESULT			CreateImage( const std::wstring& path );
 
-	float			GetWidth() { return m_Width; }
-	float			GetHeight() { return m_Height; }
+	float			GetWidth() const { return m_Width; } //SM9: 이렇게 멤버 변수의 상태를 바꾸지 않는 함수의 경우 최대한 const를 붙여라
+	float			GetHeight() const { return m_Height; }
 
-	ID2D1Bitmap*	Get2DImg() { return m_D2DImg; }
+	ID2D1Bitmap*	Get2DImg() const { return m_D2DImg; }
 
 private:
 	ID2D1Bitmap*	m_D2DImg;

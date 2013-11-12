@@ -207,34 +207,6 @@ void CRMobjectManager::Render()
 		iter->Render();
 	}
 }
-/*
-std::list<CRMobject*>* CRMobjectManager::GetObjectList( LayerType layer )
-{
-	switch ( layer )
-	{
-	case LAYER_BACKGROUND:
-		return &m_ObjectListLayerBackground;
-	case LAYER_NOTE1:
-		return &m_ObjectListLayerNotePlayer1;
-	case LAYER_NOTE2:
-		return &m_ObjectListLayerNotePlayer2;
-	case LAYER_EFFECT:
-		return &m_ObjectListLayerEffect;
-	case LAYER_NOTE_HIT:
-		return &m_ObjectListLayerNoteHit;
-	case LAYER_SHUTTER:
-		return &m_ObjectListLayerShutter;
-	case LAYER_LABEL:
-		return &m_ObjectListLayerLabel;
-	case LAYER_MEMORY_POOL:
-		return &m_ObjectListMemeoryPullOfNote;
-	case NO_LAYER:
-	default:
-		return &m_ObjectListLayerBackground;
-	}
-	return &m_ObjectListLayerBackground;
-}
-*/
 
 CRMobject* CRMobjectManager::GetObjectFront( LayerType layer )
 {

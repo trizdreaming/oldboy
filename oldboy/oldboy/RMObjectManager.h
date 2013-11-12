@@ -3,11 +3,12 @@
 #include "RMenumSet.h"
 
 class CRMobject;
+class CRMlabelManager;
 
 class CRMobjectManager
 {
 	SINGLETON(CRMobjectManager);
-
+	
 private:
 	CRMobjectManager(void);
 	~CRMobjectManager(void);
@@ -24,8 +25,6 @@ public:
 	void						Update();
 	void						Render();
 
-
-
 private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
 
@@ -38,7 +37,5 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
 
 	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote;
-
-	friend class CRMlabelManager;
 };
 

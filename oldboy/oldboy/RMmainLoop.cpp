@@ -15,6 +15,7 @@
 #include "RMlabel.h"
 #include "RMvideoPlayer.h"
 #include "RMxmlLoader.h"
+#include "RMnoteManager.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -179,6 +180,8 @@ void CRMmainLoop::RunMessageLoop()
 
 			// test sound
 			TestSound();
+
+			CRMnoteManager::GetInstance()->StartNote();
 
 			CRMjudgeManager::GetInstance()->JudgeNote();
 
@@ -454,6 +457,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_TITLE )
 	{
 		m_PlayMusicName = *( m_MusicList.rbegin() );
+
 		hr = GoNextScene();
 	}
 	else if( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_TITLE )
@@ -493,9 +497,19 @@ HRESULT CRMmainLoop::GoNextScene()
 			return hr;
 		}
 
+		CRMxmlLoader::GetInstance()->LoadNoteData( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
 		m_SceneType = SCENE_PLAY;
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY );
-		
+
+		CRMnoteManager::GetInstance()->Initialize();
+
 		return S_OK;
 	}
 

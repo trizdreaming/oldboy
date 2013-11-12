@@ -112,7 +112,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 
 			//score up
 			playerClass->AddEvent( JUDGE_MISS );
-			playerClass->SubHP();
+			//playerClass->SubHP();
 			PrintScore( playerNumber, JUDGE_MISS );
 
 			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );

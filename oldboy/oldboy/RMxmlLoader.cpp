@@ -2,6 +2,7 @@
 #include "oldboy.h"
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
+#include "RMnoteData.h"
 
 CRMxmlLoader::CRMxmlLoader(void)
 {
@@ -56,4 +57,59 @@ void CRMxmlLoader::LoadMusicData( std::string folderName )
 		printConsole("Loaded Music :%s \n", title.c_str());
 	}
 
+}
+
+void CRMxmlLoader::LoadNoteData( std::string folderName )
+{
+	std::string filePath = "";
+	filePath.append("./Music/");
+	filePath.append( folderName );
+	filePath.append("/");
+	filePath.append( *( m_MusicDataMap[folderName]->GetNote() ) );
+
+	TiXmlDocument m_Document = TiXmlDocument( filePath.c_str() );
+
+	bool m_LoadSuccess = m_Document.LoadFile();
+
+	if ( m_LoadSuccess )
+	{
+		m_NoteList.clear();
+
+		TiXmlNode* node = m_Document.FirstChild("Notes")->FirstChild("Note");
+		while ( node != NULL )
+		{
+			int time = 0;
+			int level = 0;
+			node->ToElement()->Attribute("time", &time);
+			node->ToElement()->Attribute("level", &level);
+			std::string type = node->ToElement()->GetText();
+
+
+			CRMnoteData* noteData = new CRMnoteData (time, level, (type == "left") ? OBJECT_NOTE_NORMAL_1 : OBJECT_NOTE_NORMAL_2 );
+			m_NoteList.push_back( noteData );
+			node = node->NextSibling();
+		}
+
+
+	}
+}
+
+CRMnoteData* CRMxmlLoader::GetNoteFirst()
+{
+	if ( m_NoteList.size() == 0 )
+	{
+		return nullptr;
+	}
+	return *(m_NoteList.begin());
+}
+
+HRESULT CRMxmlLoader::DeleteNoteFirst()
+{
+	if ( m_NoteList.size() == 0 )
+	{
+		return S_FALSE;
+	}
+
+	m_NoteList.pop_front();
+	return S_OK;
 }

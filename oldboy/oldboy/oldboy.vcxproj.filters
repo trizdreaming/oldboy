@@ -232,6 +232,8 @@
     <ClInclude Include="RMmusicData.h">
       <Filter>Core\Loop</Filter>
     </ClInclude>
+    <ClInclude Include="RMnoteManager.h" />
+    <ClInclude Include="RMnoteData.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -363,6 +365,8 @@
     <ClCompile Include="RMmusicData.cpp">
       <Filter>Core\Loop</Filter>
     </ClCompile>
+    <ClCompile Include="RMnoteManager.cpp" />
+    <ClCompile Include="RMnoteData.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

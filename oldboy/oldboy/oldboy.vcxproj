@@ -132,6 +132,8 @@
     <ClInclude Include="RMmacro.h" />
     <ClInclude Include="RMmainLoop.h" />
     <ClInclude Include="RMmusicData.h" />
+    <ClInclude Include="RMnoteData.h" />
+    <ClInclude Include="RMnoteManager.h" />
     <ClInclude Include="RMobject.h" />
     <ClInclude Include="RMobjectManager.h" />
     <ClInclude Include="RMplayer.h" />
@@ -178,6 +180,8 @@
     <ClCompile Include="RMlabelManager.cpp" />
     <ClCompile Include="RMmainLoop.cpp" />
     <ClCompile Include="RMmusicData.cpp" />
+    <ClCompile Include="RMnoteData.cpp" />
+    <ClCompile Include="RMnoteManager.cpp" />
     <ClCompile Include="RMobject.cpp" />
     <ClCompile Include="RMobjectManager.cpp" />
     <ClCompile Include="RMplayer.cpp" />

@@ -257,18 +257,26 @@ HRESULT CRMmainLoop::CreateMainLoopWindow()
 
 	RegisterClassEx(&wcex);
 
+	int START_POSITION_X = 0;
+	int START_POSITION_Y = 0;
+
+	START_POSITION_X = GetSystemMetrics(SM_CXSCREEN);
+	START_POSITION_Y = GetSystemMetrics(SM_CYSCREEN);
+
+	START_POSITION_X = (START_POSITION_X - SCREEN_SIZE_X)/2;
+	START_POSITION_Y = (START_POSITION_Y - SCREEN_SIZE_Y)/2;
 
 	m_Hwnd = CreateWindow(wcex.lpszClassName, 
-						GAME_NAME, 
-						WS_OVERLAPPEDWINDOW,
-						50,		// 하기 4줄이 화면 시작 좌표 의미 
-						50,		//
-						SCREEN_SIZE_X,	// 1024 + 16
-						SCREEN_SIZE_Y,	// 668 + 32
-						NULL, 
-						NULL, 
-						wcex.hInstance, 
-						NULL);
+		GAME_NAME, 
+		WS_POPUPWINDOW,
+		START_POSITION_X,		// 하기 4줄이 화면 시작 좌표 의미 
+		START_POSITION_Y,		//
+		SCREEN_SIZE_X,	// 1024 + 16
+		SCREEN_SIZE_Y,	// 668 + 32
+		NULL, 
+		NULL, 
+		wcex.hInstance, 
+		NULL);
 
 	if ( !m_Hwnd )
 	{

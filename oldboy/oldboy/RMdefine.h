@@ -14,8 +14,8 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define GAME_NAME	L"Rhythm Match v0.125"
 #define CLASS_NAME	L"RhythmMatch"
 
-#define SCREEN_SIZE_X 1040 // 1024 + 16
-#define SCREEN_SIZE_Y 700  // 668 + 32
+#define SCREEN_SIZE_X 1024 // 1024 + 16
+#define SCREEN_SIZE_Y 662  // 668 + 32
 
 #define NOTE_SIZE 100
 

@@ -126,10 +126,14 @@ void CRMvideoPlayer::RenderVideo()
 			m_BandiVideoDevice->EndFrame();
 			++m_Count;
 		}
+		else
+		{
+			m_BandiVideoTexture->Unlock();
+		}		
 	}
 	else
 	{
-		Sleep(1);
+		Sleep(0);
 	}
 
 	printConsole( "frame: %d \n", m_Count );

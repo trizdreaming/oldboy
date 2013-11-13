@@ -37,10 +37,13 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 	UNREFERENCED_PARAMETER(hPrevInstance);
 	UNREFERENCED_PARAMETER(lpCmdLine);
 
+
+#ifdef _PRINT_CONSOLE
+
+
 	// 메모리 디버깅 옵션 부분
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-#ifdef _PRINT_CONSOLE
 	// 디버깅용 콘솔 헤더가 포함 되어 있을 때에만 싱글톤으로 콘솔을 생성함
 	CRMprintConsole::GetInstance();
 #endif // _PRINT_CONSOLE

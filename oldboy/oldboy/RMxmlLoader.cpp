@@ -21,7 +21,7 @@ CRMxmlLoader::~CRMxmlLoader(void)
 }
 
 
-void CRMxmlLoader::LoadMusicData( std::string folderName )
+void CRMxmlLoader::LoadMusicData(const std::string& folderName )
 {
 
 	std::string filePath = "";
@@ -59,7 +59,7 @@ void CRMxmlLoader::LoadMusicData( std::string folderName )
 
 }
 
-void CRMxmlLoader::LoadNoteData( std::string folderName )
+void CRMxmlLoader::LoadNoteData( const std::string& folderName )
 {
 	std::string filePath = "";
 	filePath.append("./Music/");

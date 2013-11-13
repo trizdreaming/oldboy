@@ -15,7 +15,7 @@ public:
 	HRESULT				LoadSound( const std::string& fileName, SoundType soundType );
 	HRESULT				LoadPlaySound( const std::string& musicFolderName );
 
-	void				PlaySound( SoundType soundType );
+	void				PlaySound( SoundType soundType, bool isLoop = true );
 	void				PlayEffect( SoundType soundType );
 	
 private:
@@ -24,7 +24,8 @@ private:
 	
 
 	FMOD::System*		m_SystemS;
-	FMOD::Channel*		m_Channel;
+	FMOD::Channel*		m_ChannelBG;
+	FMOD::Channel*		m_ChannelSE;
 	FMOD_RESULT			m_Result;
 
 	//FMOD::Sound*	m_Sound;

@@ -6,7 +6,8 @@
 
 CRMsound::CRMsound(void):
 	m_SystemS(nullptr),
-	m_Channel(nullptr),
+	m_ChannelBG(nullptr),
+	m_ChannelSE(nullptr),
 	m_Result(FMOD_ERR_UNINITIALIZED)
 {
 }
@@ -31,7 +32,7 @@ HRESULT CRMsound::CheckError()
 {
 	if ( m_Result != FMOD_OK )
 	{
-		printConsole(ERROR_FMOD_CONSOLE, m_Result, FMOD_ErrorString(m_Result));
+		printConsole( ERROR_FMOD_CONSOLE, m_Result, FMOD_ErrorString( m_Result ) );
 
 		return S_FALSE;
 	}
@@ -135,14 +136,27 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 }
 
 // Àç»ý
-void CRMsound::PlaySound( SoundType soundType )
+void CRMsound::PlaySound( SoundType soundType, bool isLoop )
 {
 	if ( m_Result == FMOD_OK )
 	{
-		m_Channel->stop();
-		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_Channel);
-		m_Channel->setVolume(0.8f);
-		m_Channel->setMode(FMOD_LOOP_NORMAL);
+
+		if ( m_ChannelBG != nullptr )
+		{
+			m_ChannelBG->stop();
+		}
+		
+		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_ChannelBG );
+		m_ChannelBG->setVolume(0.8f);
+		if (isLoop)
+		{
+			m_ChannelBG->setMode( FMOD_LOOP_OFF );
+		}
+		else
+		{
+			m_ChannelBG->setMode( FMOD_LOOP_NORMAL );
+		}
+		
 
 		CheckError();
 	}
@@ -153,9 +167,8 @@ void CRMsound::PlayEffect( SoundType soundType )
 {
 	if ( m_Result == FMOD_OK )
 	{
-		
-		m_Result = m_SystemS->playSound(FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_Channel);
-		m_Channel->setVolume(0.7f);
+		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_ChannelSE );
+		m_ChannelSE->setVolume( 0.7f );
 		CheckError();
 	}
 }

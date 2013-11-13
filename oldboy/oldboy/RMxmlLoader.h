@@ -14,8 +14,8 @@ public:
 	CRMxmlLoader(void);
 	~CRMxmlLoader(void);
 	
-	void				LoadMusicData( std::string folderName );
-	void				LoadNoteData( std::string folderName );
+	void				LoadMusicData( const std::string& folderName );
+	void				LoadNoteData( const std::string& folderName );
 	CRMnoteData*		GetNoteFirst();
 	HRESULT				DeleteNoteFirst();
 

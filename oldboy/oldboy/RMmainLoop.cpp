@@ -514,7 +514,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		}
 
 		m_SceneType = SCENE_PLAY;
-		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY );
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, false );
 
 		CRMnoteManager::GetInstance()->Initialize();
 

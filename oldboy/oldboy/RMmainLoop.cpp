@@ -515,7 +515,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 

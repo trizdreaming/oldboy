@@ -89,7 +89,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -104,7 +104,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageShutter() ) ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageShutter() ) );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -119,7 +119,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote1() ) ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote1() ) );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -134,7 +134,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote2() ) ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote2() ) );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -149,7 +149,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, *(CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNoteEffect() ) ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNoteEffect() ) );
 	LogError(hr);
 	if ( hr == S_OK )
 	{

@@ -102,7 +102,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );
-	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() ) );
+	filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() );
 	hr = LoadSound( filePath, SOUND_BG_PLAY );
 	if ( CheckError() != S_OK )
 	{
@@ -113,7 +113,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	filePath = MUSIC_FOLDER;
 	filePath.append(musicFolderName);
 	filePath.append(FOLDER_SLASH);
-	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() ) );
+	filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() );
 	hr = LoadSound( filePath, SOUND_NOTE_1 );
 	if ( CheckError() != S_OK )
 	{
@@ -124,7 +124,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );
-	filePath.append( *(CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() ) );
+	filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() );
 	hr = LoadSound( filePath, SOUND_NOTE_2 );
 	if ( CheckError() != S_OK )
 	{

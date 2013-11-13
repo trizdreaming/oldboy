@@ -65,7 +65,7 @@ void CRMxmlLoader::LoadNoteData( const std::string& folderName )
 	filePath.append("./Music/");
 	filePath.append( folderName );
 	filePath.append("/");
-	filePath.append( *( m_MusicDataMap[folderName]->GetNote() ) );
+	filePath.append( m_MusicDataMap[folderName]->GetNote() );
 
 	TiXmlDocument m_Document = TiXmlDocument( filePath.c_str() );
 

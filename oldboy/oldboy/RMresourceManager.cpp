@@ -38,6 +38,17 @@ HRESULT CRMresourceManager::CreateFactory()
 	if ( m_pWICFactory == nullptr )
 	{
 		hr = CoCreateInstance( CLSID_WICImagingFactory, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&m_pWICFactory) );
+
+		if ( hr == REGDB_E_CLASSNOTREG )
+		{
+			hr = CoCreateInstance( CLSID_WICImagingFactory1, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&m_pWICFactory) );
+
+			if ( hr == REGDB_E_CLASSNOTREG )
+			{
+				hr = CoCreateInstance( CLSID_WICImagingFactory2, NULL, CLSCTX_INPROC_SERVER, IID_PPV_ARGS(&m_pWICFactory) );
+			}
+		}
+
 	}
 
 	return hr;

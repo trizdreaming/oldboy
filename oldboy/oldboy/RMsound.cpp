@@ -150,11 +150,11 @@ void CRMsound::PlaySound( SoundType soundType, bool isLoop )
 		m_ChannelBG->setVolume(0.8f);
 		if (isLoop)
 		{
-			m_ChannelBG->setMode( FMOD_LOOP_OFF );
+			m_ChannelBG->setMode( FMOD_LOOP_NORMAL );
 		}
 		else
 		{
-			m_ChannelBG->setMode( FMOD_LOOP_NORMAL );
+			m_ChannelBG->setMode( FMOD_LOOP_OFF );
 		}
 		
 

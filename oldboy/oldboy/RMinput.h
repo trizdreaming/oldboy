@@ -19,6 +19,4 @@ private:
 
 	bool				m_PrevKeyState[MAX_INPUT_KEY];
 	bool				m_NowKeyState[MAX_INPUT_KEY];
-
-	std::map<KeyTable, int>			m_KeyMap;
 };

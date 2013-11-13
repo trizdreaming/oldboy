@@ -6,16 +6,6 @@ CRMinput::CRMinput(void)
 {
 	ZeroMemory(m_PrevKeyState, sizeof(m_PrevKeyState[MAX_INPUT_KEY]));
 	ZeroMemory(m_NowKeyState, sizeof(m_NowKeyState[MAX_INPUT_KEY]));
-
-	m_KeyMap.clear();
-	m_KeyMap[KEY_TABLE_P1_ATTACK] = VK_S;
-	m_KeyMap[KEY_TABLE_P1_TARGET1] = VK_A;
-	m_KeyMap[KEY_TABLE_P1_TARGET2] = VK_D;
-	m_KeyMap[KEY_TABLE_P2_ATTACK] = VK_DOWN;
-	m_KeyMap[KEY_TABLE_P2_TARGET1] = VK_LEFT;
-	m_KeyMap[KEY_TABLE_P2_TARGET2] = VK_RIGHT;
-	m_KeyMap[KEY_TABLE_RETURN] = VK_RETURN;
-	m_KeyMap[KEY_TABLE_ESCAPE] = VK_ESCAPE;
 }
 
 
@@ -29,10 +19,7 @@ void CRMinput::UpdateKeyState()
 	{
 		m_PrevKeyState[i] = m_NowKeyState[i];
 
-		if( !m_KeyMap[ (KeyTable) i ] )
-			continue;
-
-		if( GetAsyncKeyState( m_KeyMap[ (KeyTable) i ] ) & 0x8000 )
+		if( GetAsyncKeyState( i ) & 0x8000 )
 		{
 			m_NowKeyState[i] = true;
 		}

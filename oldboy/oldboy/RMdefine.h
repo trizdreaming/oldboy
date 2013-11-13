@@ -59,7 +59,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define LABEL_FPS			L"FPS"
 
-#define MAX_INPUT_KEY		20
+#define MAX_INPUT_KEY		256
 
 #define MAX_COUNT			6
 

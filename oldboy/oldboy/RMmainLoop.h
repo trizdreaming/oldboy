@@ -22,7 +22,7 @@ public:
 
 private:
 
-	void	LoadMusicData();
+	void	FindMusicData();
 
 	// 임시 테스트 함수
 	void	TestSound();

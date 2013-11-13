@@ -21,7 +21,7 @@ CRMxmlLoader::~CRMxmlLoader(void)
 }
 
 
-void CRMxmlLoader::LoadMusicData(const std::string& folderName )
+HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 {
 
 	std::string filePath = "";
@@ -52,14 +52,21 @@ void CRMxmlLoader::LoadMusicData(const std::string& folderName )
 
 		std::string note = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Note/text()").c_str();
 
-		m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
+		if ( title == "" || artist == "" || level == "" || imageBackground == "" || imageShutter == "" || imageNote1 == "" || imageNote2 == "" || imageNoteEffect == "" || soundBackground == "" || soundNoteEffect1 == "" || soundNoteEffect2 == "" || note == "" )
+		{
+			return S_FALSE;
+		}else{
+			m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
+		}
+		
 
 		printConsole("Loaded Music :%s \n", title.c_str());
+		return S_OK;
 	}
 
 }
 
-void CRMxmlLoader::LoadNoteData( const std::string& folderName )
+HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 {
 	std::string filePath = "";
 	filePath.append("./Music/");
@@ -90,6 +97,14 @@ void CRMxmlLoader::LoadNoteData( const std::string& folderName )
 			node = node->NextSibling();
 		}
 
+		if ( m_NoteList.size() == 0 )
+		{
+			return S_FALSE;
+		}
+		else
+		{
+			return S_OK;
+		}
 
 	}
 }

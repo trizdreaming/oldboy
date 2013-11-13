@@ -44,7 +44,7 @@ void CRMmainLoop::RunMessageLoop()
 	ZeroMemory( &msg, sizeof(msg) ); //msg 초기화 함수
 	//===================================================================
 	// 음악 데이터를 불러온다.
-	LoadMusicData();
+	FindMusicData();
 
 	// test 음악선택하기
 	m_PlayMusicName = *( m_MusicList.begin() );
@@ -207,7 +207,7 @@ void CRMmainLoop::RunMessageLoop()
 
 
 
-void CRMmainLoop::LoadMusicData()
+void CRMmainLoop::FindMusicData()
 {
 	WIN32_FIND_DATAA findFileData;
 	HANDLE hFind = FindFirstFileA( MUSIC_FOLDER_SEARCH, &findFileData );
@@ -225,7 +225,13 @@ void CRMmainLoop::LoadMusicData()
 			std::string folderName = findFileData.cFileName;
 			if ( folderName.compare(".") != 0 && folderName.compare("..") != 0 )
 			{
-				CRMxmlLoader::GetInstance()->LoadMusicData( folderName );
+				HRESULT hr = S_FALSE;
+				hr = CRMxmlLoader::GetInstance()->LoadMusicData( folderName );
+				if ( hr != S_OK )
+				{
+					MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+					return;
+				}
 				m_MusicList.push_back( folderName );
 			}
 		}
@@ -505,7 +511,7 @@ HRESULT CRMmainLoop::GoNextScene()
 			return hr;
 		}
 
-		CRMxmlLoader::GetInstance()->LoadNoteData( m_PlayMusicName );
+		hr = CRMxmlLoader::GetInstance()->LoadNoteData( m_PlayMusicName );
 
 		if ( hr != S_OK )
 		{

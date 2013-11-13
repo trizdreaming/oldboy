@@ -87,6 +87,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define ERROR_CREATE_WIC_FACTORY	L"Error to Create WIC Factory"
 
 #define ERROR_CREATE_BG_IMAGE		L"Error to Create BackGround Texture"
+#define ERROR_LOAD_MUSIC_XML	L"Error Loading Music Index File...."
 #define ERROR_LOAD_IMAGE	L"Error Loading Image Files...."
 #define ERROR_LOAD_SOUND	L"Error Loading Sound Files...."
 

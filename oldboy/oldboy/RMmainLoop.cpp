@@ -131,13 +131,12 @@ void CRMmainLoop::RunMessageLoop()
 			}
 
 			
-
+#ifdef _DEBUG
 			// FPS 출력용 계산
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
 			//	printConsole("FPS : %d \n", fps);
 
-#ifdef _DEBUG
 				CRMlabel*	testLabel = new CRMlabel();
 				wchar_t		testChar[255] = {0, };
 				swprintf_s(testChar, L"FPS : %d ", fps);
@@ -146,10 +145,11 @@ void CRMmainLoop::RunMessageLoop()
 				testLabel->SetRGBA( 1.0f, 1.0f, 1.0f, 1.f );
 				testLabel->SetSceneType( SCENE_PLAY );
 				testLabel->SetPosition( 20, 20 );
-#endif
+
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
 			}
+#endif
 
 			m_ElapsedTime = m_NowTime - m_PrevTime;
 

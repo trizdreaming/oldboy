@@ -76,6 +76,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define BG_IMAGE_TITLE	L"./Resource/image_bg_00_01.png"
 #define BG_IMAGE_SELECT	L"./Resource/image_bg_select_01.png"
+#define BG_IMAGE_RESULT	L"./Resource/image_bg_result_01.png"
 
 // Error ฐüทร 
 

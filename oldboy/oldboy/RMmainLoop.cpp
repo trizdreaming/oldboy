@@ -383,6 +383,11 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetSceneType(SCENE_SELECT_MUSIC);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 	
+	testObject = new CRMchildBGImage();
+	testObject->SetObjectType(OBJECT_BG_IMAGE_RESULT);
+	testObject->SetPosition(0, 0);
+	testObject->SetSceneType(SCENE_RESULT);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 
 
 

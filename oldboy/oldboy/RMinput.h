@@ -12,7 +12,7 @@ private:
 
 public:
 	void				UpdateKeyState();
-	KeyStatus			GetKeyStatusByKey( KeyTable key );
+	KeyStatus			GetKeyStatusByKey( KeyTable key ) const;
 
 private:
 	KeyStatus			m_InputKey[MAX_INPUT_KEY];

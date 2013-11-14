@@ -15,15 +15,15 @@ private:
 
 public:
 	
-	CRMobject*					GetObjectFront( LayerType layer );
+	CRMobject*					GetObjectFront( LayerType layer ) const;
 
 	void						ChargeNoteList( LayerType layer );
 	void						DeleteNoteListFront( LayerType layer );
 
 	void						AddObject( CRMobject* bject, LayerType layer );
 
-	void						Update();
-	void						Render();
+	void						Update(); // const
+	void						Render() const;
 
 private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;

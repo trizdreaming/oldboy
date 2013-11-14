@@ -10,9 +10,7 @@
 #include "RMlabel.h"
 #include "RMchildEffectManager.h"
 
-CRMjudgeManager::CRMjudgeManager(void) :
-	m_Player1Judge(JUDGE_NONE),
-	m_Player2Judge(JUDGE_NONE)
+CRMjudgeManager::CRMjudgeManager(void)
 {
 }
 
@@ -21,7 +19,7 @@ CRMjudgeManager::~CRMjudgeManager(void)
 {
 }
 
-void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
+void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) const
 {
 		
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_MEMORY_POOL );
@@ -54,7 +52,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType )
 	}
 }
 
-void CRMjudgeManager::JudgeNote()
+void CRMjudgeManager::JudgeNote() const
 {
 		/*
 			1. 노트한테 너 위치 어디야?
@@ -82,7 +80,7 @@ void CRMjudgeManager::JudgeNote()
 }
 
 
-void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
+void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 {
 
 	LayerType playerLayer;
@@ -187,7 +185,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 }
 
 
-bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
+bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) const
 {
 	KeyTable target1;
 	KeyTable target2;
@@ -229,7 +227,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player )
 }
 
 
-void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
+void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) const
 {
 	printConsole("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 

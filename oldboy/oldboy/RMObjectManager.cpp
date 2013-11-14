@@ -172,7 +172,7 @@ void CRMobjectManager::Update()
 	}
 }
 
-void CRMobjectManager::Render()
+void CRMobjectManager::Render() const
 {
 	for ( auto& iter : m_ObjectListLayerBackground )
 	{
@@ -208,7 +208,7 @@ void CRMobjectManager::Render()
 	}
 }
 
-CRMobject* CRMobjectManager::GetObjectFront( LayerType layer )
+CRMobject* CRMobjectManager::GetObjectFront( LayerType layer ) const
 {
 	switch ( layer )
 	{

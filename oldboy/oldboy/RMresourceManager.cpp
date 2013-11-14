@@ -185,7 +185,7 @@ void CRMresourceManager::LogError(HRESULT hr)
 	}
 }
 
-std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName )
+std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName ) const
 {
 	std::string str = MUSIC_FOLDER;
 	str.append( folderName );

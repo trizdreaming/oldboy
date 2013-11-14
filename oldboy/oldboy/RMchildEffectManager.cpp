@@ -73,22 +73,28 @@ void CRMchildEffectManager::ResetFlag( int highMask )
 	}
 }
 
-void CRMchildEffectManager::GetStartPosition( PlayerNumber targetPlayer, float* x, float* y )
+Position CRMchildEffectManager::GetStartPosition( PlayerNumber targetPlayer ) const
 {
+	Position pos = { 0, };
+
 	switch ( targetPlayer )
 	{
 	case PLAYER_ONE:
-		*x = m_Effect1PStartPositionX;
-		*y = m_Effect1PStartPositionY;
+		pos.x = m_Effect1PStartPositionX;
+		pos.y = m_Effect1PStartPositionY;
 		break;
 	case PLAYER_TWO:
-		*x = m_Effect2PStartPositionX;
-		*y = m_Effect2PStartPositionY;
+		pos.x = m_Effect2PStartPositionX;
+		pos.y = m_Effect2PStartPositionY;
 		break;
 	case PLAYER_NONE:
 	default:
+		pos.x = ERROR_POSITION;
+		pos.y = ERROR_POSITION;
 		break;
 	}
+
+	return pos;
 }
 
 

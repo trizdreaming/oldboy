@@ -1,6 +1,12 @@
 #pragma once
 #include "RMenumSet.h"
 
+struct Position
+{
+	float x;
+	float y;
+};
+
 class CRMchildEffectManager
 {
 	SINGLETON(CRMchildEffectManager);
@@ -10,11 +16,11 @@ private:
 	~CRMchildEffectManager(void);
 
 public:
-	void	SetFlag( PlayerNumber targetPlayer , float m_PositionX, float m_PositionY );
-	void	ResetFlag( int highMask );
+	void		SetFlag( PlayerNumber targetPlayer , float m_PositionX, float m_PositionY );
+	void		ResetFlag( int highMask );
 
-	void	GetStartPosition( PlayerNumber targetPlayer, float* x, float* y );
-	char	GetFlag() { return m_BitFlag; }
+	Position	GetStartPosition( PlayerNumber targetPlayer ) const;
+	char		GetFlag() { return m_BitFlag; }
 
 private:
 	int		m_FlagSetter1P; //어떤 비트 포지션에 넣을지 모듈러 연산으로 확인

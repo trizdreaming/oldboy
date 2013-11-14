@@ -30,7 +30,7 @@ void CRMinput::UpdateKeyState()
 	}
 }
 
-KeyStatus CRMinput::GetKeyStatusByKey( KeyTable key )
+KeyStatus CRMinput::GetKeyStatusByKey( KeyTable key ) const
 {
 	if ( m_PrevKeyState[key] == false && m_NowKeyState[key] == true )
 	{

@@ -19,7 +19,7 @@ public:
 	CRMnoteData*		GetNoteFirst();
 	HRESULT				DeleteNoteFirst();
 
-	CRMmusicData*		GetMusicData( std::string folderName ) { return m_MusicDataMap[folderName]; }
+	CRMmusicData*		GetMusicData( const std::string& folderName ) { return m_MusicDataMap[folderName]; }
 private:
 	//           폴더이름  음악개체
 	std::map<std::string, CRMmusicData*>	m_MusicDataMap;

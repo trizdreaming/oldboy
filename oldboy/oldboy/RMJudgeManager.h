@@ -14,17 +14,14 @@ private:
 
 public:
 	//노트 관리
-	void						StartNote( PlayerNumber player , ObjectType objectType );
+	void						StartNote( PlayerNumber player , ObjectType objectType ) const;
 	
 	//노트 판정
-	void						JudgeNote();
-	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player );
+	void						JudgeNote() const;
+	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
 
 private:
-	void						JudgeNoteByPlayer( PlayerNumber playerNumber );
-	void						PrintScore( PlayerNumber player, JudgeType judgeType );
-
-	JudgeType					m_Player1Judge;
-	JudgeType					m_Player2Judge;
+	void						JudgeNoteByPlayer( PlayerNumber playerNumber ) const;
+	void						PrintScore( PlayerNumber player, JudgeType judgeType ) const;
 };
 

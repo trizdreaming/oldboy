@@ -52,7 +52,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	}
 }
 
-UINT CRMplayer::GetCount( CountType countType )
+UINT CRMplayer::GetCount( CountType countType ) const
 {
 	return m_Count[countType];
 }

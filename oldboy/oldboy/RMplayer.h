@@ -8,7 +8,7 @@ public:
 	virtual ~CRMplayer(void);
 	
 	void		AddEvent( JudgeType judgeEventType );
-	UINT		GetCount( CountType countType );
+	UINT		GetCount( CountType countType ) const;
 	void		SetCount( CountType countType, UINT count );
 	
 	void		AddHP() { ++m_HP; }

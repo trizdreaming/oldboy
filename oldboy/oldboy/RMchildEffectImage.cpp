@@ -41,17 +41,22 @@ void CRMchildEffectImage::Update()
 
 		CRMchildEffectManager::GetInstance()->ResetFlag( highMask );
 
+		Position pos = { 0, };
+
 		if ( highMask > 0)
 		{
-			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_ONE, &m_PositionX, &m_PositionY );
+			pos = CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_ONE );		
 		}
 		else
 		{
-			CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO, &m_PositionX, &m_PositionY );
+			pos = CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO );
 		}
 		
-		m_PositionX = m_PositionX-90;
-		m_PositionY = m_PositionY-80;
+		m_PositionX = pos.x;
+		m_PositionY = pos.y;
+
+		m_PositionX = m_PositionX - 90;
+		m_PositionY = m_PositionY - 80;
 	}
 
 	if ( m_Visible == false )

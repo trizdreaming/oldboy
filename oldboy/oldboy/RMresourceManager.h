@@ -19,12 +19,12 @@ public:
 	HRESULT						CreateTexture();
 	HRESULT						CreateTexture( const std::string& folderName );
 
-	CRMimage*					GetTexture( ObjectType key ) { return m_TextureMap[key]; }
+	CRMimage*					GetTexture( const ObjectType& key ) { return m_TextureMap[key]; }
 	
 private:
 	void								LogError(HRESULT);
 	void								InitializeMap();
-	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName );
+	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName ) const;
 
 	IWICImagingFactory*					m_pWICFactory;
 	std::map<ObjectType, CRMimage*>		m_TextureMap;

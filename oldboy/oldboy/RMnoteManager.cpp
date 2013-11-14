@@ -57,8 +57,6 @@ void CRMnoteManager::StartNote()
 			}
 			m_NoteReadyTime = INT_MAX;
 		}
-	}else{
-		printConsole("END!!!!!!!!! \n");
 	}
 
 }

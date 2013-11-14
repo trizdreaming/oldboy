@@ -234,6 +234,7 @@
     </ClInclude>
     <ClInclude Include="RMnoteManager.h" />
     <ClInclude Include="RMnoteData.h" />
+    <ClInclude Include="RMmusicSelectManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -367,6 +368,7 @@
     </ClCompile>
     <ClCompile Include="RMnoteManager.cpp" />
     <ClCompile Include="RMnoteData.cpp" />
+    <ClCompile Include="RMmusicSelectManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

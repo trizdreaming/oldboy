@@ -63,7 +63,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_DEFAULT );
+	hr = texture->CreateImage( BG_IMAGE_TITLE );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -74,6 +74,21 @@ HRESULT CRMresourceManager::CreateTexture()
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
 		SafeDelete(texture);
 	}
+
+
+	texture = new CRMimage();
+	hr = texture->CreateImage( BG_IMAGE_SELECT );
+	LogError(hr);
+	if ( hr == S_OK )
+	{
+		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = texture;
+	}
+	else
+	{
+		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = nullptr;
+		SafeDelete(texture);
+	}
+
 	return hr;
 }
 
@@ -85,7 +100,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	CRMimage* texture;
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_DEFAULT );
+	hr = texture->CreateImage( BG_IMAGE_TITLE );
 	LogError(hr);
 	if ( hr == S_OK )
 	{
@@ -94,6 +109,21 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	else
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
+		InitializeMap();
+
+		return hr;
+	}
+
+	texture = new CRMimage();
+	hr = texture->CreateImage( BG_IMAGE_SELECT );
+	LogError(hr);
+	if ( hr == S_OK )
+	{
+		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = texture;
+	}
+	else
+	{
+		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = nullptr;
 		InitializeMap();
 
 		return hr;

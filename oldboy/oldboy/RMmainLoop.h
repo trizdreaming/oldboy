@@ -1,5 +1,6 @@
 #pragma once
 #include "RMenumSet.h"
+#include <vector>
 
 class CRMmainLoop
 {
@@ -44,8 +45,10 @@ private:
 
 	SceneType						m_SceneType;
 
-	std::list<std::string>			m_MusicList;
+	std::vector<std::string>		m_MusicVector;
 
 	std::string						m_PlayMusicName;
+
+	int								m_MusicSelectIndex;
 };
 

@@ -18,10 +18,11 @@ public:
 	
 	//노트 판정
 	void						JudgeNote() const;
-	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
+	
 
 private:
 	void						JudgeNoteByPlayer( PlayerNumber playerNumber ) const;
 	void						PrintScore( PlayerNumber player, JudgeType judgeType ) const;
+	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
 };
 

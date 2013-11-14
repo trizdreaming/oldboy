@@ -16,6 +16,7 @@
 #include "RMvideoPlayer.h"
 #include "RMxmlLoader.h"
 #include "RMnoteManager.h"
+#include "RMmusicSelectManager.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -25,7 +26,8 @@ CRMmainLoop::CRMmainLoop(void):
 	m_FpsCheckTime(0),
 	m_SceneType(SCENE_OPENING),
 	m_Hwnd(NULL),
-	m_PlayMusicName("")
+	m_PlayMusicName(""),
+	m_MusicSelectIndex(0)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = ( 1000 / 60 ) + 1;
@@ -46,8 +48,6 @@ void CRMmainLoop::RunMessageLoop()
 	// 음악 데이터를 불러온다.
 	FindMusicData();
 
-	// test 음악선택하기
-	m_PlayMusicName = *( m_MusicList.begin() );
 	//===================================================================
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
 	hr = CRMsound::GetInstance()->CreateSound();
@@ -184,6 +184,13 @@ void CRMmainLoop::RunMessageLoop()
 			CRMnoteManager::GetInstance()->StartNote();
 
 			CRMjudgeManager::GetInstance()->JudgeNote();
+			
+			//////////////////////////////////////////////////////////////////////////
+			if ( m_SceneType == SCENE_SELECT_MUSIC )
+			{
+				CRMmusicSelectManager::GetInstance()->ShowMusicList(&m_MusicVector, m_MusicSelectIndex);
+			}
+			
 
 			// test Key
 			hr = TestKeyboard();
@@ -232,7 +239,7 @@ void CRMmainLoop::FindMusicData()
 					MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 					return;
 				}
-				m_MusicList.push_back( folderName );
+				m_MusicVector.push_back( folderName );
 			}
 		}
 	} while ( FindNextFileA(hFind, &findFileData) != 0);
@@ -370,6 +377,16 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 	
+	testObject = new CRMchildBGImage();
+	testObject->SetObjectType(OBJECT_BG_IMAGE_SELECT);
+	testObject->SetPosition(0, 0);
+	testObject->SetSceneType(SCENE_SELECT_MUSIC);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
+	
+
+
+
+
 	for ( int i = 0 ; i < 100 ; ++i )
 	{
 		testObject = new CRMchildNote();
@@ -468,17 +485,23 @@ HRESULT CRMmainLoop::TestKeyboard()
 {
 	HRESULT hr = S_OK;
 
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_TITLE )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
 	{
-		m_PlayMusicName = *( m_MusicList.rbegin() );
+		hr = GoNextScene();
+	}
+
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex % m_MusicVector.size() );
 
 		hr = GoNextScene();
 	}
-	else if( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_TITLE )
+
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		m_PlayMusicName = *( m_MusicList.begin() );
-		hr = GoNextScene();
+		++m_MusicSelectIndex;
 	}
+
 
 	return hr;
 }
@@ -495,6 +518,13 @@ HRESULT CRMmainLoop::GoNextScene()
 	}
 
 	if ( m_SceneType == SCENE_TITLE )
+	{
+		m_SceneType = SCENE_SELECT_MUSIC;
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
+		return S_OK;
+	}
+
+	if ( m_SceneType == SCENE_SELECT_MUSIC )
 	{
 		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
 		if ( hr != S_OK )

@@ -74,7 +74,8 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define MUSIC_FOLDER		"./Music/"
 #define BGM_TITLE			"./Resource/bgm_title_00_01.mp3"
 
-#define BG_IMAGE_DEFAULT	L"./Resource/image_bg_00_01.png"
+#define BG_IMAGE_TITLE	L"./Resource/image_bg_00_01.png"
+#define BG_IMAGE_SELECT	L"./Resource/image_bg_select_01.png"
 
 // Error ฐüทร 
 

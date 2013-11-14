@@ -26,7 +26,6 @@ CRMmainLoop::CRMmainLoop(void):
 	m_FpsCheckTime(0),
 	m_SceneType(SCENE_OPENING),
 	m_Hwnd(NULL),
-	m_PlayMusicName(""),
 	m_MusicSelectIndex(0)
 {
 	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함

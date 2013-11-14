@@ -19,7 +19,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>* mu
 
 	//printConsole("Total Music Count:%d \n", totalMusicNum);
 
-	if ( totalMusicNum > 0 )
+	if ( totalMusicNum > 0 )	// 0
 	{
 		int indexFix = 0;
 		indexFix = index % totalMusicNum;
@@ -28,9 +28,9 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>* mu
 		musicList1->CreateLabel( L"LABELNAME1" , string2wstring(musicVector->at(indexFix)), LABEL_FONT_NORMAL, 55.0F );
 		musicList1->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 		musicList1->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList1->SetPosition( 100 ,  (SCREEN_SIZE_Y / 2 ) - 50 );
+		musicList1->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 50 );
 	}
-	if ( totalMusicNum > 1 )
+	if ( totalMusicNum > 1 )	// 1
 	{
 		int indexFix = 0;
 		indexFix = (index + 1) % totalMusicNum;
@@ -39,40 +39,40 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>* mu
 		musicList2->CreateLabel( L"LABELNAME2" , string2wstring(musicVector->at(indexFix)), LABEL_FONT_NORMAL, 35.0F );
 		musicList2->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 		musicList2->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList2->SetPosition( 100 , SCREEN_SIZE_Y/2 + 100 );
+		musicList2->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) + 100 );
 	}
-	if ( totalMusicNum > 2 )
+	if ( totalMusicNum > 2 )	// -1
 	{
 		int indexFix = 0;
-		indexFix = (index + 2) % totalMusicNum;
+		indexFix = (totalMusicNum + index - 1) % totalMusicNum;
 
 		CRMlabel* musicList3 = new CRMlabel();
 		musicList3->CreateLabel( L"LABELNAME3" , string2wstring(musicVector->at(indexFix)), LABEL_FONT_NORMAL, 35.0F );
 		musicList3->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 		musicList3->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList3->SetPosition( 100 , SCREEN_SIZE_Y/2 - 150 );
+		musicList3->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 150 );
 	}
-	if ( totalMusicNum > 3 )
+	if ( totalMusicNum > 3 )	// 2
 	{
 		int indexFix = 0;
-		indexFix = (index + 3) % totalMusicNum;
+		indexFix = (index + 2) % totalMusicNum;
 
 		CRMlabel* musicList4 = new CRMlabel();
 		musicList4->CreateLabel( L"LABELNAME4" , string2wstring(musicVector->at(indexFix)), LABEL_FONT_NORMAL, 35.0F );
 		musicList4->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 		musicList4->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList4->SetPosition( 100 , SCREEN_SIZE_Y/2 + 200 );
+		musicList4->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) + 200 );
 	}
-	if ( totalMusicNum > 4 )
+	if ( totalMusicNum > 4 )	// -2
 	{
 		int indexFix = 0;
-		indexFix = (index + 4) % totalMusicNum;
+		indexFix = (totalMusicNum + index - 2) % totalMusicNum;
 
 		CRMlabel* musicList5 = new CRMlabel();
 		musicList5->CreateLabel( L"LABELNAME5" , string2wstring(musicVector->at(indexFix)), LABEL_FONT_NORMAL, 35.0F );
 		musicList5->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 		musicList5->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList5->SetPosition( 100 , SCREEN_SIZE_Y/2 - 250 );
+		musicList5->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 250 );
 	}
 	return NULL;
 }

@@ -8,7 +8,6 @@
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
 {
-	m_TextureMap.clear();
 }
 
 

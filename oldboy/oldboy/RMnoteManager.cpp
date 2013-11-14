@@ -5,7 +5,12 @@
 #include "RMnoteData.h"
 
 CRMnoteManager::CRMnoteManager(void):
-	m_GamePlaying(false)
+	m_GamePlaying(false),
+	m_GameStartTime(0),
+	m_ElapsedTime(0),
+	m_NoteReadyTime(0),
+	m_NoteReadyLevel(0),
+	m_NoteReadyType(OBJECT_NONE)
 {
 }
 

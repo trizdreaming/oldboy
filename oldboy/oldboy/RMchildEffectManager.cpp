@@ -6,6 +6,8 @@ CRMchildEffectManager::CRMchildEffectManager(void):
 	m_BitFlag(0x00),
 	m_Effect1PStartPositionX(0.f),
 	m_Effect1PStartPositionY(0.f),
+	m_Effect2PStartPositionX(0.f),
+	m_Effect2PStartPositionY(0.f),
 	m_FlagSetter1P(0),
 	m_FlagSetter2P(0)
 {

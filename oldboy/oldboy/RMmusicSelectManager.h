@@ -9,9 +9,9 @@ public:
 	CRMmusicSelectManager(void);
 	~CRMmusicSelectManager(void);
 
-	HRESULT			ShowMusicList( const std::vector<std::string>* musicVector, const int index );
+	HRESULT			ShowMusicList( const std::vector<std::string>& musicVector, const int index ) const;
 
 private:
-	std::wstring CRMmusicSelectManager::string2wstring(std::string str);
+	std::wstring CRMmusicSelectManager::string2wstring(const std::string& str) const;
 };
 

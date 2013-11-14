@@ -9,14 +9,6 @@
 
 CRMobjectManager::CRMobjectManager(void)
 {
-	m_ObjectListLayerBackground.clear();
-	m_ObjectListLayerNotePlayer1.clear();
-	m_ObjectListLayerNotePlayer2.clear();
-	m_ObjectListLayerNoteHit.clear();
-	m_ObjectListLayerEffect.clear();
-	m_ObjectListLayerShutter.clear();
-	m_ObjectListLayerLabel.clear();
-	m_ObjectListMemeoryPullOfNote.clear();
 }
 
 

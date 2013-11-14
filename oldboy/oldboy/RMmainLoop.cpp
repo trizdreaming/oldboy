@@ -187,7 +187,7 @@ void CRMmainLoop::RunMessageLoop()
 			//////////////////////////////////////////////////////////////////////////
 			if ( m_SceneType == SCENE_SELECT_MUSIC )
 			{
-				CRMmusicSelectManager::GetInstance()->ShowMusicList(&m_MusicVector, m_MusicSelectIndex);
+				CRMmusicSelectManager::GetInstance()->ShowMusicList( m_MusicVector, m_MusicSelectIndex );
 			}
 			
 

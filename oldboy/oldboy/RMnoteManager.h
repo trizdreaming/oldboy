@@ -17,11 +17,11 @@ public:
 
 private:
 	bool			m_GamePlaying;
-	int				m_GameStartTime;
-	int				m_ElapsedTime;
+	UINT			m_GameStartTime;
+	UINT			m_ElapsedTime;
 
-	int				m_NoteReadyTime;
-	int				m_NoteReadyLevel;
+	UINT			m_NoteReadyTime;
+	UINT			m_NoteReadyLevel;
 	ObjectType		m_NoteReadyType;
 };
 

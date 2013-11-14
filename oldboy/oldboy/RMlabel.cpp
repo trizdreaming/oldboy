@@ -7,7 +7,7 @@
 
 
 CRMlabel::CRMlabel(void) :
-	m_FontFace(nullptr),	/*m_String(nullptr),*/	m_FontSize(0.f),
+	m_FontFace(nullptr),	m_FontSize(0.f),
 	m_ColorR(0.f),			m_ColorG(0.f),		m_ColorB(0.f),
 	m_Opacity(1.f),			m_Bold(false),		m_Italic(false),
 	m_TextFormat(nullptr),	m_Brush(nullptr)

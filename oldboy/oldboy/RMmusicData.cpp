@@ -2,18 +2,18 @@
 #include "RMmusicData.h"
 
 
-CRMmusicData::CRMmusicData(std::string title,
-						   std::string artist,
-						   std::string level,
-						   std::string ImageBackground,
-						   std::string ImageShutter,
-						   std::string ImageNote1,
-						   std::string ImageNote2,
-						   std::string ImageNoteEffect,
-						   std::string SoundBackground,
-						   std::string SoundNoteEffect1,
-						   std::string SoundNoteEffect2,
-						   std::string Note)
+CRMmusicData::CRMmusicData(const std::string& title,
+						   const std::string& artist,
+						   const std::string& level,
+						   const std::string& ImageBackground,
+						   const std::string& ImageShutter,
+						   const std::string& ImageNote1,
+						   const std::string& ImageNote2,
+						   const std::string& ImageNoteEffect,
+						   const std::string& SoundBackground,
+						   const std::string& SoundNoteEffect1,
+						   const std::string& SoundNoteEffect2,
+						   const std::string& Note)
 {
 	m_title = title;
 	m_artist = artist;

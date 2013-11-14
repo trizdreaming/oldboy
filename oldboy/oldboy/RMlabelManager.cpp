@@ -7,7 +7,6 @@
 CRMlabelManager::CRMlabelManager(void) :
 	m_DWriteFactory(nullptr)
 {
-	m_LabelMap.clear();
 }
 
 

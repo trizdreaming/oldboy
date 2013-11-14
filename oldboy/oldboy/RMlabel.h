@@ -23,7 +23,6 @@ public:
 	bool		IsItalic() { return m_Italic; }
 	bool		IsBold() { return m_Bold; }
 
-	// void		SetString( wchar_t* string ) { m_String = string; }
 	void		SetFontSize( float fontsize ) { m_FontSize = fontsize; }
 	void		SetFontFace( wchar_t* fontface ) { m_FontFace = fontface; }
 	void		SetBold( bool bold ) { m_Bold = bold; }

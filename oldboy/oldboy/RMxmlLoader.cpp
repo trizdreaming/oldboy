@@ -6,7 +6,6 @@
 
 CRMxmlLoader::CRMxmlLoader(void)
 {
-	m_MusicDataMap.clear();
 }
 
 

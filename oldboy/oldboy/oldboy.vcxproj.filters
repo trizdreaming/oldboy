@@ -8,47 +8,47 @@
     <Filter Include="메인 영역">
       <UniqueIdentifier>{fd999f43-4ae7-419e-98a0-7739ac0923a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core">
-      <UniqueIdentifier>{8e631f44-cf75-4cc7-bb38-f1b7d91c680c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Loop">
-      <UniqueIdentifier>{993ff98d-b92c-4d0d-8057-34b480c10f36}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Image">
-      <UniqueIdentifier>{11b11b70-b1e6-4d92-b7f7-b08f38df12f7}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Object">
-      <UniqueIdentifier>{d3fef83a-0508-47fa-97c5-2bf4dab6f003}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Render">
-      <UniqueIdentifier>{0fca6d96-10cd-491f-a243-d413eaa7ea34}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Label">
-      <UniqueIdentifier>{3b20cd77-6466-4fb9-a808-41fcb9960381}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Input">
-      <UniqueIdentifier>{b6c7dfec-dbbc-497e-84c6-cbe7308999e8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="메인 영역\헤더 파일">
       <UniqueIdentifier>{8871a94d-9fea-45ef-b291-6d24f9ed11e0}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Core\Sound Manager">
-      <UniqueIdentifier>{77e4b450-8f8b-423c-9433-828cd16c10a2}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fmod">
       <UniqueIdentifier>{f8e3df5f-250f-49c0-99b7-31b6fb6d08b3}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Object\Player">
-      <UniqueIdentifier>{bc2568e7-a1f7-4223-bde5-9b0e3250d20e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="Core\Object\Children">
-      <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
     </Filter>
     <Filter Include="BandiVideo">
       <UniqueIdentifier>{826ee267-37db-4a02-bdd3-185f6deb304b}</UniqueIdentifier>
     </Filter>
     <Filter Include="TinyXML">
       <UniqueIdentifier>{0be61913-ac69-4c08-af03-688490ad4e53}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch">
+      <UniqueIdentifier>{8e631f44-cf75-4cc7-bb38-f1b7d91c680c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Image">
+      <UniqueIdentifier>{11b11b70-b1e6-4d92-b7f7-b08f38df12f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Object">
+      <UniqueIdentifier>{d3fef83a-0508-47fa-97c5-2bf4dab6f003}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Object\Player">
+      <UniqueIdentifier>{bc2568e7-a1f7-4223-bde5-9b0e3250d20e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Object\Children">
+      <UniqueIdentifier>{8b730597-5f74-4c14-8f8f-f3e515bbdbec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Render">
+      <UniqueIdentifier>{0fca6d96-10cd-491f-a243-d413eaa7ea34}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Label">
+      <UniqueIdentifier>{3b20cd77-6466-4fb9-a808-41fcb9960381}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Input">
+      <UniqueIdentifier>{b6c7dfec-dbbc-497e-84c6-cbe7308999e8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\Sound Manager">
+      <UniqueIdentifier>{77e4b450-8f8b-423c-9433-828cd16c10a2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="RhythmMatch\MainLoop">
+      <UniqueIdentifier>{993ff98d-b92c-4d0d-8057-34b480c10f36}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -62,22 +62,22 @@
       <Filter>메인 영역</Filter>
     </ClInclude>
     <ClInclude Include="RMmainLoop.h">
-      <Filter>Core\Loop</Filter>
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="RMlabel.h">
-      <Filter>Core\Label</Filter>
+      <Filter>RhythmMatch\Label</Filter>
     </ClInclude>
     <ClInclude Include="RMinput.h">
-      <Filter>Core\Input</Filter>
+      <Filter>RhythmMatch\Input</Filter>
     </ClInclude>
     <ClInclude Include="RMrender.h">
-      <Filter>Core\Render</Filter>
+      <Filter>RhythmMatch\Render</Filter>
     </ClInclude>
     <ClInclude Include="RMobject.h">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMimage.h">
-      <Filter>Core\Image</Filter>
+      <Filter>RhythmMatch\Image</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
       <Filter>메인 영역\헤더 파일</Filter>
@@ -92,43 +92,43 @@
       <Filter>메인 영역\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMchildNote.h">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMchildBGImage.h">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMchildShutter.h">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMkeyMapping.h">
-      <Filter>Core\Input</Filter>
+      <Filter>RhythmMatch\Input</Filter>
     </ClInclude>
     <ClInclude Include="RMresourceManager.h">
-      <Filter>Core\Image</Filter>
+      <Filter>RhythmMatch\Image</Filter>
     </ClInclude>
     <ClInclude Include="RMenumSet.h">
-      <Filter>Core</Filter>
+      <Filter>RhythmMatch</Filter>
     </ClInclude>
     <ClInclude Include="RMobjectManager.h">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMplayer.h">
-      <Filter>Core\Object\Player</Filter>
+      <Filter>RhythmMatch\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="RMchildEffectImage.h">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMjudgeManager.h">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMplayer1P.h">
-      <Filter>Core\Object\Player</Filter>
+      <Filter>RhythmMatch\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="RMplayer2P.h">
-      <Filter>Core\Object\Player</Filter>
+      <Filter>RhythmMatch\Object\Player</Filter>
     </ClInclude>
     <ClInclude Include="RMlabelManager.h">
-      <Filter>Core\Label</Filter>
+      <Filter>RhythmMatch\Label</Filter>
     </ClInclude>
     <ClInclude Include="LibraryFmod\fmod.h">
       <Filter>Fmod</Filter>
@@ -164,13 +164,13 @@
       <Filter>BandiVideo</Filter>
     </ClInclude>
     <ClInclude Include="RMchildEffectManager.h">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
     <ClInclude Include="RMsound.h">
-      <Filter>Core\Sound Manager</Filter>
+      <Filter>RhythmMatch\Sound Manager</Filter>
     </ClInclude>
     <ClInclude Include="RMvideoPlayer.h">
-      <Filter>Core\Loop</Filter>
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="RMprintConsole.h">
       <Filter>메인 영역</Filter>
@@ -182,7 +182,7 @@
       <Filter>TinyXML</Filter>
     </ClInclude>
     <ClInclude Include="RMxmlLoader.h">
-      <Filter>Core\Input</Filter>
+      <Filter>RhythmMatch\Input</Filter>
     </ClInclude>
     <ClInclude Include="LibraryTinyXML\action_store.h">
       <Filter>TinyXML</Filter>
@@ -230,11 +230,14 @@
       <Filter>TinyXML</Filter>
     </ClInclude>
     <ClInclude Include="RMmusicData.h">
-      <Filter>Core\Loop</Filter>
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
-    <ClInclude Include="RMnoteManager.h" />
-    <ClInclude Include="RMnoteData.h" />
-    <ClInclude Include="RMmusicSelectManager.h" />
+    <ClInclude Include="RMnoteData.h">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="RMnoteManager.h">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -244,58 +247,58 @@
       <Filter>메인 영역</Filter>
     </ClCompile>
     <ClCompile Include="RMmainLoop.cpp">
-      <Filter>Core\Loop</Filter>
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="RMlabel.cpp">
-      <Filter>Core\Label</Filter>
+      <Filter>RhythmMatch\Label</Filter>
     </ClCompile>
     <ClCompile Include="RMinput.cpp">
-      <Filter>Core\Input</Filter>
+      <Filter>RhythmMatch\Input</Filter>
     </ClCompile>
     <ClCompile Include="RMrender.cpp">
-      <Filter>Core\Render</Filter>
+      <Filter>RhythmMatch\Render</Filter>
     </ClCompile>
     <ClCompile Include="RMobject.cpp">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMsound.cpp">
-      <Filter>Core\Sound Manager</Filter>
+      <Filter>RhythmMatch\Sound Manager</Filter>
     </ClCompile>
     <ClCompile Include="RMimage.cpp">
-      <Filter>Core\Image</Filter>
+      <Filter>RhythmMatch\Image</Filter>
     </ClCompile>
     <ClCompile Include="RMchildNote.cpp">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildBGImage.cpp">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildShutter.cpp">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMresourceManager.cpp">
-      <Filter>Core\Image</Filter>
+      <Filter>RhythmMatch\Image</Filter>
     </ClCompile>
     <ClCompile Include="RMobjectManager.cpp">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMplayer.cpp">
-      <Filter>Core\Object\Player</Filter>
+      <Filter>RhythmMatch\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="RMchildEffectImage.cpp">
-      <Filter>Core\Object\Children</Filter>
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMjudgeManager.cpp">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMplayer1P.cpp">
-      <Filter>Core\Object\Player</Filter>
+      <Filter>RhythmMatch\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="RMplayer2P.cpp">
-      <Filter>Core\Object\Player</Filter>
+      <Filter>RhythmMatch\Object\Player</Filter>
     </ClCompile>
     <ClCompile Include="RMlabelManager.cpp">
-      <Filter>Core\Label</Filter>
+      <Filter>RhythmMatch\Label</Filter>
     </ClCompile>
     <ClCompile Include="LibraryBandi\BandiVideoLibrary.cpp">
       <Filter>BandiVideo</Filter>
@@ -304,10 +307,10 @@
       <Filter>BandiVideo</Filter>
     </ClCompile>
     <ClCompile Include="RMchildEffectManager.cpp">
-      <Filter>Core\Object</Filter>
+      <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMvideoPlayer.cpp">
-      <Filter>Core\Loop</Filter>
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="RMprintConsole.cpp">
       <Filter>메인 영역</Filter>
@@ -325,7 +328,7 @@
       <Filter>TinyXML</Filter>
     </ClCompile>
     <ClCompile Include="RMxmlLoader.cpp">
-      <Filter>Core\Input</Filter>
+      <Filter>RhythmMatch\Input</Filter>
     </ClCompile>
     <ClCompile Include="LibraryTinyXML\action_store.cpp">
       <Filter>TinyXML</Filter>
@@ -364,11 +367,14 @@
       <Filter>TinyXML</Filter>
     </ClCompile>
     <ClCompile Include="RMmusicData.cpp">
-      <Filter>Core\Loop</Filter>
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
-    <ClCompile Include="RMnoteManager.cpp" />
-    <ClCompile Include="RMnoteData.cpp" />
-    <ClCompile Include="RMmusicSelectManager.cpp" />
+    <ClCompile Include="RMnoteData.cpp">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="RMnoteManager.cpp">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

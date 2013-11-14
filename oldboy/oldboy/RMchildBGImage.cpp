@@ -14,7 +14,5 @@ CRMchildBGImage::~CRMchildBGImage(void)
 void CRMchildBGImage::Update()
 {
 	SetVisibleByScene();
-
-	return;
 }
 

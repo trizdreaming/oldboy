@@ -220,6 +220,8 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 			);
 
 	CRMplayer*	thisPlayer = nullptr;
+	CRMplayer*	otherPlayer = nullptr;
+
 	wchar_t		*playerScoreLabelName;
 	wchar_t		*playerComboLabelName;
 	float		positionX = 0;
@@ -229,6 +231,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 	{
 	case PLAYER_ONE:
 		thisPlayer = CRMplayer1P::GetInstance();
+		otherPlayer = CRMplayer2P::GetInstance();
 		playerScoreLabelName = LABEL_NAME_P1_SCORE;
 		playerComboLabelName = LABEL_NAME_P1_COMBO;
 		positionX = 100;
@@ -236,6 +239,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 		break;
 	case PLAYER_TWO:
 		thisPlayer = CRMplayer2P::GetInstance();
+		otherPlayer = CRMplayer1P::GetInstance();
 		playerScoreLabelName = LABEL_NAME_P2_SCORE;
 		playerComboLabelName = LABEL_NAME_P2_COMBO;
 		positionX = 600;
@@ -265,8 +269,13 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 
 	swprintf_s( score, L"%10s \n %10d \n  %8s", LABEL_PLAY_SCORE, thisPlayer->GetCount( COUNT_SCORE ), judge );
 
+	float scoreFontSize = 35.0f;
+	if ( thisPlayer->GetCount( COUNT_SCORE ) > otherPlayer->GetCount( COUNT_SCORE ) )
+	{
+		scoreFontSize = 55.0f;
+	}
 	CRMlabel* playerScoreLabel = new CRMlabel();
-	playerScoreLabel->CreateLabel( playerScoreLabelName , score, LABEL_FONT_NORMAL, 35.0F );
+	playerScoreLabel->CreateLabel( playerScoreLabelName , score, LABEL_FONT_NORMAL, scoreFontSize );
 	playerScoreLabel->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 	playerScoreLabel->SetSceneType( SCENE_PLAY );
 	playerScoreLabel->SetPosition( positionX , positionY );

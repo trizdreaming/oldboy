@@ -1,5 +1,7 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
+#include "RMdefine.h"
+#include "RMkeyMapping.h"
 #include "RMjudgeManager.h"
 #include "RMobjectManager.h"
 #include "RMobject.h"
@@ -9,6 +11,7 @@
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
 #include "RMchildEffectManager.h"
+#include "RMinput.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {

@@ -1,5 +1,7 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "LibraryTinyXML/tinyxml.h"
+#include "LibraryTinyXML/xpath_static.h"
+#include "RMmacro.h"
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
 #include "RMnoteData.h"

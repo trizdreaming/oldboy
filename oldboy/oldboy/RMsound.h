@@ -1,4 +1,8 @@
 #pragma once
+#include "RMenumSet.h"
+#include "LibraryFmod/fmod.h"
+#include "LibraryFmod/fmod.hpp"
+#include "LibraryFmod/fmod_errors.h"
 
 class CRMsound
 {

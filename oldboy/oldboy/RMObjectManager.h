@@ -1,9 +1,7 @@
 #pragma once
-
 #include "RMenumSet.h"
 
 class CRMobject;
-class CRMlabelManager;
 
 class CRMobjectManager
 {

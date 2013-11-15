@@ -1,5 +1,6 @@
 #pragma once
 #include "RMenumSet.h"
+#include "RMdefine.h"
 
 class CRMplayer
 {

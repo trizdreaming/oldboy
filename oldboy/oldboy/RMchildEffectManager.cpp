@@ -1,5 +1,6 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
+#include "RMdefine.h"
 #include "RMchildEffectManager.h"
 
 CRMchildEffectManager::CRMchildEffectManager(void):

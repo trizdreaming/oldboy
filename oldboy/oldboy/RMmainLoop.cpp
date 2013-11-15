@@ -1,11 +1,12 @@
 #include "stdafx.h"
-#include "oldboy.h"
-
+#include "resource.h"
+#include "RMmacro.h"
+#include "RMdefine.h"
 #include "RMmainLoop.h"
 #include "RMObjectManager.h"
 #include "RMresourceManager.h"
 #include "RMrender.h"
-
+#include "RMinput.h"
 #include "RMchildNote.h"
 #include "RMchildBGImage.h"
 #include "RMchildShutter.h"

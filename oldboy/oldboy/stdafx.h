@@ -19,6 +19,8 @@
 #include <dwrite.h>
 #include <string>
 #include <list>
+#include <map>
+#include <vector>
 
 //Display - Direct 2D관련 include file
 #include <d2d1.h>
@@ -27,7 +29,6 @@
 #include <stdio.h>
 #include <timeapi.h>
 #include <wincodec.h>
-#include <map>
 
 // TODO: 프로그램에 필요한 추가 헤더는 여기에서 참조합니다.
 

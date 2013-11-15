@@ -122,7 +122,6 @@
     <ClInclude Include="RMdefine.h" />
     <ClInclude Include="RMenumSet.h" />
     <ClInclude Include="RMimage.h" />
-    <ClInclude Include="oldboy.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RMinput.h" />
     <ClInclude Include="RMjudgeManager.h" />

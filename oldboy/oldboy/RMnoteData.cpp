@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "RMnoteData.h"
 
-
 CRMnoteData::CRMnoteData( int time, int level,ObjectType type )
 {
 	 m_Time=time;

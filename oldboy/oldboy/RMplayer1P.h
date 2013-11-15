@@ -1,5 +1,6 @@
 #pragma once
-#include "rmplayer.h"
+#include "RMplayer.h"
+
 class CRMplayer1P :
 	public CRMplayer
 {

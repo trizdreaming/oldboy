@@ -1,6 +1,5 @@
 #pragma once
-#include <vector>
-#include "RMmacro.h"
+
 class CRMmusicSelectManager
 {
 	SINGLETON(CRMmusicSelectManager);

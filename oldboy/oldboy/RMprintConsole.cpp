@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
 #include "RMprintConsole.h"
 
 

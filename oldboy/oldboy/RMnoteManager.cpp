@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMnoteManager.h"
 #include "RMJudgeManager.h"
 #include "RMxmlLoader.h"

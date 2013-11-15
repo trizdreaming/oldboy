@@ -1,9 +1,8 @@
 #include "stdafx.h"
-#include "oldboy.h"
-
+#include "RMmacro.h"
+#include "RMdefine.h"
 #include "RMvideoPlayer.h"
 #include "RMmainLoop.h"
-
 
 CRMvideoPlayer::CRMvideoPlayer(void) :
 	m_BandiVideoDevice(nullptr),

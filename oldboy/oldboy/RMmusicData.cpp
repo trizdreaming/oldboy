@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "RMmusicData.h"
 
-
 CRMmusicData::CRMmusicData(const std::string& title,
 						   const std::string& artist,
 						   const std::string& level,

@@ -1,6 +1,5 @@
 #pragma once
 #include "RMenumSet.h"
-#include "RMmacro.h"
 
 class CRMnoteData;
 

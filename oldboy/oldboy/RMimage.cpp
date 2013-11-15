@@ -1,7 +1,7 @@
 #include "stdafx.h"
-#include "oldboy.h"
-#include "RMresourceManager.h"
+#include "RMmacro.h"
 #include "RMimage.h"
+#include "RMresourceManager.h"
 #include "RMrender.h"
 
 

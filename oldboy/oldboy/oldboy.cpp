@@ -2,7 +2,7 @@
 // oldboy.cpp : 메인함수가 포함 되어 있는 파일.
 
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
 #include "RMmainLoop.h"
 
 //////////////////////////////////////////////////////////////////////////
@@ -15,11 +15,13 @@
 // 콘솔을 없애려면 위의 헤더를 주석처리
 //////////////////////////////////////////////////////////////////////////
 
+// D2D & WIC
 #pragma comment(lib, "d2d1")
 #pragma comment(lib, "winmm")
 #pragma comment(lib, "dwrite")
 #pragma comment(lib, "WindowsCodecs")
 
+// fmod
 #pragma comment( lib, "LibraryFmod/fmodex_vc.lib" )
 
 // bandi

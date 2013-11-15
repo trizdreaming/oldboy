@@ -61,9 +61,6 @@
     <ClInclude Include="stdafx.h">
       <Filter>메인 영역</Filter>
     </ClInclude>
-    <ClInclude Include="oldboy.h">
-      <Filter>메인 영역</Filter>
-    </ClInclude>
     <ClInclude Include="RMmainLoop.h">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>

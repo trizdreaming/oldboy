@@ -1,11 +1,9 @@
 #include "stdafx.h"
-#include "oldboy.h"
-
+#include "RMmacro.h"
 #include "RMobject.h"
 #include "RMlabel.h"
 #include "RMobjectManager.h"
 #include "RMlabelManager.h"
-
 
 CRMobjectManager::CRMobjectManager(void)
 {

@@ -1,8 +1,7 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
 #include "RMchildEffectImage.h"
 #include "RMchildEffectManager.h"
-#include "RMmainLoop.h"
 
 CRMchildEffectImage::CRMchildEffectImage(void):
 	m_EffectTime(0),
@@ -17,7 +16,7 @@ CRMchildEffectImage::~CRMchildEffectImage(void)
 
 void CRMchildEffectImage::Update()
 {
-	int highMask = 0;
+	UINT highMask = 0;
 	
 	if ( m_Visible == false && CRMchildEffectManager::GetInstance()->GetFlag() )
 	{

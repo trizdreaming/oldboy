@@ -1,9 +1,9 @@
 #pragma once
+#include "LibraryBandi/BandiVideoLibrary.h"
+#include "LibraryBandi/BandiVideoTexture_DX9.h"
 
-// class CBandiVideoLibrary;
 class CBandiVideoDevice;
 class CBandiVideoTexture;
-// struct BVL_VIDEO_INFO;
 
 class CRMvideoPlayer
 {

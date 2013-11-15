@@ -1,10 +1,8 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
 #include "RMlabel.h"
 #include "RMlabelManager.h"
 #include "RMrender.h"
-#include "RMmainLoop.h"
-
 
 CRMlabel::CRMlabel(void) :
 	m_FontFace(nullptr),	m_FontSize(0.f),

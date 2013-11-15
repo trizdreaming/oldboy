@@ -1,7 +1,6 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
 #include "RMplayer2P.h"
-
 
 CRMplayer2P::CRMplayer2P(void)
 {

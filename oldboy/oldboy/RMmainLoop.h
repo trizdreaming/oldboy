@@ -1,6 +1,5 @@
 #pragma once
 #include "RMenumSet.h"
-#include <vector>
 
 class CRMmainLoop
 {

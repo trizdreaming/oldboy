@@ -1,8 +1,7 @@
 #include "stdafx.h"
-#include "oldboy.h"
+#include "RMmacro.h"
 #include "RMlabelManager.h"
 #include "RMlabel.h"
-
 
 CRMlabelManager::CRMlabelManager(void) :
 	m_DWriteFactory(nullptr)

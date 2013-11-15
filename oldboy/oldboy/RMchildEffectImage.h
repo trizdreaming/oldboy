@@ -1,5 +1,4 @@
 #pragma once
-
 #include "RMobject.h"
 
 class CRMchildEffectImage:
@@ -12,6 +11,6 @@ public:
 	virtual void        Update();
 
 private:
-	int	m_EffectTime;
-	int	m_EffectType;
+	UINT	m_EffectTime;
+	UINT	m_EffectType;
 };

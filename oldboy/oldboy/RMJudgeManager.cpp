@@ -57,27 +57,6 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 
 void CRMjudgeManager::JudgeNote() const
 {
-		/*
-			1. 노트한테 너 위치 어디야?
-
-			2. 위치가 판별 범위 안이면 
-			키보드 매니저한테 묻기 => 눌렸냐?  -> 구현해야 할 것 - 인풋매니저의 키 버튼 푸시
-
-			3. 눌렸으면?
-			
-			3-1 하단의 사라짐 코드처럼 마찬가지로 메모리풀로 넣어줌
-
-			3-2 판별 => 노트의 종류를 겟 
-
-			3-3 이펙트 발동! (by 신동찬 - "char형 비트연산으로 하겠습니다.")
-
-			//545 퍼펙
-			//+- 10   535 퍼팩시작, 555퍼펙끝
-			//+- 30   515 굳 시작, 575굳 끝 
-		*/
-	
-	// Player2============================================================
-
 	JudgeNoteByPlayer( PLAYER_ONE );
 	JudgeNoteByPlayer( PLAYER_TWO );
 }
@@ -106,24 +85,12 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( playerLayer );
 	if ( thisNote != nullptr )
 	{
-		//note bottom miss
-		if ( thisNote->GetPositionY() > NOTE_JUDGE_LATE_MISS_LINE )
+		/////////////////////////////////////////////////////////////////
+		if ( IsKeyInputRight( thisNote , playerNumber ) )
 		{
-			printConsole( "%dP NoteOut Miss HP:%d \n", playerLayer, playerClass->GetHP() );
-
-			//score up
-			playerClass->AddEvent( JUDGE_MISS );
-			playerClass->SubHP();
-			PrintScore( playerNumber, JUDGE_MISS );
-
-			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
-		}
-		// Perfect 
-		else if ( thisNote->GetPositionY() > NOTE_JUDGE_PERFECT_START_LINE && thisNote->GetPositionY() < NOTE_JUDGE_PERFECT_END_LINE )
-		{
-			if ( IsKeyInputRight( thisNote , playerNumber ) )
+			if ( thisNote->GetPositionY() > NOTE_JUDGE_PERFECT_START_LINE && thisNote->GetPositionY() < NOTE_JUDGE_PERFECT_END_LINE )
 			{
-
+				thisNote->SetVisible(false);
 				//effect 플래그 세팅
 				//플래그만 세팅하면 이펙트 노출은 알아서 되게끔 하자
 				//플래그 세팅하는 곳은 effect manager(싱글톤)를 따로 두고 진행합시다
@@ -147,12 +114,10 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				//deleteNote 이동
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
-		}
-		// Good
-		else if ( ( thisNote->GetPositionY() > NOTE_JUDGE_GOOD_START_LINE && thisNote->GetPositionY() < NOTE_JUDGE_GOOD_END_LINE ) )
-		{
-			if ( IsKeyInputRight( thisNote , playerNumber ) )
+			// Good
+			else if ( ( thisNote->GetPositionY() > NOTE_JUDGE_GOOD_START_LINE && thisNote->GetPositionY() < NOTE_JUDGE_GOOD_END_LINE ) )
 			{
+				thisNote->SetVisible(false);
 				//effect 플래그 세팅
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
@@ -166,14 +131,11 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
-		}
-		// 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
+			// 너무 빨리 눌러 MISS (a키를 누르고 있을때 good나오는 버그 회피)
 
-		else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
-		{
-			if ( IsKeyInputRight( thisNote , playerNumber ) )
+			else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
 			{
-
+				thisNote->SetVisible(false);
 				printConsole( "%dP Time Miss HP:%d \n", playerLayer, playerClass->GetHP() );
 
 				//score up;
@@ -184,6 +146,22 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
 		}
+		//note bottom miss
+		else if ( thisNote->GetPositionY() > NOTE_JUDGE_LATE_MISS_LINE )
+		{
+			printConsole( "%dP NoteOut Miss HP:%d \n", playerLayer, playerClass->GetHP() );
+
+			//score up
+			playerClass->AddEvent( JUDGE_MISS );
+			playerClass->SubHP();
+			PrintScore( playerNumber, JUDGE_MISS );
+
+			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
+		}
+		// Perfect 
+		
+
+		/////////////////////////////////////////////////////////////////
 	}
 }
 
@@ -211,8 +189,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 	{
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_STATUS_DOWN )
 		{
-			note->SetVisible( false );
-			//DeleteNote( objectList );
 			return true;
 		}
 	}
@@ -220,8 +196,6 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 	{
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_STATUS_DOWN )
 		{
-			note->SetVisible( false );
-			//DeleteNote( objectList );
 			return true;
 		}
 	}

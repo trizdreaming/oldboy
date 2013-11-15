@@ -31,6 +31,4 @@ void CRMchildNote::Update()
 	{
 		m_Visible = false;
 	}
-
-	return;
 }

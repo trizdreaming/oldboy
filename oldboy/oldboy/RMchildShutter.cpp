@@ -55,6 +55,4 @@ void CRMchildShutter::Update()
 			break;
 		}
 	}
-
-	return;
 }

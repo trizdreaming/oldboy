@@ -36,7 +36,7 @@ void CRMobject::Render()
 	{
 		return;
 	}
-	// 방어적 프로그래밍 - 텍스쳐가 없을 경우
+	// 방어 코드 - 텍스쳐가 없을 경우
 
 	if ( m_Width == 0 )
 	{

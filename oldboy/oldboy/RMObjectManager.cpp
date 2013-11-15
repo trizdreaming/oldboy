@@ -108,8 +108,6 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			break;
 		}
 	}
-
-	return;
 }
 
 void CRMobjectManager::Update()

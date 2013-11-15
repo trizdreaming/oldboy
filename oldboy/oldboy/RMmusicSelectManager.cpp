@@ -16,12 +16,11 @@ CRMmusicSelectManager::~CRMmusicSelectManager(void)
 HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& musicVector, const int index ) const
 {
 	int totalMusicNum = musicVector.size();
-
+	int indexFix = 0;
 	//printConsole("Total Music Count:%d \n", totalMusicNum);
 
 	if ( totalMusicNum > 0 )	// 0
 	{
-		int indexFix = 0;
 		indexFix = index % totalMusicNum;
 
 		CRMlabel* musicList1 = new CRMlabel();
@@ -32,7 +31,6 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 1 )	// 1
 	{
-		int indexFix = 0;
 		indexFix = (index + 1) % totalMusicNum;
 		
 		CRMlabel* musicList2 = new CRMlabel();
@@ -43,7 +41,6 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 2 )	// -1
 	{
-		int indexFix = 0;
 		indexFix = (totalMusicNum + index - 1) % totalMusicNum;
 
 		CRMlabel* musicList3 = new CRMlabel();
@@ -54,7 +51,6 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 3 )	// 2
 	{
-		int indexFix = 0;
 		indexFix = (index + 2) % totalMusicNum;
 
 		CRMlabel* musicList4 = new CRMlabel();
@@ -65,7 +61,6 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 4 )	// -2
 	{
-		int indexFix = 0;
 		indexFix = (totalMusicNum + index - 2) % totalMusicNum;
 
 		CRMlabel* musicList5 = new CRMlabel();

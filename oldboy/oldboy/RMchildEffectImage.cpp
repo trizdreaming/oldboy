@@ -73,6 +73,4 @@ void CRMchildEffectImage::Update()
 	{
 		CRMobject::m_Visible = false;
 	}
-
-	return;
 }

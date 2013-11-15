@@ -178,12 +178,10 @@ void CRMsound::PlayEffect( SoundType soundType )
 // 해제 처리
 void CRMsound::DeleteSound()
 {
-
 	for ( auto& iter : m_SoundMap )
 	{
 		auto toBeRelease = iter.second;
 		toBeRelease->release(); // m_Sound
 	}
 	m_SoundMap.clear();
-
 }

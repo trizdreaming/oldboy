@@ -144,5 +144,4 @@ void CRMvideoPlayer::RenderVideo()
 		DestoryFactory();
 		CRMmainLoop::GetInstance()->GoNextScene();
 	}
-
 }

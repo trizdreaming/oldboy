@@ -11,6 +11,6 @@ public:
 	HRESULT			ShowMusicList( const std::vector<std::string>& musicVector, const int index ) const;
 
 private:
-	std::wstring CRMmusicSelectManager::string2wstring(const std::string& str) const;
+	std::wstring	string2wstring(const std::string& str) const;
 };
 

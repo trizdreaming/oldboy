@@ -241,6 +241,7 @@
     <ClInclude Include="RMmusicSelectManager.h">
       <Filter>RhythmMatch\Music</Filter>
     </ClInclude>
+    <ClInclude Include="RMresultManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -381,6 +382,7 @@
     <ClCompile Include="RMmusicSelectManager.cpp">
       <Filter>RhythmMatch\Music</Filter>
     </ClCompile>
+    <ClCompile Include="RMresultManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

@@ -142,6 +142,7 @@
     <ClInclude Include="RMprintConsole.h" />
     <ClInclude Include="RMrender.h" />
     <ClInclude Include="RMresourceManager.h" />
+    <ClInclude Include="RMresultManager.h" />
     <ClInclude Include="RMsound.h" />
     <ClInclude Include="RMvideoPlayer.h" />
     <ClInclude Include="RMxmlLoader.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="RMprintConsole.cpp" />
     <ClCompile Include="RMrender.cpp" />
     <ClCompile Include="RMresourceManager.cpp" />
+    <ClCompile Include="RMresultManager.cpp" />
     <ClCompile Include="RMsound.cpp" />
     <ClCompile Include="RMvideoPlayer.cpp" />
     <ClCompile Include="RMxmlLoader.cpp" />

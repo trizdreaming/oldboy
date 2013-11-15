@@ -18,6 +18,7 @@
 #include "RMxmlLoader.h"
 #include "RMnoteManager.h"
 #include "RMmusicSelectManager.h"
+#include "RMresultManager.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -209,7 +210,10 @@ void CRMmainLoop::RunMessageLoop()
 					m_SceneType = SCENE_RESULT;
 				}
 			}
-			
+			else if ( m_SceneType == SCENE_RESULT )
+			{
+				CRMresultManager::GetInstance()->ShowResult();
+			}
 
 			
 

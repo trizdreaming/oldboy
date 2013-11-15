@@ -22,6 +22,7 @@ public:
 	void				PlaySound( SoundType soundType, bool isLoop = true );
 	void				PlayEffect( SoundType soundType );
 	
+	bool				GetIsPlaying();
 private:
 	void				DeleteSound();
 	HRESULT				CheckError();

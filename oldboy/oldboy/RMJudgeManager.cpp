@@ -57,8 +57,14 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 
 void CRMjudgeManager::JudgeNote() const
 {
-	JudgeNoteByPlayer( PLAYER_ONE );
-	JudgeNoteByPlayer( PLAYER_TWO );
+	if ( !CRMplayer1P::GetInstance()->IsDead() )
+	{
+		JudgeNoteByPlayer( PLAYER_ONE );
+	}
+	if ( !CRMplayer2P::GetInstance()->IsDead() )
+	{
+		JudgeNoteByPlayer( PLAYER_TWO );
+	}
 }
 
 

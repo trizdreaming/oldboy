@@ -20,8 +20,11 @@ CRMchildShutter::~CRMchildShutter(void)
 
 void CRMchildShutter::Update()
 {
+
+	SetVisibleByScene();
+
 	float resultPosition = 0.0f;
-	// SetVisibleByScene();
+	
 
 	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
 	{

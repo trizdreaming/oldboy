@@ -180,18 +180,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			// test sound
 			TestSound();
-
-			CRMnoteManager::GetInstance()->StartNote();
-
-			CRMjudgeManager::GetInstance()->JudgeNote();
 			
-			//////////////////////////////////////////////////////////////////////////
-			if ( m_SceneType == SCENE_SELECT_MUSIC )
-			{
-				CRMmusicSelectManager::GetInstance()->ShowMusicList( m_MusicVector, m_MusicSelectIndex );
-			}
-			
-
 			// test Key
 			hr = TestKeyboard();
 			if ( hr != S_OK )
@@ -199,6 +188,30 @@ void CRMmainLoop::RunMessageLoop()
 				MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 				return;
 			}
+
+
+			//////////////////////////////////////////////////////////////////////////
+			// 씬 관리 부분 
+			//////////////////////////////////////////////////////////////////////////
+			
+			if ( m_SceneType == SCENE_SELECT_MUSIC )
+			{
+				CRMmusicSelectManager::GetInstance()->ShowMusicList( m_MusicVector, m_MusicSelectIndex );
+			}
+			else if ( m_SceneType == SCENE_PLAY )
+			{
+				CRMnoteManager::GetInstance()->StartNote();
+				CRMjudgeManager::GetInstance()->JudgeNote();
+
+				// 이렇게 자주 해줄 필요는 없는데...
+				if ( !CRMsound::GetInstance()->GetIsPlaying() )
+				{
+					m_SceneType = SCENE_RESULT;
+				}
+			}
+			
+
+			
 
 			//////////////////////////////////////////////////////////////////////////
 			// 여기까지

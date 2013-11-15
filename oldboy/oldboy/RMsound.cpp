@@ -81,7 +81,6 @@ HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 	}
 
 	m_SoundMap[soundType] = m_Sound;
-	
 	return S_OK;
 }
 
@@ -158,7 +157,6 @@ void CRMsound::PlaySound( SoundType soundType, bool isLoop )
 			m_ChannelBG->setMode( FMOD_LOOP_OFF );
 		}
 		
-
 		CheckError();
 	}
 }
@@ -184,4 +182,19 @@ void CRMsound::DeleteSound()
 		toBeRelease->release(); // m_Sound
 	}
 	m_SoundMap.clear();
+}
+
+bool CRMsound::GetIsPlaying()
+{
+	unsigned int nowTime = 0;
+	unsigned int fullTime = 0;
+
+	m_SoundMap[SOUND_BG_PLAY]->getLength(&fullTime,FMOD_TIMEUNIT_MS);
+	m_ChannelBG->getPosition(&nowTime,FMOD_TIMEUNIT_MS);
+
+	if ( nowTime >= fullTime )
+	{
+		return false;
+	}
+	return true;
 }

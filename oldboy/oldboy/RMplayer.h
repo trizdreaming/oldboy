@@ -16,6 +16,7 @@ public:
 	void		SubHP() { --m_HP; }
 	int			GetHP() { return m_HP; }
 
+	bool		IsDead() { return ( m_HP <= 0 ) ? true : false; }
 private:
 	void		CalcCombo();
 

@@ -520,7 +520,10 @@ HRESULT CRMmainLoop::TestKeyboard()
 		++m_MusicSelectIndex;
 	}
 
-
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
+	{
+		hr = GoNextScene();
+	}
 	return hr;
 }
 
@@ -572,6 +575,14 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		CRMnoteManager::GetInstance()->Initialize();
 
+		return S_OK;
+	}
+
+
+	if ( m_SceneType == SCENE_RESULT )
+	{
+		m_SceneType = SCENE_SELECT_MUSIC;
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
 		return S_OK;
 	}
 

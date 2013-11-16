@@ -23,7 +23,6 @@ public:
 	CRMimage*					GetTexture( const ObjectType& key ) { return m_TextureMap[key]; }
 	
 private:
-	void								LogError(HRESULT);
 	void								InitializeMap();
 	void								InitializeAlbum();
 

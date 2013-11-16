@@ -71,13 +71,14 @@ HRESULT CRMresourceManager::CreateTexture()
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_TITLE );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
 		SafeDelete(texture);
 	}
@@ -85,26 +86,28 @@ HRESULT CRMresourceManager::CreateTexture()
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_SELECT );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = nullptr;
 		SafeDelete(texture);
 	}
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_RESULT );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = nullptr;
 		SafeDelete(texture);
 	}
@@ -121,13 +124,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_TITLE );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
 		InitializeMap();
 
@@ -136,13 +140,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_SELECT );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = nullptr;
 		InitializeMap();
 
@@ -151,13 +156,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_RESULT );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = nullptr;
 		InitializeMap();
 
@@ -166,13 +172,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_BG_IMAGE_PLAY] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_BG_IMAGE_PLAY] = nullptr;
 		InitializeMap();
 
@@ -181,13 +188,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageShutter() ) );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_SHUTTER] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_SHUTTER] = nullptr;
 		InitializeMap();
 
@@ -196,13 +204,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote1() ) );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_NOTE_NORMAL_1] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_NOTE_NORMAL_1] = nullptr;
 		InitializeMap();
 
@@ -211,13 +220,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote2() ) );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_NOTE_NORMAL_2] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_NOTE_NORMAL_2] = nullptr;
 		InitializeMap();
 
@@ -226,13 +236,14 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNoteEffect() ) );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_NOTE_HIT] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureMap[OBJECT_NOTE_HIT] = nullptr;
 		InitializeMap();
 
@@ -252,27 +263,19 @@ HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName )
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageAlbum() ) );
-	LogError(hr);
+	
 	if ( hr == S_OK )
 	{
 		m_TextureMap[OBJECT_ALBUM_IMAGE] = texture;
 	}
 	else
 	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		InitializeAlbum();
 		return hr;
 	}
 
 	return hr;
-}
-
-
-void CRMresourceManager::LogError(HRESULT hr)
-{
-	if ( hr != S_OK )
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-	}
 }
 
 std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName ) const

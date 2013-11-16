@@ -404,6 +404,12 @@ HRESULT CRMmainLoop::CreateObject()
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 	
 	testObject = new CRMchildBGImage();
+	testObject->SetObjectType(OBJECT_ALBUM_IMAGE);
+	testObject->SetPosition(500, 120);
+	testObject->SetSceneType(SCENE_SELECT_MUSIC);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+
+	testObject = new CRMchildBGImage();
 	testObject->SetObjectType(OBJECT_BG_IMAGE_RESULT);
 	testObject->SetPosition(0, 0);
 	testObject->SetSceneType(SCENE_RESULT);
@@ -524,6 +530,15 @@ HRESULT CRMmainLoop::TestKeyboard()
 		++m_MusicSelectIndex %= m_MusicVector.size();
 
 		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
 		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
 
 		if ( hr != S_OK )
@@ -558,6 +573,15 @@ HRESULT CRMmainLoop::GoNextScene()
 		m_SceneType = SCENE_SELECT_MUSIC;
 		
 		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
 		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
 
 		if ( hr != S_OK )

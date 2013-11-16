@@ -7,6 +7,7 @@ public:
 		const std::string& title,
 		const std::string& artist,
 		const std::string& level,
+		const std::string& ImageAlbum,
 		const std::string& ImageBackground,
 		const std::string& ImageShutter,
 		const std::string& ImageNote1,
@@ -23,6 +24,7 @@ public:
 	const std::string&		GetTitle() { return m_title; }
 	const std::string&		GetArtist() { return m_artist; }
 	const std::string&		GetLevel() { return m_level; }
+	const std::string&		GetImageAlbum() { return m_ImageAlbum; }
 	const std::string&		GetImageBackground() { return m_ImageBackground; }
 	const std::string&		GetImageShutter() { return m_ImageShutter; }
 	const std::string&		GetImageNote1() { return m_ImageNote1; }
@@ -37,6 +39,7 @@ private:
 	std::string				m_title;
 	std::string				m_artist;
 	std::string				m_level;
+	std::string				m_ImageAlbum;
 	std::string				m_ImageBackground;
 	std::string				m_ImageShutter;
 	std::string				m_ImageNote1;

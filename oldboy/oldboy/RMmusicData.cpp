@@ -4,6 +4,7 @@
 CRMmusicData::CRMmusicData(const std::string& title,
 						   const std::string& artist,
 						   const std::string& level,
+						   const std::string& ImageAlbum,
 						   const std::string& ImageBackground,
 						   const std::string& ImageShutter,
 						   const std::string& ImageNote1,
@@ -17,6 +18,7 @@ CRMmusicData::CRMmusicData(const std::string& title,
 	m_title = title;
 	m_artist = artist;
 	m_level = level;
+	m_ImageAlbum = ImageAlbum;
 	m_ImageBackground = ImageBackground;
 	m_ImageShutter = ImageShutter;
 	m_ImageNote1 = ImageNote1;

@@ -30,6 +30,13 @@ void CRMresourceManager::InitializeMap()
 	m_TextureMap.clear();
 }
 
+void CRMresourceManager::InitializeAlbum()
+{
+	if ( m_TextureMap[OBJECT_ALBUM_IMAGE] != nullptr )
+	{
+		SafeDelete( m_TextureMap[OBJECT_ALBUM_IMAGE] );
+	}
+}
 
 HRESULT CRMresourceManager::CreateFactory()
 {
@@ -235,6 +242,31 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	return hr;
 }
 
+
+HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName )
+{
+	InitializeAlbum();
+
+	HRESULT hr = S_FALSE;
+	CRMimage* texture;
+
+	texture = new CRMimage();
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageAlbum() ) );
+	LogError(hr);
+	if ( hr == S_OK )
+	{
+		m_TextureMap[OBJECT_ALBUM_IMAGE] = texture;
+	}
+	else
+	{
+		InitializeAlbum();
+		return hr;
+	}
+
+	return hr;
+}
+
+
 void CRMresourceManager::LogError(HRESULT hr)
 {
 	if ( hr != S_OK )
@@ -255,3 +287,4 @@ std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, con
 
 	return wstr;
 }
+

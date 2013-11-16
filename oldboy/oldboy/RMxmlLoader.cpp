@@ -37,6 +37,7 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 	std::string title;
 	std::string artist;
 	std::string level;
+	std::string imageAlbum;
 	std::string imageBackground;
 	std::string imageShutter;
 	std::string imageNote1;
@@ -56,6 +57,7 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 		artist = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Artist/text()").c_str();
 		level = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Level/text()").c_str();
 
+		imageAlbum = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageAlbum/text()").c_str();
 		imageBackground = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageBackground/text()").c_str();
 		imageShutter = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageShutter/text()").c_str();
 		imageNote1 = TinyXPath::S_xpath_string(m_Document.RootElement(), "/Music/Image/imageNote1/text()").c_str();
@@ -72,12 +74,12 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 		
 	}
 
-	if ( title == "" || artist == "" || level == "" || imageBackground == "" || imageShutter == "" || imageNote1 == "" || imageNote2 == "" || imageNoteEffect == "" || soundBackground == "" || soundNoteEffect1 == "" || soundNoteEffect2 == "" || note == "" )
+	if ( title == "" || artist == "" || level == "" || imageAlbum == "" ||imageBackground == "" || imageShutter == "" || imageNote1 == "" || imageNote2 == "" || imageNoteEffect == "" || soundBackground == "" || soundNoteEffect1 == "" || soundNoteEffect2 == "" || note == "" )
 	{
 		return S_FALSE;
 	}
 	
-	m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
+	m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageAlbum, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
 	
 	return S_OK;
 

@@ -5,6 +5,7 @@
 	<Artist>Youtube</Artist>
 	<Level>3</Level>
     <Image>
+        <imageAlbum>image_album_cover_01.png</imageAlbum>
         <imageBackground>image_bg_test.png</imageBackground>
         <imageShutter>image_sh_01_01.png</imageShutter>
         <imageNote1>image_nt_01_01.png</imageNote1>

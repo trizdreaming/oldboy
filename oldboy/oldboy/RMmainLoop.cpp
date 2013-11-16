@@ -208,8 +208,9 @@ void CRMmainLoop::RunMessageLoop()
 				CRMjudgeManager::GetInstance()->JudgeNote();
 
 				// 이렇게 자주 해줄 필요는 없는데...
-				if ( !CRMsound::GetInstance()->GetIsPlaying() )
+				if ( !CRMsound::GetInstance()->GetIsPlaying() || ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() ) )
 				{
+					CRMobjectManager::GetInstance()->RemoveAllNote();
 					m_SceneType = SCENE_RESULT;
 				}
 			}

@@ -21,7 +21,7 @@ CRMlabel::~CRMlabel(void)
 
 void CRMlabel::CreateLabel( std::wstring key, std::wstring string, wchar_t* fontFace, float fontSize )
 {
-	swprintf_s( m_String, string.c_str() );
+	m_String = string;
 	m_FontFace = fontFace;
 	m_FontSize = fontSize;
 
@@ -36,7 +36,7 @@ void CRMlabel::Update()
 {
 	SetVisibleByScene();
 
-	m_Width = wcslen( m_String ) * m_FontSize * 5;
+	m_Width = m_String.length() * m_FontSize * 5;
 	m_Height = m_FontSize * 2;
 	SetTextFormat();
 }
@@ -53,8 +53,8 @@ void CRMlabel::Render()
 	CRMrender::GetInstance()->GetRenderTarget()->CreateSolidColorBrush( D2D1::ColorF(m_ColorR, m_ColorG, m_ColorB), &m_Brush );
 
 	CRMrender::GetInstance()->GetRenderTarget()->DrawTextW(	
-				m_String, 
-				wcslen( m_String ), 
+				m_String.c_str(), 
+				m_String.length(), 
 				m_TextFormat, D2D1::RectF( m_PositionX, m_PositionY, m_PositionY + m_Width, m_PositionY + m_Height ),
 				m_Brush );
 }

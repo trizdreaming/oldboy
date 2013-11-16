@@ -13,7 +13,8 @@ public:
 	virtual void	Update();
 	virtual void	Render();
 
-	wchar_t*	GetString() { return m_String; }
+	std::wstring	GetString() { return m_String; }
+
 	wchar_t*	GetFontFace() { return m_FontFace; }
 	float		GetFontSize() { return m_FontSize; }
 	float		GetRed() { return m_ColorR; }
@@ -40,9 +41,8 @@ private:
 	IDWriteTextFormat*		m_TextFormat;
 	ID2D1SolidColorBrush*	m_Brush;
 
-	wchar_t*	m_FontFace;
-	// wchar_t*	m_String;
-	wchar_t		m_String[255];
+	wchar_t*		m_FontFace;
+	std::wstring	m_String;
 
 	float		m_FontSize;
 	float		m_ColorR, m_ColorG, m_ColorB;

@@ -17,6 +17,8 @@ public:
 
 	void						ChargeNoteList( LayerType layer );
 	void						DeleteNoteListFront( LayerType layer );
+	
+	void						RemoveAllNote();
 
 	void						AddObject( CRMobject* bject, LayerType layer );
 

@@ -242,3 +242,23 @@ void CRMobjectManager::DeleteNoteListFront( LayerType layer )
 		break;
 	}
 }
+
+void CRMobjectManager::RemoveAllNote()
+{
+	CRMobject* thisNote = nullptr;
+
+	while ( m_ObjectListLayerNotePlayer1.size() > 0 )
+	{
+		thisNote = GetObjectFront( LAYER_NOTE1 );
+		thisNote->SetVisible(false);
+		m_ObjectListMemeoryPullOfNote.push_back( thisNote );
+		m_ObjectListLayerNotePlayer1.pop_back();
+	}
+	while ( m_ObjectListLayerNotePlayer2.size() > 0 )
+	{
+		thisNote = GetObjectFront( LAYER_NOTE2 );
+		thisNote->SetVisible(false);
+		m_ObjectListMemeoryPullOfNote.push_back( thisNote );
+		m_ObjectListLayerNotePlayer2.pop_back();
+	}
+}

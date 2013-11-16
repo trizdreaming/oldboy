@@ -59,7 +59,7 @@ void CRMmainLoop::RunMessageLoop()
 		MessageBox( NULL, ERROR_SOUND_INIT, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return;
 	}
-	hr = CRMsound::GetInstance()->LoadSound(BGM_TITLE, SOUND_BG_TITLE );
+	hr = CRMsound::GetInstance()->LoadSound( BGM_TITLE, SOUND_BG_TITLE );
 	if ( hr != S_OK )
 	{
 		MessageBox( NULL, ERROR_SOUND_LOADING, ERROR_TITLE, MB_OK | MB_ICONSTOP );
@@ -141,11 +141,12 @@ void CRMmainLoop::RunMessageLoop()
 			{
 			//	printConsole("FPS : %d \n", fps);
 
-				CRMlabel*	testLabel = new CRMlabel();
-				wchar_t		testChar[255] = {0, };
-				swprintf_s(testChar, L"FPS : %d ", fps);
+				CRMlabel*		testLabel = new CRMlabel();
+				std::wstring	testString;
+				testString.append(L"FPS : ");
+				testString.append( std::to_wstring(fps) );
 
-				testLabel->CreateLabel(LABEL_FPS, testChar, LABEL_FONT_NORMAL, 15.0F );
+				testLabel->CreateLabel(LABEL_FPS, testString, LABEL_FONT_NORMAL, 15.0F );
 				testLabel->SetRGBA( 1.0f, 1.0f, 1.0f, 1.f );
 				testLabel->SetSceneType( SCENE_PLAY );
 				testLabel->SetPosition( 20, 20 );
@@ -520,7 +521,18 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		++m_MusicSelectIndex;
+		++m_MusicSelectIndex %= m_MusicVector.size();
+
+		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
@@ -544,7 +556,18 @@ HRESULT CRMmainLoop::GoNextScene()
 	if ( m_SceneType == SCENE_TITLE )
 	{
 		m_SceneType = SCENE_SELECT_MUSIC;
-		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
+		
+		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+
 		return S_OK;
 	}
 

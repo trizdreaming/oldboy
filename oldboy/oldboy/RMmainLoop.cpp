@@ -416,7 +416,7 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 
-	for ( int i = 0 ; i < 100 ; ++i )
+	for ( int i = 0 ; i < MAX_NOTE_IN_POOL ; ++i )
 	{
 		testObject = new CRMchildNote();
 		testObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
@@ -439,7 +439,7 @@ HRESULT CRMmainLoop::CreateObject()
 	shutterObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
 
-	for ( int i = 0 ; i < 20 ; ++ i )
+	for ( int i = 0 ; i < MAX_EFFECT ; ++ i )
 	{
 		testObject = new CRMchildEffectImage();
 		testObject->SetObjectType(OBJECT_NOTE_HIT);

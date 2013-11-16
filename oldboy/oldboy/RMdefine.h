@@ -19,6 +19,9 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define NOTE_SIZE 100
 
+#define MAX_NOTE_IN_POOL	200
+#define MAX_EFFECT			20
+
 #define DEFAULT_POSITION_X -5504
 #define DEFAULT_POSITION_Y -5504
 
@@ -63,6 +66,12 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define LABEL_NAME_P1_COMBO	L"플레이어1콤보"
 #define LABEL_NAME_P2_SCORE	L"플레이어2점수"
 #define LABEL_NAME_P2_COMBO	L"플레이어2콤보"
+
+#define LABEL_NAME_SELECT_LIST1	L"셀렉트리스트1"
+#define LABEL_NAME_SELECT_LIST2	L"셀렉트리스트2"
+#define LABEL_NAME_SELECT_LIST3	L"셀렉트리스트3"
+#define LABEL_NAME_SELECT_LIST4	L"셀렉트리스트4"
+#define LABEL_NAME_SELECT_LIST5	L"셀렉트리스트5"
 
 #define LABEL_FONT_NORMAL	L"맑은 고딕"
 

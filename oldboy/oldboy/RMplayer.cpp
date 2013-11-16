@@ -9,9 +9,15 @@ CRMplayer::CRMplayer(void) :
 	ZeroMemory( m_Count, sizeof(m_Count) );
 }
 
-
 CRMplayer::~CRMplayer(void)
 {
+}
+
+void CRMplayer::Init()
+{
+	ZeroMemory( m_Count, sizeof(m_Count) );
+	m_PrevIsCombo = false;
+	m_HP = PLAYER_HP_MAX;
 }
 
 void CRMplayer::CalcCombo()

@@ -24,7 +24,6 @@ CRMjudgeManager::~CRMjudgeManager(void)
 
 void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) const
 {
-		
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_MEMORY_POOL );
 	if ( thisNote == nullptr )
 	{
@@ -34,6 +33,13 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 	switch ( player )
 	{
 	case PLAYER_ONE:
+		// HP 체크는 이곳에서
+		if ( CRMplayer1P::GetInstance()->IsDead() )
+		{
+			break;
+		}
+		// 만약 이곳에서 HP 체크를 하지 않으면?
+		// Judge 메소드 주석 참조
 		thisNote->SetObjectType( objectType );
 		thisNote->SetPosition( NOTE_ONE_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
@@ -42,6 +48,10 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 		break;
 	case PLAYER_TWO:
+		if ( CRMplayer2P::GetInstance()->IsDead() )
+		{
+			break;
+		}
 		thisNote->SetObjectType( objectType );
 		thisNote->SetPosition( NOTE_TWO_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
@@ -57,14 +67,12 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 
 void CRMjudgeManager::JudgeNote() const
 {
-	if ( !CRMplayer1P::GetInstance()->IsDead() )
-	{
-		JudgeNoteByPlayer( PLAYER_ONE );
-	}
-	if ( !CRMplayer2P::GetInstance()->IsDead() )
-	{
-		JudgeNoteByPlayer( PLAYER_TWO );
-	}
+	// 이곳에서 HP 체크하면 안 됨
+	// 만약 Dead일 때 Judge 자체를 안 해버리면?
+	//
+	// DeleteNote를 호출하지 않으므로 메모리풀로 다시 돌아가지 않음
+	JudgeNoteByPlayer( PLAYER_ONE );
+	JudgeNoteByPlayer( PLAYER_TWO );
 }
 
 
@@ -109,7 +117,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
-				printConsole( "%dP Perfect \n", playerLayer );
+				printConsole( "%dP Perfect \n", playerNumber );
 
 				//score up
 				playerClass->AddEvent( JUDGE_PERFECT );
@@ -142,7 +150,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 			else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
 			{
 				thisNote->SetVisible(false);
-				printConsole( "%dP Time Miss HP:%d \n", playerLayer, playerClass->GetHP() );
+				printConsole( "%dP Time Miss HP:%d \n", playerNumber, playerClass->GetHP() );
 
 				//score up;
 				playerClass->AddEvent( JUDGE_MISS );
@@ -155,14 +163,16 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 		//note bottom miss
 		else if ( thisNote->GetPositionY() > NOTE_JUDGE_LATE_MISS_LINE )
 		{
-			printConsole( "%dP NoteOut Miss HP:%d \n", playerLayer, playerClass->GetHP() );
+			printConsole( "%dP NoteOut Miss HP:%d \n", playerNumber, playerClass->GetHP() );
 
 			//score up
 			playerClass->AddEvent( JUDGE_MISS );
 			playerClass->SubHP();
 			PrintScore( playerNumber, JUDGE_MISS );
 
+			thisNote->SetPosition( DEFAULT_POSITION_X, DEFAULT_POSITION_Y );
 			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
+
 		}
 		// Perfect 
 		
@@ -219,55 +229,44 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 			CRMplayer2P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer2P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer2P::GetInstance()->GetCount( COUNT_SCORE )
 			);
 
-	CRMplayer*	thisPlayer = nullptr;
-	CRMplayer*	otherPlayer = nullptr;
+	CRMplayer*	thisPlayer = CRMplayer1P::GetInstance();
+	CRMplayer*	otherPlayer = CRMplayer2P::GetInstance();
 
-	wchar_t		*playerScoreLabelName;
-	wchar_t		*playerComboLabelName;
-	float		positionX = 0;
+	float		positionX = 100;
 	float		positionY = 100;
 
-	switch ( player )
+	if ( player == PLAYER_TWO )
 	{
-	case PLAYER_ONE:
-		thisPlayer = CRMplayer1P::GetInstance();
-		otherPlayer = CRMplayer2P::GetInstance();
-		playerScoreLabelName = LABEL_NAME_P1_SCORE;
-		playerComboLabelName = LABEL_NAME_P1_COMBO;
-		positionX = 100;
-
-		break;
-	case PLAYER_TWO:
 		thisPlayer = CRMplayer2P::GetInstance();
 		otherPlayer = CRMplayer1P::GetInstance();
-		playerScoreLabelName = LABEL_NAME_P2_SCORE;
-		playerComboLabelName = LABEL_NAME_P2_COMBO;
+		
 		positionX = 600;
-
-		break;
-	default:
-		return;
 	}
 
-	wchar_t		score[255] = { 0, };
-	wchar_t		judge[255] = { 0, };
-	
+	std::wstring score;
+	std::wstring judge;
+
 	switch ( judgeType )
 	{
 	case JUDGE_PERFECT:
-		swprintf_s( judge, LABEL_JUDGE_PERFECT );
+		judge.append( LABEL_JUDGE_PERFECT );
 		break;
 	case JUDGE_GOOD:
-		swprintf_s( judge, LABEL_JUDGE_GOOD );
+		judge.append( LABEL_JUDGE_GOOD );
 		break;
 	case JUDGE_MISS:
-		swprintf_s( judge,LABEL_JUDGE_MISS );
+		judge.append( LABEL_JUDGE_MISS );
 		break;
 	default:
 		break;
 	}
 
-	swprintf_s( score, L"%10s \n %10d \n  %8s", LABEL_PLAY_SCORE, thisPlayer->GetCount( COUNT_SCORE ), judge );
+	score.clear();
+	score.append( LABEL_PLAY_SCORE );
+	score.append( L"\n " );
+	score.append( std::to_wstring( thisPlayer->GetCount( COUNT_SCORE ) ) );
+	score.append( L"\n  " );
+	score.append( judge );
 
 	float scoreFontSize = 35.0f;
 	if ( thisPlayer->GetCount( COUNT_SCORE ) > otherPlayer->GetCount( COUNT_SCORE ) )
@@ -276,17 +275,20 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 	}
 
 	CRMlabel* playerScoreLabel = new CRMlabel();
-	playerScoreLabel->CreateLabel( playerScoreLabelName , score, LABEL_FONT_NORMAL, scoreFontSize );
+	playerScoreLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_SCORE : LABEL_NAME_P2_SCORE, score, LABEL_FONT_NORMAL, scoreFontSize );
 	playerScoreLabel->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 	playerScoreLabel->SetSceneType( SCENE_PLAY );
 	playerScoreLabel->SetPosition( positionX , positionY );
 
 	if ( thisPlayer->GetCount( COUNT_COMBO ) > 1 )
 	{
-		swprintf_s( score, L"%8s \n  %10d", LABEL_PLAY_COMBO, thisPlayer->GetCount( COUNT_COMBO ) );
+		score.clear();
+		score.append( LABEL_PLAY_COMBO );
+		score.append( L"\n " );
+		score.append( std::to_wstring( thisPlayer->GetCount( COUNT_COMBO ) ) );
 
 		CRMlabel* playerComboLabel = new CRMlabel();
-		playerComboLabel->CreateLabel( playerComboLabelName , score, LABEL_FONT_NORMAL, 35.0F );
+		playerComboLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_COMBO : LABEL_NAME_P2_COMBO, score, LABEL_FONT_NORMAL, 35.0F );
 		playerComboLabel->SetRGBA( 0.8f, 0.5f, 0.2f, 1.f );
 		playerComboLabel->SetSceneType( SCENE_PLAY );
 		playerComboLabel->SetPosition( positionX, positionY + 250 );
@@ -294,12 +296,10 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 	else
 	{
 		CRMlabel* playerComboLabel = new CRMlabel();
-		playerComboLabel->CreateLabel( playerComboLabelName , L"", LABEL_FONT_NORMAL, 35.0F );
+		playerComboLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_COMBO : LABEL_NAME_P2_COMBO, L"", LABEL_FONT_NORMAL, 35.0F );
 		playerComboLabel->SetRGBA( 0.f, 0.f, 0.f, 1.f );
 		playerComboLabel->SetSceneType( SCENE_PLAY );
 		playerComboLabel->SetPosition( positionX, positionY + 250 );
 	}
 
 }
-
-

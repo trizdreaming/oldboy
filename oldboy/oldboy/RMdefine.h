@@ -19,8 +19,8 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define NOTE_SIZE 100
 
-#define DEFAULT_POSITION_X 5504
-#define DEFAULT_POSITION_Y 5504
+#define DEFAULT_POSITION_X -5504
+#define DEFAULT_POSITION_Y -5504
 
 // judge Manager 에서 사용하는 값으로 노트의 시작 위치를 담당
 #define NOTE_ONE_START_POSITION_X	395
@@ -28,7 +28,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define NOTE_START_POSITION_Y		-100
 
 // 포지션 에러 발생 시 리턴 할 값
-#define ERROR_POSITION -5504
+#define ERROR_POSITION -9504
 
 #define NOTE_JUDGE_PERFECT_START_LINE	534
 #define NOTE_JUDGE_PERFECT_END_LINE		556
@@ -53,6 +53,12 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define LABEL_PLAY_SCORE	L"SCORE"
 #define LABEL_PLAY_COMBO	L"COMBO"
 
+#define LABEL_RESULT_SCORE		"SCORE   : "
+#define LABEL_RESULT_PERFECT	"PERFECT : "
+#define LABEL_RESULT_GOOD		"GOOD    : "
+#define LABEL_RESULT_MISS		"MISS    : "
+#define LABEL_RESULT_COMBO		"COMBO   : "
+
 #define LABEL_NAME_P1_SCORE	L"플레이어1점수"
 #define LABEL_NAME_P1_COMBO	L"플레이어1콤보"
 #define LABEL_NAME_P2_SCORE	L"플레이어2점수"
@@ -64,7 +70,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define MAX_INPUT_KEY		256
 
-#define MAX_COUNT			6
+#define MAX_COUNT			7
 
 
 // Resource 관련

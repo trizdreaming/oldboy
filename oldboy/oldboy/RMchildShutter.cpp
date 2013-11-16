@@ -20,20 +20,22 @@ CRMchildShutter::~CRMchildShutter(void)
 
 void CRMchildShutter::Update()
 {
-
 	SetVisibleByScene();
 
 	float resultPosition = 0.0f;
 	
-
 	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
 	{
+		if ( m_PositionY != SHUTTER_START_POSITION_Y )
+		{
+			printConsole( "º≈≈Õ √ ±‚»≠ \n" );
+			m_PositionY = SHUTTER_START_POSITION_Y;
+		}
 		return;
 	}
 
 	m_Visible = true;
 
-	
 	if ( m_PositionY < -10 )
 	{
 		switch (m_playerNumber)
@@ -43,7 +45,7 @@ void CRMchildShutter::Update()
 			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
 			if ( (int)m_PositionY != (int)resultPosition )
 			{
-				m_PositionY += (resultPosition-m_PositionY) / 20;
+				m_PositionY += (resultPosition - m_PositionY) / 20;
 			}
 			break;
 		case PLAYER_TWO:
@@ -51,7 +53,7 @@ void CRMchildShutter::Update()
 			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer2P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
 			if ( (int)m_PositionY != (int)resultPosition )
 			{
-				m_PositionY += (resultPosition-m_PositionY) / 20;
+				m_PositionY += (resultPosition - m_PositionY) / 20;
 			}
 			break;
 		default:

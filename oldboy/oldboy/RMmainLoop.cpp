@@ -19,6 +19,8 @@
 #include "RMnoteManager.h"
 #include "RMmusicSelectManager.h"
 #include "RMresultManager.h"
+#include "RMplayer1P.h"
+#include "RMplayer2P.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -406,9 +408,6 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 
-
-
-
 	for ( int i = 0 ; i < 100 ; ++i )
 	{
 		testObject = new CRMchildNote();
@@ -420,7 +419,7 @@ HRESULT CRMmainLoop::CreateObject()
 
 	CRMchildShutter* shutterObject = new CRMchildShutter();
 	shutterObject->SetObjectType(OBJECT_SHUTTER);
-	shutterObject->SetPosition(0, -670);
+	shutterObject->SetPosition(0, -890);
 	shutterObject->SetSceneType(SCENE_PLAY);
 	shutterObject->SetPlayer(PLAYER_ONE);
 	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
@@ -586,6 +585,11 @@ HRESULT CRMmainLoop::GoNextScene()
 	if ( m_SceneType == SCENE_RESULT )
 	{
 		m_SceneType = SCENE_SELECT_MUSIC;
+		CRMplayer1P::GetInstance()->Init();
+		CRMplayer2P::GetInstance()->Init();
+
+		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
+
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
 		return S_OK;
 	}

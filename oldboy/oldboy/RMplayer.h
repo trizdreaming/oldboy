@@ -7,6 +7,8 @@ class CRMplayer
 public:
 	CRMplayer(void);
 	virtual ~CRMplayer(void);
+
+	void		Init();
 	
 	void		AddEvent( JudgeType judgeEventType );
 	UINT		GetCount( CountType countType ) const;

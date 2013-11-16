@@ -25,7 +25,7 @@ void CRMnoteManager::Initialize()
 	m_GamePlaying = true;
 	m_GameStartTime = timeGetTime();
 	m_ElapsedTime = 0;
-	m_NoteReadyTime = INT_MAX;
+	m_NoteReadyTime = UINT_MAX;
 	m_NoteReadyLevel = 0;
 	m_NoteReadyType = OBJECT_NONE;
 }
@@ -33,7 +33,7 @@ void CRMnoteManager::Initialize()
 void CRMnoteManager::StartNote()
 {
 	
-	if ( m_NoteReadyTime == INT_MAX )
+	if ( m_NoteReadyTime == UINT_MAX )
 	{
 		CRMnoteData* note = CRMxmlLoader::GetInstance()->GetNoteFirst();
 		if ( note == nullptr )
@@ -61,7 +61,7 @@ void CRMnoteManager::StartNote()
 			{
 				m_GamePlaying = false;
 			}
-			m_NoteReadyTime = INT_MAX;
+			m_NoteReadyTime = UINT_MAX;
 		}
 	}
 

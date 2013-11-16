@@ -637,7 +637,16 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
 
-		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
 		return S_OK;
 	}
 

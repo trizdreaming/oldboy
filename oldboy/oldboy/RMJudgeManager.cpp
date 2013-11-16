@@ -274,6 +274,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 	{
 		scoreFontSize = 55.0f;
 	}
+
 	CRMlabel* playerScoreLabel = new CRMlabel();
 	playerScoreLabel->CreateLabel( playerScoreLabelName , score, LABEL_FONT_NORMAL, scoreFontSize );
 	playerScoreLabel->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );

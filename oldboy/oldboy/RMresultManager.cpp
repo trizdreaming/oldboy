@@ -65,6 +65,11 @@ void CRMresultManager::ShowResult()
 	p1Miss->SetSceneType( SCENE_RESULT );
 	p1Miss->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 400 );
 
+	CRMlabel* p1Combo = new CRMlabel();
+	p1Combo->CreateLabel( L"p1Combo" , string2wstring( std::to_string( player1->GetCount(COUNT_MAX_COMBO) ) ), LABEL_FONT_NORMAL, 35.0f );
+	p1Combo->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+	p1Combo->SetSceneType( SCENE_RESULT );
+	p1Combo->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 450 );
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -97,6 +102,12 @@ void CRMresultManager::ShowResult()
 	p2Miss->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 	p2Miss->SetSceneType( SCENE_RESULT );
 	p2Miss->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 400 );
+
+	CRMlabel* p2Combo = new CRMlabel();
+	p2Combo->CreateLabel( L"p2Combo" , string2wstring( std::to_string( player2->GetCount(COUNT_MAX_COMBO) ) ), LABEL_FONT_NORMAL, 35.0f );
+	p2Combo->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+	p2Combo->SetSceneType( SCENE_RESULT );
+	p2Combo->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 450 );
 
 }
 

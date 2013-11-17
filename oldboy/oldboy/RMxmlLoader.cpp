@@ -78,6 +78,7 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 		return S_FALSE;
 	}
 	
+	SafeDelete( m_MusicDataMap[folderName] );
 	m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageAlbum, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
 	
 	return S_OK;
@@ -98,6 +99,14 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 
 	if ( m_LoadSuccess )
 	{
+		if ( m_NoteList.size() > 0 )
+		{
+			for ( auto& toBeDelete : m_NoteList )
+			{
+				SafeDelete( toBeDelete );
+			}
+		}
+
 		m_NoteList.clear();
 
 		TiXmlNode* node = m_Document.FirstChild("Notes")->FirstChild("Note");

@@ -1,35 +1,9 @@
 <?xml version="1.0" ?>
-<Notes>
+<Notes bpm="120">
 
-<Note time="20037" level="1">left</Note>
-<Note time="20517" level="1">right</Note>
-<Note time="20877" level="1">right</Note>
-<Note time="21237" level="1">left</Note>
-<Note time="21477" level="1">right</Note>
-<Note time="21957" level="1">left</Note>
-<Note time="22197" level="1">left</Note>
-<Note time="22437" level="1">right</Note>
-<Note time="22797" level="1">left</Note>
-<Note time="23157" level="1">right</Note>
-<Note time="23397" level="1">right</Note>
-<Note time="23877" level="1">left</Note>
-<Note time="24357" level="1">right</Note>
-<Note time="24717" level="1">right</Note>
-<Note time="25077" level="1">left</Note>
-<Note time="25317" level="1">right</Note>
-<Note time="25797" level="1">left</Note>
-<Note time="26037" level="1">left</Note>
-<Note time="26277" level="1">right</Note>
-<Note time="26637" level="1">left</Note>
-<Note time="26997" level="1">right</Note>
-<Note time="27237" level="1">right</Note>
-<Note time="27717" level="1">left</Note>
-<Note time="28197" level="1">right</Note>
-<Note time="28557" level="1">right</Note>
-<Note time="28917" level="1">left</Note>
-<Note time="29157" level="1">right</Note>
-<Note time="29637" level="1">left</Note>
-<Note time="29877" level="1">left</Note>
-
+<Note start="8000" end="39500">on</Note>
 
 </Notes>
+
+<End time="40000">
+</End>

@@ -109,7 +109,6 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 
 		m_NoteList.clear();
 
-		/*
 		TiXmlNode* node = document.FirstChild("Notes")->FirstChild("Note");
 		while ( node != NULL )
 		{
@@ -124,7 +123,8 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 			m_NoteList.push_back( noteData );
 			node = node->NextSibling();
 		}
-		*/
+
+		/*
 
 		TiXmlNode* node = document.FirstChild("Notes");
 
@@ -181,6 +181,7 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 
 			node = node->NextSibling();
 		}
+		*/
 	}
 	
 	if ( m_NoteList.size() == 0 )

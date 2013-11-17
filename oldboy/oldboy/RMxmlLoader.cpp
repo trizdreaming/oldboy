@@ -150,6 +150,10 @@ HRESULT CRMxmlLoader::DeleteNoteFirst()
 		return S_FALSE;
 	}
 
+	auto& toBeDelete = m_NoteList.begin();
+	SafeDelete( *toBeDelete );
+
 	m_NoteList.pop_front();
+
 	return S_OK;
 }

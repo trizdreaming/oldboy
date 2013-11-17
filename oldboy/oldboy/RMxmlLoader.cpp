@@ -109,6 +109,7 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 
 		m_NoteList.clear();
 
+		/*
 		TiXmlNode* node = document.FirstChild("Notes")->FirstChild("Note");
 		while ( node != NULL )
 		{
@@ -121,6 +122,63 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 
 			CRMnoteData* noteData = new CRMnoteData (time, level, (type == "left") ? OBJECT_NOTE_NORMAL_1 : OBJECT_NOTE_NORMAL_2 );
 			m_NoteList.push_back( noteData );
+			node = node->NextSibling();
+		}
+		*/
+
+		TiXmlNode* node = document.FirstChild("Notes");
+
+		int	bpm = 0;
+		if ( node != NULL )
+		{
+			node->ToElement()->Attribute("bpm", &bpm);
+		}
+
+		node = document.FirstChild("End");
+
+		int endTime = 0;
+		if ( node != NULL )
+		{
+			node->ToElement()->Attribute("time", &endTime);
+		}
+
+		node = document.FirstChild("Notes")->FirstChild("Note");
+
+		int level = 0;
+
+		int beat1Time = 0;
+		int nextTime = 0;
+
+		int endJoint = 0;
+		int jointCount = 0;
+
+		std::string type;
+		CRMnoteData* noteData = nullptr;
+
+		while ( node != NULL && nextTime < endTime)
+		{
+			node->ToElement()->Attribute("start", &beat1Time);
+			node->ToElement()->Attribute("end", &endJoint);
+			type = node->ToElement()->GetText();
+
+			nextTime = beat1Time + ( 1000 * 60 / bpm );
+
+			jointCount = 0;
+
+			if ( type == "on" )
+			{
+				while ( beat1Time < endJoint )
+				{
+					printConsole ( "%d밀리초에 노트 하나 추가요~! \n", (beat1Time + (jointCount * 60 / bpm) - 2152) );
+
+					noteData = new CRMnoteData( (beat1Time + (jointCount * 60 / bpm) - 2152) , (jointCount % 2) + 1 , (jointCount++ % 2 == 0) ? OBJECT_NOTE_NORMAL_1 : OBJECT_NOTE_NORMAL_2 );
+					// 2152 = 화면 최상단에서 판정판까지 내려오기까지 걸리는 시간 ms
+					m_NoteList.push_back( noteData );
+
+					beat1Time += 1000 * 60 / bpm;
+				}
+			}
+
 			node = node->NextSibling();
 		}
 	}

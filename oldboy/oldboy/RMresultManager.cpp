@@ -29,8 +29,17 @@ void CRMresultManager::ShowResult()
 	std::string p1ResultText;
 	std::string p2ResultText;
 	
-	p1ResultText.append( (player1->GetCount(COUNT_SCORE) > player2->GetCount(COUNT_SCORE)) ? "Win" : "Lose" );
-	p2ResultText.append( (player1->GetCount(COUNT_SCORE) < player2->GetCount(COUNT_SCORE)) ? "Win" : "Lose" );
+	if ( (player1->GetCount(COUNT_SCORE) == player2->GetCount(COUNT_SCORE) ) )
+	{
+		p1ResultText.append( "Draw" );
+		p2ResultText.append( "Draw" );
+	}
+	else
+	{
+		p1ResultText.append( (player1->GetCount(COUNT_SCORE) > player2->GetCount(COUNT_SCORE)) ? "Win" : "Lose" );
+		p2ResultText.append( (player1->GetCount(COUNT_SCORE) < player2->GetCount(COUNT_SCORE)) ? "Win" : "Lose" );
+	}
+	
 
 	p1ResultText.append( (player1->IsDead()) ? " And Fail..." : " And Clear!!!" );
 	p2ResultText.append( (player2->IsDead()) ? " And Fail..." : " And Clear!!!" );

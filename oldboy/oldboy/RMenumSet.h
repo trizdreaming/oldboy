@@ -91,3 +91,19 @@ enum KeyStatus
 	KEY_STATUS_UP,
 	KEY_STATUS_NOT_PRESSED,
 };
+
+enum ItemType
+{
+	Item_None,
+
+	Item_Tier_1_1,
+	Item_Tier_1_2,
+	Item_Tier_1_3,
+
+	Item_Tier_2_1,
+	Item_Tier_2_2,
+	Item_Tier_2_3,
+
+	Item_Tier_3_1,
+	Item_Tier_3_2
+}; // 추후 아이템 구현에 맞게 수정합시다.

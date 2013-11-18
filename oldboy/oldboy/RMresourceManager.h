@@ -14,7 +14,7 @@ private:
 public:
 	// 팩토리 초기화
 	HRESULT						CreateFactory();
-	IWICImagingFactory*			GetImageFactory() { return m_pWICFactory; }
+	IWICImagingFactory*			GetImageFactory() const { return m_pWICFactory; }
 
 	HRESULT						CreateTexture();
 	HRESULT						CreateTexture( const std::string& folderName );

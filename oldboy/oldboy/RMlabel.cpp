@@ -19,6 +19,7 @@ CRMlabel::~CRMlabel(void)
 	SafeRelease( m_Brush );
 }
 
+
 void CRMlabel::CreateLabel( std::wstring key, std::wstring string, wchar_t* fontFace, float fontSize )
 {
 	m_String = string;

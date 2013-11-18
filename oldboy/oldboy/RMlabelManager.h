@@ -14,7 +14,7 @@ private:
 public:
 	// 팩토리 초기화
  	HRESULT						CreateFactory();
-	IDWriteFactory*				GetTextFactory() { return m_DWriteFactory; }
+	IDWriteFactory*				GetTextFactory() const { return m_DWriteFactory; }
 
 	void						AddLabel( std::wstring key , CRMlabel* label );
 

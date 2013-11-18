@@ -13,16 +13,16 @@ public:
 	virtual void	Update();
 	virtual void	Render();
 
-	std::wstring	GetString() { return m_String; }
+	std::wstring	GetString() const { return m_String; }
 
-	wchar_t*	GetFontFace() { return m_FontFace; }
-	float		GetFontSize() { return m_FontSize; }
-	float		GetRed() { return m_ColorR; }
-	float		GetGreen() { return m_ColorG; }
-	float		GetBlue() { return m_ColorB; }
-	float		GetOpacity() { return m_Opacity; }
-	bool		IsItalic() { return m_Italic; }
-	bool		IsBold() { return m_Bold; }
+	wchar_t*	GetFontFace() const { return m_FontFace; }
+	float		GetFontSize() const { return m_FontSize; }
+	float		GetRed() const { return m_ColorR; }
+	float		GetGreen() const { return m_ColorG; }
+	float		GetBlue() const { return m_ColorB; }
+	float		GetOpacity() const { return m_Opacity; }
+	bool		IsItalic() const { return m_Italic; }
+	bool		IsBold() const { return m_Bold; }
 
 	void		SetFontSize( float fontsize ) { m_FontSize = fontsize; }
 	void		SetFontFace( wchar_t* fontface ) { m_FontFace = fontface; }

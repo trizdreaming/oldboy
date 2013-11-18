@@ -368,6 +368,7 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 //Group 3. Texture
 //Group 4. 실 이미지 리소스 들
 //Group 5. label
+//////////////////////////////////////////////////////////////////////////
 
 HRESULT CRMmainLoop::CreateObject()
 {

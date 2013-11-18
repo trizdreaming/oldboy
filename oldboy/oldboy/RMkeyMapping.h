@@ -39,4 +39,6 @@
 #define KEY_TABLE_P2_TARGET2	VK_RIGHT
 #define KEY_TABLE_P2_ATTACK		VK_DOWN
 
+#define KEY_TABLE_LIST_UP		VK_UP
+
 #define KeyTable	UINT

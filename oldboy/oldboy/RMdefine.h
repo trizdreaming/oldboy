@@ -14,7 +14,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define GAME_NAME	L"Rhythm Match v0.125"
 #define CLASS_NAME	L"RhythmMatch"
 
-#define SCREEN_SIZE_X 1024 // 1024 + 16
+#define SCREEN_SIZE_X 1040 // 1024 + 16
 #define SCREEN_SIZE_Y 662  // 668 + 32
 
 #define NOTE_SIZE 100
@@ -85,7 +85,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 // Resource 관련
 
 #define FOLDER_SLASH		"/"
-#define MUSIC_FOLDER_SEARCH	"./Music/.\\*"
+#define MUSIC_FOLDER_SEARCH	"./Music/.\\*" // 뮤직 폴더 이하 모든 파일 의미
 #define MUSIC_FOLDER		"./Music/"
 #define BGM_TITLE			"./Resource/bgm_title_00_01.mp3"
 
@@ -94,8 +94,9 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define BG_IMAGE_RESULT	L"./Resource/image_bg_result_01.png"
 
 // Error 관련 
+// 현재 에러는 콘솔 창에서 표현되는 것
 
-#define ERROR_TITLE			L"ERROR!"
+#define ERROR_TITLE			L"TITLE ERROR!"
 #define ERROR_CHANGE_SCENE	L"Error to Change Scene"
 
 #define ERROR_SOUND_INIT	L"Error Sound Initialize...."

@@ -63,6 +63,7 @@ HRESULT CRMsound::CreateSound()
 
 
 // 실제 리소스 생성
+// 파일 위치과, 현재 장면에 맞는 타입(enum)을 적어줌으로써 확인
 HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 {
 	if ( CheckError() != S_OK )

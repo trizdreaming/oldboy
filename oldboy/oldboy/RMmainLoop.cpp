@@ -49,6 +49,7 @@ void CRMmainLoop::RunMessageLoop()
 	ZeroMemory( &msg, sizeof(msg) ); //msg 초기화 함수
 	//===================================================================
 	// 음악 데이터를 불러온다.
+	// 음악 데이터를 vector 형식으로 리스팅
 	FindMusicData();
 
 	//===================================================================
@@ -59,6 +60,9 @@ void CRMmainLoop::RunMessageLoop()
 		MessageBox( NULL, ERROR_SOUND_INIT, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return;
 	}
+
+	//sound를 불러와서 묶어 놓고 있는 상태
+	//동영상 플레이 이후 별로의 로딩화면이 없는 상태이기 때문에 미리 로딩하는 개념
 	hr = CRMsound::GetInstance()->LoadSound( BGM_TITLE, SOUND_BG_TITLE );
 	if ( hr != S_OK )
 	{
@@ -91,6 +95,7 @@ void CRMmainLoop::RunMessageLoop()
 		MessageBox( NULL, ERROR_CREATE_RESOURCE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return;
 	}
+
 
 	// 오브젝트 생성 부분을 리팩토링
 	
@@ -234,7 +239,13 @@ void CRMmainLoop::RunMessageLoop()
 }
 
 
-
+///////////////////////////////////////////
+//windows handle을 활용한 파일 리스팅
+//1. findFileData에 탐색을 원하는 항목을 핸들로 입력
+//2. 해당 항목에 대해 파일 이름이 있는지 확인
+//3. 해당 항목에 있으면 vector 자료형에 후미에 리스팅
+//4. 더 이상 파일 이름이 없으면 종료
+///////////////////////////////////////////
 void CRMmainLoop::FindMusicData()
 {
 	WIN32_FIND_DATAA findFileData;
@@ -260,7 +271,8 @@ void CRMmainLoop::FindMusicData()
 					MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE, MB_OK | MB_ICONSTOP );
 					return;
 				}
-				m_MusicVector.push_back( folderName );
+				m_MusicVector.push_back( folderName ); 
+				//벡터에 자동으로 이름이 붙으면서 후미에 저장 되도록 함
 			}
 		}
 	} while ( FindNextFileA(hFind, &findFileData) != 0);
@@ -348,6 +360,14 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 	}
 	return 0;
 }
+
+//////////////////////////////////////////////////////////////////////////
+//화면을 띄우기 위한 모든 자원을 생성하는 단계
+//Group 1. Factory
+//Group 2. renderTarget
+//Group 3. Texture
+//Group 4. 실 이미지 리소스 들
+//Group 5. label
 
 HRESULT CRMmainLoop::CreateObject()
 {
@@ -448,10 +468,22 @@ HRESULT CRMmainLoop::CreateObject()
 		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE_HIT);
 	}
 
+	//<<<< 여기까지 이미지 자원
+	//>>>> 여기부터 Label 자원
+
+
+
 	return hr;
 }
 
-// ================================================================
+
+//////////////////////////////////////////////////////////////////////////
+//TestSound 함수는 배경음을 제외한 나머지 음에 대한 컨트롤을 담당하고 있는 함수
+//각 플레이어의 키가 눌러 진 것을 확인해 이펙트 음 재생 
+//
+//중간 이하에는 테스트 노트 생성용 코드
+//음원과 연결된 노트가 나올 경우 삭제 가능
+//////////////////////////////////////////////////////////////////////////
 
 void CRMmainLoop::TestSound()
 {
@@ -482,6 +514,7 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 
+	//이하는 테스트 노트 생성용 코드
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN )
 	{
 		int testRand1 = rand();
@@ -509,6 +542,13 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 }
+
+
+//////////////////////////////////////////////////////////////////////////
+//키보드를 통한 각 씬 이동 컨트롤 함수
+//&& 이후 각 상황을 둬 현재 상황 부여
+//음악 선택 화면에서 
+//////////////////////////////////////////////////////////////////////////
 
 HRESULT CRMmainLoop::TestKeyboard()
 {
@@ -551,12 +591,44 @@ HRESULT CRMmainLoop::TestKeyboard()
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		m_MusicSelectIndex += 7;
+		--m_MusicSelectIndex %= m_MusicVector.size();
+
+		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+	}
+
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
 	{
 		hr = GoNextScene();
 	}
 	return hr;
 }
+
+//////////////////////////////////////////////////////////////////////////
+//각 씬을 넘기기 위한 절대 함수
+//특징: 씬을 되돌릴 수는 없음
+//각 씬의 상태를 확인 후 다음 씬으로(기획 되었는 상태) 이동하도록 되어 있음
+//////////////////////////////////////////////////////////////////////////
 
 HRESULT CRMmainLoop::GoNextScene()
 {

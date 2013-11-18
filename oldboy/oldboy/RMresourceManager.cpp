@@ -38,6 +38,11 @@ void CRMresourceManager::InitializeAlbum()
 	}
 }
 
+//////////////////////////////////////////////////////////////////////////
+//CLSID_WICImagingFactory는 1, 2가 나뉘어져 있음
+//각 PC에 따라서 구동되는 것이 다르기 때문에 해당 내용에 대해서 확인하는 방어 코드 작성
+//////////////////////////////////////////////////////////////////////////
+
 HRESULT CRMresourceManager::CreateFactory()
 {
 	HRESULT hr = S_FALSE;

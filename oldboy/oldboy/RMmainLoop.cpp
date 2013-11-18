@@ -203,6 +203,8 @@ void CRMmainLoop::RunMessageLoop()
 			// 씬 관리 부분 
 			//////////////////////////////////////////////////////////////////////////
 			
+			//음악 리스트 보여주기 함수
+			//현재 수정 중(모든 Label 통합 작업 중)
 			if ( m_SceneType == SCENE_SELECT_MUSIC )
 			{
 				CRMmusicSelectManager::GetInstance()->ShowMusicList( m_MusicVector, m_MusicSelectIndex );

@@ -22,6 +22,9 @@ public:
 	void				PlaySound( SoundType soundType, bool isLoop = true );
 	void				PlayEffect( SoundType soundType );
 	
+	// 사운드 일시정지를 위한 함수
+	HRESULT				SetPauseBG( const bool isPause = true );
+
 	bool				GetIsPlaying();
 private:
 	void				DeleteSound();

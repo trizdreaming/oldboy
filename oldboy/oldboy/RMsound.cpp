@@ -199,3 +199,14 @@ bool CRMsound::GetIsPlaying()
 	}
 	return true;
 }
+
+HRESULT CRMsound::SetPauseBG( const bool isPause /*= true */ )
+{
+	m_Result = m_ChannelBG->setPaused( isPause );
+
+	if ( m_Result == FMOD_OK )
+	{
+		return S_OK;
+	}
+	return S_FALSE;
+}

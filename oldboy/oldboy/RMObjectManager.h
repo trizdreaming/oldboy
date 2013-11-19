@@ -36,6 +36,6 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerShutter;
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
 
-	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote;
+	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote; //SM9: 스펠 틀린거 알지?
 };
 

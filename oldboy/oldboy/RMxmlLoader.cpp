@@ -73,12 +73,15 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 		
 	}
 
+	//SM9: 으아악~ 정석은 이렇게 한방에 에러처리하지말고, 하나하나 에러처리하는거다.. 대체 어느 데이터 파일 위치를 못찾는것인지 알려줘야 하기 때문
 	if ( title == "" || artist == "" || level == "" || imageAlbum == "" ||imageBackground == "" || imageShutter == "" || imageNote1 == "" || imageNote2 == "" || imageNoteEffect == "" || soundBackground == "" || soundNoteEffect1 == "" || soundNoteEffect2 == "" || note == "" )
 	{
 		return S_FALSE;
 	}
 	
 	SafeDelete( m_MusicDataMap[folderName] );
+	//SM9: 이렇게 생성자의 인자가 많은 경우는 이렇게 쭉 늘여 쓰지않고, 각 멤버별로 InitXXXX()또는 SetXXXX()만들어서 쓴다
+	//다른 방법으로는 초기화 해야 할 값들을 구조체로 한번 wrapping한 다음에 넘기는 방법도 있다.
 	m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageAlbum, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
 	
 	return S_OK;

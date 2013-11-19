@@ -37,6 +37,6 @@ private:
 	FMOD_RESULT			m_Result;
 
 	//FMOD::Sound*	m_Sound;
-	std::map<SoundType, FMOD::Sound*>	m_SoundMap;
+	std::map<SoundType, FMOD::Sound*>	m_SoundMap; //SM9: 맵일 이유가 없다. std::array같은 배열로
 };
 

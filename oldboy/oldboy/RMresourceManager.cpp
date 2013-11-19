@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMresourceManager.h"
@@ -39,8 +39,8 @@ void CRMresourceManager::InitializeAlbum()
 }
 
 //////////////////////////////////////////////////////////////////////////
-//CLSID_WICImagingFactory´Â 1, 2°¡ ³ª´µ¾îÁ® ÀÖÀ½
-//°¢ PC¿¡ µû¶ó¼­ ±¸µ¿µÇ´Â °ÍÀÌ ´Ù¸£±â ¶§¹®¿¡ ÇØ´ç ³»¿ë¿¡ ´ëÇØ¼­ È®ÀÎÇÏ´Â ¹æ¾î ÄÚµå ÀÛ¼º
+//CLSID_WICImagingFactoryëŠ” 1, 2ê°€ ë‚˜ë‰˜ì–´ì ¸ ìžˆìŒ
+//ê° PCì— ë”°ë¼ì„œ êµ¬ë™ë˜ëŠ” ê²ƒì´ ë‹¤ë¥´ê¸° ë•Œë¬¸ì— í•´ë‹¹ ë‚´ìš©ì— ëŒ€í•´ì„œ í™•ì¸í•˜ëŠ” ë°©ì–´ ì½”ë“œ ìž‘ì„±
 //////////////////////////////////////////////////////////////////////////
 
 HRESULT CRMresourceManager::CreateFactory()
@@ -72,9 +72,8 @@ HRESULT CRMresourceManager::CreateTexture()
 	InitializeMap();
 
 	HRESULT hr = S_FALSE;
-	CRMimage* texture;
+	CRMimage* texture = new CRMimage(); //SM9: ì´ë ‡ê²Œ ì„ ì–¸ê³¼ ë™ì‹œì— ì´ˆê¸°í™”/í• ë‹¹ í•˜ëŠ” ê²ƒì„ ìŠµê´€ë“¤ì´ë„ë¡.
 
-	texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_TITLE );
 	
 	if ( hr == S_OK )

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMresultManager.h"
 #include "RMlabel.h"
 #include "RMdefine.h"
@@ -24,7 +24,7 @@ void CRMresultManager::ShowResult()
 	CRMplayer*	player2 = nullptr;
 
 	player1 = CRMplayer1P::GetInstance();
-	player2 = CRMplayer2P::GetInstance();
+	player2 = CRMplayer2P::GetInstance(); //SM9: 그냥 선언과 동시에 바로 대입하지?
 
 	std::string p1ResultText;
 	std::string p2ResultText;
@@ -45,7 +45,7 @@ void CRMresultManager::ShowResult()
 	p2ResultText.append( (player2->IsDead()) ? " And Fail..." : " And Clear!!!" );
 	
 	CRMlabel* p1Result = new CRMlabel();
-	p1Result->CreateLabel( L"p1Result" , string2wstring( p1ResultText ), LABEL_FONT_NORMAL, 55.0f );
+	p1Result->CreateLabel( L"p1Result" , string2wstring( p1ResultText ), LABEL_FONT_NORMAL, 55.0f ); //SM9: 보통 이런 문자열은 XML로 보통 빼내야 한다. (다국어 버전의 경우에 필수. 지금 당장 하라는 이야기는 아님)
 	p1Result->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 	p1Result->SetSceneType( SCENE_RESULT );
 	p1Result->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 200 );
@@ -120,7 +120,7 @@ void CRMresultManager::ShowResult()
 
 }
 
-// Label�� wstring���� string���� �ٲ𶧱��� �ӽ÷� ������ �Լ�
+// Label이 wstring에서 string으로 바뀔때까지 임시로 가지는 함수
 std::wstring CRMresultManager::string2wstring(const std::string& str) const {
 	std::wstring wstr(str.length(),L' ');
 	copy(str.begin(),str.end(),wstr.begin());

@@ -23,7 +23,8 @@ CRMlabel::~CRMlabel(void)
 void CRMlabel::CreateLabel( std::wstring key, std::wstring string, wchar_t* fontFace, float fontSize )
 {
 	m_String = string;
-	m_FontFace = fontFace;
+	m_FontFace = fontFace; //SM9: m_FontFace에는 문자열에 대한 포인터가 들어가니까 *fontFace의 위치가 명확해야 한다. 보통은 const wchar_t fontface* =L"" 처럼 .const영역에 두는것이 일반적이다.
+	// 그래서 지금 define으로 하는 방법은, 사실상 좋은 방법은 아니다.
 	m_FontSize = fontSize;
 
 	CRMlabelManager::GetInstance()->CreateFactory();

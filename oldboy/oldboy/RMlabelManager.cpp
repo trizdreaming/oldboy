@@ -43,7 +43,7 @@ HRESULT CRMlabelManager::CreateFactory()
 
 void CRMlabelManager::AddLabel( std::wstring key , CRMlabel* label )
 {
-	SafeDelete( m_LabelMap[key] );
+	SafeDelete( m_LabelMap[key] ); //SM9: 위험하다 만일 key에 해당하는 포인터가 없으면 end() 이터레이터가 반환 될텐데? 그걸 지우면?
 	m_LabelMap[key] = label;
 }
 

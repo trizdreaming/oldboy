@@ -206,7 +206,7 @@ CRMobject* CRMobjectManager::GetObjectFront( LayerType layer ) const
 	case LAYER_NOTE1:
 		if ( m_ObjectListLayerNotePlayer1.size() == 0 )
 		{
-			return nullptr;
+			return nullptr; //SM9: 이런거 리턴할때는 밖에서 예외처리 확실하게하도록..
 		}
 		return *( m_ObjectListLayerNotePlayer1.rbegin() );
 	case LAYER_NOTE2:

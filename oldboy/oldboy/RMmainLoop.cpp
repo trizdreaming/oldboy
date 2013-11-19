@@ -26,13 +26,11 @@ CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
 	m_ElapsedTime(0),
-	m_Fps(0),
 	m_FpsCheckTime(0),
 	m_SceneType(SCENE_OPENING),
 	m_Hwnd(NULL),
 	m_MusicSelectIndex(0)
 {
-	// 1000ms를 60으로 나눠 60Fps를 유지할 수 있도록 함
 	m_Fps = ( 1000 / 60 ) + 1;
 }
 
@@ -131,7 +129,7 @@ void CRMmainLoop::RunMessageLoop()
 				}
 				continue;
 			}
-
+#ifdef _DEBUG
 			m_NowTime = timeGetTime();
 
 			if ( m_PrevTime == 0 )
@@ -139,8 +137,6 @@ void CRMmainLoop::RunMessageLoop()
 				m_PrevTime = m_NowTime;
 			}
 
-			
-#ifdef _DEBUG
 			// FPS 출력용 계산
 			if( ( m_NowTime - m_FpsCheckTime ) > 1000 )
 			{
@@ -159,12 +155,12 @@ void CRMmainLoop::RunMessageLoop()
 				m_FpsCheckTime = m_NowTime;
 				fps = 0;
 			}
-#endif
 
 			m_ElapsedTime = m_NowTime - m_PrevTime;
 
 			if( m_ElapsedTime == m_Fps )
 			{
+#endif
 				// 테스트 
 				
 				// 처리 해야 할 내부 로직들을 처리함
@@ -176,11 +172,12 @@ void CRMmainLoop::RunMessageLoop()
 				// 화면에 대한 처리를 진행
 				// Render
 				CRMobjectManager::GetInstance()->Render();
-				++fps;
-
 				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;
+#ifdef _DEBUG
+				++fps;
 			}
+#endif // _DEBUG
 
 			//////////////////////////////////////////////////////////////////////////
 			// 소리 밀림 방지를 위해 FPS = 60에 맞추던 부분에서 빼옴
@@ -215,7 +212,7 @@ void CRMmainLoop::RunMessageLoop()
 				CRMjudgeManager::GetInstance()->JudgeNote();
 
 				// 이렇게 자주 해줄 필요는 없는데...
-				if ( !CRMsound::GetInstance()->GetIsPlaying() || ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() ) )
+				if ( ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() ) || !CRMsound::GetInstance()->GetIsPlaying() )
 				{
 					CRMobjectManager::GetInstance()->RemoveAllNote();
 					m_SceneType = SCENE_RESULT;

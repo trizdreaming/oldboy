@@ -8,7 +8,9 @@ enum SceneType
 	SCENE_TITLE,
 	SCENE_SELECT_MUSIC,
 	SCENE_PLAY,
-	SCENE_RESULT
+	SCENE_RESULT,
+
+	SCENE_MAX
 };
 
 enum LayerType
@@ -16,28 +18,38 @@ enum LayerType
 	LAYER_NONE,
 
 	LAYER_BACKGROUND,
+	LAYER_JUDGERING,  //item 구현용
+	LAYER_GAUGE,	  //item 구현용
+	LAYER_ITEM,		  //item 구현용
 	LAYER_NOTE1,
 	LAYER_NOTE2,
 	LAYER_NOTE_HIT,
 	LAYER_EFFECT,
 	LAYER_SHUTTER,
 	LAYER_LABEL,
-	LAYER_MEMORY_POOL
+	LAYER_MEMORY_POOL,
+
+	LAYER_MAX
 };
 
 enum ObjectType
 {
 	OBJECT_NONE,
+
 	OBJECT_BG_IMAGE_TITLE,
 	OBJECT_BG_IMAGE_SELECT,
 	OBJECT_BG_IMAGE_PLAY,
 	OBJECT_BG_IMAGE_RESULT,
+	OBJECT_JUDGERING, //item 구현용
+	OBJECT_GAUGE_1P,  //item 구현용
+	OBJECT_GAUGE_2P,  //item 구현용
 	OBJECT_NOTE_NORMAL_1,
 	OBJECT_NOTE_NORMAL_2,
 	OBJECT_EFFECT,
 	OBJECT_NOTE_HIT,
 	OBJECT_SHUTTER,
 	OBJECT_ALBUM_IMAGE,
+
 	OBJECT_MAX
 };
 
@@ -60,7 +72,9 @@ enum PlayerNumber
 	PLAYER_NONE,
 
 	PLAYER_ONE,
-	PLAYER_TWO
+	PLAYER_TWO,
+
+	PLAYER_MAX
 };
 
 enum CountType
@@ -72,7 +86,9 @@ enum CountType
 	COUNT_MISS,
 	COUNT_COMBO,
 	COUNT_MAX_COMBO,
-	COUNT_SCORE
+	COUNT_SCORE,
+
+	COUNT_MAX
 };
 
 enum JudgeType
@@ -81,7 +97,9 @@ enum JudgeType
 
 	JUDGE_PERFECT,
 	JUDGE_GOOD,
-	JUDGE_MISS
+	JUDGE_MISS,
+
+	JUDGE_MAX
 };
 
 enum KeyStatus
@@ -92,11 +110,13 @@ enum KeyStatus
 	KEY_STATUS_PRESSED,
 	KEY_STATUS_UP,
 	KEY_STATUS_NOT_PRESSED,
+
+	KEY_MAX
 };
 
 enum ItemType
 {
-	Item_None,
+	ITEM_NONE,
 
 	Item_Tier_1_1,
 	Item_Tier_1_2,
@@ -107,5 +127,7 @@ enum ItemType
 	Item_Tier_2_3,
 
 	Item_Tier_3_1,
-	Item_Tier_3_2
+	Item_Tier_3_2,
+
+	ITEM_MAX
 }; // 추후 아이템 구현에 맞게 수정합시다.

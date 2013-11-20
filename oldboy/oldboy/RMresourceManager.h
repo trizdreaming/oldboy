@@ -20,15 +20,15 @@ public:
 	HRESULT						CreateTexture( const std::string& folderName );
 	HRESULT						CreateTextureAlbum( const std::string& folderName );
 
-	CRMimage*					GetTexture( const ObjectType& key ) { return m_TextureMap[key]; }
+	CRMimage*					GetTexture( const ObjectType& key ) { return m_TextureArray[key]; }
 	
 private:
-	void								InitializeMap();
+	void								InitializeArray();
 	void								InitializeAlbum();
 
 	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName ) const;
 
 	IWICImagingFactory*					m_pWICFactory;
-	std::map<ObjectType, CRMimage*>		m_TextureMap;
+	std::array<CRMimage*, OBJECT_MAX>	m_TextureArray;
 };
 

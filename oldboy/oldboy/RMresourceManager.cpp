@@ -16,25 +16,23 @@ CRMresourceManager::~CRMresourceManager(void)
 {
 	SafeRelease(m_pWICFactory);
 
-	InitializeMap();
+	InitializeArray();
 }
 
 
-void CRMresourceManager::InitializeMap()
+void CRMresourceManager::InitializeArray()
 {
-	for ( auto& iter : m_TextureMap )
+	for ( auto& toBeDelete : m_TextureArray )
 	{
-		auto toBeDelete = iter.second;
 		SafeDelete( toBeDelete );
 	}
-	m_TextureMap.clear();
 }
 
 void CRMresourceManager::InitializeAlbum()
 {
-	if ( m_TextureMap[OBJECT_ALBUM_IMAGE] != nullptr )
+	if ( m_TextureArray[OBJECT_ALBUM_IMAGE] != nullptr )
 	{
-		SafeDelete( m_TextureMap[OBJECT_ALBUM_IMAGE] );
+		SafeDelete( m_TextureArray[OBJECT_ALBUM_IMAGE] );
 	}
 }
 
@@ -69,7 +67,7 @@ HRESULT CRMresourceManager::CreateFactory()
 
 HRESULT CRMresourceManager::CreateTexture()
 {
-	InitializeMap();
+	InitializeArray();
 
 	HRESULT hr = S_FALSE;
 	CRMimage* texture;
@@ -79,12 +77,12 @@ HRESULT CRMresourceManager::CreateTexture()
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
+		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = nullptr;
 		SafeDelete(texture);
 	}
 
@@ -94,12 +92,12 @@ HRESULT CRMresourceManager::CreateTexture()
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = nullptr;
+		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = nullptr;
 		SafeDelete(texture);
 	}
 
@@ -108,12 +106,12 @@ HRESULT CRMresourceManager::CreateTexture()
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = nullptr;
+		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = nullptr;
 		SafeDelete(texture);
 	}
 
@@ -122,7 +120,7 @@ HRESULT CRMresourceManager::CreateTexture()
 
 HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 {
-	InitializeMap();
+	InitializeArray();
 
 	HRESULT hr = S_FALSE;
 	CRMimage* texture;
@@ -132,13 +130,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_TITLE] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -148,13 +146,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_SELECT] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -164,13 +162,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_RESULT] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -180,13 +178,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_BG_IMAGE_PLAY] = texture;
+		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -196,13 +194,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_SHUTTER] = texture;
+		m_TextureArray[OBJECT_SHUTTER] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_SHUTTER] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_SHUTTER] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -212,13 +210,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_NOTE_NORMAL_1] = texture;
+		m_TextureArray[OBJECT_NOTE_NORMAL_1] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_NOTE_NORMAL_1] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_NOTE_NORMAL_1] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -228,13 +226,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_NOTE_NORMAL_2] = texture;
+		m_TextureArray[OBJECT_NOTE_NORMAL_2] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_NOTE_NORMAL_2] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_NOTE_NORMAL_2] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -244,13 +242,13 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_NOTE_HIT] = texture;
+		m_TextureArray[OBJECT_NOTE_HIT] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureMap[OBJECT_NOTE_HIT] = nullptr;
-		InitializeMap();
+		m_TextureArray[OBJECT_NOTE_HIT] = nullptr;
+		InitializeArray();
 
 		return hr;
 	}
@@ -271,7 +269,7 @@ HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureMap[OBJECT_ALBUM_IMAGE] = texture;
+		m_TextureArray[OBJECT_ALBUM_IMAGE] = texture;
 	}
 	else
 	{

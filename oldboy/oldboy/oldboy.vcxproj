@@ -127,6 +127,9 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RMinput.h" />
     <ClInclude Include="RMitem.h" />
+    <ClInclude Include="RMitem1Tier.h" />
+    <ClInclude Include="RMitem2Tier.h" />
+    <ClInclude Include="RMitem3Tier.h" />
     <ClInclude Include="RMitemManager.h" />
     <ClInclude Include="RMjudgeManager.h" />
     <ClInclude Include="RMkeyMapping.h" />
@@ -183,6 +186,9 @@
     <ClCompile Include="RMimage.cpp" />
     <ClCompile Include="RMinput.cpp" />
     <ClCompile Include="RMitem.cpp" />
+    <ClCompile Include="RMitem1Tier.cpp" />
+    <ClCompile Include="RMitem2Tier.cpp" />
+    <ClCompile Include="RMitem3Tier.cpp" />
     <ClCompile Include="RMitemManager.cpp" />
     <ClCompile Include="RMjudgeManager.cpp" />
     <ClCompile Include="RMlabel.cpp" />

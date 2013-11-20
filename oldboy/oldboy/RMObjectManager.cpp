@@ -99,9 +99,6 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_LABEL:
 			m_ObjectListLayerLabel.push_back(object);
 			break;
-//  	case LAYER_RESULT_LABEL:
-//  		m_ObjectListLayerResultLabel.push_back(object);
-// 			break;
 		case LAYER_MEMORY_POOL:
 			m_ObjectListMemeoryPullOfNote.push_front(object);
 			break;

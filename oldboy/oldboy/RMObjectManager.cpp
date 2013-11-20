@@ -64,12 +64,12 @@ CRMobjectManager::~CRMobjectManager(void)
 	*/
 	m_ObjectListLayerLabel.clear();
 
-	for ( auto& iter : m_ObjectListMemoryPullOfNote )
+	for ( auto& iter : m_ObjectListMemoryPoolOfNote )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
-	m_ObjectListMemoryPullOfNote.clear();
+	m_ObjectListMemoryPoolOfNote.clear();
 }
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
@@ -100,7 +100,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			m_ObjectListLayerLabel.push_back(object);
 			break;
 		case LAYER_MEMORY_POOL:
-			m_ObjectListMemoryPullOfNote.push_front(object);
+			m_ObjectListMemoryPoolOfNote.push_front(object);
 			break;
 		case LAYER_NONE:
 			break;
@@ -116,7 +116,7 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
-	for ( auto& iter : m_ObjectListMemoryPullOfNote )
+	for ( auto& iter : m_ObjectListMemoryPoolOfNote )
 	{
 		iter->Update();
 	}
@@ -174,7 +174,7 @@ void CRMobjectManager::Render() const
 	{
 		iter->Render();
 	}
-	for ( auto& iter : m_ObjectListMemoryPullOfNote )
+	for ( auto& iter : m_ObjectListMemoryPoolOfNote )
 	{
 		iter->Render();
 	}
@@ -213,11 +213,11 @@ CRMobject* CRMobjectManager::GetObjectFront( LayerType layer ) const
 		}
 		return *( m_ObjectListLayerNotePlayer2.rbegin() );
 	case LAYER_MEMORY_POOL:
-		if ( m_ObjectListMemoryPullOfNote.size() == 0 )
+		if ( m_ObjectListMemoryPoolOfNote.size() == 0 )
 		{
 			return nullptr;
 		}
-		return *( m_ObjectListMemoryPullOfNote.rbegin() );
+		return *( m_ObjectListMemoryPoolOfNote.rbegin() );
 	case LAYER_NONE:
 	default:
 		return nullptr;
@@ -230,15 +230,15 @@ void CRMobjectManager::DeleteNoteListFront( LayerType layer )
 	switch ( layer )
 	{
 	case LAYER_NOTE1:
-		m_ObjectListMemoryPullOfNote.push_back( GetObjectFront( layer ) );
+		m_ObjectListMemoryPoolOfNote.push_back( GetObjectFront( layer ) );
 		m_ObjectListLayerNotePlayer1.pop_back();
 		break;
 	case LAYER_NOTE2:
-		m_ObjectListMemoryPullOfNote.push_back( GetObjectFront( layer ) );
+		m_ObjectListMemoryPoolOfNote.push_back( GetObjectFront( layer ) );
 		m_ObjectListLayerNotePlayer2.pop_back();
 		break;
 	case LAYER_MEMORY_POOL:
-		m_ObjectListMemoryPullOfNote.pop_back();
+		m_ObjectListMemoryPoolOfNote.pop_back();
 		break;
 	}
 }
@@ -251,14 +251,14 @@ void CRMobjectManager::RemoveAllNote()
 	{
 		thisNote = GetObjectFront( LAYER_NOTE1 );
 		thisNote->SetVisible(false);
-		m_ObjectListMemoryPullOfNote.push_back( thisNote );
+		m_ObjectListMemoryPoolOfNote.push_back( thisNote );
 		m_ObjectListLayerNotePlayer1.pop_back();
 	}
 	while ( m_ObjectListLayerNotePlayer2.size() > 0 )
 	{
 		thisNote = GetObjectFront( LAYER_NOTE2 );
 		thisNote->SetVisible(false);
-		m_ObjectListMemoryPullOfNote.push_back( thisNote );
+		m_ObjectListMemoryPoolOfNote.push_back( thisNote );
 		m_ObjectListLayerNotePlayer2.pop_back();
 	}
 }

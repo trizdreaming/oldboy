@@ -70,9 +70,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	InitializeArray();
 
 	HRESULT hr = S_FALSE;
-	CRMimage* texture;
-
-	texture = new CRMimage();
+	CRMimage* texture = new CRMimage();
 	hr = texture->CreateImage( BG_IMAGE_TITLE );
 	
 	if ( hr == S_OK )

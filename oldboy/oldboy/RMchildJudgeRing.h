@@ -1,4 +1,6 @@
 #pragma once
+#include "RMobject.h"
+
 class CRMchildJudgeRing :
 	public CRMobject
 {

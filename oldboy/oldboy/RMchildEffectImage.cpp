@@ -1,5 +1,4 @@
 #include "stdafx.h"
-#include "RMobject.h"
 #include "RMmacro.h"
 #include "RMchildEffectImage.h"
 #include "RMchildEffectManager.h"

@@ -1,4 +1,5 @@
 #pragma once
+#include "RMobject.h"
 
 class CRMchildGauge : 
 	public CRMobject

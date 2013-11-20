@@ -1,7 +1,5 @@
 #include "stdafx.h"
-#include "RMobject.h"
 #include "RMchildJudgeRing.h"
-
 
 CRMchildJudgeRing::CRMchildJudgeRing(void)
 {

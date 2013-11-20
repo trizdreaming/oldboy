@@ -1,5 +1,5 @@
 #pragma once
-
+#include "RMobject.h"
 
 class CRMchildBGImage :
 	public CRMobject

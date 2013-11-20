@@ -1,5 +1,5 @@
 #pragma once
-#include "rmobject.h"
+#include "RMobject.h"
 
 class CRMchildNote :
 	public CRMobject

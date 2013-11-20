@@ -76,67 +76,67 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 
 	if ( title == "" )
 	{
-		MessageBox( NULL, L"NO title Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_TITLE, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( artist == "" )
 	{
-		MessageBox( NULL, L"NO artist Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_ARTIST, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( level == "" )
 	{
-		MessageBox( NULL, L"NO level Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_LEVEL, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( imageAlbum == "" )
 	{
-		MessageBox( NULL, L"NO imageAlbum Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_IMAGE_ALBUM, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( imageBackground == "" )
 	{
-		MessageBox( NULL, L"NO imageBackground Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_IMAGE_BACKGROUND, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( imageShutter == "" )
 	{
-		MessageBox( NULL, L"NO imageShutter Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_IMAGE_SHUTTER, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( imageNote1 == "" )
 	{
-		MessageBox( NULL, L"NO imageNote1 Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_IMAGE_NOTE1, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( imageNote2 == "" )
 	{
-		MessageBox( NULL, L"NO imageNote2 Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_IMAGE_NOTE2, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( imageNoteEffect == "" )
 	{
-		MessageBox( NULL, L"NO imageNoteEffect Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_IMAGE_NOTE_EFFECT, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( soundBackground == "" )
 	{
-		MessageBox( NULL, L"NO soundBackground Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_SOUND_BACKGROUND, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( soundNoteEffect1 == "" )
 	{
-		MessageBox( NULL, L"NO soundNoteEffect1 Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_SOUND_NOTE_EFFECT1, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( soundNoteEffect2 == "" )
 	{
-		MessageBox( NULL, L"NO soundNoteEffect2 Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_SOUND_NOTE_EFFECT2, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 	else if ( note == "" )
 	{
-		MessageBox( NULL, L"NO note Data in index.xml", ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_MESSAGE_LOAD_XML_NOTE_DATA, ERROR_TITLE_LOAD, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 

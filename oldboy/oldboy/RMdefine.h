@@ -96,10 +96,27 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 // Error 관련 
 // 현재 에러는 콘솔 창에서 표현되는 것
 
-// 메시지 박스 타이틀
+// 메시지 박스 타이틀 ERROR_TITLE_~~~
 #define ERROR_TITLE_NORMAL			L"ERROR!"
+#define ERROR_TITLE_LOAD			L"LOAD ERROR!"
 
-// 메시지 박스 내용
+// 메시지 박스 내용  ERROR_MESSAGE_~~~
+
+// xmlLoader 관련 
+#define ERROR_MESSAGE_LOAD_XML_TITLE				L"Missing title Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_ARTIST				L"Missing artist Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_LEVEL				L"Missing level Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_IMAGE_ALBUM			L"Missing imageAlbum Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_IMAGE_BACKGROUND		L"Missing imageBackground Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_IMAGE_SHUTTER		L"Missing imageShutter Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_IMAGE_NOTE1			L"Missing imageNote1 Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_IMAGE_NOTE2			L"Missing imageNote2 Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_IMAGE_NOTE_EFFECT	L"Missing imageNoteEffect Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_SOUND_BACKGROUND		L"Missing soundBackground Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_SOUND_NOTE_EFFECT1	L"Missing soundNoteEffect1 Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_SOUND_NOTE_EFFECT2	L"Missing soundNoteEffect2 Data in index.xml"
+#define ERROR_MESSAGE_LOAD_XML_NOTE_DATA			L"Missing note Data in index.xml"
+
 #define ERROR_CHANGE_SCENE	L"Error to Change Scene"
 
 #define ERROR_SOUND_INIT	L"Error Sound Initialize...."

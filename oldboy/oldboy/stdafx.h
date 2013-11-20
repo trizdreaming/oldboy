@@ -21,6 +21,7 @@
 #include <list>
 #include <map>
 #include <vector>
+#include <array>
 
 //Display - Direct 2D°ü·Ã include file
 #include <d2d1.h>

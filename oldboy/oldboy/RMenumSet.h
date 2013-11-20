@@ -50,7 +50,8 @@ enum SoundType
 	SOUND_NOTE_1,
 	SOUND_NOTE_2,
 	SOUND_NOTE_EFFECT,
-	SOUND_SHUTTER
+	SOUND_SHUTTER,
+	SOUND_MAX
 };
 
 enum PlayerNumber

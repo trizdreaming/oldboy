@@ -81,7 +81,7 @@ HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 		return S_FALSE;
 	}
 
-	m_SoundMap[soundType] = m_Sound;
+	m_SoundArray[soundType] = m_Sound;
 	return S_OK;
 }
 
@@ -147,7 +147,7 @@ void CRMsound::PlaySound( SoundType soundType, bool isLoop )
 			m_ChannelBG->stop();
 		}
 		
-		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_ChannelBG );
+		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundArray[soundType], false, &m_ChannelBG );
 		m_ChannelBG->setVolume(0.8f);
 		if (isLoop)
 		{
@@ -167,7 +167,7 @@ void CRMsound::PlayEffect( SoundType soundType )
 {
 	if ( m_Result == FMOD_OK )
 	{
-		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundMap[soundType], false, &m_ChannelSE );
+		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundArray[soundType], false, &m_ChannelSE );
 		m_ChannelSE->setVolume( 0.7f );
 		CheckError();
 	}
@@ -177,12 +177,11 @@ void CRMsound::PlayEffect( SoundType soundType )
 // 해제 처리
 void CRMsound::DeleteSound()
 {
-	for ( auto& iter : m_SoundMap )
+	for ( auto& toBeDelete : m_SoundArray )
 	{
-		auto toBeRelease = iter.second;
-		toBeRelease->release(); // m_Sound
+		toBeDelete->release(); // m_Sound
 	}
-	m_SoundMap.clear();
+
 }
 
 bool CRMsound::GetIsPlaying()
@@ -190,7 +189,7 @@ bool CRMsound::GetIsPlaying()
 	unsigned int nowTime = 0;
 	unsigned int fullTime = 0;
 
-	m_SoundMap[SOUND_BG_PLAY]->getLength(&fullTime,FMOD_TIMEUNIT_MS);
+	m_SoundArray[SOUND_BG_PLAY]->getLength(&fullTime,FMOD_TIMEUNIT_MS);
 	m_ChannelBG->getPosition(&nowTime,FMOD_TIMEUNIT_MS);
 
 	if ( nowTime >= fullTime )

@@ -37,6 +37,6 @@ private:
 	FMOD_RESULT			m_Result;
 
 	//FMOD::Sound*	m_Sound;
-	std::map<SoundType, FMOD::Sound*>	m_SoundMap;
+	std::array<FMOD::Sound*, SOUND_MAX> m_SoundArray;
 };
 

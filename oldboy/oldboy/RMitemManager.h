@@ -1,6 +1,8 @@
 #pragma once
 #include "RMenumSet.h"
 
+class CRMitem;
+
 class CRMitemManager
 {
 	SINGLETON(CRMitemManager);
@@ -19,8 +21,15 @@ public:
 	// 아이템의 세부 작동은 각 아이템 객체들이 확인 할 것임
 
 private:
-	// 1P용 아이템 1~3티어까지 식별을 위한 enum이 들어갈 배열
-	ItemType	m_Player1Item[3];
-	ItemType	m_Player2Item[3];
+	// 현재 발동 중인 아이템이 들어갈 배열
+	CRMitem*	m_NowItem[PLAYER_MAX];
+
+	// 아이템 뷰에 차례대로 티어별로 타입을 보여주기 위한 배열
+	ItemType	m_Player1Item[TIER_MAX];
+	ItemType	m_Player2Item[TIER_MAX];
+
+	// 각 티어별 좌표값(y축)을 저장
+	float		m_Player1ItemPosition[TIER_MAX];
+	float		m_Player2ItemPosition[TIER_MAX];
 };
 

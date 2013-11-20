@@ -64,6 +64,7 @@ enum SoundType
 	SOUND_NOTE_2,
 	SOUND_NOTE_EFFECT,
 	SOUND_SHUTTER,
+
 	SOUND_MAX
 };
 
@@ -131,3 +132,14 @@ enum ItemType
 
 	ITEM_MAX
 }; // 추후 아이템 구현에 맞게 수정합시다.
+
+enum TierType
+{
+	TIER_NONE,
+
+	TIER_ONE,
+	TIER_TWO,
+	TIER_THREE,
+
+	TIER_MAX
+};

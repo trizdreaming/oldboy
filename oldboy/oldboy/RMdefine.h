@@ -81,7 +81,6 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define MAX_COUNT			7
 
-
 // Resource ฐüทร
 
 #define FOLDER_SLASH		"/"

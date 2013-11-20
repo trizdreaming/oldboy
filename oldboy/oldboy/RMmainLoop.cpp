@@ -55,7 +55,7 @@ void CRMmainLoop::RunMessageLoop()
 	hr = CRMsound::GetInstance()->CreateSound();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_SOUND_INIT, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_SOUND_INIT, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return;
 	}
 
@@ -64,7 +64,7 @@ void CRMmainLoop::RunMessageLoop()
 	hr = CRMsound::GetInstance()->LoadSound( BGM_TITLE, SOUND_BG_TITLE );
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_SOUND_LOADING, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_SOUND_LOADING, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return;
 	}
 
@@ -82,7 +82,7 @@ void CRMmainLoop::RunMessageLoop()
 		// 동영상 재생을 위한 초기화에 실패 했을 경우 동영상 재생 패스
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return;
 		}
 	}
@@ -90,7 +90,7 @@ void CRMmainLoop::RunMessageLoop()
 	hr = CreateObject();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_CREATE_RESOURCE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_RESOURCE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return;
 	}
 
@@ -123,7 +123,7 @@ void CRMmainLoop::RunMessageLoop()
 
 					if ( hr != S_OK )
 					{
-						MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+						MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 						return;
 					}
 				}
@@ -191,7 +191,7 @@ void CRMmainLoop::RunMessageLoop()
 			hr = TestKeyboard();
 			if ( hr != S_OK )
 			{
-				MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+				MessageBox( NULL, ERROR_CHANGE_SCENE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 				return;
 			}
 
@@ -267,7 +267,7 @@ void CRMmainLoop::FindMusicData()
 				hr = CRMxmlLoader::GetInstance()->LoadMusicData( folderName );
 				if ( hr != S_OK )
 				{
-					MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+					MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 					return;
 				}
 				m_MusicVector.push_back( folderName ); 
@@ -377,13 +377,13 @@ HRESULT CRMmainLoop::CreateObject()
 	hr = CRMrender::GetInstance()->CreateFactory();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_CREATE_RENDER, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_RENDER, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 	hr = CRMrender::GetInstance()->CreateRenderTarget();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_CREATE_RENDER_TARGET, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_RENDER_TARGET, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
@@ -393,13 +393,13 @@ HRESULT CRMmainLoop::CreateObject()
 	hr = CRMresourceManager::GetInstance()->CreateFactory();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_CREATE_WIC_FACTORY, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_WIC_FACTORY, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 	hr = CRMresourceManager::GetInstance()->CreateTexture();
 	if ( hr != S_OK )
 	{
-		MessageBox( NULL, ERROR_CREATE_BG_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_BG_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
 
@@ -595,7 +595,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -603,7 +603,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -621,7 +621,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -629,7 +629,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -670,7 +670,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -678,7 +678,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -692,7 +692,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -700,7 +700,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -708,7 +708,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
@@ -735,7 +735,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		if ( hr != S_OK )
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE, MB_OK | MB_ICONSTOP );
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 

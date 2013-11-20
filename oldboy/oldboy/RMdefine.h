@@ -96,7 +96,10 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 // Error 관련 
 // 현재 에러는 콘솔 창에서 표현되는 것
 
-#define ERROR_TITLE			L"TITLE ERROR!"
+// 메시지 박스 타이틀
+#define ERROR_TITLE_NORMAL			L"ERROR!"
+
+// 메시지 박스 내용
 #define ERROR_CHANGE_SCENE	L"Error to Change Scene"
 
 #define ERROR_SOUND_INIT	L"Error Sound Initialize...."

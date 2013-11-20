@@ -170,6 +170,54 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 		return hr;
 	}
+	//이하 플레이 화면
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/judgeRing.png" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_JUDGERING] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
+		InitializeArray();
+
+		return hr;
+	}
+
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/blueBar.png" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_GAUGE_2P] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
+		InitializeArray();
+
+		return hr;
+	}
+
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/redBar.png" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_GAUGE_1P] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
+		InitializeArray();
+
+		return hr;
+	}
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) );

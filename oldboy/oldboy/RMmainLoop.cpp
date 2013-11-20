@@ -21,6 +21,8 @@
 #include "RMresultManager.h"
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
+#include "RMchildGauge.h"
+#include "RMchildJudgeRing.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -435,6 +437,24 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetPosition(0, 0);
 	testObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
+
+	testObject = new CRMchildGauge();
+	testObject->SetObjectType(OBJECT_GAUGE_1P);
+	testObject->SetPosition(0, 0);
+	testObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_GAUGE_PLAYER1);
+
+	testObject = new CRMchildGauge();
+	testObject->SetObjectType(OBJECT_GAUGE_2P);
+	testObject->SetPosition(100, 0);
+	testObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_GAUGE_PLAYER2);
+
+	testObject = new CRMchildJudgeRing();
+	testObject->SetObjectType(OBJECT_JUDGERING);
+	testObject->SetPosition(500, 400);
+	testObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_JUDGERING);
 
 	for ( int i = 0 ; i < MAX_NOTE_IN_POOL ; ++i )
 	{

@@ -19,7 +19,8 @@ enum LayerType
 
 	LAYER_BACKGROUND,
 	LAYER_JUDGERING,  //item 구현용
-	LAYER_GAUGE,	  //item 구현용
+	LAYER_GAUGE_PLAYER1,	  //item 구현용
+	LAYER_GAUGE_PLAYER2,
 	LAYER_ITEM,		  //item 구현용
 	LAYER_NOTE1,
 	LAYER_NOTE2,

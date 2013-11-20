@@ -28,6 +28,10 @@ public:
 private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
 
+	std::list<CRMobject*>		m_ObjectListLayerJudgeRing;
+	std::list<CRMobject*>		m_ObjectListLayerGaugePlayer1;
+	std::list<CRMobject*>		m_ObjectListLayerGaugePlayer2;
+
 	std::list<CRMobject*>		m_ObjectListLayerNotePlayer1;
 	std::list<CRMobject*>		m_ObjectListLayerNotePlayer2;
 	std::list<CRMobject*>		m_ObjectListLayerNoteHit;

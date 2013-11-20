@@ -5,6 +5,7 @@
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
 #include "RMnoteData.h"
+#include "RMdefine.h"
 
 CRMxmlLoader::CRMxmlLoader(void)
 {
@@ -73,14 +74,90 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 		
 	}
 
-	if ( title == "" || artist == "" || level == "" || imageAlbum == "" ||imageBackground == "" || imageShutter == "" || imageNote1 == "" || imageNote2 == "" || imageNoteEffect == "" || soundBackground == "" || soundNoteEffect1 == "" || soundNoteEffect2 == "" || note == "" )
+	if ( title == "" )
 	{
+		MessageBox( NULL, L"NO title Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
+	else if ( artist == "" )
+	{
+		MessageBox( NULL, L"NO artist Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( level == "" )
+	{
+		MessageBox( NULL, L"NO level Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( imageAlbum == "" )
+	{
+		MessageBox( NULL, L"NO imageAlbum Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( imageBackground == "" )
+	{
+		MessageBox( NULL, L"NO imageBackground Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( imageShutter == "" )
+	{
+		MessageBox( NULL, L"NO imageShutter Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( imageNote1 == "" )
+	{
+		MessageBox( NULL, L"NO imageNote1 Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( imageNote2 == "" )
+	{
+		MessageBox( NULL, L"NO imageNote2 Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( imageNoteEffect == "" )
+	{
+		MessageBox( NULL, L"NO imageNoteEffect Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( soundBackground == "" )
+	{
+		MessageBox( NULL, L"NO soundBackground Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( soundNoteEffect1 == "" )
+	{
+		MessageBox( NULL, L"NO soundNoteEffect1 Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( soundNoteEffect2 == "" )
+	{
+		MessageBox( NULL, L"NO soundNoteEffect2 Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+	else if ( note == "" )
+	{
+		MessageBox( NULL, L"NO note Data in index.xml", ERROR_TITLE, MB_OK | MB_ICONSTOP );
+		return S_FALSE;
+	}
+
+	auto& toBeDelete = m_MusicDataMap[folderName];
+	SafeDelete( toBeDelete );
+	m_MusicDataMap[folderName] = new CRMmusicData();
 	
-	SafeDelete( m_MusicDataMap[folderName] );
-	m_MusicDataMap[folderName] = new CRMmusicData( title, artist, level, imageAlbum, imageBackground, imageShutter, imageNote1, imageNote2, imageNoteEffect, soundBackground, soundNoteEffect1, soundNoteEffect2, note );
-	
+	m_MusicDataMap[folderName]->SetTitle( title );
+	m_MusicDataMap[folderName]->SetArtist( artist );
+	m_MusicDataMap[folderName]->SetLevel( level );
+	m_MusicDataMap[folderName]->SetImageAlbum( imageAlbum );
+	m_MusicDataMap[folderName]->SetImageBackground( imageBackground );
+	m_MusicDataMap[folderName]->SetImageShutter( imageShutter );
+	m_MusicDataMap[folderName]->SetImageNote1( imageNote1 );
+	m_MusicDataMap[folderName]->SetImageNote2( imageNote2 );
+	m_MusicDataMap[folderName]->SetImageNoteEffect( imageNoteEffect );
+	m_MusicDataMap[folderName]->SetSoundBackground( soundBackground );
+	m_MusicDataMap[folderName]->SetSoundNoteEffect1( soundNoteEffect1 );
+	m_MusicDataMap[folderName]->SetSoundNoteEffect2( soundNoteEffect2 );
+	m_MusicDataMap[folderName]->SetNote( note );
+
 	return S_OK;
 
 }

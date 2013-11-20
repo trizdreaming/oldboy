@@ -6,5 +6,8 @@ class CRMitem2Tier :
 public:
 	CRMitem2Tier(void);
 	~CRMitem2Tier(void);
+
+private:
+	ItemT1Type	m_ThisType;
 };
 

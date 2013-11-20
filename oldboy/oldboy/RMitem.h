@@ -7,9 +7,6 @@ class CRMitem :
 public:
 	CRMitem(void);
 	~CRMitem(void);
-
-private:
-	ItemType	m_ThisType;
 };
 
 // 부모 클래스

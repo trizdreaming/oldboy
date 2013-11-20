@@ -25,8 +25,12 @@ private:
 	CRMitem*	m_NowItem[PLAYER_MAX];
 
 	// 아이템 뷰에 차례대로 티어별로 타입을 보여주기 위한 배열
-	ItemType	m_Player1Item[TIER_MAX];
-	ItemType	m_Player2Item[TIER_MAX];
+	ItemT1Type	m_Player1T1item;
+	ItemT2Type	m_Player1T2item;
+	ItemT3Type	m_Player1T3item;
+	ItemT1Type	m_Player2T1item;
+	ItemT2Type	m_Player2T2item;
+	ItemT3Type	m_Player2T3item;
 
 	// 각 티어별 좌표값(y축)을 저장
 	float		m_Player1ItemPosition[TIER_MAX];

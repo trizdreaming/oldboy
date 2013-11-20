@@ -36,6 +36,6 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerShutter;
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
 
-	std::list<CRMobject*>		m_ObjectListMemeoryPullOfNote;
+	std::list<CRMobject*>		m_ObjectListMemoryPullOfNote;
 };
 

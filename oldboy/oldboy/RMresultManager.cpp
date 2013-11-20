@@ -20,11 +20,8 @@ CRMresultManager::~CRMresultManager(void)
 void CRMresultManager::ShowResult()
 {
 	//std::to_string(  );
-	CRMplayer*	player1 = nullptr;
-	CRMplayer*	player2 = nullptr;
-
-	player1 = CRMplayer1P::GetInstance();
-	player2 = CRMplayer2P::GetInstance();
+	CRMplayer*	player1 = CRMplayer1P::GetInstance();
+	CRMplayer*	player2 = CRMplayer2P::GetInstance();
 
 	std::string p1ResultText;
 	std::string p2ResultText;

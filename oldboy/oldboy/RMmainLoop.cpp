@@ -440,19 +440,25 @@ HRESULT CRMmainLoop::CreateObject()
 
 	testObject = new CRMchildGauge();
 	testObject->SetObjectType(OBJECT_GAUGE_1P);
-	testObject->SetPosition(0, 0);
+	testObject->SetPosition(378, 530);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_GAUGE_PLAYER1);
 
 	testObject = new CRMchildGauge();
 	testObject->SetObjectType(OBJECT_GAUGE_2P);
-	testObject->SetPosition(100, 0);
+	testObject->SetPosition(893, 530);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_GAUGE_PLAYER2);
 
 	testObject = new CRMchildJudgeRing();
 	testObject->SetObjectType(OBJECT_JUDGERING);
-	testObject->SetPosition(500, 400);
+	testObject->SetPosition(382, 530);
+	testObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_JUDGERING);
+
+	testObject = new CRMchildJudgeRing();
+	testObject->SetObjectType(OBJECT_JUDGERING);
+	testObject->SetPosition(895, 530);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_JUDGERING);
 

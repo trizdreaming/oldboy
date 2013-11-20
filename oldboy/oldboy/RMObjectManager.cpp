@@ -150,15 +150,15 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
-	for ( auto& iter : m_ObjectListLayerJudgeRing )
-	{
-		iter->Update();
-	}
 	for ( auto& iter : m_ObjectListLayerGaugePlayer1 )
 	{
 		iter->Update();
 	}
 	for ( auto& iter : m_ObjectListLayerGaugePlayer2 )
+	{
+		iter->Update();
+	}
+	for ( auto& iter : m_ObjectListLayerJudgeRing )
 	{
 		iter->Update();
 	}
@@ -208,15 +208,15 @@ void CRMobjectManager::Render() const
 	{
 		iter->Render();
 	}
-	for ( auto& iter : m_ObjectListLayerJudgeRing )
-	{
-		iter->Render();
-	}
 	for ( auto& iter : m_ObjectListLayerGaugePlayer1 )
 	{
 		iter->Render();
 	}
 	for ( auto& iter : m_ObjectListLayerGaugePlayer2 )
+	{
+		iter->Render();
+	}
+	for ( auto& iter : m_ObjectListLayerJudgeRing )
 	{
 		iter->Render();
 	}

@@ -117,6 +117,8 @@
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildEffectManager.h" />
+    <ClInclude Include="RMchildGauge.h" />
+    <ClInclude Include="RMchildJudgeRing.h" />
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildShutter.h" />
     <ClInclude Include="RMdefine.h" />
@@ -174,6 +176,8 @@
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
     <ClCompile Include="RMchildEffectManager.cpp" />
+    <ClCompile Include="RMchildGauge.cpp" />
+    <ClCompile Include="RMchildJudgeRing.cpp" />
     <ClCompile Include="RMchildNote.cpp" />
     <ClCompile Include="RMchildShutter.cpp" />
     <ClCompile Include="RMimage.cpp" />

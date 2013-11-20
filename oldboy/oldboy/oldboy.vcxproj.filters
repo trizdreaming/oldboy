@@ -253,6 +253,12 @@
     <ClInclude Include="RMitem.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildGauge.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMchildJudgeRing.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -401,6 +407,12 @@
     </ClCompile>
     <ClCompile Include="RMitem.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildGauge.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildJudgeRing.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -1,6 +1,7 @@
 #include "stdafx.h"
-#include "RMmacro.h"
+#include "rmobject.h"
 #include "RMchildBGImage.h"
+
 
 CRMchildBGImage::CRMchildBGImage(void)
 {

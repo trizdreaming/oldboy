@@ -12,7 +12,6 @@ public:
 	void			SetPlayer( PlayerNumber playerNumber ) { m_playerNumber = playerNumber; }
 
 private:
-	int				m_Tick;
 	PlayerNumber	m_playerNumber;
 };
 

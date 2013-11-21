@@ -438,18 +438,6 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_BACKGROUND);
 
-	testObject = new CRMchildGauge();
-	testObject->SetObjectType(OBJECT_GAUGE_1P);
-	testObject->SetPosition(378, 530);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_GAUGE_PLAYER1);
-
-	testObject = new CRMchildGauge();
-	testObject->SetObjectType(OBJECT_GAUGE_2P);
-	testObject->SetPosition(893, 530);
-	testObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_GAUGE_PLAYER2);
-
 	testObject = new CRMchildJudgeRing();
 	testObject->SetObjectType(OBJECT_JUDGERING);
 	testObject->SetPosition(382, 530);
@@ -461,6 +449,20 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetPosition(895, 530);
 	testObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_JUDGERING);
+
+	CRMchildGauge* gaugeObject = new CRMchildGauge();
+	gaugeObject->SetObjectType(OBJECT_GAUGE_1P);
+	gaugeObject->SetPosition(378, 650);
+	gaugeObject->SetSceneType(SCENE_PLAY);
+	gaugeObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(gaugeObject, LAYER_GAUGE_PLAYER1);
+
+	gaugeObject = new CRMchildGauge();
+	gaugeObject->SetObjectType(OBJECT_GAUGE_2P);
+	gaugeObject->SetPosition(893, 650);
+	gaugeObject->SetSceneType(SCENE_PLAY);
+	gaugeObject->SetPlayer(PLAYER_TWO);
+	CRMobjectManager::GetInstance()->AddObject(gaugeObject, LAYER_GAUGE_PLAYER2);
 
 	for ( int i = 0 ; i < MAX_NOTE_IN_POOL ; ++i )
 	{

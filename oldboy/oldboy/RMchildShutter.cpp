@@ -8,7 +8,6 @@
 
 
 CRMchildShutter::CRMchildShutter(void) :
-	m_Tick(0),
 	m_playerNumber(PLAYER_NONE)
 {
 }

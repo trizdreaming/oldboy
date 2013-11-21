@@ -36,6 +36,9 @@
             this.음원ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.불러오기ToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.mp3Label = new System.Windows.Forms.Label();
+            this.timeLabel = new System.Windows.Forms.Label();
+            this.playButton = new System.Windows.Forms.Button();
+            this.stopButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,7 +50,7 @@
             this.음원ToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1008, 24);
+            this.menuStrip1.Size = new System.Drawing.Size(784, 24);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
@@ -102,18 +105,51 @@
             this.mp3Label.BackColor = System.Drawing.SystemColors.ScrollBar;
             this.mp3Label.Location = new System.Drawing.Point(0, 24);
             this.mp3Label.Name = "mp3Label";
-            this.mp3Label.Padding = new System.Windows.Forms.Padding(5);
-            this.mp3Label.Size = new System.Drawing.Size(1010, 80);
+            this.mp3Label.Padding = new System.Windows.Forms.Padding(5, 3, 5, 5);
+            this.mp3Label.Size = new System.Drawing.Size(784, 20);
             this.mp3Label.TabIndex = 1;
             this.mp3Label.Text = "음원 파일 : 없음";
             this.mp3Label.Click += new System.EventHandler(this.label1_Click);
+            // 
+            // timeLabel
+            // 
+            this.timeLabel.Location = new System.Drawing.Point(0, 45);
+            this.timeLabel.Name = "timeLabel";
+            this.timeLabel.Padding = new System.Windows.Forms.Padding(5, 3, 5, 5);
+            this.timeLabel.Size = new System.Drawing.Size(150, 20);
+            this.timeLabel.TabIndex = 2;
+            this.timeLabel.Text = "재생 시간 : 0ms";
+            this.timeLabel.Click += new System.EventHandler(this.label1_Click_1);
+            // 
+            // playButton
+            // 
+            this.playButton.Location = new System.Drawing.Point(12, 68);
+            this.playButton.Name = "playButton";
+            this.playButton.Size = new System.Drawing.Size(75, 23);
+            this.playButton.TabIndex = 3;
+            this.playButton.Text = "Play";
+            this.playButton.UseVisualStyleBackColor = true;
+            this.playButton.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // stopButton
+            // 
+            this.stopButton.Location = new System.Drawing.Point(93, 68);
+            this.stopButton.Name = "stopButton";
+            this.stopButton.Size = new System.Drawing.Size(75, 23);
+            this.stopButton.TabIndex = 5;
+            this.stopButton.Text = "Stop";
+            this.stopButton.UseVisualStyleBackColor = true;
+            this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
-            this.ClientSize = new System.Drawing.Size(1008, 627);
+            this.ClientSize = new System.Drawing.Size(784, 445);
+            this.Controls.Add(this.stopButton);
+            this.Controls.Add(this.playButton);
+            this.Controls.Add(this.timeLabel);
             this.Controls.Add(this.mp3Label);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
@@ -137,6 +173,9 @@
         private System.Windows.Forms.ToolStripMenuItem 음원ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem 불러오기ToolStripMenuItem1;
         private System.Windows.Forms.Label mp3Label;
+        private System.Windows.Forms.Label timeLabel;
+        private System.Windows.Forms.Button playButton;
+        private System.Windows.Forms.Button stopButton;
     }
 }
 

@@ -40,6 +40,10 @@ namespace NoteEditor
         private static extern int FMOD_Channel_SetPosition(IntPtr chan, uint position, uint postype);
         // FMOD_RESULT F_API FMOD_Channel_SetPosition (FMOD_CHANNEL *channel, unsigned int position, FMOD_TIMEUNIT postype);
 
+        [DllImport("fmodex.dll", EntryPoint = "FMOD_Channel_GetPosition")]
+        private static extern int FMOD_Channel_GetPosition(IntPtr chan, ref uint position, uint postype);
+        // FMOD_RESULT F_API FMOD_Channel_GetPosition (FMOD_CHANNEL *channel, unsigned int *position, FMOD_TIMEUNIT postype);
+
         private IntPtr fmodSystem;
         private IntPtr info;
         private IntPtr sound;
@@ -61,22 +65,27 @@ namespace NoteEditor
             return errorResult;
         }
 
-        public int createSound(String fileName)
+        public int CreateSound(String fileName)
         {
             return FMOD_System_CreateSound(fmodSystem, fileName, 0, info, ref sound);
         }
 
-        public int playSound()
+        public int PlaySound()
         {
             return FMOD_System_PlaySound(fmodSystem, -1, sound, false, ref chan);
         }
 
-        public int stopSound()
+        public int StopSound()
         {
             return FMOD_Channel_Stop(chan);
         }
 
-        public int seekPosition(uint position)
+        public int GetPosition(ref uint position)
+        {
+            return FMOD_Channel_GetPosition(chan, ref position, 1);
+        }
+
+        public int SetPosition(uint position)
         {
             return FMOD_Channel_SetPosition(chan, position, 1);
         }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,15 +20,63 @@ namespace NoteEditor
         Fmod fmod = new Fmod();
         Thread timeThread;
         uint playingTime = 0;
+        uint totalTime = 0;
         
         public Main()
         {
             InitializeComponent();
             timeThread = new Thread(CountPlayingTime);
             timeThread.Start();
+
+            SetStyle(ControlStyles.AllPaintingInWmPaint, true);
+            SetStyle(ControlStyles.DoubleBuffer, true);
+
+            Paint += new PaintEventHandler(TestDraw);
         }
 
+        protected override void OnPaint(PaintEventArgs pe)
+        {
+            Graphics g = pe.Graphics;
+            g.SmoothingMode = SmoothingMode.HighQuality;
+            // g.TranslateTransform(0, 0);
+
+            DrawPosition(g);
+
+            base.OnPaint(pe);
+        }
+        
         public delegate void SetTextCallback(string message);
+
+        protected void TestDraw(object sender, PaintEventArgs e)
+        {
+            e.Graphics.DrawRectangle(Pens.Green, 10, 100, 760, 20);
+        }
+
+        protected void DrawPosition(Graphics g)
+        {
+            if (totalTime < 1)
+            {
+                g.FillRectangle(new SolidBrush(Color.WhiteSmoke), 11, 101, 758, 18);
+                return;
+            }
+            int tempTotal = (int)totalTime + 1;
+            int totalLength = (int)((758) * playingTime / tempTotal);
+
+            g.FillRectangle(new SolidBrush(Color.Red), 11, 101, totalLength, 18);
+        }
+        
+        protected void DrawPosition(object sender, PaintEventArgs e)
+        {
+            if (totalTime < 1)
+            {
+                e.Graphics.FillRectangle(new SolidBrush(Color.WhiteSmoke), 11, 101, 759, 19);
+                return;
+            }
+            int tempTotal = (int)totalTime + 1;
+            int totalLength = (int)(759 * playingTime / tempTotal);
+
+            e.Graphics.FillRectangle(new SolidBrush(Color.Red), 11, 101, totalLength, 19);
+        }
 
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
@@ -66,7 +115,7 @@ namespace NoteEditor
                 }
 
                 errorResult = fmod.StopSound();
-
+                totalTime = fmod.GetLength();
             }
         }
 
@@ -75,7 +124,6 @@ namespace NoteEditor
             while (true)
             {
                 fmod.GetPosition(ref playingTime);
-                // timeLabel.Text = "재생 시간 : " + playingTime + "ms";
                 SetText("재생 시간 : " + playingTime + "ms");
             }
         }
@@ -91,6 +139,8 @@ namespace NoteEditor
                 {
                     SetTextCallback d = new SetTextCallback(SetText);
                     this.Invoke(d, new object[] { text });
+
+                    this.Invalidate();
                 }
                 catch
                 {
@@ -142,7 +192,11 @@ namespace NoteEditor
         {
             errorResult = fmod.StopSound();
             playingTime = 0;
-            // timeLabel.Text = "재생 시간 : " + playingTime + "ms";
+        }
+
+        private void Main_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

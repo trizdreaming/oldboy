@@ -116,7 +116,7 @@ enum KeyStatus
 	KEY_MAX
 };
 
-enum ItemT1Type
+enum ItemTearType
 {
 	ITEM_T1_NONE,
 
@@ -125,11 +125,7 @@ enum ItemT1Type
 	ITEM_T1_3,
 	ITEM_T1_4,
 
-	ITEM_T1_MAX
-}; // 추후 아이템 구현에 맞게 수정합시다.
-
-enum ItemT2Type
-{
+	ITEM_T1_MAX,
 	ITEM_T2_NONE,
 
 	ITEM_T2_1,
@@ -137,11 +133,7 @@ enum ItemT2Type
 	ITEM_T2_3,
 	ITEM_T2_4,
 
-	ITEM_T2_MAX
-}; // 추후 아이템 구현에 맞게 수정합시다.
-
-enum ItemT3Type
-{
+	ITEM_T2_MAX,
 	ITEM_T3_NONE,
 
 	ITEM_T3_1,

@@ -4,7 +4,8 @@
 
 CRMplayer::CRMplayer(void) :
 	m_PrevIsCombo(false),
-	m_HP(PLAYER_HP_MAX)
+	m_HP(PLAYER_HP_MAX),
+	m_MP(0)
 {
 	ZeroMemory( m_Count, sizeof(m_Count) );
 }
@@ -18,6 +19,7 @@ void CRMplayer::Init()
 	ZeroMemory( m_Count, sizeof(m_Count) );
 	m_PrevIsCombo = false;
 	m_HP = PLAYER_HP_MAX;
+	m_MP = 0;
 }
 
 void CRMplayer::CalcCombo()
@@ -45,11 +47,13 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
 		m_Count[COUNT_SCORE] += 5;
+		m_MP += 3;
 		CalcCombo();
 		break;
 	case JUDGE_GOOD:
 		++m_Count[COUNT_GOOD];
 		m_Count[COUNT_SCORE] += 3;
+		m_MP += 1;
 		CalcCombo();
 		break;
 	case JUDGE_MISS:

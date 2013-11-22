@@ -116,7 +116,7 @@ enum KeyStatus
 	KEY_MAX
 };
 
-enum ItemTearType
+enum ItemType
 {
 	ITEM_T1_NONE,
 

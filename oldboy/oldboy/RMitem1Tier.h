@@ -8,6 +8,6 @@ public:
 	~CRMitem1Tier(void);
 
 private:
-	ItemT1Type	m_ThisType;
+	ItemType	m_ThisType;
 };
 

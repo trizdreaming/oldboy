@@ -6,6 +6,7 @@
 #include "RMobjectManager.h"
 #include "RMdefine.h"
 #include "RMplayer1P.h"
+#include "RMplayer2P.h"
 
 CRMchildGauge::CRMchildGauge(void)
 {
@@ -30,36 +31,34 @@ void CRMchildGauge::Update()
 	//////////////////////////////////////////////////////////////////////////
 
 	float nowShutterPosition = 0.0f;
+	int hp = CRMplayer1P::GetInstance()->GetHP();
 
-	switch (m_playerNumber)
+	nowShutterPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) hp ) * -((float) SHUTTER_START_POSITION_Y / 10) + 668;
+	
+	if ( m_playerNumber == PLAYER_TWO )
 	{
-	case PLAYER_NONE:
-		break;
-	case PLAYER_ONE:
-		nowShutterPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10) + 668;
-		break;
-	case PLAYER_TWO:
-		nowShutterPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10) + 668;
-		break;
-	case PLAYER_MAX:
-		break;
-	default:
-		break;
+		hp = CRMplayer2P::GetInstance()->GetHP();
+		nowShutterPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) hp ) * -((float) SHUTTER_START_POSITION_Y / 10) + 668;
 	}
 
 
-	if ( m_PositionY <= nowShutterPosition)
+	if ( m_PositionY - 12 >= nowShutterPosition)
 	{
-		switch (m_playerNumber)
+		int mp = CRMplayer1P::GetInstance()->GetMP();
+		
+		if( m_playerNumber == PLAYER_TWO )
 		{
-		case PLAYER_ONE:
-			
-			break;
-		case PLAYER_TWO:
-			
-			break;
-		default:
-			break;
+			mp = CRMplayer2P::GetInstance()->GetMP();
+		}
+
+		if( mp < hp * 65 ) //mp ¿Í hp ºñÀ²
+		{
+			m_PositionY = (float)( SCREEN_SIZE_Y - 12 - mp );
 		}
 	}
+	else
+	{
+		m_PositionY = nowShutterPosition;
+	}
+
 }

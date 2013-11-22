@@ -47,13 +47,21 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
 		m_Count[COUNT_SCORE] += 5;
-		m_MP += 3;
+		m_MP += 16;
+		if( m_MP > m_HP * 65 )
+		{
+			m_MP = m_HP * 65;
+		}
 		CalcCombo();
 		break;
 	case JUDGE_GOOD:
 		++m_Count[COUNT_GOOD];
 		m_Count[COUNT_SCORE] += 3;
-		m_MP += 1;
+		m_MP += 8;
+		if( m_MP > m_HP * 65 )
+		{
+			m_MP = m_HP * 65;
+		}
 		CalcCombo();
 		break;
 	case JUDGE_MISS:

@@ -6,7 +6,8 @@
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
 
-CRMmusicSelectManager::CRMmusicSelectManager(void)
+CRMmusicSelectManager::CRMmusicSelectManager(void):
+	m_MusicSelectIndex(0)
 {
 }
 
@@ -15,7 +16,7 @@ CRMmusicSelectManager::~CRMmusicSelectManager(void)
 {
 }
 
-HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& musicVector, const int index ) const
+HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& musicVector ) const
 {
 	int totalMusicNum = musicVector.size();
 	int indexFix = 0;
@@ -23,7 +24,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 
 	if ( totalMusicNum > 0 )	// 0
 	{
-		indexFix = index % totalMusicNum;
+		indexFix = m_MusicSelectIndex % totalMusicNum;
 
 		CRMlabel* musicList1 = new CRMlabel();
 		musicList1->CreateLabel( LABEL_NAME_SELECT_LIST1 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 55.0F );
@@ -33,7 +34,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 1 )	// 1
 	{
-		indexFix = (index + 1) % totalMusicNum;
+		indexFix = (m_MusicSelectIndex + 1) % totalMusicNum;
 		
 		CRMlabel* musicList2 = new CRMlabel();
 		musicList2->CreateLabel( LABEL_NAME_SELECT_LIST2 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
@@ -43,7 +44,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 2 )	// -1
 	{
-		indexFix = (totalMusicNum + index - 1) % totalMusicNum;
+		indexFix = (totalMusicNum + m_MusicSelectIndex - 1) % totalMusicNum;
 
 		CRMlabel* musicList3 = new CRMlabel();
 		musicList3->CreateLabel( LABEL_NAME_SELECT_LIST3 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
@@ -53,7 +54,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 3 )	// 2
 	{
-		indexFix = (index + 2) % totalMusicNum;
+		indexFix = (m_MusicSelectIndex + 2) % totalMusicNum;
 
 		CRMlabel* musicList4 = new CRMlabel();
 		musicList4->CreateLabel( LABEL_NAME_SELECT_LIST4 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
@@ -63,7 +64,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	}
 	if ( totalMusicNum > 4 )	// -2
 	{
-		indexFix = (totalMusicNum + index - 2) % totalMusicNum;
+		indexFix = (totalMusicNum + m_MusicSelectIndex - 2) % totalMusicNum;
 
 		CRMlabel* musicList5 = new CRMlabel();
 		musicList5->CreateLabel( LABEL_NAME_SELECT_LIST5 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );

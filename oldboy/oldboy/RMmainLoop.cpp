@@ -32,8 +32,7 @@ CRMmainLoop::CRMmainLoop(void):
 	m_ElapsedTime(0),
 	m_FpsCheckTime(0),
 	m_SceneType(SCENE_OPENING),
-	m_Hwnd(NULL),
-	m_MusicSelectIndex(0)
+	m_Hwnd(NULL)
 {
 	m_Fps = ( 1000 / 60 ) + 1;
 }
@@ -211,7 +210,7 @@ void CRMmainLoop::RunMessageLoop()
 			//현재 수정 중(모든 Label 통합 작업 중)
 			if ( m_SceneType == SCENE_SELECT_MUSIC )
 			{
-				CRMmusicSelectManager::GetInstance()->ShowMusicList( m_MusicVector, m_MusicSelectIndex );
+				CRMmusicSelectManager::GetInstance()->ShowMusicList( m_MusicVector );
 			}
 			else if ( m_SceneType == SCENE_PLAY )
 			{
@@ -619,16 +618,17 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex % m_MusicVector.size() );
+		m_PlayMusicName = m_MusicVector.at( CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex() % m_MusicVector.size() );
 
 		hr = GoNextScene();
 	}
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		++m_MusicSelectIndex %= m_MusicVector.size();
-
-		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+		UINT selectIndex = CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex();
+		++selectIndex %= m_MusicVector.size();
+		CRMmusicSelectManager::GetInstance()->SetMusicSelectIndex( selectIndex );
+		m_PlayMusicName = m_MusicVector.at( selectIndex );
 
 		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
 
@@ -726,10 +726,12 @@ HRESULT CRMmainLoop::TestKeyboard()
 	//////////////////////////////////////////////////////////////////////////
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		m_MusicSelectIndex += m_MusicVector.size(); // 언더플로우 방지
-		--m_MusicSelectIndex %= m_MusicVector.size();
 
-		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+		UINT selectIndex = CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex();
+		selectIndex += m_MusicVector.size(); // 언더플로우 방지
+		--selectIndex %= m_MusicVector.size();
+		CRMmusicSelectManager::GetInstance()->SetMusicSelectIndex( selectIndex );
+		m_PlayMusicName = m_MusicVector.at( selectIndex );
 
 		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
 
@@ -778,7 +780,7 @@ HRESULT CRMmainLoop::GoNextScene()
 	{
 		m_SceneType = SCENE_SELECT_MUSIC;
 		
-		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
+		m_PlayMusicName = m_MusicVector.at( CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex() );
 
 		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
 

@@ -49,6 +49,6 @@ private:
 
 	std::string						m_PlayMusicName;
 
-	UINT							m_MusicSelectIndex;
+	//UINT							m_MusicSelectIndex;
 };
 

@@ -206,15 +206,24 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 		break;
 	}
 
+
 	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
 	{
-		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_STATUS_DOWN )
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_STATUS_PRESSED ) )
+		{
+			return false;
+		}
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_STATUS_DOWN ) )
 		{
 			return true;
 		}
 	}
 	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
 	{
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_STATUS_PRESSED ) )
+		{
+			return false;
+		}
 		if ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_STATUS_DOWN )
 		{
 			return true;

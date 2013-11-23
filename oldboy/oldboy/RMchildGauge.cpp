@@ -54,11 +54,25 @@ void CRMchildGauge::Update()
 		if( mp < hp * 65 ) //mp 와 hp 비율
 		{
 			m_PositionY = (float)( SCREEN_SIZE_Y - 12 - mp );
+
+// 증가 폭이 커지면 증가에도 위치 값이 적용되어야 할까?
+// 예비 코드임!
+// 			float resultPosition = (float)( SCREEN_SIZE_Y - 12 - mp );
+// 			if ( (int)m_PositionY != (int)resultPosition )
+// 			{
+// 				m_PositionY += (resultPosition - m_PositionY) / 20;
+// 			}
+// 			m_PositionY = (float)( SCREEN_SIZE_Y - 12 - mp );
 		}
 	}
 	else
 	{
-		m_PositionY = nowShutterPosition;
+		//셔터 내려오는 애니메이션과 싱크 맞춤
+		float resultPosion = nowShutterPosition;
+		if ( (int)m_PositionY != (int)resultPosion )
+		{
+			m_PositionY += (resultPosion - m_PositionY) /20;
+		}
 	}
 
 }

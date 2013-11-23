@@ -183,8 +183,9 @@ namespace NoteEditor
                 Thread.Sleep(10);
                 this.Invalidate();
             }
-            sysSound.SetSystemVolume(sysSoundTemp);
             errorResult = fmod.StopSound();
+            Thread.Sleep(200);
+            sysSound.SetSystemVolume(sysSoundTemp);
         }
 
         private void CountPlayingTime()

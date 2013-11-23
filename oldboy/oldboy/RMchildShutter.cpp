@@ -37,26 +37,43 @@ void CRMchildShutter::Update()
 
 	if ( m_PositionY < -10 )
 	{
-		switch (m_playerNumber)
+		m_PositionX = SHUTTER_P1_START_POSITION_X;
+		if ( m_playerNumber == PLAYER_TWO )
 		{
-		case PLAYER_ONE:
-			m_PositionX = SHUTTER_P1_START_POSITION_X;
-			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
-			if ( (int)m_PositionY != (int)resultPosition )
-			{
-				m_PositionY += (resultPosition - m_PositionY) / 20;
-			}
-			break;
-		case PLAYER_TWO:
 			m_PositionX = SHUTTER_P2_START_POSITION_X;
-			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer2P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
-			if ( (int)m_PositionY != (int)resultPosition )
-			{
-				m_PositionY += (resultPosition - m_PositionY) / 20;
-			}
-			break;
-		default:
-			break;
 		}
+
+		resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
+		if ( m_playerNumber == PLAYER_TWO )
+		{
+			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer2P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
+		}
+
+		if ( (int)m_PositionY != (int)resultPosition )
+		{
+			m_PositionY += (resultPosition - m_PositionY) / 20;
+		}
+
+// 		switch (m_playerNumber)
+// 		{
+// 		case PLAYER_ONE:
+// 			m_PositionX = SHUTTER_P1_START_POSITION_X;
+// 			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
+// 			if ( (int)m_PositionY != (int)resultPosition )
+// 			{
+// 				m_PositionY += (resultPosition - m_PositionY) / 20;
+// 			}
+// 			break;
+// 		case PLAYER_TWO:
+// 			m_PositionX = SHUTTER_P2_START_POSITION_X;
+// 			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer2P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / 10);
+// 			if ( (int)m_PositionY != (int)resultPosition )
+// 			{
+// 				m_PositionY += (resultPosition - m_PositionY) / 20;
+// 			}
+// 			break;
+// 		default:
+// 			break;
+// 		}
 	}
 }

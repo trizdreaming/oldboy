@@ -7,8 +7,10 @@
 
 CRMnoteManager::CRMnoteManager(void):
 	m_GamePlaying(false),
+	m_IsPaused(false),
 	m_GameStartTime(0),
 	m_ElapsedTime(0),
+	m_PausedTime(0),
 	m_NoteReadyTime(0),
 	m_NoteReadyLevel(0),
 	m_NoteReadyType(OBJECT_NONE)
@@ -23,8 +25,10 @@ CRMnoteManager::~CRMnoteManager(void)
 void CRMnoteManager::Initialize()
 {
 	m_GamePlaying = true;
+	m_IsPaused = false;
 	m_GameStartTime = timeGetTime();
 	m_ElapsedTime = 0;
+	m_PausedTime = 0;
 	m_NoteReadyTime = UINT_MAX;
 	m_NoteReadyLevel = 0;
 	m_NoteReadyType = OBJECT_NONE;
@@ -52,7 +56,12 @@ void CRMnoteManager::StartNote()
 	{
 		m_ElapsedTime = timeGetTime() - m_GameStartTime;
 
-		if ( m_ElapsedTime > m_NoteReadyTime )
+		if (m_IsPaused)
+		{
+			++m_PausedTime;
+		}
+
+		if ( m_ElapsedTime > (m_NoteReadyTime + m_PausedTime) )
 		{
 			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_NoteReadyType );
 			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , m_NoteReadyType );

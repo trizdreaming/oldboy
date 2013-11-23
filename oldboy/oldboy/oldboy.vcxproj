@@ -120,6 +120,7 @@
     <ClInclude Include="RMchildGauge.h" />
     <ClInclude Include="RMchildJudgeRing.h" />
     <ClInclude Include="RMchildNote.h" />
+    <ClInclude Include="RMchildPauseImage.h" />
     <ClInclude Include="RMchildShutter.h" />
     <ClInclude Include="RMdefine.h" />
     <ClInclude Include="RMenumSet.h" />
@@ -183,6 +184,7 @@
     <ClCompile Include="RMchildGauge.cpp" />
     <ClCompile Include="RMchildJudgeRing.cpp" />
     <ClCompile Include="RMchildNote.cpp" />
+    <ClCompile Include="RMchildPauseImage.cpp" />
     <ClCompile Include="RMchildShutter.cpp" />
     <ClCompile Include="RMimage.cpp" />
     <ClCompile Include="RMinput.cpp" />

@@ -23,6 +23,7 @@
 #include "RMplayer2P.h"
 #include "RMchildGauge.h"
 #include "RMchildJudgeRing.h"
+#include "RMchildPauseImage.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -496,6 +497,12 @@ HRESULT CRMmainLoop::CreateObject()
 		CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_NOTE_HIT);
 	}
 
+	// pause용 이미지
+	testObject = new CRMchildPauseImage();
+	testObject->SetObjectType(OBJECT_PAUSE_IMAGE_PLAY_CANCEL);
+	testObject->SetPosition(390, 120); // 값 찾아서 define해야함 
+	testObject->SetSceneType(SCENE_SELECT_MUSIC); // 필요 없지만 그냥 초기화
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
 	//<<<< 여기까지 이미지 자원
 	//>>>> 여기부터 Label 자원
 	
@@ -640,7 +647,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		m_MusicSelectIndex += 7;
+		m_MusicSelectIndex += m_MusicVector.size();
 		--m_MusicSelectIndex %= m_MusicVector.size();
 
 		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);

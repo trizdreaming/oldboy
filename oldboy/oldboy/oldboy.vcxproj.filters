@@ -269,6 +269,9 @@
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
     <ClInclude Include="RMpauseManager.h" />
+    <ClInclude Include="RMchildPauseImage.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -434,6 +437,9 @@
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
     <ClCompile Include="RMpauseManager.cpp" />
+    <ClCompile Include="RMchildPauseImage.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

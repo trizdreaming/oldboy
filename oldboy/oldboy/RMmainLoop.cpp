@@ -834,6 +834,8 @@ HRESULT CRMmainLoop::GoNextScene()
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, false );
 
 		CRMnoteManager::GetInstance()->Initialize();
+		CRMplayer1P::GetInstance()->Init();
+		CRMplayer2P::GetInstance()->Init();
 
 		return S_OK;
 	}

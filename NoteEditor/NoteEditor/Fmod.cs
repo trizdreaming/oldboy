@@ -28,6 +28,8 @@ namespace NoteEditor
         private static extern int FMOD_System_CreateSound(IntPtr fmodSystem, String soundName, int mode, IntPtr info, ref IntPtr sound);
         // FMOD_RESULT F_API FMOD_System_CreateSound (FMOD_SYSTEM *system, const char *name_or_data, FMOD_MODE mode, FMOD_CREATESOUNDEXINFO *exinfo, FMOD_SOUND **sound);
 
+        // FMOD_RESULT F_API FMOD_Sound_Release (FMOD_SOUND *sound);
+
         [DllImport("fmodex.dll", EntryPoint = "FMOD_System_PlaySound")]
         private static extern int FMOD_System_PlaySound(IntPtr fmodSystem, int channelId, IntPtr sound, bool paused, ref IntPtr chan);
         // FMOD_RESULT F_API FMOD_System_PlaySound (FMOD_SYSTEM *system, FMOD_CHANNELINDEX channelid, FMOD_SOUND *sound, FMOD_BOOL paused, FMOD_CHANNEL **channel);
@@ -48,19 +50,26 @@ namespace NoteEditor
         private static extern int FMOD_Sound_GetLength(IntPtr sound, ref uint length, uint postype);
         // FMOD_RESULT F_API FMOD_Sound_GetLength (FMOD_SOUND *sound, unsigned int *length, FMOD_TIMEUNIT lengthtype);
 
+        [DllImport("fmodex.dll", EntryPoint = "FMOD_Channel_GetSpectrum")]
+        private static extern int FMOD_Channel_GetSpectrum(IntPtr chan, float[] spectrumArray, int numValues, int channelOffset, int windowType);
+        // FMOD_RESULT F_API FMOD_Channel_GetSpectrum (FMOD_CHANNEL *channel, float *spectrumarray, int numvalues, int channeloffset, FMOD_DSP_FFT_WINDOW windowtype);
+
+        // FMOD_RESULT F_API FMOD_Channel_SetMute (FMOD_CHANNEL *channel, FMOD_BOOL mute);
+
         // FMOD_RESULT F_API FMOD_Channel_SetPaused (FMOD_CHANNEL *channel, FMOD_BOOL paused);
+
         // FMOD_RESULT F_API FMOD_Channel_GetPaused (FMOD_CHANNEL *channel, FMOD_BOOL *paused);
 
         private IntPtr fmodSystem;
-        private IntPtr info;
         private IntPtr sound;
-        private IntPtr nullptr;
         private IntPtr chan;
+        private IntPtr info;
+        private IntPtr nullptr;
 
         public int System_Create()
         {
-            int errorResult =  FMOD_System_Create(ref fmodSystem);
-
+            int errorResult = FMOD_System_Create(ref fmodSystem);
+            
             if (errorResult != 0)
                 return errorResult;
 
@@ -68,7 +77,7 @@ namespace NoteEditor
 
             if (errorResult != 0)
                 FMOD_System_Release(ref fmodSystem);
-
+            
             return errorResult;
         }
 
@@ -107,5 +116,40 @@ namespace NoteEditor
 
             return length;
         }
+
+        public int GetLoud(ref uint leftLoud, ref uint rightLoud)
+        {
+            float[] spectrumArrayLeft = new float[64];
+            float[] spectrumArrayRight = new float[64];
+
+            leftLoud = 0;
+            rightLoud = 0;
+
+            int errorResult = FMOD_Channel_GetSpectrum(chan, spectrumArrayLeft, 64, 0, 0);
+            if (errorResult != 0)
+            {
+                errorResult += 10000;
+            }
+
+            errorResult = FMOD_Channel_GetSpectrum(chan, spectrumArrayRight, 64, 1, 0);
+            if (errorResult != 0)
+            {
+                errorResult += 10000;
+            }
+
+            for (int i = 0; i < 64; ++i)
+            {
+                leftLoud += (spectrumArrayLeft[i] > 0) ? (uint) (spectrumArrayLeft[i] * 25) : 0;
+                rightLoud += (spectrumArrayRight[i] > 0) ? (uint) (spectrumArrayRight[i] * 25) : 0;
+            }
+
+            if (leftLoud == 0)
+                leftLoud += rightLoud;
+            if (rightLoud == 0)
+                rightLoud += leftLoud;
+
+            return errorResult;
+        }
+
     }
 }

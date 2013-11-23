@@ -14,33 +14,48 @@ namespace NoteEditor
 {
     public partial class Main : Form
     {
+        static uint MAX_BLOCK = 760;
+
         string mp3FileName = string.Empty;
-       
         int errorResult = 0;
         Fmod fmod = new Fmod();
-        Thread timeThread;
+        Thread timeThread, loudThread;
         uint playingTime = 0;
         uint totalTime = 0;
+        uint leftLoud = 0;
+        uint rightLoud = 0;
+        uint[] leftLoudTable = new uint[MAX_BLOCK];
+        uint[] rightLoudTable = new uint[MAX_BLOCK];
+        uint delta = 0;
+        Brush whiteBrush = new SolidBrush(Color.WhiteSmoke);
+        Brush greenBrush = new SolidBrush(Color.Green);
         
         public Main()
         {
             InitializeComponent();
-            timeThread = new Thread(CountPlayingTime);
-            timeThread.Start();
-
+            
             SetStyle(ControlStyles.AllPaintingInWmPaint, true);
             SetStyle(ControlStyles.DoubleBuffer, true);
 
             Paint += new PaintEventHandler(TestDraw);
+            
+            errorResult = fmod.System_Create();
+            if (errorResult != 0)
+            {
+                mp3Label.Text = "Fmod 시스템 생성 실패 : " + errorResult;
+            }
+
+            timeThread = new Thread(CountPlayingTime);
+            timeThread.Start();
         }
 
         protected override void OnPaint(PaintEventArgs pe)
         {
             Graphics g = pe.Graphics;
             g.SmoothingMode = SmoothingMode.HighQuality;
-            // g.TranslateTransform(0, 0);
-
+            
             DrawPosition(g);
+            DrawGraphs(g);
 
             base.OnPaint(pe);
         }
@@ -56,24 +71,45 @@ namespace NoteEditor
         {
             if (totalTime < 1)
             {
-                g.FillRectangle(new SolidBrush(Color.WhiteSmoke), 11, 101, 758, 18);
+                g.FillRectangle(whiteBrush, 11, 101, 759, 18);
                 return;
             }
             int tempTotal = (int)totalTime + 1;
-            int totalLength = (int)((758) * playingTime / tempTotal);
+            int totalLength = (int)((759) * playingTime / tempTotal);
 
-            g.FillRectangle(new SolidBrush(Color.Red), 11, 101, totalLength, 18);
+            g.FillRectangle(greenBrush, 11, 101, totalLength, 18);
         }
-        
+
+        protected void DrawGraphs(Graphics g)
+        {
+            for (int i = 0; i < MAX_BLOCK; ++i)
+            {
+                if (i == (int)(760 * playingTime / (totalTime + 1)))
+                {
+                    g.DrawLine(Pens.Black, new PointF(10 + i, 140), new PointF(10 + i, 260));
+                }
+                else if (i < (int)(760 * playingTime / (totalTime + 1)))
+                {
+                    g.DrawLine(Pens.OrangeRed, new PointF(10 + i, 200), new PointF(10 + i, 200 - ((leftLoudTable[i] > 50) ? 50 : leftLoudTable[i])));
+                    g.DrawLine(Pens.PaleVioletRed, new PointF(10 + i, 200), new PointF(10 + i, 200 + ((leftLoudTable[i] > 50) ? 50 : leftLoudTable[i])));
+                }
+                else
+                {
+                    g.DrawLine(Pens.BlueViolet, new PointF(10 + i, 200), new PointF(10 + i, 200 - ((leftLoudTable[i] > 50) ? 50 : leftLoudTable[i])));
+                    g.DrawLine(Pens.DeepSkyBlue, new PointF(10 + i, 200), new PointF(10 + i, 200 + ((leftLoudTable[i] > 50) ? 50 : leftLoudTable[i])));
+                }
+                
+            }
+        }
+
         protected void DrawPosition(object sender, PaintEventArgs e)
         {
             if (totalTime < 1)
             {
-                e.Graphics.FillRectangle(new SolidBrush(Color.WhiteSmoke), 11, 101, 759, 19);
+                e.Graphics.FillRectangle(new SolidBrush(Color.WhiteSmoke), 11, 101, 760, 19);
                 return;
             }
-            int tempTotal = (int)totalTime + 1;
-            int totalLength = (int)(759 * playingTime / tempTotal);
+            int totalLength = (int)(760 * playingTime / (totalTime + 1));
 
             e.Graphics.FillRectangle(new SolidBrush(Color.Red), 11, 101, totalLength, 19);
         }
@@ -102,12 +138,7 @@ namespace NoteEditor
                 mp3Label.Text = "음원 파일 : " + mp3FileName;
 
                 // 재생 코드
-                errorResult = fmod.System_Create();
-                if (errorResult != 0)
-                {
-                    mp3Label.Text = "Fmod 시스템 생성 실패 : " + errorResult;
-                }
-
+                
                 errorResult = fmod.CreateSound(mp3FileName);
                 if (errorResult != 0)
                 {
@@ -116,30 +147,58 @@ namespace NoteEditor
 
                 errorResult = fmod.StopSound();
                 totalTime = fmod.GetLength();
+
+                delta = (uint)(totalTime / MAX_BLOCK);
+
+                errorResult = fmod.PlaySound();
+
+                for (int i = 0; i < MAX_BLOCK; ++i)
+                {
+                    leftLoudTable[i] = 0;
+                    rightLoudTable[i] = 0;
+                }
+                loudThread = new Thread(CalcLoud);
+                loudThread.Start();
             }
+        }
+
+        private void CalcLoud()
+        {
+            uint i = 0;
+            while (i < MAX_BLOCK)
+            {
+                fmod.SetPosition(i * delta);
+                fmod.GetLoud(ref leftLoud, ref rightLoud);
+
+                leftLoudTable[i] = leftLoud;
+                rightLoudTable[i++] = rightLoud;
+                playingTime = i * delta;
+                Thread.Sleep(10);
+                this.Invalidate();
+            }
+
+            errorResult = fmod.StopSound();
         }
 
         private void CountPlayingTime()
         {
             while (true)
             {
+                int result = 0;
                 fmod.GetPosition(ref playingTime);
-                SetText("재생 시간 : " + playingTime + "ms");
+                result = fmod.GetLoud(ref leftLoud, ref rightLoud);
+                SetTimeLabel("재생 시간 : " + playingTime + "ms    소리 크기 - L : " + leftLoud + " R : " + rightLoud + " 에러 검출 : " + result);
             }
         }
 
-        private void SetText(string text)
+        private void SetTimeLabel(string text)
         {
-            // InvokeRequired required compares the thread ID of the
-            // calling thread to the thread ID of the creating thread.
-            // If these threads are different, it returns true.
             if (this.timeLabel.InvokeRequired)
             {
                 try
                 {
-                    SetTextCallback d = new SetTextCallback(SetText);
+                    SetTextCallback d = new SetTextCallback(SetTimeLabel);
                     this.Invoke(d, new object[] { text });
-
                     this.Invalidate();
                 }
                 catch
@@ -195,6 +254,15 @@ namespace NoteEditor
         }
 
         private void Main_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void loudTableLabel_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
         {
 
         }

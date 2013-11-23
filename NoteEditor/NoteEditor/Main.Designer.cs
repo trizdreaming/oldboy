@@ -39,6 +39,11 @@
             this.timeLabel = new System.Windows.Forms.Label();
             this.playButton = new System.Windows.Forms.Button();
             this.stopButton = new System.Windows.Forms.Button();
+            this.pauseButton = new System.Windows.Forms.Button();
+            this.backButton = new System.Windows.Forms.Button();
+            this.goButton = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.frontButton = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -116,7 +121,7 @@
             this.timeLabel.Location = new System.Drawing.Point(0, 45);
             this.timeLabel.Name = "timeLabel";
             this.timeLabel.Padding = new System.Windows.Forms.Padding(5, 3, 5, 5);
-            this.timeLabel.Size = new System.Drawing.Size(150, 20);
+            this.timeLabel.Size = new System.Drawing.Size(784, 20);
             this.timeLabel.TabIndex = 2;
             this.timeLabel.Text = "재생 시간 : 0ms";
             this.timeLabel.Click += new System.EventHandler(this.label1_Click_1);
@@ -133,7 +138,7 @@
             // 
             // stopButton
             // 
-            this.stopButton.Location = new System.Drawing.Point(93, 68);
+            this.stopButton.Location = new System.Drawing.Point(174, 68);
             this.stopButton.Name = "stopButton";
             this.stopButton.Size = new System.Drawing.Size(75, 23);
             this.stopButton.TabIndex = 5;
@@ -141,12 +146,61 @@
             this.stopButton.UseVisualStyleBackColor = true;
             this.stopButton.Click += new System.EventHandler(this.stopButton_Click);
             // 
+            // pauseButton
+            // 
+            this.pauseButton.Location = new System.Drawing.Point(93, 68);
+            this.pauseButton.Name = "pauseButton";
+            this.pauseButton.Size = new System.Drawing.Size(75, 23);
+            this.pauseButton.TabIndex = 6;
+            this.pauseButton.Text = "Pause";
+            this.pauseButton.UseVisualStyleBackColor = true;
+            this.pauseButton.Click += new System.EventHandler(this.button1_Click_1);
+            // 
+            // backButton
+            // 
+            this.backButton.Location = new System.Drawing.Point(258, 68);
+            this.backButton.Name = "backButton";
+            this.backButton.Size = new System.Drawing.Size(75, 23);
+            this.backButton.TabIndex = 7;
+            this.backButton.Text = "<";
+            this.backButton.UseVisualStyleBackColor = true;
+            // 
+            // goButton
+            // 
+            this.goButton.Location = new System.Drawing.Point(445, 68);
+            this.goButton.Name = "goButton";
+            this.goButton.Size = new System.Drawing.Size(75, 23);
+            this.goButton.TabIndex = 8;
+            this.goButton.Text = "Go";
+            this.goButton.UseVisualStyleBackColor = true;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(339, 68);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 9;
+            // 
+            // frontButton
+            // 
+            this.frontButton.Location = new System.Drawing.Point(526, 68);
+            this.frontButton.Name = "frontButton";
+            this.frontButton.Size = new System.Drawing.Size(75, 23);
+            this.frontButton.TabIndex = 10;
+            this.frontButton.Text = ">";
+            this.frontButton.UseVisualStyleBackColor = true;
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.Window;
             this.ClientSize = new System.Drawing.Size(784, 445);
+            this.Controls.Add(this.frontButton);
+            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.goButton);
+            this.Controls.Add(this.backButton);
+            this.Controls.Add(this.pauseButton);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.playButton);
             this.Controls.Add(this.timeLabel);
@@ -177,6 +231,11 @@
         private System.Windows.Forms.Label timeLabel;
         private System.Windows.Forms.Button playButton;
         private System.Windows.Forms.Button stopButton;
+        private System.Windows.Forms.Button pauseButton;
+        private System.Windows.Forms.Button backButton;
+        private System.Windows.Forms.Button goButton;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button frontButton;
     }
 }
 

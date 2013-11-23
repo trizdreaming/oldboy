@@ -29,7 +29,12 @@ namespace NoteEditor
         uint delta = 0;
         Brush whiteBrush = new SolidBrush(Color.WhiteSmoke);
         Brush greenBrush = new SolidBrush(Color.Green);
-        
+
+
+        // 시스템의 소리를 컨트롤함
+        SysSound sysSound = new SysSound();
+        uint sysSoundTemp = 0;
+
         public Main()
         {
             InitializeComponent();
@@ -161,9 +166,11 @@ namespace NoteEditor
                 loudThread.Start();
             }
         }
-
+        
         private void CalcLoud()
         {
+            sysSoundTemp = sysSound.GetSystemVolume();
+            sysSound.SetSystemVolume(0);
             uint i = 0;
             while (i < MAX_BLOCK)
             {
@@ -176,7 +183,7 @@ namespace NoteEditor
                 Thread.Sleep(10);
                 this.Invalidate();
             }
-
+            sysSound.SetSystemVolume(sysSoundTemp);
             errorResult = fmod.StopSound();
         }
 

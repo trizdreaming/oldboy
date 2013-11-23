@@ -65,6 +65,7 @@ HRESULT CRMresourceManager::CreateFactory()
 }
 
 
+// 기본 Resource폴더의 텍스쳐 로드
 HRESULT CRMresourceManager::CreateTexture()
 {
 	InitializeArray();
@@ -113,66 +114,9 @@ HRESULT CRMresourceManager::CreateTexture()
 		SafeDelete(texture);
 	}
 
-	return hr;
-}
-
-HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
-{
-	InitializeArray();
-
-	HRESULT hr = S_FALSE;
-	CRMimage* texture;
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_TITLE );
-	
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = nullptr;
-		InitializeArray();
-
-		return hr;
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_SELECT );
-	
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = nullptr;
-		InitializeArray();
-
-		return hr;
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_RESULT );
-	
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = nullptr;
-		InitializeArray();
-
-		return hr;
-	}
 	//이하 플레이 화면
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/judgeRing.png" );
+	hr = texture->CreateImage( PLAY_IMAGE_JUDGE_RING );
 
 	if ( hr == S_OK )
 	{
@@ -188,7 +132,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/blueBar.png" );
+	hr = texture->CreateImage( PLAY_IMAGE_BLUE_GAUGE );
 
 	if ( hr == S_OK )
 	{
@@ -204,7 +148,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/redBar.png" );
+	hr = texture->CreateImage( PLAY_IMAGE_RED_GAUGE );
 
 	if ( hr == S_OK )
 	{
@@ -218,6 +162,27 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 
 		return hr;
 	}
+	
+	return hr;
+}
+
+HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
+{
+	
+	HRESULT hr = S_FALSE;
+	CRMimage* texture;
+
+	// 기본 자원 로드
+	hr = CreateTexture();
+	if ( hr == S_FALSE )
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		InitializeArray();
+		return hr;
+	}
+	
+
+	// 곡마다 바뀌는 정보 로드
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) );

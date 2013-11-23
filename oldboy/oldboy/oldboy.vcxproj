@@ -143,6 +143,7 @@
     <ClInclude Include="RMnoteManager.h" />
     <ClInclude Include="RMobject.h" />
     <ClInclude Include="RMobjectManager.h" />
+    <ClInclude Include="RMpauseManager.h" />
     <ClInclude Include="RMplayer.h" />
     <ClInclude Include="RMplayer1P.h" />
     <ClInclude Include="RMplayer2P.h" />
@@ -200,6 +201,7 @@
     <ClCompile Include="RMnoteManager.cpp" />
     <ClCompile Include="RMobject.cpp" />
     <ClCompile Include="RMobjectManager.cpp" />
+    <ClCompile Include="RMpauseManager.cpp" />
     <ClCompile Include="RMplayer.cpp" />
     <ClCompile Include="RMplayer1P.cpp" />
     <ClCompile Include="RMplayer2P.cpp" />

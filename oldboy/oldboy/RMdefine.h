@@ -92,6 +92,10 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define BG_IMAGE_SELECT	L"./Resource/image_bg_select_01.png"
 #define BG_IMAGE_RESULT	L"./Resource/image_bg_result_01.png"
 
+#define PLAY_IMAGE_JUDGE_RING	L"./Resource/judgeRing.png"
+#define PLAY_IMAGE_BLUE_GAUGE	L"./Resource/blueBar.png"
+#define PLAY_IMAGE_RED_GAUGE	L"./Resource/redBar.png"
+
 // Error 관련 
 // 현재 에러는 콘솔 창에서 표현되는 것
 

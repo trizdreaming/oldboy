@@ -772,3 +772,52 @@ HRESULT CRMmainLoop::GoNextScene()
 
 	return S_FALSE;
 }
+
+//////////////////////////////////////////////////////////////////////////
+//각 씬을 되돌리기 위한 절대 함수
+//특징: 씬을 되돌릴 수 밖에 없음
+//각 씬의 상태를 확인 후 전 씬으로(기획 되었는 상태) 이동하도록 되어 있음
+//////////////////////////////////////////////////////////////////////////
+
+HRESULT CRMmainLoop::GoPrevScene()
+{
+	HRESULT hr = S_FALSE;
+
+	if ( m_SceneType == SCENE_TITLE )
+	{
+		CRMvideoPlayer::GetInstance()->DestoryFactory();
+		PostMessage( m_Hwnd, WM_DESTROY, 0, 0 );
+		return S_OK;
+	}
+
+	if ( m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		m_SceneType = SCENE_TITLE;
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE );
+		return S_OK;
+	}
+
+
+	if ( m_SceneType == SCENE_PLAY )
+	{
+		m_SceneType = SCENE_SELECT_MUSIC;
+		CRMplayer1P::GetInstance()->Init();
+		CRMplayer2P::GetInstance()->Init();
+
+		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		return S_OK;
+	}
+
+	return S_FALSE;
+}

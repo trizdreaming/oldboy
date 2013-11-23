@@ -96,6 +96,11 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define PLAY_IMAGE_BLUE_GAUGE	L"./Resource/blueBar.png"
 #define PLAY_IMAGE_RED_GAUGE	L"./Resource/redBar.png"
 
+#define PAUSE_IMAGE_PLAY_CANCEL	L"./Resource/image_pa_play_01.png"
+#define PAUSE_IMAGE_PLAY_OK	L"./Resource/image_pa_play_02.png"
+#define PAUSE_IMAGE_TITLE_CANCEL	L"./Resource/image_pa_title_01.png"
+#define PAUSE_IMAGE_TITLE_OK	L"./Resource/image_pa_title_02.png"
+
 // Error 관련 
 // 현재 에러는 콘솔 창에서 표현되는 것
 

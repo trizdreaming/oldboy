@@ -24,6 +24,7 @@
 #include "RMchildGauge.h"
 #include "RMchildJudgeRing.h"
 #include "RMchildPauseImage.h"
+#include "RMpauseManager.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -168,7 +169,10 @@ void CRMmainLoop::RunMessageLoop()
 				
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
+
 				CRMobjectManager::GetInstance()->Update();
+				
+				
 
 				CRMrender::GetInstance()->RenderInit();
 
@@ -502,7 +506,7 @@ HRESULT CRMmainLoop::CreateObject()
 	testObject->SetObjectType(OBJECT_PAUSE_IMAGE_PLAY_CANCEL);
 	testObject->SetPosition(390, 120); // 값 찾아서 define해야함 
 	testObject->SetSceneType(SCENE_SELECT_MUSIC); // 필요 없지만 그냥 초기화
-	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_SHUTTER);
+	CRMobjectManager::GetInstance()->AddObject(testObject, LAYER_PAUSE);
 	//<<<< 여기까지 이미지 자원
 	//>>>> 여기부터 Label 자원
 	
@@ -608,7 +612,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 {
 	HRESULT hr = S_OK;
 
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
+	if ( !CRMpauseManager::GetInstance()->IsPause() && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
 	{
 		hr = GoNextScene();
 	}
@@ -645,9 +649,84 @@ HRESULT CRMmainLoop::TestKeyboard()
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
+
+	//////////////////////////////////////////////////////////////////////////
+	// 작성중 pause
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_PLAY )
+	{
+		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+		CRMpauseManager::GetInstance()->ShowPause();
+	}
+
+	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_PLAY && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) )
+	{
+		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
+		{
+			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(false);
+		}
+		else
+		{
+			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+		}
+	}
+	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_PLAY && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) )
+	{
+		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
+		{
+			CRMpauseManager::GetInstance()->ClosePause();
+		}
+		else
+		{
+			hr = GoPrevScene();
+			CRMpauseManager::GetInstance()->ClosePause();
+		}
+		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+	}
+
+
+	//////////////////////////////////////////////////////////////////////////
+	// 종료 
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
+	{
+		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+		CRMpauseManager::GetInstance()->ShowPause();
+	}
+	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_TITLE && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_UP ) )
+	{
+
+		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
+		{
+			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(false);
+		}
+		else
+		{
+			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+		}
+	}
+	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_TITLE && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) )
+	{
+		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
+		{
+			CRMpauseManager::GetInstance()->ClosePause();
+		}
+		else
+		{
+			hr = GoPrevScene();
+		}
+		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		hr = GoPrevScene();
+	}
+
+	//////////////////////////////////////////////////////////////////////////
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		m_MusicSelectIndex += m_MusicVector.size();
+		m_MusicSelectIndex += m_MusicVector.size(); // 언더플로우 방지
 		--m_MusicSelectIndex %= m_MusicVector.size();
 
 		m_PlayMusicName = m_MusicVector.at(m_MusicSelectIndex);
@@ -807,6 +886,7 @@ HRESULT CRMmainLoop::GoPrevScene()
 
 	if ( m_SceneType == SCENE_PLAY )
 	{
+		CRMobjectManager::GetInstance()->RemoveAllNote();
 		m_SceneType = SCENE_SELECT_MUSIC;
 		CRMplayer1P::GetInstance()->Init();
 		CRMplayer2P::GetInstance()->Init();

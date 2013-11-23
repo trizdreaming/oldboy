@@ -1,11 +1,13 @@
 #include "stdafx.h"
 #include "RMpauseManager.h"
-#include "RMchildPauseImage.h"
 #include "RMsound.h"
 #include "RMnoteManager.h"
+#include "RMmainLoop.h"
 
 
-CRMpauseManager::CRMpauseManager(void)
+CRMpauseManager::CRMpauseManager(void):
+	m_IsPause(false),
+	m_PauseSelectCancel(true)
 {
 }
 
@@ -16,14 +18,22 @@ CRMpauseManager::~CRMpauseManager(void)
 
 void CRMpauseManager::ShowPause()
 {
-	CRMchildPauseImage::GetInstance()->SetVisible(true);
-	CRMsound::GetInstance()->SetPauseBG(true);
-	CRMnoteManager::GetInstance()->SetPause(true);
+	m_IsPause = true;
+	if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
+	{
+		CRMsound::GetInstance()->SetPauseBG(true);
+	}
+	
+	CRMnoteManager::GetInstance()->StartPause();
 }
 
 void CRMpauseManager::ClosePause()
 {
-	CRMchildPauseImage::GetInstance()->SetVisible(false);
-	CRMsound::GetInstance()->SetPauseBG(false);
-	CRMnoteManager::GetInstance()->SetPause(false);
+	m_IsPause = false;
+	if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
+	{
+		CRMsound::GetInstance()->SetPauseBG(false);
+	}
+	
+	CRMnoteManager::GetInstance()->EndPause();
 }

@@ -12,6 +12,7 @@
 #include "RMlabel.h"
 #include "RMchildEffectManager.h"
 #include "RMinput.h"
+#include "RMpauseManager.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -67,6 +68,10 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 
 void CRMjudgeManager::JudgeNote() const
 {
+	if ( CRMpauseManager::GetInstance()->IsPause() )
+	{
+		return;
+	}
 	// 이곳에서 HP 체크하면 안 됨
 	// 만약 Dead일 때 Judge 자체를 안 해버리면?
 	//

@@ -39,6 +39,7 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerEffect;
 	std::list<CRMobject*>		m_ObjectListLayerShutter;
 	std::list<CRMobject*>		m_ObjectListLayerLabel;
+	std::list<CRMobject*>		m_ObjectListLayerPause;
 
 	std::list<CRMobject*>		m_ObjectListMemoryPoolOfNote;
 };

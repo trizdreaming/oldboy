@@ -117,7 +117,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	//////////////////////////////////////////////////////////////////////////
 	// Ãß°¡Áß 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_pa_play_01.png" );
+	hr = texture->CreateImage( PAUSE_IMAGE_PLAY_CANCEL );
 
 	if ( hr == S_OK )
 	{
@@ -131,7 +131,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_pa_play_02.png" );
+	hr = texture->CreateImage( PAUSE_IMAGE_PLAY_OK );
 
 	if ( hr == S_OK )
 	{
@@ -144,42 +144,8 @@ HRESULT CRMresourceManager::CreateTexture()
 		SafeDelete(texture);
 	}
 
-
-
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_pa_play_01.png" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_PAUSE_IMAGE_SELECT_CANCEL] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_PAUSE_IMAGE_SELECT_CANCEL] = nullptr;
-		SafeDelete(texture);
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_pa_play_02.png" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_PAUSE_IMAGE_SELECT_OK] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_PAUSE_IMAGE_SELECT_OK] = nullptr;
-		SafeDelete(texture);
-	}
-
-
-
-
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_pa_play_01.png" );
+	hr = texture->CreateImage( PAUSE_IMAGE_TITLE_CANCEL );
 
 	if ( hr == S_OK )
 	{
@@ -193,7 +159,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/image_pa_play_02.png" );
+	hr = texture->CreateImage( PAUSE_IMAGE_TITLE_OK );
 
 	if ( hr == S_OK )
 	{

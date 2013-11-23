@@ -4,6 +4,7 @@
 #include "RMlabel.h"
 #include "RMobjectManager.h"
 #include "RMlabelManager.h"
+#include "RMpauseManager.h"
 
 CRMobjectManager::CRMobjectManager(void)
 {
@@ -91,6 +92,15 @@ CRMobjectManager::~CRMobjectManager(void)
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListMemoryPoolOfNote.clear();
+
+
+	for ( auto& iter : m_ObjectListLayerPause )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+	m_ObjectListLayerPause.clear();
+
 }
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
@@ -132,6 +142,9 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_MEMORY_POOL:
 			m_ObjectListMemoryPoolOfNote.push_front(object);
 			break;
+		case LAYER_PAUSE:
+			m_ObjectListLayerPause.push_front(object);
+			break;
 		case LAYER_NONE:
 			break;
 		default:
@@ -162,14 +175,20 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
-	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
+
+	if ( !CRMpauseManager::GetInstance()->IsPause() )
 	{
-		iter->Update();
+		for ( auto& iter : m_ObjectListLayerNotePlayer1 )
+		{
+			iter->Update();
+		}
+		for ( auto& iter : m_ObjectListLayerNotePlayer2 )
+		{
+			iter->Update();
+		}
 	}
-	for ( auto& iter : m_ObjectListLayerNotePlayer2 )
-	{
-		iter->Update();
-	}
+
+
 	for ( auto& iter : m_ObjectListLayerEffect )
 	{
 		iter->Update();
@@ -199,6 +218,11 @@ void CRMobjectManager::Update()
 		thisLabel->Update();
 		m_ObjectListLayerLabel.push_back( thisLabel );
 		// 렌더링을 하기 위해 렌더링 레이어에 집어 넣음
+	}
+
+	for ( auto& iter : m_ObjectListLayerPause )
+	{
+		iter->Update();
 	}
 }
 
@@ -245,6 +269,10 @@ void CRMobjectManager::Render() const
 		iter->Render();
 	}
 	for ( auto& iter : m_ObjectListLayerLabel )
+	{
+		iter->Render();
+	}
+	for ( auto& iter : m_ObjectListLayerPause )
 	{
 		iter->Render();
 	}

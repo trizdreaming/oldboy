@@ -48,7 +48,5 @@ private:
 	std::vector<std::string>		m_MusicVector;
 
 	std::string						m_PlayMusicName;
-
-	//UINT							m_MusicSelectIndex;
 };
 

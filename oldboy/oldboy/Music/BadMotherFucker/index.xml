@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<Music>
+    <!-- Settings for Music -->
+	<Title>BadMotherFucker</Title>
+	<Artist>BitingElbows</Artist>
+	<Level>3</Level>
+    <Image>
+        <imageAlbum>image_album_cover_bad.png</imageAlbum>
+        <imageBackground>image_bg_bad.png</imageBackground>
+        <imageShutter>image_sh_01_01.png</imageShutter>
+        <imageNote1>note1.png</imageNote1>
+        <imageNote2>note2.png</imageNote2>
+        <imageNoteEffect>note3.png</imageNoteEffect>
+    </Image>
+    <Sound>
+        <soundBackground>Biting_Elbows_Bad_Motherfucker_short.mp3</soundBackground>
+        <soundNoteEffect1>sound_effect_01_01.wav</soundNoteEffect1>
+        <soundNoteEffect2>sound_effect_02_01.wav</soundNoteEffect2>
+    </Sound>
+    <Note>note.xml</Note>
+</Music>

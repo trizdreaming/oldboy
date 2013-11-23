@@ -32,6 +32,8 @@ private:
 	HRESULT	CreateObject();
 
 
+	void	RecordNote();
+
 private:
 
 	HWND							m_Hwnd;

@@ -26,6 +26,8 @@
 #include "RMchildPauseImage.h"
 #include "RMpauseManager.h"
 
+#include <fstream>
+
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
 	m_PrevTime(0),
@@ -571,33 +573,6 @@ void CRMmainLoop::TestSound()
 		return;
 	}
 
-	//이하는 테스트 노트 생성용 코드
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN )
-	{
-		int testRand1 = rand();
-		if( testRand1%2 == 0 )
-		{
-			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_1 );
-		}
-		else
-		{
-			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , OBJECT_NOTE_NORMAL_2 );
-		}
-		return;
-	}
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN )
-	{
-		int testRand2 = rand();
-		if( testRand2%2 == 0 )
-		{
-			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , OBJECT_NOTE_NORMAL_1 );
-		}
-		else
-		{
-			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , OBJECT_NOTE_NORMAL_2 );
-		}
-		return;
-	}
 }
 
 
@@ -606,9 +581,32 @@ void CRMmainLoop::TestSound()
 //&& 이후 각 상황을 둬 현재 상황 부여
 //음악 선택 화면에서 
 //////////////////////////////////////////////////////////////////////////
-
+#ifdef _DEBUG
+UINT			m_GameStartTime = timeGetTime();
+UINT			m_ElapsedTime = 0;
+bool			START_RECORDING = false;
+#endif
 HRESULT CRMmainLoop::TestKeyboard()
 {
+#ifdef _DEBUG
+	if ( START_RECORDING )
+	{
+		static std::string recordTime = "";
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_PLAY )
+		{
+			printConsole("%s \n",recordTime);
+			m_ElapsedTime = timeGetTime() - m_GameStartTime;
+			recordTime = recordTime + std::to_string(m_ElapsedTime) + "\n";
+		}
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_RESULT )
+		{
+			std::ofstream SaveFile("recordNote.txt");
+			SaveFile << recordTime;
+			SaveFile.close();
+		}
+	}
+#endif
+
 	HRESULT hr = S_OK;
 
 	if ( !CRMpauseManager::GetInstance()->IsPause() && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )

@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -162,16 +162,42 @@ namespace NoteEditor
                     leftLoudTable[i] = 0;
                     rightLoudTable[i] = 0;
                 }
+
+                //sysSoundTemp = 4294967295;
+                sysSoundTemp = sysSound.GetSystemVolume();
+                sysSound.SetSystemVolume(0);
+
                 loudThread = new Thread(CalcLoud);
+                loudThread.Start();
+                loudThread = new Thread(CalcLoud2);
                 loudThread.Start();
             }
         }
         
         private void CalcLoud()
         {
-            sysSoundTemp = sysSound.GetSystemVolume();
-            sysSound.SetSystemVolume(0);
+            
             uint i = 0;
+            while (i < (MAX_BLOCK/2) )
+            {
+                fmod.SetPosition(i * delta);
+                fmod.GetLoud(ref leftLoud, ref rightLoud);
+
+                leftLoudTable[i] = leftLoud;
+                rightLoudTable[i++] = rightLoud;
+                playingTime = i * delta;
+                Thread.Sleep(10);
+                this.Invalidate();
+            }
+            errorResult = fmod.StopSound();
+            Thread.Sleep(200);
+            sysSound.SetSystemVolume(sysSoundTemp);
+        }
+
+        private void CalcLoud2()
+        {
+
+            uint i = (MAX_BLOCK/2)-4;
             while (i < MAX_BLOCK)
             {
                 fmod.SetPosition(i * delta);

@@ -169,8 +169,6 @@ namespace NoteEditor
 
                 loudThread = new Thread(CalcLoud);
                 loudThread.Start();
-                loudThread = new Thread(CalcLoud2);
-                loudThread.Start();
             }
         }
         
@@ -178,7 +176,7 @@ namespace NoteEditor
         {
             
             uint i = 0;
-            while (i < (MAX_BLOCK/2) )
+            while (i < MAX_BLOCK )
             {
                 fmod.SetPosition(i * delta);
                 fmod.GetLoud(ref leftLoud, ref rightLoud);
@@ -186,27 +184,7 @@ namespace NoteEditor
                 leftLoudTable[i] = leftLoud;
                 rightLoudTable[i++] = rightLoud;
                 playingTime = i * delta;
-                Thread.Sleep(10);
-                this.Invalidate();
-            }
-            errorResult = fmod.StopSound();
-            Thread.Sleep(200);
-            sysSound.SetSystemVolume(sysSoundTemp);
-        }
-
-        private void CalcLoud2()
-        {
-
-            uint i = (MAX_BLOCK/2)-4;
-            while (i < MAX_BLOCK)
-            {
-                fmod.SetPosition(i * delta);
-                fmod.GetLoud(ref leftLoud, ref rightLoud);
-
-                leftLoudTable[i] = leftLoud;
-                rightLoudTable[i++] = rightLoud;
-                playingTime = i * delta;
-                Thread.Sleep(10);
+                Thread.Sleep(20);
                 this.Invalidate();
             }
             errorResult = fmod.StopSound();

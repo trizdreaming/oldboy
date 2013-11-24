@@ -163,8 +163,11 @@ namespace NoteEditor
                     rightLoudTable[i] = 0;
                 }
 
-                //sysSoundTemp = 4294967295;
                 sysSoundTemp = sysSound.GetSystemVolume();
+                if ( sysSoundTemp == 0 )
+                {
+                    sysSoundTemp = 4294967295;
+                }
                 sysSound.SetSystemVolume(0);
 
                 loudThread = new Thread(CalcLoud);

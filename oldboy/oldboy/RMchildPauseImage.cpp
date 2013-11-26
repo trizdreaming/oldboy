@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMchildPauseImage.h"
 #include "RMpauseManager.h"
 #include "RMobject.h"
@@ -21,6 +21,7 @@ void CRMchildPauseImage::Update()
 
 	if ( m_Visible )
 	{
+		//SM9: 이런건 if 두번으로 중첩해라..
 		if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY && CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
 			m_ObjectType = OBJECT_PAUSE_IMAGE_PLAY_CANCEL;

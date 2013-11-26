@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMkeyMapping.h"
@@ -31,16 +31,17 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 		return; 
 	}
 
+	//SM9: ì‚¬ì‹¤ ì•„ëž˜ì˜ PLAYER_ONEê³¼ PLAYER_TWOê°€ í•˜ëŠ” ì¼ì´ ê±°ì˜ ê°™ì§€? ê±°ì˜ ê°™ì€ ë¶€ë¶„ì´ ìžˆìœ¼ë©´ ëª¨ë“ˆí™” í•˜ê³  ìž¬ì‚¬ìš©í•˜ëŠ” ê²ƒì´ ì¢‹ë‹¤
 	switch ( player )
 	{
 	case PLAYER_ONE:
-		// HP Ã¼Å©´Â ÀÌ°÷¿¡¼­
+		// HP ì²´í¬ëŠ” ì´ê³³ì—ì„œ
 		if ( CRMplayer1P::GetInstance()->IsDead() )
 		{
 			break;
 		}
-		// ¸¸¾à ÀÌ°÷¿¡¼­ HP Ã¼Å©¸¦ ÇÏÁö ¾ÊÀ¸¸é?
-		// Judge ¸Þ¼Òµå ÁÖ¼® ÂüÁ¶
+		// ë§Œì•½ ì´ê³³ì—ì„œ HP ì²´í¬ë¥¼ í•˜ì§€ ì•Šìœ¼ë©´?
+		// Judge ë©”ì†Œë“œ ì£¼ì„ ì°¸ì¡°
 		thisNote->SetObjectType( objectType );
 		thisNote->SetPosition( NOTE_ONE_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
@@ -72,10 +73,10 @@ void CRMjudgeManager::JudgeNote() const
 	{
 		return;
 	}
-	// ÀÌ°÷¿¡¼­ HP Ã¼Å©ÇÏ¸é ¾È µÊ
-	// ¸¸¾à DeadÀÏ ¶§ Judge ÀÚÃ¼¸¦ ¾È ÇØ¹ö¸®¸é?
+	// ì´ê³³ì—ì„œ HP ì²´í¬í•˜ë©´ ì•ˆ ë¨
+	// ë§Œì•½ Deadì¼ ë•Œ Judge ìžì²´ë¥¼ ì•ˆ í•´ë²„ë¦¬ë©´?
 	//
-	// DeleteNote¸¦ È£ÃâÇÏÁö ¾ÊÀ¸¹Ç·Î ¸Þ¸ð¸®Ç®·Î ´Ù½Ã µ¹¾Æ°¡Áö ¾ÊÀ½
+	// DeleteNoteë¥¼ í˜¸ì¶œí•˜ì§€ ì•Šìœ¼ë¯€ë¡œ ë©”ëª¨ë¦¬í’€ë¡œ ë‹¤ì‹œ ëŒì•„ê°€ì§€ ì•ŠìŒ
 	JudgeNoteByPlayer( PLAYER_ONE );
 	JudgeNoteByPlayer( PLAYER_TWO );
 }
@@ -110,13 +111,13 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 			if ( thisNote->GetPositionY() > NOTE_JUDGE_PERFECT_START_LINE && thisNote->GetPositionY() < NOTE_JUDGE_PERFECT_END_LINE )
 			{
 				thisNote->SetVisible(false);
-				//effect ÇÃ·¡±× ¼¼ÆÃ
-				//ÇÃ·¡±×¸¸ ¼¼ÆÃÇÏ¸é ÀÌÆåÆ® ³ëÃâÀº ¾Ë¾Æ¼­ µÇ°Ô²û ÇÏÀÚ
-				//ÇÃ·¡±× ¼¼ÆÃÇÏ´Â °÷Àº effect manager(½Ì±ÛÅæ)¸¦ µû·Î µÎ°í ÁøÇàÇÕ½Ã´Ù
+				//effect í”Œëž˜ê·¸ ì„¸íŒ…
+				//í”Œëž˜ê·¸ë§Œ ì„¸íŒ…í•˜ë©´ ì´íŽ™íŠ¸ ë…¸ì¶œì€ ì•Œì•„ì„œ ë˜ê²Œë” í•˜ìž
+				//í”Œëž˜ê·¸ ì„¸íŒ…í•˜ëŠ” ê³³ì€ effect manager(ì‹±ê¸€í†¤)ë¥¼ ë”°ë¡œ ë‘ê³  ì§„í–‰í•©ì‹œë‹¤
 				/*
-						1. judge¿¡¼­ effect Manager flag¼¼ÆÃ
-						2. childeffectimage¿¡¼­ flag È®ÀÎ
-						3. childeffectimage¿¡¼­ flag È®ÀÎ ÈÄ ´Ù½Ã flag ÃÊ±âÈ­
+						1. judgeì—ì„œ effect Manager flagì„¸íŒ…
+						2. childeffectimageì—ì„œ flag í™•ì¸
+						3. childeffectimageì—ì„œ flag í™•ì¸ í›„ ë‹¤ì‹œ flag ì´ˆê¸°í™”
 				*/
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
@@ -128,16 +129,16 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				playerClass->AddEvent( JUDGE_PERFECT );
 				PrintScore( playerNumber, JUDGE_PERFECT );
 
-				//Å° ´©¸£¸é¼­ ¹Ù·Î Áö¿ì¸é ÇÃ·¡±× ¼¼ÆÃÀÌ ¾ÈµÊ
-				//Å°¸¦ ´©¸£¸é ¹«Á¶°Ç ¼¼ÆÃÀÌ µÇ¸é miss Ã³¸® ºÒ°¡
-				//deleteNote ÀÌµ¿
+				//í‚¤ ëˆ„ë¥´ë©´ì„œ ë°”ë¡œ ì§€ìš°ë©´ í”Œëž˜ê·¸ ì„¸íŒ…ì´ ì•ˆë¨
+				//í‚¤ë¥¼ ëˆ„ë¥´ë©´ ë¬´ì¡°ê±´ ì„¸íŒ…ì´ ë˜ë©´ miss ì²˜ë¦¬ ë¶ˆê°€
+				//deleteNote ì´ë™
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
 			// Good
 			else if ( ( thisNote->GetPositionY() > NOTE_JUDGE_GOOD_START_LINE && thisNote->GetPositionY() < NOTE_JUDGE_GOOD_END_LINE ) )
 			{
 				thisNote->SetVisible(false);
-				//effect ÇÃ·¡±× ¼¼ÆÃ
+				//effect í”Œëž˜ê·¸ ì„¸íŒ…
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
@@ -150,7 +151,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
-			// ³Ê¹« »¡¸® ´­·¯ MISS (aÅ°¸¦ ´©¸£°í ÀÖÀ»¶§ good³ª¿À´Â ¹ö±× È¸ÇÇ)
+			// ë„ˆë¬´ ë¹¨ë¦¬ ëˆŒëŸ¬ MISS (aí‚¤ë¥¼ ëˆ„ë¥´ê³  ìžˆì„ë•Œ goodë‚˜ì˜¤ëŠ” ë²„ê·¸ íšŒí”¼)
 
 			else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
 			{
@@ -236,7 +237,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 
 void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) const
 {
-	printConsole("Á¡¼öÇ¥ - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
+	printConsole("ì ìˆ˜í‘œ - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 
 			CRMplayer1P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer1P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer1P::GetInstance()->GetCount( COUNT_SCORE ),
 			CRMplayer2P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer2P::GetInstance()->GetCount( COUNT_GOOD ), 

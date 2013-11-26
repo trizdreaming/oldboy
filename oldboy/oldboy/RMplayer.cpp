@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMplayer.h"
 
 
@@ -46,7 +46,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	{
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
-		m_Count[COUNT_SCORE] += 5;
+		m_Count[COUNT_SCORE] += 5; //SM9: 이런 상수나 리터럴들은 따로 빼는거 알지?
 		m_MP += 16;
 		if( m_MP > m_HP * 65 )
 		{
@@ -81,5 +81,7 @@ UINT CRMplayer::GetCount( CountType countType ) const
 
 void CRMplayer::SetCount( CountType countType, UINT count )
 {
+	//SM9: 열라 위험해질 수 있는 코드다.. COUNT_MAX와 MAX_COUNT가 다르다면?
+	// m_Count 아래의 멤버 변수들을 덮어쓰게 된다... ㅎㄷㄷ
 	m_Count[countType] = count;
 }

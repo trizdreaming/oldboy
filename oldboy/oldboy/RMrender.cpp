@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMrender.h"
 #include "RMmainLoop.h"
@@ -39,16 +39,16 @@ HRESULT CRMrender::CreateRenderTarget()
 		D2D1::HwndRenderTargetProperties(CRMmainLoop::GetInstance()->GetHwnd(), size),
 		&m_pDisplayRenderTarget
 		);
-	// D2D1_PRESENT_OPTIONS_IMMEDIATELY - FPS ���� ����(���������� ��ٸ��� ����)
+	// D2D1_PRESENT_OPTIONS_IMMEDIATELY - FPS 제한 해제(리프레쉬를 기다리지 않음)
 
 	return hr;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////
-//RenderInit()�� RenderEnd()�� �׻� ���� �ٳ�� ��
-//
-//Begin �� End ���̿� �� Object�� ������ ������ �߰��� �� �ֵ��� ��
+//RenderInit()과 RenderEnd()는 항상 같이 다녀야 함
+//SM9: 그렇게 강제할 수 있는 테크닉이 있다. 보통 더미 객체를 하나 만들어서 생성/소멸자를 활용
+//Begin 과 End 사이에 각 Object가 각자의 내용을 추가할 수 있도록 함
 ///////////////////////////////////////////////////////////////////////////////
 
 void CRMrender::RenderInit()

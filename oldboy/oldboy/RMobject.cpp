@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMobject.h"
 #include "RMimage.h"
@@ -34,9 +34,10 @@ void CRMobject::Render()
 
 	if ( thisTexture == nullptr )
 	{
+		//SM9: 단순히 리턴만 할텐가? 에러 핸들링 웬만하면 다 해라..
 		return;
 	}
-	// ��� �ڵ� - �ؽ��İ� ���� ���
+	// 방어 코드 - 텍스쳐가 없을 경우
 
 	if ( m_Width == 0 )
 	{

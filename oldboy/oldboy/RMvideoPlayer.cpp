@@ -26,19 +26,19 @@ HRESULT CRMvideoPlayer::CreateFactory()
 
 	if ( FAILED ( m_BandiVideoLibrary.Create( BANDIVIDEO_DLL_FILE_NAME, NULL, NULL ) ) )
 	{
-		MessageBox( NULL, L"Error creating BandiVideoLibrary.", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_CREATE_BANDIVID, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 
-	if ( FAILED ( m_BandiVideoLibrary.Open( "./Resource/sample.avi", FALSE ) ) )
+	if ( FAILED ( m_BandiVideoLibrary.Open( OPENING_VIDEO_FILE, FALSE ) ) )
 	{
-		MessageBox( NULL, L"Error opening file...", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_LOAD_FILE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 
 	if ( FAILED ( m_BandiVideoLibrary.GetVideoInfo( m_BandiVideoLibraryVideoInfo ) ) )
 	{
-		MessageBox( NULL, L"Error getting video info....", L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_LOAD_VIDEO, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return S_FALSE;
 	}
 
@@ -46,7 +46,7 @@ HRESULT CRMvideoPlayer::CreateFactory()
 
 	if ( !m_BandiVideoDevice || FAILED ( m_BandiVideoDevice->Open( m_Hwnd ) ) )
 	{
-		MessageBox( NULL, L"Error opening device...",  L"ERROR!", MB_OK | MB_ICONSTOP );
+		MessageBox( NULL, ERROR_LOAD_VIDEO_DEVICE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		SafeDelete( m_BandiVideoDevice );
 
 		return S_FALSE;
@@ -56,7 +56,7 @@ HRESULT CRMvideoPlayer::CreateFactory()
 	
 	if ( !m_BandiVideoTexture || FAILED( m_BandiVideoTexture->Open( m_BandiVideoLibraryVideoInfo.width , m_BandiVideoLibraryVideoInfo.height ) ) )
 	{
-		MessageBox(NULL, L"Error opening texture...",  L"ERROR!", MB_OK | MB_ICONSTOP);
+		MessageBox(NULL, ERROR_VIDEO_NULLPTR,  ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP);
 		DestroyWindow(m_Hwnd);
 		
 		SafeDelete( m_BandiVideoDevice );

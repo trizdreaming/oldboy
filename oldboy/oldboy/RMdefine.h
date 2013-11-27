@@ -79,14 +79,14 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 #define MAX_INPUT_KEY		256
 
-#define MAX_COUNT			7
-
 // Resource 관련
 
 #define FOLDER_SLASH		"/"
 #define MUSIC_FOLDER_SEARCH	"./Music/.\\*" // 뮤직 폴더 이하 모든 파일 의미
 #define MUSIC_FOLDER		"./Music/"
 #define BGM_TITLE			"./Resource/bgm_title_00_01.mp3"
+
+#define OPENING_VIDEO_FILE	L"./Resource/sample.avi"
 
 #define BG_IMAGE_TITLE	L"./Resource/image_bg_00_01.png"
 #define BG_IMAGE_SELECT	L"./Resource/image_bg_select_01.png"
@@ -107,6 +107,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 // 메시지 박스 타이틀 ERROR_TITLE_~~~
 #define ERROR_TITLE_NORMAL			L"ERROR!"
 #define ERROR_TITLE_LOAD			L"LOAD ERROR!"
+#define ERROR_TITLE_NULLPTR			L"NULLPTR ERROR!"
 
 // 메시지 박스 내용  ERROR_MESSAGE_~~~
 
@@ -130,6 +131,8 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define ERROR_SOUND_INIT	L"Error Sound Initialize...."
 #define ERROR_SOUND_LOADING	L"Error Loading Sound Files...."
 
+#define ERROR_TEXTURE_NULLPTR		L"Texture Pointer Null Error"
+
 #define ERROR_CREATE_RESOURCE		L"Error to Create Object Resources"
 #define ERROR_CREATE_RENDER			L"Error to Create Renderer"
 #define ERROR_CREATE_RENDER_TARGET	L"Error to Create Render Target"
@@ -140,5 +143,12 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define ERROR_LOAD_IMAGE	L"Error Loading Image Files...."
 #define ERROR_LOAD_SOUND	L"Error Loading Sound Files...."
 
+#define ERROR_CREATE_BANDIVID	L"Error creating BandiVideoLibrary."
+#define ERROR_LOAD_VIDEO		L"Error Getting Video Info...."
+#define ERROR_LOAD_VIDEO_DEVICE	L"Error Opening Video Device..."
+#define ERROR_VIDEO_NULLPTR		L"Video Texture Pointer Null Error"
+
+#define ERROR_LOAD_FILE			L"Error opening file..."	
+
 #define ERROR_LOAD_IMAGE_CONSOLE	"Image Loading Error! (%d) \n"
-#define ERROR_FMOD_CONSOLE			"FMOD error! (%d) %s\n"
+#define ERROR_FMOD_CONSOLE			"FMOD Error! (%d) %s\n"

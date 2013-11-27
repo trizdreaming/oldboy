@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMdefine.h"
 #include "RMmacro.h"
 #include "RMobject.h"
 #include "RMimage.h"
@@ -34,6 +35,7 @@ void CRMobject::Render()
 
 	if ( thisTexture == nullptr )
 	{
+		MessageBox( NULL, ERROR_TEXTURE_NULLPTR, ERROR_TITLE_NULLPTR, MB_OK | MB_ICONSTOP );
 		return;
 	}
 	// 방어 코드 - 텍스쳐가 없을 경우

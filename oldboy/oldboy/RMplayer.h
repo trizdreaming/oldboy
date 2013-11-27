@@ -26,7 +26,7 @@ public:
 private:
 	void		CalcCombo();
 
-	UINT		m_Count[MAX_COUNT];
+	UINT		m_Count[COUNT_MAX];
 	
 	bool		m_PrevIsCombo;
 

@@ -25,9 +25,9 @@ private:
 	ItemType	m_NowItem[PLAYER_MAX];
 
 	// 아이템 뷰에 차례대로 티어별로 타입을 보여주기 위한 배열
-	ItemType	m_TearItem[PLAYER_MAX][TIER_MAX];
+	ItemType	m_TearItem[TIER_MAX];
 	
 	// 각 티어별 좌표값(y축)을 저장
-	float		m_ItemPosition[PLAYER_MAX][TIER_MAX];
+	float		m_ItemPosition[TIER_MAX];
 };
 

@@ -268,9 +268,14 @@
     <ClInclude Include="RMitem3Tier.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
-    <ClInclude Include="RMpauseManager.h" />
     <ClInclude Include="RMchildPauseImage.h">
       <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMpauseManager.h">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemDisplay.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -436,9 +441,14 @@
     <ClCompile Include="RMitem3Tier.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
-    <ClCompile Include="RMpauseManager.cpp" />
     <ClCompile Include="RMchildPauseImage.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMpauseManager.cpp">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemDisplay.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

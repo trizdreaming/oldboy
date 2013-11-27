@@ -131,6 +131,7 @@
     <ClInclude Include="RMitem1Tier.h" />
     <ClInclude Include="RMitem2Tier.h" />
     <ClInclude Include="RMitem3Tier.h" />
+    <ClInclude Include="RMitemDisplay.h" />
     <ClInclude Include="RMitemManager.h" />
     <ClInclude Include="RMjudgeManager.h" />
     <ClInclude Include="RMkeyMapping.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="RMitem1Tier.cpp" />
     <ClCompile Include="RMitem2Tier.cpp" />
     <ClCompile Include="RMitem3Tier.cpp" />
+    <ClCompile Include="RMitemDisplay.cpp" />
     <ClCompile Include="RMitemManager.cpp" />
     <ClCompile Include="RMjudgeManager.cpp" />
     <ClCompile Include="RMlabel.cpp" />

@@ -38,7 +38,7 @@ void CRMobject::Render()
 		MessageBox( NULL, ERROR_TEXTURE_NULLPTR, ERROR_TITLE_NULLPTR, MB_OK | MB_ICONSTOP );
 		return;
 	}
-	// 방어 코드 - 텍스쳐가 없을 경우
+	// 방어 코드 - 텍스쳐에 문제가 발생할 경우 nullptr가 넘어와서, 렌더를 패스하므로 외부에서 처리하지 않아도 됨
 
 	if ( m_Width == 0 )
 	{

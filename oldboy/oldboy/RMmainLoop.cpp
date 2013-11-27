@@ -554,7 +554,10 @@ void CRMmainLoop::TestSound()
 	{
 		return;
 	}
-
+	if ( CRMpauseManager::GetInstance()->IsPause() )
+	{
+		return;
+	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN )
 	{
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );

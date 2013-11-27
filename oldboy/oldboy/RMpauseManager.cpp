@@ -18,13 +18,17 @@ CRMpauseManager::~CRMpauseManager(void)
 
 void CRMpauseManager::ShowPause()
 {
-	m_IsPause = true;
-	if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
+	if ( CRMmainLoop::GetInstance()->GetNowScene() != SCENE_SELECT_MUSIC )
 	{
-		CRMsound::GetInstance()->SetPauseBG(true);
+		m_IsPause = true;
+		if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
+		{
+			CRMsound::GetInstance()->SetPauseBG(true);
+		}
+
+		CRMnoteManager::GetInstance()->StartPause();
 	}
-	
-	CRMnoteManager::GetInstance()->StartPause();
+
 }
 
 void CRMpauseManager::ClosePause()

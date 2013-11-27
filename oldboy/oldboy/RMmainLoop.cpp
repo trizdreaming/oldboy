@@ -170,7 +170,10 @@ void CRMmainLoop::RunMessageLoop()
 				
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
-
+				if ( GetActiveWindow() == NULL && GetNowScene() == SCENE_PLAY)
+				{
+					CRMpauseManager::GetInstance()->ShowPause();
+				}
 				CRMobjectManager::GetInstance()->Update();
 				
 				

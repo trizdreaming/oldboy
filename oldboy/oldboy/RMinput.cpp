@@ -32,6 +32,10 @@ void CRMinput::UpdateKeyState()
 
 KeyStatus CRMinput::GetKeyStatusByKey( KeyTable key ) const
 {
+	if ( GetActiveWindow() == NULL )
+	{
+		return KEY_STATUS_NOT_PRESSED;
+	}
 	if ( m_PrevKeyState[key] == false && m_NowKeyState[key] == true )
 	{
 		return KEY_STATUS_DOWN;

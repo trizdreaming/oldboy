@@ -121,7 +121,7 @@ void CRMmainLoop::RunMessageLoop()
 				CRMvideoPlayer::GetInstance()->RenderVideo();
 
 				CRMinput::GetInstance()->UpdateKeyState();
-				if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP )
+				if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP )
 				{
 					CRMvideoPlayer::GetInstance()->DestoryFactory();
 					hr = GoNextScene();
@@ -609,12 +609,12 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	HRESULT hr = S_OK;
 
-	if ( !CRMpauseManager::GetInstance()->IsPause() && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
+	if ( !CRMpauseManager::GetInstance()->IsPause() && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
 	{
 		hr = GoNextScene();
 	}
 
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
 		m_PlayMusicName = m_MusicVector.at( CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex() % m_MusicVector.size() );
 
@@ -650,7 +650,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	//////////////////////////////////////////////////////////////////////////
 	// 작성중 pause
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_PLAY )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_PLAY && !CRMpauseManager::GetInstance()->IsPause() )
 	{
 		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
 		CRMpauseManager::GetInstance()->ShowPause();
@@ -669,7 +669,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
 		}
 	}
-	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_PLAY && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) )
+	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_PLAY && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_DOWN ) )
 	{
 		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
@@ -705,7 +705,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
 		}
 	}
-	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_TITLE && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) )
+	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_TITLE && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) )
 	{
 		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
@@ -754,7 +754,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
 	{
 		hr = GoNextScene();
 	}

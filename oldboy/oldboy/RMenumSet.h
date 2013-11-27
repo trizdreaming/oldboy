@@ -126,6 +126,9 @@ enum KeyStatus
 
 enum ItemType
 {
+	ITEM_TYPE_NONE,
+	//////////////////////////////////////////////////////////////////////////
+	// 1 Tier
 	ITEM_T1_NONE,
 
 	ITEM_T1_1,
@@ -134,6 +137,8 @@ enum ItemType
 	ITEM_T1_4,
 
 	ITEM_T1_MAX,
+	//////////////////////////////////////////////////////////////////////////
+	// 2 Tier
 	ITEM_T2_NONE,
 
 	ITEM_T2_1,
@@ -142,6 +147,8 @@ enum ItemType
 	ITEM_T2_4,
 
 	ITEM_T2_MAX,
+	//////////////////////////////////////////////////////////////////////////
+	// 3 Tier
 	ITEM_T3_NONE,
 
 	ITEM_T3_1,
@@ -149,7 +156,10 @@ enum ItemType
 	ITEM_T3_3,
 	ITEM_T3_4,
 
-	ITEM_T3_MAX
+	ITEM_T3_MAX,
+	//////////////////////////////////////////////////////////////////////////
+	// END
+	ITEM_TYPE_MAX
 }; // 추후 아이템 구현에 맞게 수정합시다.
 
 enum ItemTierType

@@ -31,7 +31,8 @@ void CRMplayer::CalcCombo()
 	}
 	else
 	{
-		m_Count[COUNT_SCORE] += ++m_Count[COUNT_COMBO];
+		m_Count[COUNT_COMBO_SCORE] += ++m_Count[COUNT_COMBO];
+		m_Count[COUNT_SCORE] += m_Count[COUNT_COMBO];
 
 		if ( m_Count[COUNT_COMBO] > m_Count[COUNT_MAX_COMBO] )
 		{
@@ -46,7 +47,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	{
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
-		m_Count[COUNT_SCORE] += 5;
+		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT;
 		m_MP += 16;
 		if( m_MP > m_HP * 65 )
 		{
@@ -56,7 +57,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		break;
 	case JUDGE_GOOD:
 		++m_Count[COUNT_GOOD];
-		m_Count[COUNT_SCORE] += 3;
+		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD;
 		m_MP += 8;
 		if( m_MP > m_HP * 65 )
 		{

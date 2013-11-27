@@ -52,6 +52,12 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 // shutter 관련 플레이어 HP 설정
 #define PLAYER_HP_MAX		10
 
+// 점수 계산값 설정
+#define SCORE_EACH_PERFECT 5
+#define SCORE_EACH_GOOD 3
+#define SCORE_EACH_MISS 0
+#define SCORE_MAX_COMBO_RATE 2
+
 // Label 관련 define
 #define LABEL_JUDGE_PERFECT	L"PERFECT!!"
 #define LABEL_JUDGE_GOOD	L"  GOOD!  "
@@ -60,11 +66,12 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define LABEL_PLAY_SCORE	L"SCORE"
 #define LABEL_PLAY_COMBO	L"COMBO"
 
-#define LABEL_RESULT_SCORE		"SCORE   : "
-#define LABEL_RESULT_PERFECT	"PERFECT : "
-#define LABEL_RESULT_GOOD		"GOOD    : "
-#define LABEL_RESULT_MISS		"MISS    : "
-#define LABEL_RESULT_COMBO		"COMBO   : "
+#define LABEL_RESULT_SCORE			"SCORE   : "
+#define LABEL_RESULT_PERFECT		"PERFECT : "
+#define LABEL_RESULT_GOOD			"GOOD    : "
+#define LABEL_RESULT_MISS			"MISS    : "
+#define LABEL_RESULT_COMBO_BONUS	"COMBO BONUS   : "
+#define LABEL_RESULT_MAX_COMBO		"MAX COMBO   : "
 
 #define LABEL_NAME_P1_SCORE	L"플레이어1점수"
 #define LABEL_NAME_P1_COMBO	L"플레이어1콤보"

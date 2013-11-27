@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "RMkeyMapping.h"
 #include "RMenumSet.h"
 #include "RMdefine.h"

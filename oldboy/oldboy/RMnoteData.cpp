@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMnoteData.h"
 
 CRMnoteData::CRMnoteData( int time, int level,ObjectType type )

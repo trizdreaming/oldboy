@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "LibraryBandi/BandiVideoLibrary.h"
 #include "LibraryBandi/BandiVideoTexture_DX9.h"
 

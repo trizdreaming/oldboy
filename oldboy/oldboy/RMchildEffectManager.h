@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMenumSet.h"
 
 struct Position
@@ -23,8 +23,8 @@ public:
 	char		GetFlag() { return m_BitFlag; }
 
 private:
-	UINT	m_FlagSetter1P; //¾î¶² ºñÆ® Æ÷Áö¼Ç¿¡ ³ÖÀ»Áö ¸ğµâ·¯ ¿¬»êÀ¸·Î È®ÀÎ
-	UINT	m_FlagSetter2P; //¾î¶² ºñÆ® Æ÷Áö¼Ç¿¡ ³ÖÀ»Áö ¸ğµâ·¯ ¿¬»êÀ¸·Î È®ÀÎ
+	UINT	m_FlagSetter1P; //ì–´ë–¤ ë¹„íŠ¸ í¬ì§€ì…˜ì— ë„£ì„ì§€ ëª¨ë“ˆëŸ¬ ì—°ì‚°ìœ¼ë¡œ í™•ì¸
+	UINT	m_FlagSetter2P; //ì–´ë–¤ ë¹„íŠ¸ í¬ì§€ì…˜ì— ë„£ì„ì§€ ëª¨ë“ˆëŸ¬ ì—°ì‚°ìœ¼ë¡œ í™•ì¸
 	char	m_BitFlag;
 	float	m_Effect1PStartPositionX;
 	float	m_Effect1PStartPositionY;

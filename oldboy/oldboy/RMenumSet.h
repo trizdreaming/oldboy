@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 enum SceneType
 {
@@ -18,10 +18,10 @@ enum LayerType
 	LAYER_NONE,
 
 	LAYER_BACKGROUND,
-	LAYER_JUDGERING,  //item ±¸Çö¿ë
-	LAYER_GAUGE_PLAYER1,	  //item ±¸Çö¿ë
+	LAYER_JUDGERING,  //item êµ¬í˜„ìš©
+	LAYER_GAUGE_PLAYER1,	  //item êµ¬í˜„ìš©
 	LAYER_GAUGE_PLAYER2,
-	LAYER_ITEM,		  //item ±¸Çö¿ë
+	LAYER_ITEM,		  //item êµ¬í˜„ìš©
 	LAYER_NOTE1,
 	LAYER_NOTE2,
 	LAYER_NOTE_HIT,
@@ -46,9 +46,9 @@ enum ObjectType
 	OBJECT_PAUSE_IMAGE_PLAY_OK,
 	OBJECT_PAUSE_IMAGE_TITLE_CANCEL,
 	OBJECT_PAUSE_IMAGE_TITLE_OK,
-	OBJECT_JUDGERING, //item ±¸Çö¿ë
-	OBJECT_GAUGE_1P,  //item ±¸Çö¿ë
-	OBJECT_GAUGE_2P,  //item ±¸Çö¿ë
+	OBJECT_JUDGERING, //item êµ¬í˜„ìš©
+	OBJECT_GAUGE_1P,  //item êµ¬í˜„ìš©
+	OBJECT_GAUGE_2P,  //item êµ¬í˜„ìš©
 	OBJECT_NOTE_NORMAL_1,
 	OBJECT_NOTE_NORMAL_2,
 	OBJECT_EFFECT,
@@ -147,7 +147,7 @@ enum ItemType
 	ITEM_T3_4,
 
 	ITEM_T3_MAX
-}; // ÃßÈÄ ¾ÆÀÌÅÛ ±¸Çö¿¡ ¸Â°Ô ¼öÁ¤ÇÕ½Ã´Ù.
+}; // ì¶”í›„ ì•„ì´í…œ êµ¬í˜„ì— ë§žê²Œ ìˆ˜ì •í•©ì‹œë‹¤.
 
 enum ItemTierType
 {

@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMenumSet.h"
 
 class CRMmainLoop
@@ -9,23 +9,23 @@ private:
 	~CRMmainLoop(void);
 
 public:
-	// ÃÊ±âÈ­ ¹× ¹«ÇÑ·çÇÁ
+	// ì´ˆê¸°í™” ë° ë¬´í•œë£¨í”„
 	HRESULT					CreateMainLoopWindow();
 	void					RunMessageLoop();
 
-	// ¾À °ü¸®
+	// ì”¬ ê´€ë¦¬
 	SceneType				GetNowScene() { return m_SceneType; }
 	HRESULT					GoNextScene();
 	HRESULT					GoPrevScene();
 
-	HWND					GetHwnd() { return m_Hwnd; }				// À©µµ¿ì ÇÚµé ¹İÈ¯
-	static LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);	// °´Ã¼ ¾øÀÌµµ »ç¿ë °¡´ÉÇÏµµ·Ï staticÀ¸·Î ÇÔ
+	HWND					GetHwnd() { return m_Hwnd; }				// ìœˆë„ìš° í•¸ë“¤ ë°˜í™˜
+	static LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);	// ê°ì²´ ì—†ì´ë„ ì‚¬ìš© ê°€ëŠ¥í•˜ë„ë¡ staticìœ¼ë¡œ í•¨
 
 private:
 
 	void	FindMusicData();
 
-	// ÀÓ½Ã Å×½ºÆ® ÇÔ¼ö
+	// ì„ì‹œ í…ŒìŠ¤íŠ¸ í•¨ìˆ˜
 	void	TestSound();
 	HRESULT	TestKeyboard();
 

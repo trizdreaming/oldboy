@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 class CRMlabel;
 
@@ -12,7 +12,7 @@ private:
 	~CRMlabelManager(void);
 
 public:
-	// ���丮 �ʱ�ȭ
+	// 팩토리 초기화
  	HRESULT						CreateFactory();
 	IDWriteFactory*				GetTextFactory() const { return m_DWriteFactory; }
 

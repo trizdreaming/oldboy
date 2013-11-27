@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMchildEffectImage.h"
 #include "RMchildEffectManager.h"
@@ -28,14 +28,14 @@ void CRMchildEffectImage::Update()
 		{
 			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
 			{				
-				// printConsole("Å×½ºÆ®!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
+				// printConsole("í…ŒìŠ¤íŠ¸!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
 
 				m_EffectType = i % 4;
 				highMask = i / 4;
 			}
 		}
 
-		// printConsole( "Å×½ºÆ® Ãâ·Â ÇÃ·¡±× [ %x ] ÁÂÇ¥ [ %f , %f ] Å¸ÀÔ [ %d ] \n", 
+		// printConsole( "í…ŒìŠ¤íŠ¸ ì¶œë ¥ í”Œëž˜ê·¸ [ %x ] ì¢Œí‘œ [ %f , %f ] íƒ€ìž… [ %d ] \n", 
 		//				CRMchildEffectManager::GetInstance()->GetFlag(), m_PositionX, m_PositionY, m_EffectType );
 
 		CRMchildEffectManager::GetInstance()->ResetFlag( highMask );
@@ -63,12 +63,12 @@ void CRMchildEffectImage::Update()
 		return;
 	}
 
-	//2p Ãß°¡ ÇÊ¿ä ¾øÀ½
+	//2p ì¶”ê°€ í•„ìš” ì—†ìŒ
 
 	m_PositionX -= 10 * m_EffectTime;;
 	m_PositionY -= ( 7 - ( m_EffectType * 2) ) * m_EffectTime;
 
-	// 8º¸´Ù Ä¿Áö¸é 2PÀÇ ÀÌÆåÆ® È¿°ú ÀÌ¹ÌÁö°¡ 1P °ø°£À» Ä§¹üÇÔ
+	// 8ë³´ë‹¤ ì»¤ì§€ë©´ 2Pì˜ ì´íŽ™íŠ¸ íš¨ê³¼ ì´ë¯¸ì§€ê°€ 1P ê³µê°„ì„ ì¹¨ë²”í•¨
 	if ( ++m_EffectTime > 8 )
 	{
 		CRMobject::m_Visible = false;

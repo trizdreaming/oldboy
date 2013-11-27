@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMresourceManager.h"
@@ -37,8 +37,8 @@ void CRMresourceManager::InitializeAlbum()
 }
 
 //////////////////////////////////////////////////////////////////////////
-//CLSID_WICImagingFactory´Â 1, 2°¡ ³ª´µ¾îÁ® ÀÖÀ½
-//°¢ PC¿¡ µû¶ó¼­ ±¸µ¿µÇ´Â °ÍÀÌ ´Ù¸£±â ¶§¹®¿¡ ÇØ´ç ³»¿ë¿¡ ´ëÇØ¼­ È®ÀÎÇÏ´Â ¹æ¾î ÄÚµå ÀÛ¼º
+//CLSID_WICImagingFactoryëŠ” 1, 2ê°€ ë‚˜ë‰˜ì–´ì ¸ ìžˆìŒ
+//ê° PCì— ë”°ë¼ì„œ êµ¬ë™ë˜ëŠ” ê²ƒì´ ë‹¤ë¥´ê¸° ë•Œë¬¸ì— í•´ë‹¹ ë‚´ìš©ì— ëŒ€í•´ì„œ í™•ì¸í•˜ëŠ” ë°©ì–´ ì½”ë“œ ìž‘ì„±
 //////////////////////////////////////////////////////////////////////////
 
 HRESULT CRMresourceManager::CreateFactory()
@@ -65,7 +65,7 @@ HRESULT CRMresourceManager::CreateFactory()
 }
 
 
-// ±âº» ResourceÆú´õÀÇ ÅØ½ºÃÄ ·Îµå
+// ê¸°ë³¸ Resourceí´ë”ì˜ í…ìŠ¤ì³ ë¡œë“œ
 HRESULT CRMresourceManager::CreateTexture()
 {
 	InitializeArray();
@@ -115,7 +115,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	// Ãß°¡Áß 
+	// ì¶”ê°€ì¤‘ 
 	texture = new CRMimage();
 	hr = texture->CreateImage( PAUSE_IMAGE_PLAY_CANCEL );
 
@@ -172,7 +172,7 @@ HRESULT CRMresourceManager::CreateTexture()
 		SafeDelete(texture);
 	}
 	//////////////////////////////////////////////////////////////////////////
-	//ÀÌÇÏ ÇÃ·¹ÀÌ È­¸é
+	//ì´í•˜ í”Œë ˆì´ í™”ë©´
 	texture = new CRMimage();
 	hr = texture->CreateImage( PLAY_IMAGE_JUDGE_RING );
 
@@ -230,7 +230,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	HRESULT hr = S_FALSE;
 	CRMimage* texture;
 
-	// ±âº» ÀÚ¿ø ·Îµå
+	// ê¸°ë³¸ ìžì› ë¡œë“œ
 	hr = CreateTexture();
 	if ( hr == S_FALSE )
 	{
@@ -240,7 +240,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 	
 
-	// °î¸¶´Ù ¹Ù²î´Â Á¤º¸ ·Îµå
+	// ê³¡ë§ˆë‹¤ ë°”ë€ŒëŠ” ì •ë³´ ë¡œë“œ
 
 	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) );

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMrender.h"
 #include "RMmainLoop.h"
@@ -39,16 +39,16 @@ HRESULT CRMrender::CreateRenderTarget()
 		D2D1::HwndRenderTargetProperties(CRMmainLoop::GetInstance()->GetHwnd(), size),
 		&m_pDisplayRenderTarget
 		);
-	// D2D1_PRESENT_OPTIONS_IMMEDIATELY - FPS Á¦ÇÑ ÇØÁ¦(¸®ÇÁ·¹½¬¸¦ ±â´Ù¸®Áö ¾ÊÀ½)
+	// D2D1_PRESENT_OPTIONS_IMMEDIATELY - FPS ì œí•œ í•´ì œ(ë¦¬í”„ë ˆì‰¬ë¥¼ ê¸°ë‹¤ë¦¬ì§€ ì•ŠìŒ)
 
 	return hr;
 }
 
 
 ///////////////////////////////////////////////////////////////////////////////
-//RenderInit()°ú RenderEnd()´Â Ç×»ó °°ÀÌ ´Ù³à¾ß ÇÔ
+//RenderInit()ê³¼ RenderEnd()ëŠ” í•­ìƒ ê°™ì´ ë‹¤ë…€ì•¼ í•¨
 //
-//Begin °ú End »çÀÌ¿¡ °¢ Object°¡ °¢ÀÚÀÇ ³»¿ëÀ» Ãß°¡ÇÒ ¼ö ÀÖµµ·Ï ÇÔ
+//Begin ê³¼ End ì‚¬ì´ì— ê° Objectê°€ ê°ìì˜ ë‚´ìš©ì„ ì¶”ê°€í•  ìˆ˜ ìˆë„ë¡ í•¨
 ///////////////////////////////////////////////////////////////////////////////
 
 void CRMrender::RenderInit()

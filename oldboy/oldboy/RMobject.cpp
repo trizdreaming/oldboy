@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMdefine.h"
 #include "RMmacro.h"
 #include "RMobject.h"
@@ -38,7 +38,7 @@ void CRMobject::Render()
 		MessageBox( NULL, ERROR_TEXTURE_NULLPTR, ERROR_TITLE_NULLPTR, MB_OK | MB_ICONSTOP );
 		return;
 	}
-	// ¹æ¾î ÄÚµå - ÅØ½ºÃÄ°¡ ¾øÀ» °æ¿ì
+	// ë°©ì–´ ì½”ë“œ - í…ìŠ¤ì³ê°€ ì—†ì„ ê²½ìš°
 
 	if ( m_Width == 0 )
 	{

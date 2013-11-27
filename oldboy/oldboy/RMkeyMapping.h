@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #define VK_A 0x41
 #define VK_B 0x42

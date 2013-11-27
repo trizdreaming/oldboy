@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMobject.h"
 #include "RMlabel.h"
@@ -82,7 +82,7 @@ CRMobjectManager::~CRMobjectManager(void)
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
-	¶óº§ ¸Å´ÏÀú¿¡¼­ ÀÌ¹Ì ÇØ´ç ¿µ¿ª ¸Ş¸ğ¸® ÇØÁ¦ÇÏ¿´À½
+	ë¼ë²¨ ë§¤ë‹ˆì €ì—ì„œ ì´ë¯¸ í•´ë‹¹ ì˜ì—­ ë©”ëª¨ë¦¬ í•´ì œí•˜ì˜€ìŒ
 	*/
 	m_ObjectListLayerLabel.clear();
 
@@ -205,7 +205,7 @@ void CRMobjectManager::Update()
 	m_ObjectListLayerLabel.clear();
 	CRMobject* thisLabel = nullptr;
 
-	// friend class·Î ¶óº§ ¸Å´ÏÀú¿¡ Á¢±ÙÇØ¼­ ¶óº§ ¸ÊÀÇ ¿ø¼Ò¸¦ Á÷Á¢ ÀĞ¾î¿È
+	// friend classë¡œ ë¼ë²¨ ë§¤ë‹ˆì €ì— ì ‘ê·¼í•´ì„œ ë¼ë²¨ ë§µì˜ ì›ì†Œë¥¼ ì§ì ‘ ì½ì–´ì˜´
 	for ( auto& iter : CRMlabelManager::GetInstance()->m_LabelMap )
 	{
 		thisLabel = iter.second;
@@ -217,7 +217,7 @@ void CRMobjectManager::Update()
 
 		thisLabel->Update();
 		m_ObjectListLayerLabel.push_back( thisLabel );
-		// ·»´õ¸µÀ» ÇÏ±â À§ÇØ ·»´õ¸µ ·¹ÀÌ¾î¿¡ Áı¾î ³ÖÀ½
+		// ë Œë”ë§ì„ í•˜ê¸° ìœ„í•´ ë Œë”ë§ ë ˆì´ì–´ì— ì§‘ì–´ ë„£ìŒ
 	}
 
 	for ( auto& iter : m_ObjectListLayerPause )

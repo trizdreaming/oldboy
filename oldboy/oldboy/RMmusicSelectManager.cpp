@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMmusicSelectManager.h"
@@ -75,7 +75,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 	return NULL;
 }
 
-// LabelÀÌ wstring¿¡¼­ stringÀ¸·Î ¹Ù²ğ¶§±îÁö ÀÓ½Ã·Î °¡Áö´Â ÇÔ¼ö
+// Labelì´ wstringì—ì„œ stringìœ¼ë¡œ ë°”ë€”ë•Œê¹Œì§€ ì„ì‹œë¡œ ê°€ì§€ëŠ” í•¨ìˆ˜
 std::wstring CRMmusicSelectManager::string2wstring(const std::string& str) const {
 	std::wstring wstr(str.length(),L' ');
 	copy(str.begin(),str.end(),wstr.begin());

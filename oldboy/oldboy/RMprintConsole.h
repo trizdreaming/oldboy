@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #ifndef _PRINT_CONSOLE
 #define _PRINT_CONSOLE

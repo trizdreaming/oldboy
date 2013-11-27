@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "RMmacro.h"
 class CRMpauseManager
 {

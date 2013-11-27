@@ -1,17 +1,17 @@
-// stdafx.h : ÀÚÁÖ »ç¿ëÇÏÁö¸¸ ÀÚÁÖ º¯°æµÇÁö´Â ¾Ê´Â
-// Ç¥ÁØ ½Ã½ºÅÛ Æ÷ÇÔ ÆÄÀÏ ¹× ÇÁ·ÎÁ§Æ® °ü·Ã Æ÷ÇÔ ÆÄÀÏÀÌ
-// µé¾î ÀÖ´Â Æ÷ÇÔ ÆÄÀÏÀÔ´Ï´Ù.
+ï»¿// stdafx.h : ìžì£¼ ì‚¬ìš©í•˜ì§€ë§Œ ìžì£¼ ë³€ê²½ë˜ì§€ëŠ” ì•ŠëŠ”
+// í‘œì¤€ ì‹œìŠ¤í…œ í¬í•¨ íŒŒì¼ ë° í”„ë¡œì íŠ¸ ê´€ë ¨ í¬í•¨ íŒŒì¼ì´
+// ë“¤ì–´ ìžˆëŠ” í¬í•¨ íŒŒì¼ìž…ë‹ˆë‹¤.
 //
 
 #pragma once
 
 #include "targetver.h"
 
-#define WIN32_LEAN_AND_MEAN             // °ÅÀÇ »ç¿ëµÇÁö ¾Ê´Â ³»¿ëÀº Windows Çì´õ¿¡¼­ Á¦¿ÜÇÕ´Ï´Ù.
-// Windows Çì´õ ÆÄÀÏ:
+#define WIN32_LEAN_AND_MEAN             // ê±°ì˜ ì‚¬ìš©ë˜ì§€ ì•ŠëŠ” ë‚´ìš©ì€ Windows í—¤ë”ì—ì„œ ì œì™¸í•©ë‹ˆë‹¤.
+// Windows í—¤ë” íŒŒì¼:
 #include <windows.h>
 
-// C ·±Å¸ÀÓ Çì´õ ÆÄÀÏÀÔ´Ï´Ù.
+// C ëŸ°íƒ€ìž„ í—¤ë” íŒŒì¼ìž…ë‹ˆë‹¤.
 #include <stdlib.h>
 #include <malloc.h>
 #include <memory.h>
@@ -23,7 +23,7 @@
 #include <vector>
 #include <array>
 
-//Display - Direct 2D°ü·Ã include file
+//Display - Direct 2Dê´€ë ¨ include file
 #include <d2d1.h>
 #include <d2d1helper.h>
 
@@ -31,7 +31,7 @@
 #include <timeapi.h>
 #include <wincodec.h>
 
-// TODO: ÇÁ·Î±×·¥¿¡ ÇÊ¿äÇÑ Ãß°¡ Çì´õ´Â ¿©±â¿¡¼­ ÂüÁ¶ÇÕ´Ï´Ù.
+// TODO: í”„ë¡œê·¸ëž¨ì— í•„ìš”í•œ ì¶”ê°€ í—¤ë”ëŠ” ì—¬ê¸°ì—ì„œ ì°¸ì¡°í•©ë‹ˆë‹¤.
 
 // bandi
 #include <mmsystem.h>

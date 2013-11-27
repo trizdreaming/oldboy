@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "RMenumSet.h"
 
 class CRMimage;
@@ -12,7 +12,7 @@ private:
 	~CRMresourceManager(void);
 	
 public:
-	// ���丮 �ʱ�ȭ
+	// 팩토리 초기화
 	HRESULT						CreateFactory();
 	IWICImagingFactory*			GetImageFactory() const { return m_pWICFactory; }
 

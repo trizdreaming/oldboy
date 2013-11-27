@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMchildShutter.h"
@@ -27,7 +27,7 @@ void CRMchildShutter::Update()
 	{
 		if ( m_PositionY != SHUTTER_START_POSITION_Y )
 		{
-			printConsole( "¼ÅÅÍ ÃÊ±âÈ­ \n" );
+			printConsole( "ì…”í„° ì´ˆê¸°í™” \n" );
 			m_PositionY = SHUTTER_START_POSITION_Y;
 		}
 		return;

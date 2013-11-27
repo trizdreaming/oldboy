@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMsound.h"
@@ -16,7 +16,7 @@ CRMsound::CRMsound(void):
 
 CRMsound::~CRMsound(void)
 {
-	// ¼Ò¸êÀÚ¿¡¼­ ÇÒ´çÇÑ ÀÚ¿øÀ» ¹İ³³ÇÏµµ·Ï ÇÔ
+	// ì†Œë©¸ìì—ì„œ í• ë‹¹í•œ ìì›ì„ ë°˜ë‚©í•˜ë„ë¡ í•¨
 	DeleteSound();
 
 	if ( m_SystemS )
@@ -28,7 +28,7 @@ CRMsound::~CRMsound(void)
 }
 
 
-// ¿¡·¯ Ã¼Å©
+// ì—ëŸ¬ ì²´í¬
 HRESULT CRMsound::CheckError()
 {
 	if ( m_Result != FMOD_OK )
@@ -41,7 +41,7 @@ HRESULT CRMsound::CheckError()
 	return S_OK;
 }
 
-// ÆÑÅä¸® »ı¼º
+// íŒ©í† ë¦¬ ìƒì„±
 HRESULT CRMsound::CreateSound()
 {
 	m_Result = FMOD::System_Create(&m_SystemS);  // Create the main system object.
@@ -62,8 +62,8 @@ HRESULT CRMsound::CreateSound()
 }
 
 
-// ½ÇÁ¦ ¸®¼Ò½º »ı¼º
-// ÆÄÀÏ À§Ä¡°ú, ÇöÀç Àå¸é¿¡ ¸Â´Â Å¸ÀÔ(enum)À» Àû¾îÁÜÀ¸·Î½á È®ÀÎ
+// ì‹¤ì œ ë¦¬ì†ŒìŠ¤ ìƒì„±
+// íŒŒì¼ ìœ„ì¹˜ê³¼, í˜„ì¬ ì¥ë©´ì— ë§ëŠ” íƒ€ì…(enum)ì„ ì ì–´ì¤Œìœ¼ë¡œì¨ í™•ì¸
 HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 {
 	if ( CheckError() != S_OK )
@@ -85,7 +85,7 @@ HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 	return S_OK;
 }
 
-// °î¿¡ ¸ÂÃç Æú´õÀÇ À½¾ÇÀ» ·Îµù
+// ê³¡ì— ë§ì¶° í´ë”ì˜ ìŒì•…ì„ ë¡œë”©
 HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 {
 	HRESULT hr = S_FALSE;
@@ -136,7 +136,7 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 	return hr;
 }
 
-// Àç»ı
+// ì¬ìƒ
 void CRMsound::PlaySound( SoundType soundType, bool isLoop )
 {
 	if ( m_Result == FMOD_OK )
@@ -162,7 +162,7 @@ void CRMsound::PlaySound( SoundType soundType, bool isLoop )
 	}
 }
 
-// È¿°úÀ½ Àç»ı
+// íš¨ê³¼ìŒ ì¬ìƒ
 void CRMsound::PlayEffect( SoundType soundType )
 {
 	if ( m_Result == FMOD_OK )
@@ -174,7 +174,7 @@ void CRMsound::PlayEffect( SoundType soundType )
 }
 
 
-// ÇØÁ¦ Ã³¸®
+// í•´ì œ ì²˜ë¦¬
 void CRMsound::DeleteSound()
 {
 	for ( auto& toBeDelete : m_SoundArray )

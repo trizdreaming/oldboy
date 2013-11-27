@@ -1,18 +1,18 @@
-
-// oldboy.cpp : ¸ÞÀÎÇÔ¼ö°¡ Æ÷ÇÔ µÇ¾î ÀÖ´Â ÆÄÀÏ.
+ï»¿
+// oldboy.cpp : ë©”ì¸í•¨ìˆ˜ê°€ í¬í•¨ ë˜ì–´ ìžˆëŠ” íŒŒì¼.
 
 #include "stdafx.h"
 #include "RMmacro.h"
 #include "RMmainLoop.h"
 
 //////////////////////////////////////////////////////////////////////////
-// µð¹ö±ë¿ë ÄÜ¼Ö Á¦¾î
+// ë””ë²„ê¹…ìš© ì½˜ì†” ì œì–´
 
 #ifdef _DEBUG
 #include "RMprintConsole.h"
 #endif // _DEBUG
 
-// ÄÜ¼ÖÀ» ¾ø¾Ö·Á¸é À§ÀÇ Çì´õ¸¦ ÁÖ¼®Ã³¸®
+// ì½˜ì†”ì„ ì—†ì• ë ¤ë©´ ìœ„ì˜ í—¤ë”ë¥¼ ì£¼ì„ì²˜ë¦¬
 //////////////////////////////////////////////////////////////////////////
 
 // D2D & WIC
@@ -30,7 +30,7 @@
 #pragma comment(lib, "d3d9.lib")
 
 
-//¸ÞÀÎÇÔ¼ö ½ÃÀÛ
+//ë©”ì¸í•¨ìˆ˜ ì‹œìž‘
 int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
                      _In_opt_ HINSTANCE hPrevInstance,
                      _In_ LPTSTR    lpCmdLine,
@@ -43,10 +43,10 @@ int APIENTRY _tWinMain(_In_ HINSTANCE hInstance,
 #ifdef _PRINT_CONSOLE
 
 
-	// ¸Þ¸ð¸® µð¹ö±ë ¿É¼Ç ºÎºÐ
+	// ë©”ëª¨ë¦¬ ë””ë²„ê¹… ì˜µì…˜ ë¶€ë¶„
 	_CrtSetDbgFlag(_CRTDBG_ALLOC_MEM_DF | _CRTDBG_LEAK_CHECK_DF);
 
-	// µð¹ö±ë¿ë ÄÜ¼Ö Çì´õ°¡ Æ÷ÇÔ µÇ¾î ÀÖÀ» ¶§¿¡¸¸ ½Ì±ÛÅæÀ¸·Î ÄÜ¼ÖÀ» »ý¼ºÇÔ
+	// ë””ë²„ê¹…ìš© ì½˜ì†” í—¤ë”ê°€ í¬í•¨ ë˜ì–´ ìžˆì„ ë•Œì—ë§Œ ì‹±ê¸€í†¤ìœ¼ë¡œ ì½˜ì†”ì„ ìƒì„±í•¨
 	CRMprintConsole::GetInstance();
 #endif // _PRINT_CONSOLE
 

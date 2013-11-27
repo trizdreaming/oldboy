@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMlabel.h"
 #include "RMlabelManager.h"
@@ -50,7 +50,7 @@ void CRMlabel::Render()
 	}
 
 	SafeRelease( m_Brush );
-	// ºê·¯½¬ Á¾·ù Ãß°¡ÇÏ°í ½ÍÀ¸¸é ÀÌ°÷¿¡ switch case ¹®À¸·Î À§¿¡ ¸Å°³ÀÎÀÚ·Î enum Å¸ÀÔ ¹Þ¾Æ¼­ Ãß°¡
+	// ë¸ŒëŸ¬ì‰¬ ì¢…ë¥˜ ì¶”ê°€í•˜ê³  ì‹¶ìœ¼ë©´ ì´ê³³ì— switch case ë¬¸ìœ¼ë¡œ ìœ„ì— ë§¤ê°œì¸ìžë¡œ enum íƒ€ìž… ë°›ì•„ì„œ ì¶”ê°€
 	CRMrender::GetInstance()->GetRenderTarget()->CreateSolidColorBrush( D2D1::ColorF(m_ColorR, m_ColorG, m_ColorB), &m_Brush );
 
 	CRMrender::GetInstance()->GetRenderTarget()->DrawTextW(	

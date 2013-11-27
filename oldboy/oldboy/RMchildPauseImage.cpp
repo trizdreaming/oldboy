@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMchildPauseImage.h"
 #include "RMpauseManager.h"
 #include "RMobject.h"

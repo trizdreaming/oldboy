@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMenumSet.h"
 
 class CRMobject;
@@ -12,10 +12,10 @@ private:
 	~CRMjudgeManager(void);
 
 public:
-	//³ëÆ® °ü¸®
+	//ë…¸íŠ¸ ê´€ë¦¬
 	void						StartNote( PlayerNumber player , ObjectType objectType ) const;
 	
-	//³ëÆ® ÆÇÁ¤
+	//ë…¸íŠ¸ íŒì •
 	void						JudgeNote() const;
 	
 private:

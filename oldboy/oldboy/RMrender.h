@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CRMrender
 {
@@ -9,13 +9,13 @@ private:
 	~CRMrender(void);
 
 public:
-	// ÆÑÅä¸® & ·£´õ Å¸°Ù »ı¼º ¹× ¹İÈ¯
+	// íŒ©í† ë¦¬ & ëœë” íƒ€ê²Ÿ ìƒì„± ë° ë°˜í™˜
 	HRESULT					CreateFactory();
 	HRESULT					CreateRenderTarget();
 	ID2D1Factory*			GetRenderFactory() { return m_pDisplayFactory; }
 	ID2D1HwndRenderTarget*	GetRenderTarget() { return m_pDisplayRenderTarget; }
 
-	// ·£´õ¸µ ½ÃÀÛ°ú Á¾·á
+	// ëœë”ë§ ì‹œì‘ê³¼ ì¢…ë£Œ
 	void	RenderInit();
 	HRESULT	RenderEnd();
 

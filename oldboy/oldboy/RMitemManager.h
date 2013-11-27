@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMenumSet.h"
 
 class CRMitem;
@@ -13,21 +13,21 @@ private:
 
 public:
 	void		RotateItem();
-	// ÀÏÁ¤ ½Ã°£¸¶´Ù °¢ Æ¼¾îÀÇ ¾ÆÀÌÅÛµéÀÌ ¹«ÀÛÀ§·Î È¸ÀüÇÏ¸é¼­ ±³Ã¼ µÊ
-	//   <-- [3Æ¼¾î] -->
-	//   <-- [2Æ¼¾î] -->
-	//   <-- [1Æ¼¾î] -->
+	// ì¼ì • ì‹œê°„ë§ˆë‹¤ ê° í‹°ì–´ì˜ ì•„ì´í…œë“¤ì´ ë¬´ìž‘ìœ„ë¡œ íšŒì „í•˜ë©´ì„œ êµì²´ ë¨
+	//   <-- [3í‹°ì–´] -->
+	//   <-- [2í‹°ì–´] -->
+	//   <-- [1í‹°ì–´] -->
 
-	// ¾ÆÀÌÅÛÀÇ ¼¼ºÎ ÀÛµ¿Àº °¢ ¾ÆÀÌÅÛ °´Ã¼µéÀÌ È®ÀÎ ÇÒ °ÍÀÓ
+	// ì•„ì´í…œì˜ ì„¸ë¶€ ìž‘ë™ì€ ê° ì•„ì´í…œ ê°ì²´ë“¤ì´ í™•ì¸ í•  ê²ƒìž„
 
 private:
-	// ÇöÀç ¹ßµ¿ ÁßÀÎ ¾ÆÀÌÅÛÀÌ µé¾î°¥ ¹è¿­
+	// í˜„ìž¬ ë°œë™ ì¤‘ì¸ ì•„ì´í…œì´ ë“¤ì–´ê°ˆ ë°°ì—´
 	ItemType	m_NowItem[PLAYER_MAX];
 
-	// ¾ÆÀÌÅÛ ºä¿¡ Â÷·Ê´ë·Î Æ¼¾îº°·Î Å¸ÀÔÀ» º¸¿©ÁÖ±â À§ÇÑ ¹è¿­
+	// ì•„ì´í…œ ë·°ì— ì°¨ë¡€ëŒ€ë¡œ í‹°ì–´ë³„ë¡œ íƒ€ìž…ì„ ë³´ì—¬ì£¼ê¸° ìœ„í•œ ë°°ì—´
 	ItemType	m_TearItem[TIER_MAX];
 	
-	// °¢ Æ¼¾îº° ÁÂÇ¥°ª(yÃà)À» ÀúÀå
+	// ê° í‹°ì–´ë³„ ì¢Œí‘œê°’(yì¶•)ì„ ì €ìž¥
 	float		m_ItemPosition[TIER_MAX];
 };
 

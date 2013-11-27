@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMenumSet.h"
 #include "RMdefine.h"
 
@@ -30,7 +30,7 @@ private:
 	
 	bool		m_PrevIsCombo;
 
-	int			m_HP;	// ¼ÅÅÍ¸¦ °ü¸®ÇÏ±â À§ÇÔ[Health Point]
-	int			m_MP;	// °ÔÀÌÁö¸¦ °ü¸®ÇÏ±â À§ÇÔ[Mana Point]
+	int			m_HP;	// ì…”í„°ë¥¼ ê´€ë¦¬í•˜ê¸° ìœ„í•¨[Health Point]
+	int			m_MP;	// ê²Œì´ì§€ë¥¼ ê´€ë¦¬í•˜ê¸° ìœ„í•¨[Mana Point]
 };
 

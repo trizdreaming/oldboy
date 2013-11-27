@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 class CRMmusicData;
 class CRMnoteData;
@@ -19,7 +19,7 @@ public:
 
 	CRMmusicData*		GetMusicData( const std::string& folderName ) { return m_MusicDataMap[folderName]; }
 private:
-	//           Æú´õÀÌ¸§  À½¾Ç°³Ã¼
+	//           í´ë”ì´ë¦„  ìŒì•…ê°œì²´
 	std::map<std::string, CRMmusicData*>	m_MusicDataMap;
 	std::list<CRMnoteData*>					m_NoteList;
 };

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "LibraryTinyXML/tinyxml.h"
 #include "LibraryTinyXML/xpath_static.h"
 #include "RMmacro.h"
@@ -246,10 +246,10 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 			{
 				while ( beat1Time < endJoint )
 				{
-					printConsole ( "%d¹Ð¸®ÃÊ¿¡ ³ëÆ® ÇÏ³ª Ãß°¡¿ä~! \n", (beat1Time + (jointCount * 60 / bpm) - 2152) );
+					printConsole ( "%dë°€ë¦¬ì´ˆì— ë…¸íŠ¸ í•˜ë‚˜ ì¶”ê°€ìš”~! \n", (beat1Time + (jointCount * 60 / bpm) - 2152) );
 
 					noteData = new CRMnoteData( (beat1Time + (jointCount * 60 / bpm) - 2152) , (jointCount % 2) + 1 , (jointCount++ % 2 == 0) ? OBJECT_NOTE_NORMAL_1 : OBJECT_NOTE_NORMAL_2 );
-					// 2152 = È­¸é ÃÖ»ó´Ü¿¡¼­ ÆÇÁ¤ÆÇ±îÁö ³»·Á¿À±â±îÁö °É¸®´Â ½Ã°£ ms
+					// 2152 = í™”ë©´ ìµœìƒë‹¨ì—ì„œ íŒì •íŒê¹Œì§€ ë‚´ë ¤ì˜¤ê¸°ê¹Œì§€ ê±¸ë¦¬ëŠ” ì‹œê°„ ms
 					m_NoteList.push_back( noteData );
 
 					beat1Time += 1000 * 60 / bpm;

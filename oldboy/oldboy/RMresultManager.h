@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMmacro.h"
 class CRMresultManager
 {
@@ -8,7 +8,7 @@ public:
 	CRMresultManager(void);
 	~CRMresultManager(void);
 
-	// selectManagerµµ ±×·¸°í ±×³É ¾Àµé?
+	// selectManagerë„ ê·¸ë ‡ê³  ê·¸ëƒ¥ ì”¬ë“¤?
 
 	void			ShowResult();
 

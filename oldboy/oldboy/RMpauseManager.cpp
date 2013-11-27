@@ -1,4 +1,4 @@
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RMpauseManager.h"
 #include "RMsound.h"
 #include "RMnoteManager.h"

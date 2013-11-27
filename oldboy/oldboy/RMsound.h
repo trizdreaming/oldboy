@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "RMenumSet.h"
 #include "LibraryFmod/fmod.h"
 #include "LibraryFmod/fmod.hpp"
@@ -13,7 +13,7 @@ private:
 	~CRMsound(void);
 
 public:
-	// fmod¿ë ÇÔ¼ö
+	// fmodìš© í•¨ìˆ˜
 	HRESULT				CreateSound();
 	
 	HRESULT				LoadSound( const std::string& fileName, SoundType soundType );
@@ -22,7 +22,7 @@ public:
 	void				PlaySound( SoundType soundType, bool isLoop = true );
 	void				PlayEffect( SoundType soundType );
 	
-	// »ç¿îµå ÀÏ½ÃÁ¤Áö¸¦ À§ÇÑ ÇÔ¼ö
+	// ì‚¬ìš´ë“œ ì¼ì‹œì •ì§€ë¥¼ ìœ„í•œ í•¨ìˆ˜
 	HRESULT				SetPauseBG( const bool isPause = true );
 
 	bool				GetIsPlaying();

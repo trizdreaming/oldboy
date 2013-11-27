@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 #include "rmobject.h"
 
 class CRMitem :
@@ -9,5 +9,5 @@ public:
 	~CRMitem(void);
 };
 
-// ºÎ¸ð Å¬·¡½º
-// °¢ Æ¼¾îÀÇ ¼¼ºÎ ¾ÆÀÌÅÛµéÀº ÀÌ Å¬·¡½º¸¦ »ó¼Ó ¹Þ¾Æ¼­ ±¸Çö ÇÏ¸é µÊ
+// ë¶€ëª¨ í´ëž˜ìŠ¤
+// ê° í‹°ì–´ì˜ ì„¸ë¶€ ì•„ì´í…œë“¤ì€ ì´ í´ëž˜ìŠ¤ë¥¼ ìƒì† ë°›ì•„ì„œ êµ¬í˜„ í•˜ë©´ ë¨

@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMchildEffectManager.h"
@@ -20,16 +20,16 @@ CRMchildEffectManager::~CRMchildEffectManager(void)
 
 
 //////////////////////////////////////////////////////////////////////////////
-//BitFlag »ç¿ë¹ı															//
-//°¢ ºñÆ®´Â ¾î¶² ÀÌÆåÆ®¸¦ play È­¸é¿¡ º¸¿©Áà¾ßÇÒÁö ¸»¾Æ¾ß ÇÒÁö ½ºÀ§Äª		//
-//ÇÑ È­¸é¿¡ ÃÖ´ë 8°³±îÁö ÆÇÁ¤ °¡´É											//
+//BitFlag ì‚¬ìš©ë²•															//
+//ê° ë¹„íŠ¸ëŠ” ì–´ë–¤ ì´í™íŠ¸ë¥¼ play í™”ë©´ì— ë³´ì—¬ì¤˜ì•¼í• ì§€ ë§ì•„ì•¼ í• ì§€ ìŠ¤ìœ„ì¹­		//
+//í•œ í™”ë©´ì— ìµœëŒ€ 8ê°œê¹Œì§€ íŒì • ê°€ëŠ¥											//
 //////////////////////////////////////////////////////////////////////////////
 
 void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX, float positionY )
 {
-	// ³ëÆ®¸¦ »Ñ·ÁÁÙ Æ÷Áö¼Ç °áÁ¤
-	// judgeManager¿¡¼­ À§Ä¡°ªÀ» ´øÁ®ÁÖ¸é ÀúÀå Çß´Ù°¡
-	// ÀÌÆåÆ® ¾÷µ¥ÀÌÅÍ°¡ Æ÷Áö¼ÇÀ» ¹Ş¾Æ ¾µ ¼ö ÀÖµµ·Ï ÇÔ
+	// ë…¸íŠ¸ë¥¼ ë¿Œë ¤ì¤„ í¬ì§€ì…˜ ê²°ì •
+	// judgeManagerì—ì„œ ìœ„ì¹˜ê°’ì„ ë˜ì ¸ì£¼ë©´ ì €ì¥ í–ˆë‹¤ê°€
+	// ì´í™íŠ¸ ì—…ë°ì´í„°ê°€ í¬ì§€ì…˜ì„ ë°›ì•„ ì“¸ ìˆ˜ ìˆë„ë¡ í•¨
 	
 	// printConsole( "1P flag : %d , 2P flag: %d \n", m_FlagSetter1P, m_FlagSetter2P );
 
@@ -43,7 +43,7 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 
 		m_BitFlag |= ( 0x0010 << (3 - m_FlagSetter1P) );
 
-		// printConsole("1P BitFlag ¹ßµ¿! %x \n", m_BitFlag);
+		// printConsole("1P BitFlag ë°œë™! %x \n", m_BitFlag);
 
 		break;		
 	case PLAYER_TWO:
@@ -54,7 +54,7 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 
 		m_BitFlag |= ( 0x0001 << (3 - m_FlagSetter2P) );
 
-		// printConsole("2P BitFlag ¹ßµ¿! %x \n", m_BitFlag);
+		// printConsole("2P BitFlag ë°œë™! %x \n", m_BitFlag);
 
 		break;
 

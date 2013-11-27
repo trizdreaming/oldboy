@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMimage.h"
 #include "RMresourceManager.h"
@@ -23,7 +23,7 @@ HRESULT CRMimage::CreateImage( const std::wstring& path )
 	IWICBitmapDecoder* bitmapDecoder = nullptr;
 	HRESULT hr = S_FALSE;
 
-	// µðÄÚ´õ »ý¼º
+	// ë””ì½”ë” ìƒì„±
 	hr = imageFactory->CreateDecoderFromFilename( path.c_str(), nullptr, GENERIC_READ, 
 		WICDecodeMetadataCacheOnDemand, &bitmapDecoder );
 
@@ -32,7 +32,7 @@ HRESULT CRMimage::CreateImage( const std::wstring& path )
 		return hr;
 	}
 
-	// µðÄÚ´õ¿¡¼­ ÇÁ·¹ÀÓ ÃßÃâ
+	// ë””ì½”ë”ì—ì„œ í”„ë ˆìž„ ì¶”ì¶œ
 	IWICBitmapFrameDecode* bitmapFrameDecode = nullptr;
 	hr = bitmapDecoder->GetFrame( 0, &bitmapFrameDecode );
 
@@ -44,7 +44,7 @@ HRESULT CRMimage::CreateImage( const std::wstring& path )
 
 	IWICFormatConverter*	formatConverter = nullptr;
 
-	// ÇÁ·¹ÀÓÀ» ±â¹ÝÀ¸·Î ÄÁ¹öÅÍ »ý¼º
+	// í”„ë ˆìž„ì„ ê¸°ë°˜ìœ¼ë¡œ ì»¨ë²„í„° ìƒì„±
 	hr = imageFactory->CreateFormatConverter( &formatConverter );
 
 	if ( FAILED(hr) )

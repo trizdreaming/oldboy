@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
 #include "RMvideoPlayer.h"
@@ -89,7 +89,7 @@ void CRMvideoPlayer::StartVideo()
 {
 	m_BandiVideoLibrary.GetStatus( m_Status );
 
-	// Àç»ıÇÒ ÁØºñ°¡ ¿Ï·áµÇ¾ú´Ù¸é, Àç»ı ½ÃÀÛ
+	// ì¬ìƒí•  ì¤€ë¹„ê°€ ì™„ë£Œë˜ì—ˆë‹¤ë©´, ì¬ìƒ ì‹œì‘
 	if ( m_Status == BVL_STATUS_READY )
 	{
 		m_BandiVideoLibrary.GetVideoInfo( m_BandiVideoLibraryVideoInfo );

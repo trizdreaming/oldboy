@@ -1,6 +1,6 @@
-#pragma once
+ï»¿#pragma once
 
-//ÀÌ¹ÌÁö µµÅ¥¸ÕÆ® Çì´õ Çü½Ä ÁöÁ¤ °ü·Ã Á¤ÀÇ
+//ì´ë¯¸ì§€ ë„íë¨¼íŠ¸ í—¤ë” í˜•ì‹ ì§€ì • ê´€ë ¨ ì •ì˜
 #ifndef HINST_THISCOMPONENT
 EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define HINST_THISCOMPONENT ((HINSTANCE)&__ImageBase)
@@ -25,12 +25,12 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define DEFAULT_POSITION_X -5504
 #define DEFAULT_POSITION_Y -5504
 
-// judge Manager ¿¡¼­ »ç¿ëÇÏ´Â °ªÀ¸·Î ³ëÆ®ÀÇ ½ÃÀÛ À§Ä¡¸¦ ´ã´ç
+// judge Manager ì—ì„œ ì‚¬ìš©í•˜ëŠ” ê°’ìœ¼ë¡œ ë…¸íŠ¸ì˜ ì‹œìž‘ ìœ„ì¹˜ë¥¼ ë‹´ë‹¹
 #define NOTE_ONE_START_POSITION_X	395
 #define NOTE_TWO_START_POSITION_X	910
 #define NOTE_START_POSITION_Y		-100
 
-// Æ÷Áö¼Ç ¿¡·¯ ¹ß»ý ½Ã ¸®ÅÏ ÇÒ °ª
+// í¬ì§€ì…˜ ì—ëŸ¬ ë°œìƒ ì‹œ ë¦¬í„´ í•  ê°’
 #define ERROR_POSITION -9504
 
 #define NOTE_JUDGE_PERFECT_START_LINE	534
@@ -40,15 +40,15 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define NOTE_JUDGE_FAST_MISS_LINE		504
 #define NOTE_JUDGE_LATE_MISS_LINE		555
 
-// shutter ¿¡¼­ »ç¿ëÇÏ´Â °ªÀ¸·Î ³ëÆ®ÀÇ ½ÃÀÛ À§Ä¡¸¦ ´ã´ç
+// shutter ì—ì„œ ì‚¬ìš©í•˜ëŠ” ê°’ìœ¼ë¡œ ë…¸íŠ¸ì˜ ì‹œìž‘ ìœ„ì¹˜ë¥¼ ë‹´ë‹¹
 #define SHUTTER_P1_START_POSITION_X 0
 #define SHUTTER_P2_START_POSITION_X 515
 #define SHUTTER_START_POSITION_Y -668
 
-// shutter °ü·Ã ÇÃ·¹ÀÌ¾î HP ¼³Á¤
+// shutter ê´€ë ¨ í”Œë ˆì´ì–´ HP ì„¤ì •
 #define PLAYER_HP_MAX		10
 
-// Label °ü·Ã define
+// Label ê´€ë ¨ define
 #define LABEL_JUDGE_PERFECT	L"PERFECT!!"
 #define LABEL_JUDGE_GOOD	L"  GOOD!  "
 #define LABEL_JUDGE_MISS	L"  MISS..."
@@ -62,27 +62,27 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define LABEL_RESULT_MISS		"MISS    : "
 #define LABEL_RESULT_COMBO		"COMBO   : "
 
-#define LABEL_NAME_P1_SCORE	L"ÇÃ·¹ÀÌ¾î1Á¡¼ö"
-#define LABEL_NAME_P1_COMBO	L"ÇÃ·¹ÀÌ¾î1ÄÞº¸"
-#define LABEL_NAME_P2_SCORE	L"ÇÃ·¹ÀÌ¾î2Á¡¼ö"
-#define LABEL_NAME_P2_COMBO	L"ÇÃ·¹ÀÌ¾î2ÄÞº¸"
+#define LABEL_NAME_P1_SCORE	L"í”Œë ˆì´ì–´1ì ìˆ˜"
+#define LABEL_NAME_P1_COMBO	L"í”Œë ˆì´ì–´1ì½¤ë³´"
+#define LABEL_NAME_P2_SCORE	L"í”Œë ˆì´ì–´2ì ìˆ˜"
+#define LABEL_NAME_P2_COMBO	L"í”Œë ˆì´ì–´2ì½¤ë³´"
 
-#define LABEL_NAME_SELECT_LIST1	L"¼¿·ºÆ®¸®½ºÆ®1"
-#define LABEL_NAME_SELECT_LIST2	L"¼¿·ºÆ®¸®½ºÆ®2"
-#define LABEL_NAME_SELECT_LIST3	L"¼¿·ºÆ®¸®½ºÆ®3"
-#define LABEL_NAME_SELECT_LIST4	L"¼¿·ºÆ®¸®½ºÆ®4"
-#define LABEL_NAME_SELECT_LIST5	L"¼¿·ºÆ®¸®½ºÆ®5"
+#define LABEL_NAME_SELECT_LIST1	L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸1"
+#define LABEL_NAME_SELECT_LIST2	L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸2"
+#define LABEL_NAME_SELECT_LIST3	L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸3"
+#define LABEL_NAME_SELECT_LIST4	L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸4"
+#define LABEL_NAME_SELECT_LIST5	L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸5"
 
-#define LABEL_FONT_NORMAL	L"¸¼Àº °íµñ"
+#define LABEL_FONT_NORMAL	L"ë§‘ì€ ê³ ë”•"
 
 #define LABEL_FPS			L"FPS"
 
 #define MAX_INPUT_KEY		256
 
-// Resource °ü·Ã
+// Resource ê´€ë ¨
 
 #define FOLDER_SLASH		"/"
-#define MUSIC_FOLDER_SEARCH	"./Music/.\\*" // ¹ÂÁ÷ Æú´õ ÀÌÇÏ ¸ðµç ÆÄÀÏ ÀÇ¹Ì
+#define MUSIC_FOLDER_SEARCH	"./Music/.\\*" // ë®¤ì§ í´ë” ì´í•˜ ëª¨ë“  íŒŒì¼ ì˜ë¯¸
 #define MUSIC_FOLDER		"./Music/"
 #define BGM_TITLE			"./Resource/bgm_title_00_01.mp3"
 
@@ -101,17 +101,17 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define PAUSE_IMAGE_TITLE_CANCEL	L"./Resource/image_pa_title_01.png"
 #define PAUSE_IMAGE_TITLE_OK	L"./Resource/image_pa_title_02.png"
 
-// Error °ü·Ã 
-// ÇöÀç ¿¡·¯´Â ÄÜ¼Ö Ã¢¿¡¼­ Ç¥ÇöµÇ´Â °Í
+// Error ê´€ë ¨ 
+// í˜„ìž¬ ì—ëŸ¬ëŠ” ì½˜ì†” ì°½ì—ì„œ í‘œí˜„ë˜ëŠ” ê²ƒ
 
-// ¸Þ½ÃÁö ¹Ú½º Å¸ÀÌÆ² ERROR_TITLE_~~~
+// ë©”ì‹œì§€ ë°•ìŠ¤ íƒ€ì´í‹€ ERROR_TITLE_~~~
 #define ERROR_TITLE_NORMAL			L"ERROR!"
 #define ERROR_TITLE_LOAD			L"LOAD ERROR!"
 #define ERROR_TITLE_NULLPTR			L"NULLPTR ERROR!"
 
-// ¸Þ½ÃÁö ¹Ú½º ³»¿ë  ERROR_MESSAGE_~~~
+// ë©”ì‹œì§€ ë°•ìŠ¤ ë‚´ìš©  ERROR_MESSAGE_~~~
 
-// xmlLoader °ü·Ã 
+// xmlLoader ê´€ë ¨ 
 #define ERROR_MESSAGE_LOAD_XML_TITLE				L"Missing title Data in index.xml"
 #define ERROR_MESSAGE_LOAD_XML_ARTIST				L"Missing artist Data in index.xml"
 #define ERROR_MESSAGE_LOAD_XML_LEVEL				L"Missing level Data in index.xml"

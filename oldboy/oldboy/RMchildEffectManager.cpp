@@ -33,9 +33,8 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 	
 	// printConsole( "1P flag : %d , 2P flag: %d \n", m_FlagSetter1P, m_FlagSetter2P );
 
-	switch ( targetPlayer )
+	if ( targetPlayer == PLAYER_ONE )
 	{
-	case PLAYER_ONE:
 		m_FlagSetter1P = ++m_FlagSetter1P % 4;
 
 		m_Effect1PStartPositionX = positionX;
@@ -44,9 +43,9 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 		m_BitFlag |= ( 0x0010 << (3 - m_FlagSetter1P) );
 
 		// printConsole("1P BitFlag 발동! %x \n", m_BitFlag);
-
-		break;		
-	case PLAYER_TWO:
+	}
+	else
+	{
 		m_FlagSetter2P = ++m_FlagSetter2P % 4;
 
 		m_Effect2PStartPositionX = positionX;
@@ -55,13 +54,8 @@ void CRMchildEffectManager::SetFlag( PlayerNumber targetPlayer , float positionX
 		m_BitFlag |= ( 0x0001 << (3 - m_FlagSetter2P) );
 
 		// printConsole("2P BitFlag 발동! %x \n", m_BitFlag);
-
-		break;
-
-	case PLAYER_NONE:
-	default:
-		break;
 	}
+	
 }
 
 void CRMchildEffectManager::ResetFlag( int highMask )
@@ -80,21 +74,15 @@ Position CRMchildEffectManager::GetStartPosition( PlayerNumber targetPlayer ) co
 {
 	Position pos = { 0, };
 
-	switch ( targetPlayer )
+	if ( targetPlayer == PLAYER_ONE )
 	{
-	case PLAYER_ONE:
 		pos.x = m_Effect1PStartPositionX;
 		pos.y = m_Effect1PStartPositionY;
-		break;
-	case PLAYER_TWO:
+	}
+	else
+	{
 		pos.x = m_Effect2PStartPositionX;
 		pos.y = m_Effect2PStartPositionY;
-		break;
-	case PLAYER_NONE:
-	default:
-		pos.x = ERROR_POSITION;
-		pos.y = ERROR_POSITION;
-		break;
 	}
 
 	return pos;

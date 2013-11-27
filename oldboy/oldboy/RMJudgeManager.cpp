@@ -31,14 +31,8 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 		return; 
 	}
 
-	switch ( player )
+	if ( player == PLAYER_ONE && !CRMplayer1P::GetInstance()->IsDead())
 	{
-	case PLAYER_ONE:
-		// HP 체크는 이곳에서
-		if ( CRMplayer1P::GetInstance()->IsDead() )
-		{
-			break;
-		}
 		// 만약 이곳에서 HP 체크를 하지 않으면?
 		// Judge 메소드 주석 참조
 		thisNote->SetObjectType( objectType );
@@ -47,22 +41,15 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 		thisNote->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE1 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
-		break;
-	case PLAYER_TWO:
-		if ( CRMplayer2P::GetInstance()->IsDead() )
-		{
-			break;
-		}
+	}
+	else if ( player == PLAYER_TWO && !CRMplayer2P::GetInstance()->IsDead() )
+	{
 		thisNote->SetObjectType( objectType );
 		thisNote->SetPosition( NOTE_TWO_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE2 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
-		break;
-	case PLAYER_NONE:
-	default:
-		break;
 	}
 }
 
@@ -86,19 +73,15 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 
 	LayerType playerLayer;
 	CRMplayer* playerClass = nullptr;
-	switch ( playerNumber )
+	if ( playerNumber == PLAYER_ONE )
 	{
-	case PLAYER_ONE:
 		playerLayer = LAYER_NOTE1;
 		playerClass = CRMplayer1P::GetInstance();
-		break;
-	case PLAYER_TWO:
+	}
+	else
+	{
 		playerLayer = LAYER_NOTE2;
 		playerClass = CRMplayer2P::GetInstance();
-		break;
-	case PLAYER_NONE:
-	default:
-		return;
 	}
 
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( playerLayer );
@@ -191,19 +174,16 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 {
 	KeyTable target1;
 	KeyTable target2;
-	switch ( player )
+
+	if ( player == PLAYER_ONE )
 	{
-	case PLAYER_ONE:
 		target1 = KEY_TABLE_P1_TARGET1;
 		target2 = KEY_TABLE_P1_TARGET2;
-		break;
-	case PLAYER_TWO:
+	}
+	else
+	{
 		target1 = KEY_TABLE_P2_TARGET1;
 		target2 = KEY_TABLE_P2_TARGET2;
-		break;
-	case PLAYER_NONE:
-	default:
-		break;
 	}
 
 

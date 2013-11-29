@@ -18,7 +18,7 @@ enum LayerType
 	LAYER_NONE,
 
 	LAYER_BACKGROUND,
-	LAYER_JUDGERING,		//item 구현용
+	LAYER_JUDGE_RING,		//item 구현용
 	LAYER_GAUGE_PLAYER1,	//item 구현용
 	LAYER_GAUGE_PLAYER2,	//item 구현용
 	LAYER_ITEMCARD_PLAYER1,	//item 구현용
@@ -45,13 +45,16 @@ enum ObjectType
 	OBJECT_BG_IMAGE_SELECT,
 	OBJECT_BG_IMAGE_PLAY,
 	OBJECT_BG_IMAGE_RESULT,
+
 	OBJECT_PAUSE_IMAGE_PLAY_CANCEL,
 	OBJECT_PAUSE_IMAGE_PLAY_OK,
 	OBJECT_PAUSE_IMAGE_TITLE_CANCEL,
 	OBJECT_PAUSE_IMAGE_TITLE_OK,
-	OBJECT_JUDGERING, //item 구현용
+
+	OBJECT_JUDGE_RING, //item 구현용
 	OBJECT_GAUGE_1P,  //item 구현용
 	OBJECT_GAUGE_2P,  //item 구현용
+
 	OBJECT_NOTE_NORMAL_1,
 	OBJECT_NOTE_NORMAL_2,
 	OBJECT_EFFECT,
@@ -132,30 +135,27 @@ enum ItemType
 	// 1 Tier
 	ITEM_T1_NONE,
 
-	ITEM_T1_1,
-	ITEM_T1_2,
-	ITEM_T1_3,
-	ITEM_T1_4,
-
+	ITEM_T1_REST,		// 잠시 쉬기
+	ITEM_T1_MIST,		// 안개
+	ITEM_T1_DUPLICATE,	// 따다닥
+	
 	ITEM_T1_MAX,
 	//////////////////////////////////////////////////////////////////////////
 	// 2 Tier
 	ITEM_T2_NONE,
 
-	ITEM_T2_1,
-	ITEM_T2_2,
-	ITEM_T2_3,
-	ITEM_T2_4,
+	ITEM_T2_DELAY,		// 노트 밀림
+	ITEM_T2_ROTATE,		// 노트 빙글 회전
+	ITEM_T2_GAUGE_CLEAR,// 상대방 공격 게이지 클리어
+	ITEM_T2_BARRIER,	// 보호막
 
 	ITEM_T2_MAX,
 	//////////////////////////////////////////////////////////////////////////
 	// 3 Tier
 	ITEM_T3_NONE,
 
-	ITEM_T3_1,
-	ITEM_T3_2,
-	ITEM_T3_3,
-	ITEM_T3_4,
+	ITEM_T3_REVERSE,	// 노트가 계속 반전
+	ITEM_T3_RECOVERY,	// 셔터 회복
 
 	ITEM_T3_MAX,
 	//////////////////////////////////////////////////////////////////////////

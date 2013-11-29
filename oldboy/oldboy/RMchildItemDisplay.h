@@ -1,11 +1,11 @@
 ﻿#pragma once
 #include "rmobject.h"
-class CRMitemDisplay :
+class CRMchildItemDisplay :
 	public CRMobject
 {
 public:
-	CRMitemDisplay(void);
-	~CRMitemDisplay(void);
+	CRMchildItemDisplay(void);
+	~CRMchildItemDisplay(void);
 
 	void			SetTier( ItemTierType tier ) { m_ThisTier = tier; }
 	ItemTierType	GetTier() { return m_ThisTier; }

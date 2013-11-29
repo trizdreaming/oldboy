@@ -118,7 +118,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case  LAYER_GAUGE_PLAYER2:
 			m_ObjectListLayerGaugePlayer2.push_back(object);
 			break;
-		case LAYER_JUDGERING:
+		case LAYER_JUDGE_RING:
 			m_ObjectListLayerJudgeRing.push_back(object);
 			break;
 		case LAYER_NOTE1:

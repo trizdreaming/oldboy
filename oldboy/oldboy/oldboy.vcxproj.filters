@@ -259,22 +259,40 @@
     <ClInclude Include="RMchildJudgeRing.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMitem1Tier.h">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="RMitem2Tier.h">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClInclude>
-    <ClInclude Include="RMitem3Tier.h">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClInclude>
     <ClInclude Include="RMchildPauseImage.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMpauseManager.h">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
-    <ClInclude Include="RMitemDisplay.h">
+    <ClInclude Include="RMchildItemDisplay.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT3Reverse.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT1Duplicate.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT1Mist.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT1Rest.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT2Barrier.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT2Delay.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT2GaugeClear.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT2Rotate.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT3Recovery.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
@@ -432,22 +450,40 @@
     <ClCompile Include="RMchildJudgeRing.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMitem1Tier.cpp">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="RMitem2Tier.cpp">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClCompile>
-    <ClCompile Include="RMitem3Tier.cpp">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClCompile>
     <ClCompile Include="RMchildPauseImage.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMpauseManager.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
-    <ClCompile Include="RMitemDisplay.cpp">
+    <ClCompile Include="RMchildItemDisplay.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT1Duplicate.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT1Mist.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT1Rest.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT2Barrier.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT2Delay.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT2GaugeClear.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT2Rotate.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT3Recovery.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT3Reverse.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
   </ItemGroup>

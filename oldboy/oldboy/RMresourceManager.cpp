@@ -178,7 +178,7 @@ HRESULT CRMresourceManager::CreateTexture()
 
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_JUDGERING] = texture;
+		m_TextureArray[OBJECT_JUDGE_RING] = texture;
 	}
 	else
 	{

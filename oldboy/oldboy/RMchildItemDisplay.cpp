@@ -1,17 +1,17 @@
 ﻿#include "stdafx.h"
-#include "RMitemDisplay.h"
+#include "RMchildItemDisplay.h"
 
 
-CRMitemDisplay::CRMitemDisplay(void)
+CRMchildItemDisplay::CRMchildItemDisplay(void)
 {
 }
 
 
-CRMitemDisplay::~CRMitemDisplay(void)
+CRMchildItemDisplay::~CRMchildItemDisplay(void)
 {
 }
 
-void CRMitemDisplay::Update()
+void CRMchildItemDisplay::Update()
 {
 	switch ( m_ThisTier )
 	{

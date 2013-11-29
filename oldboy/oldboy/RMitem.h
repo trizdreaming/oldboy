@@ -7,6 +7,13 @@ class CRMitem :
 public:
 	CRMitem(void);
 	~CRMitem(void);
+
+	void	Update();
+	// 추상클래스 상속 한 것 구현
+
+private:
+	UINT			m_StartTime;
+	PlayerNumber	m_TargetPlayer;
 };
 
 // 부모 클래스

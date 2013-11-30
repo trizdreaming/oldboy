@@ -27,6 +27,7 @@
 #include "RMpauseManager.h"
 
 #include <fstream>
+#include "RMitemManager.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -166,10 +167,10 @@ void CRMmainLoop::RunMessageLoop()
 			if( m_ElapsedTime == m_Fps )
 			{
 #endif
-				// 테스트 
 				
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
+
 				if ( GetActiveWindow() == NULL && GetNowScene() == SCENE_PLAY)
 				{
 					CRMpauseManager::GetInstance()->ShowPause();
@@ -219,6 +220,8 @@ void CRMmainLoop::RunMessageLoop()
 			}
 			else if ( m_SceneType == SCENE_PLAY )
 			{
+				CRMitemManager::GetInstance()->Update();
+
 				CRMnoteManager::GetInstance()->StartNote();
 				CRMjudgeManager::GetInstance()->JudgeNote();
 
@@ -533,7 +536,8 @@ HRESULT CRMmainLoop::CreateObject()
 	//p2 관련 label
 	//
 
-
+	// 아이템 매니저 생성
+	CRMitemManager::GetInstance()->Create();
 
 	return hr;
 }

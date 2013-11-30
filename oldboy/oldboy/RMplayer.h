@@ -20,6 +20,7 @@ public:
 
 	void		ResetMP() { m_MP = 0; }
 	int			GetMP() { return m_MP; }
+	int			GetMaxMP() { return m_HP * 65; }
 
 	bool		IsDead() { return ( m_HP <= 0 ) ? true : false; }
 

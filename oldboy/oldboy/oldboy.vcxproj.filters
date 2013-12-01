@@ -295,6 +295,9 @@
     <ClInclude Include="RMitemT3Recovery.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
+    <ClInclude Include="RMwellRandom.h">
+      <Filter>RhythmMatch\MainLoop</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -485,6 +488,9 @@
     </ClCompile>
     <ClCompile Include="RMitemT3Reverse.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMwellRandom.cpp">
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

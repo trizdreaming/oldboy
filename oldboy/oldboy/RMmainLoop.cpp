@@ -99,9 +99,8 @@ void CRMmainLoop::RunMessageLoop()
 		MessageBox( NULL, ERROR_CREATE_RESOURCE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return;
 	}
-
-
 	// 오브젝트 생성 부분을 리팩토링
+
 	
 	while ( true )
 	{

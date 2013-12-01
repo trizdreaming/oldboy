@@ -22,6 +22,7 @@
 #include <map>
 #include <vector>
 #include <array>
+#include <time.h>
 
 //Display - Direct 2D관련 include file
 #include <d2d1.h>

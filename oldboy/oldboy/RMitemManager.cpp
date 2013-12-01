@@ -16,6 +16,7 @@
 #include "RMplayer2P.h"
 #include "RMinput.h"
 #include "RMpauseManager.h"
+#include "RMwellRandom.h"
 
 
 CRMitemManager::CRMitemManager(void)
@@ -84,8 +85,11 @@ void CRMitemManager::Update()
 	{
 		return;
 	}
+
+	//////////////////////////////////////////////////////////////////////////
 	// 공격 구현
-	
+	//////////////////////////////////////////////////////////////////////////
+
 	// 1. 각 플레이어의 MP 체크
 	int p1MaxMP = CRMplayer1P::GetInstance()->GetMaxMP();
 	int p2MaxMP = CRMplayer2P::GetInstance()->GetMaxMP();
@@ -135,15 +139,15 @@ void CRMitemManager::Update()
 
 	// 2. 공격 키 입력 받기
 	// 3. MP 상황에 맞춰 공격 가능 최대 티어로 m_NowItem[공격 키 입력 들어온 플레이어]의 아이템 타입 설정 
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 	{
-		printConsole("Player1 Attack \n");
+		printConsole("Player1 Attack Type %d \n", m_NowItem[PLAYER_ONE]);
 		CRMplayer1P::GetInstance()->ResetMP();
 		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	}
-	else if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
+	else if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 	{
-		printConsole("Player2 Attack \n");
+		printConsole("Player2 Attack Type %d \n", m_NowItem[PLAYER_TWO]);
 		CRMplayer2P::GetInstance()->ResetMP();
 		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	}
@@ -158,22 +162,26 @@ void CRMitemManager::RotateItem( ItemTierType tier )
 {
 	switch (tier)
 	{
-	case TIER_NONE:
-		break;
 	case TIER_1P_ONE:
+		m_TierItem[TIER_1P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
 		break;
 	case TIER_1P_TWO:
+		m_TierItem[TIER_1P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
 		break;
 	case TIER_1P_THREE:
+		m_TierItem[TIER_1P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
 		break;
 	case TIER_2P_ONE:
+		m_TierItem[TIER_2P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
 		break;
 	case TIER_2P_TWO:
+		m_TierItem[TIER_2P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
 		break;
 	case TIER_2P_THREE:
+		m_TierItem[TIER_2P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
 		break;
+	case TIER_NONE:
 	case TIER_MAX:
-		break;
 	default:
 		break;
 	}

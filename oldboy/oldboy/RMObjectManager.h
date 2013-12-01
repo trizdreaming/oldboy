@@ -14,6 +14,7 @@ private:
 public:
 	
 	CRMobject*					GetObjectFront( LayerType layer ) const;
+	// 메소드 내부에서 nullptr을 리턴하므로 예외처리 확실히 할 것!
 
 	void						ChargeNoteList( LayerType layer );
 	void						DeleteNoteListFront( LayerType layer );

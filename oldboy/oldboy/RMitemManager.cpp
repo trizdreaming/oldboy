@@ -69,6 +69,17 @@ void CRMitemManager::Create()
 	m_ItemPool[ITEM_T3_RECOVERY] = item;
 	item = new CRMitemT3Reverse();
 	m_ItemPool[ITEM_T3_REVERSE] = item;
+
+	m_TierItem[TIER_1P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
+	m_TierItem[TIER_1P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
+	m_TierItem[TIER_1P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
+	m_TierItem[TIER_2P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
+	m_TierItem[TIER_2P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
+	m_TierItem[TIER_2P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
+
+	m_TimeSliceForTier[TIER_1P_ONE] = m_TimeSliceForTier[TIER_2P_ONE] = 5;
+	m_TimeSliceForTier[TIER_1P_TWO] = m_TimeSliceForTier[TIER_2P_TWO] = 6;
+	m_TimeSliceForTier[TIER_1P_THREE] = m_TimeSliceForTier[TIER_2P_THREE] = 3;
 }
 
 void CRMitemManager::Release()
@@ -113,28 +124,36 @@ void CRMitemManager::Update()
 	// 아이템 로테이트로부터 아이템 가져와야함
 	if ( p1GaugeRate >= 0.9 )
 	{
-		m_NowItem[PLAYER_ONE] = ITEM_T3_RECOVERY;
+		m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_THREE];
 	}
 	else if ( p1GaugeRate >= 0.6 )
 	{
-		m_NowItem[PLAYER_ONE] = ITEM_T2_DELAY;
+		m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_TWO];
 	}
 	else if ( p1GaugeRate >= 0.3 )
 	{
-		m_NowItem[PLAYER_ONE] = ITEM_T1_MIST;
+		m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_ONE];
+	}
+	else
+	{
+		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	}
 
 	if ( p2GaugeRate >= 0.9 )
 	{
-		m_NowItem[PLAYER_TWO] = ITEM_T3_RECOVERY;
+		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_THREE];
 	}
 	else if ( p2GaugeRate >= 0.6 )
 	{
-		m_NowItem[PLAYER_TWO] = ITEM_T2_DELAY;
+		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_TWO];
 	}
 	else if ( p2GaugeRate >= 0.3 )
 	{
-		m_NowItem[PLAYER_TWO] = ITEM_T1_MIST;
+		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_ONE];
+	}
+	else
+	{
+		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	}
 
 	// 2. 공격 키 입력 받기
@@ -143,15 +162,28 @@ void CRMitemManager::Update()
 	{
 		printConsole("Player1 Attack Type %d \n", m_NowItem[PLAYER_ONE]);
 		CRMplayer1P::GetInstance()->ResetMP();
+		m_ActiveItem[PLAYER_ONE] = m_NowItem[PLAYER_ONE];
 		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	}
 	else if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 	{
 		printConsole("Player2 Attack Type %d \n", m_NowItem[PLAYER_TWO]);
 		CRMplayer2P::GetInstance()->ResetMP();
+		m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_TWO];
 		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	}
 	
+	for ( auto i = TIER_1P_ONE ; i < TIER_MAX ; i = (ItemTierType)(i + 1) )
+	{
+		m_TimeOfTierRotate[i] += m_TimeSliceForTier[i];
+
+		if ( m_TimeOfTierRotate[i] > 500000 )
+		{
+			printConsole( "%d : %d 번째 슬롯 회전! \n", m_TimeOfTierRotate[i], i );
+			m_TimeOfTierRotate[i] = 0;
+			RotateItem(i);
+		}
+	}
 
 	// 회전 구현
 	// 1. 각 티어별로 틱이 되었는지 확인

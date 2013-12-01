@@ -20,26 +20,12 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListLayerBackground.clear();
 
-	for ( auto& iter : m_ObjectListLayerJudgeRing )
+	for ( auto& iter : m_ObjectListLayerJudgeGauge )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
-	m_ObjectListLayerJudgeRing.clear();
-
-	for ( auto& iter : m_ObjectListLayerGaugePlayer1 )
-	{
-		auto toBeDelete = iter;
-		SafeDelete( toBeDelete );
-	}
-	m_ObjectListLayerGaugePlayer1.clear();
-
-	for ( auto& iter : m_ObjectListLayerGaugePlayer2 )
-	{
-		auto toBeDelete = iter;
-		SafeDelete( toBeDelete );
-	}
-	m_ObjectListLayerGaugePlayer2.clear();
+	m_ObjectListLayerJudgeGauge.clear();
 
 	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
@@ -112,14 +98,8 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_BACKGROUND:
 			m_ObjectListLayerBackground.push_back(object);
 			break;
-		case LAYER_GAUGE_PLAYER1:
-			m_ObjectListLayerGaugePlayer1.push_back(object);
-			break;
-		case  LAYER_GAUGE_PLAYER2:
-			m_ObjectListLayerGaugePlayer2.push_back(object);
-			break;
-		case LAYER_JUDGE_RING:
-			m_ObjectListLayerJudgeRing.push_back(object);
+		case LAYER_JUDGE_GAUGE:
+			m_ObjectListLayerJudgeGauge.push_back(object);
 			break;
 		case LAYER_NOTE1:
 			m_ObjectListLayerNotePlayer1.push_front(object);
@@ -163,15 +143,7 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
-	for ( auto& iter : m_ObjectListLayerGaugePlayer1 )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListLayerGaugePlayer2 )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListLayerJudgeRing )
+	for ( auto& iter : m_ObjectListLayerJudgeGauge )
 	{
 		iter->Update();
 	}
@@ -232,15 +204,7 @@ void CRMobjectManager::Render() const
 	{
 		iter->Render();
 	}
-	for ( auto& iter : m_ObjectListLayerGaugePlayer1 )
-	{
-		iter->Render();
-	}
-	for ( auto& iter : m_ObjectListLayerGaugePlayer2 )
-	{
-		iter->Render();
-	}
-	for ( auto& iter : m_ObjectListLayerJudgeRing )
+	for ( auto& iter : m_ObjectListLayerJudgeGauge )
 	{
 		iter->Render();
 	}

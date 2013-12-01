@@ -29,6 +29,7 @@
 #include <fstream>
 #include "RMitemManager.h"
 #include "RMchildItemDisplay.h"
+#include "RMdummyRender.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -166,8 +167,7 @@ void CRMmainLoop::RunMessageLoop()
 
 			if( m_ElapsedTime == m_Fps )
 			{
-#endif
-				
+#endif		
 				// 처리 해야 할 내부 로직들을 처리함
 				// Update
 
@@ -177,14 +177,19 @@ void CRMmainLoop::RunMessageLoop()
 				}
 				CRMobjectManager::GetInstance()->Update();
 				
-				
+				// {} 로 스택을 활용하여 더미클래스의 생성자, 소멸자를 호출
+				{
+					CRMdummyRender dummyRender;
+					// 생성자
+					// CRMrender::GetInstance()->RenderInit();
 
-				CRMrender::GetInstance()->RenderInit();
+					CRMobjectManager::GetInstance()->Render();
+					// 화면에 대한 처리를 진행
+					// Render
+				}
+				// 소멸자
+				// CRMrender::GetInstance()->RenderEnd();
 
-				// 화면에 대한 처리를 진행
-				// Render
-				CRMobjectManager::GetInstance()->Render();
-				CRMrender::GetInstance()->RenderEnd();
 				m_PrevTime = m_NowTime;
 #ifdef _DEBUG
 				++fps;

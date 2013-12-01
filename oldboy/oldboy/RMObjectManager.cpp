@@ -243,6 +243,7 @@ void CRMobjectManager::Render() const
 }
 
 CRMobject* CRMobjectManager::GetObjectFront( LayerType layer ) const
+// 메소드 내부에서 nullptr을 리턴하므로 예외처리 확실히 할 것!
 {
 	switch ( layer )
 	{

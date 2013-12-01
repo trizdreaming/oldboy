@@ -15,6 +15,7 @@
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
 #include "RMinput.h"
+#include "RMpauseManager.h"
 
 
 CRMitemManager::CRMitemManager(void)
@@ -79,6 +80,10 @@ void CRMitemManager::Release()
 
 void CRMitemManager::Update()
 {
+	if ( CRMpauseManager::GetInstance()->IsPause() )
+	{
+		return;
+	}
 	// 공격 구현
 	
 	// 1. 각 플레이어의 MP 체크
@@ -92,52 +97,55 @@ void CRMitemManager::Update()
 	float p1GaugeRate = (float)p1MP / (float)p1MaxMP;
 	float p2GaugeRate = (float)p2MP / (float)p2MaxMP;
 
-	
+	// 아이템 포지션 결정
+	m_ItemPosition[TIER_1P_ONE] = (float)p1MaxMP * 0.3f;
+	m_ItemPosition[TIER_1P_TWO] = (float)p1MaxMP * 0.6f;
+	m_ItemPosition[TIER_1P_THREE] = (float)p1MaxMP * 0.9f;
+
+	m_ItemPosition[TIER_2P_ONE] = (float)p2MaxMP * 0.3f;
+	m_ItemPosition[TIER_2P_TWO] = (float)p2MaxMP * 0.6f;
+	m_ItemPosition[TIER_2P_THREE] = (float)p2MaxMP * 0.9f;
+
+	// 아이템 로테이트로부터 아이템 가져와야함
+	if ( p1GaugeRate >= 0.9 )
+	{
+		m_NowItem[PLAYER_ONE] = ITEM_T3_RECOVERY;
+	}
+	else if ( p1GaugeRate >= 0.6 )
+	{
+		m_NowItem[PLAYER_ONE] = ITEM_T2_DELAY;
+	}
+	else if ( p1GaugeRate >= 0.3 )
+	{
+		m_NowItem[PLAYER_ONE] = ITEM_T1_MIST;
+	}
+
+	if ( p2GaugeRate >= 0.9 )
+	{
+		m_NowItem[PLAYER_TWO] = ITEM_T3_RECOVERY;
+	}
+	else if ( p2GaugeRate >= 0.6 )
+	{
+		m_NowItem[PLAYER_TWO] = ITEM_T2_DELAY;
+	}
+	else if ( p2GaugeRate >= 0.3 )
+	{
+		m_NowItem[PLAYER_TWO] = ITEM_T1_MIST;
+	}
+
 	// 2. 공격 키 입력 받기
 	// 3. MP 상황에 맞춰 공격 가능 최대 티어로 m_NowItem[공격 키 입력 들어온 플레이어]의 아이템 타입 설정 
-	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN )
+	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 	{
-		// 아이템 로테이트로부터 아이템 가져와야함
-		if ( p1GaugeRate >= 0.9 )
-		{
-			printConsole("Player1 Tier3 Attack \n");
-			m_NowItem[PLAYER_ONE] = ITEM_T3_RECOVERY;
-			CRMplayer1P::GetInstance()->ResetMP();
-		}
-		else if ( p1GaugeRate >= 0.6 )
-		{
-			printConsole("Player1 Tier2 Attack \n");
-			m_NowItem[PLAYER_ONE] = ITEM_T2_DELAY;
-			CRMplayer1P::GetInstance()->ResetMP();
-		}
-		else if ( p1GaugeRate >= 0.3 )
-		{
-			printConsole("Player1 Tier1 Attack \n");
-			m_NowItem[PLAYER_ONE] = ITEM_T1_MIST;
-			CRMplayer1P::GetInstance()->ResetMP();
-		}
-		
+		printConsole("Player1 Attack \n");
+		CRMplayer1P::GetInstance()->ResetMP();
+		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	}
-	else if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN )
+	else if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 	{
-		if ( p2GaugeRate >= 0.9 )
-		{
-			printConsole("Player2 Tier3 Attack \n");
-			m_NowItem[PLAYER_TWO] = ITEM_T3_RECOVERY;
-			CRMplayer2P::GetInstance()->ResetMP();
-		}
-		else if ( p2GaugeRate >= 0.6 )
-		{
-			printConsole("Player2 Tier2 Attack \n");
-			m_NowItem[PLAYER_TWO] = ITEM_T2_DELAY;
-			CRMplayer2P::GetInstance()->ResetMP();
-		}
-		else if ( p2GaugeRate >= 0.3 )
-		{
-			printConsole("Player2 Tier1 Attack \n");
-			m_NowItem[PLAYER_TWO] = ITEM_T1_MIST;
-			CRMplayer2P::GetInstance()->ResetMP();
-		}
+		printConsole("Player2 Attack \n");
+		CRMplayer2P::GetInstance()->ResetMP();
+		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	}
 	
 

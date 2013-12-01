@@ -30,17 +30,17 @@ public:
 
 private:
 	// 현재 발동 중인 아이템이 들어갈 배열
-	std::array<ItemType, PLAYER_MAX>	m_NowItem;
+	std::array<ItemType, PLAYER_MAX>				m_NowItem;
 
 	// 아이템 뷰에 차례대로 티어별로 타입을 보여주기 위한 배열
-	std::array<ItemType, TIER_MAX>		m_TierItem;
+	std::array<ItemType, TIER_MAX>					m_TierItem;
 	
 	// 각 티어별 좌표값(y축)을 저장
-	std::array<float, TIER_MAX>			m_ItemPosition;
+	std::array<float, TIER_MAX>						m_ItemPosition;
 
 	// 실제 아이템이 생성 관리 되는 메모리풀
-	std::array<CRMitem*, ITEM_TYPE_MAX * 2>	m_ItemPool;
+	std::array<CRMitem*, ITEM_TYPE_MAX * 2>			m_ItemPool;
 
-	std::array<UINT, TIER_MAX>	m_TimeOfTierRotate;
+	std::array<UINT, TIER_MAX>						m_TimeOfTierRotate;
 };
 

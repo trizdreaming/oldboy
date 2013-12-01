@@ -105,8 +105,6 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
-				printConsole( "%dP Perfect \n", playerNumber );
-
 				//score up
 				playerClass->AddEvent( JUDGE_PERFECT );
 				PrintScore( playerNumber, JUDGE_PERFECT );
@@ -125,8 +123,6 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				float hitPositionY = thisNote->GetPositionY();
 				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
-				printConsole( "%dP Good \n", playerLayer );
-	
 				//score up
 				playerClass->AddEvent( JUDGE_GOOD );
 				PrintScore( playerNumber, JUDGE_GOOD );
@@ -138,8 +134,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 			else if ( thisNote->GetPositionY() > NOTE_JUDGE_FAST_MISS_LINE )
 			{
 				thisNote->SetVisible(false);
-				printConsole( "%dP Time Miss HP:%d \n", playerNumber, playerClass->GetHP() );
-
+				
 				//score up;
 				playerClass->AddEvent( JUDGE_MISS );
 				playerClass->SubHP();
@@ -151,8 +146,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 		//note bottom miss
 		else if ( thisNote->GetPositionY() > NOTE_JUDGE_LATE_MISS_LINE )
 		{
-			printConsole( "%dP NoteOut Miss HP:%d \n", playerNumber, playerClass->GetHP() );
-
+			
 			//score up
 			playerClass->AddEvent( JUDGE_MISS );
 			playerClass->SubHP();
@@ -216,12 +210,12 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 
 void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) const
 {
-	printConsole("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
-			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 
-			CRMplayer1P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer1P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer1P::GetInstance()->GetCount( COUNT_SCORE ),
-			CRMplayer2P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer2P::GetInstance()->GetCount( COUNT_GOOD ), 
-			CRMplayer2P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer2P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer2P::GetInstance()->GetCount( COUNT_SCORE )
-			);
+// 	printConsole("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
+// 			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 
+// 			CRMplayer1P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer1P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer1P::GetInstance()->GetCount( COUNT_SCORE ),
+// 			CRMplayer2P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer2P::GetInstance()->GetCount( COUNT_GOOD ), 
+// 			CRMplayer2P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer2P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer2P::GetInstance()->GetCount( COUNT_SCORE )
+// 			);
 
 	CRMplayer*	thisPlayer = CRMplayer1P::GetInstance();
 	CRMplayer*	otherPlayer = CRMplayer2P::GetInstance();

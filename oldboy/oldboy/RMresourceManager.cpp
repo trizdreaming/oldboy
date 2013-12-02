@@ -259,6 +259,8 @@ HRESULT CRMresourceManager::CreateTexture()
 		return hr;
 	}
 
+
+
 	
 	return hr;
 }

@@ -118,6 +118,7 @@
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildEffectManager.h" />
     <ClInclude Include="RMchildGauge.h" />
+    <ClInclude Include="RMchildItemCardDisplay.h" />
     <ClInclude Include="RMchildJudgeRing.h" />
     <ClInclude Include="RMchildNote.h" />
     <ClInclude Include="RMchildPauseImage.h" />
@@ -191,6 +192,7 @@
     <ClCompile Include="RMchildEffectImage.cpp" />
     <ClCompile Include="RMchildEffectManager.cpp" />
     <ClCompile Include="RMchildGauge.cpp" />
+    <ClCompile Include="RMchildItemCardDisplay.cpp" />
     <ClCompile Include="RMchildJudgeRing.cpp" />
     <ClCompile Include="RMchildNote.cpp" />
     <ClCompile Include="RMchildPauseImage.cpp" />

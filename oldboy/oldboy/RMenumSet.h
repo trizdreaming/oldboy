@@ -56,6 +56,8 @@ enum ObjectType
 	OBJECT_GAUGE_1P,	//item 구현용
 	OBJECT_GAUGE_2P,	//item 구현용
 
+	OBJECT_ITEM_CARD,
+
 	OBJECT_ITEM_T1_REST_COLOR,			// 잠시 쉬기
 	OBJECT_ITEM_T1_REST_GRAY,
 	OBJECT_ITEM_T1_MIST_COLOR,			// 안개

@@ -301,6 +301,9 @@
     <ClInclude Include="RMdummyRender.h">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildItemCardDisplay.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -497,6 +500,9 @@
     </ClCompile>
     <ClCompile Include="RMdummyRender.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildItemCardDisplay.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

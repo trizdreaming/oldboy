@@ -30,6 +30,7 @@
 #include "RMitemManager.h"
 #include "RMchildItemDisplay.h"
 #include "RMdummyRender.h"
+#include "RMchildItemCardDisplay.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -579,6 +580,23 @@ HRESULT CRMmainLoop::CreateObject()
 	itemObject->SetPosition(815, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+
+	//////////////////////////////////////////////////////////////////////////
+	/*
+	CRMchildItemCardDisplay* itemCardObject = new CRMchildItemCardDisplay();
+	itemCardObject->SetPosition(150, 300);
+	itemCardObject->SetSceneType(SCENE_PLAY);
+	itemCardObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+
+	itemCardObject = new CRMchildItemCardDisplay();
+	itemCardObject->SetPosition(600, 300);
+	itemCardObject->SetSceneType(SCENE_PLAY);
+	itemCardObject->SetPlayer(PLAYER_TWO);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+	*/
+
+	
 
 	return hr;
 }

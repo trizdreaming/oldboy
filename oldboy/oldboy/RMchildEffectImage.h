@@ -8,7 +8,7 @@ public:
 	CRMchildEffectImage(void);
 	~CRMchildEffectImage(void);
 
-	virtual void        Update();
+	virtual void	Update();
 
 private:
 	UINT	m_EffectTime;

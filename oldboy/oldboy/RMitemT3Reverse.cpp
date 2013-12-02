@@ -1,11 +1,11 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMitemT3Reverse.h"
 
 
 CRMitemT3Reverse::CRMitemT3Reverse(void)
 {
 	//////////////////////////////////////////////////////////////////////////
-	// ÀÓ½Ã Ãß°¡ - ÃßÈÄ ¼öÁ¤
+	// ìž„ì‹œ ì¶”ê°€ - ì¶”í›„ ìˆ˜ì •
 	//////////////////////////////////////////////////////////////////////////
 	m_ObjectType = OBJECT_ITEM_T1_DUPLICATE_GRAY;
 	m_ObjectTypeColor = OBJECT_ITEM_T1_DUPLICATE_COLOR;

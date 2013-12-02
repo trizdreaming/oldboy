@@ -10,16 +10,21 @@ public:
 
 	ObjectType		GetObjectTypeColor() { return GetObjectType(); }
 	ObjectType		GetObjectTypeGray() { return m_ObjectTypeColor; }
-
-	void			Update() {};
-	// 추상 함수이므로 임시로 추가
+	
+	void			Active() { m_Active = true; m_Tick = 0; }
+	virtual void	Update();
 
 protected:
-	ObjectType		m_ObjectTypeColor;
+	void			DeActive() { m_Active = false; }
 
-private:
-	UINT			m_StartTime;
+	ObjectType		m_ObjectTypeColor;
+	UINT			m_Tick;
+
+friend class CRMitemManager;
 	PlayerNumber	m_TargetPlayer;
+	PlayerNumber	m_OwnPlayer;
+
+	bool			m_Active;
 };
 
 // 부모 클래스

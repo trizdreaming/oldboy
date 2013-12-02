@@ -8,7 +8,6 @@ public:
 	CRMchildJudgeRing(void);
 	~CRMchildJudgeRing(void);
 
-public:
 	virtual void Update();
 };
 

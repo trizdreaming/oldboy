@@ -10,7 +10,7 @@ public:
 	void			SetTier( ItemTierType tier ) { m_ThisTier = tier; }
 	ItemTierType	GetTier() { return m_ThisTier; }
 	
-	void			Update();
+	virtual void	Update();
 
 private:
 	ItemTierType	m_ThisTier;

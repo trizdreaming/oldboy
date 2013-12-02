@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "rmitem.h"
 class CRMitemT2Barrier :
 	public CRMitem

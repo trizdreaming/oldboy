@@ -212,16 +212,21 @@ void CRMitemManager::Update()
 	// 3. MP 상황에 맞춰 공격 가능 최대 티어로 m_NowItem[공격 키 입력 들어온 플레이어]의 아이템 타입 설정 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 	{
-		printConsole("Player1 Attack Type %d \n", m_NowItem[PLAYER_ONE]);
-		CRMplayer1P::GetInstance()->ResetMP();
-
 		CRMitem* thisItem = m_ItemPool[ m_NowItem[PLAYER_ONE] ];
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE )
 		{
+			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
+			{
+				return;
+			}
 			m_ActiveItem[PLAYER_ONE] = m_NowItem[PLAYER_ONE];
 		}
 		else if ( thisItem->m_TargetPlayer == PLAYER_TWO )
 		{
+			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
+			{
+				return;
+			}
 			m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_ONE];
 		}
 		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
@@ -230,19 +235,27 @@ void CRMitemManager::Update()
 		{
 			thisItem->Active();
 		}
+
+		printConsole("Player1 Attack Type %d \n", m_NowItem[PLAYER_ONE]);
+		CRMplayer1P::GetInstance()->ResetMP();
 	}
 	else if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 	{
-		printConsole("Player2 Attack Type %d \n", m_NowItem[PLAYER_TWO]);
-		CRMplayer2P::GetInstance()->ResetMP();
-
 		CRMitem* thisItem = m_ItemPool[ ITEM_T3_MAX + m_NowItem[PLAYER_TWO] ];
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE)
 		{
+			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
+			{
+				return;
+			}
 			m_ActiveItem[PLAYER_ONE] = m_NowItem[PLAYER_TWO];
 		}
 		else if ( thisItem->m_TargetPlayer == PLAYER_TWO )
 		{
+			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
+			{
+				return;
+			}
 			m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_TWO];
 		}
 		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
@@ -251,6 +264,9 @@ void CRMitemManager::Update()
 		{
 			thisItem->Active();
 		}
+
+		printConsole("Player2 Attack Type %d \n", m_NowItem[PLAYER_TWO]);
+		CRMplayer2P::GetInstance()->ResetMP();
 	}
 	
 	// 회전 구현

@@ -227,7 +227,7 @@ ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
 	if ( tier > TIER_1P_2P_DIVIDE )
 		player = PLAYER_TWO;
 
-	if ( thisItem == m_ActiveItem[player] )
+	if ( thisItem == m_NowItem[player] )
 	{
 		return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeColor();
 		// 리턴하기 전에 방어 코드 추가할 것

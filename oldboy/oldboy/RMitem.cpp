@@ -8,7 +8,8 @@ CRMitem::CRMitem(void) :
 	m_Tick(0),
 	m_ObjectTypeColor(OBJECT_NONE),
 	m_TargetPlayer(PLAYER_NONE),
-	m_Active(false)
+	m_Active(false),
+	m_HoldingTick(30000)
 {
 }
 
@@ -19,11 +20,18 @@ CRMitem::~CRMitem(void)
 
 void CRMitem::Update()
 {
-	if ( ++m_Tick > 30 )
+	if ( m_Active == false )
+	{
+		return;
+	}
+
+	if ( ++m_Tick > m_HoldingTick )
 	{
 		CRMitemManager::GetInstance()->DeactiveItem( m_OwnPlayer );
 		printConsole( "아이템 발동 종료! %d틱 경과 \n", m_Tick );
 
 		m_Active = false;
+
+		m_Tick = 0;
 	}
 }

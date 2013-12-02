@@ -253,6 +253,9 @@ void CRMitemManager::Update()
 		}
 	}
 	
+	// 회전 구현
+	// 1. 각 티어별로 틱이 되었는지 확인
+	// 2. 해당 티어 Rotate
 	for ( auto i = TIER_1P_ONE ; i < TIER_MAX ; i = (ItemTierType)(i + 1) )
 	{
 		m_TimeOfTierRotate[i] += m_TimeSliceForTier[i];
@@ -265,9 +268,14 @@ void CRMitemManager::Update()
 		}
 	}
 
-	// 회전 구현
-	// 1. 각 티어별로 틱이 되었는지 확인
-	// 2. 해당 티어 Rotate
+	for ( auto& iter : m_ItemPool )
+	{
+		if ( iter != nullptr )
+		{
+			iter->Update();
+		}	
+	}
+
 }
 
 void CRMitemManager::RotateItem( ItemTierType tier )

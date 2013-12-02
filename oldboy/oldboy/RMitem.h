@@ -12,6 +12,7 @@ public:
 	ObjectType		GetObjectTypeGray() { return m_ObjectTypeColor; }
 	
 	void			Active() { m_Active = true; m_Tick = 0; }
+	void			SetTime( UINT holdingTime ) { m_HoldingTick = holdingTime; }
 	virtual void	Update();
 
 protected:
@@ -19,6 +20,7 @@ protected:
 
 	ObjectType		m_ObjectTypeColor;
 	UINT			m_Tick;
+	UINT			m_HoldingTick;
 
 friend class CRMitemManager;
 	PlayerNumber	m_TargetPlayer;

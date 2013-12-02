@@ -113,13 +113,13 @@ void CRMitemManager::Update()
 	float p2GaugeRate = (float)p2MP / (float)p2MaxMP;
 
 	// 아이템 포지션 결정
-	m_ItemPosition[TIER_1P_ONE] = (float)p1MaxMP * 0.3f;
-	m_ItemPosition[TIER_1P_TWO] = (float)p1MaxMP * 0.6f;
-	m_ItemPosition[TIER_1P_THREE] = (float)p1MaxMP * 0.9f;
+	m_ItemPosition[TIER_1P_ONE] = SCREEN_SIZE_Y - (float)p1MaxMP * 0.3f;
+	m_ItemPosition[TIER_1P_TWO] = SCREEN_SIZE_Y - (float)p1MaxMP * 0.6f;
+	m_ItemPosition[TIER_1P_THREE] = SCREEN_SIZE_Y - (float)p1MaxMP * 0.9f;
 
-	m_ItemPosition[TIER_2P_ONE] = (float)p2MaxMP * 0.3f;
-	m_ItemPosition[TIER_2P_TWO] = (float)p2MaxMP * 0.6f;
-	m_ItemPosition[TIER_2P_THREE] = (float)p2MaxMP * 0.9f;
+	m_ItemPosition[TIER_2P_ONE] = SCREEN_SIZE_Y - (float)p2MaxMP * 0.3f;
+	m_ItemPosition[TIER_2P_TWO] = SCREEN_SIZE_Y - (float)p2MaxMP * 0.6f;
+	m_ItemPosition[TIER_2P_THREE] = SCREEN_SIZE_Y - (float)p2MaxMP * 0.9f;
 
 	// 아이템 로테이트로부터 아이템 가져와야함
 	if ( p1GaugeRate >= 0.9 )

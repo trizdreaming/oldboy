@@ -30,6 +30,7 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
 
 	std::list<CRMobject*>		m_ObjectListLayerJudgeGauge;
+	std::list<CRMobject*>		m_ObjectListLayerItem;
 	
 	std::list<CRMobject*>		m_ObjectListLayerNotePlayer1;
 	std::list<CRMobject*>		m_ObjectListLayerNotePlayer2;

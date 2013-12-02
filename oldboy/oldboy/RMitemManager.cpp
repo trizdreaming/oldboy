@@ -179,7 +179,7 @@ void CRMitemManager::Update()
 
 		if ( m_TimeOfTierRotate[i] > 500000 )
 		{
-			printConsole( "%d : %d 번째 슬롯 회전! \n", m_TimeOfTierRotate[i], i );
+			printConsole( "틱포인트 - %d : %d 번째 슬롯 회전! 위치 : %f \n", m_TimeOfTierRotate[i], i, m_ItemPosition[i] );
 			m_TimeOfTierRotate[i] = 0;
 			RotateItem(i);
 		}
@@ -228,9 +228,13 @@ ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
 		player = PLAYER_TWO;
 
 	if ( thisItem == m_ActiveItem[player] )
-		m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeColor();
+	{
+		return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeColor();
+		// 리턴하기 전에 방어 코드 추가할 것
+	}
 	else
-		m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeGray();
-
-	return OBJECT_NONE;
+	{
+		return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeGray();
+		// 리턴하기 전에 방어 코드 추가할 것
+	}
 }

@@ -10,8 +10,3 @@ CRMitem::CRMitem(void)
 CRMitem::~CRMitem(void)
 {
 }
-
-void CRMitem::Update()
-{
-
-}

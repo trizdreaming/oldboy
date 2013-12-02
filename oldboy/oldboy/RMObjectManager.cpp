@@ -5,6 +5,7 @@
 #include "RMobjectManager.h"
 #include "RMlabelManager.h"
 #include "RMpauseManager.h"
+#include "RMitemManager.h"
 
 CRMobjectManager::CRMobjectManager(void)
 {
@@ -26,6 +27,12 @@ CRMobjectManager::~CRMobjectManager(void)
 		SafeDelete( toBeDelete );
 	}
 	m_ObjectListLayerJudgeGauge.clear();
+
+	for ( auto& iter : m_ObjectListLayerItem )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
 
 	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
@@ -101,6 +108,9 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_JUDGE_GAUGE:
 			m_ObjectListLayerJudgeGauge.push_back(object);
 			break;
+		case LAYER_ITEM:
+			m_ObjectListLayerItem.push_back(object);
+			break;
 		case LAYER_NOTE1:
 			m_ObjectListLayerNotePlayer1.push_front(object);
 			break;
@@ -150,6 +160,10 @@ void CRMobjectManager::Update()
 
 	if ( !CRMpauseManager::GetInstance()->IsPause() )
 	{
+		for ( auto& iter : m_ObjectListLayerItem )
+		{
+			iter->Update();
+		}
 		for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 		{
 			iter->Update();
@@ -205,6 +219,10 @@ void CRMobjectManager::Render() const
 		iter->Render();
 	}
 	for ( auto& iter : m_ObjectListLayerJudgeGauge )
+	{
+		iter->Render();
+	}
+	for ( auto& iter : m_ObjectListLayerItem )
 	{
 		iter->Render();
 	}

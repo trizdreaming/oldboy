@@ -582,19 +582,21 @@ HRESULT CRMmainLoop::CreateObject()
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	//////////////////////////////////////////////////////////////////////////
-	/*
+	
 	CRMchildItemCardDisplay* itemCardObject = new CRMchildItemCardDisplay();
-	itemCardObject->SetPosition(150, 300);
+	itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
+	itemCardObject->SetPosition(115, 200);
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_ONE);
-	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_ITEM);
 
 	itemCardObject = new CRMchildItemCardDisplay();
-	itemCardObject->SetPosition(600, 300);
+	itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
+	itemCardObject->SetPosition(627, 200);
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_TWO);
-	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
-	*/
+	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_ITEM);
+
 
 	
 

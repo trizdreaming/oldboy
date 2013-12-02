@@ -259,6 +259,21 @@ HRESULT CRMresourceManager::CreateTexture()
 		return hr;
 	}
 
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/cardSet/card.png" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_CARD] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_CARD] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
 
 
 	

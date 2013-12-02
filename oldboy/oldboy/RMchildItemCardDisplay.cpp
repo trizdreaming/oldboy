@@ -13,5 +13,5 @@ CRMchildItemCardDisplay::~CRMchildItemCardDisplay(void)
 
 void CRMchildItemCardDisplay::Update()
 {
-
+	SetVisibleByScene();
 }

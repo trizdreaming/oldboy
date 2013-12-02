@@ -544,13 +544,41 @@ HRESULT CRMmainLoop::CreateObject()
 	// 아이템 매니저 생성
 	CRMitemManager::GetInstance()->Create();
 
-	/*
-	newObject = new CRMchildItemDisplay();
-	newObject->SetObjectType(OBJECT_ITEM_T1_REST_COLOR);
-	newObject->SetPosition(895, 530);
-	newObject->SetSceneType(SCENE_PLAY);
-	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_ITEM);
-	*/
+	CRMchildItemDisplay* itemObject = new CRMchildItemDisplay();
+	itemObject->SetTier( TIER_1P_ONE );
+	shutterObject->SetPosition(315, -890);
+	itemObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+
+	itemObject = new CRMchildItemDisplay();
+	itemObject->SetTier( TIER_1P_TWO );
+	shutterObject->SetPosition(315, -890);
+	itemObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+
+	itemObject = new CRMchildItemDisplay();
+	itemObject->SetTier( TIER_1P_THREE );
+	shutterObject->SetPosition(315, -890);
+	itemObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+	//////////////////////////////////////////////////////////////////////////
+	itemObject = new CRMchildItemDisplay();
+	itemObject->SetTier( TIER_2P_ONE );
+	shutterObject->SetPosition(815, -890);
+	itemObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+
+	itemObject = new CRMchildItemDisplay();
+	itemObject->SetTier( TIER_2P_TWO );
+	shutterObject->SetPosition(815, -890);
+	itemObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
+
+	itemObject = new CRMchildItemDisplay();
+	itemObject->SetTier( TIER_2P_THREE );
+	shutterObject->SetPosition(815, -890);
+	itemObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	return hr;
 }

@@ -184,7 +184,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		InitializeArray();
+		SafeDelete(texture);
 
 		return hr;
 	}
@@ -200,7 +200,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		InitializeArray();
+		SafeDelete(texture);
 
 		return hr;
 	}
@@ -216,10 +216,49 @@ HRESULT CRMresourceManager::CreateTexture()
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
 		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		InitializeArray();
+		SafeDelete(texture);
 
 		return hr;
 	}
+
+	//////////////////////////////////////////////////////////////////////////
+	// 아이템 이미지 리소스 추가
+	//////////////////////////////////////////////////////////////////////////
+
+	// Item_T1_Duplicate_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Duplicate_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T1_Duplicate_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Duplicate_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
 	
 	return hr;
 }

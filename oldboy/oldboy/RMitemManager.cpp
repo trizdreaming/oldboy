@@ -52,23 +52,23 @@ void CRMitemManager::Create()
 
 	// 2P Item Pool Init
 	item = new CRMitemT1Duplicate();
-	m_ItemPool[ITEM_T1_DUPLICATE] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T1_DUPLICATE] = item;
 	item = new CRMitemT1Mist();
-	m_ItemPool[ITEM_T1_MIST] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T1_MIST] = item;
 	item = new CRMitemT1Rest();
-	m_ItemPool[ITEM_T1_REST] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T1_REST] = item;
 	item = new CRMitemT2Barrier();
-	m_ItemPool[ITEM_T2_BARRIER] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T2_BARRIER] = item;
 	item = new CRMitemT2Delay();
-	m_ItemPool[ITEM_T2_DELAY] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T2_DELAY] = item;
 	item = new CRMitemT2GaugeClear();
-	m_ItemPool[ITEM_T2_GAUGE_CLEAR] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T2_GAUGE_CLEAR] = item;
 	item = new CRMitemT2Rotate();
-	m_ItemPool[ITEM_T2_ROTATE] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T2_ROTATE] = item;
 	item = new CRMitemT3Recovery();
-	m_ItemPool[ITEM_T3_RECOVERY] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T3_RECOVERY] = item;
 	item = new CRMitemT3Reverse();
-	m_ItemPool[ITEM_T3_REVERSE] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T3_REVERSE] = item;
 
 	m_TierItem[TIER_1P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
 	m_TierItem[TIER_1P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
@@ -217,4 +217,20 @@ void CRMitemManager::RotateItem( ItemTierType tier )
 	default:
 		break;
 	}
+}
+
+ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
+{
+	ItemType thisItem = m_TierItem[tier];
+	
+	PlayerNumber player = PLAYER_ONE;
+	if ( tier > TIER_1P_2P_DIVIDE )
+		player = PLAYER_TWO;
+
+	if ( thisItem == m_ActiveItem[player] )
+		m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeColor();
+	else
+		m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeGray();
+
+	return OBJECT_NONE;
 }

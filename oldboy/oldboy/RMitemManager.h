@@ -24,6 +24,8 @@ public:
 
 	// 아이템의 세부 작동은 각 아이템 객체들이 확인 할 것임
 
+	ObjectType	GetObjectType(ItemTierType tier);
+
 	ItemType	GetActivatedItem(PlayerNumber player) { return m_ActiveItem[player]; }
 	void		DeactiveItem(PlayerNumber player) { m_ActiveItem[player] = ITEM_TYPE_NONE; }
 	// 각각의 아이템들은 스스로 종료 될 타이밍에 플레이어의 활성화 된 아이템을 비활성화

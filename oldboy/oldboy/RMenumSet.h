@@ -38,6 +38,7 @@ enum LayerType
 	LAYER_MAX
 };
 
+//sm9: 이건 widget type이라는 이름이 더 맞는듯?
 enum ObjectType
 {
 	OBJECT_NONE,

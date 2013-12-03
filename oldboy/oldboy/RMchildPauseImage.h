@@ -13,6 +13,6 @@ public:
 
 	virtual void	Update();
 private:
-	ObjectType m_ObjectType1;
+	ObjectType m_ObjectType1; //sm9: 이건 왜? 
 };
 

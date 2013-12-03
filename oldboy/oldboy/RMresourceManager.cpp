@@ -9,6 +9,7 @@
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
 {
+	//sm9:	m_TextureArray 같은 배열도 nullptr 초기화 해줘라.. 
 }
 
 
@@ -30,6 +31,7 @@ void CRMresourceManager::InitializeArray()
 
 void CRMresourceManager::InitializeAlbum()
 {
+	//sm9: safedelete안에서 null체크 해주는데 굳이 따로 할 필요는 없다
 	if ( m_TextureArray[OBJECT_ALBUM_IMAGE] != nullptr )
 	{
 		SafeDelete( m_TextureArray[OBJECT_ALBUM_IMAGE] );
@@ -116,6 +118,8 @@ HRESULT CRMresourceManager::CreateTexture()
 
 	//////////////////////////////////////////////////////////////////////////
 	// 추가중 
+	//sm9: 아래 비슷한 패턴 보이지? 이런건 함수로 만들면 된다.
+
 	texture = new CRMimage();
 	hr = texture->CreateImage( PAUSE_IMAGE_PLAY_CANCEL );
 
@@ -260,7 +264,7 @@ HRESULT CRMresourceManager::CreateTexture()
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/cardSet/card.png" );
+	hr = texture->CreateImage( L"./Resource/cardSet/card.png" ); //sm9: 당연히 따로 빼는게 좋다
 
 	if ( hr == S_OK )
 	{

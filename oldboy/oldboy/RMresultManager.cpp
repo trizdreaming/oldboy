@@ -29,9 +29,11 @@ void CRMresultManager::ShowResult()
 	UINT totalScoreP1 = player1->GetCount(COUNT_SCORE) + ( player1->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	UINT totalScoreP2 = player2->GetCount(COUNT_SCORE) + ( player2->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 
+	//sm9: 여기 나오는 각종 문자열은 string.xml같은걸로 빼서 불러오는 방식이 정석 (보통 다국어 버전을 위해 그렇게 함)
+
 	if ( ( totalScoreP1 == totalScoreP2 ) )
 	{
-		p1ResultText.append( "Draw" );
+		p1ResultText.append( "Draw" ); 
 		p2ResultText.append( "Draw" );
 	}
 	else

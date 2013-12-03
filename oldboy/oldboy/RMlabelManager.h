@@ -16,7 +16,7 @@ public:
  	HRESULT						CreateFactory();
 	IDWriteFactory*				GetTextFactory() const { return m_DWriteFactory; }
 
-	void						AddLabel( std::wstring key , CRMlabel* label );
+	void						AddLabel( std::wstring key , CRMlabel* label ); //sm9: const std::wstring&
 
 private:
 	void								CheckError(HRESULT);

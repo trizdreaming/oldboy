@@ -14,7 +14,8 @@ public:
 	void			Initialize();
 	void			StartNote();
 
-	void			StartPause() { if ( m_GamePlaying ) { m_GamePlaying = false; m_PauseStartTime = timeGetTime(); } };
+	//sm9: 다순히 get/set 아니라면 cpp에서 구현해라.
+	void			StartPause() { if ( m_GamePlaying ) { m_GamePlaying = false; m_PauseStartTime = timeGetTime(); } }; 
 	void			EndPause() { m_GamePlaying = true; m_PausedTime = m_PausedTime + ( timeGetTime() - m_PauseStartTime ); };
 
 private:

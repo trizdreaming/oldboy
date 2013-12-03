@@ -27,7 +27,7 @@ protected:
 
 	void			SetVisibleByScene();
 
-	ObjectType		m_ObjectType;
+	ObjectType		m_ObjectType; //sm9: 이름이 모호하다. objectType이라고 하면 보통 이 객체의 타입을 나타내는데... 여기서는 그런 의미는 아닌것 같은데?
 
 	bool			m_Visible;
 	SceneType		m_Scene;

@@ -18,7 +18,7 @@ public:
 protected:
 	void			DeActive() { m_Active = false; }
 
-	ObjectType		m_ObjectTypeColor;
+	ObjectType		m_ObjectTypeColor; //sm9: 역시 타입과 멤버변수명이 애매모호함... 
 	UINT			m_Tick;
 	UINT			m_HoldingTick;
 

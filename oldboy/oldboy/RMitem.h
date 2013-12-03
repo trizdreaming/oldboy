@@ -8,8 +8,8 @@ public:
 	CRMitem(void);
 	~CRMitem(void);
 
-	ObjectType		GetObjectTypeColor() { return GetObjectType(); }
-	ObjectType		GetObjectTypeGray() { return m_ObjectTypeColor; }
+	ObjectType		GetObjectTypeColor() { return m_ObjectTypeColor; }
+	ObjectType		GetObjectTypeGray() { return GetObjectType(); }
 	
 	void			Active() { m_Active = true; m_Tick = 0; }
 	void			SetTime( UINT holdingTime ) { m_HoldingTick = holdingTime; }

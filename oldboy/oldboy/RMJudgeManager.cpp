@@ -10,7 +10,7 @@
 #include "RMplayer2P.h"
 #include "RMchildEffectImage.h"
 #include "RMlabel.h"
-#include "RMchildEffectManager.h"
+#include "RMeffectManager.h"
 #include "RMinput.h"
 #include "RMpauseManager.h"
 
@@ -103,7 +103,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				*/
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
-				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
+				CRMeffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
 				//score up
 				playerClass->AddEvent( JUDGE_PERFECT );
@@ -121,7 +121,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				//effect 플래그 세팅
 				float hitPositionX = thisNote->GetPositionX();
 				float hitPositionY = thisNote->GetPositionY();
-				CRMchildEffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
+				CRMeffectManager::GetInstance()->SetFlag( playerNumber , hitPositionX , hitPositionY );
 
 				//score up
 				playerClass->AddEvent( JUDGE_GOOD );

@@ -345,3 +345,11 @@ ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
 	
 	return OBJECT_NONE;
 }
+
+void CRMitemManager::Reset()
+{
+	m_ActiveItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+	m_ActiveItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+	m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+	m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+}

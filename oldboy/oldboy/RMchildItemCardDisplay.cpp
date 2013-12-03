@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMchildItemCardDisplay.h"
 #include "RMmacro.h"
 #include "RMitemManager.h"
@@ -15,12 +15,14 @@ CRMchildItemCardDisplay::~CRMchildItemCardDisplay(void)
 
 void CRMchildItemCardDisplay::Update()
 {
-	//¾ÆÀÌÅÛÀÌ ¹ßµ¿µÇ¸é ÇØ´ç Ä«µå°¡ ¶° ÀÖµµ·Ï ÇÔ
-	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_playerNumber) )
+	SetVisibleByScene();
+
+	//ì•„ì´í…œì´ ë°œë™ë˜ë©´ í•´ë‹¹ ì¹´ë“œê°€ ë–  ìˆë„ë¡ í•¨
+	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_playerNumber) == ITEM_TYPE_NONE )
 	{
-		SetVisibleByScene();
+		m_Visible = false;
 	}
 
-	//¾ÆÀÌÅÛ ÆÄÆ¼Å¬ ½Ã½ºÅÛ
+	//ì•„ì´í…œ íŒŒí‹°í´ ì‹œìŠ¤í…œ
 
 }

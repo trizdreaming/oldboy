@@ -905,6 +905,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		CRMnoteManager::GetInstance()->Initialize();
 		CRMplayer1P::GetInstance()->Init();
 		CRMplayer2P::GetInstance()->Init();
+		CRMitemManager::GetInstance()->Reset();
 
 		return S_OK;
 	}
@@ -915,6 +916,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		m_SceneType = SCENE_SELECT_MUSIC;
 		CRMplayer1P::GetInstance()->Init();
 		CRMplayer2P::GetInstance()->Init();
+		CRMitemManager::GetInstance()->Reset();
 
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
 
@@ -964,6 +966,7 @@ HRESULT CRMmainLoop::GoPrevScene()
 		m_SceneType = SCENE_SELECT_MUSIC;
 		CRMplayer1P::GetInstance()->Init();
 		CRMplayer2P::GetInstance()->Init();
+		CRMitemManager::GetInstance()->Reset();
 
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
 

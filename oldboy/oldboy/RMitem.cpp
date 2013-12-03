@@ -27,8 +27,8 @@ void CRMitem::Update()
 
 	if ( ++m_Tick > m_HoldingTick )
 	{
-		CRMitemManager::GetInstance()->DeactiveItem( m_OwnPlayer );
-		printConsole( "아이템 발동 종료! %d틱 경과 \n", m_Tick );
+		CRMitemManager::GetInstance()->DeactiveItem( m_TargetPlayer );
+		printConsole( "%dP 아이템 발동 종료! %d틱 경과 \n", m_TargetPlayer, m_Tick );
 
 		m_Active = false;
 

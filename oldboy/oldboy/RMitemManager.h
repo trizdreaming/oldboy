@@ -14,6 +14,7 @@ private:
 public:
 	void		Create();
 	void		Release();
+	void		Reset();
 
 	void		Update();
 	void		RotateItem(ItemTierType tier);

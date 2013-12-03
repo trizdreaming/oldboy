@@ -7,13 +7,13 @@ struct Position
 	float y;
 };
 
-class CRMchildEffectManager
+class CRMeffectManager
 {
-	SINGLETON(CRMchildEffectManager);
+	SINGLETON(CRMeffectManager);
 
 private:
-	CRMchildEffectManager(void);
-	~CRMchildEffectManager(void);
+	CRMeffectManager(void);
+	~CRMeffectManager(void);
 
 public:
 	void		SetFlag( PlayerNumber targetPlayer , float m_PositionX, float m_PositionY );

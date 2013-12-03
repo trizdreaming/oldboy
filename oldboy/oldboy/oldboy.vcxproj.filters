@@ -166,9 +166,6 @@
     <ClInclude Include="LibraryBandi\BandiVideoTexture_DX9.h">
       <Filter>BandiVideo</Filter>
     </ClInclude>
-    <ClInclude Include="RMchildEffectManager.h">
-      <Filter>RhythmMatch\Object</Filter>
-    </ClInclude>
     <ClInclude Include="RMsound.h">
       <Filter>RhythmMatch\Sound Manager</Filter>
     </ClInclude>
@@ -310,6 +307,9 @@
     <ClInclude Include="RMpaticleManager.h">
       <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
+    <ClInclude Include="RMeffectManager.h">
+      <Filter>RhythmMatch\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -377,9 +377,6 @@
     </ClCompile>
     <ClCompile Include="LibraryBandi\BandiVideoTexture_DX9.cpp">
       <Filter>BandiVideo</Filter>
-    </ClCompile>
-    <ClCompile Include="RMchildEffectManager.cpp">
-      <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMvideoPlayer.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
@@ -514,6 +511,9 @@
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMpaticleManager.cpp">
+      <Filter>RhythmMatch\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RMeffectManager.cpp">
       <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
   </ItemGroup>

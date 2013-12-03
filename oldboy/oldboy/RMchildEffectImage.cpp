@@ -1,7 +1,7 @@
 ﻿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMchildEffectImage.h"
-#include "RMchildEffectManager.h"
+#include "RMeffectManager.h"
 
 CRMchildEffectImage::CRMchildEffectImage(void):
 	m_EffectTime(0),
@@ -18,7 +18,7 @@ void CRMchildEffectImage::Update()
 {
 	UINT highMask = 0;
 	
-	if ( m_Visible == false && CRMchildEffectManager::GetInstance()->GetFlag() )
+	if ( m_Visible == false && CRMeffectManager::GetInstance()->GetFlag() )
 	{
 		m_EffectTime = 0;
 
@@ -26,7 +26,7 @@ void CRMchildEffectImage::Update()
 		
 		for ( int i = 0 ; i < 8 ; ++i )
 		{
-			if ( CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
+			if ( CRMeffectManager::GetInstance()->GetFlag() & ( 0x01 << i ) )
 			{				
 				// printConsole("테스트!!!! %x \n", CRMchildEffectManager::GetInstance()->GetFlag() & ( 0x01 << i ));
 
@@ -38,17 +38,17 @@ void CRMchildEffectImage::Update()
 		// printConsole( "테스트 출력 플래그 [ %x ] 좌표 [ %f , %f ] 타입 [ %d ] \n", 
 		//				CRMchildEffectManager::GetInstance()->GetFlag(), m_PositionX, m_PositionY, m_EffectType );
 
-		CRMchildEffectManager::GetInstance()->ResetFlag( highMask );
+		CRMeffectManager::GetInstance()->ResetFlag( highMask );
 
 		Position pos = { 0, };
 
 		if ( highMask > 0)
 		{
-			pos = CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_ONE );		
+			pos = CRMeffectManager::GetInstance()->GetStartPosition( PLAYER_ONE );		
 		}
 		else
 		{
-			pos = CRMchildEffectManager::GetInstance()->GetStartPosition( PLAYER_TWO );
+			pos = CRMeffectManager::GetInstance()->GetStartPosition( PLAYER_TWO );
 		}
 		
 		m_PositionX = pos.x;

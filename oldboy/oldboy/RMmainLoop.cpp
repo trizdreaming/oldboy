@@ -596,8 +596,6 @@ HRESULT CRMmainLoop::CreateObject()
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_ITEM);
-
-
 	
 
 	return hr;

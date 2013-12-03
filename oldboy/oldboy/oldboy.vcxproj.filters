@@ -304,6 +304,12 @@
     <ClInclude Include="RMchildItemCardDisplay.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildPaticleImage.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMpaticleManager.h">
+      <Filter>RhythmMatch\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -503,6 +509,12 @@
     </ClCompile>
     <ClCompile Include="RMchildItemCardDisplay.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildPaticleImage.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMpaticleManager.cpp">
+      <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

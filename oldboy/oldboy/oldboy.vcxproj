@@ -121,6 +121,7 @@
     <ClInclude Include="RMchildItemCardDisplay.h" />
     <ClInclude Include="RMchildJudgeRing.h" />
     <ClInclude Include="RMchildNote.h" />
+    <ClInclude Include="RMchildPaticleImage.h" />
     <ClInclude Include="RMchildPauseImage.h" />
     <ClInclude Include="RMchildShutter.h" />
     <ClInclude Include="RMdefine.h" />
@@ -153,6 +154,7 @@
     <ClInclude Include="RMnoteManager.h" />
     <ClInclude Include="RMobject.h" />
     <ClInclude Include="RMobjectManager.h" />
+    <ClInclude Include="RMpaticleManager.h" />
     <ClInclude Include="RMpauseManager.h" />
     <ClInclude Include="RMplayer.h" />
     <ClInclude Include="RMplayer1P.h" />
@@ -195,6 +197,7 @@
     <ClCompile Include="RMchildItemCardDisplay.cpp" />
     <ClCompile Include="RMchildJudgeRing.cpp" />
     <ClCompile Include="RMchildNote.cpp" />
+    <ClCompile Include="RMchildPaticleImage.cpp" />
     <ClCompile Include="RMchildPauseImage.cpp" />
     <ClCompile Include="RMchildShutter.cpp" />
     <ClCompile Include="RMdummyRender.cpp" />
@@ -222,6 +225,7 @@
     <ClCompile Include="RMnoteManager.cpp" />
     <ClCompile Include="RMobject.cpp" />
     <ClCompile Include="RMobjectManager.cpp" />
+    <ClCompile Include="RMpaticleManager.cpp" />
     <ClCompile Include="RMpauseManager.cpp" />
     <ClCompile Include="RMplayer.cpp" />
     <ClCompile Include="RMplayer1P.cpp" />

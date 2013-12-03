@@ -259,6 +259,280 @@ HRESULT CRMresourceManager::CreateTexture()
 		return hr;
 	}
 
+	// Item_T1_Mist_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Mist_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T1_MIST_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T1_MIST_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T1_Mist_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Mist_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T1_MIST_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T1_MIST_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T1_Rest_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Rest_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T1_REST_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T1_REST_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T1_Rest_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Rest_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T1_REST_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T1_REST_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_Barrier_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Barrier_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_BARRIER_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_BARRIER_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_Barrier_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Barrier_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_BARRIER_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_BARRIER_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_Delay_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Delay_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_DELAY_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_DELAY_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_Delay_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Delay_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_DELAY_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_DELAY_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_GaugeClear_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_GaugeClear_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_GaugeClear_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_Rotate_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Rotate_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_ROTATE_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_ROTATE_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T2_Rotate_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Rotate_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T2_ROTATE_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T2_ROTATE_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T3_Recovery_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Recovery_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T3_Recovery_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Recovery_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T3_Reverse_Color
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Reverse_Color.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T3_REVERSE_COLOR] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T3_REVERSE_COLOR] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	// Item_T3_Reverse_Gray
+	texture = new CRMimage();
+	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Reverse_Gray.jpg" );
+
+	if ( hr == S_OK )
+	{
+		m_TextureArray[OBJECT_ITEM_T3_REVERSE_GRAY] = texture;
+	}
+	else
+	{
+		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+		m_TextureArray[OBJECT_ITEM_T3_REVERSE_GRAY] = nullptr;
+		SafeDelete(texture);
+
+		return hr;
+	}
+
+	//////////////////////////////////////////////////////////////////////////
+
 	texture = new CRMimage();
 	hr = texture->CreateImage( L"./Resource/cardSet/card.png" );
 

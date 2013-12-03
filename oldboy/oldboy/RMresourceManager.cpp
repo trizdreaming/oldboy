@@ -69,487 +69,111 @@ HRESULT CRMresourceManager::CreateFactory()
 HRESULT CRMresourceManager::CreateTexture()
 {
 	InitializeArray();
-
+	
 	HRESULT hr = S_FALSE;
 	CRMimage* texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_TITLE );
-	
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = nullptr;
-		SafeDelete(texture);
-	}
+// 	hr = texture->CreateImage( BG_IMAGE_TITLE );
+// 	if ( hr == S_OK )
+// 	{
+// 		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = texture;
+// 	}
+// 	else
+// 	{
+// 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
+// 		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = nullptr;
+// 		SafeDelete(texture);
+// 	}
 
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_SELECT );
-	
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_SELECT] = nullptr;
-		SafeDelete(texture);
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( BG_IMAGE_RESULT );
-	
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_RESULT] = nullptr;
-		SafeDelete(texture);
-	}
+	hr = TextureMaker( hr, texture, BG_IMAGE_TITLE, OBJECT_BG_IMAGE_TITLE );
+	hr = TextureMaker( hr, texture, BG_IMAGE_SELECT, OBJECT_BG_IMAGE_SELECT );
+	hr = TextureMaker( hr, texture, BG_IMAGE_RESULT, OBJECT_BG_IMAGE_RESULT );
 
 	//////////////////////////////////////////////////////////////////////////
-	// 추가중 
-	texture = new CRMimage();
-	hr = texture->CreateImage( PAUSE_IMAGE_PLAY_CANCEL );
+	//pause
+	//////////////////////////////////////////////////////////////////////////
+	hr = TextureMaker( hr, texture, PAUSE_IMAGE_PLAY_CANCEL, OBJECT_PAUSE_IMAGE_PLAY_CANCEL );
+	hr = TextureMaker( hr, texture, PAUSE_IMAGE_PLAY_OK, OBJECT_PAUSE_IMAGE_PLAY_OK );
+	hr = TextureMaker( hr, texture, PAUSE_IMAGE_TITLE_CANCEL, OBJECT_PAUSE_IMAGE_TITLE_CANCEL );
+	hr = TextureMaker( hr, texture, PAUSE_IMAGE_TITLE_OK, OBJECT_PAUSE_IMAGE_TITLE_OK );
 
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_PAUSE_IMAGE_PLAY_CANCEL] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_PAUSE_IMAGE_PLAY_CANCEL] = nullptr;
-		SafeDelete(texture);
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( PAUSE_IMAGE_PLAY_OK );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_PAUSE_IMAGE_PLAY_OK] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_PAUSE_IMAGE_PLAY_OK] = nullptr;
-		SafeDelete(texture);
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( PAUSE_IMAGE_TITLE_CANCEL );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_PAUSE_IMAGE_TITLE_CANCEL] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_PAUSE_IMAGE_TITLE_CANCEL] = nullptr;
-		SafeDelete(texture);
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( PAUSE_IMAGE_TITLE_OK );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_PAUSE_IMAGE_TITLE_OK] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_PAUSE_IMAGE_TITLE_OK] = nullptr;
-		SafeDelete(texture);
-	}
 	//////////////////////////////////////////////////////////////////////////
 	//이하 플레이 화면
-	texture = new CRMimage();
-	hr = texture->CreateImage( PLAY_IMAGE_JUDGE_RING );
+	//////////////////////////////////////////////////////////////////////////
+	hr = TextureMaker( hr, texture, PLAY_IMAGE_JUDGE_RING, OBJECT_JUDGE_RING );
+	hr = TextureMaker( hr, texture, PLAY_IMAGE_BLUE_GAUGE, OBJECT_GAUGE_2P );
+	hr = TextureMaker( hr, texture, PLAY_IMAGE_RED_GAUGE, OBJECT_GAUGE_1P );
+	
 
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_JUDGE_RING] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( PLAY_IMAGE_BLUE_GAUGE );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_GAUGE_2P] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
-	texture = new CRMimage();
-	hr = texture->CreateImage( PLAY_IMAGE_RED_GAUGE );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_GAUGE_1P] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
 
 	//////////////////////////////////////////////////////////////////////////
 	// 아이템 이미지 리소스 추가
 	//////////////////////////////////////////////////////////////////////////
-
+	
 	// Item_T1_Duplicate_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Duplicate_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Duplicate_Color.jpg", OBJECT_ITEM_T1_DUPLICATE_COLOR );
 	// Item_T1_Duplicate_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Duplicate_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T1_DUPLICATE_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Duplicate_Gray.jpg", OBJECT_ITEM_T1_DUPLICATE_GRAY );
 	// Item_T1_Mist_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Mist_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T1_MIST_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T1_MIST_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Mist_Color.jpg", OBJECT_ITEM_T1_MIST_COLOR );
 	// Item_T1_Mist_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Mist_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T1_MIST_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T1_MIST_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Mist_Gray.jpg", OBJECT_ITEM_T1_MIST_GRAY );
 	// Item_T1_Rest_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Rest_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T1_REST_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T1_REST_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Rest_Color.jpg", OBJECT_ITEM_T1_REST_COLOR );
 	// Item_T1_Rest_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T1_Rest_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T1_REST_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T1_REST_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Rest_Gray.jpg", OBJECT_ITEM_T1_REST_GRAY );
 	// Item_T2_Barrier_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Barrier_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_BARRIER_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_BARRIER_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Barrier_Color.jpg", OBJECT_ITEM_T2_BARRIER_COLOR );
 	// Item_T2_Barrier_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Barrier_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_BARRIER_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_BARRIER_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Barrier_Gray.jpg", OBJECT_ITEM_T2_BARRIER_GRAY );
 	// Item_T2_Delay_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Delay_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_DELAY_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_DELAY_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Delay_Color.jpg", OBJECT_ITEM_T2_DELAY_COLOR );
 	// Item_T2_Delay_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Delay_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_DELAY_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_DELAY_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Delay_Gray.jpg", OBJECT_ITEM_T2_DELAY_GRAY );
 	// Item_T2_GaugeClear_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_GaugeClear_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_GaugeClear_Color.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR );
 	// Item_T2_GaugeClear_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_GaugeClear_Gray.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY );
 	// Item_T2_Rotate_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Rotate_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_ROTATE_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_ROTATE_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Rotate_Color.jpg", OBJECT_ITEM_T2_ROTATE_COLOR );
 	// Item_T2_Rotate_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T2_Rotate_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T2_ROTATE_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T2_ROTATE_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Rotate_Gray.jpg", OBJECT_ITEM_T2_ROTATE_GRAY );
 	// Item_T3_Recovery_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Recovery_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Recovery_Color.jpg", OBJECT_ITEM_T3_RECOVERY_COLOR );
 	// Item_T3_Recovery_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Recovery_Gray.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T3_RECOVERY_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Recovery_Gray.jpg", OBJECT_ITEM_T3_RECOVERY_GRAY );
 	// Item_T3_Reverse_Color
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Reverse_Color.jpg" );
-
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T3_REVERSE_COLOR] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T3_REVERSE_COLOR] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
-
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Reverse_Color.jpg", OBJECT_ITEM_T3_REVERSE_COLOR );
 	// Item_T3_Reverse_Gray
-	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/itemSet/Item_T3_Reverse_Gray.jpg" );
+	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Reverse_Gray.jpg", OBJECT_ITEM_T3_REVERSE_GRAY );
 
-	if ( hr == S_OK )
-	{
-		m_TextureArray[OBJECT_ITEM_T3_REVERSE_GRAY] = texture;
-	}
-	else
-	{
-		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_T3_REVERSE_GRAY] = nullptr;
-		SafeDelete(texture);
-
-		return hr;
-	}
 
 	//////////////////////////////////////////////////////////////////////////
+	//아이템 카드 발동
+	//////////////////////////////////////////////////////////////////////////
+	hr = TextureMaker( hr, texture, L"./Resource/cardSet/card.png", OBJECT_ITEM_CARD );
 
+	return hr;
+}
+
+HRESULT CRMresourceManager::TextureMaker( HRESULT hr, CRMimage* texture, const std::wstring& path, ObjectType type )
+{
+	
 	texture = new CRMimage();
-	hr = texture->CreateImage( L"./Resource/cardSet/card.png" );
+	hr = texture->CreateImage( path );
 
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_ITEM_CARD] = texture;
+		m_TextureArray[type] = texture;
+		return hr;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_ITEM_CARD] = nullptr;
+		m_TextureArray[type] = nullptr;
 		SafeDelete(texture);
 
 		return hr;
 	}
-
-	return hr;
 }
 
 HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )

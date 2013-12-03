@@ -1,5 +1,7 @@
 ﻿#include "stdafx.h"
 #include "RMchildPaticleImage.h"
+#include "RMmacro.h"
+#include "RMrender.h"
 
 
 CRMchildPaticleImage::CRMchildPaticleImage(void)

@@ -19,7 +19,6 @@ public:
 	HRESULT						CreateTexture();
 	HRESULT						CreateTexture( const std::string& folderName );
 	HRESULT						CreateTextureAlbum( const std::string& folderName );
-
 	CRMimage*					GetTexture( const ObjectType& key ) { return m_TextureArray[key]; }
 	
 private:
@@ -27,6 +26,7 @@ private:
 	void								InitializeAlbum();
 
 	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName ) const;
+	HRESULT								TextureMaker( HRESULT hr, CRMimage* texture, const std::wstring& path, ObjectType type );
 
 	IWICImagingFactory*					m_pWICFactory;
 	std::array<CRMimage*, OBJECT_MAX>	m_TextureArray;

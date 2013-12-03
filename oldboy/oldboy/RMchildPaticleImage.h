@@ -60,6 +60,7 @@ public:
 	float GetDirection() { return m_Direction; }
 
 private:
+
 	D2D1::Matrix3x2F m_ParentMatrix;
 	D2D1::Matrix3x2F m_Matrix;
 

@@ -5,9 +5,9 @@
 
 
 CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
-	m_timeSlice(100),
-	m_prevTime(0),
-	m_flickFlag(true)
+	m_TimeSlice(100),
+	m_PrevTime(0),
+	m_FlickFlag(true)
 {
 }
 
@@ -22,15 +22,15 @@ void CRMchildItemCardDisplay::Update()
 
 	UINT	thisTime = timeGetTime();
 
-	if( m_prevTime + m_timeSlice < thisTime )
+	if( m_PrevTime + m_TimeSlice < thisTime )
 	{
-		if( m_flickFlag == true )
+		if( m_FlickFlag == true )
 		{
 			m_Alpha -= 0.1f;
 
 			if( m_Alpha <= 0.0f )
 			{
-				m_flickFlag = false;
+				m_FlickFlag = false;
 			}
 		}
 		else
@@ -39,19 +39,19 @@ void CRMchildItemCardDisplay::Update()
 
 			if ( m_Alpha >= 1.0f )
 			{
-				m_flickFlag = true;
+				m_FlickFlag = true;
 			}
 		}
 
 		//printConsole("알파 값: %f \n", m_Alpha);
 		
-		m_prevTime = thisTime;
+		m_PrevTime = thisTime;
 
 	}
 	
 
 	//아이템이 발동되면 해당 카드가 떠 있도록 함
-	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_playerNumber) == ITEM_TYPE_NONE )
+	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
 	{
 		m_Visible = false;
 	}

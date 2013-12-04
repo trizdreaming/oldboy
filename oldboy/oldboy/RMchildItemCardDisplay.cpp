@@ -12,6 +12,7 @@ CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
 {
 	ZeroMemory(&m_Matrix, sizeof(m_Matrix));
 	ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
+	m_Rotation = 45.f;
 }
 
 
@@ -23,19 +24,35 @@ void CRMchildItemCardDisplay::Render()
 {
 	// 원래 좌표축으로 돌리기 위한 현재 좌표축 임시 저장
 	CRMrender::GetInstance()->GetRenderTarget()->GetTransform( &m_PrevMatrix );
-	
-	m_Matrix = D2D1::Matrix3x2F::Translation( -100.f/2.f, -175.f/2.f ) *
-		D2D1::Matrix3x2F::Rotation( 45.0f , D2D1::Point2F(m_PositionX, m_PositionY)) *
-		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
-		D2D1::Matrix3x2F::Translation( 100.f/2.f, 175.f/2.f );
+
+	float prevPositionX = m_PositionX;
+	float prevPositionY = m_PositionY;
+
+	D2D1::IdentityMatrix();
+
+	if ( m_Width != 0 && m_Height != 0 )
+	{
+		m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_Width / 2 , m_Height / 2 ) ) * 
+			D2D1::Matrix3x2F::Translation(m_PositionX, m_PositionY);
+	}
+
+	if ( m_Width != 0 && m_Height != 0 )
+	{
+		m_PositionX = 0.f;
+		m_PositionY = 0.f;
+	}
 
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );
 
 	//부모의 렌더함수를 빌려서 바로 적용하도록 함
+
 	CRMobject::Render();
 
 	//원래의 좌표축으로 돌려 놓는 것
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_PrevMatrix );
+
+	m_PositionX = prevPositionX;
+	m_PositionY = prevPositionY;
 }
 
 void CRMchildItemCardDisplay::Update()
@@ -73,11 +90,9 @@ void CRMchildItemCardDisplay::Update()
 
 	}
 	
-
 	//아이템이 발동되면 해당 카드가 떠 있도록 함
 	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
 	{
 		m_Visible = false;
 	}
-
 }

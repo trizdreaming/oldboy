@@ -1,16 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="리소스 파일">
-      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
-      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
-    </Filter>
-    <Filter Include="메인 영역">
-      <UniqueIdentifier>{fd999f43-4ae7-419e-98a0-7739ac0923a9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="메인 영역\헤더 파일">
-      <UniqueIdentifier>{8871a94d-9fea-45ef-b291-6d24f9ed11e0}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Fmod">
       <UniqueIdentifier>{f8e3df5f-250f-49c0-99b7-31b6fb6d08b3}</UniqueIdentifier>
     </Filter>
@@ -56,13 +46,23 @@
     <Filter Include="RhythmMatch\Object\Item">
       <UniqueIdentifier>{640ed6fd-0b02-4daf-88c7-e177ad867f6e}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Resources">
+      <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
+      <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
+    </Filter>
+    <Filter Include="Main Area">
+      <UniqueIdentifier>{fd999f43-4ae7-419e-98a0-7739ac0923a9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Main Area\헤더 파일">
+      <UniqueIdentifier>{8871a94d-9fea-45ef-b291-6d24f9ed11e0}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>메인 영역</Filter>
+      <Filter>Main Area</Filter>
     </ClInclude>
     <ClInclude Include="RMmainLoop.h">
       <Filter>RhythmMatch\MainLoop</Filter>
@@ -83,16 +83,16 @@
       <Filter>RhythmMatch\Image</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>메인 영역\헤더 파일</Filter>
+      <Filter>Main Area\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMdefine.h">
-      <Filter>메인 영역\헤더 파일</Filter>
+      <Filter>Main Area\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMmacro.h">
-      <Filter>메인 영역\헤더 파일</Filter>
+      <Filter>Main Area\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>메인 영역\헤더 파일</Filter>
+      <Filter>Main Area\헤더 파일</Filter>
     </ClInclude>
     <ClInclude Include="RMchildNote.h">
       <Filter>RhythmMatch\Object\Children</Filter>
@@ -173,7 +173,7 @@
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="RMprintConsole.h">
-      <Filter>메인 영역</Filter>
+      <Filter>Main Area</Filter>
     </ClInclude>
     <ClInclude Include="LibraryTinyXML\tinystr.h">
       <Filter>TinyXML</Filter>
@@ -301,22 +301,16 @@
     <ClInclude Include="RMchildItemCardDisplay.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMchildPaticleImage.h">
-      <Filter>RhythmMatch\Object\Children</Filter>
-    </ClInclude>
-    <ClInclude Include="RMpaticleManager.h">
-      <Filter>RhythmMatch\Object</Filter>
-    </ClInclude>
     <ClInclude Include="RMeffectManager.h">
       <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
-      <Filter>메인 영역</Filter>
+      <Filter>Main Area</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>메인 영역</Filter>
+      <Filter>Main Area</Filter>
     </ClCompile>
     <ClCompile Include="RMmainLoop.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
@@ -382,7 +376,7 @@
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="RMprintConsole.cpp">
-      <Filter>메인 영역</Filter>
+      <Filter>Main Area</Filter>
     </ClCompile>
     <ClCompile Include="LibraryTinyXML\tinystr.cpp">
       <Filter>TinyXML</Filter>
@@ -507,27 +501,21 @@
     <ClCompile Include="RMchildItemCardDisplay.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMchildPaticleImage.cpp">
-      <Filter>RhythmMatch\Object\Children</Filter>
-    </ClCompile>
-    <ClCompile Include="RMpaticleManager.cpp">
-      <Filter>RhythmMatch\Object</Filter>
-    </ClCompile>
     <ClCompile Include="RMeffectManager.cpp">
       <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">
-      <Filter>리소스 파일</Filter>
+      <Filter>Resources</Filter>
     </ResourceCompile>
   </ItemGroup>
   <ItemGroup>
     <Image Include="small.ico">
-      <Filter>리소스 파일</Filter>
+      <Filter>Resources</Filter>
     </Image>
     <Image Include="oldboy.ico">
-      <Filter>리소스 파일</Filter>
+      <Filter>Resources</Filter>
     </Image>
   </ItemGroup>
 </Project>

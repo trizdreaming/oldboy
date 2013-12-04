@@ -9,7 +9,7 @@ CRMitem::CRMitem(void) :
 	m_ObjectTypeColor(OBJECT_NONE),
 	m_TargetPlayer(PLAYER_NONE),
 	m_Active(false),
-	m_HoldingTick(30000)
+	m_HoldingTick(3000)
 {
 }
 

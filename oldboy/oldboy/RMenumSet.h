@@ -21,6 +21,7 @@ enum LayerType
 
 	LAYER_JUDGE_GAUGE,		// Judge 판정링과 게이지가 들어가는 레이어
 	LAYER_ITEM,				// item 카드와 Item Display가 들어가는 레이어
+	LAYER_CARD,
 
 	LAYER_NOTE1,
 	LAYER_NOTE2,

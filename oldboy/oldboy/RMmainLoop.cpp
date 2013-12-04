@@ -588,14 +588,14 @@ HRESULT CRMmainLoop::CreateObject()
 	itemCardObject->SetPosition(115, 200);
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_ONE);
-	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_ITEM);
+	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
 
 	itemCardObject = new CRMchildItemCardDisplay();
 	itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
 	itemCardObject->SetPosition(627, 200);
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_TWO);
-	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_ITEM);
+	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
 	
 
 	return hr;

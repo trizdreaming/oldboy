@@ -13,6 +13,8 @@ public:
 	void			SetPlayer( PlayerNumber playerNumber ) { m_playerNumber = playerNumber; }
 
 private:
+	
+
 	PlayerNumber	m_playerNumber;
 	UINT m_cardTimeToLive;
 

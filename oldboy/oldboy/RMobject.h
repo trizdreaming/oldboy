@@ -21,6 +21,8 @@ public:
 
 	float			GetPositionX() { return m_PositionX; }
 	float			GetPositionY() { return m_PositionY; }
+	float			GetAlpha() { return m_Alpha; }
+	float			SetSceneType() { return m_Scene; }
 	ObjectType		GetObjectType() { return m_ObjectType; }
 
 protected:

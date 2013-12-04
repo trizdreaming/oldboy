@@ -30,13 +30,11 @@ void CRMchildItemCardDisplay::Render()
 	// 원래 좌표축으로 돌리기 위한 현재 좌표축 임시 저장
 	CRMrender::GetInstance()->GetRenderTarget()->GetTransform(&tempMatrix);
 	
-	m_Matrix = D2D1::Matrix3x2F::Translation(-m_PositionX, -m_PositionY);
-	m_Matrix = D2D1::Matrix3x2F::Rotation(m_Rotation) * m_Matrix;
-//	m_Matrix = D2D1::Matrix3x2F::Translation(m_PositionX, m_PositionY) * m_Matrix;
-// 	m_Matrix = D2D1::Matrix3x2F::Translation( -100.f/2.f, -175.f/2.f ) *
-// 		D2D1::Matrix3x2F::Rotation( m_Rotation ) *
-// 		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
-// 		D2D1::Matrix3x2F::Translation( 100.f/2.f, 175.f/2.f );
+	m_Matrix = D2D1::Matrix3x2F::Translation( -100.f/2.f, -175.f/2.f ) *
+		D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F(m_PositionX, m_PositionY)) *
+		// D2D1::Point2F((m_Position+m_Center).GetX(), (m_Position+m_Center).GetY()) )
+		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
+		D2D1::Matrix3x2F::Translation( 100.f/2.f, 175.f/2.f );
 
 	//m_Matrix = m_Matrix * m_PrevMatrix;
 

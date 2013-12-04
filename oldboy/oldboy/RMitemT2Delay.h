@@ -8,6 +8,5 @@ public:
 	~CRMitemT2Delay(void);
 
 	virtual void	Update();
-
 };
 

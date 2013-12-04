@@ -11,7 +11,7 @@ public:
 	ObjectType		GetObjectTypeColor() { return m_ObjectTypeColor; }
 	ObjectType		GetObjectTypeGray() { return GetObjectType(); }
 	
-	void			Active();
+	virtual void	Active();
 	void			SetTime( UINT holdingTime ) { m_StartTime = holdingTime; }
 	virtual void	Update();
 

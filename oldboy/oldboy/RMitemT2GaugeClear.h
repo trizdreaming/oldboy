@@ -6,4 +6,6 @@ class CRMitemT2GaugeClear :
 public:
 	CRMitemT2GaugeClear(void);
 	~CRMitemT2GaugeClear(void);
+
+	void Active();
 };

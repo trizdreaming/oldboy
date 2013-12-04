@@ -43,7 +43,6 @@ void CRMchildShutter::Update()
 			m_PositionX = SHUTTER_P2_START_POSITION_X;
 		}
 
-		printConsole("P1 E:%d \n",CRMplayer1P::GetInstance()->GetHP());
 		resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / PLAYER_HP_MAX);
 		if ( m_playerNumber == PLAYER_TWO )
 		{

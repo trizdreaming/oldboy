@@ -159,20 +159,20 @@ void CRMitemManager::Update()
 	//////////////////////////////////////////////////////////////////////////
 
 	// 1. 각 플레이어의 MP 체크
-	int p1MaxMP = CRMplayer1P::GetInstance()->GetMaxMP();
-	int p2MaxMP = CRMplayer2P::GetInstance()->GetMaxMP();
+	float p1MaxMP = CRMplayer1P::GetInstance()->GetMaxMP();
+	float p2MaxMP = CRMplayer2P::GetInstance()->GetMaxMP();
 
-	int p1MP = CRMplayer1P::GetInstance()->GetMP();
-	int p2MP = CRMplayer2P::GetInstance()->GetMP();
+	float p1MP = CRMplayer1P::GetInstance()->GetMP();
+	float p2MP = CRMplayer2P::GetInstance()->GetMP();
 
 	// 최대 가질수 있는 mp의 비율 1이면 풀 게이지
-	float p1GaugeRate = (float)p1MP / (float)p1MaxMP;
-	float p2GaugeRate = (float)p2MP / (float)p2MaxMP;
+	float p1GaugeRate = p1MP / p1MaxMP;
+	float p2GaugeRate = p2MP / p2MaxMP;
 
 	// 아이템 포지션 결정
-	float p1Tier1Position = SCREEN_SIZE_Y - (float)p1MaxMP * 0.3f;
-	float p1Tier2Position = SCREEN_SIZE_Y - (float)p1MaxMP * 0.6f;
-	float p1Tier3Position = SCREEN_SIZE_Y - (float)p1MaxMP * 0.9f;
+	float p1Tier1Position = SCREEN_SIZE_Y - p1MaxMP * 0.3f;
+	float p1Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.6f;
+	float p1Tier3Position = SCREEN_SIZE_Y - p1MaxMP * 0.9f;
 
 	if ( (int)m_ItemPosition[TIER_1P_THREE] != (int)p1Tier3Position )
 	{
@@ -181,9 +181,9 @@ void CRMitemManager::Update()
 		m_ItemPosition[TIER_1P_THREE] += (p1Tier3Position - m_ItemPosition[TIER_1P_THREE]) / 100;
 	}
 
-	float p2Tier1Position = SCREEN_SIZE_Y - (float)p2MaxMP * 0.3f;
-	float p2Tier2Position = SCREEN_SIZE_Y - (float)p2MaxMP * 0.6f;
-	float p2Tier3Position = SCREEN_SIZE_Y - (float)p2MaxMP * 0.9f;
+	float p2Tier1Position = SCREEN_SIZE_Y - p2MaxMP * 0.3f;
+	float p2Tier2Position = SCREEN_SIZE_Y - p2MaxMP * 0.6f;
+	float p2Tier3Position = SCREEN_SIZE_Y - p2MaxMP * 0.9f;
 
 	if ( (int)m_ItemPosition[TIER_2P_THREE] != (int)p2Tier3Position )
 	{

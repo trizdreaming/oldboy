@@ -48,7 +48,7 @@ void CRMchildGauge::Update()
 	float resultPosition = 0.0f;
 
 	int hp = 0;
-	int mp = 0;
+	float mp = 0;
 	
 	if ( m_playerNumber == PLAYER_ONE )
 	{

@@ -19,8 +19,8 @@ public:
 	int			GetHP() { return m_HP; }
 
 	void		ResetMP() { m_MP = 0; }
-	int			GetMP() { return m_MP; }
-	int			GetMaxMP() { return m_HP * PLAYER_HP_MP_RATE; }
+	float		GetMP() { return m_MP; }
+	float		GetMaxMP() { return m_HP * PLAYER_HP_MP_RATE; }
 
 	bool		IsDead() { return ( m_HP <= 0 ) ? true : false; }
 
@@ -32,6 +32,6 @@ private:
 	bool		m_PrevIsCombo;
 
 	int			m_HP;	// 셔터를 관리하기 위함[Health Point]
-	int			m_MP;	// 게이지를 관리하기 위함[Mana Point]
+	float		m_MP;	// 게이지를 관리하기 위함[Mana Point]
 };
 

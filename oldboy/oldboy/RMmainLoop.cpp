@@ -584,21 +584,26 @@ HRESULT CRMmainLoop::CreateObject()
 
 	//////////////////////////////////////////////////////////////////////////
 	
-	CRMchildItemCardDisplay* itemCardObject = new CRMchildItemCardDisplay();
-	itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
-	itemCardObject->SetPosition(115, 200);
-	itemCardObject->SetSceneType(SCENE_PLAY);
-	itemCardObject->SetPlayer(PLAYER_ONE);
-	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
-
-	itemCardObject = new CRMchildItemCardDisplay();
-	itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
-	itemCardObject->SetPosition(627, 200);
-	itemCardObject->SetSceneType(SCENE_PLAY);
-	itemCardObject->SetPlayer(PLAYER_TWO);
-	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
+	CRMchildItemCardDisplay* itemCardObject = nullptr;
 	
+	for ( int i = 0 ; i < 30; ++i )
+	{
+		itemCardObject = new CRMchildItemCardDisplay();
+		itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
+		itemCardObject->SetPosition(115, 200);
+		itemCardObject->SetSceneType(SCENE_PLAY);
+		itemCardObject->SetPlayer(PLAYER_ONE);
+		itemCardObject->SetOrder(i);
+		CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
 
+		itemCardObject = new CRMchildItemCardDisplay();
+		itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
+		itemCardObject->SetPosition(627, 200);
+		itemCardObject->SetSceneType(SCENE_PLAY);
+		itemCardObject->SetPlayer(PLAYER_TWO);
+		itemCardObject->SetOrder(i);
+		CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
+	}
 	return hr;
 }
 

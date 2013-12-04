@@ -25,14 +25,15 @@ public:
 	SceneType		SetSceneType() { return m_Scene; }
 	ObjectType		GetObjectType() { return m_ObjectType; }
 
-	void			SetPlayer( PlayerNumber playerNumber ) { m_playerNumber = playerNumber; }
-	PlayerNumber	GetPlayer() { return m_playerNumber; }
+	void			SetPlayer( PlayerNumber playerNumber ) { m_PlayerNumber = playerNumber; }
+	PlayerNumber	GetPlayer() { return m_PlayerNumber; }
 
 protected:
 
 	void			SetVisibleByScene();
 	ObjectType		m_ObjectType;
 
+	PlayerNumber	m_PlayerNumber;
 	bool			m_Visible;
 	SceneType		m_Scene;
 
@@ -48,7 +49,5 @@ protected:
 	float			m_Width;
 	float			m_Height;
 	float			m_Alpha;
-
-	PlayerNumber	m_playerNumber;
 };
 

@@ -37,13 +37,13 @@ void CRMchildShutter::Update()
 	if ( m_PositionY < -10 )
 	{
 		m_PositionX = SHUTTER_P1_START_POSITION_X;
-		if ( m_playerNumber == PLAYER_TWO )
+		if ( m_PlayerNumber == PLAYER_TWO )
 		{
 			m_PositionX = SHUTTER_P2_START_POSITION_X;
 		}
 
 		resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / PLAYER_HP_MAX);
-		if ( m_playerNumber == PLAYER_TWO )
+		if ( m_PlayerNumber == PLAYER_TWO )
 		{
 			resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer2P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / PLAYER_HP_MAX);
 		}

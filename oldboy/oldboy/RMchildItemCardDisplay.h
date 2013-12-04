@@ -10,13 +10,15 @@ public:
 
 public:
 	void			Update();
-	void			SetPlayer( PlayerNumber playerNumber ) { m_PlayerNumber = playerNumber; }
+	void			SetOrder(UINT orderNumber) { m_OrderNumber = orderNumber; }
 	void			Render();
 
 private:
-	PlayerNumber	m_PlayerNumber;
 	UINT			m_PrevTime;
 	UINT			m_TimeSlice;
+	UINT			m_OrderNumber;
 	bool			m_FlickFlag;
+	bool			m_OrderFlag;
+	float			m_MoveOffset;
 };
 

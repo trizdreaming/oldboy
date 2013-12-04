@@ -40,7 +40,7 @@ void CRMchildNote::Update()
 	{
 		m_PositionY += 5;
 
-		if ( CRMitemManager::GetInstance()->GetActivatedItem(m_playerNumber) == ITEM_T2_ROTATE )
+		if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T2_ROTATE )
 		{
 			if ( m_PositionY > NOTE_JUDGE_PERFECT_START_LINE - 540 )
 			{

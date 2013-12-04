@@ -50,7 +50,7 @@ void CRMchildGauge::Update()
 	int hp = 0;
 	float mp = 0;
 	
-	if ( m_playerNumber == PLAYER_ONE )
+	if ( m_PlayerNumber == PLAYER_ONE )
 	{
 		hp = CRMplayer1P::GetInstance()->GetHP();
 		mp = CRMplayer1P::GetInstance()->GetMP();

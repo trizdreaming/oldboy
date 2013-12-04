@@ -8,11 +8,13 @@
 CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
 	m_TimeSlice(10),
 	m_PrevTime(0),
-	m_FlickFlag(true)
+	m_FlickFlag(true),
+	m_OrderNumber(0),
+	m_OrderFlag(false),
+	m_MoveOffset(0)
 {
 	ZeroMemory(&m_Matrix, sizeof(m_Matrix));
 	ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
-	m_Rotation = 45.f;
 }
 
 
@@ -28,8 +30,8 @@ void CRMchildItemCardDisplay::Render()
 	if ( m_Width != 0 && m_Height != 0 )
 	{
 		m_Matrix = D2D1::Matrix3x2F::Translation( -m_PositionX, -m_PositionY ) * 
-			D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_Width / 2 , m_Height / 2 ) ) * 
-			D2D1::Matrix3x2F::Translation(m_PositionX, m_PositionY);
+			D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_Width , m_Height ) ) * 
+			D2D1::Matrix3x2F::Translation(m_PositionX + m_MoveOffset, m_PositionY);
 	}
 
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );
@@ -45,38 +47,64 @@ void CRMchildItemCardDisplay::Update()
 {
 	SetVisibleByScene();
 
+	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
+	{
+		m_Visible = false;
+		m_Rotation = 0;
+		return;
+	}
+
 	UINT	thisTime = timeGetTime();
 
-	if( m_PrevTime + m_TimeSlice < thisTime )
+	if ( m_OrderNumber == 29 )
 	{
-		if( m_FlickFlag == true )
+		if ( m_PrevTime + m_TimeSlice < thisTime )
 		{
-			m_Alpha -= 0.02f;
-
-			if( m_Alpha <= 0.3f )
+			if( m_FlickFlag == true )
 			{
-				m_FlickFlag = false;
+				m_Alpha -= 0.02f;
+
+				if( m_Alpha <= 0.3f )
+				{
+					m_FlickFlag = false;
+				}
+			}
+			else
+			{
+				m_Alpha += 0.1f;
+
+				if ( m_Alpha >= 1.0f )
+				{
+					m_FlickFlag = true;
+				}
+			}
+			m_PrevTime = thisTime;
+		}
+	}
+	else
+	{
+		if ( m_OrderFlag == false )
+		{
+			if ( m_PrevTime + (m_OrderNumber * 50) < thisTime )
+			{
+				m_OrderFlag = true;
+				m_MoveOffset = 0;
 			}
 		}
 		else
 		{
-			m_Alpha += 0.1f;
+			++m_Rotation;
+			++m_MoveOffset;
+			m_Alpha -= 0.05f;
 
-			if ( m_Alpha >= 1.0f )
+			if ( m_Rotation > 20 )
 			{
-				m_FlickFlag = true;
+				m_PrevTime = thisTime;
+				m_OrderFlag = false;
+				m_MoveOffset = 0.f;
+				m_Rotation = 0.f;
+				m_Alpha = 1.f;
 			}
 		}
-
-		//printConsole("알파 값: %f \n", m_Alpha);
-		
-		m_PrevTime = thisTime;
-
-	}
-	
-	//아이템이 발동되면 해당 카드가 떠 있도록 함
-	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
-	{
-		m_Visible = false;
 	}
 }

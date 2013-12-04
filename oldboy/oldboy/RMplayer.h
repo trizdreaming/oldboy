@@ -14,13 +14,13 @@ public:
 	UINT		GetCount( CountType countType ) const;
 	void		SetCount( CountType countType, UINT count );
 	
-	void		AddHP() { ++m_HP; }
-	void		SubHP() { --m_HP; }
+	void		AddHP() { m_HP = m_HP + 10; }
+	void		SubHP() { m_HP = m_HP - 10; }
 	int			GetHP() { return m_HP; }
 
 	void		ResetMP() { m_MP = 0; }
 	int			GetMP() { return m_MP; }
-	int			GetMaxMP() { return m_HP * 65; }
+	int			GetMaxMP() { return m_HP * PLAYER_HP_MP_RATE; }
 
 	bool		IsDead() { return ( m_HP <= 0 ) ? true : false; }
 

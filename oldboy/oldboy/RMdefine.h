@@ -50,7 +50,8 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define SHUTTER_START_POSITION_Y -668
 
 // shutter 관련 플레이어 HP 설정
-#define PLAYER_HP_MAX		10
+#define PLAYER_HP_MAX		100
+#define PLAYER_HP_MP_RATE	6
 
 // 점수 계산값 설정
 #define SCORE_EACH_PERFECT 5

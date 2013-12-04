@@ -61,7 +61,7 @@ void CRMchildGauge::Update()
 		mp = CRMplayer2P::GetInstance()->GetMP();
 	}
 
-	nowShutterPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) hp ) * -((float) SHUTTER_START_POSITION_Y / 10) + 668;
+	nowShutterPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) hp ) * -((float) SHUTTER_START_POSITION_Y / PLAYER_HP_MAX) + 668;
 
 	// 이동해야 할 좌표를 계산
 	resultPosition = (float)( SCREEN_SIZE_Y - 12 - mp );

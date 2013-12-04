@@ -21,8 +21,3 @@ void CRMitemT2Delay::Update()
 
 	// 어쩌구 저쩌구
 }
-
-void CRMitemT2Delay::Update()
-{
-
-}

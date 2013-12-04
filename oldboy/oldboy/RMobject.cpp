@@ -17,7 +17,8 @@ CRMobject::CRMobject(void):
 	m_Alpha(1.0f),
 	m_Rotation(0.0f),
 	m_ScaleX(1.0f),
-	m_ScaleY(1.0f)
+	m_ScaleY(1.0f),
+	m_playerNumber(PLAYER_NONE)
 {
 }
 

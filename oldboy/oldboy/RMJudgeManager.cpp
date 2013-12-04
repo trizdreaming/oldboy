@@ -39,6 +39,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 		thisNote->SetPosition( NOTE_ONE_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
+		thisNote->SetPlayer( PLAYER_ONE );
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE1 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 	}
@@ -48,6 +49,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 		thisNote->SetPosition( NOTE_TWO_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
+		thisNote->SetPlayer( PLAYER_TWO );
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE2 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 	}

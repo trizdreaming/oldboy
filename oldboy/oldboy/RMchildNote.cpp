@@ -6,6 +6,7 @@
 #include "RMrender.h"
 #include "RMresourceManager.h"
 #include "RMimage.h"
+#include "RMitemManager.h"
 
 
 CRMchildNote::CRMchildNote(void)
@@ -30,6 +31,7 @@ void CRMchildNote::Update()
 	{
 		m_PositionX = DEFAULT_POSITION_X;
 		m_PositionY = DEFAULT_POSITION_Y;
+		m_Rotation = 0;
 
 		return;
 	}
@@ -37,7 +39,19 @@ void CRMchildNote::Update()
 	if ( m_PositionY < SCREEN_SIZE_Y + NOTE_SIZE )
 	{
 		m_PositionY += 5;
-		m_Rotation++;
+
+		if ( CRMitemManager::GetInstance()->GetActivatedItem(m_playerNumber) == ITEM_T2_ROTATE )
+		{
+			if ( m_PositionY > NOTE_JUDGE_PERFECT_START_LINE - 540 )
+			{
+				m_Rotation = 180 + ( m_PositionY - ( NOTE_JUDGE_PERFECT_START_LINE - 540 ) ) / 3;
+			}
+		}
+		else
+		{
+			m_Rotation = 0;
+		}
+		
 	}
 	else
 	{

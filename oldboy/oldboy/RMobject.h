@@ -25,6 +25,9 @@ public:
 	SceneType		SetSceneType() { return m_Scene; }
 	ObjectType		GetObjectType() { return m_ObjectType; }
 
+	void			SetPlayer( PlayerNumber playerNumber ) { m_playerNumber = playerNumber; }
+	PlayerNumber	GetPlayer() { return m_playerNumber; }
+
 protected:
 
 	void			SetVisibleByScene();
@@ -45,5 +48,7 @@ protected:
 	float			m_Width;
 	float			m_Height;
 	float			m_Alpha;
+
+	PlayerNumber	m_playerNumber;
 };
 

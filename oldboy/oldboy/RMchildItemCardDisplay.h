@@ -10,12 +10,12 @@ public:
 
 public:
 	void			Update();
-	void			SetPlayer( PlayerNumber playerNumber ) { m_playerNumber = playerNumber; }
+	void			SetPlayer( PlayerNumber playerNumber ) { m_PlayerNumber = playerNumber; }
 
 private:
-	PlayerNumber	m_playerNumber;
-	UINT m_prevTime;
-	UINT m_timeSlice;
-	bool m_flickFlag;
+	PlayerNumber	m_PlayerNumber;
+	UINT			m_PrevTime;
+	UINT			m_TimeSlice;
+	bool			m_FlickFlag;
 };
 

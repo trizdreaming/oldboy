@@ -129,9 +129,14 @@ void CRMitemManager::Create()
 	m_TierItem[TIER_2P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
 	m_TierItem[TIER_2P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
 
-	m_TimeSliceForTier[TIER_1P_ONE] = m_TimeSliceForTier[TIER_2P_ONE] = 5;
-	m_TimeSliceForTier[TIER_1P_TWO] = m_TimeSliceForTier[TIER_2P_TWO] = 6;
-	m_TimeSliceForTier[TIER_1P_THREE] = m_TimeSliceForTier[TIER_2P_THREE] = 3;
+	m_TimeSliceForTier[TIER_1P_ONE] = m_TimeSliceForTier[TIER_2P_ONE] = 5000;
+	m_TimeSliceForTier[TIER_1P_TWO] = m_TimeSliceForTier[TIER_2P_TWO] = 4000;
+	m_TimeSliceForTier[TIER_1P_THREE] = m_TimeSliceForTier[TIER_2P_THREE] = 7000;
+
+	UINT	thisTime = timeGetTime();
+
+	m_PrevTimeTierRotate[TIER_1P_ONE] = m_PrevTimeTierRotate[TIER_1P_TWO] = m_PrevTimeTierRotate[TIER_1P_THREE] = 
+	m_PrevTimeTierRotate[TIER_2P_ONE] = m_PrevTimeTierRotate[TIER_2P_TWO] = m_PrevTimeTierRotate[TIER_2P_THREE] = thisTime;
 }
 
 void CRMitemManager::Release()
@@ -164,8 +169,6 @@ void CRMitemManager::Update()
 	float p1GaugeRate = (float)p1MP / (float)p1MaxMP;
 	float p2GaugeRate = (float)p2MP / (float)p2MaxMP;
 
-
-
 	// 아이템 포지션 결정
 	float p1Tier1Position = SCREEN_SIZE_Y - (float)p1MaxMP * 0.3f;
 	float p1Tier2Position = SCREEN_SIZE_Y - (float)p1MaxMP * 0.6f;
@@ -177,8 +180,6 @@ void CRMitemManager::Update()
 		m_ItemPosition[TIER_1P_TWO] += (p1Tier2Position - m_ItemPosition[TIER_1P_TWO]) / 100;
 		m_ItemPosition[TIER_1P_THREE] += (p1Tier3Position - m_ItemPosition[TIER_1P_THREE]) / 100;
 	}
-
-
 
 	float p2Tier1Position = SCREEN_SIZE_Y - (float)p2MaxMP * 0.3f;
 	float p2Tier2Position = SCREEN_SIZE_Y - (float)p2MaxMP * 0.6f;
@@ -288,17 +289,17 @@ void CRMitemManager::Update()
 		CRMplayer2P::GetInstance()->ResetMP();
 	}
 	
+	UINT	thisTime = timeGetTime();
+
 	// 회전 구현
 	// 1. 각 티어별로 틱이 되었는지 확인
 	// 2. 해당 티어 Rotate
 	for ( auto i = TIER_1P_ONE ; i < TIER_MAX ; i = (ItemTierType)(i + 1) )
 	{
-		m_TimeOfTierRotate[i] += m_TimeSliceForTier[i];
-
-		if ( m_TimeOfTierRotate[i] > 500000 )
+		if ( m_PrevTimeTierRotate[i] + m_TimeSliceForTier[i] < thisTime )
 		{
-			printConsole( "틱포인트 - %d : %d 번째 슬롯 회전! 위치 : %f \n", m_TimeOfTierRotate[i], i, m_ItemPosition[i] );
-			m_TimeOfTierRotate[i] = 0;
+			printConsole( "회전 시간 - %d : %d 번째 슬롯 회전! 위치 : %f \n", thisTime, i, m_ItemPosition[i] );
+			m_PrevTimeTierRotate[i] = thisTime;
 			RotateItem(i);
 		}
 	}

@@ -11,16 +11,16 @@ public:
 	ObjectType		GetObjectTypeColor() { return m_ObjectTypeColor; }
 	ObjectType		GetObjectTypeGray() { return GetObjectType(); }
 	
-	void			Active() { m_Active = true; m_Tick = 0; }
-	void			SetTime( UINT holdingTime ) { m_HoldingTick = holdingTime; }
+	void			Active();
+	void			SetTime( UINT holdingTime ) { m_StartTime = holdingTime; }
 	virtual void	Update();
 
 protected:
 	void			DeActive() { m_Active = false; }
 
 	ObjectType		m_ObjectTypeColor;
-	UINT			m_Tick;
-	UINT			m_HoldingTick;
+	UINT			m_TimeSlice;
+	UINT			m_StartTime;
 
 friend class CRMitemManager;
 	PlayerNumber	m_TargetPlayer;

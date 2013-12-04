@@ -50,7 +50,7 @@ private:
 	// 실제 아이템이 생성 관리 되는 메모리풀
 	std::array<CRMitem*, ITEM_TYPE_MAX * 2>			m_ItemPool;
 
-	std::array<UINT, TIER_MAX>						m_TimeOfTierRotate;
+	std::array<UINT, TIER_MAX>						m_PrevTimeTierRotate;
 	std::array<UINT, TIER_MAX>						m_TimeSliceForTier;
 };
 

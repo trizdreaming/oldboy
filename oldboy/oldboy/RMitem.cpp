@@ -5,11 +5,11 @@
 
 
 CRMitem::CRMitem(void) :
-	m_Tick(0),
+	m_TimeSlice(0),
 	m_ObjectTypeColor(OBJECT_NONE),
 	m_TargetPlayer(PLAYER_NONE),
 	m_Active(false),
-	m_HoldingTick(3000)
+	m_StartTime(0)
 {
 }
 
@@ -25,13 +25,18 @@ void CRMitem::Update()
 		return;
 	}
 
-	if ( ++m_Tick > m_HoldingTick )
+	if ( m_StartTime + m_TimeSlice < timeGetTime() )
 	{
 		CRMitemManager::GetInstance()->DeactiveItem( m_TargetPlayer );
 		printConsole( "%dP 아이템 발동 종료! %d틱 경과 \n", m_TargetPlayer, m_Tick );
 
 		m_Active = false;
-
-		m_Tick = 0;
 	}
+}
+
+void CRMitem::Active()
+{
+	m_Active = true;
+
+	m_StartTime = timeGetTime();
 }

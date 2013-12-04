@@ -28,7 +28,7 @@ void CRMitem::Update()
 	if ( m_StartTime + m_TimeSlice < timeGetTime() )
 	{
 		CRMitemManager::GetInstance()->DeactiveItem( m_TargetPlayer );
-		printConsole( "%dP 아이템 발동 종료! %d틱 경과 \n", m_TargetPlayer, m_Tick );
+		printConsole( "%dP 아이템 발동 종료! \n", m_TargetPlayer );
 
 		m_Active = false;
 	}

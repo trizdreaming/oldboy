@@ -345,4 +345,8 @@ void CRMobjectManager::RemoveAllNote()
 		m_ObjectListMemoryPoolOfNote.push_back( thisNote );
 		m_ObjectListLayerNotePlayer2.pop_back();
 	}
+	for ( auto &iter : m_ObjectListMemoryPoolOfNote )
+	{
+		iter->SetVisible(false);
+	}
 }

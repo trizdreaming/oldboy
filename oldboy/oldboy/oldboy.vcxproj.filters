@@ -50,10 +50,10 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Main Area">
+    <Filter Include="MainArea">
       <UniqueIdentifier>{fd999f43-4ae7-419e-98a0-7739ac0923a9}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Main Area\헤더 파일">
+    <Filter Include="MainArea\Header">
       <UniqueIdentifier>{8871a94d-9fea-45ef-b291-6d24f9ed11e0}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
@@ -62,7 +62,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
-      <Filter>Main Area</Filter>
+      <Filter>MainArea</Filter>
     </ClInclude>
     <ClInclude Include="RMmainLoop.h">
       <Filter>RhythmMatch\MainLoop</Filter>
@@ -83,16 +83,16 @@
       <Filter>RhythmMatch\Image</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
-      <Filter>Main Area\헤더 파일</Filter>
+      <Filter>MainArea\Header</Filter>
     </ClInclude>
     <ClInclude Include="RMdefine.h">
-      <Filter>Main Area\헤더 파일</Filter>
+      <Filter>MainArea\Header</Filter>
     </ClInclude>
     <ClInclude Include="RMmacro.h">
-      <Filter>Main Area\헤더 파일</Filter>
+      <Filter>MainArea\Header</Filter>
     </ClInclude>
     <ClInclude Include="targetver.h">
-      <Filter>Main Area\헤더 파일</Filter>
+      <Filter>MainArea\Header</Filter>
     </ClInclude>
     <ClInclude Include="RMchildNote.h">
       <Filter>RhythmMatch\Object\Children</Filter>
@@ -173,7 +173,7 @@
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
     <ClInclude Include="RMprintConsole.h">
-      <Filter>Main Area</Filter>
+      <Filter>MainArea</Filter>
     </ClInclude>
     <ClInclude Include="LibraryTinyXML\tinystr.h">
       <Filter>TinyXML</Filter>
@@ -307,10 +307,10 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
-      <Filter>Main Area</Filter>
+      <Filter>MainArea</Filter>
     </ClCompile>
     <ClCompile Include="stdafx.cpp">
-      <Filter>Main Area</Filter>
+      <Filter>MainArea</Filter>
     </ClCompile>
     <ClCompile Include="RMmainLoop.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
@@ -376,7 +376,7 @@
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
     <ClCompile Include="RMprintConsole.cpp">
-      <Filter>Main Area</Filter>
+      <Filter>MainArea</Filter>
     </ClCompile>
     <ClCompile Include="LibraryTinyXML\tinystr.cpp">
       <Filter>TinyXML</Filter>

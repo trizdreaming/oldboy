@@ -2,18 +2,51 @@
 #include "RMchildItemCardDisplay.h"
 #include "RMmacro.h"
 #include "RMitemManager.h"
+#include "RMrender.h"
 
 
 CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
-	m_TimeSlice(100),
+	m_TimeSlice(10),
 	m_PrevTime(0),
-	m_FlickFlag(true)
+	m_FlickFlag(true),
+	m_Rotation(45.f),
+	m_ScaleX(1.0f),
+	m_ScaleY(1.0f)
 {
+	ZeroMemory(&m_Matrix, sizeof(m_Matrix));
+	ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
 }
 
 
 CRMchildItemCardDisplay::~CRMchildItemCardDisplay(void)
 {
+}
+
+void CRMchildItemCardDisplay::Render()
+{
+	D2D1::Matrix3x2F tempMatrix;
+	ZeroMemory(&tempMatrix, sizeof(tempMatrix));
+	
+	// 원래 좌표축으로 돌리기 위한 현재 좌표축 임시 저장
+	CRMrender::GetInstance()->GetRenderTarget()->GetTransform(&tempMatrix);
+	
+	m_Matrix = D2D1::Matrix3x2F::Translation(-m_PositionX, -m_PositionY);
+	m_Matrix = D2D1::Matrix3x2F::Rotation(m_Rotation) * m_Matrix;
+//	m_Matrix = D2D1::Matrix3x2F::Translation(m_PositionX, m_PositionY) * m_Matrix;
+// 	m_Matrix = D2D1::Matrix3x2F::Translation( -100.f/2.f, -175.f/2.f ) *
+// 		D2D1::Matrix3x2F::Rotation( m_Rotation ) *
+// 		D2D1::Matrix3x2F::Scale( m_ScaleX, m_ScaleY ) *
+// 		D2D1::Matrix3x2F::Translation( 100.f/2.f, 175.f/2.f );
+
+	//m_Matrix = m_Matrix * m_PrevMatrix;
+
+	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );
+
+	//부모의 렌더함수를 빌려서 바로 적용하도록 함
+	CRMobject::Render();
+
+	//원래의 좌표축으로 돌려 놓는 것
+	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( tempMatrix );
 }
 
 void CRMchildItemCardDisplay::Update()
@@ -26,22 +59,24 @@ void CRMchildItemCardDisplay::Update()
 	{
 		if( m_FlickFlag == true )
 		{
-			m_Alpha -= 0.1f;
+			m_Alpha -= 0.02f;
 
-			if( m_Alpha <= 0.0f )
+			if( m_Alpha <= 0.3f )
 			{
 				m_FlickFlag = false;
 			}
 		}
 		else
 		{
-			m_Alpha += 0.2f;
+			m_Alpha += 0.1f;
 
 			if ( m_Alpha >= 1.0f )
 			{
 				m_FlickFlag = true;
 			}
 		}
+
+
 
 		//printConsole("알파 값: %f \n", m_Alpha);
 		

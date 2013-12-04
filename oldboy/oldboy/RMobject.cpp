@@ -48,9 +48,10 @@ void CRMobject::Render()
 	{
 		m_Height = thisTexture->GetHeight();
 	}
+	
 
 	D2D1_RECT_F dxArea = D2D1::RectF( m_PositionX, m_PositionY, m_PositionX + m_Width, m_PositionY + m_Height);
-	
+
 	CRMrender::GetInstance()->GetRenderTarget()->DrawBitmap(thisTexture->Get2DImg(), dxArea, m_Alpha);
 }
 

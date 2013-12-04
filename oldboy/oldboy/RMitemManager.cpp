@@ -298,7 +298,7 @@ void CRMitemManager::Update()
 	{
 		if ( m_PrevTimeTierRotate[i] + m_TimeSliceForTier[i] < thisTime )
 		{
-			printConsole( "회전 시간 - %d : %d 번째 슬롯 회전! 위치 : %f \n", thisTime, i, m_ItemPosition[i] );
+			//printConsole( "회전 시간 - %d : %d 번째 슬롯 회전! 위치 : %f \n", thisTime, i, m_ItemPosition[i] );
 			m_PrevTimeTierRotate[i] = thisTime;
 			RotateItem(i);
 		}

@@ -72,36 +72,25 @@ HRESULT CRMresourceManager::CreateTexture()
 	
 	HRESULT hr = S_FALSE;
 	CRMimage* texture = new CRMimage();
-// 	hr = texture->CreateImage( BG_IMAGE_TITLE );
-// 	if ( hr == S_OK )
-// 	{
-// 		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = texture;
-// 	}
-// 	else
-// 	{
-// 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-// 		m_TextureArray[OBJECT_BG_IMAGE_TITLE] = nullptr;
-// 		SafeDelete(texture);
-// 	}
 
-	hr = TextureMaker( hr, texture, BG_IMAGE_TITLE, OBJECT_BG_IMAGE_TITLE );
-	hr = TextureMaker( hr, texture, BG_IMAGE_SELECT, OBJECT_BG_IMAGE_SELECT );
-	hr = TextureMaker( hr, texture, BG_IMAGE_RESULT, OBJECT_BG_IMAGE_RESULT );
+	hr = TextureMaker( hr, BG_IMAGE_TITLE, OBJECT_BG_IMAGE_TITLE );
+	hr = TextureMaker( hr, BG_IMAGE_SELECT, OBJECT_BG_IMAGE_SELECT );
+	hr = TextureMaker( hr, BG_IMAGE_RESULT, OBJECT_BG_IMAGE_RESULT );
 
 	//////////////////////////////////////////////////////////////////////////
 	//pause
 	//////////////////////////////////////////////////////////////////////////
-	hr = TextureMaker( hr, texture, PAUSE_IMAGE_PLAY_CANCEL, OBJECT_PAUSE_IMAGE_PLAY_CANCEL );
-	hr = TextureMaker( hr, texture, PAUSE_IMAGE_PLAY_OK, OBJECT_PAUSE_IMAGE_PLAY_OK );
-	hr = TextureMaker( hr, texture, PAUSE_IMAGE_TITLE_CANCEL, OBJECT_PAUSE_IMAGE_TITLE_CANCEL );
-	hr = TextureMaker( hr, texture, PAUSE_IMAGE_TITLE_OK, OBJECT_PAUSE_IMAGE_TITLE_OK );
+	hr = TextureMaker( hr, PAUSE_IMAGE_PLAY_CANCEL, OBJECT_PAUSE_IMAGE_PLAY_CANCEL );
+	hr = TextureMaker( hr, PAUSE_IMAGE_PLAY_OK, OBJECT_PAUSE_IMAGE_PLAY_OK );
+	hr = TextureMaker( hr, PAUSE_IMAGE_TITLE_CANCEL, OBJECT_PAUSE_IMAGE_TITLE_CANCEL );
+	hr = TextureMaker( hr, PAUSE_IMAGE_TITLE_OK, OBJECT_PAUSE_IMAGE_TITLE_OK );
 
 	//////////////////////////////////////////////////////////////////////////
 	//이하 플레이 화면
 	//////////////////////////////////////////////////////////////////////////
-	hr = TextureMaker( hr, texture, PLAY_IMAGE_JUDGE_RING, OBJECT_JUDGE_RING );
-	hr = TextureMaker( hr, texture, PLAY_IMAGE_BLUE_GAUGE, OBJECT_GAUGE_2P );
-	hr = TextureMaker( hr, texture, PLAY_IMAGE_RED_GAUGE, OBJECT_GAUGE_1P );
+	hr = TextureMaker( hr, PLAY_IMAGE_JUDGE_RING, OBJECT_JUDGE_RING );
+	hr = TextureMaker( hr, PLAY_IMAGE_BLUE_GAUGE, OBJECT_GAUGE_2P );
+	hr = TextureMaker( hr, PLAY_IMAGE_RED_GAUGE, OBJECT_GAUGE_1P );
 	
 
 
@@ -110,55 +99,55 @@ HRESULT CRMresourceManager::CreateTexture()
 	//////////////////////////////////////////////////////////////////////////
 	
 	// Item_T1_Duplicate_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Duplicate_Color.jpg", OBJECT_ITEM_T1_DUPLICATE_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T1_Duplicate_Color.jpg", OBJECT_ITEM_T1_DUPLICATE_COLOR );
 	// Item_T1_Duplicate_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Duplicate_Gray.jpg", OBJECT_ITEM_T1_DUPLICATE_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T1_Duplicate_Gray.jpg", OBJECT_ITEM_T1_DUPLICATE_GRAY );
 	// Item_T1_Mist_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Mist_Color.jpg", OBJECT_ITEM_T1_MIST_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T1_Mist_Color.jpg", OBJECT_ITEM_T1_MIST_COLOR );
 	// Item_T1_Mist_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Mist_Gray.jpg", OBJECT_ITEM_T1_MIST_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T1_Mist_Gray.jpg", OBJECT_ITEM_T1_MIST_GRAY );
 	// Item_T1_Rest_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Rest_Color.jpg", OBJECT_ITEM_T1_REST_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T1_Rest_Color.jpg", OBJECT_ITEM_T1_REST_COLOR );
 	// Item_T1_Rest_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T1_Rest_Gray.jpg", OBJECT_ITEM_T1_REST_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T1_Rest_Gray.jpg", OBJECT_ITEM_T1_REST_GRAY );
 	// Item_T2_Barrier_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Barrier_Color.jpg", OBJECT_ITEM_T2_BARRIER_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_Barrier_Color.jpg", OBJECT_ITEM_T2_BARRIER_COLOR );
 	// Item_T2_Barrier_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Barrier_Gray.jpg", OBJECT_ITEM_T2_BARRIER_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_Barrier_Gray.jpg", OBJECT_ITEM_T2_BARRIER_GRAY );
 	// Item_T2_Delay_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Delay_Color.jpg", OBJECT_ITEM_T2_DELAY_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_Delay_Color.jpg", OBJECT_ITEM_T2_DELAY_COLOR );
 	// Item_T2_Delay_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Delay_Gray.jpg", OBJECT_ITEM_T2_DELAY_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_Delay_Gray.jpg", OBJECT_ITEM_T2_DELAY_GRAY );
 	// Item_T2_GaugeClear_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_GaugeClear_Color.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_GaugeClear_Color.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR );
 	// Item_T2_GaugeClear_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_GaugeClear_Gray.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_GaugeClear_Gray.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY );
 	// Item_T2_Rotate_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Rotate_Color.jpg", OBJECT_ITEM_T2_ROTATE_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_Rotate_Color.jpg", OBJECT_ITEM_T2_ROTATE_COLOR );
 	// Item_T2_Rotate_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T2_Rotate_Gray.jpg", OBJECT_ITEM_T2_ROTATE_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T2_Rotate_Gray.jpg", OBJECT_ITEM_T2_ROTATE_GRAY );
 	// Item_T3_Recovery_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Recovery_Color.jpg", OBJECT_ITEM_T3_RECOVERY_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T3_Recovery_Color.jpg", OBJECT_ITEM_T3_RECOVERY_COLOR );
 	// Item_T3_Recovery_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Recovery_Gray.jpg", OBJECT_ITEM_T3_RECOVERY_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T3_Recovery_Gray.jpg", OBJECT_ITEM_T3_RECOVERY_GRAY );
 	// Item_T3_Reverse_Color
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Reverse_Color.jpg", OBJECT_ITEM_T3_REVERSE_COLOR );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T3_Reverse_Color.jpg", OBJECT_ITEM_T3_REVERSE_COLOR );
 	// Item_T3_Reverse_Gray
-	hr = TextureMaker( hr, texture, L"./Resource/itemSet/Item_T3_Reverse_Gray.jpg", OBJECT_ITEM_T3_REVERSE_GRAY );
+	hr = TextureMaker( hr, L"./Resource/itemSet/Item_T3_Reverse_Gray.jpg", OBJECT_ITEM_T3_REVERSE_GRAY );
 
 
 	//////////////////////////////////////////////////////////////////////////
 	//아이템 카드 발동
 	//////////////////////////////////////////////////////////////////////////
-	hr = TextureMaker( hr, texture, L"./Resource/cardSet/card.png", OBJECT_ITEM_CARD );
+	hr = TextureMaker( hr, L"./Resource/cardSet/card.png", OBJECT_ITEM_CARD );
 
 	return hr;
 }
 
-HRESULT CRMresourceManager::TextureMaker( HRESULT hr, CRMimage* texture, const std::wstring& path, ObjectType type )
+HRESULT CRMresourceManager::TextureMaker( HRESULT hr, const std::wstring& path, ObjectType type )
 {
 	
-	texture = new CRMimage();
+	CRMimage* texture = new CRMimage();
 	hr = texture->CreateImage( path );
 
 	if ( hr == S_OK )

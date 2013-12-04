@@ -26,8 +26,8 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define DEFAULT_POSITION_Y -5504
 
 // judge Manager 에서 사용하는 값으로 노트의 시작 위치를 담당
-#define NOTE_ONE_START_POSITION_X	395
-#define NOTE_TWO_START_POSITION_X	910
+#define NOTE_ONE_START_POSITION_X	405
+#define NOTE_TWO_START_POSITION_X	920
 #define NOTE_START_POSITION_Y		-100
 
 // 아이템 시작 위치
@@ -42,7 +42,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define NOTE_JUDGE_GOOD_START_LINE		514
 #define NOTE_JUDGE_GOOD_END_LINE		576
 #define NOTE_JUDGE_FAST_MISS_LINE		504
-#define NOTE_JUDGE_LATE_MISS_LINE		555
+#define NOTE_JUDGE_LATE_MISS_LINE		565
 
 // shutter 에서 사용하는 값으로 노트의 시작 위치를 담당
 #define SHUTTER_P1_START_POSITION_X 0

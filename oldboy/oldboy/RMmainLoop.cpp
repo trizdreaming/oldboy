@@ -234,6 +234,7 @@ void CRMmainLoop::RunMessageLoop()
 				// 이렇게 자주 해줄 필요는 없는데...
 				if ( ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() ) || !CRMsound::GetInstance()->GetIsPlaying() )
 				{
+
 					CRMobjectManager::GetInstance()->RemoveAllNote();
 					m_SceneType = SCENE_RESULT;
 				}

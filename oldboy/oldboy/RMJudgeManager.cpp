@@ -152,7 +152,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 			playerClass->SubHP();
 			PrintScore( playerNumber, JUDGE_MISS );
 
-			thisNote->SetPosition( DEFAULT_POSITION_X, DEFAULT_POSITION_Y );
+			//thisNote->SetPosition( DEFAULT_POSITION_X, DEFAULT_POSITION_Y );
 			CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 
 		}

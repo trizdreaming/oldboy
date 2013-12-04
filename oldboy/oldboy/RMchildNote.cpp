@@ -16,7 +16,7 @@ CRMchildNote::~CRMchildNote(void)
 
 void CRMchildNote::Update()
 {
-	// SetVisibleByScene();
+	//SetVisibleByScene();
 
 	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
 	{

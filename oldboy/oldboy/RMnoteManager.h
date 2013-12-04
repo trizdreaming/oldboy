@@ -26,8 +26,15 @@ private:
 	UINT			m_PauseStartTime;
 	UINT			m_PausedTime;
 
-	UINT			m_NoteReadyTime;
-	UINT			m_NoteReadyLevel;
-	ObjectType		m_NoteReadyType;
+	UINT			m_P1NoteReadyTime;
+	UINT			m_P1NoteReadyLevel;
+	ObjectType		m_P1NoteReadyType;
+
+	UINT			m_P2NoteReadyTime;
+	UINT			m_P2NoteReadyLevel;
+	ObjectType		m_P2NoteReadyType;
+
+	UINT			m_P1NoteIndex;
+	UINT			m_P2NoteIndex;
 };
 

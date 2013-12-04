@@ -15,3 +15,9 @@ CRMitemT2Barrier::CRMitemT2Barrier(void)
 CRMitemT2Barrier::~CRMitemT2Barrier(void)
 {
 }
+
+void CRMitemT2Barrier::Update()
+{
+
+	CRMitem::Update();
+}

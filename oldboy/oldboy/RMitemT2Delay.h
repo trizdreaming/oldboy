@@ -6,5 +6,8 @@ class CRMitemT2Delay :
 public:
 	CRMitemT2Delay(void);
 	~CRMitemT2Delay(void);
+
+	virtual void	Update();
+
 };
 

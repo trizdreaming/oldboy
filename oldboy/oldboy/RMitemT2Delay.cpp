@@ -15,3 +15,8 @@ CRMitemT2Delay::CRMitemT2Delay(void)
 CRMitemT2Delay::~CRMitemT2Delay(void)
 {
 }
+
+void CRMitemT2Delay::Update()
+{
+
+}

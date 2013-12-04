@@ -269,26 +269,12 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 	return S_OK;
 }
 
-CRMnoteData* CRMxmlLoader::GetNoteFirst()
+
+CRMnoteData* CRMxmlLoader::GetNoteByIndex( const UINT index )
 {
-	if ( m_NoteList.size() == 0 )
+	if ( m_NoteList.size() <= index )
 	{
 		return nullptr;
 	}
-	return *(m_NoteList.begin());
-}
-
-HRESULT CRMxmlLoader::DeleteNoteFirst()
-{
-	if ( m_NoteList.size() == 0 )
-	{
-		return S_FALSE;
-	}
-
-	auto& toBeDelete = m_NoteList.begin();
-	SafeDelete( *toBeDelete );
-
-	m_NoteList.pop_front();
-
-	return S_OK;
+	return m_NoteList.at( index );
 }

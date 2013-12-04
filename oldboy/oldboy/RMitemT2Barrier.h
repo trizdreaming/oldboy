@@ -6,5 +6,7 @@ class CRMitemT2Barrier :
 public:
 	CRMitemT2Barrier(void);
 	~CRMitemT2Barrier(void);
+
+	void	Update();
 };
 

@@ -33,6 +33,14 @@ CRMobjectManager::~CRMobjectManager(void)
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
+	m_ObjectListLayerItem.clear();
+
+	for ( auto& iter : m_ObjectListLayerCard)
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+	m_ObjectListLayerCard.clear();
 
 	for ( auto& iter : m_ObjectListLayerNotePlayer1 )
 	{
@@ -111,6 +119,9 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_ITEM:
 			m_ObjectListLayerItem.push_back(object);
 			break;
+		case LAYER_CARD:
+			m_ObjectListLayerCard.push_back(object);
+			break;
 		case LAYER_NOTE1:
 			m_ObjectListLayerNotePlayer1.push_front(object);
 			break;
@@ -146,6 +157,10 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 void CRMobjectManager::Update()
 {
 	for ( auto& iter : m_ObjectListLayerBackground )
+	{
+		iter->Update();
+	}
+	for ( auto& iter : m_ObjectListLayerCard )
 	{
 		iter->Update();
 	}
@@ -247,6 +262,10 @@ void CRMobjectManager::Render() const
 		iter->Render();
 	}
 	for ( auto& iter : m_ObjectListLayerShutter )
+	{
+		iter->Render();
+	}
+	for ( auto& iter : m_ObjectListLayerCard )
 	{
 		iter->Render();
 	}

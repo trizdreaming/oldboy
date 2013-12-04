@@ -14,5 +14,7 @@ public:
 
 private:
 	PlayerNumber	m_playerNumber;
+	UINT m_cardTimeToLive;
+
 };
 

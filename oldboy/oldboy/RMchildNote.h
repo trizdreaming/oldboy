@@ -9,5 +9,6 @@ public:
 	~CRMchildNote(void);
 
 	virtual void	Update();
+	virtual void	Render();
 };
 

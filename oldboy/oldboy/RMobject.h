@@ -28,11 +28,17 @@ public:
 protected:
 
 	void			SetVisibleByScene();
-
 	ObjectType		m_ObjectType;
 
 	bool			m_Visible;
 	SceneType		m_Scene;
+
+	D2D1::Matrix3x2F m_PrevMatrix;
+	D2D1::Matrix3x2F m_Matrix;
+
+	float			m_ScaleX;
+	float			m_ScaleY;
+	float			m_Rotation;
 
 	float			m_PositionX;
 	float			m_PositionY;

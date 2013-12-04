@@ -14,13 +14,6 @@ public:
 	void			Render();
 
 private:
-	D2D1::Matrix3x2F m_PrevMatrix;
-	D2D1::Matrix3x2F m_Matrix;
-	
-	float			m_ScaleX;
-	float			m_ScaleY;
-	float			m_Rotation;
-
 	PlayerNumber	m_PlayerNumber;
 	UINT			m_PrevTime;
 	UINT			m_TimeSlice;

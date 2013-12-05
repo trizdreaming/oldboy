@@ -16,7 +16,7 @@ public:
 	virtual void	Update();
 
 protected:
-	void			DeActive() { m_Active = false; }
+	virtual void	DeActive() { m_Active = false; }
 
 	ObjectType		m_ObjectTypeColor;
 	UINT			m_TimeSlice;

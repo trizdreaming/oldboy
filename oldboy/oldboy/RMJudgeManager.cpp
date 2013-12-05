@@ -1,7 +1,6 @@
 ﻿#include "stdafx.h"
 #include "RMdefine.h"
 #include "RMconst.h"
-#include "RMmacro.h"
 #include "RMkeyMapping.h"
 #include "RMjudgeManager.h"
 #include "RMobjectManager.h"
@@ -15,7 +14,9 @@
 #include "RMinput.h"
 #include "RMpauseManager.h"
 
-CRMjudgeManager::CRMjudgeManager(void)
+CRMjudgeManager::CRMjudgeManager(void):
+	IsItemP1RecoveryON(false),
+	IsItemP2RecoveryON(false)
 {
 }
 
@@ -112,6 +113,15 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				playerClass->AddEvent( JUDGE_PERFECT );
 				PrintScore( playerNumber, JUDGE_PERFECT );
 
+				if ( playerNumber == PLAYER_ONE && IsItemP1RecoveryON )
+				{
+					playerClass->AddHP(5);
+				}
+				else if ( playerNumber == PLAYER_TWO && IsItemP2RecoveryON )
+				{
+					playerClass->AddHP(5);
+				}
+
 				//키 누르면서 바로 지우면 플래그 세팅이 안됨
 				//키를 누르면 무조건 세팅이 되면 miss 처리 불가
 				//deleteNote 이동
@@ -129,6 +139,15 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				//score up
 				playerClass->AddEvent( JUDGE_GOOD );
 				PrintScore( playerNumber, JUDGE_GOOD );
+
+				if ( playerNumber == PLAYER_ONE && IsItemP1RecoveryON )
+				{
+					playerClass->AddHP(2);
+				}
+				else if ( playerNumber == PLAYER_TWO && IsItemP2RecoveryON )
+				{
+					playerClass->AddHP(2);
+				}
 
 				CRMobjectManager::GetInstance()->DeleteNoteListFront( playerLayer );
 			}
@@ -293,4 +312,29 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 		playerComboLabel->SetPosition( positionX, positionY + 250 );
 	}
 
+}
+
+void CRMjudgeManager::StartItemRecovery( PlayerNumber player )
+{
+	if ( player == PLAYER_ONE )
+	{
+		IsItemP1RecoveryON = true;
+	}
+	else
+	{
+		IsItemP2RecoveryON = true;
+	}
+
+}
+
+void CRMjudgeManager::StopItemRecovery( PlayerNumber player )
+{
+	if ( player == PLAYER_ONE )
+	{
+		IsItemP1RecoveryON = false;
+	}
+	else
+	{
+		IsItemP2RecoveryON = false;
+	}
 }

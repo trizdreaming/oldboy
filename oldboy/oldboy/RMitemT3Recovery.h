@@ -6,5 +6,8 @@ class CRMitemT3Recovery :
 public:
 	CRMitemT3Recovery(void);
 	~CRMitemT3Recovery(void);
+
+	void			Active();
+	void			DeActive();
 };
 

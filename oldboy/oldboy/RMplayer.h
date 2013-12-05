@@ -14,8 +14,8 @@ public:
 	UINT		GetCount( CountType countType ) const;
 	void		SetCount( CountType countType, UINT count );
 	
-	void		AddHP() { m_HP = m_HP + 10; }
-	void		SubHP() { /*m_HP = m_HP - 10;*/ }
+	void		AddHP( int hpUp );
+	void		SubHP() { m_HP = m_HP - 10; }
 	// 디버깅을 위한 테스트 모드 - 체력 무한대
 	int			GetHP() { return m_HP; }
 

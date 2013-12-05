@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "RMitemT3Recovery.h"
+#include "RMJudgeManager.h"
 
 
 CRMitemT3Recovery::CRMitemT3Recovery(void)
@@ -14,4 +15,16 @@ CRMitemT3Recovery::CRMitemT3Recovery(void)
 
 CRMitemT3Recovery::~CRMitemT3Recovery(void)
 {
+}
+
+void CRMitemT3Recovery::Active()
+{
+	CRMitem::Active();
+	CRMjudgeManager::GetInstance()->StartItemRecovery( m_OwnPlayer );
+}
+
+void CRMitemT3Recovery::DeActive()
+{
+	CRMitem::DeActive();
+	CRMjudgeManager::GetInstance()->StopItemRecovery( m_OwnPlayer );
 }

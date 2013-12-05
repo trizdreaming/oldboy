@@ -29,8 +29,7 @@ void CRMitem::Update()
 	{
 		CRMitemManager::GetInstance()->DeactiveItem( m_TargetPlayer );
 		printConsole( "%dP 아이템 발동 종료! \n", m_TargetPlayer );
-
-		m_Active = false;
+		DeActive();
 	}
 }
 

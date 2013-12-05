@@ -90,3 +90,12 @@ void CRMplayer::SetCount( CountType countType, UINT count )
 {
 	m_Count[countType] = count;
 }
+
+void CRMplayer::AddHP( int hpUp )
+{
+	m_HP += hpUp;
+	if ( m_HP > PLAYER_HP_MAX )
+	{
+		m_HP = PLAYER_HP_MAX;
+	}
+}

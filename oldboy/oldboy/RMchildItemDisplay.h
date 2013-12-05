@@ -11,8 +11,12 @@ public:
 	ItemTierType	GetTier() { return m_ThisTier; }
 	
 	virtual void	Update();
-
+	virtual void	Render();
 private:
 	ItemTierType	m_ThisTier;
+
+	UINT			m_PrevTime;
+	UINT			m_TimeSlice;
+	bool			m_RotateFlag;
 };
 

@@ -2,8 +2,12 @@
 #include "RMmacro.h"
 #include "RMchildItemDisplay.h"
 #include "RMitemManager.h"
+#include "RMrender.h"
 
-CRMchildItemDisplay::CRMchildItemDisplay(void)
+CRMchildItemDisplay::CRMchildItemDisplay(void) :
+	m_PrevTime(0),
+	m_TimeSlice(10),
+	m_RotateFlag(false)
 {
 }
 
@@ -18,5 +22,51 @@ void CRMchildItemDisplay::Update()
 	m_ObjectType = CRMitemManager::GetInstance()->GetObjectType(m_ThisTier);
 	m_PositionY = CRMitemManager::GetInstance()->GetStackPosition(m_ThisTier);
 
+	if ( m_ObjectType < OBJECT_ITEM_COLOR_MAX && m_ObjectType > OBJECT_ITEM_COLOR_MIN )
+	{
+		UINT	thisTime = timeGetTime();
+
+		if ( m_PrevTime + m_TimeSlice < thisTime )
+		{
+			if( m_RotateFlag == true )
+			{
+				m_Rotation -= 2.f;
+
+				if( m_Rotation <= -10.f )
+				{
+					m_RotateFlag = false;
+				}
+			}
+			else
+			{
+				m_Rotation += 2.f;
+				
+				if ( m_Rotation >= 10.0f )
+				{
+					m_RotateFlag = true;
+				}
+			}
+			m_PrevTime = thisTime;
+		}
+	}
 	// printConsole("티어 : %d, 오브젝트 타입 : %d, 좌표 : (%f, %f) \n", m_ThisTier, m_ObjectType, m_PositionX, m_PositionY);
+}
+
+void CRMchildItemDisplay::Render()
+{
+	// 원래 좌표축으로 돌리기 위한 현재 좌표축 임시 저장
+	CRMrender::GetInstance()->GetRenderTarget()->GetTransform( &m_PrevMatrix );
+
+	if ( m_Width != 0 && m_Height != 0 )
+	{
+		m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_PositionX + m_Width / 2 , m_PositionY + m_Height / 2 ) );
+	}
+
+	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );
+
+	//부모의 렌더함수를 빌려서 변환 매트릭스 적용하도록 함
+	CRMobject::Render();
+
+	//원래의 좌표축으로 돌려 놓는 것
+	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_PrevMatrix );
 }

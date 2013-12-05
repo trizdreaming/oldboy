@@ -549,36 +549,42 @@ HRESULT CRMmainLoop::CreateObject()
 
 	CRMchildItemDisplay* itemObject = new CRMchildItemDisplay();
 	itemObject->SetTier( TIER_1P_ONE );
-	itemObject->SetPosition(315, -890);
+	itemObject->SetPlayer( PLAYER_ONE );
+	itemObject->SetPosition(300, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	itemObject = new CRMchildItemDisplay();
 	itemObject->SetTier( TIER_1P_TWO );
-	itemObject->SetPosition(315, -890);
+	itemObject->SetPlayer( PLAYER_ONE );
+	itemObject->SetPosition(300, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	itemObject = new CRMchildItemDisplay();
 	itemObject->SetTier( TIER_1P_THREE );
-	itemObject->SetPosition(315, -890);
+	itemObject->SetPlayer( PLAYER_ONE );
+	itemObject->SetPosition(300, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 	//////////////////////////////////////////////////////////////////////////
 	itemObject = new CRMchildItemDisplay();
 	itemObject->SetTier( TIER_2P_ONE );
+	itemObject->SetPlayer( PLAYER_TWO );
 	itemObject->SetPosition(815, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	itemObject = new CRMchildItemDisplay();
 	itemObject->SetTier( TIER_2P_TWO );
+	itemObject->SetPlayer( PLAYER_TWO );
 	itemObject->SetPosition(815, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	itemObject = new CRMchildItemDisplay();
 	itemObject->SetTier( TIER_2P_THREE );
+	itemObject->SetPlayer( PLAYER_TWO );
 	itemObject->SetPosition(815, -890);
 	itemObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);

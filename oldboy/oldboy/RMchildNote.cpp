@@ -78,9 +78,7 @@ void CRMchildNote::Render()
 
 	if ( m_Width != 0 && m_Height != 0 )
 	{
-		m_Matrix = D2D1::Matrix3x2F::Translation( -m_PositionX, -m_PositionY ) * 
-			D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_Width / 2 , m_Height / 2 ) ) * 
-			D2D1::Matrix3x2F::Translation(m_PositionX, m_PositionY);
+		m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_PositionX + (m_Width / 2) , m_PositionY + (m_Height / 2) ) );
 	}
 
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );

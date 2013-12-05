@@ -29,12 +29,8 @@ void CRMchildItemCardDisplay::Render()
 
 	if ( m_Width != 0 && m_Height != 0 )
 	{
-		m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_PositionX+m_Width , m_PositionY+m_Height ) ) * 
+		m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_PositionX + m_Width , m_PositionY + m_Height ) ) * 
 			D2D1::Matrix3x2F::Translation(m_MoveOffset, 0);
-
-// 		m_Matrix = D2D1::Matrix3x2F::Translation( -m_PositionX, -m_PositionY ) * 
-// 			D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_Width , m_Height ) ) * 
-// 			D2D1::Matrix3x2F::Translation(m_PositionX + m_MoveOffset, m_PositionY);
 	}
 
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );

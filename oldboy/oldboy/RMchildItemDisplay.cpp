@@ -6,7 +6,7 @@
 
 CRMchildItemDisplay::CRMchildItemDisplay(void) :
 	m_PrevTime(0),
-	m_TimeSlice(10),
+	m_TimeSlice(5),
 	m_RotateFlag(false)
 {
 }
@@ -32,7 +32,7 @@ void CRMchildItemDisplay::Update()
 			{
 				m_Rotation -= 2.f;
 
-				if( m_Rotation <= -10.f )
+				if( m_Rotation <= -8.f )
 				{
 					m_RotateFlag = false;
 				}
@@ -41,13 +41,17 @@ void CRMchildItemDisplay::Update()
 			{
 				m_Rotation += 2.f;
 				
-				if ( m_Rotation >= 10.0f )
+				if ( m_Rotation >= 8.0f )
 				{
 					m_RotateFlag = true;
 				}
 			}
 			m_PrevTime = thisTime;
 		}
+	}
+	else
+	{
+		m_Rotation = 0;
 	}
 	// printConsole("티어 : %d, 오브젝트 타입 : %d, 좌표 : (%f, %f) \n", m_ThisTier, m_ObjectType, m_PositionX, m_PositionY);
 }

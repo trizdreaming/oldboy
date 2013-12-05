@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
-#include "RMmacro.h"
 #include "RMdefine.h"
+#include "RMconst.h"
+#include "RMmacro.h"
 #include "RMmusicSelectManager.h"
 #include "RMlabel.h"
 #include "RMxmlLoader.h"

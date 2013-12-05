@@ -8,14 +8,14 @@ public:
 	CRMlabel(void);
 	~CRMlabel(void);
 
-	void		CreateLabel( std::wstring key, std::wstring string, wchar_t* fontFace, float fontSize );
+	void		CreateLabel( std::wstring key, std::wstring string, const wchar_t* fontFace, float fontSize );
 
 	virtual void	Update();
 	virtual void	Render();
 
 	std::wstring	GetString() const { return m_String; }
 
-	wchar_t*	GetFontFace() const { return m_FontFace; }
+	const wchar_t*	GetFontFace() const { return m_FontFace; }
 	float		GetFontSize() const { return m_FontSize; }
 	float		GetRed() const { return m_ColorR; }
 	float		GetGreen() const { return m_ColorG; }
@@ -41,8 +41,8 @@ private:
 	IDWriteTextFormat*		m_TextFormat;
 	ID2D1SolidColorBrush*	m_Brush;
 
-	wchar_t*		m_FontFace;
-	std::wstring	m_String;
+	const wchar_t*		m_FontFace;
+	std::wstring		m_String;
 
 	float		m_FontSize;
 	float		m_ColorR, m_ColorG, m_ColorB;

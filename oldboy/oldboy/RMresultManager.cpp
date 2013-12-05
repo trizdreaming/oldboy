@@ -2,6 +2,7 @@
 #include "RMresultManager.h"
 #include "RMlabel.h"
 #include "RMdefine.h"
+#include "RMconst.h"
 #include "RMplayer.h"
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"

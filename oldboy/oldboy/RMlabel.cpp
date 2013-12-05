@@ -20,7 +20,7 @@ CRMlabel::~CRMlabel(void)
 }
 
 
-void CRMlabel::CreateLabel( std::wstring key, std::wstring string, wchar_t* fontFace, float fontSize )
+void CRMlabel::CreateLabel( std::wstring key, std::wstring string, const wchar_t* fontFace, float fontSize )
 {
 	m_String = string;
 	m_FontFace = fontFace;

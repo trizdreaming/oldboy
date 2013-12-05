@@ -304,6 +304,9 @@
     <ClInclude Include="RMeffectManager.h">
       <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
+    <ClInclude Include="RMconst.h">
+      <Filter>MainArea\Header</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -503,6 +506,9 @@
     </ClCompile>
     <ClCompile Include="RMeffectManager.cpp">
       <Filter>RhythmMatch\Object</Filter>
+    </ClCompile>
+    <ClCompile Include="RMconst.cpp">
+      <Filter>MainArea\Header</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

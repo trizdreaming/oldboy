@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
-#include "RMmacro.h"
 #include "RMdefine.h"
+#include "RMconst.h"
+#include "RMmacro.h"
 #include "RMkeyMapping.h"
 #include "RMjudgeManager.h"
 #include "RMobjectManager.h"

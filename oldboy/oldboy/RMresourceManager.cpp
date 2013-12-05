@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
-#include "RMmacro.h"
 #include "RMdefine.h"
+#include "RMconst.h"
+#include "RMmacro.h"
 #include "RMresourceManager.h"
 #include "RMimage.h"
 #include "RMxmlLoader.h"

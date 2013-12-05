@@ -1,11 +1,12 @@
 ﻿#include "stdafx.h"
+#include "RMdefine.h"
+#include "RMconst.h"
+#include "RMmacro.h"
 #include "LibraryTinyXML/tinyxml.h"
 #include "LibraryTinyXML/xpath_static.h"
-#include "RMmacro.h"
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
 #include "RMnoteData.h"
-#include "RMdefine.h"
 
 CRMxmlLoader::CRMxmlLoader(void)
 {

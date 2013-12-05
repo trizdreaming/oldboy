@@ -237,7 +237,17 @@ void CRMitemManager::Update()
 		{
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 			{
-				return;
+				if ( m_ActiveItem[PLAYER_ONE] == ITEM_T2_BARRIER )
+				{
+					DeactiveItem(PLAYER_ONE);
+					// 1P 스스로 쉴드를 지우는 것이므로 지워지고 스킬 갱신
+
+					printConsole("삭제! \n");
+				}
+				else
+				{
+					return;
+				}
 			}
 			m_ActiveItem[PLAYER_ONE] = m_NowItem[PLAYER_ONE];
 		}
@@ -245,6 +255,11 @@ void CRMitemManager::Update()
 		{
 			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 			{
+				if ( m_ActiveItem[PLAYER_TWO] == ITEM_T2_BARRIER )
+				{
+					DeactiveItem(PLAYER_TWO);
+					CRMplayer1P::GetInstance()->ResetMP();
+				}
 				return;
 			}
 			m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_ONE];
@@ -256,7 +271,7 @@ void CRMitemManager::Update()
 			thisItem->Active();
 		}
 
-		printConsole("Player1 Attack Type %d \n", m_NowItem[PLAYER_ONE]);
+		printConsole("Player1 Attack Type %d \n", m_ActiveItem[PLAYER_ONE]);
 		CRMplayer1P::GetInstance()->ResetMP();
 	}
 	else if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
@@ -266,6 +281,11 @@ void CRMitemManager::Update()
 		{
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 			{
+				if ( m_ActiveItem[PLAYER_ONE] == ITEM_T2_BARRIER )
+				{
+					DeactiveItem(PLAYER_ONE);
+					CRMplayer2P::GetInstance()->ResetMP();
+				}
 				return;
 			}
 			m_ActiveItem[PLAYER_ONE] = m_NowItem[PLAYER_TWO];
@@ -274,7 +294,17 @@ void CRMitemManager::Update()
 		{
 			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 			{
-				return;
+				if ( m_ActiveItem[PLAYER_TWO] == ITEM_T2_BARRIER )
+				{
+					DeactiveItem(PLAYER_TWO);
+					// 2P 스스로 쉴드를 지우는 것이므로 지워지고 스킬 갱신
+
+					printConsole("삭제! \n");
+				}
+				else
+				{
+					return;
+				}
 			}
 			m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_TWO];
 		}
@@ -285,7 +315,7 @@ void CRMitemManager::Update()
 			thisItem->Active();
 		}
 
-		printConsole("Player2 Attack Type %d \n", m_NowItem[PLAYER_TWO]);
+		printConsole("Player2 Attack Type %d \n", m_ActiveItem[PLAYER_TWO]);
 		CRMplayer2P::GetInstance()->ResetMP();
 	}
 	

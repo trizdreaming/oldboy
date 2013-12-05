@@ -7,6 +7,6 @@ public:
 	CRMitemT2Barrier(void);
 	~CRMitemT2Barrier(void);
 
-	void	Update();
+	void	Active();
 };
 

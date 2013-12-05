@@ -4,9 +4,6 @@
 
 CRMitemT2Barrier::CRMitemT2Barrier(void)
 {
-	//////////////////////////////////////////////////////////////////////////
-	// 임시 추가 - 추후 수정
-	//////////////////////////////////////////////////////////////////////////
 	m_ObjectType = OBJECT_ITEM_T2_BARRIER_GRAY;
 	m_ObjectTypeColor = OBJECT_ITEM_T2_BARRIER_COLOR;
 }
@@ -16,8 +13,8 @@ CRMitemT2Barrier::~CRMitemT2Barrier(void)
 {
 }
 
-void CRMitemT2Barrier::Update()
+void CRMitemT2Barrier::Active()
 {
-
-	CRMitem::Update();
+	m_TimeSlice = 30000;
+	CRMitem::Active();
 }

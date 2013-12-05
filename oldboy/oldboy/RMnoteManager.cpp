@@ -4,6 +4,7 @@
 #include "RMJudgeManager.h"
 #include "RMxmlLoader.h"
 #include "RMnoteData.h"
+#include "RMitemManager.h"
 
 CRMnoteManager::CRMnoteManager(void):
 	m_GamePlaying(false),
@@ -85,12 +86,19 @@ void CRMnoteManager::StartNote()
 
 		if ( m_ElapsedTime > (m_P1NoteReadyTime + m_PausedTime) )
 		{
-			CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_P1NoteReadyType );
+			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_ONE) != ITEM_T1_REST )
+			{
+				CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_P1NoteReadyType );
+			}
 			m_P1NoteReadyTime = UINT_MAX;
 		}
 		if ( m_ElapsedTime > (m_P2NoteReadyTime + m_PausedTime) )
+			
 		{
-			CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , m_P2NoteReadyType );
+			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_TWO) != ITEM_T1_REST )
+			{
+				CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , m_P2NoteReadyType );
+			}
 			m_P2NoteReadyTime = UINT_MAX;
 		}
 	}

@@ -47,6 +47,18 @@ void CRMchildNote::Update()
 				m_Rotation = 180 + ( m_PositionY - ( NOTE_JUDGE_PERFECT_START_LINE - 540 ) ) / 3;
 			}
 		}
+		else if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T3_REVERSE )
+		{
+			if ( m_PositionY + 30 < NOTE_JUDGE_PERFECT_START_LINE && 
+				( ( (int) m_PositionY + 30 ) / ( NOTE_JUDGE_PERFECT_START_LINE / 4 ) ) % 2 == 1 )
+			{
+				m_Rotation = 180;
+			}
+			else
+			{
+				m_Rotation = 0;
+			}
+		}
 		else
 		{
 			m_Rotation = 0;

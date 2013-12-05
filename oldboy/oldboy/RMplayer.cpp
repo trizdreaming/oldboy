@@ -49,6 +49,9 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		++m_Count[COUNT_PERFECT];
 		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT;
 		m_MP += 16;
+		//
+		m_MP += 160;
+		// 디버깅을 위한 테스트 모드 - 마나 무한대
 		if( m_MP > m_HP * PLAYER_HP_MP_RATE )
 		{
 			m_MP = m_HP * PLAYER_HP_MP_RATE;
@@ -59,6 +62,9 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		++m_Count[COUNT_GOOD];
 		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD;
 		m_MP += 8;
+		//
+		m_MP += 80;
+		// 디버깅을 위한 테스트 모드 - 마나 무한대
 		if( m_MP > m_HP * PLAYER_HP_MP_RATE )
 		{
 			m_MP = m_HP * PLAYER_HP_MP_RATE;

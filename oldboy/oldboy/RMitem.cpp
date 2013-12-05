@@ -8,7 +8,7 @@ CRMitem::CRMitem(void) :
 	m_ObjectTypeColor(OBJECT_NONE),
 	m_TargetPlayer(PLAYER_NONE),
 	m_Active(false),
-	m_TimeSlice(3000),
+	m_TimeSlice(5000),
 	m_StartTime(0)
 {
 }

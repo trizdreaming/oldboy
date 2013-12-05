@@ -7,6 +7,7 @@ CRMitemT2GaugeClear::CRMitemT2GaugeClear(void)
 {
 	m_ObjectType = OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY;
 	m_ObjectTypeColor = OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR;
+	m_TimeSlice = 3000;
 }
 
 CRMitemT2GaugeClear::~CRMitemT2GaugeClear(void)

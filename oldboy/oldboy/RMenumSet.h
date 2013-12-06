@@ -163,7 +163,7 @@ enum ItemType
 	// 1 Tier
 	ITEM_T1_NONE,
 
-	ITEM_T1_SCORE_UP,		// 점수 부스터
+	ITEM_T1_SCORE_UP,	// 점수 부스터
 	ITEM_T1_MIST,		// 안개
 	ITEM_T1_DUPLICATE,	// 따다닥
 	

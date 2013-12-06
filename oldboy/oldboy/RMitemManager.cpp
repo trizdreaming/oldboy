@@ -5,7 +5,7 @@
 #include "RMitemManager.h"
 #include "RMitemT1Duplicate.h"
 #include "RMitemT1Mist.h"
-#include "RMitemT1Rest.h"
+#include "RMitemT1ScoreUp.h"
 #include "RMitemT2Barrier.h"
 #include "RMitemT2Delay.h"
 #include "RMitemT2GaugeClear.h"
@@ -41,10 +41,10 @@ void CRMitemManager::Create()
 	item->m_TargetPlayer = PLAYER_TWO;
 	m_ItemPool[ITEM_T1_MIST] = item;
 
-	item = new CRMitemT1Rest();
+	item = new CRMitemT1ScoreUp();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T1_REST] = item;
+	m_ItemPool[ITEM_T1_SCORE_UP] = item;
 
 	item = new CRMitemT2Barrier();
 	item->m_OwnPlayer = PLAYER_ONE;
@@ -87,10 +87,10 @@ void CRMitemManager::Create()
 	item->m_TargetPlayer = PLAYER_ONE;
 	m_ItemPool[ITEM_T3_MAX + ITEM_T1_MIST] = item;
 
-	item = new CRMitemT1Rest();
+	item = new CRMitemT1ScoreUp();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T1_REST] = item;
+	m_ItemPool[ITEM_T3_MAX + ITEM_T1_SCORE_UP] = item;
 
 	item = new CRMitemT2Barrier();
 	item->m_OwnPlayer = PLAYER_TWO;

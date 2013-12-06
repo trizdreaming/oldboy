@@ -108,9 +108,9 @@ HRESULT CRMresourceManager::CreateTexture()
 	// Item_T1_Mist_Gray
 	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Mist_Gray.jpg", OBJECT_ITEM_T1_MIST_GRAY );
 	// Item_T1_Rest_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Rest_Color.jpg", OBJECT_ITEM_T1_REST_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.jpg", OBJECT_ITEM_T1_SCORE_UP_COLOR );
 	// Item_T1_Rest_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Rest_Gray.jpg", OBJECT_ITEM_T1_REST_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.jpg", OBJECT_ITEM_T1_SCORE_UP_GRAY );
 	// Item_T2_Barrier_Color
 	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Color.jpg", OBJECT_ITEM_T2_BARRIER_COLOR );
 	// Item_T2_Barrier_Gray

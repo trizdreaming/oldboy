@@ -274,9 +274,6 @@
     <ClInclude Include="RMitemT1Mist.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
-    <ClInclude Include="RMitemT1Rest.h">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClInclude>
     <ClInclude Include="RMitemT2Barrier.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
@@ -306,6 +303,9 @@
     </ClInclude>
     <ClInclude Include="RMconst.h">
       <Filter>MainArea\Header</Filter>
+    </ClInclude>
+    <ClInclude Include="RMitemT1ScoreUp.h">
+      <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -474,9 +474,6 @@
     <ClCompile Include="RMitemT1Mist.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
-    <ClCompile Include="RMitemT1Rest.cpp">
-      <Filter>RhythmMatch\Object\Item</Filter>
-    </ClCompile>
     <ClCompile Include="RMitemT2Barrier.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
@@ -509,6 +506,9 @@
     </ClCompile>
     <ClCompile Include="RMconst.cpp">
       <Filter>MainArea\Header</Filter>
+    </ClCompile>
+    <ClCompile Include="RMitemT1ScoreUp.cpp">
+      <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

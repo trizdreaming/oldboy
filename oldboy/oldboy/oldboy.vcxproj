@@ -135,7 +135,7 @@
     <ClInclude Include="RMitemManager.h" />
     <ClInclude Include="RMitemT1Duplicate.h" />
     <ClInclude Include="RMitemT1Mist.h" />
-    <ClInclude Include="RMitemT1Rest.h" />
+    <ClInclude Include="RMitemT1ScoreUp.h" />
     <ClInclude Include="RMitemT2Barrier.h" />
     <ClInclude Include="RMitemT2Delay.h" />
     <ClInclude Include="RMitemT2GaugeClear.h" />
@@ -207,7 +207,7 @@
     <ClCompile Include="RMitemManager.cpp" />
     <ClCompile Include="RMitemT1Duplicate.cpp" />
     <ClCompile Include="RMitemT1Mist.cpp" />
-    <ClCompile Include="RMitemT1Rest.cpp" />
+    <ClCompile Include="RMitemT1ScoreUp.cpp" />
     <ClCompile Include="RMitemT2Barrier.cpp" />
     <ClCompile Include="RMitemT2Delay.cpp" />
     <ClCompile Include="RMitemT2GaugeClear.cpp" />

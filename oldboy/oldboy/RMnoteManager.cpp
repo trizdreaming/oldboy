@@ -86,7 +86,7 @@ void CRMnoteManager::StartNote()
 
 		if ( m_ElapsedTime > (m_P1NoteReadyTime + m_PausedTime) )
 		{
-			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_ONE) != ITEM_T1_REST )
+			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_ONE) != ITEM_T1_SCORE_UP )
 			{
 				CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_P1NoteReadyType );
 			}
@@ -95,7 +95,7 @@ void CRMnoteManager::StartNote()
 		if ( m_ElapsedTime > (m_P2NoteReadyTime + m_PausedTime) )
 			
 		{
-			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_TWO) != ITEM_T1_REST )
+			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_TWO) != ITEM_T1_SCORE_UP )
 			{
 				CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , m_P2NoteReadyType );
 			}

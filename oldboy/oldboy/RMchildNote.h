@@ -10,5 +10,9 @@ public:
 
 	virtual void	Update();
 	virtual void	Render();
+	virtual void	SetObjectType(ObjectType objectType);
+
+private:
+	ObjectType		m_Original_type;
 };
 

@@ -49,18 +49,26 @@ void CRMchildNote::Update()
 		}
 		else if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T3_REVERSE )
 		{
-			if ( m_PositionY + 30 < NOTE_JUDGE_PERFECT_START_LINE && 
-				( ( (int) m_PositionY + 30 ) / ( NOTE_JUDGE_PERFECT_START_LINE / 4 ) ) % 2 == 1 )
+			if ( m_PositionY + 80 < NOTE_JUDGE_PERFECT_START_LINE && 
+				( ( (int) m_PositionY + 80 ) / ( NOTE_JUDGE_PERFECT_START_LINE / 6 ) ) % 2 == 1 )
 			{
-				m_Rotation = 180;
+				if ( m_Original_type == OBJECT_NOTE_NORMAL_1 )
+				{
+					m_ObjectType = OBJECT_NOTE_NORMAL_2;
+				}
+				else
+				{
+					m_ObjectType = OBJECT_NOTE_NORMAL_1;
+				}
 			}
 			else
 			{
-				m_Rotation = 0;
+				m_ObjectType = m_Original_type;
 			}
 		}
 		else
 		{
+			m_ObjectType = m_Original_type;
 			m_Rotation = 0;
 		}
 		
@@ -88,4 +96,10 @@ void CRMchildNote::Render()
 
 	//원래의 좌표축으로 돌려 놓는 것
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_PrevMatrix );
+}
+
+void CRMchildNote::SetObjectType( ObjectType objectType )
+{
+	m_Original_type = objectType;
+	CRMobject::SetObjectType(objectType);
 }

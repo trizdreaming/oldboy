@@ -253,6 +253,10 @@ void CRMitemManager::Update()
 		}
 		else if ( thisItem->m_TargetPlayer == PLAYER_TWO )
 		{
+			if ( CRMplayer2P::GetInstance()->IsDead() )
+			{
+				return;
+			}
 			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 			{
 				if ( m_ActiveItem[PLAYER_TWO] == ITEM_T2_BARRIER )
@@ -279,6 +283,10 @@ void CRMitemManager::Update()
 		CRMitem* thisItem = m_ItemPool[ ITEM_T3_MAX + m_NowItem[PLAYER_TWO] ];
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE)
 		{
+			if ( CRMplayer1P::GetInstance()->IsDead() )
+			{
+				return;
+			}
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 			{
 				if ( m_ActiveItem[PLAYER_ONE] == ITEM_T2_BARRIER )

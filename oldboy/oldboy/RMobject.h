@@ -9,10 +9,9 @@ public:
 
 public:
 	virtual void	Update() = 0;
-
 	virtual void	Render();
 
-	void			SetObjectType(ObjectType objectType) { m_ObjectType = objectType; }
+	virtual void	SetObjectType(ObjectType objectType) { m_ObjectType = objectType; }
 	void			SetSceneType(SceneType scene) { m_Scene = scene; }
 	
 	void			SetVisible(bool visible) { m_Visible = visible; }

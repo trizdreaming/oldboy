@@ -176,9 +176,9 @@ void CRMitemManager::Update()
 
 	if ( (int)m_ItemPosition[TIER_1P_THREE] != (int)p1Tier3Position )
 	{
-		m_ItemPosition[TIER_1P_ONE] += (p1Tier1Position - m_ItemPosition[TIER_1P_ONE]) / 100;
-		m_ItemPosition[TIER_1P_TWO] += (p1Tier2Position - m_ItemPosition[TIER_1P_TWO]) / 100;
-		m_ItemPosition[TIER_1P_THREE] += (p1Tier3Position - m_ItemPosition[TIER_1P_THREE]) / 100;
+		m_ItemPosition[TIER_1P_ONE] += (p1Tier1Position - m_ItemPosition[TIER_1P_ONE]) / 20;
+		m_ItemPosition[TIER_1P_TWO] += (p1Tier2Position - m_ItemPosition[TIER_1P_TWO]) / 20;
+		m_ItemPosition[TIER_1P_THREE] += (p1Tier3Position - m_ItemPosition[TIER_1P_THREE]) / 20;
 	}
 
 	float p2Tier1Position = SCREEN_SIZE_Y - p2MaxMP * 0.3f;
@@ -187,9 +187,9 @@ void CRMitemManager::Update()
 
 	if ( (int)m_ItemPosition[TIER_2P_THREE] != (int)p2Tier3Position )
 	{
-		m_ItemPosition[TIER_2P_ONE] += (p2Tier1Position - m_ItemPosition[TIER_2P_ONE]) / 100;
-		m_ItemPosition[TIER_2P_TWO] += (p2Tier2Position - m_ItemPosition[TIER_2P_TWO]) / 100;
-		m_ItemPosition[TIER_2P_THREE] += (p2Tier3Position - m_ItemPosition[TIER_2P_THREE]) / 100;
+		m_ItemPosition[TIER_2P_ONE] += (p2Tier1Position - m_ItemPosition[TIER_2P_ONE]) / 20;
+		m_ItemPosition[TIER_2P_TWO] += (p2Tier2Position - m_ItemPosition[TIER_2P_TWO]) / 20;
+		m_ItemPosition[TIER_2P_THREE] += (p2Tier3Position - m_ItemPosition[TIER_2P_THREE]) / 20;
 	}
 
 

@@ -100,41 +100,41 @@ HRESULT CRMresourceManager::CreateTexture()
 	//////////////////////////////////////////////////////////////////////////
 	
 	// Item_T1_Duplicate_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Color.jpg", OBJECT_ITEM_T1_DUPLICATE_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Color.png", OBJECT_ITEM_T1_DUPLICATE_COLOR );
 	// Item_T1_Duplicate_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Gray.jpg", OBJECT_ITEM_T1_DUPLICATE_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Gray.png", OBJECT_ITEM_T1_DUPLICATE_GRAY );
 	// Item_T1_Mist_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Mist_Color.jpg", OBJECT_ITEM_T1_MIST_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Color.png", OBJECT_ITEM_T1_MIST_COLOR );
 	// Item_T1_Mist_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Mist_Gray.jpg", OBJECT_ITEM_T1_MIST_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Gray.png", OBJECT_ITEM_T1_MIST_GRAY );
 	// Item_T1_Rest_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.jpg", OBJECT_ITEM_T1_SCORE_UP_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png", OBJECT_ITEM_T1_SCORE_UP_COLOR );
 	// Item_T1_Rest_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.jpg", OBJECT_ITEM_T1_SCORE_UP_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png", OBJECT_ITEM_T1_SCORE_UP_GRAY );
 	// Item_T2_Barrier_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Color.jpg", OBJECT_ITEM_T2_BARRIER_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Color.png", OBJECT_ITEM_T2_BARRIER_COLOR );
 	// Item_T2_Barrier_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Gray.jpg", OBJECT_ITEM_T2_BARRIER_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Gray.png", OBJECT_ITEM_T2_BARRIER_GRAY );
 	// Item_T2_Delay_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Color.jpg", OBJECT_ITEM_T2_DELAY_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Color.png", OBJECT_ITEM_T2_DELAY_COLOR );
 	// Item_T2_Delay_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Gray.jpg", OBJECT_ITEM_T2_DELAY_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Gray.png", OBJECT_ITEM_T2_DELAY_GRAY );
 	// Item_T2_GaugeClear_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Color.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Color.png", OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR );
 	// Item_T2_GaugeClear_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.jpg", OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.png", OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY );
 	// Item_T2_Rotate_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Color.jpg", OBJECT_ITEM_T2_ROTATE_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Color.png", OBJECT_ITEM_T2_ROTATE_COLOR );
 	// Item_T2_Rotate_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Gray.jpg", OBJECT_ITEM_T2_ROTATE_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Gray.png", OBJECT_ITEM_T2_ROTATE_GRAY );
 	// Item_T3_Recovery_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Color.jpg", OBJECT_ITEM_T3_RECOVERY_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Color.png", OBJECT_ITEM_T3_RECOVERY_COLOR );
 	// Item_T3_Recovery_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Gray.jpg", OBJECT_ITEM_T3_RECOVERY_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Gray.png", OBJECT_ITEM_T3_RECOVERY_GRAY );
 	// Item_T3_Reverse_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Color.jpg", OBJECT_ITEM_T3_REVERSE_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Color.png", OBJECT_ITEM_T3_REVERSE_COLOR );
 	// Item_T3_Reverse_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Gray.jpg", OBJECT_ITEM_T3_REVERSE_GRAY );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Gray.png", OBJECT_ITEM_T3_REVERSE_GRAY );
 
 
 	//////////////////////////////////////////////////////////////////////////

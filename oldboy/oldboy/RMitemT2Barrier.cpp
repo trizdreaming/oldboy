@@ -4,8 +4,9 @@
 
 CRMitemT2Barrier::CRMitemT2Barrier(void)
 {
-	m_ObjectType = OBJECT_ITEM_T2_BARRIER_GRAY;
-	m_ObjectTypeColor = OBJECT_ITEM_T2_BARRIER_COLOR;
+	m_WidgetType = WIDGET_ITEM_T2_BARRIER_GRAY;
+	m_WidgetTypeForColor = WIDGET_ITEM_T2_BARRIER_COLOR;
+	m_WidgetTypeOfCard = WIDGET_ITEM_T2_BARRIER_CARD;
 }
 
 

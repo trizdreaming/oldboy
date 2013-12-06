@@ -5,8 +5,7 @@
 #include "RMmainLoop.h"
 
 
-CRMchildPauseImage::CRMchildPauseImage(void):
-	m_ObjectType1(OBJECT_PAUSE_IMAGE_PLAY_OK)
+CRMchildPauseImage::CRMchildPauseImage(void)
 {
 }
 
@@ -23,20 +22,20 @@ void CRMchildPauseImage::Update()
 	{
 		if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY && CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
-			m_ObjectType = OBJECT_PAUSE_IMAGE_PLAY_CANCEL;
+			m_WidgetType = WIDGET_PAUSE_IMAGE_PLAY_CANCEL;
 		}
 		else if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY && !CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
-			m_ObjectType = OBJECT_PAUSE_IMAGE_PLAY_OK;
+			m_WidgetType = WIDGET_PAUSE_IMAGE_PLAY_OK;
 		}
 
 		else if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_TITLE && CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
-			m_ObjectType = OBJECT_PAUSE_IMAGE_TITLE_CANCEL;
+			m_WidgetType = WIDGET_PAUSE_IMAGE_TITLE_CANCEL;
 		}
 		else if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_TITLE && !CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
 		{
-			m_ObjectType = OBJECT_PAUSE_IMAGE_TITLE_OK;
+			m_WidgetType = WIDGET_PAUSE_IMAGE_TITLE_OK;
 		}
 	}
 

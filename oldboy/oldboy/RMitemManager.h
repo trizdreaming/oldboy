@@ -25,7 +25,7 @@ public:
 
 	// 아이템의 세부 작동은 각 아이템 객체들이 확인 할 것임
 
-	ObjectType	GetObjectType(ItemTierType tier);
+	WidgetType	GetWidgetType(ItemTierType tier);
 
 	ItemType	GetActivatedItem(PlayerNumber player) { return m_ActiveItem[player]; }
 	void		DeactiveItem(PlayerNumber player) { m_ActiveItem[player] = ITEM_TYPE_NONE; }
@@ -33,6 +33,7 @@ public:
 
 	ItemType	GetStackedItem(ItemTierType tier) { return m_TierItem[tier]; }
 	float		GetStackPosition(ItemTierType tier) { return m_ItemPosition[tier]; }
+	WidgetType	GetWidgetTypeOfCard( PlayerNumber player );
 
 private:
 	// 발동 가능한 아이템을 체크 할 배열

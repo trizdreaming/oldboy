@@ -10,9 +10,9 @@ public:
 
 	virtual void	Update();
 	virtual void	Render();
-	virtual void	SetObjectType(ObjectType objectType);
+	virtual void	SetWidgetType(WidgetType widgetType);
 
 private:
-	ObjectType		m_Original_type;
+	WidgetType		m_Original_type;
 };
 

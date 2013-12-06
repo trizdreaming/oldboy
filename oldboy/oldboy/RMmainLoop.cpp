@@ -429,57 +429,57 @@ HRESULT CRMmainLoop::CreateObject()
 	// 오브젝트 매니저 안쪽으로 리팩토링 할 것
 	//////////////////////////////////////////////////////////////////////////
 	CRMobject*	newObject = new CRMchildBGImage();
-	newObject->SetObjectType(OBJECT_BG_IMAGE_TITLE);
+	newObject->SetWidgetType(WIDGET_BG_IMAGE_TITLE);
 	newObject->SetPosition(0, 0);
 	newObject->SetSceneType(SCENE_TITLE);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_BACKGROUND);
 
 	newObject = new CRMchildBGImage();
-	newObject->SetObjectType(OBJECT_BG_IMAGE_PLAY);
+	newObject->SetWidgetType(WIDGET_BG_IMAGE_PLAY);
 	newObject->SetPosition(0, 0);
 	newObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_BACKGROUND);
 	
 	newObject = new CRMchildBGImage();
-	newObject->SetObjectType(OBJECT_BG_IMAGE_SELECT);
+	newObject->SetWidgetType(WIDGET_BG_IMAGE_SELECT);
 	newObject->SetPosition(0, 0);
 	newObject->SetSceneType(SCENE_SELECT_MUSIC);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_BACKGROUND);
 	
 	newObject = new CRMchildBGImage();
-	newObject->SetObjectType(OBJECT_ALBUM_IMAGE);
+	newObject->SetWidgetType(WIDGET_ALBUM_IMAGE);
 	newObject->SetPosition(500, 120);
 	newObject->SetSceneType(SCENE_SELECT_MUSIC);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_SHUTTER);
 
 	newObject = new CRMchildBGImage();
-	newObject->SetObjectType(OBJECT_BG_IMAGE_RESULT);
+	newObject->SetWidgetType(WIDGET_BG_IMAGE_RESULT);
 	newObject->SetPosition(0, 0);
 	newObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_BACKGROUND);
 
 	CRMchildGauge* gaugeObject = new CRMchildGauge();
-	gaugeObject->SetObjectType(OBJECT_GAUGE_1P);
+	gaugeObject->SetWidgetType(WIDGET_GAUGE_1P);
 	gaugeObject->SetPosition(378, 650);
 	gaugeObject->SetSceneType(SCENE_PLAY);
 	gaugeObject->SetPlayer(PLAYER_ONE);
 	CRMobjectManager::GetInstance()->AddObject(gaugeObject, LAYER_JUDGE_GAUGE);
 
 	gaugeObject = new CRMchildGauge();
-	gaugeObject->SetObjectType(OBJECT_GAUGE_2P);
+	gaugeObject->SetWidgetType(WIDGET_GAUGE_2P);
 	gaugeObject->SetPosition(893, 650);
 	gaugeObject->SetSceneType(SCENE_PLAY);
 	gaugeObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(gaugeObject, LAYER_JUDGE_GAUGE);
 
 	newObject = new CRMchildJudgeRing();
-	newObject->SetObjectType(OBJECT_JUDGE_RING);
+	newObject->SetWidgetType(WIDGET_JUDGE_RING);
 	newObject->SetPosition(382, 530);
 	newObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_JUDGE_GAUGE);
 
 	newObject = new CRMchildJudgeRing();
-	newObject->SetObjectType(OBJECT_JUDGE_RING);
+	newObject->SetWidgetType(WIDGET_JUDGE_RING);
 	newObject->SetPosition(895, 530);
 	newObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_JUDGE_GAUGE);
@@ -487,21 +487,21 @@ HRESULT CRMmainLoop::CreateObject()
 	for ( int i = 0 ; i < MAX_NOTE_IN_POOL ; ++i )
 	{
 		newObject = new CRMchildNote();
-		newObject->SetObjectType(OBJECT_NOTE_NORMAL_1);
+		newObject->SetWidgetType(WIDGET_NOTE_NORMAL_1);
 		newObject->SetPosition( DEFAULT_POSITION_X, DEFAULT_POSITION_Y );
 		newObject->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
 	}
 
 	CRMchildShutter* shutterObject = new CRMchildShutter();
-	shutterObject->SetObjectType(OBJECT_SHUTTER);
+	shutterObject->SetWidgetType(WIDGET_SHUTTER);
 	shutterObject->SetPosition(0, -890);
 	shutterObject->SetSceneType(SCENE_PLAY);
 	shutterObject->SetPlayer(PLAYER_ONE);
 	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
 
 	shutterObject = new CRMchildShutter();
-	shutterObject->SetObjectType(OBJECT_SHUTTER);
+	shutterObject->SetWidgetType(WIDGET_SHUTTER);
 	shutterObject->SetPosition(515, -890);
 	shutterObject->SetSceneType(SCENE_PLAY);
 	shutterObject->SetPlayer(PLAYER_TWO);
@@ -510,7 +510,7 @@ HRESULT CRMmainLoop::CreateObject()
 	for ( int i = 0 ; i < MAX_EFFECT ; ++ i )
 	{
 		newObject = new CRMchildEffectImage();
-		newObject->SetObjectType(OBJECT_NOTE_HIT);
+		newObject->SetWidgetType(WIDGET_NOTE_HIT);
 		newObject->SetPosition(DEFAULT_POSITION_X, DEFAULT_POSITION_Y);
 		newObject->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_NOTE_HIT);
@@ -518,7 +518,7 @@ HRESULT CRMmainLoop::CreateObject()
 
 	// pause용 이미지
 	newObject = new CRMchildPauseImage();
-	newObject->SetObjectType(OBJECT_PAUSE_IMAGE_PLAY_CANCEL);
+	newObject->SetWidgetType(WIDGET_PAUSE_IMAGE_PLAY_CANCEL);
 	newObject->SetPosition(390, 120); // 값 찾아서 define해야함 
 	newObject->SetSceneType(SCENE_SELECT_MUSIC); // 필요 없지만 그냥 초기화
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
@@ -596,7 +596,6 @@ HRESULT CRMmainLoop::CreateObject()
 	for ( int i = 0 ; i < 30; ++i )
 	{
 		itemCardObject = new CRMchildItemCardDisplay();
-		itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
 		itemCardObject->SetPosition(115, 200);
 		itemCardObject->SetSceneType(SCENE_PLAY);
 		itemCardObject->SetPlayer(PLAYER_ONE);
@@ -604,7 +603,6 @@ HRESULT CRMmainLoop::CreateObject()
 		CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
 
 		itemCardObject = new CRMchildItemCardDisplay();
-		itemCardObject->SetObjectType(OBJECT_ITEM_CARD);
 		itemCardObject->SetPosition(627, 200);
 		itemCardObject->SetSceneType(SCENE_PLAY);
 		itemCardObject->SetPlayer(PLAYER_TWO);

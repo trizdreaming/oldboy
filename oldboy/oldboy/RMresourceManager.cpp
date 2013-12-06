@@ -31,9 +31,9 @@ void CRMresourceManager::InitializeArray()
 
 void CRMresourceManager::InitializeAlbum()
 {
-	if ( m_TextureArray[OBJECT_ALBUM_IMAGE] != nullptr )
+	if ( m_TextureArray[WIDGET_ALBUM_IMAGE] != nullptr )
 	{
-		SafeDelete( m_TextureArray[OBJECT_ALBUM_IMAGE] );
+		SafeDelete( m_TextureArray[WIDGET_ALBUM_IMAGE] );
 	}
 }
 
@@ -74,24 +74,24 @@ HRESULT CRMresourceManager::CreateTexture()
 	HRESULT hr = S_FALSE;
 	CRMimage* texture = new CRMimage();
 
-	hr = TextureMaker( BG_IMAGE_TITLE, OBJECT_BG_IMAGE_TITLE );
-	hr = TextureMaker( BG_IMAGE_SELECT, OBJECT_BG_IMAGE_SELECT );
-	hr = TextureMaker( BG_IMAGE_RESULT, OBJECT_BG_IMAGE_RESULT );
+	hr = TextureMaker( BG_IMAGE_TITLE, WIDGET_BG_IMAGE_TITLE );
+	hr = TextureMaker( BG_IMAGE_SELECT, WIDGET_BG_IMAGE_SELECT );
+	hr = TextureMaker( BG_IMAGE_RESULT, WIDGET_BG_IMAGE_RESULT );
 
 	//////////////////////////////////////////////////////////////////////////
 	//pause
 	//////////////////////////////////////////////////////////////////////////
-	hr = TextureMaker( PAUSE_IMAGE_PLAY_CANCEL, OBJECT_PAUSE_IMAGE_PLAY_CANCEL );
-	hr = TextureMaker( PAUSE_IMAGE_PLAY_OK, OBJECT_PAUSE_IMAGE_PLAY_OK );
-	hr = TextureMaker( PAUSE_IMAGE_TITLE_CANCEL, OBJECT_PAUSE_IMAGE_TITLE_CANCEL );
-	hr = TextureMaker( PAUSE_IMAGE_TITLE_OK, OBJECT_PAUSE_IMAGE_TITLE_OK );
+	hr = TextureMaker( PAUSE_IMAGE_PLAY_CANCEL, WIDGET_PAUSE_IMAGE_PLAY_CANCEL );
+	hr = TextureMaker( PAUSE_IMAGE_PLAY_OK, WIDGET_PAUSE_IMAGE_PLAY_OK );
+	hr = TextureMaker( PAUSE_IMAGE_TITLE_CANCEL, WIDGET_PAUSE_IMAGE_TITLE_CANCEL );
+	hr = TextureMaker( PAUSE_IMAGE_TITLE_OK, WIDGET_PAUSE_IMAGE_TITLE_OK );
 
 	//////////////////////////////////////////////////////////////////////////
 	//이하 플레이 화면
 	//////////////////////////////////////////////////////////////////////////
-	hr = TextureMaker( PLAY_IMAGE_JUDGE_RING, OBJECT_JUDGE_RING );
-	hr = TextureMaker( PLAY_IMAGE_BLUE_GAUGE, OBJECT_GAUGE_2P );
-	hr = TextureMaker( PLAY_IMAGE_RED_GAUGE, OBJECT_GAUGE_1P );
+	hr = TextureMaker( PLAY_IMAGE_JUDGE_RING, WIDGET_JUDGE_RING );
+	hr = TextureMaker( PLAY_IMAGE_BLUE_GAUGE, WIDGET_GAUGE_2P );
+	hr = TextureMaker( PLAY_IMAGE_RED_GAUGE, WIDGET_GAUGE_1P );
 	
 
 
@@ -99,53 +99,55 @@ HRESULT CRMresourceManager::CreateTexture()
 	// 아이템 이미지 리소스 추가
 	//////////////////////////////////////////////////////////////////////////
 	
-	// Item_T1_Duplicate_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Color.png", OBJECT_ITEM_T1_DUPLICATE_COLOR );
-	// Item_T1_Duplicate_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Gray.png", OBJECT_ITEM_T1_DUPLICATE_GRAY );
-	// Item_T1_Mist_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Color.png", OBJECT_ITEM_T1_MIST_COLOR );
-	// Item_T1_Mist_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Gray.png", OBJECT_ITEM_T1_MIST_GRAY );
-	// Item_T1_Rest_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png", OBJECT_ITEM_T1_SCORE_UP_COLOR );
-	// Item_T1_Rest_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png", OBJECT_ITEM_T1_SCORE_UP_GRAY );
-	// Item_T2_Barrier_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Color.png", OBJECT_ITEM_T2_BARRIER_COLOR );
-	// Item_T2_Barrier_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Gray.png", OBJECT_ITEM_T2_BARRIER_GRAY );
-	// Item_T2_Delay_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Color.png", OBJECT_ITEM_T2_DELAY_COLOR );
-	// Item_T2_Delay_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Gray.png", OBJECT_ITEM_T2_DELAY_GRAY );
-	// Item_T2_GaugeClear_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Color.png", OBJECT_ITEM_T2_GAUGE_CLEAR_COLOR );
-	// Item_T2_GaugeClear_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.png", OBJECT_ITEM_T2_GAUGE_CLEAR_GRAY );
-	// Item_T2_Rotate_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Color.png", OBJECT_ITEM_T2_ROTATE_COLOR );
-	// Item_T2_Rotate_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Gray.png", OBJECT_ITEM_T2_ROTATE_GRAY );
-	// Item_T3_Recovery_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Color.png", OBJECT_ITEM_T3_RECOVERY_COLOR );
-	// Item_T3_Recovery_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Gray.png", OBJECT_ITEM_T3_RECOVERY_GRAY );
-	// Item_T3_Reverse_Color
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Color.png", OBJECT_ITEM_T3_REVERSE_COLOR );
-	// Item_T3_Reverse_Gray
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Gray.png", OBJECT_ITEM_T3_REVERSE_GRAY );
+	// Item_T1_Duplicate
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Color.png", WIDGET_ITEM_T1_DUPLICATE_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Gray.png", WIDGET_ITEM_T1_DUPLICATE_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t1_duplicate.png", WIDGET_ITEM_T1_DUPLICATE_CARD );
 
+	// Item_T1_Mist
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Color.png", WIDGET_ITEM_T1_MIST_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Gray.png", WIDGET_ITEM_T1_MIST_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t1_mist.png", WIDGET_ITEM_T1_MIST_CARD );
 
-	//////////////////////////////////////////////////////////////////////////
-	//아이템 카드 발동
-	//////////////////////////////////////////////////////////////////////////
-	hr = TextureMaker( L"./Resource/cardSet/card.png", OBJECT_ITEM_CARD );
+	// Item_T1_ScoreUp
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Color.png", WIDGET_ITEM_T1_SCORE_UP_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png", WIDGET_ITEM_T1_SCORE_UP_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t1_scoreup.png", WIDGET_ITEM_T1_SCORE_UP_CARD );
+
+	// Item_T2_Barrier
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Color.png", WIDGET_ITEM_T2_BARRIER_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Gray.png", WIDGET_ITEM_T2_BARRIER_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t2_barrier.png", WIDGET_ITEM_T2_BARRIER_CARD );
+
+	// Item_T2_Delay
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Color.png", WIDGET_ITEM_T2_DELAY_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Gray.png", WIDGET_ITEM_T2_DELAY_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t2_delay.png", WIDGET_ITEM_T2_DELAY_CARD );
+
+	// Item_T2_GaugeClear
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Color.png", WIDGET_ITEM_T2_GAUGE_CLEAR_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.png", WIDGET_ITEM_T2_GAUGE_CLEAR_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t2_gaugeclear.png", WIDGET_ITEM_T2_GAUGE_CLEAR_CARD );
+
+	// Item_T2_Rotate
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Color.png", WIDGET_ITEM_T2_ROTATE_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Gray.png", WIDGET_ITEM_T2_ROTATE_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t2_rotate.png", WIDGET_ITEM_T2_ROTATE_CARD );
+
+	// Item_T3_Recovery
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Color.png", WIDGET_ITEM_T3_RECOVERY_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Gray.png", WIDGET_ITEM_T3_RECOVERY_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t3_recovery.png", WIDGET_ITEM_T3_RECOVERY_CARD );
+
+	// Item_T3_Reverse
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Color.png", WIDGET_ITEM_T3_REVERSE_COLOR );
+	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Gray.png", WIDGET_ITEM_T3_REVERSE_GRAY );
+	hr = TextureMaker( L"./Resource/cardSet/t3_reverse.png", WIDGET_ITEM_T3_REVERSE_CARD );
 
 	return hr;
 }
 
-HRESULT CRMresourceManager::TextureMaker( const std::wstring& path, ObjectType type )
+HRESULT CRMresourceManager::TextureMaker( const std::wstring& path, WidgetType type )
 {
 	HRESULT hr = S_FALSE;
 	CRMimage* texture = new CRMimage();
@@ -189,12 +191,12 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = texture;
+		m_TextureArray[WIDGET_BG_IMAGE_PLAY] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_BG_IMAGE_PLAY] = nullptr;
+		m_TextureArray[WIDGET_BG_IMAGE_PLAY] = nullptr;
 		InitializeArray();
 
 		return hr;
@@ -205,12 +207,12 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_SHUTTER] = texture;
+		m_TextureArray[WIDGET_SHUTTER] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_SHUTTER] = nullptr;
+		m_TextureArray[WIDGET_SHUTTER] = nullptr;
 		InitializeArray();
 
 		return hr;
@@ -221,12 +223,12 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_NOTE_NORMAL_1] = texture;
+		m_TextureArray[WIDGET_NOTE_NORMAL_1] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_NOTE_NORMAL_1] = nullptr;
+		m_TextureArray[WIDGET_NOTE_NORMAL_1] = nullptr;
 		InitializeArray();
 
 		return hr;
@@ -237,12 +239,12 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_NOTE_NORMAL_2] = texture;
+		m_TextureArray[WIDGET_NOTE_NORMAL_2] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_NOTE_NORMAL_2] = nullptr;
+		m_TextureArray[WIDGET_NOTE_NORMAL_2] = nullptr;
 		InitializeArray();
 
 		return hr;
@@ -253,12 +255,12 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_NOTE_HIT] = texture;
+		m_TextureArray[WIDGET_NOTE_HIT] = texture;
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		m_TextureArray[OBJECT_NOTE_HIT] = nullptr;
+		m_TextureArray[WIDGET_NOTE_HIT] = nullptr;
 		InitializeArray();
 
 		return hr;
@@ -280,7 +282,7 @@ HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName )
 	
 	if ( hr == S_OK )
 	{
-		m_TextureArray[OBJECT_ALBUM_IMAGE] = texture;
+		m_TextureArray[WIDGET_ALBUM_IMAGE] = texture;
 	}
 	else
 	{

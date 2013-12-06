@@ -28,11 +28,11 @@ private:
 
 	UINT			m_P1NoteReadyTime;
 	UINT			m_P1NoteReadyLevel;
-	ObjectType		m_P1NoteReadyType;
+	WidgetType		m_P1NoteReadyType;
 
 	UINT			m_P2NoteReadyTime;
 	UINT			m_P2NoteReadyLevel;
-	ObjectType		m_P2NoteReadyType;
+	WidgetType		m_P2NoteReadyType;
 
 	UINT			m_P1NoteIndex;
 	UINT			m_P2NoteIndex;

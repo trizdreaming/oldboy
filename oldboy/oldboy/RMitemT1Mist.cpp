@@ -4,8 +4,9 @@
 
 CRMitemT1Mist::CRMitemT1Mist(void)
 {
-	m_ObjectType = OBJECT_ITEM_T1_MIST_GRAY;
-	m_ObjectTypeColor = OBJECT_ITEM_T1_MIST_COLOR;
+	m_WidgetType = WIDGET_ITEM_T1_MIST_GRAY;
+	m_WidgetTypeForColor = WIDGET_ITEM_T1_MIST_COLOR;
+	m_WidgetTypeOfCard = WIDGET_ITEM_T1_MIST_CARD;
 }
 
 CRMitemT1Mist::~CRMitemT1Mist(void)

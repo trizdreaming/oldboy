@@ -12,7 +12,5 @@ public:
 	~CRMchildPauseImage(void);
 
 	virtual void	Update();
-private:
-	ObjectType m_ObjectType1;
 };
 

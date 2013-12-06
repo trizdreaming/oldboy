@@ -14,7 +14,7 @@ private:
 
 public:
 	//노트 관리
-	void						StartNote( PlayerNumber player , ObjectType objectType ) const;
+	void						StartNote( PlayerNumber player , WidgetType widgetType ) const;
 	
 	//노트 판정
 	void						JudgeNote() const;
@@ -27,9 +27,6 @@ private:
 	void						PrintScore( PlayerNumber player, JudgeType judgeType ) const;
 	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
 
-private:
-	bool						IsItemP1RecoveryON;
-	bool						IsItemP2RecoveryON;
-
+	std::array<bool, PLAYER_MAX>	m_IsItemRecoverOn;
 };
 

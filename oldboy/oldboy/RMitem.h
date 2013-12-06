@@ -8,17 +8,20 @@ public:
 	CRMitem(void);
 	~CRMitem(void);
 
-	ObjectType		GetObjectTypeColor() { return m_ObjectTypeColor; }
-	ObjectType		GetObjectTypeGray() { return GetObjectType(); }
+	virtual WidgetType		GetWidgetTypeForColor() { return m_WidgetTypeForColor; }
+	virtual WidgetType		GetWidgetTypeForGray() { return GetWidgetType(); }
+	virtual	WidgetType		GetWidgetTypeOfCard() { return m_WidgetTypeOfCard; }
 	
 	virtual void	Active();
 	void			SetTime( UINT holdingTime ) { m_StartTime = holdingTime; }
 	virtual void	Update();
-
+	
 protected:
 	virtual void	DeActive() { m_Active = false; }
 
-	ObjectType		m_ObjectTypeColor;
+	WidgetType		m_WidgetTypeForColor;
+	WidgetType		m_WidgetTypeOfCard;
+
 	UINT			m_TimeSlice;
 	UINT			m_StartTime;
 

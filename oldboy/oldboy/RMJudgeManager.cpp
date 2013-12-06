@@ -14,10 +14,9 @@
 #include "RMinput.h"
 #include "RMpauseManager.h"
 
-CRMjudgeManager::CRMjudgeManager(void):
-	IsItemP1RecoveryON(false),
-	IsItemP2RecoveryON(false)
+CRMjudgeManager::CRMjudgeManager(void)
 {
+	ZeroMemory(&m_IsItemRecoverOn, sizeof(m_IsItemRecoverOn));
 }
 
 
@@ -25,7 +24,7 @@ CRMjudgeManager::~CRMjudgeManager(void)
 {
 }
 
-void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) const
+void CRMjudgeManager::StartNote( PlayerNumber player , WidgetType widgetType ) const
 {
 	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_MEMORY_POOL );
 	if ( thisNote == nullptr )
@@ -37,7 +36,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 	{
 		// 만약 이곳에서 HP 체크를 하지 않으면?
 		// Judge 메소드 주석 참조
-		thisNote->SetObjectType( objectType );
+		thisNote->SetWidgetType( widgetType );
 		thisNote->SetPosition( NOTE_ONE_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
@@ -47,7 +46,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , ObjectType objectType ) c
 	}
 	else if ( player == PLAYER_TWO && !CRMplayer2P::GetInstance()->IsDead() )
 	{
-		thisNote->SetObjectType( objectType );
+		thisNote->SetWidgetType( widgetType );
 		thisNote->SetPosition( NOTE_TWO_START_POSITION_X, NOTE_START_POSITION_Y );
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
@@ -113,13 +112,9 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				playerClass->AddEvent( JUDGE_PERFECT );
 				PrintScore( playerNumber, JUDGE_PERFECT );
 
-				if ( playerNumber == PLAYER_ONE && IsItemP1RecoveryON )
+				if ( m_IsItemRecoverOn[playerNumber] == true )
 				{
-					playerClass->AddHP(5);
-				}
-				else if ( playerNumber == PLAYER_TWO && IsItemP2RecoveryON )
-				{
-					playerClass->AddHP(5);
+					playerClass->AddHP(2);
 				}
 
 				//키 누르면서 바로 지우면 플래그 세팅이 안됨
@@ -140,11 +135,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 				playerClass->AddEvent( JUDGE_GOOD );
 				PrintScore( playerNumber, JUDGE_GOOD );
 
-				if ( playerNumber == PLAYER_ONE && IsItemP1RecoveryON )
-				{
-					playerClass->AddHP(2);
-				}
-				else if ( playerNumber == PLAYER_TWO && IsItemP2RecoveryON )
+				if ( m_IsItemRecoverOn[playerNumber] == true )
 				{
 					playerClass->AddHP(2);
 				}
@@ -203,7 +194,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 	}
 
 
-	if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_1 )
+	if ( note->GetWidgetType() == WIDGET_NOTE_NORMAL_1 )
 	{
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_STATUS_PRESSED ) )
 		{
@@ -214,7 +205,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 			return true;
 		}
 	}
-	else if ( note->GetObjectType() == OBJECT_NOTE_NORMAL_2 )
+	else if ( note->GetWidgetType() == WIDGET_NOTE_NORMAL_2 )
 	{
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( target1 ) == KEY_STATUS_PRESSED ) )
 		{
@@ -316,25 +307,10 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 
 void CRMjudgeManager::StartItemRecovery( PlayerNumber player )
 {
-	if ( player == PLAYER_ONE )
-	{
-		IsItemP1RecoveryON = true;
-	}
-	else
-	{
-		IsItemP2RecoveryON = true;
-	}
-
+	m_IsItemRecoverOn[player] = true;
 }
 
 void CRMjudgeManager::StopItemRecovery( PlayerNumber player )
 {
-	if ( player == PLAYER_ONE )
-	{
-		IsItemP1RecoveryON = false;
-	}
-	else
-	{
-		IsItemP2RecoveryON = false;
-	}
+	m_IsItemRecoverOn[player] = false;
 }

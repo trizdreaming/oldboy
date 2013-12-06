@@ -4,8 +4,9 @@
 
 CRMitemT1Duplicate::CRMitemT1Duplicate(void)
 {
-	m_ObjectType = OBJECT_ITEM_T1_DUPLICATE_GRAY;
-	m_ObjectTypeColor = OBJECT_ITEM_T1_DUPLICATE_COLOR;
+	m_WidgetType = WIDGET_ITEM_T1_DUPLICATE_GRAY;
+	m_WidgetTypeForColor = WIDGET_ITEM_T1_DUPLICATE_COLOR;
+	m_WidgetTypeOfCard = WIDGET_ITEM_T1_DUPLICATE_CARD;
 }
 
 

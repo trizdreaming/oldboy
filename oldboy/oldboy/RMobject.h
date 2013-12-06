@@ -11,7 +11,7 @@ public:
 	virtual void	Update() = 0;
 	virtual void	Render();
 
-	virtual void	SetObjectType(ObjectType objectType) { m_ObjectType = objectType; }
+	virtual void	SetWidgetType(WidgetType widgetType) { m_WidgetType = widgetType; }
 	void			SetSceneType(SceneType scene) { m_Scene = scene; }
 	
 	void			SetVisible(bool visible) { m_Visible = visible; }
@@ -22,7 +22,7 @@ public:
 	float			GetPositionY() { return m_PositionY; }
 	float			GetAlpha() { return m_Alpha; }
 	SceneType		SetSceneType() { return m_Scene; }
-	ObjectType		GetObjectType() { return m_ObjectType; }
+	WidgetType		GetWidgetType() { return m_WidgetType; }
 
 	void			SetPlayer( PlayerNumber playerNumber ) { m_PlayerNumber = playerNumber; }
 	PlayerNumber	GetPlayer() { return m_PlayerNumber; }
@@ -30,7 +30,7 @@ public:
 protected:
 
 	void			SetVisibleByScene();
-	ObjectType		m_ObjectType;
+	WidgetType		m_WidgetType;
 
 	PlayerNumber	m_PlayerNumber;
 	bool			m_Visible;

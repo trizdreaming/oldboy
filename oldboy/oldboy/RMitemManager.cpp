@@ -192,7 +192,6 @@ void CRMitemManager::Update()
 		m_ItemPosition[TIER_2P_THREE] += (p2Tier3Position - m_ItemPosition[TIER_2P_THREE]) / 20;
 	}
 
-
 	// 아이템 로테이트로부터 아이템 가져와야함
 	if ( p1GaugeRate >= 0.9 )
 	{
@@ -381,7 +380,7 @@ void CRMitemManager::RotateItem( ItemTierType tier )
 	}
 }
 
-ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
+WidgetType CRMitemManager::GetWidgetType( ItemTierType tier )
 {
 	ItemType thisItem = m_TierItem[tier];
 	PlayerNumber player = PLAYER_ONE;
@@ -393,28 +392,28 @@ ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
 	{
 		if ( thisItem == m_NowItem[player] )
 		{
-			return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeColor();
+			return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetWidgetTypeForColor();
 		}
 		else
 		{
-			return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetObjectTypeGray();
+			return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetWidgetTypeForGray();
 		}
 	}
 	
-	return OBJECT_NONE;
+	return WIDGET_NONE;
 }
 /*
-ObjectType CRMitemManager::GetCardObjectType( PlayerNumber player )
+WidgetType CRMitemManager::GetWidgetTypeOfCard( PlayerNumber player )
 {
 	ItemType thisItemType = m_ActiveItem[player];
 	CRMitem* thisItem = m_ItemPool[thisItemType+ (player == PLAYER_TWO ? ITEM_T3_MAX : 0)];
 	
 	if (thisItem == NULL)
 	{
-		return OBJECT_NONE;
+		return WIDGET_NONE;
 	}
 	
-	return thisItem->GetObjectCardType();
+	return thisItem->GetWidgetTypeOfCard();
 }
 */
 void CRMitemManager::Reset()

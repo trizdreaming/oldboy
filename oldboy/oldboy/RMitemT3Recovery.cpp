@@ -8,10 +8,10 @@ CRMitemT3Recovery::CRMitemT3Recovery(void)
 	//////////////////////////////////////////////////////////////////////////
 	// 임시 추가 - 추후 수정
 	//////////////////////////////////////////////////////////////////////////
-	m_ObjectType = OBJECT_ITEM_T3_RECOVERY_GRAY;
-	m_ObjectTypeColor = OBJECT_ITEM_T3_RECOVERY_COLOR;
+	m_WidgetType = WIDGET_ITEM_T3_RECOVERY_GRAY;
+	m_WidgetTypeForColor = WIDGET_ITEM_T3_RECOVERY_COLOR;
+	m_WidgetTypeOfCard = WIDGET_ITEM_T3_RECOVERY_CARD;
 }
-
 
 CRMitemT3Recovery::~CRMitemT3Recovery(void)
 {
@@ -19,12 +19,12 @@ CRMitemT3Recovery::~CRMitemT3Recovery(void)
 
 void CRMitemT3Recovery::Active()
 {
-	CRMitem::Active();
 	CRMjudgeManager::GetInstance()->StartItemRecovery( m_OwnPlayer );
+	CRMitem::Active();
 }
 
 void CRMitemT3Recovery::DeActive()
 {
-	CRMitem::DeActive();
 	CRMjudgeManager::GetInstance()->StopItemRecovery( m_OwnPlayer );
+	CRMitem::DeActive();
 }

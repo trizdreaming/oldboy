@@ -197,7 +197,7 @@ HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
 			std::string type = node->ToElement()->GetText();
 
 
-			CRMnoteData* noteData = new CRMnoteData (time, level, (type == "left") ? OBJECT_NOTE_NORMAL_1 : OBJECT_NOTE_NORMAL_2 );
+			CRMnoteData* noteData = new CRMnoteData (time, level, (type == "left") ? WIDGET_NOTE_NORMAL_1 : WIDGET_NOTE_NORMAL_2 );
 			m_NoteList.push_back( noteData );
 			node = node->NextSibling();
 		}

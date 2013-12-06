@@ -1,7 +1,7 @@
 ﻿#include "stdafx.h"
 #include "RMnoteData.h"
 
-CRMnoteData::CRMnoteData( int time, int level,ObjectType type )
+CRMnoteData::CRMnoteData( int time, int level,WidgetType type )
 {
 	 m_Time=time;
 	 m_Level = level;

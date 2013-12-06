@@ -46,12 +46,19 @@ void CRMchildItemCardDisplay::Update()
 {
 	SetVisibleByScene();
 
+	if ( m_Visible == false )
+	{
+		return;
+	}
+
 	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
 	{
 		m_Visible = false;
 		m_Rotation = 0;
 		return;
 	}
+
+	m_WidgetType = CRMitemManager::GetInstance()->GetWidgetTypeOfCard(m_PlayerNumber);
 
 	UINT	thisTime = timeGetTime();
 

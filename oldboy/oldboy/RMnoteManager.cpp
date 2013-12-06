@@ -14,10 +14,10 @@ CRMnoteManager::CRMnoteManager(void):
 	m_PausedTime(0),
 	m_P1NoteReadyTime(0),
 	m_P1NoteReadyLevel(0),
-	m_P1NoteReadyType(OBJECT_NONE),
+	m_P1NoteReadyType(WIDGET_NONE),
 	m_P2NoteReadyTime(0),
 	m_P2NoteReadyLevel(0),
-	m_P2NoteReadyType(OBJECT_NONE),
+	m_P2NoteReadyType(WIDGET_NONE),
 	m_P1NoteIndex(0),
 	m_P2NoteIndex(0)
 {
@@ -37,10 +37,10 @@ void CRMnoteManager::Initialize()
 	m_PausedTime = 0;
 	m_P1NoteReadyTime = UINT_MAX;
 	m_P1NoteReadyLevel = 0;
-	m_P1NoteReadyType = OBJECT_NONE;
+	m_P1NoteReadyType = WIDGET_NONE;
 	m_P2NoteReadyTime = UINT_MAX;
 	m_P2NoteReadyLevel = 0;
-	m_P2NoteReadyType = OBJECT_NONE;
+	m_P2NoteReadyType = WIDGET_NONE;
 	m_P1NoteIndex = 0;
 	m_P2NoteIndex = 0;
 }

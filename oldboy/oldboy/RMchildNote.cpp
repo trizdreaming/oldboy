@@ -52,23 +52,23 @@ void CRMchildNote::Update()
 			if ( m_PositionY + 80 < NOTE_JUDGE_PERFECT_START_LINE && 
 				( ( (int) m_PositionY + 80 ) / ( NOTE_JUDGE_PERFECT_START_LINE / 6 ) ) % 2 == 1 )
 			{
-				if ( m_Original_type == OBJECT_NOTE_NORMAL_1 )
+				if ( m_Original_type == WIDGET_NOTE_NORMAL_1 )
 				{
-					m_ObjectType = OBJECT_NOTE_NORMAL_2;
+					m_WidgetType = WIDGET_NOTE_NORMAL_2;
 				}
 				else
 				{
-					m_ObjectType = OBJECT_NOTE_NORMAL_1;
+					m_WidgetType = WIDGET_NOTE_NORMAL_1;
 				}
 			}
 			else
 			{
-				m_ObjectType = m_Original_type;
+				m_WidgetType = m_Original_type;
 			}
 		}
 		else
 		{
-			m_ObjectType = m_Original_type;
+			m_WidgetType = m_Original_type;
 			m_Rotation = 0;
 		}
 		
@@ -98,8 +98,8 @@ void CRMchildNote::Render()
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_PrevMatrix );
 }
 
-void CRMchildNote::SetObjectType( ObjectType objectType )
+void CRMchildNote::SetWidgetType( WidgetType widgetType )
 {
-	m_Original_type = objectType;
-	CRMobject::SetObjectType(objectType);
+	m_Original_type = widgetType;
+	CRMobject::SetWidgetType(widgetType);
 }

@@ -19,10 +19,10 @@ void CRMchildItemDisplay::Update()
 {
 	SetVisibleByScene();
 
-	m_ObjectType = CRMitemManager::GetInstance()->GetObjectType(m_ThisTier);
+	m_WidgetType = CRMitemManager::GetInstance()->GetWidgetType(m_ThisTier);
 	m_PositionY = CRMitemManager::GetInstance()->GetStackPosition(m_ThisTier);
 
-	if ( m_ObjectType < OBJECT_ITEM_COLOR_MAX && m_ObjectType > OBJECT_ITEM_COLOR_MIN )
+	if ( m_WidgetType < WIDGET_ITEM_COLOR_MAX && m_WidgetType > WIDGET_ITEM_COLOR_MIN )
 	{
 		UINT	thisTime = timeGetTime();
 
@@ -53,7 +53,7 @@ void CRMchildItemDisplay::Update()
 	{
 		m_Rotation = 0;
 	}
-	// printConsole("티어 : %d, 오브젝트 타입 : %d, 좌표 : (%f, %f) \n", m_ThisTier, m_ObjectType, m_PositionX, m_PositionY);
+	// printConsole("티어 : %d, 오브젝트 타입 : %d, 좌표 : (%f, %f) \n", m_ThisTier, m_WidgetType, m_PositionX, m_PositionY);
 }
 
 void CRMchildItemDisplay::Render()

@@ -403,7 +403,7 @@ ObjectType CRMitemManager::GetObjectType( ItemTierType tier )
 	
 	return OBJECT_NONE;
 }
-
+/*
 ObjectType CRMitemManager::GetCardObjectType( PlayerNumber player )
 {
 	ItemType thisItemType = m_ActiveItem[player];
@@ -416,7 +416,7 @@ ObjectType CRMitemManager::GetCardObjectType( PlayerNumber player )
 	
 	return thisItem->GetObjectCardType();
 }
-
+*/
 void CRMitemManager::Reset()
 {
 	m_ActiveItem[PLAYER_ONE] = ITEM_TYPE_NONE;

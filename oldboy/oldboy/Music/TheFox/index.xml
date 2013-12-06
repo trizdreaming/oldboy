@@ -8,9 +8,9 @@
         <imageAlbum>image_album_cover.png</imageAlbum>
         <imageBackground>image_back.png</imageBackground>
         <imageShutter>image_sh_01_01.png</imageShutter>
-        <imageNote1>note1.png</imageNote1>
-        <imageNote2>note2.png</imageNote2>
-        <imageNoteEffect>note3.png</imageNoteEffect>
+        <imageNote1>image_nt_01_01.png</imageNote1>
+        <imageNote2>image_nt_02_01.png</imageNote2>
+        <imageNoteEffect>image_nt_01_02.png</imageNoteEffect>
     </Image>
     <Sound>
         <soundBackground>TheFox.mp3</soundBackground>

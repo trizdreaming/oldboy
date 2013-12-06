@@ -21,6 +21,13 @@
 
 CRMitemManager::CRMitemManager(void)
 {
+	ZeroMemory(&m_NowItem, sizeof(m_NowItem));
+	ZeroMemory(&m_ItemPool, sizeof(m_ItemPool));
+	ZeroMemory(&m_TierItem, sizeof(m_TierItem));
+	ZeroMemory(&m_ActiveItem, sizeof(m_ActiveItem));
+	ZeroMemory(&m_ItemPosition, sizeof(m_ItemPosition));
+	ZeroMemory(&m_PrevTimeTierRotate, sizeof(m_PrevTimeTierRotate));
+	ZeroMemory(&m_TimeSliceForTier, sizeof(m_TimeSliceForTier));
 }
 
 

@@ -10,6 +10,7 @@
 CRMresourceManager::CRMresourceManager(void):
 	m_pWICFactory(nullptr)
 {
+	ZeroMemory(&m_TextureArray, sizeof(m_TextureArray));
 }
 
 

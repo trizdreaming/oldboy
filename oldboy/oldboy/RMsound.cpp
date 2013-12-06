@@ -12,6 +12,7 @@ CRMsound::CRMsound(void):
 	m_ChannelSE(nullptr),
 	m_Result(FMOD_ERR_UNINITIALIZED)
 {
+	ZeroMemory(&m_SoundArray, sizeof(m_SoundArray));
 }
 
 

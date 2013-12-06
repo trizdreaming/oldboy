@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMwellRandom.h"
 
@@ -42,7 +42,7 @@ unsigned long CRMwellRandom::WellRand(int r)
 	return WELLRNG512() % r;
 };
 
-// »çÀÌ °ª ·£´ı
+// ì‚¬ì´ ê°’ ëœë¤
 unsigned long CRMwellRandom::WellRandom(int nMin, int nMax)
 {
 	return (nMin + WellRand(nMax - nMin + 1));

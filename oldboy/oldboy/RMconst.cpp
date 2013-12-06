@@ -1,10 +1,10 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMconst.h"
 
 const wchar_t* GAME_NAME	= L"Rhythm Match v0.125";
 const wchar_t* CLASS_NAME	= L"RhythmMatch";
 
-// Label °ü·Ã define
+// Label ê´€ë ¨ define
 const wchar_t* LABEL_JUDGE_PERFECT	= L"PERFECT!!";
 const wchar_t* LABEL_JUDGE_GOOD		= L"  GOOD!  ";
 const wchar_t* LABEL_JUDGE_MISS		= L"  MISS...";
@@ -19,25 +19,25 @@ const char* LABEL_RESULT_MISS			= "MISS    : ";
 const char* LABEL_RESULT_COMBO_BONUS	= "COMBO BONUS   : ";
 const char* LABEL_RESULT_MAX_COMBO		= "MAX COMBO   : ";
 
-const wchar_t* LABEL_NAME_P1_SCORE	= L"ÇÃ·¹ÀÌ¾î1Á¡¼ö";
-const wchar_t* LABEL_NAME_P1_COMBO	= L"ÇÃ·¹ÀÌ¾î1ÄŞº¸";
-const wchar_t* LABEL_NAME_P2_SCORE	= L"ÇÃ·¹ÀÌ¾î2Á¡¼ö";
-const wchar_t* LABEL_NAME_P2_COMBO	= L"ÇÃ·¹ÀÌ¾î2ÄŞº¸";
+const wchar_t* LABEL_NAME_P1_SCORE	= L"í”Œë ˆì´ì–´1ì ìˆ˜";
+const wchar_t* LABEL_NAME_P1_COMBO	= L"í”Œë ˆì´ì–´1ì½¤ë³´";
+const wchar_t* LABEL_NAME_P2_SCORE	= L"í”Œë ˆì´ì–´2ì ìˆ˜";
+const wchar_t* LABEL_NAME_P2_COMBO	= L"í”Œë ˆì´ì–´2ì½¤ë³´";
 
-const wchar_t* LABEL_NAME_SELECT_LIST1	= L"¼¿·ºÆ®¸®½ºÆ®1";
-const wchar_t* LABEL_NAME_SELECT_LIST2	= L"¼¿·ºÆ®¸®½ºÆ®2";
-const wchar_t* LABEL_NAME_SELECT_LIST3	= L"¼¿·ºÆ®¸®½ºÆ®3";
-const wchar_t* LABEL_NAME_SELECT_LIST4	= L"¼¿·ºÆ®¸®½ºÆ®4";
-const wchar_t* LABEL_NAME_SELECT_LIST5	= L"¼¿·ºÆ®¸®½ºÆ®5";
+const wchar_t* LABEL_NAME_SELECT_LIST1	= L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸1";
+const wchar_t* LABEL_NAME_SELECT_LIST2	= L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸2";
+const wchar_t* LABEL_NAME_SELECT_LIST3	= L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸3";
+const wchar_t* LABEL_NAME_SELECT_LIST4	= L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸4";
+const wchar_t* LABEL_NAME_SELECT_LIST5	= L"ì…€ë ‰íŠ¸ë¦¬ìŠ¤íŠ¸5";
 
-const wchar_t* LABEL_FONT_NORMAL	= L"¸¼Àº °íµñ";
+const wchar_t* LABEL_FONT_NORMAL	= L"ë§‘ì€ ê³ ë”•";
 
 const wchar_t* LABEL_FPS			= L"FPS";
 
-// Resource °ü·Ã
+// Resource ê´€ë ¨
 
 const char* FOLDER_SLASH			= "/";
-const char* MUSIC_FOLDER_SEARCH		= "./Music/.\\*"; // ¹ÂÁ÷ Æú´õ ÀÌÇÏ ¸ğµç ÆÄÀÏ ÀÇ¹Ì
+const char* MUSIC_FOLDER_SEARCH		= "./Music/.\\*"; // ë®¤ì§ í´ë” ì´í•˜ ëª¨ë“  íŒŒì¼ ì˜ë¯¸
 const char* MUSIC_FOLDER			= "./Music/";
 const char* BGM_TITLE				= "./Resource/bgm_title_00_01.mp3";
 
@@ -56,17 +56,17 @@ const wchar_t* PAUSE_IMAGE_PLAY_OK		= L"./Resource/image_pa_play_02.png";
 const wchar_t* PAUSE_IMAGE_TITLE_CANCEL	= L"./Resource/image_pa_title_01.png";
 const wchar_t* PAUSE_IMAGE_TITLE_OK		= L"./Resource/image_pa_title_02.png";
 
-// Error °ü·Ã 
-// ÇöÀç ¿¡·¯´Â ÄÜ¼Ö Ã¢¿¡¼­ Ç¥ÇöµÇ´Â °Í
+// Error ê´€ë ¨ 
+// í˜„ì¬ ì—ëŸ¬ëŠ” ì½˜ì†” ì°½ì—ì„œ í‘œí˜„ë˜ëŠ” ê²ƒ
 
-// ¸Ş½ÃÁö ¹Ú½º Å¸ÀÌÆ² ERROR_TITLE_~~~
+// ë©”ì‹œì§€ ë°•ìŠ¤ íƒ€ì´í‹€ ERROR_TITLE_~~~
 const wchar_t* ERROR_TITLE_NORMAL			= L"ERROR!";
 const wchar_t* ERROR_TITLE_LOAD				= L"LOAD ERROR!";
 const wchar_t* ERROR_TITLE_NULLPTR			= L"NULLPTR ERROR!";
 
-// ¸Ş½ÃÁö ¹Ú½º ³»¿ë  ERROR_MESSAGE_~~~
+// ë©”ì‹œì§€ ë°•ìŠ¤ ë‚´ìš©  ERROR_MESSAGE_~~~
 
-// xmlLoader °ü·Ã 
+// xmlLoader ê´€ë ¨ 
 const wchar_t* ERROR_MESSAGE_LOAD_XML_TITLE					= L"Missing title Data in index.xml";
 const wchar_t* ERROR_MESSAGE_LOAD_XML_ARTIST				= L"Missing artist Data in index.xml";
 const wchar_t* ERROR_MESSAGE_LOAD_XML_LEVEL					= L"Missing level Data in index.xml";

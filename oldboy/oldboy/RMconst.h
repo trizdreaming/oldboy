@@ -1,7 +1,7 @@
-extern const wchar_t* GAME_NAME;
+ï»¿extern const wchar_t* GAME_NAME;
 extern const wchar_t* CLASS_NAME;
 
-// Label °ü·Ã
+// Label ê´€ë ¨
 extern const wchar_t* LABEL_JUDGE_PERFECT;
 extern const wchar_t* LABEL_JUDGE_GOOD;
 extern const wchar_t* LABEL_JUDGE_MISS;
@@ -31,10 +31,10 @@ extern const wchar_t* LABEL_FONT_NORMAL;
 
 extern const wchar_t* LABEL_FPS;
 
-// Resource °ü·Ã
+// Resource ê´€ë ¨
 
 extern const char* FOLDER_SLASH;
-extern const char* MUSIC_FOLDER_SEARCH;	// ¹ÂÁ÷ Æú´õ ÀÌÇÏ ¸ğµç ÆÄÀÏ ÀÇ¹Ì
+extern const char* MUSIC_FOLDER_SEARCH;	// ë®¤ì§ í´ë” ì´í•˜ ëª¨ë“  íŒŒì¼ ì˜ë¯¸
 extern const char* MUSIC_FOLDER;
 extern const char* BGM_TITLE;
 
@@ -53,17 +53,17 @@ extern const wchar_t* PAUSE_IMAGE_PLAY_OK;
 extern const wchar_t* PAUSE_IMAGE_TITLE_CANCEL;
 extern const wchar_t* PAUSE_IMAGE_TITLE_OK;
 
-// Error °ü·Ã 
-// ÇöÀç ¿¡·¯´Â ÄÜ¼Ö Ã¢¿¡¼­ Ç¥ÇöµÇ´Â °Í
+// Error ê´€ë ¨ 
+// í˜„ì¬ ì—ëŸ¬ëŠ” ì½˜ì†” ì°½ì—ì„œ í‘œí˜„ë˜ëŠ” ê²ƒ
 
-// ¸Ş½ÃÁö ¹Ú½º Å¸ÀÌÆ² ERROR_TITLE_~~~
+// ë©”ì‹œì§€ ë°•ìŠ¤ íƒ€ì´í‹€ ERROR_TITLE_~~~
 extern const wchar_t* ERROR_TITLE_NORMAL;
 extern const wchar_t* ERROR_TITLE_LOAD;
 extern const wchar_t* ERROR_TITLE_NULLPTR;
 
-// ¸Ş½ÃÁö ¹Ú½º ³»¿ë  ERROR_MESSAGE_~~~
+// ë©”ì‹œì§€ ë°•ìŠ¤ ë‚´ìš©  ERROR_MESSAGE_~~~
 
-// xmlLoader °ü·Ã 
+// xmlLoader ê´€ë ¨ 
 extern const wchar_t* ERROR_MESSAGE_LOAD_XML_TITLE;
 extern const wchar_t* ERROR_MESSAGE_LOAD_XML_ARTIST;
 extern const wchar_t* ERROR_MESSAGE_LOAD_XML_LEVEL;

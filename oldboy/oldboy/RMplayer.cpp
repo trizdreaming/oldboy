@@ -31,8 +31,9 @@ void CRMplayer::CalcCombo()
 	}
 	else
 	{
-		m_Count[COUNT_COMBO_SCORE] += ++m_Count[COUNT_COMBO];
-		m_Count[COUNT_SCORE] += m_Count[COUNT_COMBO];
+		++m_Count[COUNT_COMBO];
+		m_Count[COUNT_COMBO_SCORE] += m_Count[COUNT_MAX_COMBO];
+		m_Count[COUNT_SCORE] += m_Count[COUNT_MAX_COMBO];
 
 		if ( m_Count[COUNT_COMBO] > m_Count[COUNT_MAX_COMBO] )
 		{

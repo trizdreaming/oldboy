@@ -7,6 +7,7 @@ public:
 	CRMitemT2Delay(void);
 	~CRMitemT2Delay(void);
 
-	virtual void	Update();
+	void			Active();
+	void			DeActive();
 };
 

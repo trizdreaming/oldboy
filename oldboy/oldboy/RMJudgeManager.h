@@ -19,6 +19,7 @@ public:
 	//노트 판정
 	void						JudgeNote() const;
 
+	// 리커버리 아이템 설정
 	void						StartItemRecovery( PlayerNumber player );
 	void						StopItemRecovery( PlayerNumber player );
 

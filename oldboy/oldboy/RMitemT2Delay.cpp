@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "RMitemT2Delay.h"
+#include "RMnoteManager.h"
 
 
 CRMitemT2Delay::CRMitemT2Delay(void)
@@ -14,11 +15,14 @@ CRMitemT2Delay::~CRMitemT2Delay(void)
 {
 }
 
-void CRMitemT2Delay::Update()
+void CRMitemT2Delay::Active()
 {
-	// 어쩌구 저쩌구
+	CRMnoteManager::GetInstance()->StartItemDelay( m_TargetPlayer );
+	CRMitem::Active();
+}
 
-	CRMitem::Update();
-
-	// 어쩌구 저쩌구
+void CRMitemT2Delay::DeActive()
+{
+	CRMnoteManager::GetInstance()->StopItemDelay( m_TargetPlayer );
+	CRMitem::DeActive();
 }

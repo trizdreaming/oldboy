@@ -1,6 +1,10 @@
 <?xml version="1.0" ?>
 <Notes>
-
+<Note time="5000" level="1">left</Note>
+<Note time="5100" level="1">left</Note>
+<Note time="5200" level="1">left</Note>
+<Note time="5300" level="1">left</Note>
+<Note time="5400" level="1">left</Note>
 <Note time="20037" level="1">left</Note>
 <Note time="20517" level="1">right</Note>
 <Note time="20877" level="1">right</Note>

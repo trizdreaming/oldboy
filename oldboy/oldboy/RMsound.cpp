@@ -211,3 +211,20 @@ HRESULT CRMsound::SetPauseBG( const bool isPause /*= true */ )
 	}
 	return S_FALSE;
 }
+
+UINT CRMsound::GetPlayTime()
+{
+	UINT nowTime = 0;
+
+	if ( m_Result == FMOD_OK )
+	{
+		m_ChannelBG->getPosition( &nowTime , FMOD_TIMEUNIT_MS );
+	}
+
+	if ( m_Result == FMOD_OK )
+	{
+		return nowTime;
+	}
+
+	return 0;
+}

@@ -26,6 +26,8 @@ public:
 	HRESULT				SetPauseBG( const bool isPause = true );
 
 	bool				GetIsPlaying();
+	UINT				GetPlayTime();
+
 private:
 	void				DeleteSound();
 	HRESULT				CheckError();

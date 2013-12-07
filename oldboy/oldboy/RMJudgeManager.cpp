@@ -114,7 +114,7 @@ void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
 
 				if ( m_IsItemRecoverOn[playerNumber] == true )
 				{
-					playerClass->AddHP(2);
+					playerClass->AddHP(4);
 				}
 
 				//키 누르면서 바로 지우면 플래그 세팅이 안됨

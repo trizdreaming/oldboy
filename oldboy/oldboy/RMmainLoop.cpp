@@ -662,8 +662,6 @@ void CRMmainLoop::TestSound()
 //음악 선택 화면에서 
 //////////////////////////////////////////////////////////////////////////
 #ifdef _DEBUG
-UINT			m_GameStartTime = timeGetTime();
-UINT			m_ElapsedTime = 0;
 bool			START_RECORDING = true;
 #endif
 HRESULT CRMmainLoop::TestKeyboard()
@@ -674,13 +672,12 @@ HRESULT CRMmainLoop::TestKeyboard()
 		static std::string recordTime = "";
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_PLAY )
 		{
-			m_ElapsedTime = timeGetTime() - m_GameStartTime;
-			recordTime = recordTime + std::to_string(m_ElapsedTime) + "-left\n";
+			// m_ElapsedTime = timeGetTime() - m_GameStartTime;
+			recordTime = recordTime + std::to_string(CRMsound::GetInstance()->GetPlayTime()) + "-left\n";
 		}
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET2 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_PLAY )
 		{
-			m_ElapsedTime = timeGetTime() - m_GameStartTime;
-			recordTime = recordTime + std::to_string(m_ElapsedTime) + "-right\n";
+			recordTime = recordTime + std::to_string(CRMsound::GetInstance()->GetPlayTime()) + "-right\n";
 		}
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_RESULT )
 		{

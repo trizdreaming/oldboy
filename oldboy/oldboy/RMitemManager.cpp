@@ -409,7 +409,7 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier )
 	
 	return WIDGET_NONE;
 }
-/*
+
 WidgetType CRMitemManager::GetWidgetTypeOfCard( PlayerNumber player )
 {
 	ItemType thisItemType = m_ActiveItem[player];
@@ -422,7 +422,7 @@ WidgetType CRMitemManager::GetWidgetTypeOfCard( PlayerNumber player )
 	
 	return thisItem->GetWidgetTypeOfCard();
 }
-*/
+
 void CRMitemManager::Reset()
 {
 	m_ActiveItem[PLAYER_ONE] = ITEM_TYPE_NONE;

@@ -101,34 +101,26 @@ void CRMnoteManager::StartNote()
 
 		if ( m_ElapsedTime > (m_P1NoteReadyTime + m_PausedTime) )
 		{
-			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_ONE) != ITEM_T1_SCORE_UP )
+			// 너무 붙어 있는 노트는 생략
+			int noteTurm = (m_P1NoteReadyTime - m_P1NoteBeforeTime);
+			if ( noteTurm > 100 )
 			{
-				// 너무 붙어 있는 노트는 생략
-				int noteTurm = (m_P1NoteReadyTime - m_P1NoteBeforeTime);
-				if ( noteTurm > 100 )
-				{
-					CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_P1NoteReadyType );
-					m_P1NoteBeforeTime = m_P1NoteReadyTime;
-				}
+				CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_P1NoteReadyType );
+				m_P1NoteBeforeTime = m_P1NoteReadyTime;
 			}
 			m_P1NoteReadyTime = UINT_MAX;
 		}
 		if ( m_ElapsedTime > (m_P2NoteReadyTime + m_PausedTime) )
-			
 		{
-			if ( CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_TWO) != ITEM_T1_SCORE_UP )
+			int noteTurm = (m_P2NoteReadyTime - m_P2NoteBeforeTime);
+			if ( noteTurm > 100 )
 			{
-				int noteTurm = (m_P2NoteReadyTime - m_P2NoteBeforeTime);
-				if ( noteTurm > 100 )
-				{
-					CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , m_P2NoteReadyType );
-					m_P2NoteBeforeTime = m_P2NoteReadyTime;
-				}
+				CRMjudgeManager::GetInstance()->StartNote( PLAYER_TWO , m_P2NoteReadyType );
+				m_P2NoteBeforeTime = m_P2NoteReadyTime;
 			}
 			m_P2NoteReadyTime = UINT_MAX;
 		}
 	}
-
 }
 
 void CRMnoteManager::StartItemDelay( PlayerNumber player )

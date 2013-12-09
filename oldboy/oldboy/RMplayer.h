@@ -24,14 +24,19 @@ public:
 
 	bool		IsDead() { return ( m_HP <= 0 ) ? true : false; }
 
+	void		StartScoreBoost() { m_IsItemBoostOn = true; }
+	void		StopScoreBoost() { m_IsItemBoostOn = false; }
+
 private:
 	void		CalcCombo();
 
-	UINT		m_Count[COUNT_MAX];
+	std::array<UINT, COUNT_MAX>		m_Count;
 	
 	bool		m_PrevIsCombo;
 
 	int			m_HP;	// 셔터를 관리하기 위함[Health Point]
 	float		m_MP;	// 게이지를 관리하기 위함[Mana Point]
+
+	bool		m_IsItemBoostOn;
 };
 

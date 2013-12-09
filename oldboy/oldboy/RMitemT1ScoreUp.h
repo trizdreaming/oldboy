@@ -6,5 +6,7 @@ class CRMitemT1ScoreUp :
 public:
 	CRMitemT1ScoreUp(void);
 	~CRMitemT1ScoreUp(void);
-};
 
+	void	Active();
+	void	DeActive();
+};

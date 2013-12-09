@@ -5,9 +5,10 @@
 CRMplayer::CRMplayer(void) :
 	m_PrevIsCombo(false),
 	m_HP(PLAYER_HP_MAX),
-	m_MP(0)
+	m_MP(0),
+	m_IsItemBoostOn(false)
 {
-	ZeroMemory( m_Count, sizeof(m_Count) );
+	ZeroMemory( &m_Count, sizeof(m_Count) );
 }
 
 CRMplayer::~CRMplayer(void)
@@ -16,7 +17,8 @@ CRMplayer::~CRMplayer(void)
 
 void CRMplayer::Init()
 {
-	ZeroMemory( m_Count, sizeof(m_Count) );
+	ZeroMemory( &m_Count, sizeof(m_Count) );
+	m_IsItemBoostOn = false;
 	m_PrevIsCombo = false;
 	m_HP = PLAYER_HP_MAX;
 	m_MP = 0;
@@ -48,7 +50,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	{
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
-		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT;
+		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT * m_IsItemBoostOn ? 3 : 1;
 		m_MP += 18;
 		//
 		//m_MP += 160;
@@ -61,7 +63,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		break;
 	case JUDGE_GOOD:
 		++m_Count[COUNT_GOOD];
-		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD;
+		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD * m_IsItemBoostOn ? 2 : 1;;
 		m_MP += 12;
 		//
 		// m_MP += 80;

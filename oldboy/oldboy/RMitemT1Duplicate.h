@@ -6,5 +6,8 @@ class CRMitemT1Duplicate :
 public:
 	CRMitemT1Duplicate(void);
 	~CRMitemT1Duplicate(void);
+
+	void			Active();
+	void			DeActive();
 };
 

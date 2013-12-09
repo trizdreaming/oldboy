@@ -1,5 +1,6 @@
 ﻿#include "stdafx.h"
 #include "RMitemT1Duplicate.h"
+#include "RMnoteManager.h"
 
 
 CRMitemT1Duplicate::CRMitemT1Duplicate(void)
@@ -12,4 +13,16 @@ CRMitemT1Duplicate::CRMitemT1Duplicate(void)
 
 CRMitemT1Duplicate::~CRMitemT1Duplicate(void)
 {
+}
+
+void CRMitemT1Duplicate::Active()
+{
+	CRMnoteManager::GetInstance()->StartItemDuplicate( m_TargetPlayer );
+	CRMitem::Active();
+}
+
+void CRMitemT1Duplicate::DeActive()
+{
+	CRMnoteManager::GetInstance()->StopItemDuplicate( m_TargetPlayer );
+	CRMitem::DeActive();
 }

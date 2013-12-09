@@ -22,6 +22,9 @@ public:
 	void			StartItemDelay( PlayerNumber player );
 	void			StopItemDelay( PlayerNumber player );
 
+	void			StartItemDuplicate( PlayerNumber player );
+	void			StopItemDuplicate( PlayerNumber player );
+
 private:
 	bool			m_GamePlaying;
 
@@ -46,5 +49,7 @@ private:
 
 	// 아이템 발동 상황을 표시
 	std::array<bool, PLAYER_MAX>	m_IsItemDelayOn;
+	std::array<bool, PLAYER_MAX>	m_IsItemDuplicateOn;
+	std::array<bool, PLAYER_MAX>	m_IsItemDuplicateReady;
 };
 

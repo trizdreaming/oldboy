@@ -79,7 +79,7 @@ void CRMchildItemCardDisplay::Update()
 			{
 				m_Alpha += 0.1f;
 
-				if ( m_Alpha >= 1.0f )
+				if ( m_Alpha >= 1.0f ) //sm9: 부동소수점은 0이 아닌 이상 == 연산이 제대로 되지 않는다. 왜 그런지는 알아서 찾아보삼.
 				{
 					m_FlickFlag = true;
 				}

@@ -51,7 +51,24 @@ private:
 	// 실제 아이템이 생성 관리 되는 메모리풀
 	std::array<CRMitem*, ITEM_TYPE_MAX * 2>			m_ItemPool;
 
+	//sm9: 이런식으로 그냥 2차원 배열 형태로 써라.. 괜히 1차원 배열로 복잡하게 하지말고 ㅋㅋ
+	//@{
+	template <typename IType, int ROW, int COL>
+	struct array2d_
+	{
+		typedef std::array< std::array<IType, COL>, ROW> type ;
+	} ;
+	
+	typedef array2d_<CRMitem*, PLAYER_MAX, ITEM_TYPE_MAX>::type ItemPools ;
+
+	ItemPools m_ItemPools ;
+	//@}
+
+	
 	std::array<UINT, TIER_MAX>						m_PrevTimeTierRotate;
 	std::array<UINT, TIER_MAX>						m_TimeSliceForTier;
 };
+
+
+
 

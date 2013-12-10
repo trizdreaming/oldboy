@@ -41,7 +41,10 @@ void CRMitemManager::Create()
 	CRMitem* item = new CRMitemT1Duplicate();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T1_DUPLICATE] = item;
+
+	//sm9: 그냥 2차원 배열 쓰지?? 왜 이렇게 복잡하게 플레이어 모두다 일차원 배열에 때려박아서 하니?
+
+	m_ItemPool[ITEM_T1_DUPLICATE] = item; 
 
 	item = new CRMitemT1Mist();
 	item->m_OwnPlayer = PLAYER_ONE;
@@ -180,6 +183,8 @@ void CRMitemManager::Update()
 	float p1Tier1Position = SCREEN_SIZE_Y - p1MaxMP * 0.3f;
 	float p1Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.6f;
 	float p1Tier3Position = SCREEN_SIZE_Y - p1MaxMP * 0.9f;
+
+	//sm9: C++에서는 형변환을 ()쓰지말고 static_cast<> 같은거 쓰셈.
 
 	if ( (int)m_ItemPosition[TIER_1P_THREE] != (int)p1Tier3Position )
 	{

@@ -16,6 +16,6 @@ CRMitemT2Barrier::~CRMitemT2Barrier(void)
 
 void CRMitemT2Barrier::Active()
 {
-	m_TimeSlice = 30000;
+	m_TimeSlice = 30000; //sm9: 안알랴줌
 	CRMitem::Active();
 }

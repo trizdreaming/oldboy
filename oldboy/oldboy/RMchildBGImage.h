@@ -6,7 +6,7 @@ class CRMchildBGImage :
 {
 public:
 	CRMchildBGImage(void);
-	~CRMchildBGImage(void);
+	virtual ~CRMchildBGImage(void);
 
 	virtual void	Update();
 };

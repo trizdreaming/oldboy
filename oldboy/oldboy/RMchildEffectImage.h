@@ -6,7 +6,7 @@ class CRMchildEffectImage:
 {
 public:
 	CRMchildEffectImage(void);
-	~CRMchildEffectImage(void);
+	virtual ~CRMchildEffectImage(void);
 
 	virtual void	Update();
 

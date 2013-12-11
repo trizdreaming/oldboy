@@ -9,7 +9,7 @@ class CRMchildPauseImage :
 
 public:
 	CRMchildPauseImage(void);
-	~CRMchildPauseImage(void);
+	virtual ~CRMchildPauseImage(void);
 
 	virtual void	Update();
 };

@@ -6,7 +6,7 @@ class CRMchildGauge :
 {
 public:
 	CRMchildGauge(void);
-	~CRMchildGauge(void);
+	virtual ~CRMchildGauge(void);
 
 public:
 	virtual void	Update();

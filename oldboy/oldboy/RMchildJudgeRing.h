@@ -6,7 +6,7 @@ class CRMchildJudgeRing :
 {
 public:
 	CRMchildJudgeRing(void);
-	~CRMchildJudgeRing(void);
+	virtual ~CRMchildJudgeRing(void);
 
 	virtual void Update();
 };

@@ -6,7 +6,7 @@ class CRMchildNote :
 {
 public:
 	CRMchildNote(void);
-	~CRMchildNote(void);
+	virtual ~CRMchildNote(void);
 
 	virtual void	Update();
 	virtual void	Render();

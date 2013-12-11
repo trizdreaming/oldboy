@@ -6,12 +6,12 @@
 
 
 CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
-	m_TimeSlice(10),
+	m_TimeSlice(30),
 	m_PrevTime(0),
-	m_FlickFlag(true),
-	m_OrderNumber(0),
-	m_OrderFlag(false),
-	m_MoveOffset(0)
+	m_FlickFlag(true)
+	//m_OrderNumber(0),
+	//m_OrderFlag(false),
+	//m_MoveOffset(0)
 {
 	ZeroMemory(&m_Matrix, sizeof(m_Matrix));
 	ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
@@ -22,8 +22,10 @@ CRMchildItemCardDisplay::~CRMchildItemCardDisplay(void)
 {
 }
 
+/*
 void CRMchildItemCardDisplay::Render()
 {
+
 	// 원래 좌표축으로 돌리기 위한 현재 좌표축 임시 저장
 	CRMrender::GetInstance()->GetRenderTarget()->GetTransform( &m_PrevMatrix );
 
@@ -41,6 +43,7 @@ void CRMchildItemCardDisplay::Render()
 	//원래의 좌표축으로 돌려 놓는 것
 	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_PrevMatrix );
 }
+	*/
 
 void CRMchildItemCardDisplay::Update()
 {
@@ -54,7 +57,7 @@ void CRMchildItemCardDisplay::Update()
 	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
 	{
 		m_Visible = false;
-		m_Rotation = 0;
+		//m_Rotation = 0;
 		return;
 	}
 
@@ -62,6 +65,31 @@ void CRMchildItemCardDisplay::Update()
 
 	UINT	thisTime = timeGetTime();
 
+	if( m_PrevTime + m_TimeSlice < thisTime )
+	{
+		if( m_FlickFlag == true )
+		{
+			m_Alpha -= 0.1f;
+			if( m_Alpha <= 0.0f )
+			{
+				m_FlickFlag = false;
+			}
+		}
+		else
+		{
+			m_Alpha += 0.2f;
+			if ( m_Alpha >= 1.0f )
+			{
+				m_FlickFlag = true;
+			}
+		}
+		//printConsole("알파 값: %f \n", m_Alpha);
+		m_PrevTime = thisTime;
+
+	}
+}
+
+	/*
 	if ( m_OrderNumber == 29 )
 	{
 		if ( m_PrevTime + m_TimeSlice < thisTime )
@@ -113,4 +141,4 @@ void CRMchildItemCardDisplay::Update()
 			}
 		}
 	}
-}
+	*/

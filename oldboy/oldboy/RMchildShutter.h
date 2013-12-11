@@ -6,7 +6,7 @@ class CRMchildShutter :
 {
 public:
 	CRMchildShutter(void);
-	~CRMchildShutter(void);
+	virtual ~CRMchildShutter(void);
 
 	virtual void	Update();
 };

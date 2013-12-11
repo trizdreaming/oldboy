@@ -18,6 +18,9 @@
 *.suo
 *.user
 
+# Temp Recording Text File
+recordNote.txt
+
 _ReSharper.*/
 *.cd
 *.tlog

@@ -20,6 +20,7 @@ public:
 	void						DeleteNoteListFront( LayerType layer );
 	
 	void						RemoveAllNote();
+	void						RemoveNoteFromPlayerLayer( PlayerNumber );
 
 	void						AddObject( CRMobject* bject, LayerType layer );
 

@@ -15,14 +15,16 @@ public:
 	void		SetCount( CountType countType, UINT count );
 	
 	void		AddHP( int hpUp );
-	void		SubHP() { m_HP = m_HP - 10; }
+	void		SubHP();
 	int			GetHP() { return m_HP; }
 
 	void		ResetMP() { m_MP = 0; }
 	float		GetMP() { return m_MP; }
 	float		GetMaxMP() { return m_HP * PLAYER_HP_MP_RATE; }
 
-	bool		IsDead() { return ( m_HP <= 0 ) ? true : false; }
+	void		End() { m_HP = 0; }
+	bool		IsEnd() { return (m_HP == 0); }
+	bool		IsDead() { return ( m_HP <= 20 ); }
 
 	void		StartScoreBoost() { m_IsItemBoostOn = true; }
 	void		StopScoreBoost() { m_IsItemBoostOn = false; }

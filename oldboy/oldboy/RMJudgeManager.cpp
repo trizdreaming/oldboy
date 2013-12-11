@@ -66,8 +66,23 @@ void CRMjudgeManager::JudgeNote() const
 	// 만약 Dead일 때 Judge 자체를 안 해버리면?
 	//
 	// DeleteNote를 호출하지 않으므로 메모리풀로 다시 돌아가지 않음
-	JudgeNoteByPlayer( PLAYER_ONE );
-	JudgeNoteByPlayer( PLAYER_TWO );
+	if ( !CRMplayer1P::GetInstance()->IsDead() )
+	{
+		JudgeNoteByPlayer( PLAYER_ONE );
+	}
+	else
+	{
+		CRMobjectManager::GetInstance()->RemoveNoteFromPlayerLayer( PLAYER_ONE );
+	}
+	
+	if ( !CRMplayer2P::GetInstance()->IsDead() )
+	{
+		JudgeNoteByPlayer( PLAYER_TWO );
+	}
+	else
+	{
+		CRMobjectManager::GetInstance()->RemoveNoteFromPlayerLayer( PLAYER_TWO );
+	}
 }
 
 

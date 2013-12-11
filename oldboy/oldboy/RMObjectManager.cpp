@@ -156,25 +156,24 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 
 void CRMobjectManager::Update()
 {
-	for ( auto& iter : m_ObjectListLayerBackground )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListLayerCard )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListMemoryPoolOfNote )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListLayerJudgeGauge )
-	{
-		iter->Update();
-	}
-
 	if ( !CRMpauseManager::GetInstance()->IsPause() )
 	{
+		for ( auto& iter : m_ObjectListLayerBackground )
+		{
+			iter->Update();
+		}
+		for ( auto& iter : m_ObjectListLayerCard )
+		{
+			iter->Update();
+		}
+		for ( auto& iter : m_ObjectListLayerJudgeGauge )
+		{
+			iter->Update();
+		}
+		for ( auto& iter : m_ObjectListMemoryPoolOfNote )
+		{
+			iter->Update();
+		}
 		for ( auto& iter : m_ObjectListLayerItem )
 		{
 			iter->Update();
@@ -187,20 +186,18 @@ void CRMobjectManager::Update()
 		{
 			iter->Update();
 		}
-	}
-
-
-	for ( auto& iter : m_ObjectListLayerEffect )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListLayerNoteHit )
-	{
-		iter->Update();
-	}
-	for ( auto& iter : m_ObjectListLayerShutter )
-	{
-		iter->Update();
+		for ( auto& iter : m_ObjectListLayerEffect )
+		{
+			iter->Update();
+		}
+		for ( auto& iter : m_ObjectListLayerNoteHit )
+		{
+			iter->Update();
+		}
+		for ( auto& iter : m_ObjectListLayerShutter )
+		{
+			iter->Update();
+		}
 	}
 	
 	m_ObjectListLayerLabel.clear();
@@ -327,6 +324,8 @@ void CRMobjectManager::DeleteNoteListFront( LayerType layer )
 	}
 }
 
+
+
 void CRMobjectManager::RemoveAllNote()
 {
 	CRMobject* thisNote = nullptr;
@@ -345,6 +344,37 @@ void CRMobjectManager::RemoveAllNote()
 		m_ObjectListMemoryPoolOfNote.push_back( thisNote );
 		m_ObjectListLayerNotePlayer2.pop_back();
 	}
+	for ( auto &iter : m_ObjectListMemoryPoolOfNote )
+	{
+		iter->SetVisible(false);
+	}
+}
+
+void CRMobjectManager::RemoveNoteFromPlayerLayer( PlayerNumber playerNumber )
+{
+	CRMobject* thisNote = nullptr;
+
+	if ( playerNumber == PLAYER_ONE )
+	{
+		while ( m_ObjectListLayerNotePlayer1.size() > 0 )
+		{
+			thisNote = GetObjectFront( LAYER_NOTE1 );
+			thisNote->SetVisible(false);
+			m_ObjectListMemoryPoolOfNote.push_back( thisNote );
+			m_ObjectListLayerNotePlayer1.pop_back();
+		}
+	}
+	else if ( playerNumber == PLAYER_TWO )
+	{
+		while ( m_ObjectListLayerNotePlayer2.size() > 0 )
+		{
+			thisNote = GetObjectFront( LAYER_NOTE2 );
+			thisNote->SetVisible(false);
+			m_ObjectListMemoryPoolOfNote.push_back( thisNote );
+			m_ObjectListLayerNotePlayer2.pop_back();
+		}
+	}
+	
 	for ( auto &iter : m_ObjectListMemoryPoolOfNote )
 	{
 		iter->SetVisible(false);

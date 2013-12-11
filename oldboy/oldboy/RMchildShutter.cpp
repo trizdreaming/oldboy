@@ -34,14 +34,13 @@ void CRMchildShutter::Update()
 
 	m_Visible = true;
 
-	if ( (m_PlayerNumber == PLAYER_ONE && CRMplayer1P::GetInstance()->IsDead()) ||
-			(m_PlayerNumber == PLAYER_TWO && CRMplayer2P::GetInstance()->IsDead()) )
+	if ( (m_PlayerNumber == PLAYER_ONE && CRMplayer1P::GetInstance()->IsEnd()) ||
+			(m_PlayerNumber == PLAYER_TWO && CRMplayer2P::GetInstance()->IsEnd()) )
 	{
 		m_PositionY = 0;
 		return;
 	}
 
-	
 	if ( m_PlayerNumber == PLAYER_ONE )
 	{
 		m_PositionX = SHUTTER_P1_START_POSITION_X;
@@ -51,7 +50,23 @@ void CRMchildShutter::Update()
 		m_PositionX = SHUTTER_P2_START_POSITION_X;
 	}
 
-	if ( m_PlayerNumber == PLAYER_ONE )
+	if ( m_PositionY >= -1 )
+	{
+		if ( m_PlayerNumber == PLAYER_ONE )
+		{
+			CRMplayer1P::GetInstance()->End();
+		}
+		if ( m_PlayerNumber == PLAYER_TWO )
+		{
+			CRMplayer2P::GetInstance()->End();
+		}
+	}
+
+	if ( m_PositionY > 534 - 668 )
+	{
+		resultPosition = 0;
+	}
+	else if ( m_PlayerNumber == PLAYER_ONE)
 	{
 		resultPosition = SHUTTER_START_POSITION_Y + (PLAYER_HP_MAX - (float) CRMplayer1P::GetInstance()->GetHP() ) * -((float) SHUTTER_START_POSITION_Y / PLAYER_HP_MAX);
 	}

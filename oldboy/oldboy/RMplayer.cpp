@@ -52,9 +52,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		++m_Count[COUNT_PERFECT];
 		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT * m_IsItemBoostOn ? 3 : 1;
 		m_MP += 18;
-		//
-		//m_MP += 160;
-		// 디버깅을 위한 테스트 모드 - 마나 무한대
+		
 		if( m_MP > m_HP * PLAYER_HP_MP_RATE )
 		{
 			m_MP = m_HP * PLAYER_HP_MP_RATE;
@@ -65,9 +63,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		++m_Count[COUNT_GOOD];
 		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD * m_IsItemBoostOn ? 2 : 1;;
 		m_MP += 12;
-		//
-		// m_MP += 80;
-		// 디버깅을 위한 테스트 모드 - 마나 무한대
+		
 		if( m_MP > m_HP * PLAYER_HP_MP_RATE )
 		{
 			m_MP = m_HP * PLAYER_HP_MP_RATE;
@@ -100,5 +96,13 @@ void CRMplayer::AddHP( int hpUp )
 	if ( m_HP > PLAYER_HP_MAX )
 	{
 		m_HP = PLAYER_HP_MAX;
+	}
+}
+
+void CRMplayer::SubHP()
+{
+	if ( m_HP > 20 )
+	{
+		m_HP = m_HP - 5;
 	}
 }

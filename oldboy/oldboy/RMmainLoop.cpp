@@ -233,7 +233,7 @@ void CRMmainLoop::RunMessageLoop()
 				CRMjudgeManager::GetInstance()->JudgeNote();
 
 				// 이렇게 자주 해줄 필요는 없는데...
-				if ( ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() ) || !CRMsound::GetInstance()->GetIsPlaying() )
+				if ( ( CRMplayer1P::GetInstance()->IsEnd() && CRMplayer2P::GetInstance()->IsEnd() ) || !CRMsound::GetInstance()->GetIsPlaying() )
 				{
 					GoNextScene();
 				}

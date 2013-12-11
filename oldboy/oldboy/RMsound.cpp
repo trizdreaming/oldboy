@@ -102,6 +102,13 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( BGM_RESULT, SOUND_BG_RESULT );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );

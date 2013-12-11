@@ -37,6 +37,7 @@ extern const char* FOLDER_SLASH;
 extern const char* MUSIC_FOLDER_SEARCH;	// 뮤직 폴더 이하 모든 파일 의미
 extern const char* MUSIC_FOLDER;
 extern const char* BGM_TITLE;
+extern const char* BGM_RESULT;
 
 extern const wchar_t* OPENING_VIDEO_FILE;
 

@@ -40,6 +40,7 @@ const char* FOLDER_SLASH			= "/";
 const char* MUSIC_FOLDER_SEARCH		= "./Music/.\\*"; // 뮤직 폴더 이하 모든 파일 의미
 const char* MUSIC_FOLDER			= "./Music/";
 const char* BGM_TITLE				= "./Resource/bgm_title_00_01.mp3";
+const char* BGM_RESULT				= "./Resource/bgm_result_00_01.mp3";
 
 const wchar_t* OPENING_VIDEO_FILE	= L"./Resource/sample.avi";
 

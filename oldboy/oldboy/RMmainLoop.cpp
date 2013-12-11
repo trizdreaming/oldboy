@@ -235,9 +235,7 @@ void CRMmainLoop::RunMessageLoop()
 				// 이렇게 자주 해줄 필요는 없는데...
 				if ( ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() ) || !CRMsound::GetInstance()->GetIsPlaying() )
 				{
-
-					CRMobjectManager::GetInstance()->RemoveAllNote();
-					m_SceneType = SCENE_RESULT;
+					GoNextScene();
 				}
 			}
 			else if ( m_SceneType == SCENE_RESULT )
@@ -663,13 +661,13 @@ void CRMmainLoop::TestSound()
 //////////////////////////////////////////////////////////////////////////
 #ifdef _DEBUG
 bool			START_RECORDING = true;
+std::string		recordTime = "";
 #endif
 HRESULT CRMmainLoop::TestKeyboard()
 {
 #ifdef _DEBUG
 	if ( START_RECORDING )
-	{
-		static std::string recordTime = "";
+	{	
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_PLAY )
 		{
 			// m_ElapsedTime = timeGetTime() - m_GameStartTime;
@@ -684,6 +682,8 @@ HRESULT CRMmainLoop::TestKeyboard()
 			std::ofstream SaveFile("recordNote.txt");
 			SaveFile << recordTime;
 			SaveFile.close();
+
+			recordTime.clear();
 		}
 	}
 #endif
@@ -919,9 +919,21 @@ HRESULT CRMmainLoop::GoNextScene()
 		CRMplayer2P::GetInstance()->Init();
 		CRMitemManager::GetInstance()->Reset();
 
+#ifdef _DEBUG
+		recordTime.clear();
+#endif // _DEBUG
+
 		return S_OK;
 	}
 
+	if ( m_SceneType == SCENE_PLAY )
+	{
+		CRMobjectManager::GetInstance()->RemoveAllNote();
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_RESULT, true );
+		m_SceneType = SCENE_RESULT;
+
+		return S_OK;
+	}
 
 	if ( m_SceneType == SCENE_RESULT )
 	{

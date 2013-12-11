@@ -3,6 +3,9 @@
 #include "RMmacro.h"
 #include "RMitemManager.h"
 #include "RMrender.h"
+#include "RMplayer1P.h"
+#include "RMplayer2P.h"
+
 
 
 CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
@@ -13,8 +16,8 @@ CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
 	//m_OrderFlag(false),
 	//m_MoveOffset(0)
 {
-	ZeroMemory(&m_Matrix, sizeof(m_Matrix));
-	ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
+	//ZeroMemory(&m_Matrix, sizeof(m_Matrix));
+	//ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
 }
 
 
@@ -51,6 +54,11 @@ void CRMchildItemCardDisplay::Update()
 
 	if ( m_Visible == false )
 	{
+		return;
+	}
+	if ( (m_PlayerNumber == PLAYER_ONE && CRMplayer1P::GetInstance()->IsDead()) || m_PlayerNumber == PLAYER_TWO && CRMplayer2P::GetInstance()->IsDead() )
+	{
+		m_Visible = false;
 		return;
 	}
 

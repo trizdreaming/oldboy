@@ -20,5 +20,6 @@ private:
 	bool			m_FlickFlag;
 	//bool			m_OrderFlag;
 	//float			m_MoveOffset;
+
 };
 

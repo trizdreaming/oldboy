@@ -66,6 +66,34 @@ void CRMchildNote::Update()
 				m_WidgetType = m_Original_type;
 			}
 		}
+		else if (CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T1_MIST  )
+		{
+			int tempPositionY = static_cast<int>(m_PositionY);
+
+			if ( tempPositionY >= 0 && tempPositionY <= 150 )
+			{
+				if ( (tempPositionY % 30) == 0 )
+				{
+					m_Alpha -= 0.2;
+				}
+			}
+
+			else if ( tempPositionY >= 150 && tempPositionY <= 350 )
+			{
+				m_Alpha = 0.0;
+				printConsole("tempposition %d \n", tempPositionY);
+
+				if ( tempPositionY >= 200 && tempPositionY <= 210 )
+				{
+					m_Alpha = 1.0;
+					printConsole("발동!! \n");
+				}
+			}
+			else
+			{
+				m_Alpha = 1.0;
+			}
+		}
 		else
 		{
 			m_WidgetType = m_Original_type;

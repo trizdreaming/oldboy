@@ -31,7 +31,8 @@ void CRMchildNote::Update()
 	{
 		m_PositionX = DEFAULT_POSITION_X;
 		m_PositionY = DEFAULT_POSITION_Y;
-		m_Rotation = 0;
+		m_Rotation = 0.f;
+		m_Alpha = 1.f;
 
 		return;
 	}

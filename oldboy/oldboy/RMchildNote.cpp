@@ -74,7 +74,7 @@ void CRMchildNote::Update()
 			{
 				if ( (tempPositionY % 30) == 0 )
 				{
-					m_Alpha -= 0.2;
+					m_Alpha -= 0.2f;
 				}
 			}
 

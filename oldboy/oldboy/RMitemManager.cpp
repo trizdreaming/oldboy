@@ -16,7 +16,7 @@
 #include "RMplayer2P.h"
 #include "RMinput.h"
 #include "RMpauseManager.h"
-#include "RMwellRandom.h"
+#include "RMrandomGenerator.h"
 
 
 CRMitemManager::CRMitemManager(void)
@@ -129,12 +129,12 @@ void CRMitemManager::Create()
 	item->m_TargetPlayer = PLAYER_ONE;
 	m_ItemPool[ITEM_T3_MAX + ITEM_T3_REVERSE] = item;
 
-	m_TierItem[TIER_1P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
-	m_TierItem[TIER_1P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
-	m_TierItem[TIER_1P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
-	m_TierItem[TIER_2P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
-	m_TierItem[TIER_2P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
-	m_TierItem[TIER_2P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
+	m_TierItem[TIER_1P_ONE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
+	m_TierItem[TIER_1P_TWO] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
+	m_TierItem[TIER_1P_THREE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
+	m_TierItem[TIER_2P_ONE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
+	m_TierItem[TIER_2P_TWO] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
+	m_TierItem[TIER_2P_THREE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
 
 	m_TimeSliceForTier[TIER_1P_ONE] = m_TimeSliceForTier[TIER_2P_ONE] = 5000;
 	m_TimeSliceForTier[TIER_1P_TWO] = m_TimeSliceForTier[TIER_2P_TWO] = 4000;
@@ -363,22 +363,22 @@ void CRMitemManager::RotateItem( ItemTierType tier )
 	switch (tier)
 	{
 	case TIER_1P_ONE:
-		m_TierItem[TIER_1P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
+		m_TierItem[TIER_1P_ONE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
 		break;
 	case TIER_1P_TWO:
-		m_TierItem[TIER_1P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
+		m_TierItem[TIER_1P_TWO] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
 		break;
 	case TIER_1P_THREE:
-		m_TierItem[TIER_1P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
+		m_TierItem[TIER_1P_THREE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
 		break;
 	case TIER_2P_ONE:
-		m_TierItem[TIER_2P_ONE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
+		m_TierItem[TIER_2P_ONE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
 		break;
 	case TIER_2P_TWO:
-		m_TierItem[TIER_2P_TWO] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
+		m_TierItem[TIER_2P_TWO] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
 		break;
 	case TIER_2P_THREE:
-		m_TierItem[TIER_2P_THREE] = (ItemType) CRMwellRandom::GetInstance()->WellRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
+		m_TierItem[TIER_2P_THREE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T3_NONE + 1, ITEM_T3_MAX - 1);
 		break;
 	case TIER_NONE:
 	case TIER_MAX:

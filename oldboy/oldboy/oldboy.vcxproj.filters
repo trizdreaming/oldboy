@@ -289,9 +289,6 @@
     <ClInclude Include="RMitemT3Recovery.h">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClInclude>
-    <ClInclude Include="RMwellRandom.h">
-      <Filter>RhythmMatch\MainLoop</Filter>
-    </ClInclude>
     <ClInclude Include="RMdummyRender.h">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
@@ -306,6 +303,9 @@
     </ClInclude>
     <ClInclude Include="RMitemT1ScoreUp.h">
       <Filter>RhythmMatch\Object\Item</Filter>
+    </ClInclude>
+    <ClInclude Include="RMrandomGenerator.h">
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -492,9 +492,6 @@
     <ClCompile Include="RMitemT3Reverse.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
     </ClCompile>
-    <ClCompile Include="RMwellRandom.cpp">
-      <Filter>RhythmMatch\MainLoop</Filter>
-    </ClCompile>
     <ClCompile Include="RMdummyRender.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
@@ -509,6 +506,9 @@
     </ClCompile>
     <ClCompile Include="RMitemT1ScoreUp.cpp">
       <Filter>RhythmMatch\Object\Item</Filter>
+    </ClCompile>
+    <ClCompile Include="RMrandomGenerator.cpp">
+      <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

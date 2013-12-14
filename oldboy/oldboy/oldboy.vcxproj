@@ -164,7 +164,7 @@
     <ClInclude Include="RMresultManager.h" />
     <ClInclude Include="RMsound.h" />
     <ClInclude Include="RMvideoPlayer.h" />
-    <ClInclude Include="RMwellRandom.h" />
+    <ClInclude Include="RMrandomGenerator.h" />
     <ClInclude Include="RMxmlLoader.h" />
     <ClInclude Include="stdafx.h" />
     <ClInclude Include="targetver.h" />
@@ -234,7 +234,7 @@
     <ClCompile Include="RMresultManager.cpp" />
     <ClCompile Include="RMsound.cpp" />
     <ClCompile Include="RMvideoPlayer.cpp" />
-    <ClCompile Include="RMwellRandom.cpp" />
+    <ClCompile Include="RMrandomGenerator.cpp" />
     <ClCompile Include="RMxmlLoader.cpp" />
     <ClCompile Include="stdafx.cpp">
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">Create</PrecompiledHeader>

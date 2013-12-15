@@ -51,7 +51,7 @@ void CRMchildNote::Update()
 		else if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T3_REVERSE )
 		{
 			if ( m_PositionY + 80 < NOTE_JUDGE_PERFECT_START_LINE && 
-				( ( (int) m_PositionY + 80 ) / ( NOTE_JUDGE_PERFECT_START_LINE / 6 ) ) % 2 == 1 )
+				( ( static_cast<int>(m_PositionY) + 80 ) / ( NOTE_JUDGE_PERFECT_START_LINE / 6 ) ) % 2 == 1 )
 			{
 				if ( m_Original_type == WIDGET_NOTE_NORMAL_1 )
 				{
@@ -73,32 +73,41 @@ void CRMchildNote::Update()
 
 			if ( tempPositionY >= 0 && tempPositionY <= 150 )
 			{
-				if ( (tempPositionY % 30) == 0 )
+				if ( (tempPositionY % 15) == 0 )
 				{
-					m_Alpha -= 0.2f;
+					m_Alpha -= 0.1f;
 				}
 			}
-
-			else if ( tempPositionY >= 150 && tempPositionY <= 350 )
+			else if ( tempPositionY >= 150 && tempPositionY <= 380 )
 			{
 				m_Alpha = 0.0;
 				printConsole("tempposition %d \n", tempPositionY);
 
+				/*
 				if ( tempPositionY >= 200 && tempPositionY <= 210 )
 				{
 					m_Alpha = 1.0;
 					printConsole("발동!! \n");
 				}
+				*/
 			}
 			else
 			{
-				m_Alpha = 1.0;
+				if ( m_Alpha < 1.0f && (tempPositionY % 15) == 0 )
+				{
+					m_Alpha += 0.1f;
+				}
+				if ( m_Alpha > 1.0 )
+				{
+					m_Alpha = 1.0f;
+				}
 			}
 		}
 		else
 		{
 			m_WidgetType = m_Original_type;
-			m_Rotation = 0;
+			m_Rotation = 0.0f;
+			m_Alpha = 1.0f;
 		}
 		
 	}

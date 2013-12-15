@@ -51,3 +51,9 @@ KeyStatus CRMinput::GetKeyStatusByKey( KeyTable key ) const
 
 	return KEY_STATUS_NOT_PRESSED;
 }
+
+void CRMinput::SetVirtualKeyStatusByKey( KeyTable key )
+{
+	m_PrevKeyState[key] = false;
+	m_NowKeyState[key] = true;
+}

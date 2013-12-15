@@ -5,6 +5,7 @@
 #include "RMxmlLoader.h"
 #include "RMnoteData.h"
 #include "RMitemManager.h"
+#include "RMvirtualPlayer.h"
 
 CRMnoteManager::CRMnoteManager(void):
 	m_GamePlaying(false),
@@ -96,6 +97,7 @@ void CRMnoteManager::StartNote()
 			{
 				m_P2NoteReadyTime += 500;
 			}
+			CRMvirtualPlayer::GetInstance()->SetRandomJudge( m_P2NoteReadyTime, m_P2NoteReadyType, m_P2NoteBeforeTime );
 		}
 	}
 

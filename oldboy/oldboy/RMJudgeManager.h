@@ -23,11 +23,13 @@ public:
 	void						StartItemRecovery( PlayerNumber player );
 	void						StopItemRecovery( PlayerNumber player );
 
+	void						SetVirtualPlayerMode( bool VirPlayerOn );
 private:
 	void						JudgeNoteByPlayer( PlayerNumber playerNumber ) const;
 	void						PrintScore( PlayerNumber player, JudgeType judgeType ) const;
 	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
 
 	std::array<bool, PLAYER_MAX>	m_IsItemRecoverOn;
+	bool							m_VirtualPlayerOn;
 };
 

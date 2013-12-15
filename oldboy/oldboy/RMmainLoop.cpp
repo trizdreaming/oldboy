@@ -32,6 +32,7 @@
 #include "RMchildItemDisplay.h"
 #include "RMdummyRender.h"
 #include "RMchildItemCardDisplay.h"
+#include "RMvirtualPlayer.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -668,6 +669,8 @@ HRESULT CRMmainLoop::TestKeyboard()
 #ifdef _DEBUG
 	if ( START_RECORDING )
 	{	
+		CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(true);
+
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_PLAY )
 		{
 			// m_ElapsedTime = timeGetTime() - m_GameStartTime;
@@ -992,6 +995,7 @@ HRESULT CRMmainLoop::GoPrevScene()
 		CRMplayer2P::GetInstance()->Init();
 		CRMitemManager::GetInstance()->Reset();
 
+		CRMvirtualPlayer::GetInstance()->Initialize();
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
 
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );

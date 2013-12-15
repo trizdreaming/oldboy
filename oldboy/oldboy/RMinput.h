@@ -14,6 +14,7 @@ private:
 public:
 	void				UpdateKeyState();
 	KeyStatus			GetKeyStatusByKey( KeyTable key ) const;
+	void				SetVirtualKeyStatusByKey( KeyTable key );
 
 private:
 	KeyStatus			m_InputKey[MAX_INPUT_KEY];

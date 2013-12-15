@@ -13,10 +13,12 @@
 #include "RMeffectManager.h"
 #include "RMinput.h"
 #include "RMpauseManager.h"
+#include "RMvirtualPlayer.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
 	ZeroMemory(&m_IsItemRecoverOn, sizeof(m_IsItemRecoverOn));
+	m_VirtualPlayerOn = false;
 }
 
 
@@ -208,7 +210,10 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 		target2 = KEY_TABLE_P2_TARGET2;
 	}
 
-
+	if (player == PLAYER_TWO && m_VirtualPlayerOn)
+	{
+		CRMvirtualPlayer::GetInstance()->PlayVirtualPlayer();
+	}
 	if ( note->GetWidgetType() == WIDGET_NOTE_NORMAL_1 )
 	{
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( target2 ) == KEY_STATUS_PRESSED ) )
@@ -328,4 +333,9 @@ void CRMjudgeManager::StartItemRecovery( PlayerNumber player )
 void CRMjudgeManager::StopItemRecovery( PlayerNumber player )
 {
 	m_IsItemRecoverOn[player] = false;
+}
+
+void CRMjudgeManager::SetVirtualPlayerMode( bool VirPlayerOn )
+{
+	m_VirtualPlayerOn = VirPlayerOn;
 }

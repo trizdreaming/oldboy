@@ -12,13 +12,6 @@ const wchar_t* LABEL_JUDGE_MISS		= L"  MISS...";
 const wchar_t* LABEL_PLAY_SCORE		= L"SCORE";
 const wchar_t* LABEL_PLAY_COMBO		= L"COMBO";
 
-const char* LABEL_RESULT_SCORE			= "SCORE   : ";
-const char* LABEL_RESULT_PERFECT		= "PERFECT : ";
-const char* LABEL_RESULT_GOOD			= "GOOD    : ";
-const char* LABEL_RESULT_MISS			= "MISS    : ";
-const char* LABEL_RESULT_COMBO_BONUS	= "COMBO BONUS   : ";
-const char* LABEL_RESULT_MAX_COMBO		= "MAX COMBO   : ";
-
 const wchar_t* LABEL_NAME_P1_SCORE	= L"플레이어1점수";
 const wchar_t* LABEL_NAME_P1_COMBO	= L"플레이어1콤보";
 const wchar_t* LABEL_NAME_P2_SCORE	= L"플레이어2점수";

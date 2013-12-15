@@ -39,9 +39,9 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 		
 		CRMlabel* musicList2 = new CRMlabel();
 		musicList2->CreateLabel( LABEL_NAME_SELECT_LIST2 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
-		musicList2->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+		musicList2->SetRGBA( 17.0f/255, 97.0f/255, 205.0f/255, 1.f );
 		musicList2->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList2->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) + 100 );
+		musicList2->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) + 70 );
 	}
 	if ( totalMusicNum > 2 )	// -1
 	{
@@ -49,9 +49,9 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 
 		CRMlabel* musicList3 = new CRMlabel();
 		musicList3->CreateLabel( LABEL_NAME_SELECT_LIST3 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
-		musicList3->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+		musicList3->SetRGBA( 17.0f/255, 97.0f/255, 205.0f/255, 1.f );
 		musicList3->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList3->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 150 );
+		musicList3->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 130 );
 	}
 	if ( totalMusicNum > 3 )	// 2
 	{
@@ -59,9 +59,9 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 
 		CRMlabel* musicList4 = new CRMlabel();
 		musicList4->CreateLabel( LABEL_NAME_SELECT_LIST4 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
-		musicList4->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+		musicList4->SetRGBA( 17.0f/255, 97.0f/255, 205.0f/255, 1.f );
 		musicList4->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList4->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) + 200 );
+		musicList4->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) + 180 );
 	}
 	if ( totalMusicNum > 4 )	// -2
 	{
@@ -69,9 +69,9 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 
 		CRMlabel* musicList5 = new CRMlabel();
 		musicList5->CreateLabel( LABEL_NAME_SELECT_LIST5 , string2wstring( CRMxmlLoader::GetInstance()->GetMusicData(musicVector.at(indexFix))->GetTitle() ), LABEL_FONT_NORMAL, 35.0F );
-		musicList5->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+		musicList5->SetRGBA( 17.0f/255, 97.0f/255, 205.0f/255, 1.f );
 		musicList5->SetSceneType( SCENE_SELECT_MUSIC );
-		musicList5->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 250 );
+		musicList5->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 210 );
 	}
 	return NULL;
 }

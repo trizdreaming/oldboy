@@ -122,7 +122,7 @@ void CRMresultManager::ShowResult()
 	p2ComboBonus->CreateLabel( L"p2Combo" , string2wstring( std::to_string( player2->GetCount(COUNT_COMBO_SCORE) ) ), LABEL_FONT_NORMAL, 35.0f );
 	p2ComboBonus->SetRGBA( 0.0f, 0.0f, 0.0f, 1.f );
 	p2ComboBonus->SetSceneType( SCENE_RESULT );
-	p2ComboBonus->SetPosition( ( SCREEN_SIZE_X / 2 ) + 335, 465 ); // ???
+	p2ComboBonus->SetPosition( ( SCREEN_SIZE_X / 2 ) + 380, 465 );
 
 	CRMlabel* p2Score = new CRMlabel();
 	p2Score->CreateLabel( L"p2Score" , string2wstring( std::to_string( totalScoreP2 ) ), LABEL_FONT_NORMAL, 35.0f );

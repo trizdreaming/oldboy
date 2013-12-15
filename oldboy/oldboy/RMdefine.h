@@ -31,6 +31,10 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define ITEM_DISPLAY_POSITION_1P_X		270
 #define ITEM_DISPLAY_POSITION_2P_X		785
 
+// 데드라인 관련 위치
+#define ITEM_DEAD_LINE				490
+#define SHUTTER_DEAD_LINE			534
+
 // 포지션 에러 발생 시 리턴 할 값
 #define ERROR_POSITION -9504
 

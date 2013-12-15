@@ -181,6 +181,16 @@ void CRMitemManager::Update()
 	float p1Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.6f;
 	float p1Tier3Position = SCREEN_SIZE_Y - p1MaxMP * 0.9f;
 
+	if (p1Tier2Position > ITEM_DEAD_LINE)
+	{
+		p1Tier1Position = DEFAULT_POSITION_Y;
+		p1Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.45f;
+	}
+	if (p1Tier3Position > ITEM_DEAD_LINE)
+	{
+		p1Tier2Position = DEFAULT_POSITION_Y;
+	}
+
 	if ( (int)m_ItemPosition[TIER_1P_THREE] != (int)p1Tier3Position )
 	{
 		m_ItemPosition[TIER_1P_ONE] += (p1Tier1Position - m_ItemPosition[TIER_1P_ONE]) / 20;
@@ -192,6 +202,16 @@ void CRMitemManager::Update()
 	float p2Tier2Position = SCREEN_SIZE_Y - p2MaxMP * 0.6f;
 	float p2Tier3Position = SCREEN_SIZE_Y - p2MaxMP * 0.9f;
 
+	if (p2Tier2Position > ITEM_DEAD_LINE)
+	{
+		p2Tier1Position = DEFAULT_POSITION_Y;
+		p2Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.45f;
+	}
+	if (p2Tier3Position > ITEM_DEAD_LINE)
+	{
+		p2Tier2Position = DEFAULT_POSITION_Y;
+	}
+
 	if ( (int)m_ItemPosition[TIER_2P_THREE] != (int)p2Tier3Position )
 	{
 		m_ItemPosition[TIER_2P_ONE] += (p2Tier1Position - m_ItemPosition[TIER_2P_ONE]) / 20;
@@ -200,38 +220,66 @@ void CRMitemManager::Update()
 	}
 
 	// 아이템 로테이트로부터 아이템 가져와야함
-	if ( p1GaugeRate >= 0.9 )
+	if ( p1GaugeRate > 0.9f )
 	{
 		m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_THREE];
 	}
-	else if ( p1GaugeRate >= 0.6 )
+	else if ( p1Tier2Position < ITEM_DEAD_LINE )
 	{
-		m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_TWO];
-	}
-	else if ( p1GaugeRate >= 0.3 )
-	{
-		m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_ONE];
+		if ( p1GaugeRate > 0.6f )
+		{
+			m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_TWO];
+		}
+		else if ( p1GaugeRate > 0.3f )
+		{
+			m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_ONE];
+		}
+		else
+		{
+			m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+		}
 	}
 	else
 	{
-		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+		if ( p1GaugeRate > 0.45f )
+		{
+			m_NowItem[PLAYER_ONE] = m_TierItem[TIER_1P_TWO];
+		}
+		else
+		{
+			m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+		}
 	}
 
-	if ( p2GaugeRate >= 0.9 )
+	if ( p2GaugeRate > 0.9f )
 	{
 		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_THREE];
 	}
-	else if ( p2GaugeRate >= 0.6 )
+	else if ( p2Tier2Position < ITEM_DEAD_LINE ) 
 	{
-		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_TWO];
-	}
-	else if ( p2GaugeRate >= 0.3 )
-	{
-		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_ONE];
+		if ( p2GaugeRate > 0.6f )
+		{
+			m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_TWO];
+		}
+		else if ( p2GaugeRate > 0.3f )
+		{
+			m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_ONE];
+		}
+		else
+		{
+			m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+		}
 	}
 	else
 	{
-		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+		if ( p2GaugeRate > 0.45f )
+		{
+			m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_TWO];
+		}
+		else
+		{
+			m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+		}
 	}
 
 	// 2. 공격 키 입력 받기

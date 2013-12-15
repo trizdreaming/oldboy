@@ -62,7 +62,7 @@ void CRMchildShutter::Update()
 		}
 	}
 
-	if ( m_PositionY > 534 - 668 )
+	if ( m_PositionY > SHUTTER_DEAD_LINE + SHUTTER_START_POSITION_Y )
 	{
 		resultPosition = 0;
 	}

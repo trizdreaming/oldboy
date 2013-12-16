@@ -944,6 +944,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		CRMplayer1P::GetInstance()->Init();
 		CRMplayer2P::GetInstance()->Init();
 		CRMitemManager::GetInstance()->Reset();
+		CRMairTomo::GetInstance()->Initialize();
 
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
 

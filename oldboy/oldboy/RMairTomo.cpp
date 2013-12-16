@@ -4,6 +4,7 @@
 #include "RMinput.h"
 #include "RMsound.h"
 #include "RMmacro.h"
+#include "RMitemManager.h"
 
 
 CRMairTomo::CRMairTomo(void)
@@ -18,6 +19,7 @@ CRMairTomo::~CRMairTomo(void)
 
 void CRMairTomo::Initialize()
 {
+	printConsole("AirTomo Initialized! \n");
 	m_Mental = 15;
 	m_KeyInputReadyTime = 0;
 	m_KeyInputReadyType = WIDGET_NOTE_NORMAL_1;
@@ -30,6 +32,7 @@ void CRMairTomo::Initialize()
 
 void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UINT BeforeNoteTime )
 {
+	
 	m_KeyInputReadyType = NextNoteType;
 	//printConsole("virtual Player CALL SetRandomJudge! %d\n",NextNoteTime);
 	int delayTime = NextNoteTime - BeforeNoteTime;
@@ -38,18 +41,21 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 	// ¾ÆÀÌÅÛ °ø°ÝÀ» ¹Þ¾ÒÀ»¶§³ª ¸àÅ»ºØ±«
 	// ´À¸°³ëÆ®°¡ ³ª¿À¸é ¸àÅ»È¸º¹
 
-	if ( delayTime > 200 )
+
+	printConsole("item : %d \n", CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_TWO));
+	m_Mental += static_cast<UINT>( CRMitemManager::GetInstance()->GetActivatedItem( PLAYER_TWO ) * 1.3 );
+	if ( delayTime > 250 )
 	{
-		m_Mental -= 1;
+		m_Mental -= 3;
 	}
 	else
 	{
 		m_Mental += 1;
 	}
 
-	if ( m_Mental < 2 )
+	if ( m_Mental < 10 )
 	{
-		m_Mental = 2;
+		m_Mental = 10;
 	}
 	if ( m_Mental > 500)
 	{

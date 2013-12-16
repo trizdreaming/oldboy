@@ -23,7 +23,7 @@
 CRMitemManager::CRMitemManager(void)
 {
 	ZeroMemory(&m_NowItem, sizeof(m_NowItem));
-	ZeroMemory(&m_ItemPool, sizeof(m_ItemPool));
+	ZeroMemory(&m_ItemPools, sizeof(m_ItemPools));
 	ZeroMemory(&m_TierItem, sizeof(m_TierItem));
 	ZeroMemory(&m_ActiveItem, sizeof(m_ActiveItem));
 	ZeroMemory(&m_ItemPosition, sizeof(m_ItemPosition));
@@ -42,93 +42,93 @@ void CRMitemManager::Create()
 	CRMitem* item = new CRMitemT1Duplicate();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T1_DUPLICATE] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T1_DUPLICATE] = item;
 
 	item = new CRMitemT1Mist();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T1_MIST] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T1_MIST] = item;
 
 	item = new CRMitemT1ScoreUp();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T1_SCORE_UP] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T1_SCORE_UP] = item;
 
 	item = new CRMitemT2Barrier();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T2_BARRIER] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T2_BARRIER] = item;
 
 	item = new CRMitemT2Delay();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T2_DELAY] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T2_DELAY] = item;
 
 	item = new CRMitemT2GaugeClear();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T2_GAUGE_CLEAR] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T2_GAUGE_CLEAR] = item;
 
 	item = new CRMitemT2Rotate();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T2_ROTATE] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T2_ROTATE] = item;
 
 	item = new CRMitemT3Recovery();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_RECOVERY] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T3_RECOVERY] = item;
 
 	item = new CRMitemT3Reverse();
 	item->m_OwnPlayer = PLAYER_ONE;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T3_REVERSE] = item;
+	m_ItemPools[PLAYER_ONE][ITEM_T3_REVERSE] = item;
 
 	// 2P Item Pool Init
 	item = new CRMitemT1Duplicate();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T1_DUPLICATE] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T1_DUPLICATE] = item;
 
 	item = new CRMitemT1Mist();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T1_MIST] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T1_MIST] = item;
 
 	item = new CRMitemT1ScoreUp();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T1_SCORE_UP] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T1_SCORE_UP] = item;
 
 	item = new CRMitemT2Barrier();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T2_BARRIER] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T2_BARRIER] = item;
 
 	item = new CRMitemT2Delay();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T2_DELAY] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T2_DELAY] = item;
 
 	item = new CRMitemT2GaugeClear();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T2_GAUGE_CLEAR] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T2_GAUGE_CLEAR] = item;
 
 	item = new CRMitemT2Rotate();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T2_ROTATE] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T2_ROTATE] = item;
 
 	item = new CRMitemT3Recovery();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_TWO;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T3_RECOVERY] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T3_RECOVERY] = item;
 
 	item = new CRMitemT3Reverse();
 	item->m_OwnPlayer = PLAYER_TWO;
 	item->m_TargetPlayer = PLAYER_ONE;
-	m_ItemPool[ITEM_T3_MAX + ITEM_T3_REVERSE] = item;
+	m_ItemPools[PLAYER_TWO][ITEM_T3_REVERSE] = item;
 
 	m_TierItem[TIER_1P_ONE] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T1_NONE + 1, ITEM_T1_MAX - 1);
 	m_TierItem[TIER_1P_TWO] = (ItemType) CRMrandomGenerator::GetInstance()->GetRandom(ITEM_T2_NONE + 1, ITEM_T2_MAX - 1);
@@ -149,9 +149,12 @@ void CRMitemManager::Create()
 
 void CRMitemManager::Release()
 {
-	for ( auto& toBeDelete : m_ItemPool )
+	for ( auto& iter : m_ItemPools )
 	{
-		SafeDelete( toBeDelete );
+		for ( auto& toBeDelete : iter )
+		{
+			SafeDelete( toBeDelete );
+		}
 	}
 }
 
@@ -288,7 +291,7 @@ void CRMitemManager::Update()
 	// 3. MP 상황에 맞춰 공격 가능 최대 티어로 m_NowItem[공격 키 입력 들어온 플레이어]의 아이템 타입 설정 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 	{
-		CRMitem* thisItem = m_ItemPool[ m_NowItem[PLAYER_ONE] ];
+		CRMitem* thisItem = m_ItemPools[PLAYER_ONE][ m_NowItem[PLAYER_ONE] ];
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE )
 		{
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
@@ -336,7 +339,7 @@ void CRMitemManager::Update()
 	}
 	else if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 	{
-		CRMitem* thisItem = m_ItemPool[ ITEM_T3_MAX + m_NowItem[PLAYER_TWO] ];
+		CRMitem* thisItem = m_ItemPools[PLAYER_TWO][ m_NowItem[PLAYER_TWO] ];
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE)
 		{
 			if ( CRMplayer1P::GetInstance()->IsDead() )
@@ -398,14 +401,16 @@ void CRMitemManager::Update()
 		}
 	}
 
-	for ( auto& iter : m_ItemPool )
+	for ( auto& iter : m_ItemPools )
 	{
-		if ( iter != nullptr )
+		for ( auto& item : iter )
 		{
-			iter->Update();
-		}	
+			if ( item != nullptr )
+			{
+				item->Update();
+			}
+		}			
 	}
-
 }
 
 void CRMitemManager::RotateItem( ItemTierType tier )
@@ -437,7 +442,7 @@ void CRMitemManager::RotateItem( ItemTierType tier )
 	}
 }
 
-WidgetType CRMitemManager::GetWidgetType( ItemTierType tier )
+WidgetType CRMitemManager::GetWidgetType( ItemTierType tier ) const
 {
 	ItemType thisItem = m_TierItem[tier];
 	PlayerNumber player = PLAYER_ONE;
@@ -445,25 +450,24 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier )
 	if ( tier > TIER_1P_2P_DIVIDE )
 		player = PLAYER_TWO;
 
-	if ( m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )] != nullptr )
+	if ( m_ItemPools[player][thisItem] != nullptr )
 	{
 		if ( thisItem == m_NowItem[player] )
 		{
-			return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetWidgetTypeForColor();
+			return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
 		}
 		else
 		{
-			return m_ItemPool[thisItem + ( player == PLAYER_TWO ? ITEM_T3_MAX : 0 )]->GetWidgetTypeForGray();
+			return m_ItemPools[player][thisItem]->GetWidgetTypeForGray();
 		}
 	}
-	
 	return WIDGET_NONE;
 }
 
-WidgetType CRMitemManager::GetWidgetTypeOfCard( PlayerNumber player )
+WidgetType CRMitemManager::GetWidgetTypeOfCard( PlayerNumber player ) const
 {
 	ItemType thisItemType = m_ActiveItem[player];
-	CRMitem* thisItem = m_ItemPool[thisItemType+ (player == PLAYER_TWO ? ITEM_T3_MAX : 0)];
+	CRMitem* thisItem = m_ItemPools[player][thisItemType];
 	
 	if (thisItem == NULL)
 	{
@@ -479,4 +483,20 @@ void CRMitemManager::Reset()
 	m_ActiveItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+}
+
+bool CRMitemManager::IsActivedItemForSelf( PlayerNumber player ) const
+{
+	if ( m_ActiveItem[player] == ITEM_TYPE_NONE )
+	{
+		return false;
+	}
+	if ( m_ItemPools[player][ m_ActiveItem[player] ]->GetTargerPlayer() == m_ItemPools[player][ m_ActiveItem[player] ]->GetOwnPlayer() )
+	{
+		return true;
+	}
+	else
+	{
+		return false;
+	}
 }

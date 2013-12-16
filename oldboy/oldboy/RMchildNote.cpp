@@ -81,15 +81,6 @@ void CRMchildNote::Update()
 			else if ( tempPositionY >= 150 && tempPositionY <= 380 )
 			{
 				m_Alpha = 0.0;
-				printConsole("tempposition %d \n", tempPositionY);
-
-				/*
-				if ( tempPositionY >= 200 && tempPositionY <= 210 )
-				{
-					m_Alpha = 1.0;
-					printConsole("발동!! \n");
-				}
-				*/
 			}
 			else
 			{

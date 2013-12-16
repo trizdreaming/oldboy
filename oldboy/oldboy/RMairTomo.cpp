@@ -37,13 +37,17 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 	//printConsole("virtual Player CALL SetRandomJudge! %d\n",NextNoteTime);
 	int delayTime = NextNoteTime - BeforeNoteTime;
 
-	// ¸àÅ»ÀÌ ÄÄÅÍÀÇ ¿À·ù È®·üÀ» Á¶Á¤ÇÔ
-	// ¾ÆÀÌÅÛ °ø°ÝÀ» ¹Þ¾ÒÀ»¶§³ª ¸àÅ»ºØ±«
-	// ´À¸°³ëÆ®°¡ ³ª¿À¸é ¸àÅ»È¸º¹
-
-
 	printConsole("item : %d \n", CRMitemManager::GetInstance()->GetActivatedItem(PLAYER_TWO));
-	m_Mental += static_cast<UINT>( CRMitemManager::GetInstance()->GetActivatedItem( PLAYER_TWO ) * 1.3 );
+
+	if ( CRMitemManager::GetInstance()->IsActivedItemForSelf(PLAYER_TWO) == true)
+	{
+		m_Mental -= 3;
+	}
+	else
+	{
+		m_Mental += static_cast<UINT>( CRMitemManager::GetInstance()->GetActivatedItem( PLAYER_TWO ) );
+	}
+
 	if ( delayTime > 250 )
 	{
 		m_Mental -= 3;

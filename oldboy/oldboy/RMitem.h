@@ -13,8 +13,10 @@ public:
 	virtual	WidgetType		GetWidgetTypeOfCard() { return m_WidgetTypeOfCard; }
 	
 	virtual void	Active();
-	void			SetTime( UINT holdingTime ) { m_StartTime = holdingTime; }
 	virtual void	Update();
+	void			SetTime( UINT holdingTime ) { m_StartTime = holdingTime; }
+	PlayerNumber	GetTargerPlayer() { return m_TargetPlayer; }
+	PlayerNumber	GetOwnPlayer() { return m_OwnPlayer; }
 	
 protected:
 	virtual void	DeActive() { m_Active = false; }

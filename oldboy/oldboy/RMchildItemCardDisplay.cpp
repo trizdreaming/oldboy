@@ -12,41 +12,13 @@ CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
 	m_TimeSlice(30),
 	m_PrevTime(0),
 	m_FlickFlag(true)
-	//m_OrderNumber(0),
-	//m_OrderFlag(false),
-	//m_MoveOffset(0)
 {
-	//ZeroMemory(&m_Matrix, sizeof(m_Matrix));
-	//ZeroMemory(&m_PrevMatrix, sizeof(m_PrevMatrix));
 }
 
 
 CRMchildItemCardDisplay::~CRMchildItemCardDisplay(void)
 {
 }
-
-/*
-void CRMchildItemCardDisplay::Render()
-{
-
-	// 원래 좌표축으로 돌리기 위한 현재 좌표축 임시 저장
-	CRMrender::GetInstance()->GetRenderTarget()->GetTransform( &m_PrevMatrix );
-
-	if ( m_Width != 0 && m_Height != 0 )
-	{
-		m_Matrix = D2D1::Matrix3x2F::Rotation( m_Rotation, D2D1::Point2F( m_PositionX + m_Width , m_PositionY + m_Height ) ) * 
-			D2D1::Matrix3x2F::Translation(m_MoveOffset, 0);
-	}
-
-	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_Matrix );
-
-	//부모의 렌더함수를 빌려서 변환 매트릭스 적용하도록 함
-	CRMobject::Render();
-
-	//원래의 좌표축으로 돌려 놓는 것
-	CRMrender::GetInstance()->GetRenderTarget()->SetTransform( m_PrevMatrix );
-}
-	*/
 
 void CRMchildItemCardDisplay::Update()
 {

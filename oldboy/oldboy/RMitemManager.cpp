@@ -17,6 +17,7 @@
 #include "RMinput.h"
 #include "RMpauseManager.h"
 #include "RMrandomGenerator.h"
+#include "RMvirtualPlayer.h"
 
 
 CRMitemManager::CRMitemManager(void)
@@ -164,6 +165,7 @@ void CRMitemManager::Update()
 	//////////////////////////////////////////////////////////////////////////
 	// 공격 구현
 	//////////////////////////////////////////////////////////////////////////
+	CRMvirtualPlayer::GetInstance()->ItemVirtualPlayer();
 
 	// 1. 각 플레이어의 MP 체크
 	float p1MaxMP = CRMplayer1P::GetInstance()->GetMaxMP();
@@ -191,7 +193,7 @@ void CRMitemManager::Update()
 		p1Tier2Position = DEFAULT_POSITION_Y;
 	}
 
-	if ( (int)m_ItemPosition[TIER_1P_THREE] != (int)p1Tier3Position )
+	if ( static_cast<int>(m_ItemPosition[TIER_1P_THREE]) != static_cast<int>(p1Tier3Position) )
 	{
 		m_ItemPosition[TIER_1P_ONE] += (p1Tier1Position - m_ItemPosition[TIER_1P_ONE]) / 20;
 		m_ItemPosition[TIER_1P_TWO] += (p1Tier2Position - m_ItemPosition[TIER_1P_TWO]) / 20;
@@ -212,7 +214,7 @@ void CRMitemManager::Update()
 		p2Tier2Position = DEFAULT_POSITION_Y;
 	}
 
-	if ( (int)m_ItemPosition[TIER_2P_THREE] != (int)p2Tier3Position )
+	if ( static_cast<int>(m_ItemPosition[TIER_2P_THREE]) != static_cast<int>(p2Tier3Position) )
 	{
 		m_ItemPosition[TIER_2P_ONE] += (p2Tier1Position - m_ItemPosition[TIER_2P_ONE]) / 20;
 		m_ItemPosition[TIER_2P_TWO] += (p2Tier2Position - m_ItemPosition[TIER_2P_TWO]) / 20;

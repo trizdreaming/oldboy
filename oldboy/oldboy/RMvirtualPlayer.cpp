@@ -24,6 +24,8 @@ void CRMvirtualPlayer::Initialize()
 
 	m_InputReadyList.clear();
 	m_InputReadyType.clear();
+
+	m_ReadyItem = 0;
 }
 
 void CRMvirtualPlayer::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UINT BeforeNoteTime )
@@ -56,6 +58,12 @@ void CRMvirtualPlayer::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteTyp
 
 	m_InputReadyList.push_back(m_KeyInputReadyTime);
 	m_InputReadyType.push_back(NextNoteType);
+
+
+
+	m_ReadyItem = CRMrandomGenerator::GetInstance()->GetRandom(1, 10);
+	
+
 }
 
 void CRMvirtualPlayer::PlayVirtualPlayer()
@@ -85,5 +93,13 @@ void CRMvirtualPlayer::PlayVirtualPlayer()
 			m_InputReadyList.pop_front();
 			m_InputReadyType.pop_front();
 		}
+	}
+}
+
+void CRMvirtualPlayer::ItemVirtualPlayer()
+{
+	if ( m_ReadyItem % 10 == 0 )
+	{
+		CRMinput::GetInstance()->SetVirtualKeyStatusByKey(KEY_TABLE_P2_ATTACK);
 	}
 }

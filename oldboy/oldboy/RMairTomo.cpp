@@ -1,22 +1,22 @@
 #include "stdafx.h"
-#include "RMvirtualPlayer.h"
+#include "RMairTomo.h"
 #include "RMrandomGenerator.h"
 #include "RMinput.h"
 #include "RMsound.h"
 #include "RMmacro.h"
 
 
-CRMvirtualPlayer::CRMvirtualPlayer(void)
+CRMairTomo::CRMairTomo(void)
 {
 	Initialize();
 }
 
 
-CRMvirtualPlayer::~CRMvirtualPlayer(void)
+CRMairTomo::~CRMairTomo(void)
 {
 }
 
-void CRMvirtualPlayer::Initialize()
+void CRMairTomo::Initialize()
 {
 	m_Mental = 15;
 	m_KeyInputReadyTime = 0;
@@ -28,9 +28,8 @@ void CRMvirtualPlayer::Initialize()
 	m_ReadyItem = 0;
 }
 
-void CRMvirtualPlayer::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UINT BeforeNoteTime )
+void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UINT BeforeNoteTime )
 {
-	
 	m_KeyInputReadyType = NextNoteType;
 	//printConsole("virtual Player CALL SetRandomJudge! %d\n",NextNoteTime);
 	int delayTime = NextNoteTime - BeforeNoteTime;
@@ -39,7 +38,7 @@ void CRMvirtualPlayer::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteTyp
 	// ¾ÆÀÌÅÛ °ø°ÝÀ» ¹Þ¾ÒÀ»¶§³ª ¸àÅ»ºØ±«
 	// ´À¸°³ëÆ®°¡ ³ª¿À¸é ¸àÅ»È¸º¹
 
-	if ( delayTime > 2000 )
+	if ( delayTime > 200 )
 	{
 		m_Mental -= 1;
 	}
@@ -48,25 +47,36 @@ void CRMvirtualPlayer::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteTyp
 		m_Mental += 1;
 	}
 
-	if ( m_Mental < 1 )
+	if ( m_Mental < 2 )
 	{
-		m_Mental = 1;
+		m_Mental = 2;
+	}
+	if ( m_Mental > 500)
+	{
+		m_Mental = 500;
 	}
 
+	UINT temp = CRMrandomGenerator::GetInstance()->GetRandom(0, 1);
 	// 2260ÀÌ ÆÛÆå¹üÀ§
-	m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(2260,2275);
+
+	if ( temp == 0)
+	{
+		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(2260, 2260 + m_Mental);
+	}
+	else
+	{
+		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(2260 - m_Mental, 2260);
+	}
+
+	printConsole("Mental : %d %d \n", m_Mental, m_KeyInputReadyTime - NextNoteTime);
 
 	m_InputReadyList.push_back(m_KeyInputReadyTime);
 	m_InputReadyType.push_back(NextNoteType);
 
-
-
 	m_ReadyItem = CRMrandomGenerator::GetInstance()->GetRandom(1, 10);
-	
-
 }
 
-void CRMvirtualPlayer::PlayVirtualPlayer()
+void CRMairTomo::PlayVirtualPlayer()
 {
 	if ( m_InputReadyList.size() == 0 )
 	{
@@ -96,7 +106,7 @@ void CRMvirtualPlayer::PlayVirtualPlayer()
 	}
 }
 
-void CRMvirtualPlayer::ItemVirtualPlayer()
+void CRMairTomo::ItemVirtualPlayer()
 {
 	if ( m_ReadyItem % 10 == 0 )
 	{

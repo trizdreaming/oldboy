@@ -13,7 +13,7 @@
 #include "RMeffectManager.h"
 #include "RMinput.h"
 #include "RMpauseManager.h"
-#include "RMvirtualPlayer.h"
+#include "RMairTomo.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -212,7 +212,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 
 	if (player == PLAYER_TWO && m_VirtualPlayerOn)
 	{
-		CRMvirtualPlayer::GetInstance()->PlayVirtualPlayer();
+		CRMairTomo::GetInstance()->PlayVirtualPlayer();
 	}
 	if ( note->GetWidgetType() == WIDGET_NOTE_NORMAL_1 )
 	{

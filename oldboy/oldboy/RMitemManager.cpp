@@ -17,7 +17,7 @@
 #include "RMinput.h"
 #include "RMpauseManager.h"
 #include "RMrandomGenerator.h"
-#include "RMvirtualPlayer.h"
+#include "RMairTomo.h"
 
 
 CRMitemManager::CRMitemManager(void)
@@ -165,7 +165,7 @@ void CRMitemManager::Update()
 	//////////////////////////////////////////////////////////////////////////
 	// 공격 구현
 	//////////////////////////////////////////////////////////////////////////
-	CRMvirtualPlayer::GetInstance()->ItemVirtualPlayer();
+	CRMairTomo::GetInstance()->ItemVirtualPlayer();
 
 	// 1. 각 플레이어의 MP 체크
 	float p1MaxMP = CRMplayer1P::GetInstance()->GetMaxMP();

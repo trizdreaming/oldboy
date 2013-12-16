@@ -32,7 +32,7 @@
 #include "RMchildItemDisplay.h"
 #include "RMdummyRender.h"
 #include "RMchildItemCardDisplay.h"
-#include "RMvirtualPlayer.h"
+#include "RMairTomo.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -995,7 +995,7 @@ HRESULT CRMmainLoop::GoPrevScene()
 		CRMplayer2P::GetInstance()->Init();
 		CRMitemManager::GetInstance()->Reset();
 
-		CRMvirtualPlayer::GetInstance()->Initialize();
+		CRMairTomo::GetInstance()->Initialize();
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
 
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );

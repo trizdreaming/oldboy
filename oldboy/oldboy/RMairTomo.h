@@ -2,10 +2,10 @@
 #include "RMplayer.h"
 #include "RMmacro.h"
 
-class CRMvirtualPlayer:
+class CRMairTomo:
 	public CRMplayer
 {
-	SINGLETON(CRMvirtualPlayer);
+	SINGLETON(CRMairTomo);
 
 public:
 	void	Initialize();
@@ -14,8 +14,8 @@ public:
 	void	ItemVirtualPlayer();
 
 private:
-	CRMvirtualPlayer(void);
-	~CRMvirtualPlayer(void);
+	CRMairTomo(void);
+	~CRMairTomo(void);
 
 private:
 	UINT					m_Mental;

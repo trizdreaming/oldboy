@@ -43,6 +43,8 @@ public:
 	WidgetType	GetWidgetType(ItemTierType tier) const;
 	WidgetType	GetWidgetTypeOfCard( PlayerNumber player ) const;
 
+	void		SetVirtualPlayerMode( bool VirPlayerOn );
+
 private:
 	// 발동 가능한 아이템을 체크 할 배열
 	std::array<ItemType, PLAYER_MAX>				m_NowItem;
@@ -61,5 +63,7 @@ private:
 
 	std::array<UINT, TIER_MAX>						m_PrevTimeTierRotate;
 	std::array<UINT, TIER_MAX>						m_TimeSliceForTier;
+
+	bool											m_VirtualPlayerOn;
 };
 

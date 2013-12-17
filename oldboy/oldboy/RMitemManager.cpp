@@ -168,7 +168,11 @@ void CRMitemManager::Update()
 	//////////////////////////////////////////////////////////////////////////
 	// 공격 구현
 	//////////////////////////////////////////////////////////////////////////
-	CRMairTomo::GetInstance()->ItemVirtualPlayer();
+	
+	if ( m_VirtualPlayerOn )
+	{
+		CRMairTomo::GetInstance()->ItemVirtualPlayer();
+	}
 
 	// 1. 각 플레이어의 MP 체크
 	float p1MaxMP = CRMplayer1P::GetInstance()->GetMaxMP();
@@ -499,4 +503,9 @@ bool CRMitemManager::IsActivedItemForSelf( PlayerNumber player ) const
 	{
 		return false;
 	}
+}
+
+void CRMitemManager::SetVirtualPlayerMode( bool VirPlayerOn )
+{
+	m_VirtualPlayerOn = VirPlayerOn;
 }

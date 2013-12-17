@@ -18,63 +18,43 @@ void CRMchildUIResultImage::Update()
 {
 	SetVisibleByScene();
 
-	CRMplayer*	player1 = CRMplayer1P::GetInstance();
-	CRMplayer*	player2 = CRMplayer2P::GetInstance();
-
-	UINT totalScoreP1 = player1->GetCount(COUNT_SCORE) + ( player1->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
-	UINT totalScoreP2 = player2->GetCount(COUNT_SCORE) + ( player2->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
-
+	CRMplayer*	playerMe;
+	CRMplayer*	playerEnemy;
 	if ( m_PlayerNumber == PLAYER_ONE )
 	{
-		if ( totalScoreP1 > totalScoreP2 )
+		playerMe = CRMplayer1P::GetInstance();
+		playerEnemy = CRMplayer2P::GetInstance();
+	}
+	else
+	{
+		playerMe = CRMplayer2P::GetInstance();
+		playerEnemy = CRMplayer1P::GetInstance();
+	}
+
+	UINT myTotalScore = playerMe->GetCount(COUNT_SCORE) + ( playerMe->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
+	UINT enemyTotalScore = playerEnemy->GetCount(COUNT_SCORE) + ( playerEnemy->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
+
+	if ( myTotalScore > enemyTotalScore )
+	{
+		if ( playerMe->IsDead() )
 		{
-			if ( player1->IsDead() )
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_WIN_FAIL;
-			}
-			else
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_WIN_CLEAR;
-			}
+			m_WidgetType = WIDGET_UI_IMAGE_RESULT_WIN_FAIL;
 		}
 		else
 		{
-			if ( player1->IsDead() )
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_LOSE_FAIL;
-			}
-			else
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_LOSE_CLEAR;
-			}
+			m_WidgetType = WIDGET_UI_IMAGE_RESULT_WIN_CLEAR;
 		}
 	}
 	else
 	{
-		if ( totalScoreP1 < totalScoreP2 )
+		if ( playerMe->IsDead() )
 		{
-			if ( player2->IsDead() )
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_WIN_FAIL;
-			}
-			else
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_WIN_CLEAR;
-			}
+			m_WidgetType = WIDGET_UI_IMAGE_RESULT_LOSE_FAIL;
 		}
 		else
 		{
-			if ( player2->IsDead() )
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_LOSE_FAIL;
-			}
-			else
-			{
-				m_WidgetType = WIDGET_UI_IMAGE_RESULT_LOSE_CLEAR;
-			}
+			m_WidgetType = WIDGET_UI_IMAGE_RESULT_LOSE_CLEAR;
 		}
 	}
-
-
 }
 

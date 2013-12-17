@@ -669,7 +669,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 #ifdef _DEBUG
 	if ( START_RECORDING )
 	{	
-		CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(true);
+		
 
 		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_PLAY )
 		{
@@ -690,6 +690,9 @@ HRESULT CRMmainLoop::TestKeyboard()
 		}
 	}
 #endif
+	
+	// 에어 친구 소환
+	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(true);
 
 	HRESULT hr = S_OK;
 

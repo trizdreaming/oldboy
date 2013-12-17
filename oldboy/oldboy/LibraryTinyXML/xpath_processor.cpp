@@ -2084,6 +2084,7 @@ void xpath_processor::v_function_relational (expression_result ** erpp_arg, unsi
             assert (false);
       }
    }
+#pragma warning(suppress: 6001)
    v_push_bool (o_res);
 }
 
@@ -2116,6 +2117,7 @@ void xpath_processor::v_function_mult (expression_result ** erpp_arg, unsigned u
          default :
             assert (false);
       }
+#pragma warning(suppress: 6001)
       v_push_double (d_res);
    }
    else
@@ -2135,6 +2137,7 @@ void xpath_processor::v_function_mult (expression_result ** erpp_arg, unsigned u
          default :
             assert (false);
       }
+#pragma warning(suppress: 6001)
       v_push_int (i_res, "*");
    }
 }

@@ -307,7 +307,9 @@
     <ClInclude Include="RMrandomGenerator.h">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
-    <ClInclude Include="RMairTomo.h" />
+    <ClInclude Include="RMairTomo.h">
+      <Filter>RhythmMatch\Object\Player</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -511,7 +513,9 @@
     <ClCompile Include="RMrandomGenerator.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
-    <ClCompile Include="RMairTomo.cpp" />
+    <ClCompile Include="RMairTomo.cpp">
+      <Filter>RhythmMatch\Object\Player</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

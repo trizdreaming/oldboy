@@ -1,4 +1,4 @@
-#include "stdafx.h"
+ï»¿#include "stdafx.h"
 #include "RMairTomo.h"
 #include "RMrandomGenerator.h"
 #include "RMinput.h"
@@ -41,7 +41,7 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 
 	if ( CRMitemManager::GetInstance()->IsActivedItemForSelf(PLAYER_TWO) == true)
 	{
-		m_Mental -= 3;
+		m_Mental -= 5;
 	}
 	else
 	{
@@ -61,13 +61,13 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 	{
 		m_Mental = 10;
 	}
-	if ( m_Mental > 500)
+	if ( m_Mental > 120)
 	{
-		m_Mental = 500;
+		m_Mental = 120;
 	}
 
 	UINT temp = CRMrandomGenerator::GetInstance()->GetRandom(0, 1);
-	// 2260ÀÌ ÆÛÆå¹üÀ§
+	// 2260ì´ í¼í™ë²”ìœ„
 
 	if ( temp == 0)
 	{

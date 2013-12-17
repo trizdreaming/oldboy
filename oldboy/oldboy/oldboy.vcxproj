@@ -116,6 +116,7 @@
     <ClInclude Include="LibraryTinyXML\xpath_syntax.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
+    <ClInclude Include="RMchildUIResultImage.h" />
     <ClInclude Include="RMconst.h" />
     <ClInclude Include="RMeffectManager.h" />
     <ClInclude Include="RMchildGauge.h" />
@@ -192,6 +193,7 @@
     <ClCompile Include="oldboy.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
+    <ClCompile Include="RMchildUIResultImage.cpp" />
     <ClCompile Include="RMconst.cpp" />
     <ClCompile Include="RMeffectManager.cpp" />
     <ClCompile Include="RMchildGauge.cpp" />

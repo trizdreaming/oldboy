@@ -41,6 +41,11 @@ const wchar_t* BG_IMAGE_TITLE	= L"./Resource/image_bg_00_01.png";
 const wchar_t* BG_IMAGE_SELECT	= L"./Resource/image_bg_select_01.png";
 const wchar_t* BG_IMAGE_RESULT	= L"./Resource/image_bg_result_01.png";
 
+const wchar_t* UI_IMAGE_RESULT_WIN_CLEAR	= L"./Resource/image_result_win_clear.png";
+const wchar_t* UI_IMAGE_RESULT_WIN_FAIL		= L"./Resource/image_result_win_fail.png";
+const wchar_t* UI_IMAGE_RESULT_LOSE_CLEAR	= L"./Resource/image_result_lose_clear.png";
+const wchar_t* UI_IMAGE_RESULT_LOSE_FAIL	= L"./Resource/image_result_lose_fail.png";
+
 const wchar_t* PLAY_IMAGE_JUDGE_RING	= L"./Resource/judgeRing.png";
 const wchar_t* PLAY_IMAGE_BLUE_GAUGE	= L"./Resource/blueBar.png";
 const wchar_t* PLAY_IMAGE_RED_GAUGE		= L"./Resource/redBar.png";

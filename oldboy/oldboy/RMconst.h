@@ -45,6 +45,11 @@ extern const wchar_t* BG_IMAGE_TITLE;
 extern const wchar_t* BG_IMAGE_SELECT;
 extern const wchar_t* BG_IMAGE_RESULT;
 
+extern const wchar_t* UI_IMAGE_RESULT_WIN_CLEAR;
+extern const wchar_t* UI_IMAGE_RESULT_WIN_FAIL;
+extern const wchar_t* UI_IMAGE_RESULT_LOSE_CLEAR;
+extern const wchar_t* UI_IMAGE_RESULT_LOSE_FAIL;
+
 extern const wchar_t* PLAY_IMAGE_JUDGE_RING;
 extern const wchar_t* PLAY_IMAGE_BLUE_GAUGE;
 extern const wchar_t* PLAY_IMAGE_RED_GAUGE;

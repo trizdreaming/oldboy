@@ -88,13 +88,19 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( PAUSE_IMAGE_TITLE_OK, WIDGET_PAUSE_IMAGE_TITLE_OK );
 
 	//////////////////////////////////////////////////////////////////////////
-	//이하 플레이 화면
+	// 플레이 화면
 	//////////////////////////////////////////////////////////////////////////
 	hr = TextureMaker( PLAY_IMAGE_JUDGE_RING, WIDGET_JUDGE_RING );
 	hr = TextureMaker( PLAY_IMAGE_BLUE_GAUGE, WIDGET_GAUGE_2P );
 	hr = TextureMaker( PLAY_IMAGE_RED_GAUGE, WIDGET_GAUGE_1P );
 	
-
+	//////////////////////////////////////////////////////////////////////////
+	// UI
+	//////////////////////////////////////////////////////////////////////////
+	hr = TextureMaker( UI_IMAGE_RESULT_WIN_CLEAR, WIDGET_UI_IMAGE_RESULT_WIN_CLEAR );
+	hr = TextureMaker( UI_IMAGE_RESULT_WIN_FAIL, WIDGET_UI_IMAGE_RESULT_WIN_FAIL );
+	hr = TextureMaker( UI_IMAGE_RESULT_LOSE_CLEAR, WIDGET_UI_IMAGE_RESULT_LOSE_CLEAR );
+	hr = TextureMaker( UI_IMAGE_RESULT_LOSE_FAIL, WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
 
 	//////////////////////////////////////////////////////////////////////////
 	// 아이템 이미지 리소스 추가

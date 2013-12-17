@@ -24,32 +24,10 @@ void CRMresultManager::ShowResult()
 	CRMplayer*	player1 = CRMplayer1P::GetInstance();
 	CRMplayer*	player2 = CRMplayer2P::GetInstance();
 
-	std::string p1ResultText;
-	std::string p2ResultText;
 	
 	UINT totalScoreP1 = player1->GetCount(COUNT_SCORE) + ( player1->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	UINT totalScoreP2 = player2->GetCount(COUNT_SCORE) + ( player2->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 
-	if ( ( totalScoreP1 == totalScoreP2 ) )
-	{
-		p1ResultText.append( "Draw" );
-		p2ResultText.append( "Draw" );
-	}
-	else
-	{
-		p1ResultText.append( (totalScoreP1 > totalScoreP2) ? "Win" : "Lose" );
-		p2ResultText.append( (totalScoreP1 < totalScoreP2) ? "Win" : "Lose" );
-	}
-	
-
-	p1ResultText.append( (player1->IsDead()) ? " And Fail..." : " And Clear!!!" );
-	p2ResultText.append( (player2->IsDead()) ? " And Fail..." : " And Clear!!!" );
-	
-	CRMlabel* p1Result = new CRMlabel();
-	p1Result->CreateLabel( L"p1Result" , string2wstring( p1ResultText ), LABEL_FONT_NORMAL, 55.0f );
-	p1Result->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
-	p1Result->SetSceneType( SCENE_RESULT );
-	p1Result->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 190 );
 
 	CRMlabel* p1Perfect = new CRMlabel();
 	p1Perfect->CreateLabel( L"p1Perfect" , string2wstring( std::to_string( player1->GetCount(COUNT_PERFECT) ) + " * " + std::to_string( SCORE_EACH_PERFECT ) ), LABEL_FONT_NORMAL, 35.0f );
@@ -88,11 +66,6 @@ void CRMresultManager::ShowResult()
 	p1Score->SetPosition( ( SCREEN_SIZE_X / 2 ) - 275 , 520 );
 	//////////////////////////////////////////////////////////////////////////
 
-	CRMlabel* p2Result = new CRMlabel();
-	p2Result->CreateLabel( L"p2Result" , string2wstring( p2ResultText ), LABEL_FONT_NORMAL, 55.0f );
-	p2Result->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
-	p2Result->SetSceneType( SCENE_RESULT );
-	p2Result->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 180 );
 
 	CRMlabel* p2Perfect = new CRMlabel();
 	p2Perfect->CreateLabel( L"p2Perfect" , string2wstring(std::to_string( player2->GetCount(COUNT_PERFECT) ) + " * " + std::to_string( SCORE_EACH_PERFECT ) ), LABEL_FONT_NORMAL, 35.0f );

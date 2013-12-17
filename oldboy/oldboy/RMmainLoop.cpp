@@ -33,6 +33,7 @@
 #include "RMdummyRender.h"
 #include "RMchildItemCardDisplay.h"
 #include "RMairTomo.h"
+#include "RMchildUIResultImage.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -521,6 +522,23 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetPosition(390, 120); // 값 찾아서 define해야함 
 	newObject->SetSceneType(SCENE_SELECT_MUSIC); // 필요 없지만 그냥 초기화
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
+
+
+	// UI이미지 일단 리절트 화면
+	newObject = new CRMchildUIResultImage();
+	newObject->SetPlayer( PLAYER_ONE );
+	newObject->SetWidgetType( WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
+	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 205 );
+	newObject->SetSceneType(SCENE_RESULT);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
+
+	newObject = new CRMchildUIResultImage();
+	newObject->SetPlayer( PLAYER_TWO );
+	newObject->SetWidgetType( WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
+	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 205 );
+	newObject->SetSceneType(SCENE_RESULT);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
+
 	//<<<< 여기까지 이미지 자원
 	//>>>> 여기부터 Label 자원
 	
@@ -692,7 +710,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 #endif
 	
 	// 에어 친구 소환
-	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(true);
+	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(false);
 
 	HRESULT hr = S_OK;
 

@@ -292,6 +292,9 @@ void CRMitemManager::Update()
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 	{
 		CRMitem* thisItem = m_ItemPools[PLAYER_ONE][ m_NowItem[PLAYER_ONE] ];
+		
+		//sm9: thisItem이 반드시 있다고 보장하는가? 그러면 assert 쓰도록 해라.
+
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE )
 		{
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )

@@ -50,6 +50,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	{
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
+		//sm9: ? : 쓸때는 웬만하면 우선순위 틀리지 않게 괄호 해주삼.
 		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT * m_IsItemBoostOn ? 3 : 1;
 		m_MP += 18;
 		
@@ -61,6 +62,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		break;
 	case JUDGE_GOOD:
 		++m_Count[COUNT_GOOD];
+		//sm9: 안알랴줌
 		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD * m_IsItemBoostOn ? 2 : 1;;
 		m_MP += 12;
 		

@@ -28,6 +28,7 @@ void CRMchildItemCardDisplay::Update()
 	{
 		return;
 	}
+	//sm9: 비교연산자 우선순위 주의해서 써라. &&가 ||보다 높다. 헷갈릴것 같으면 뒤에도 괄호 묶어주삼.
 	if ( (m_PlayerNumber == PLAYER_ONE && CRMplayer1P::GetInstance()->IsDead()) || m_PlayerNumber == PLAYER_TWO && CRMplayer2P::GetInstance()->IsDead() )
 	{
 		m_Visible = false;

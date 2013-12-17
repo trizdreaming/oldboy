@@ -710,8 +710,8 @@ HRESULT CRMmainLoop::TestKeyboard()
 #endif
 	
 	// 에어 친구 소환
-	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(false);
-	CRMitemManager::GetInstance()->SetVirtualPlayerMode(false);
+	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(true);
+	CRMitemManager::GetInstance()->SetVirtualPlayerMode(true);
 
 	HRESULT hr = S_OK;
 

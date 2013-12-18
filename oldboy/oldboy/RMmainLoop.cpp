@@ -616,7 +616,32 @@ HRESULT CRMmainLoop::CreateObject()
 	CRMobjectManager::GetInstance()->AddObject(itemObject, LAYER_ITEM);
 
 	//////////////////////////////////////////////////////////////////////////
+	// 툴팁 추가
+	//////////////////////////////////////////////////////////////////////////
+
+	newObject = new CRMchildBGImage();
+	newObject->SetWidgetType( WIDGET_TOOLTIP_1 );
+	newObject->SetVisible(true);
+	newObject->SetPosition(0, 0);
+	newObject->SetSceneType( SCENE_SELECT_MUSIC );
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_TOOLTIP);
 	
+	newObject = new CRMchildBGImage();
+	newObject->SetWidgetType( WIDGET_TOOLTIP_2 );
+	newObject->SetVisible(true);
+	newObject->SetPosition(0, 0);
+	newObject->SetSceneType( SCENE_SELECT_MUSIC );
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_TOOLTIP);
+
+	newObject = new CRMchildBGImage();
+	newObject->SetWidgetType( WIDGET_TOOLTIP_3 );
+	newObject->SetVisible(true);
+	newObject->SetPosition(0, 0);
+	newObject->SetSceneType( SCENE_SELECT_MUSIC );
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_TOOLTIP);
+
+	//////////////////////////////////////////////////////////////////////////
+
 	CRMchildItemCardDisplay* itemCardObject = nullptr;
 	
 //	for ( int i = 0 ; i < 30; ++i )
@@ -943,6 +968,23 @@ HRESULT CRMmainLoop::GoNextScene()
 		{
 			MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
+		}
+
+		{
+			CRMdummyRender dummyRender;
+			CRMobjectManager::GetInstance()->ShowTooltip();
+		}
+
+		DWORD prevTime = timeGetTime();
+
+		for ( UINT i = 0 ; i < UINT_MAX ; ++i )
+		{
+			Sleep(0);
+			
+			if ( timeGetTime() - prevTime > 3000 )
+			{
+				break;
+			}
 		}
 
 		m_SceneType = SCENE_PLAY;

@@ -6,6 +6,7 @@
 #include "RMlabelManager.h"
 #include "RMpauseManager.h"
 #include "RMitemManager.h"
+#include "RMrandomGenerator.h"
 
 CRMobjectManager::CRMobjectManager(void)
 {
@@ -94,6 +95,11 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListMemoryPoolOfNote.clear();
 
+	for ( auto& iter : m_OjbectListTooltips )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
 
 	for ( auto& iter : m_ObjectListLayerPause )
 	{
@@ -145,6 +151,9 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			break;
 		case LAYER_PAUSE:
 			m_ObjectListLayerPause.push_front(object);
+			break;
+		case LAYER_TOOLTIP:
+			m_OjbectListTooltips.push_back(object);
 			break;
 		case LAYER_NONE:
 			break;
@@ -379,4 +388,25 @@ void CRMobjectManager::RemoveNoteFromPlayerLayer( PlayerNumber playerNumber )
 	{
 		iter->SetVisible(false);
 	}
+}
+
+void CRMobjectManager::ShowTooltip()
+{
+	int maxTooltip = m_OjbectListTooltips.size();
+
+	if ( maxTooltip < 1 )
+	{
+		return;
+	}
+
+	int index = CRMrandomGenerator::GetInstance()->GetRandom(0, maxTooltip - 1);
+
+	auto &thisTooltip = m_OjbectListTooltips.at(index);
+
+	if ( thisTooltip == nullptr )
+	{
+		return;
+	}
+
+	thisTooltip->Render();
 }

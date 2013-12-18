@@ -27,6 +27,8 @@ public:
 	void						Update(); // const
 	void						Render() const;
 
+	void						ShowTooltip();
+
 private:
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
 
@@ -44,5 +46,7 @@ private:
 	std::list<CRMobject*>		m_ObjectListLayerPause;
 
 	std::list<CRMobject*>		m_ObjectListMemoryPoolOfNote;
+
+	std::vector<CRMobject*>		m_OjbectListTooltips;
 };
 

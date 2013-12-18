@@ -51,6 +51,10 @@ extern const wchar_t* BG_IMAGE_TITLE;
 extern const wchar_t* BG_IMAGE_SELECT;
 extern const wchar_t* BG_IMAGE_RESULT;
 
+extern const wchar_t* BG_TOOLTIP_1;
+extern const wchar_t* BG_TOOLTIP_2;
+extern const wchar_t* BG_TOOLTIP_3;
+
 extern const wchar_t* UI_IMAGE_RESULT_WIN_CLEAR;
 extern const wchar_t* UI_IMAGE_RESULT_WIN_FAIL;
 extern const wchar_t* UI_IMAGE_RESULT_LOSE_CLEAR;

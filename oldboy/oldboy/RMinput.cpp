@@ -4,8 +4,9 @@
 
 CRMinput::CRMinput(void)
 {
-	ZeroMemory(m_PrevKeyState, sizeof(m_PrevKeyState[MAX_INPUT_KEY]));
-	ZeroMemory(m_NowKeyState, sizeof(m_NowKeyState[MAX_INPUT_KEY]));
+	ZeroMemory(&m_InputKey, sizeof(m_InputKey));
+	ZeroMemory(&m_PrevKeyState, sizeof(m_PrevKeyState));
+	ZeroMemory(&m_NowKeyState, sizeof(m_NowKeyState));
 }
 
 

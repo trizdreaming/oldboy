@@ -41,7 +41,7 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 
 	if ( CRMitemManager::GetInstance()->IsActivedItemForSelf(PLAYER_TWO) == true)
 	{
-		m_Mental -= 5;
+		m_Mental -= 3;
 	}
 	else
 	{
@@ -61,9 +61,9 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 	{
 		m_Mental = 10;
 	}
-	if ( m_Mental > 120)
+	if ( m_Mental > 90)
 	{
-		m_Mental = 120;
+		m_Mental = 90;
 	}
 
 	UINT temp = CRMrandomGenerator::GetInstance()->GetRandom(0, 1);

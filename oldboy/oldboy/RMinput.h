@@ -17,8 +17,8 @@ public:
 	void				SetVirtualKeyStatusByKey( KeyTable key );
 
 private:
-	KeyStatus			m_InputKey[MAX_INPUT_KEY];
+	std::array<KeyStatus, MAX_INPUT_KEY>	m_InputKey;
 
-	bool				m_PrevKeyState[MAX_INPUT_KEY];
-	bool				m_NowKeyState[MAX_INPUT_KEY];
+	std::array<bool, MAX_INPUT_KEY>			m_PrevKeyState;
+	std::array<bool, MAX_INPUT_KEY>			m_NowKeyState;
 };

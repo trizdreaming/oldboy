@@ -28,7 +28,8 @@ void CRMchildItemCardDisplay::Update()
 	{
 		return;
 	}
-	if ( (m_PlayerNumber == PLAYER_ONE && CRMplayer1P::GetInstance()->IsDead()) || m_PlayerNumber == PLAYER_TWO && CRMplayer2P::GetInstance()->IsDead() )
+	if ( (m_PlayerNumber == PLAYER_ONE && CRMplayer1P::GetInstance()->IsDead()) || 
+		(m_PlayerNumber == PLAYER_TWO && CRMplayer2P::GetInstance()->IsDead()) )
 	{
 		m_Visible = false;
 		return;

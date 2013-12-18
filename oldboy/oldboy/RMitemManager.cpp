@@ -296,6 +296,12 @@ void CRMitemManager::Update()
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 	{
 		CRMitem* thisItem = m_ItemPools[PLAYER_ONE][ m_NowItem[PLAYER_ONE] ];
+
+		if ( thisItem == nullptr )
+		{
+			return;
+		}
+
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE )
 		{
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
@@ -344,6 +350,12 @@ void CRMitemManager::Update()
 	else if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 	{
 		CRMitem* thisItem = m_ItemPools[PLAYER_TWO][ m_NowItem[PLAYER_TWO] ];
+
+		if ( thisItem == nullptr )
+		{
+			return;
+		}
+
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE)
 		{
 			if ( CRMplayer1P::GetInstance()->IsDead() )

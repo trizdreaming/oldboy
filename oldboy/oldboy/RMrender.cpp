@@ -12,8 +12,7 @@ CRMrender::CRMrender(void):
 
 CRMrender::~CRMrender(void)
 {
-	SafeRelease(m_pDisplayFactory);
-	SafeRelease(m_pDisplayRenderTarget);
+	ReleaseFactory();
 }
 
 HRESULT CRMrender::CreateFactory()
@@ -73,4 +72,10 @@ HRESULT CRMrender::RenderEnd()
 	}
 
 	return hr;
+}
+
+void CRMrender::ReleaseFactory()
+{
+	SafeRelease(m_pDisplayFactory);
+	SafeRelease(m_pDisplayRenderTarget);
 }

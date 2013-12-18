@@ -27,7 +27,10 @@
 #include "RMchildPauseImage.h"
 #include "RMpauseManager.h"
 
+#ifdef _DEBUG
 #include <fstream>
+#endif // _DEBUG
+
 #include "RMitemManager.h"
 #include "RMchildItemDisplay.h"
 #include "RMdummyRender.h"
@@ -374,6 +377,12 @@ LRESULT CALLBACK CRMmainLoop::WndProc(HWND hWnd, UINT message, WPARAM wParam, LP
 		PostQuitMessage(0);
 		break;
 
+	case WM_DISPLAYCHANGE:
+		{
+			CRMrender::GetInstance()->ReleaseFactory();
+			CRMrender::GetInstance()->CreateFactory();
+			CRMrender::GetInstance()->CreateRenderTarget();
+		}
 	default:
 		return DefWindowProc(hWnd, message, wParam, lParam);
 	}

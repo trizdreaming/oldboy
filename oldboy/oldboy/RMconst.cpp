@@ -23,7 +23,7 @@ const wchar_t* LABEL_NAME_SELECT_LIST3	= L"셀렉트리스트3";
 const wchar_t* LABEL_NAME_SELECT_LIST4	= L"셀렉트리스트4";
 const wchar_t* LABEL_NAME_SELECT_LIST5	= L"셀렉트리스트5";
 
-const wchar_t* LABEL_FONT_NORMAL	= L"맑은 고딕";
+const wchar_t* LABEL_FONT_NORMAL	= L"Norwester";
 
 const wchar_t* LABEL_FPS			= L"FPS";
 

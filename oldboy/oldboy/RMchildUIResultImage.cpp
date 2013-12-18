@@ -18,14 +18,9 @@ void CRMchildUIResultImage::Update()
 {
 	SetVisibleByScene();
 
-	CRMplayer*	playerMe;
-	CRMplayer*	playerEnemy;
-	if ( m_PlayerNumber == PLAYER_ONE )
-	{
-		playerMe = CRMplayer1P::GetInstance();
-		playerEnemy = CRMplayer2P::GetInstance();
-	}
-	else
+	CRMplayer*	playerMe = CRMplayer1P::GetInstance();
+	CRMplayer*	playerEnemy = CRMplayer2P::GetInstance();
+	if ( m_PlayerNumber == PLAYER_TWO )
 	{
 		playerMe = CRMplayer2P::GetInstance();
 		playerEnemy = CRMplayer1P::GetInstance();

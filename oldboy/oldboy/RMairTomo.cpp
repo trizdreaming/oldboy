@@ -78,7 +78,7 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(2260 - m_Mental, 2260);
 	}
 
-	printConsole("Mental : %d %d \n", m_Mental, m_KeyInputReadyTime - NextNoteTime);
+	printConsole("Mental : %d %d \n", m_Mental, static_cast<int>(m_KeyInputReadyTime - NextNoteTime));
 
 	m_InputReadyList.push_back(m_KeyInputReadyTime);
 	m_InputReadyType.push_back(NextNoteType);

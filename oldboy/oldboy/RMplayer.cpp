@@ -50,7 +50,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 	{
 	case JUDGE_PERFECT:
 		++m_Count[COUNT_PERFECT];
-		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT * m_IsItemBoostOn ? 3 : 1;
+		m_Count[COUNT_SCORE] += SCORE_EACH_PERFECT * (m_IsItemBoostOn ? 3 : 1);
 		m_MP += 18;
 		
 		if( m_MP > m_HP * PLAYER_HP_MP_RATE )
@@ -61,7 +61,7 @@ void CRMplayer::AddEvent( JudgeType judgeEventType )
 		break;
 	case JUDGE_GOOD:
 		++m_Count[COUNT_GOOD];
-		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD * m_IsItemBoostOn ? 2 : 1;;
+		m_Count[COUNT_SCORE] += SCORE_EACH_GOOD * (m_IsItemBoostOn ? 2 : 1);
 		m_MP += 12;
 		
 		if( m_MP > m_HP * PLAYER_HP_MP_RATE )

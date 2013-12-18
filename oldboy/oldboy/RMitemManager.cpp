@@ -192,12 +192,12 @@ void CRMitemManager::Update()
 
 	if (p1Tier2Position > ITEM_DEAD_LINE)
 	{
-		p1Tier1Position = DEFAULT_POSITION_Y;
+		p1Tier1Position = -DEFAULT_POSITION_Y;
 		p1Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.45f;
 	}
 	if (p1Tier3Position > ITEM_DEAD_LINE)
 	{
-		p1Tier2Position = DEFAULT_POSITION_Y;
+		p1Tier2Position = -DEFAULT_POSITION_Y;
 	}
 
 	if ( static_cast<int>(m_ItemPosition[TIER_1P_THREE]) != static_cast<int>(p1Tier3Position) )
@@ -213,12 +213,12 @@ void CRMitemManager::Update()
 
 	if (p2Tier2Position > ITEM_DEAD_LINE)
 	{
-		p2Tier1Position = DEFAULT_POSITION_Y;
+		p2Tier1Position = -DEFAULT_POSITION_Y;
 		p2Tier2Position = SCREEN_SIZE_Y - p1MaxMP * 0.45f;
 	}
 	if (p2Tier3Position > ITEM_DEAD_LINE)
 	{
-		p2Tier2Position = DEFAULT_POSITION_Y;
+		p2Tier2Position = -DEFAULT_POSITION_Y;
 	}
 
 	if ( static_cast<int>(m_ItemPosition[TIER_2P_THREE]) != static_cast<int>(p2Tier3Position) )
@@ -483,6 +483,8 @@ WidgetType CRMitemManager::GetWidgetTypeOfCard( PlayerNumber player ) const
 
 void CRMitemManager::Reset()
 {
+	ZeroMemory( &m_ItemPosition, sizeof(m_ItemPosition) );
+
 	m_ActiveItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	m_ActiveItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;

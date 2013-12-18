@@ -457,7 +457,7 @@ HRESULT CRMmainLoop::CreateObject()
 	
 	newObject = new CRMchildBGImage();
 	newObject->SetWidgetType(WIDGET_ALBUM_IMAGE);
-	newObject->SetPosition(500, 120);
+	newObject->SetPosition(0, 0);
 	newObject->SetSceneType(SCENE_SELECT_MUSIC);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_SHUTTER);
 

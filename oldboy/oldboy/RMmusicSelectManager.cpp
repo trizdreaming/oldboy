@@ -19,6 +19,7 @@ CRMmusicSelectManager::~CRMmusicSelectManager(void)
 
 HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& musicVector ) const
 {
+	/*
 	int totalMusicNum = musicVector.size();
 	int indexFix = 0;
 	//printConsole("Total Music Count:%d \n", totalMusicNum);
@@ -73,6 +74,7 @@ HRESULT CRMmusicSelectManager::ShowMusicList( const std::vector<std::string>& mu
 		musicList5->SetSceneType( SCENE_SELECT_MUSIC );
 		musicList5->SetPosition( 100 , ( SCREEN_SIZE_Y / 2 ) - 210 );
 	}
+	*/
 	return NULL;
 }
 

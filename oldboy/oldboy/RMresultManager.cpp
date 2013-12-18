@@ -6,6 +6,7 @@
 #include "RMplayer.h"
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
+#include "RMsound.h"
 
 
 CRMresultManager::CRMresultManager(void)
@@ -27,7 +28,7 @@ void CRMresultManager::ShowResult()
 	
 	UINT totalScoreP1 = player1->GetCount(COUNT_SCORE) + ( player1->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	UINT totalScoreP2 = player2->GetCount(COUNT_SCORE) + ( player2->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
-
+	
 
 	CRMlabel* p1Perfect = new CRMlabel();
 	p1Perfect->CreateLabel( L"p1Perfect" , string2wstring( std::to_string( player1->GetCount(COUNT_PERFECT) ) + " * " + std::to_string( SCORE_EACH_PERFECT ) ), LABEL_FONT_NORMAL, 35.0f );

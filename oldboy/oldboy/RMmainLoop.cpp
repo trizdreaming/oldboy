@@ -763,6 +763,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
+
 		UINT selectIndex = CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex();
 		++selectIndex %= m_MusicVector.size();
 		CRMmusicSelectManager::GetInstance()->SetMusicSelectIndex( selectIndex );
@@ -784,6 +785,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 			return hr;
 		}
 
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
@@ -891,6 +893,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 			return hr;
 		}
 
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
@@ -940,6 +943,7 @@ HRESULT CRMmainLoop::GoNextScene()
 			return hr;
 		}
 
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_CALL );
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 
 		return S_OK;
@@ -947,6 +951,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 	if ( m_SceneType == SCENE_SELECT_MUSIC )
 	{
+		
 		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
 		if ( hr != S_OK )
 		{
@@ -970,13 +975,16 @@ HRESULT CRMmainLoop::GoNextScene()
 			return hr;
 		}
 
+		// 효과음 재생
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_START );
+		
 		{
 			CRMdummyRender dummyRender;
 			CRMobjectManager::GetInstance()->ShowTooltip();
 		}
 
 		DWORD prevTime = timeGetTime();
-
+		
 		for ( UINT i = 0 ; i < UINT_MAX ; ++i )
 		{
 			Sleep(0);
@@ -1005,6 +1013,16 @@ HRESULT CRMmainLoop::GoNextScene()
 	if ( m_SceneType == SCENE_PLAY )
 	{
 		CRMobjectManager::GetInstance()->RemoveAllNote();
+
+		if ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FAIL );
+		}
+		else
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_CLEAR );
+		}
+
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_RESULT, true );
 		m_SceneType = SCENE_RESULT;
 
@@ -1013,6 +1031,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 	if ( m_SceneType == SCENE_RESULT )
 	{
+
 		m_SceneType = SCENE_SELECT_MUSIC;
 		CRMplayer1P::GetInstance()->Init();
 		CRMplayer2P::GetInstance()->Init();
@@ -1020,6 +1039,7 @@ HRESULT CRMmainLoop::GoNextScene()
 		CRMairTomo::GetInstance()->Initialize();
 
 		printConsole("플레이어 초기화 1P : %d, 2P : %d \n", CRMplayer1P::GetInstance()->GetHP(), CRMplayer2P::GetInstance()->GetHP());
+
 
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 

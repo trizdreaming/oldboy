@@ -39,6 +39,12 @@ extern const char* MUSIC_FOLDER;
 extern const char* BGM_TITLE;
 extern const char* BGM_RESULT;
 
+extern const char* SE_SELECT_MUSIC_CALL;
+extern const char* SE_SELECT_MUSIC_FLIP;
+extern const char* SE_SELECT_MUSIC_START;
+extern const char* SE_RESULT_CLEAR;
+extern const char* SE_RESULT_FAIL;
+
 extern const wchar_t* OPENING_VIDEO_FILE;
 
 extern const wchar_t* BG_IMAGE_TITLE;

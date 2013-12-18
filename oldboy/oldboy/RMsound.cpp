@@ -109,6 +109,41 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_SELECT_MUSIC_CALL, SOUND_EFFECT_SELECT_MUSIC_CALL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_SELECT_MUSIC_FLIP, SOUND_EFFECT_SELECT_MUSIC_FLIP );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_SELECT_MUSIC_START, SOUND_EFFECT_SELECT_MUSIC_START );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_RESULT_CLEAR, SOUND_EFFECT_RESULT_CLEAR );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_RESULT_FAIL, SOUND_EFFECT_RESULT_FAIL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );

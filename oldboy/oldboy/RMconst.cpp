@@ -35,6 +35,12 @@ const char* MUSIC_FOLDER			= "./Music/";
 const char* BGM_TITLE				= "./Resource/bgm_title_00_01.mp3";
 const char* BGM_RESULT				= "./Resource/bgm_result_00_01.mp3";
 
+const char* SE_SELECT_MUSIC_CALL	= "./Resource/se/SE_SELECT_MUSIC_CALL.mp3";
+const char* SE_SELECT_MUSIC_FLIP	= "./Resource/se/SE_SELECT_MUSIC_FLIP.mp3";
+const char* SE_SELECT_MUSIC_START	= "./Resource/se/SE_SELECT_MUSIC_START.mp3";
+const char* SE_RESULT_CLEAR			= "./Resource/se/SE_RESULT_CLEAR.mp3";
+const char* SE_RESULT_FAIL			= "./Resource/se/SE_RESULT_FAIL.mp3";
+
 const wchar_t* OPENING_VIDEO_FILE	= L"./Resource/sample.avi";
 
 const wchar_t* BG_IMAGE_TITLE	= L"./Resource/image_bg_00_01.png";

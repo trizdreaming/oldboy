@@ -313,6 +313,7 @@
     <ClInclude Include="RMchildUIResultImage.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMalbumImage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -522,6 +523,7 @@
     <ClCompile Include="RMchildUIResultImage.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
+    <ClCompile Include="RMalbumImage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

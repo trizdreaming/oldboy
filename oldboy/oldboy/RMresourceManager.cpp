@@ -30,11 +30,15 @@ void CRMresourceManager::InitializeArray()
 	}
 }
 
-void CRMresourceManager::InitializeAlbum()
+void CRMresourceManager::InitializeAlbum( AlbumImageType imageType )
 {
-	if ( m_TextureArray[WIDGET_ALBUM_IMAGE] != nullptr )
+	if ( imageType == ALBUM_IMAGE_STATIC )
 	{
 		SafeDelete( m_TextureArray[WIDGET_ALBUM_IMAGE] );
+	}
+	else if ( imageType == ALBUM_IMAGE_DYNAMIC )
+	{
+		SafeDelete( m_TextureArray[WIDGET_MOVING_ALBUM_IMAGE] );
 	}
 }
 
@@ -284,25 +288,31 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 }
 
 
-HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName )
+HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName,  AlbumImageType imageType )
 {
-	InitializeAlbum();
-
 	HRESULT hr = S_FALSE;
-	CRMimage* texture;
+	CRMimage* texture = new CRMimage();
 
-	texture = new CRMimage();
 	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageAlbum() ) );
-	
+
 	if ( hr == S_OK )
 	{
-		m_TextureArray[WIDGET_ALBUM_IMAGE] = texture;
+		InitializeAlbum( imageType );
+
+		if ( imageType == ALBUM_IMAGE_STATIC )
+		{
+			m_TextureArray[WIDGET_ALBUM_IMAGE] = texture;
+		}
+		else if ( imageType == ALBUM_IMAGE_DYNAMIC )
+		{
+			m_TextureArray[WIDGET_MOVING_ALBUM_IMAGE] = texture;
+		}
 	}
 	else
 	{
 		printConsole( ERROR_LOAD_IMAGE_CONSOLE, hr);
-		InitializeAlbum();
-		return hr;
+		SafeDelete( texture );
+		InitializeAlbum( imageType );
 	}
 
 	return hr;

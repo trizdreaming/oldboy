@@ -22,13 +22,18 @@ public:
 	void						RemoveAllNote();
 	void						RemoveNoteFromPlayerLayer( PlayerNumber );
 
-	void						AddObject( CRMobject* bject, LayerType layer );
+	void						AddObject( CRMobject* object, LayerType layer );
+	void						AddAlbumImage ( CRMobject* object, AlbumImageType imageType );
+
+	void						UpAlbumImage();
+	void						DownAlbumImage();
 
 	void						Update(); // const
 	void						Render() const;
 
 	void						SetRandomTooltipIndex();
 	void						ShowTooltip();
+	bool						ShowMovingAlbumImage();
 
 private:
 	int							m_TooltipIndex;
@@ -50,6 +55,8 @@ private:
 
 	std::list<CRMobject*>		m_ObjectListMemoryPoolOfNote;
 
-	std::vector<CRMobject*>		m_OjbectListTooltips;
+	std::vector<CRMobject*>		m_ObjectListTooltips;
+
+	std::array<CRMobject*, ALBUM_IMAGE_MAX>		m_ObjectListAlbumImage;
 };
 

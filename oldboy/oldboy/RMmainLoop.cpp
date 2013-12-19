@@ -37,6 +37,7 @@
 #include "RMchildItemCardDisplay.h"
 #include "RMairTomo.h"
 #include "RMchildUIResultImage.h"
+#include "RMalbumImage.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -462,11 +463,19 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetSceneType(SCENE_SELECT_MUSIC);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_BACKGROUND);
 	
+	//////////////////////////////////////////////////////////////////////////
 	newObject = new CRMchildBGImage();
 	newObject->SetWidgetType(WIDGET_ALBUM_IMAGE);
 	newObject->SetPosition(0, 0);
 	newObject->SetSceneType(SCENE_SELECT_MUSIC);
-	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_SHUTTER);
+	CRMobjectManager::GetInstance()->AddAlbumImage(newObject, ALBUM_IMAGE_STATIC);
+
+	newObject = new CRMalbumImage();
+	newObject->SetWidgetType(WIDGET_MOVING_ALBUM_IMAGE);
+	newObject->SetPosition(0, 0);
+	newObject->SetSceneType(SCENE_SELECT_MUSIC);
+	CRMobjectManager::GetInstance()->AddAlbumImage(newObject, ALBUM_IMAGE_DYNAMIC);
+	//////////////////////////////////////////////////////////////////////////
 
 	newObject = new CRMchildBGImage();
 	newObject->SetWidgetType(WIDGET_BG_IMAGE_RESULT);
@@ -768,6 +777,10 @@ HRESULT CRMmainLoop::TestKeyboard()
 		hr = GoNextScene();
 	}
 
+	//////////////////////////////////////////////////////////////////////////
+	// 곡 선택 
+	//////////////////////////////////////////////////////////////////////////
+
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
 
@@ -775,6 +788,32 @@ HRESULT CRMmainLoop::TestKeyboard()
 		++selectIndex %= m_MusicVector.size();
 		CRMmusicSelectManager::GetInstance()->SetMusicSelectIndex( selectIndex );
 		m_PlayMusicName = m_MusicVector.at( selectIndex );
+
+		//////////////////////////////////////////////////////////////////////////
+		// 앨범 이미지 스크롤링용 코드
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
+		
+		CRMobjectManager::GetInstance()->DownAlbumImage();
+		bool isFinish = false;
+
+		while ( !isFinish )
+		{
+			Sleep(0);
+			{
+				CRMdummyRender dummyRender;
+				isFinish = CRMobjectManager::GetInstance()->ShowMovingAlbumImage();
+			}
+		}
+		//////////////////////////////////////////////////////////////////////////
 
 		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
 
@@ -792,10 +831,62 @@ HRESULT CRMmainLoop::TestKeyboard()
 			return hr;
 		}
 
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 	}
 
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+
+		UINT selectIndex = CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex();
+		selectIndex += m_MusicVector.size(); // 언더플로우 방지
+		--selectIndex %= m_MusicVector.size();
+		CRMmusicSelectManager::GetInstance()->SetMusicSelectIndex( selectIndex );
+		m_PlayMusicName = m_MusicVector.at( selectIndex );
+
+		//////////////////////////////////////////////////////////////////////////
+		// 앨범 이미지 스크롤링용 코드
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
+
+		CRMobjectManager::GetInstance()->UpAlbumImage();
+		bool isFinish = false;
+
+		while ( !isFinish )
+		{
+			Sleep(0);
+			{
+				CRMdummyRender dummyRender;
+				isFinish = CRMobjectManager::GetInstance()->ShowMovingAlbumImage();
+			}
+		}
+		//////////////////////////////////////////////////////////////////////////
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+	}
 
 	//////////////////////////////////////////////////////////////////////////
 	// 작성중 pause
@@ -875,35 +966,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 	}
 
 	//////////////////////////////////////////////////////////////////////////
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
-	{
-
-		UINT selectIndex = CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex();
-		selectIndex += m_MusicVector.size(); // 언더플로우 방지
-		--selectIndex %= m_MusicVector.size();
-		CRMmusicSelectManager::GetInstance()->SetMusicSelectIndex( selectIndex );
-		m_PlayMusicName = m_MusicVector.at( selectIndex );
-
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
-
-		if ( hr != S_OK )
-		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-			return hr;
-		}
-
-		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
-
-		if ( hr != S_OK )
-		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-			return hr;
-		}
-
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
-		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
-	}
-
+	
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
 	{
 		hr = GoNextScene();
@@ -935,7 +998,13 @@ HRESULT CRMmainLoop::GoNextScene()
 		m_PlayMusicName = m_MusicVector.at( CRMmusicSelectManager::GetInstance()->GetMusicSelectIndex() );
 
 		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
 
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName , ALBUM_IMAGE_DYNAMIC );
 		if ( hr != S_OK )
 		{
 			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );

@@ -7,10 +7,13 @@
 #include "RMpauseManager.h"
 #include "RMitemManager.h"
 #include "RMrandomGenerator.h"
+#include "RMalbumImage.h"
+#include "RMmainLoop.h"
 
 CRMobjectManager::CRMobjectManager(void) :
 	m_TooltipIndex(0)
 {
+	ZeroMemory(&m_ObjectListAlbumImage, sizeof(m_ObjectListAlbumImage));
 }
 
 
@@ -96,7 +99,7 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListMemoryPoolOfNote.clear();
 
-	for ( auto& iter : m_OjbectListTooltips )
+	for ( auto& iter : m_ObjectListTooltips )
 	{
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
@@ -109,6 +112,11 @@ CRMobjectManager::~CRMobjectManager(void)
 	}
 	m_ObjectListLayerPause.clear();
 
+	for ( auto& iter : m_ObjectListAlbumImage )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
 }
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
@@ -154,7 +162,7 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			m_ObjectListLayerPause.push_front(object);
 			break;
 		case LAYER_TOOLTIP:
-			m_OjbectListTooltips.push_back(object);
+			m_ObjectListTooltips.push_back(object);
 			break;
 		case LAYER_NONE:
 			break;
@@ -232,6 +240,11 @@ void CRMobjectManager::Update()
 	{
 		iter->Update();
 	}
+
+	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC] != nullptr )
+	{
+		m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->Update();
+	}
 }
 
 void CRMobjectManager::Render() const
@@ -280,6 +293,16 @@ void CRMobjectManager::Render() const
 	{
 		iter->Render();
 	}
+
+	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC] != nullptr )
+	{
+		if ( m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->GetVisible() == true )
+		{
+			m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->Render();
+		}
+	}
+	// 메뉴를 가리면 안 되므로 여기에 둠
+
 	for ( auto& iter : m_ObjectListLayerPause )
 	{
 		iter->Render();
@@ -398,7 +421,7 @@ void CRMobjectManager::ShowTooltip()
 		return;
 	}
 
-	auto &thisTooltip = m_OjbectListTooltips.at(m_TooltipIndex);
+	auto &thisTooltip = m_ObjectListTooltips.at(m_TooltipIndex);
 
 	if ( thisTooltip == nullptr )
 	{
@@ -410,7 +433,7 @@ void CRMobjectManager::ShowTooltip()
 
 void CRMobjectManager::SetRandomTooltipIndex()
 {
-	int maxTooltip = m_OjbectListTooltips.size();
+	int maxTooltip = m_ObjectListTooltips.size();
 
 	if ( maxTooltip < 1 )
 	{
@@ -419,4 +442,57 @@ void CRMobjectManager::SetRandomTooltipIndex()
 	}
 
 	int m_TooltipIndex = CRMrandomGenerator::GetInstance()->GetRandom(0, maxTooltip - 1);
+}
+
+bool CRMobjectManager::ShowMovingAlbumImage()
+{
+	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC] != nullptr )
+	{
+		m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->Update();
+		m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->Render();
+	}
+	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC] != nullptr )
+	{
+		auto thisObject = dynamic_cast<CRMalbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
+		if ( thisObject != nullptr)
+		{
+			thisObject->Update();
+			thisObject->Render();
+			return ( thisObject->IsFinish() );
+		}
+	}
+
+	return false;
+}
+
+void CRMobjectManager::AddAlbumImage( CRMobject* object, AlbumImageType imageType )
+{
+	if ( object != nullptr )
+	{
+		m_ObjectListAlbumImage[imageType] = object;
+	}
+}
+
+void CRMobjectManager::UpAlbumImage()
+{
+	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC] != nullptr )
+	{
+		auto thisObject = dynamic_cast<CRMalbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
+		if ( thisObject != nullptr)
+		{
+			thisObject->Up();
+		}
+	}
+}
+
+void CRMobjectManager::DownAlbumImage()
+{
+	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC] != nullptr )
+	{
+		auto thisObject = dynamic_cast<CRMalbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
+		if ( thisObject != nullptr)
+		{
+			thisObject->Down();
+		}
+	}
 }

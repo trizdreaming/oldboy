@@ -18,12 +18,13 @@ public:
 
 	HRESULT						CreateTexture();
 	HRESULT						CreateTexture( const std::string& folderName );
-	HRESULT						CreateTextureAlbum( const std::string& folderName );
-	CRMimage*					GetTexture( const WidgetType& key ) { return m_TextureArray[key]; }
+	HRESULT						CreateTextureAlbum( const std::string& folderName, AlbumImageType imageType = ALBUM_IMAGE_STATIC );
+
+	CRMimage*					GetTexture( const WidgetType key ) { return m_TextureArray[key]; }
 	
 private:
 	void								InitializeArray();
-	void								InitializeAlbum();
+	void								InitializeAlbum( AlbumImageType imageType );
 
 	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName ) const;
 	HRESULT								TextureMaker( const std::wstring& path, WidgetType type );

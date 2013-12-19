@@ -144,6 +144,34 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_PAUSE_CANCEL, SOUND_EFFECT_PAUSE_CANCEL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PAUSE_FLIP, SOUND_EFFECT_PAUSE_FLIP );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PAUSE_OK, SOUND_EFFECT_PAUSE_OK );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PAUSE_OPEN, SOUND_EFFECT_PAUSE_OPEN );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );

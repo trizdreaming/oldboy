@@ -44,6 +44,10 @@ extern const char* SE_SELECT_MUSIC_FLIP;
 extern const char* SE_SELECT_MUSIC_START;
 extern const char* SE_RESULT_CLEAR;
 extern const char* SE_RESULT_FAIL;
+extern const char* SE_PAUSE_CANCEL;
+extern const char* SE_PAUSE_FLIP;
+extern const char* SE_PAUSE_OK;
+extern const char* SE_PAUSE_OPEN;
 
 extern const wchar_t* OPENING_VIDEO_FILE;
 

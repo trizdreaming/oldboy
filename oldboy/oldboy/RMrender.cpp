@@ -5,7 +5,8 @@
 
 CRMrender::CRMrender(void):
 	m_pDisplayFactory(nullptr),
-	m_pDisplayRenderTarget(nullptr)
+	m_pDisplayRenderTarget(nullptr),
+	m_pGaugeBrush(nullptr)
 {
 }
 
@@ -78,4 +79,24 @@ void CRMrender::ReleaseFactory()
 {
 	SafeRelease(m_pDisplayFactory);
 	SafeRelease(m_pDisplayRenderTarget);
+	SafeRelease(m_pGaugeBrush);
+}
+
+void CRMrender::DrawGauge( int gaugePercent )
+{
+	if ( m_pGaugeBrush == nullptr )
+	{
+		return;
+	}
+
+	m_pDisplayRenderTarget->DrawLine( D2D1::Point2F(60.0f, 630.0f), D2D1::Point2F(60.0f + (gaugePercent * 5.5f), 630.0f),
+										m_pGaugeBrush, 10.0f);
+}
+
+HRESULT CRMrender::CreateBrush()
+{
+	HRESULT hr = S_FALSE;
+
+	hr = m_pDisplayRenderTarget->CreateSolidColorBrush( D2D1::ColorF(D2D1::ColorF::LightSlateGray), &m_pGaugeBrush);
+	return hr;
 }

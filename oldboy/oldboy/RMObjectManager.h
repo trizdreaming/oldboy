@@ -27,9 +27,12 @@ public:
 	void						Update(); // const
 	void						Render() const;
 
+	void						SetRandomTooltipIndex();
 	void						ShowTooltip();
 
 private:
+	int							m_TooltipIndex;
+
 	std::list<CRMobject*>		m_ObjectListLayerBackground;
 
 	std::list<CRMobject*>		m_ObjectListLayerJudgeGauge;

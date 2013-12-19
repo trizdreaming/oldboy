@@ -8,7 +8,8 @@
 #include "RMitemManager.h"
 #include "RMrandomGenerator.h"
 
-CRMobjectManager::CRMobjectManager(void)
+CRMobjectManager::CRMobjectManager(void) :
+	m_TooltipIndex(0)
 {
 }
 
@@ -392,16 +393,12 @@ void CRMobjectManager::RemoveNoteFromPlayerLayer( PlayerNumber playerNumber )
 
 void CRMobjectManager::ShowTooltip()
 {
-	int maxTooltip = m_OjbectListTooltips.size();
-
-	if ( maxTooltip < 1 )
+	if ( m_TooltipIndex < 0 )
 	{
 		return;
 	}
 
-	int index = CRMrandomGenerator::GetInstance()->GetRandom(0, maxTooltip - 1);
-
-	auto &thisTooltip = m_OjbectListTooltips.at(index);
+	auto &thisTooltip = m_OjbectListTooltips.at(m_TooltipIndex);
 
 	if ( thisTooltip == nullptr )
 	{
@@ -409,4 +406,17 @@ void CRMobjectManager::ShowTooltip()
 	}
 
 	thisTooltip->Render();
+}
+
+void CRMobjectManager::SetRandomTooltipIndex()
+{
+	int maxTooltip = m_OjbectListTooltips.size();
+
+	if ( maxTooltip < 1 )
+	{
+		m_TooltipIndex = -1;
+		return;
+	}
+
+	int m_TooltipIndex = CRMrandomGenerator::GetInstance()->GetRandom(0, maxTooltip - 1);
 }

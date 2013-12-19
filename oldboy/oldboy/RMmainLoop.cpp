@@ -415,6 +415,13 @@ HRESULT CRMmainLoop::CreateObject()
 		MessageBox( NULL, ERROR_CREATE_RENDER_TARGET, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 		return hr;
 	}
+	hr = CRMrender::GetInstance()->CreateBrush();
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, ERROR_CREATE_BRUSH, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		return hr;
+	}
+
 	// 렌더를 메인루프의 생성자에 못 넣는 이유는?
 	// 렌더 쪽에서 메인루프 싱글톤을 호출하므로 메모리 접근 오류 발생!
 
@@ -978,18 +985,23 @@ HRESULT CRMmainLoop::GoNextScene()
 		// 효과음 재생
 		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_START );
 		
-		{
-			CRMdummyRender dummyRender;
-			CRMobjectManager::GetInstance()->ShowTooltip();
-		}
-
-		DWORD prevTime = timeGetTime();
+		CRMobjectManager::GetInstance()->SetRandomTooltipIndex();
+		DWORD startTime = timeGetTime();
 		
 		for ( UINT i = 0 ; i < UINT_MAX ; ++i )
 		{
 			Sleep(0);
-			
-			if ( timeGetTime() - prevTime > 3000 )
+
+			int elapsedTime = timeGetTime() - startTime;
+
+			int gaugePercent = elapsedTime * 100 / 3000;
+			{
+				CRMdummyRender dummyRender;
+				CRMobjectManager::GetInstance()->ShowTooltip();
+				CRMrender::GetInstance()->DrawGauge(gaugePercent);
+			}
+
+			if ( elapsedTime > 3000 )
 			{
 				break;
 			}

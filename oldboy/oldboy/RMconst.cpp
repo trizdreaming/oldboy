@@ -100,6 +100,7 @@ const wchar_t* ERROR_TEXTURE_NULLPTR		= L"Texture Pointer Null Error";
 const wchar_t* ERROR_CREATE_RESOURCE		= L"Error to Create Object Resources";
 const wchar_t* ERROR_CREATE_RENDER			= L"Error to Create Renderer";
 const wchar_t* ERROR_CREATE_RENDER_TARGET	= L"Error to Create Render Target";
+const wchar_t* ERROR_CREATE_BRUSH			= L"Error to Create Brush";
 const wchar_t* ERROR_CREATE_WIC_FACTORY		= L"Error to Create WIC Factory";
 
 const wchar_t* ERROR_CREATE_BG_IMAGE		= L"Error to Create BackGround Texture";

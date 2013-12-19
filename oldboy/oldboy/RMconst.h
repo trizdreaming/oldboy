@@ -104,6 +104,7 @@ extern const wchar_t* ERROR_TEXTURE_NULLPTR;
 extern const wchar_t* ERROR_CREATE_RESOURCE;
 extern const wchar_t* ERROR_CREATE_RENDER;
 extern const wchar_t* ERROR_CREATE_RENDER_TARGET;
+extern const wchar_t* ERROR_CREATE_BRUSH;
 extern const wchar_t* ERROR_CREATE_WIC_FACTORY;
 
 extern const wchar_t* ERROR_CREATE_BG_IMAGE;

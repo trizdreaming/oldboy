@@ -1,12 +1,12 @@
 #pragma once
 #include "rmobject.h"
 
-class CRMalbumImage :
+class CRMchildAlbumImage :
 	public CRMobject
 {
 public:
-	CRMalbumImage(void);
-	~CRMalbumImage(void);
+	CRMchildAlbumImage(void);
+	~CRMchildAlbumImage(void);
 
 	void	Update();
 	bool	IsFinish() { return m_IsFinish; }

@@ -114,7 +114,7 @@
     <ClInclude Include="LibraryTinyXML\xpath_static.h" />
     <ClInclude Include="LibraryTinyXML\xpath_stream.h" />
     <ClInclude Include="LibraryTinyXML\xpath_syntax.h" />
-    <ClInclude Include="RMalbumImage.h" />
+    <ClInclude Include="RMchildAlbumImage.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildUIResultImage.h" />
@@ -151,7 +151,6 @@
     <ClInclude Include="RMmacro.h" />
     <ClInclude Include="RMmainLoop.h" />
     <ClInclude Include="RMmusicData.h" />
-    <ClInclude Include="RMmusicSelectManager.h" />
     <ClInclude Include="RMnoteData.h" />
     <ClInclude Include="RMnoteManager.h" />
     <ClInclude Include="RMobject.h" />
@@ -192,7 +191,7 @@
     <ClCompile Include="LibraryTinyXML\xpath_stream.cpp" />
     <ClCompile Include="LibraryTinyXML\xpath_syntax.cpp" />
     <ClCompile Include="oldboy.cpp" />
-    <ClCompile Include="RMalbumImage.cpp" />
+    <ClCompile Include="RMchildAlbumImage.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
     <ClCompile Include="RMchildUIResultImage.cpp" />
@@ -224,7 +223,6 @@
     <ClCompile Include="RMlabelManager.cpp" />
     <ClCompile Include="RMmainLoop.cpp" />
     <ClCompile Include="RMmusicData.cpp" />
-    <ClCompile Include="RMmusicSelectManager.cpp" />
     <ClCompile Include="RMnoteData.cpp" />
     <ClCompile Include="RMnoteManager.cpp" />
     <ClCompile Include="RMobject.cpp" />

@@ -285,7 +285,11 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 	score.clear();
 	score.append( LABEL_PLAY_SCORE );
 	score.append( L"\n " );
-	score.append( std::to_wstring( thisPlayer->GetCount( COUNT_SCORE ) ) );
+
+	std::wstring tempString = std::to_wstring( thisPlayer->GetCount( COUNT_SCORE ) + 1000000 );
+	tempString = tempString.substr(1, tempString.length());
+
+	score.append( tempString );
 	score.append( L"\n  " );
 	score.append( judge );
 

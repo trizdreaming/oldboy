@@ -1,22 +1,22 @@
 #include "stdafx.h"
 #include "RMmacro.h"
 #include "RMdefine.h"
-#include "RMalbumImage.h"
+#include "RMchildAlbumImage.h"
 #include "RMrender.h"
 
 
-CRMalbumImage::CRMalbumImage(void) :
+CRMchildAlbumImage::CRMchildAlbumImage(void) :
 	m_IsUp(false), m_IsDown(false), m_IsFinish(true)
 {
 }
 
 
-CRMalbumImage::~CRMalbumImage(void)
+CRMchildAlbumImage::~CRMchildAlbumImage(void)
 {
 }
 
 
-void CRMalbumImage::Update()
+void CRMchildAlbumImage::Update()
 {
 	if ( m_IsUp == false && m_IsDown == false )
 	{
@@ -50,14 +50,14 @@ void CRMalbumImage::Update()
 	}
 }
 
-void CRMalbumImage::Up()
+void CRMchildAlbumImage::Up()
 {
 	m_IsUp = true;
 	m_IsFinish = false;
 	m_PositionY = SCREEN_SIZE_Y + 18;
 }
 
-void CRMalbumImage::Down()
+void CRMchildAlbumImage::Down()
 {
 	m_IsDown = true;
 	m_IsFinish = false;

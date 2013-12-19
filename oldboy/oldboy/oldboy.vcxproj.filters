@@ -238,9 +238,6 @@
     <ClInclude Include="RMmusicData.h">
       <Filter>RhythmMatch\Music</Filter>
     </ClInclude>
-    <ClInclude Include="RMmusicSelectManager.h">
-      <Filter>RhythmMatch\Music</Filter>
-    </ClInclude>
     <ClInclude Include="RMresultManager.h">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClInclude>
@@ -313,7 +310,9 @@
     <ClInclude Include="RMchildUIResultImage.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMalbumImage.h" />
+    <ClInclude Include="RMchildAlbumImage.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -448,9 +447,6 @@
     <ClCompile Include="RMmusicData.cpp">
       <Filter>RhythmMatch\Music</Filter>
     </ClCompile>
-    <ClCompile Include="RMmusicSelectManager.cpp">
-      <Filter>RhythmMatch\Music</Filter>
-    </ClCompile>
     <ClCompile Include="RMresultManager.cpp">
       <Filter>RhythmMatch\MainLoop</Filter>
     </ClCompile>
@@ -523,7 +519,9 @@
     <ClCompile Include="RMchildUIResultImage.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMalbumImage.cpp" />
+    <ClCompile Include="RMchildAlbumImage.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

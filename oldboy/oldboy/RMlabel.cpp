@@ -56,7 +56,7 @@ void CRMlabel::Render()
 	CRMrender::GetInstance()->GetRenderTarget()->DrawTextW(	
 				m_String.c_str(), 
 				m_String.length(), 
-				m_TextFormat, D2D1::RectF( m_PositionX, m_PositionY, m_PositionY + m_Width, m_PositionY + m_Height ),
+				m_TextFormat, D2D1::RectF( m_PositionX , m_PositionY, m_PositionX + m_Width, m_PositionY + m_Height ),
 				m_Brush );
 }
 

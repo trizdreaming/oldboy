@@ -45,6 +45,8 @@ private:
 
 	UINT							m_FpsCheckTime;
 
+	UINT							m_MusicSelectIndex;
+
 	SceneType						m_SceneType;
 
 	std::vector<std::string>		m_MusicVector;

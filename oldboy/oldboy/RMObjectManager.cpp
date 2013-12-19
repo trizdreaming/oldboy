@@ -7,7 +7,7 @@
 #include "RMpauseManager.h"
 #include "RMitemManager.h"
 #include "RMrandomGenerator.h"
-#include "RMalbumImage.h"
+#include "RMchildAlbumImage.h"
 #include "RMmainLoop.h"
 
 CRMobjectManager::CRMobjectManager(void) :
@@ -453,7 +453,7 @@ bool CRMobjectManager::ShowMovingAlbumImage()
 	}
 	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC] != nullptr )
 	{
-		auto thisObject = dynamic_cast<CRMalbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
+		auto thisObject = dynamic_cast<CRMchildAlbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
 		if ( thisObject != nullptr)
 		{
 			thisObject->Update();
@@ -477,7 +477,7 @@ void CRMobjectManager::UpAlbumImage()
 {
 	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC] != nullptr )
 	{
-		auto thisObject = dynamic_cast<CRMalbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
+		auto thisObject = dynamic_cast<CRMchildAlbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
 		if ( thisObject != nullptr)
 		{
 			thisObject->Up();
@@ -489,7 +489,7 @@ void CRMobjectManager::DownAlbumImage()
 {
 	if ( m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC] != nullptr )
 	{
-		auto thisObject = dynamic_cast<CRMalbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
+		auto thisObject = dynamic_cast<CRMchildAlbumImage*>(m_ObjectListAlbumImage[ALBUM_IMAGE_DYNAMIC]);
 		if ( thisObject != nullptr)
 		{
 			thisObject->Down();

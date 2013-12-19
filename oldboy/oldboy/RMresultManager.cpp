@@ -21,17 +21,14 @@ CRMresultManager::~CRMresultManager(void)
 
 void CRMresultManager::ShowResult()
 {
-	//std::to_string(  );
 	CRMplayer*	player1 = CRMplayer1P::GetInstance();
 	CRMplayer*	player2 = CRMplayer2P::GetInstance();
 
-	
 	UINT totalScoreP1 = player1->GetCount(COUNT_SCORE) + ( player1->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	UINT totalScoreP2 = player2->GetCount(COUNT_SCORE) + ( player2->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	
-
 	CRMlabel* p1Perfect = new CRMlabel();
-	p1Perfect->CreateLabel( L"p1Perfect" , string2wstring( std::to_string( player1->GetCount(COUNT_PERFECT) ) + " * " + std::to_string( SCORE_EACH_PERFECT ) ), LABEL_FONT_NORMAL, 35.0f );
+	p1Perfect->CreateLabel( L"p1Perfect" , string2wstring( std::to_string( player1->GetCount(COUNT_PERFECT) + 10000 ) + " * " + std::to_string( SCORE_EACH_PERFECT ) ), LABEL_FONT_NORMAL, 35.0f );
 	p1Perfect->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
 	p1Perfect->SetSceneType( SCENE_RESULT );
 	p1Perfect->SetPosition( ( SCREEN_SIZE_X / 2 ) - 250 , 250 );

@@ -47,7 +47,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 
 // shutter 에서 사용하는 값으로 노트의 시작 위치를 담당
 #define SHUTTER_P1_START_POSITION_X 0
-#define SHUTTER_P2_START_POSITION_X 515
+#define SHUTTER_P2_START_POSITION_X 512
 #define SHUTTER_START_POSITION_Y -668
 
 // shutter 관련 플레이어 HP 설정

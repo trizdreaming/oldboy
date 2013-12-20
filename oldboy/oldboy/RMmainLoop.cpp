@@ -542,14 +542,14 @@ HRESULT CRMmainLoop::CreateObject()
 
 	CRMchildShutter* shutterObject = new CRMchildShutter();
 	shutterObject->SetWidgetType(WIDGET_SHUTTER);
-	shutterObject->SetPosition(0, -890);
+	shutterObject->SetPosition(SHUTTER_P1_START_POSITION_X, -890);
 	shutterObject->SetSceneType(SCENE_PLAY);
 	shutterObject->SetPlayer(PLAYER_ONE);
 	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);
 
 	shutterObject = new CRMchildShutter();
 	shutterObject->SetWidgetType(WIDGET_SHUTTER);
-	shutterObject->SetPosition(515, -890);
+	shutterObject->SetPosition(SHUTTER_P2_START_POSITION_X, -890);
 	shutterObject->SetSceneType(SCENE_PLAY);
 	shutterObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(shutterObject, LAYER_SHUTTER);

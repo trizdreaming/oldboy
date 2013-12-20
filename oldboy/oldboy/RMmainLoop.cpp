@@ -564,7 +564,7 @@ HRESULT CRMmainLoop::CreateObject()
 	// pause용 이미지
 	newObject = new CRMchildPauseImage();
 	newObject->SetWidgetType(WIDGET_PAUSE_IMAGE_PLAY_CANCEL);
-	newObject->SetPosition(390, 180); // 값 찾아서 define해야함 
+	newObject->SetPosition(0, 0); // 값 찾아서 define해야함 
 	newObject->SetSceneType(SCENE_SELECT_MUSIC); // 필요 없지만 그냥 초기화
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 

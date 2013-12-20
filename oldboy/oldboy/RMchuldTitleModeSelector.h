@@ -4,7 +4,6 @@
 class CRMchuldTitleModeSelector :
 	public CRMobject
 {
-	SINGLETON(CRMchuldTitleModeSelector);
 public:
 	CRMchuldTitleModeSelector(void);
 	~CRMchuldTitleModeSelector(void);
@@ -16,7 +15,6 @@ public:
 	ModeType		GetModeType();
 
 private:
-	UINT			GetIndex();
 	UINT			m_ModeIndex;
 	UINT			m_MaxModes;
 };

@@ -572,11 +572,11 @@ HRESULT CRMmainLoop::CreateObject()
 
 
 	// title MODE용 이미지
-	newObject = new CRMchuldTitleModeSelector();
-	newObject->SetWidgetType(WIDGET_TITLE_MODE_SINGLE);
-	newObject->SetPosition(390, 370);
-	newObject->SetSceneType(SCENE_TITLE);
-	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
+	m_ModeSelector = new CRMchuldTitleModeSelector;
+	m_ModeSelector->SetWidgetType(WIDGET_TITLE_MODE_SINGLE);
+	m_ModeSelector->SetPosition(390, 400);
+	m_ModeSelector->SetSceneType(SCENE_TITLE);
+	CRMobjectManager::GetInstance()->AddObject(m_ModeSelector, LAYER_PAUSE);
 
 
 	// UI이미지 일단 리절트 화면
@@ -585,14 +585,14 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetWidgetType( WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
 	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 205 );
 	newObject->SetSceneType(SCENE_RESULT);
-	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 
 	newObject = new CRMchildUIResultImage();
 	newObject->SetPlayer( PLAYER_TWO );
 	newObject->SetWidgetType( WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
 	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 205 );
 	newObject->SetSceneType(SCENE_RESULT);
-	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 
 	//<<<< 여기까지 이미지 자원
 	//>>>> 여기부터 Label 자원
@@ -957,17 +957,17 @@ HRESULT CRMmainLoop::TestKeyboard()
 	//////////////////////////////////////////////////////////////////////////
 	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_UP )
 	{
-		CRMchuldTitleModeSelector::GetInstance()->ModeUp();
+		m_ModeSelector->ModeUp();
 		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_FLIP );
 	}
 	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_DOWN ) == KEY_STATUS_UP )
 	{
-		CRMchuldTitleModeSelector::GetInstance()->ModeDown();
+		m_ModeSelector->ModeDown();
 		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_FLIP );
 	}
 	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP )
 	{
-		ModeType modeType = CRMchuldTitleModeSelector::GetInstance()->GetModeType();
+		ModeType modeType = m_ModeSelector->GetModeType();
 		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_OK );
 
 		switch ( modeType )

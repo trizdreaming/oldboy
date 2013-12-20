@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "RMenumSet.h"
 
+class CRMchuldTitleModeSelector;
 class CRMmainLoop
 {
 	SINGLETON(CRMmainLoop);
@@ -54,5 +55,7 @@ private:
 	std::string						m_PlayMusicName;
 
 	bool							m_AirTomoOn;
+
+	CRMchuldTitleModeSelector*		m_ModeSelector;
 };
 

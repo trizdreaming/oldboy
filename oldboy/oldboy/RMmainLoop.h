@@ -52,5 +52,7 @@ private:
 	std::vector<std::string>		m_MusicVector;
 
 	std::string						m_PlayMusicName;
+
+	bool							m_AirTomoOn;
 };
 

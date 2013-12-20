@@ -114,6 +114,14 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( UI_IMAGE_RESULT_LOSE_FAIL, WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
 
 	//////////////////////////////////////////////////////////////////////////
+	// TITLE MODE
+	//////////////////////////////////////////////////////////////////////////
+	hr = TextureMaker( TITLE_MODE_SINGLE, WIDGET_TITLE_MODE_SINGLE );
+	hr = TextureMaker( TITLE_MODE_DUAL, WIDGET_TITLE_MODE_DUAL );
+	hr = TextureMaker( TITLE_MODE_TUTORIAL, WIDGET_TITLE_MODE_TUTORIAL );
+	hr = TextureMaker( TITLE_MODE_EXIT, WIDGET_TITLE_MODE_EXIT );
+
+	//////////////////////////////////////////////////////////////////////////
 	// 아이템 이미지 리소스 추가
 	//////////////////////////////////////////////////////////////////////////
 	

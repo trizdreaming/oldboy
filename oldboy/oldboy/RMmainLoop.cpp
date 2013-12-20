@@ -37,6 +37,7 @@
 #include "RMairTomo.h"
 #include "RMchildUIResultImage.h"
 #include "RMchildAlbumImage.h"
+#include "RMchuldTitleModeSelector.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -45,7 +46,8 @@ CRMmainLoop::CRMmainLoop(void):
 	m_FpsCheckTime(0),
 	m_MusicSelectIndex(0),
 	m_SceneType(SCENE_OPENING),
-	m_Hwnd(NULL)
+	m_Hwnd(NULL),
+	m_AirTomoOn(false)
 {
 	m_Fps = ( 1000 / 60 ) + 1;
 }
@@ -569,6 +571,14 @@ HRESULT CRMmainLoop::CreateObject()
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 
 
+	// title MODE용 이미지
+	newObject = new CRMchuldTitleModeSelector();
+	newObject->SetWidgetType(WIDGET_TITLE_MODE_SINGLE);
+	newObject->SetPosition(390, 370);
+	newObject->SetSceneType(SCENE_TITLE);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_MEMORY_POOL);
+
+
 	// UI이미지 일단 리절트 화면
 	newObject = new CRMchildUIResultImage();
 	newObject->SetPlayer( PLAYER_ONE );
@@ -780,21 +790,18 @@ HRESULT CRMmainLoop::TestKeyboard()
 #endif
 	
 	// 에어 친구 소환
-	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode(false);
-	CRMitemManager::GetInstance()->SetVirtualPlayerMode(false);
+	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode( m_AirTomoOn );
+	CRMitemManager::GetInstance()->SetVirtualPlayerMode( m_AirTomoOn );
 
 	HRESULT hr = S_OK;
 
-	if ( !CRMpauseManager::GetInstance()->IsPause() && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
-	{
-		hr = GoNextScene();
-	}
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
 		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex % m_MusicVector.size() );
 		hr = GoNextScene();
 	}
+
 
 	//////////////////////////////////////////////////////////////////////////
 	// 곡 선택 
@@ -944,42 +951,45 @@ HRESULT CRMmainLoop::TestKeyboard()
 	}
 
 
+
 	//////////////////////////////////////////////////////////////////////////
-	// 종료 
-	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_TITLE )
+	// 타이틀 화면  
+	//////////////////////////////////////////////////////////////////////////
+	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_UP )
 	{
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_OPEN );
-		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
-		CRMpauseManager::GetInstance()->ShowPause();
-	}
-	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_TITLE && 
-		( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_DOWN ) == KEY_STATUS_UP ) || 
-		( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_UP ) ) )
-	{
+		CRMchuldTitleModeSelector::GetInstance()->ModeUp();
 		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_FLIP );
-		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
-		{
-			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(false);
-		}
-		else
-		{
-			CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
-		}
 	}
-	if ( CRMpauseManager::GetInstance()->IsPause() && m_SceneType == SCENE_TITLE && ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) )
+	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_DOWN ) == KEY_STATUS_UP )
 	{
-		if ( CRMpauseManager::GetInstance()->IsPauseSelectedCancel() )
-		{
-			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_CANCEL );
-			CRMpauseManager::GetInstance()->ClosePause();
-		}
-		else
-		{
-			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_OK );
-			hr = GoPrevScene();
-		}
-		CRMpauseManager::GetInstance()->SetPuaseSelectedCancel(true);
+		CRMchuldTitleModeSelector::GetInstance()->ModeDown();
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_FLIP );
 	}
+	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP )
+	{
+		ModeType modeType = CRMchuldTitleModeSelector::GetInstance()->GetModeType();
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_OK );
+
+		switch ( modeType )
+		{
+		case MODE_SINGLE:
+			m_AirTomoOn = true;
+			hr = GoNextScene();
+			break;
+		case MODE_DUAL:
+			m_AirTomoOn = false;
+			hr = GoNextScene();
+			break;
+		case MODE_TUTORIAL:
+			break;
+		case MODE_EXIT:
+			hr = GoPrevScene();
+			break;
+		default:
+			break;
+		}
+	}
+	
 
 	//////////////////////////////////////////////////////////////////////////
 

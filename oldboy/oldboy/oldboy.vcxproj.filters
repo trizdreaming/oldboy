@@ -313,6 +313,9 @@
     <ClInclude Include="RMchildAlbumImage.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMchuldTitleModeSelector.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -520,6 +523,9 @@
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildAlbumImage.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchuldTitleModeSelector.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
   </ItemGroup>

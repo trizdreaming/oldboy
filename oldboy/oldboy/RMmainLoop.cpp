@@ -583,14 +583,14 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject = new CRMchildUIResultImage();
 	newObject->SetPlayer( PLAYER_ONE );
 	newObject->SetWidgetType( WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
-	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) - 450 , 205 );
+	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) - 462 , 217 );
 	newObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 
 	newObject = new CRMchildUIResultImage();
 	newObject->SetPlayer( PLAYER_TWO );
 	newObject->SetWidgetType( WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
-	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 205 );
+	newObject->SetPosition( ( SCREEN_SIZE_X / 2 ) + 50 , 217 );
 	newObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 

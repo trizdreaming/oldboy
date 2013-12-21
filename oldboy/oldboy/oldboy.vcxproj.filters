@@ -316,6 +316,7 @@
     <ClInclude Include="RMchuldTitleModeSelector.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildJudgeMessage.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -528,6 +529,7 @@
     <ClCompile Include="RMchuldTitleModeSelector.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
+    <ClCompile Include="RMchildJudgeMessage.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

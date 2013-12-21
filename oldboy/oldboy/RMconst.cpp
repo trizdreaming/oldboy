@@ -4,18 +4,14 @@
 const wchar_t* GAME_NAME	= L"Rhythm Match v0.125";
 const wchar_t* CLASS_NAME	= L"RhythmMatch";
 
-// Label 관련 define
-const wchar_t* LABEL_JUDGE_PERFECT	= L"PERFECT!!";
-const wchar_t* LABEL_JUDGE_GOOD		= L"  GOOD!  ";
-const wchar_t* LABEL_JUDGE_MISS		= L"  MISS...";
-
-const wchar_t* LABEL_PLAY_SCORE		= L"SCORE";
-const wchar_t* LABEL_PLAY_COMBO		= L"COMBO";
-
-const wchar_t* LABEL_NAME_P1_SCORE	= L"플레이어1점수";
-const wchar_t* LABEL_NAME_P1_COMBO	= L"플레이어1콤보";
-const wchar_t* LABEL_NAME_P2_SCORE	= L"플레이어2점수";
-const wchar_t* LABEL_NAME_P2_COMBO	= L"플레이어2콤보";
+const wchar_t* LABEL_NAME_P1_SCORE			= L"플레이어1점수-보통";
+const wchar_t* LABEL_NAME_P1_COMBO			= L"플레이어1콤보-보통";
+const wchar_t* LABEL_NAME_P2_SCORE			= L"플레이어2점수-보통";
+const wchar_t* LABEL_NAME_P2_COMBO			= L"플레이어2콤보-보통";
+const wchar_t* LABEL_NAME_P1_SCORE_SHADOW	= L"플레이어1점수-그림자";
+const wchar_t* LABEL_NAME_P1_COMBO_SHADOW	= L"플레이어1콤보-그림자";
+const wchar_t* LABEL_NAME_P2_SCORE_SHADOW	= L"플레이어2점수-그림자";
+const wchar_t* LABEL_NAME_P2_COMBO_SHADOW	= L"플레이어2콤보-그림자";
 
 const wchar_t* LABEL_NAME_SELECT_LIST1	= L"셀렉트리스트1";
 const wchar_t* LABEL_NAME_SELECT_LIST2	= L"셀렉트리스트2";
@@ -67,9 +63,13 @@ extern const wchar_t* TITLE_MODE_TUTORIAL	= L"./Resource/TITLE_MODE_TUTORIAL.png
 extern const wchar_t* TITLE_MODE_EXIT		= L"./Resource/TITLE_MODE_EXIT.png";
 
 
-const wchar_t* PLAY_IMAGE_JUDGE_RING	= L"./Resource/judgeRing.png";
-const wchar_t* PLAY_IMAGE_BLUE_GAUGE	= L"./Resource/blueBar.png";
-const wchar_t* PLAY_IMAGE_RED_GAUGE		= L"./Resource/redBar.png";
+const wchar_t* PLAY_IMAGE_JUDGE_RING		= L"./Resource/judgeRing.png";
+const wchar_t* PLAY_IMAGE_BLUE_GAUGE		= L"./Resource/blueBar.png";
+const wchar_t* PLAY_IMAGE_RED_GAUGE			= L"./Resource/redBar.png";
+const wchar_t* PLAY_IMAGE_JUDGE_PERFECT		= L"./Resource/image_play_judge_perfect.png";
+const wchar_t* PLAY_IMAGE_JUDGE_GOOD		= L"./Resource/image_play_judge_good.png";
+const wchar_t* PLAY_IMAGE_JUDGE_MISS		= L"./Resource/image_play_judge_miss.png";
+const wchar_t* PLAY_IMAGE_JUDGE_NONE		= L"./Resource/image_play_judge_none.png";
 
 const wchar_t* PAUSE_IMAGE_PLAY_CANCEL	= L"./Resource/image_pa_play_01.png";
 const wchar_t* PAUSE_IMAGE_PLAY_OK		= L"./Resource/image_pa_play_02.png";

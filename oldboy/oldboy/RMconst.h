@@ -2,12 +2,6 @@
 extern const wchar_t* CLASS_NAME;
 
 // Label 관련
-extern const wchar_t* LABEL_JUDGE_PERFECT;
-extern const wchar_t* LABEL_JUDGE_GOOD;
-extern const wchar_t* LABEL_JUDGE_MISS;
-
-extern const wchar_t* LABEL_PLAY_SCORE;
-extern const wchar_t* LABEL_PLAY_COMBO;
 
 extern const char* LABEL_RESULT_SCORE;
 extern const char* LABEL_RESULT_PERFECT;
@@ -20,6 +14,10 @@ extern const wchar_t* LABEL_NAME_P1_SCORE;
 extern const wchar_t* LABEL_NAME_P1_COMBO;
 extern const wchar_t* LABEL_NAME_P2_SCORE;
 extern const wchar_t* LABEL_NAME_P2_COMBO;
+extern const wchar_t* LABEL_NAME_P1_SCORE_SHADOW;
+extern const wchar_t* LABEL_NAME_P1_COMBO_SHADOW;
+extern const wchar_t* LABEL_NAME_P2_SCORE_SHADOW;
+extern const wchar_t* LABEL_NAME_P2_COMBO_SHADOW;
 
 extern const wchar_t* LABEL_NAME_SELECT_LIST1;
 extern const wchar_t* LABEL_NAME_SELECT_LIST2;
@@ -72,6 +70,10 @@ extern const wchar_t* TITLE_MODE_EXIT;
 extern const wchar_t* PLAY_IMAGE_JUDGE_RING;
 extern const wchar_t* PLAY_IMAGE_BLUE_GAUGE;
 extern const wchar_t* PLAY_IMAGE_RED_GAUGE;
+extern const wchar_t* PLAY_IMAGE_JUDGE_PERFECT;
+extern const wchar_t* PLAY_IMAGE_JUDGE_GOOD;
+extern const wchar_t* PLAY_IMAGE_JUDGE_MISS;
+extern const wchar_t* PLAY_IMAGE_JUDGE_NONE;
 
 extern const wchar_t* PAUSE_IMAGE_PLAY_CANCEL;
 extern const wchar_t* PAUSE_IMAGE_PLAY_OK;

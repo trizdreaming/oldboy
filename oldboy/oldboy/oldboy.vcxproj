@@ -58,6 +58,7 @@
       <Optimization>Disabled</Optimization>
       <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
+      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -74,7 +75,6 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <SDLCheck>true</SDLCheck>
-      <TreatWarningAsError>true</TreatWarningAsError>
     </ClCompile>
     <Link>
       <SubSystem>Windows</SubSystem>
@@ -118,6 +118,7 @@
     <ClInclude Include="RMchildAlbumImage.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
+    <ClInclude Include="RMchildJudgeMessage.h" />
     <ClInclude Include="RMchildUIResultImage.h" />
     <ClInclude Include="RMchuldTitleModeSelector.h" />
     <ClInclude Include="RMconst.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="RMchildAlbumImage.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
+    <ClCompile Include="RMchildJudgeMessage.cpp" />
     <ClCompile Include="RMchildUIResultImage.cpp" />
     <ClCompile Include="RMchuldTitleModeSelector.cpp" />
     <ClCompile Include="RMconst.cpp" />

@@ -104,7 +104,11 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( PLAY_IMAGE_JUDGE_RING, WIDGET_JUDGE_RING );
 	hr = TextureMaker( PLAY_IMAGE_BLUE_GAUGE, WIDGET_GAUGE_2P );
 	hr = TextureMaker( PLAY_IMAGE_RED_GAUGE, WIDGET_GAUGE_1P );
-	
+	hr = TextureMaker( PLAY_IMAGE_JUDGE_PERFECT, WIDGET_PLAY_JUDGE_PERFECT );
+	hr = TextureMaker( PLAY_IMAGE_JUDGE_GOOD, WIDGET_PLAY_JUDGE_GOOD );
+	hr = TextureMaker( PLAY_IMAGE_JUDGE_MISS, WIDGET_PLAY_JUDGE_MISS );
+	hr = TextureMaker( PLAY_IMAGE_JUDGE_NONE, WIDGET_PLAY_JUDGE_NONE );
+
 	//////////////////////////////////////////////////////////////////////////
 	// UI
 	//////////////////////////////////////////////////////////////////////////

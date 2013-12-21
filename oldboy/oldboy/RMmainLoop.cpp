@@ -38,6 +38,7 @@
 #include "RMchildUIResultImage.h"
 #include "RMchildAlbumImage.h"
 #include "RMchuldTitleModeSelector.h"
+#include "RMchildJudgeMessage.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -530,6 +531,21 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetPosition(895, 530);
 	newObject->SetSceneType(SCENE_PLAY);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_JUDGE_GAUGE);
+
+	// 플레이 화면 판정 이미지
+	newObject = new CRMchildJudgeMessage();
+	newObject->SetWidgetType(WIDGET_PLAY_JUDGE_NONE);
+	newObject->SetPosition(70, 160);
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
+
+	newObject = new CRMchildJudgeMessage();
+	newObject->SetWidgetType(WIDGET_PLAY_JUDGE_NONE);
+	newObject->SetPosition(581, 160);
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_TWO);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
 
 	for ( int i = 0 ; i < MAX_NOTE_IN_POOL ; ++i )
 	{

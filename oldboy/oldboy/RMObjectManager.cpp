@@ -105,6 +105,13 @@ CRMobjectManager::~CRMobjectManager(void)
 		SafeDelete( toBeDelete );
 	}
 
+	for ( auto& iter : m_ObjectListLayerUI )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+	m_ObjectListLayerUI.clear();
+
 	for ( auto& iter : m_ObjectListLayerPause )
 	{
 		auto toBeDelete = iter;
@@ -157,6 +164,9 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 			break;
 		case LAYER_MEMORY_POOL:
 			m_ObjectListMemoryPoolOfNote.push_front(object);
+			break;
+		case LAYER_UI:
+			m_ObjectListLayerUI.push_front(object);
 			break;
 		case LAYER_PAUSE:
 			m_ObjectListLayerPause.push_front(object);
@@ -236,6 +246,11 @@ void CRMobjectManager::Update()
 		// 렌더링을 하기 위해 렌더링 레이어에 집어 넣음
 	}
 
+	for ( auto& iter : m_ObjectListLayerUI )
+	{
+		iter->Update();
+	}
+
 	for ( auto& iter : m_ObjectListLayerPause )
 	{
 		iter->Update();
@@ -301,6 +316,12 @@ void CRMobjectManager::Render() const
 			m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->Render();
 		}
 	}
+
+	for ( auto& iter : m_ObjectListLayerUI )
+	{
+		iter->Render();
+	}
+
 	// 메뉴를 가리면 안 되므로 여기에 둠
 
 	for ( auto& iter : m_ObjectListLayerPause )

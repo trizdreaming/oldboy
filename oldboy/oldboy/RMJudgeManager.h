@@ -17,19 +17,26 @@ public:
 	void						StartNote( PlayerNumber player , WidgetType widgetType ) const;
 	
 	//노트 판정
-	void						JudgeNote() const;
+	void						JudgeNote();
 
 	// 리커버리 아이템 설정
 	void						StartItemRecovery( PlayerNumber player );
 	void						StopItemRecovery( PlayerNumber player );
 
 	void						SetVirtualPlayerMode( bool VirPlayerOn );
+
+	void						InitializeJudgeType();
+	JudgeType					GetJudgeType( PlayerNumber player );
+
 private:
-	void						JudgeNoteByPlayer( PlayerNumber playerNumber ) const;
-	void						PrintScore( PlayerNumber player, JudgeType judgeType ) const;
+	void						JudgeNoteByPlayer( PlayerNumber playerNumber );
+	void						PrintScore( PlayerNumber player, JudgeType judgeType );
 	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
 
 	std::array<bool, PLAYER_MAX>	m_IsItemRecoverOn;
 	bool							m_VirtualPlayerOn;
+
+	JudgeType						m_P1JudgeTypeTemp;
+	JudgeType						m_P2JudgeTypeTemp;
 };
 

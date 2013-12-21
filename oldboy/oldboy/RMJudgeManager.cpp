@@ -19,6 +19,9 @@ CRMjudgeManager::CRMjudgeManager(void)
 {
 	ZeroMemory(&m_IsItemRecoverOn, sizeof(m_IsItemRecoverOn));
 	m_VirtualPlayerOn = false;
+
+	m_P1JudgeTypeTemp = JUDGE_NONE;
+	m_P2JudgeTypeTemp = JUDGE_NONE;
 }
 
 
@@ -58,7 +61,7 @@ void CRMjudgeManager::StartNote( PlayerNumber player , WidgetType widgetType ) c
 	}
 }
 
-void CRMjudgeManager::JudgeNote() const
+void CRMjudgeManager::JudgeNote()
 {
 	if ( CRMpauseManager::GetInstance()->IsPause() )
 	{
@@ -88,7 +91,7 @@ void CRMjudgeManager::JudgeNote() const
 }
 
 
-void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber ) const
+void CRMjudgeManager::JudgeNoteByPlayer( PlayerNumber playerNumber )
 {
 
 	LayerType playerLayer;
@@ -241,7 +244,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 }
 
 
-void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) const
+void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 {
 // 	printConsole("점수표 - 1P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d]  2P [P:%d] [G:%d] [M:%d] [C:%d] [S:%d] \n", 
 // 			CRMplayer1P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer1P::GetInstance()->GetCount( COUNT_GOOD ), 
@@ -249,66 +252,57 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType ) con
 // 			CRMplayer2P::GetInstance()->GetCount( COUNT_PERFECT ), CRMplayer2P::GetInstance()->GetCount( COUNT_GOOD ), 
 // 			CRMplayer2P::GetInstance()->GetCount( COUNT_MISS ), CRMplayer2P::GetInstance()->GetCount( COUNT_COMBO ), CRMplayer2P::GetInstance()->GetCount( COUNT_SCORE )
 // 			);
-
+	
 	CRMplayer*	thisPlayer = CRMplayer1P::GetInstance();
 	CRMplayer*	otherPlayer = CRMplayer2P::GetInstance();
 
-	float		positionX = 100;
+	float		positionX = 93;
 	float		positionY = 100;
 
+	
+	
 	if ( player == PLAYER_TWO )
 	{
 		thisPlayer = CRMplayer2P::GetInstance();
 		otherPlayer = CRMplayer1P::GetInstance();
 		
-		positionX = 600;
+		positionX = 604;
+		m_P2JudgeTypeTemp = judgeType;
+	}
+	else
+	{
+		m_P1JudgeTypeTemp = judgeType;
 	}
 
 	std::wstring score;
-	std::wstring judge;
-
-	switch ( judgeType )
-	{
-	case JUDGE_PERFECT:
-		judge.append( LABEL_JUDGE_PERFECT );
-		break;
-	case JUDGE_GOOD:
-		judge.append( LABEL_JUDGE_GOOD );
-		break;
-	case JUDGE_MISS:
-		judge.append( LABEL_JUDGE_MISS );
-		break;
-	default:
-		break;
-	}
 
 	score.clear();
-	score.append( LABEL_PLAY_SCORE );
+	score.append( L"\n " );
 	score.append( L"\n " );
 
 	std::wstring tempString = std::to_wstring( thisPlayer->GetCount( COUNT_SCORE ) + 1000000 );
 	tempString = tempString.substr(1, tempString.length());
 
 	score.append( tempString );
-	score.append( L"\n  " );
-	score.append( judge );
 
-	float scoreFontSize = 35.0f;
-	if ( thisPlayer->GetCount( COUNT_SCORE ) > otherPlayer->GetCount( COUNT_SCORE ) )
-	{
-		scoreFontSize = 55.0f;
-	}
+	CRMlabel* playerScoreLabelShadow = new CRMlabel();
+	playerScoreLabelShadow->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_SCORE_SHADOW : LABEL_NAME_P2_SCORE_SHADOW, score, LABEL_FONT_NORMAL, 55.0f );
+	playerScoreLabelShadow->SetRGBA( 0.0f, 0.0f, 0.0f, 1.f );
+	playerScoreLabelShadow->SetSceneType( SCENE_PLAY );
+	playerScoreLabelShadow->SetPosition( positionX + 2 , positionY + 2 );
 
 	CRMlabel* playerScoreLabel = new CRMlabel();
-	playerScoreLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_SCORE : LABEL_NAME_P2_SCORE, score, LABEL_FONT_NORMAL, scoreFontSize );
-	playerScoreLabel->SetRGBA( 0.0f, 0.3f, 0.7f, 1.f );
+	playerScoreLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_SCORE : LABEL_NAME_P2_SCORE, score, LABEL_FONT_NORMAL, 55.0f );
+	playerScoreLabel->SetRGBA( 183.0f/255, 183.0f/255, 183.0f/254, 1.f );
 	playerScoreLabel->SetSceneType( SCENE_PLAY );
 	playerScoreLabel->SetPosition( positionX , positionY );
+
+
 
 	if ( thisPlayer->GetCount( COUNT_COMBO ) > 1 )
 	{
 		score.clear();
-		score.append( LABEL_PLAY_COMBO );
+		score.append( L"\n " );
 		score.append( L"\n " );
 		score.append( std::to_wstring( thisPlayer->GetCount( COUNT_COMBO ) ) );
 
@@ -343,3 +337,21 @@ void CRMjudgeManager::SetVirtualPlayerMode( bool VirPlayerOn )
 {
 	m_VirtualPlayerOn = VirPlayerOn;
 }
+
+void CRMjudgeManager::InitializeJudgeType()
+{
+	m_P1JudgeTypeTemp = JUDGE_NONE;
+	m_P2JudgeTypeTemp = JUDGE_NONE;
+}
+
+JudgeType CRMjudgeManager::GetJudgeType( PlayerNumber player )
+{
+	if ( player == PLAYER_ONE )
+	{
+		return m_P1JudgeTypeTemp;
+	}
+
+	return m_P2JudgeTypeTemp;
+}
+
+

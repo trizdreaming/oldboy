@@ -39,6 +39,7 @@
 #include "RMchildAlbumImage.h"
 #include "RMchuldTitleModeSelector.h"
 #include "RMchildJudgeMessage.h"
+#include "RMchildSelectBar.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -610,6 +611,13 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetSceneType(SCENE_RESULT);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_PAUSE);
 
+	// 설렉트 화면의 별있는 바 
+	newObject = new CRMchildSelectBar();
+	newObject->SetWidgetType( WIDGET_UI_IMAGE_SELECT_BAR_0 );
+	newObject->SetPosition( 0 , 596 );
+	newObject->SetSceneType(SCENE_SELECT_MUSIC);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
+
 	//<<<< 여기까지 이미지 자원
 	//>>>> 여기부터 Label 자원
 	
@@ -974,7 +982,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP )
 	{
 		m_ModeSelector->ModeExit();
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_FLIP );
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_CANCEL );
 	}
 
 	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_UP )
@@ -1017,7 +1025,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP ) && m_SceneType == SCENE_SELECT_MUSIC )
 	{
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_OK );
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_CANCEL );
 		hr = GoPrevScene();
 	}
 

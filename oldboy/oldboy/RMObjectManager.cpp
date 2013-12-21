@@ -479,6 +479,10 @@ bool CRMobjectManager::ShowMovingAlbumImage()
 		{
 			thisObject->Update();
 			thisObject->Render();
+			for ( auto& iter : m_ObjectListLayerUI )
+			{
+				iter->Render();
+			}
 			return ( thisObject->IsFinish() );
 		}
 	}

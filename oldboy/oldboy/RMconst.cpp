@@ -51,6 +51,12 @@ const wchar_t* BG_TOOLTIP_1		= L"./Resource/tooltip/tooltip_01.png";
 const wchar_t* BG_TOOLTIP_2		= L"./Resource/tooltip/tooltip_02.png";
 const wchar_t* BG_TOOLTIP_3		= L"./Resource/tooltip/tooltip_03.png";
 
+const wchar_t* UI_IMAGE_SELECT_BAR_0		= L"./Resource/image_select_bar_0.png";
+const wchar_t* UI_IMAGE_SELECT_BAR_1		= L"./Resource/image_select_bar_1.png";
+const wchar_t* UI_IMAGE_SELECT_BAR_2		= L"./Resource/image_select_bar_2.png";
+const wchar_t* UI_IMAGE_SELECT_BAR_3		= L"./Resource/image_select_bar_3.png";
+const wchar_t* UI_IMAGE_SELECT_BAR_4		= L"./Resource/image_select_bar_4.png";
+const wchar_t* UI_IMAGE_SELECT_BAR_5		= L"./Resource/image_select_bar_5.png";
 const wchar_t* UI_IMAGE_RESULT_WIN_CLEAR	= L"./Resource/image_result_win_clear.png";
 const wchar_t* UI_IMAGE_RESULT_WIN_FAIL		= L"./Resource/image_result_win_fail.png";
 const wchar_t* UI_IMAGE_RESULT_LOSE_CLEAR	= L"./Resource/image_result_lose_clear.png";

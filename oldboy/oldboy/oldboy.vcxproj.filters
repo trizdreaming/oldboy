@@ -317,6 +317,7 @@
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMchildJudgeMessage.h" />
+    <ClInclude Include="RMchildSelectBar.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -530,6 +531,7 @@
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMchildJudgeMessage.cpp" />
+    <ClCompile Include="RMchildSelectBar.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

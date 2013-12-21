@@ -110,6 +110,16 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( PLAY_IMAGE_JUDGE_NONE, WIDGET_PLAY_JUDGE_NONE );
 
 	//////////////////////////////////////////////////////////////////////////
+	// SLECT BAR
+	//////////////////////////////////////////////////////////////////////////
+	hr = TextureMaker( UI_IMAGE_SELECT_BAR_0, WIDGET_UI_IMAGE_SELECT_BAR_0 );
+	hr = TextureMaker( UI_IMAGE_SELECT_BAR_1, WIDGET_UI_IMAGE_SELECT_BAR_1 );
+	hr = TextureMaker( UI_IMAGE_SELECT_BAR_2, WIDGET_UI_IMAGE_SELECT_BAR_2 );
+	hr = TextureMaker( UI_IMAGE_SELECT_BAR_3, WIDGET_UI_IMAGE_SELECT_BAR_3 );
+	hr = TextureMaker( UI_IMAGE_SELECT_BAR_4, WIDGET_UI_IMAGE_SELECT_BAR_4 );
+	hr = TextureMaker( UI_IMAGE_SELECT_BAR_5, WIDGET_UI_IMAGE_SELECT_BAR_5 );
+
+	//////////////////////////////////////////////////////////////////////////
 	// UI
 	//////////////////////////////////////////////////////////////////////////
 	hr = TextureMaker( UI_IMAGE_RESULT_WIN_CLEAR, WIDGET_UI_IMAGE_RESULT_WIN_CLEAR );

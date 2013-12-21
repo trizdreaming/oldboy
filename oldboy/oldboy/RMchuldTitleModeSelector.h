@@ -12,6 +12,7 @@ public:
 
 	void			ModeUp();
 	void			ModeDown();
+	void			ModeExit();
 	ModeType		GetModeType();
 
 private:

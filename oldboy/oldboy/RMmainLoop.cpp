@@ -955,6 +955,12 @@ HRESULT CRMmainLoop::TestKeyboard()
 	//////////////////////////////////////////////////////////////////////////
 	// 타이틀 화면  
 	//////////////////////////////////////////////////////////////////////////
+	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_ESCAPE ) == KEY_STATUS_UP )
+	{
+		m_ModeSelector->ModeExit();
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_FLIP );
+	}
+
 	if ( m_SceneType == SCENE_TITLE && CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_LIST_UP ) == KEY_STATUS_UP )
 	{
 		m_ModeSelector->ModeUp();

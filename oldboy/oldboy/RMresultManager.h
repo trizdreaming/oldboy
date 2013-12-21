@@ -13,7 +13,8 @@ public:
 	void			ShowResult();
 
 private:
+	void			DrawLabel( int offsetX, int offsetY, float R, float G, float B, int drawNum ) const;
 	std::wstring	string2wstring(const std::string& str) const;
-
+	
 };
 

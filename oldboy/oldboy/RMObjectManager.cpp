@@ -441,7 +441,7 @@ void CRMobjectManager::SetRandomTooltipIndex()
 		return;
 	}
 
-	int m_TooltipIndex = CRMrandomGenerator::GetInstance()->GetRandom(0, maxTooltip - 1);
+	m_TooltipIndex = CRMrandomGenerator::GetInstance()->GetRandom(0, maxTooltip - 1);
 }
 
 bool CRMobjectManager::ShowMovingAlbumImage()

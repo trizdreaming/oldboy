@@ -17,6 +17,7 @@ public:
 	void			SetVisible(bool visible) { m_Visible = visible; }
 	bool			GetVisible() { return m_Visible; }
 	void			SetPosition(float x, float y) { m_PositionX = x; m_PositionY = y; }
+	void			SetPosition(int x, int y) { SetPosition(static_cast<float>(x), static_cast<float>(y)); }
 
 	float			GetPositionX() { return m_PositionX; }
 	float			GetPositionY() { return m_PositionY; }

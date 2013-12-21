@@ -303,7 +303,12 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 	score.clear();
 	score.append( L"\n " );
 	score.append( L"\n " );
-	score.append( std::to_wstring( thisPlayer->GetCount( COUNT_COMBO ) ) );
+
+	tempString.clear();
+	tempString = std::to_wstring( thisPlayer->GetCount( COUNT_COMBO ) + 10000 );
+	tempString = tempString.substr(1, tempString.length());
+
+	score.append( tempString );
 
 	if ( thisPlayer->GetCount( COUNT_COMBO ) < 2 )
 	{
@@ -311,17 +316,18 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 		score.append( L"\n " );
 	}
 
+
 	CRMlabel* playerComboLabelShadow = new CRMlabel();
-	playerComboLabelShadow->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_COMBO_SHADOW : LABEL_NAME_P2_COMBO_SHADOW, score, LABEL_FONT_NORMAL, 35.0F );
+	playerComboLabelShadow->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_COMBO_SHADOW : LABEL_NAME_P2_COMBO_SHADOW, score, LABEL_FONT_NORMAL, 45.0F );
 	playerComboLabelShadow->SetRGBA( 0.0f, 0.0f, 0.0f, 1.f );
 	playerComboLabelShadow->SetSceneType( SCENE_PLAY );
-	playerComboLabelShadow->SetPosition( positionX + 2, positionY + 250 + 2 );
+	playerComboLabelShadow->SetPosition( positionX + 2 + 40, positionY + 250 + 2 );
 
 	CRMlabel* playerComboLabel = new CRMlabel();
-	playerComboLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_COMBO : LABEL_NAME_P2_COMBO, score, LABEL_FONT_NORMAL, 35.0F );
+	playerComboLabel->CreateLabel( player == PLAYER_ONE ? LABEL_NAME_P1_COMBO : LABEL_NAME_P2_COMBO, score, LABEL_FONT_NORMAL, 45.0F );
 	playerComboLabel->SetRGBA( 0.8f, 0.5f, 0.2f, 1.f );
 	playerComboLabel->SetSceneType( SCENE_PLAY );
-	playerComboLabel->SetPosition( positionX, positionY + 250 );
+	playerComboLabel->SetPosition( positionX + 40, positionY + 250 );
 
 }
 

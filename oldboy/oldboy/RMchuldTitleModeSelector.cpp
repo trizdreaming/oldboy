@@ -66,5 +66,5 @@ ModeType CRMchuldTitleModeSelector::GetModeType()
 
 void CRMchuldTitleModeSelector::ModeExit()
 {
-	m_ModeIndex = 3;
+	m_ModeIndex = MODE_EXIT - 1;
 }

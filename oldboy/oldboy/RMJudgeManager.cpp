@@ -277,6 +277,7 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 	std::wstring score;
 
 	score.clear();
+	// 아 이거 계산하기 귀찮... ㅇㅅㅇ!!!!!!
 	score.append( L"\n " );
 	score.append( L"\n " );
 
@@ -313,7 +314,6 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 	if ( thisPlayer->GetCount( COUNT_COMBO ) < 2 )
 	{
 		score.clear();
-		score.append( L"\n " );
 	}
 
 

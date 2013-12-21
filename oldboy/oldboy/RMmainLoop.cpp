@@ -1033,7 +1033,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 	
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_RETURN ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
 	{
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_PAUSE_OK );
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_CALL );
 		hr = GoNextScene();
 	}
 	return hr;

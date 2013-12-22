@@ -5,7 +5,7 @@ class CRMchildSelectBar :
 {
 public:
 	CRMchildSelectBar(void);
-	~CRMchildSelectBar(void);
+	virtual ~CRMchildSelectBar(void);
 
 	virtual void	Update();
 };

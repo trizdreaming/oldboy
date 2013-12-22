@@ -82,6 +82,9 @@ extern const wchar_t* PLAY_IMAGE_JUDGE_GOOD;
 extern const wchar_t* PLAY_IMAGE_JUDGE_MISS;
 extern const wchar_t* PLAY_IMAGE_JUDGE_NONE;
 
+extern const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE;
+extern const wchar_t* PLAY_IMAGE_ALERT_GROW_RED;
+
 extern const wchar_t* PAUSE_IMAGE_PLAY_CANCEL;
 extern const wchar_t* PAUSE_IMAGE_PLAY_OK;
 extern const wchar_t* PAUSE_IMAGE_TITLE_CANCEL;

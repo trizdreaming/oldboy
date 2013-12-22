@@ -6,7 +6,7 @@ class CRMchildJudgeMessage :
 {
 public:
 	CRMchildJudgeMessage(void);
-	~CRMchildJudgeMessage(void);
+	virtual ~CRMchildJudgeMessage(void);
 
 	virtual void	Update();
 };

@@ -40,6 +40,7 @@
 #include "RMchildTitleModeSelector.h"
 #include "RMchildJudgeMessage.h"
 #include "RMchildSelectBar.h"
+#include "RMchildAlertGrow.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -579,6 +580,24 @@ HRESULT CRMmainLoop::CreateObject()
 		newObject->SetSceneType(SCENE_PLAY);
 		CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_NOTE_HIT);
 	}
+
+
+
+	newObject = new CRMchildAlertGrow();
+	newObject->SetWidgetType( WIDGET_PLAY_ALERT_GROW_RED );
+	newObject->SetPosition( SHUTTER_P1_START_POSITION_X , 0 );
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
+
+	newObject = new CRMchildAlertGrow();
+	newObject->SetWidgetType( WIDGET_PLAY_ALERT_GROW_RED );
+	newObject->SetPosition( SHUTTER_P2_START_POSITION_X , 0 );
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_TWO);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
+
+
 
 	// pause용 이미지
 	newObject = new CRMchildPauseImage();

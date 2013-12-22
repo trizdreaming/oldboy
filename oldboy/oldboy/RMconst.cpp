@@ -77,6 +77,9 @@ const wchar_t* PLAY_IMAGE_JUDGE_GOOD		= L"./Resource/image_play_judge_good.png";
 const wchar_t* PLAY_IMAGE_JUDGE_MISS		= L"./Resource/image_play_judge_miss.png";
 const wchar_t* PLAY_IMAGE_JUDGE_NONE		= L"./Resource/image_play_judge_none.png";
 
+const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE	= L"./Resource/image_alert_grow_blue.png";
+const wchar_t* PLAY_IMAGE_ALERT_GROW_RED	= L"./Resource/image_alert_grow_red.png";
+
 const wchar_t* PAUSE_IMAGE_PLAY_CANCEL	= L"./Resource/image_pa_play_01.png";
 const wchar_t* PAUSE_IMAGE_PLAY_OK		= L"./Resource/image_pa_play_02.png";
 const wchar_t* PAUSE_IMAGE_TITLE_CANCEL	= L"./Resource/image_pa_title_01.png";

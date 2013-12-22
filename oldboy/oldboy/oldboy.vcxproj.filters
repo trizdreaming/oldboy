@@ -322,6 +322,7 @@
     <ClInclude Include="RMchildSelectBar.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildAlertGrow.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -540,6 +541,7 @@
     <ClCompile Include="RMchildSelectBar.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
+    <ClCompile Include="RMchildAlertGrow.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

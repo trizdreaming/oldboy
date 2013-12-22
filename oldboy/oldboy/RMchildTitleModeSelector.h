@@ -6,7 +6,7 @@ class CRMchildTitleModeSelector :
 {
 public:
 	CRMchildTitleModeSelector(void);
-	~CRMchildTitleModeSelector(void);
+	virtual ~CRMchildTitleModeSelector(void);
 
 	virtual void	Update();
 

@@ -116,6 +116,7 @@
     <ClInclude Include="LibraryTinyXML\xpath_stream.h" />
     <ClInclude Include="LibraryTinyXML\xpath_syntax.h" />
     <ClInclude Include="RMchildAlbumImage.h" />
+    <ClInclude Include="RMchildAlertGrow.h" />
     <ClInclude Include="RMchildBGImage.h" />
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildJudgeMessage.h" />
@@ -196,6 +197,7 @@
     <ClCompile Include="LibraryTinyXML\xpath_syntax.cpp" />
     <ClCompile Include="oldboy.cpp" />
     <ClCompile Include="RMchildAlbumImage.cpp" />
+    <ClCompile Include="RMchildAlertGrow.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
     <ClCompile Include="RMchildJudgeMessage.cpp" />

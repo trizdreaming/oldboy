@@ -109,6 +109,9 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( PLAY_IMAGE_JUDGE_MISS, WIDGET_PLAY_JUDGE_MISS );
 	hr = TextureMaker( PLAY_IMAGE_JUDGE_NONE, WIDGET_PLAY_JUDGE_NONE );
 
+	hr = TextureMaker( PLAY_IMAGE_ALERT_GROW_BLUE, WIDGET_PLAY_ALERT_GROW_BLUE );
+	hr = TextureMaker( PLAY_IMAGE_ALERT_GROW_RED, WIDGET_PLAY_ALERT_GROW_RED );
+
 	//////////////////////////////////////////////////////////////////////////
 	// SLECT BAR
 	//////////////////////////////////////////////////////////////////////////

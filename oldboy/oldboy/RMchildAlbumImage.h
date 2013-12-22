@@ -6,7 +6,7 @@ class CRMchildAlbumImage :
 {
 public:
 	CRMchildAlbumImage(void);
-	~CRMchildAlbumImage(void);
+	virtual ~CRMchildAlbumImage(void);
 
 	void	Update();
 	bool	IsFinish() { return m_IsFinish; }

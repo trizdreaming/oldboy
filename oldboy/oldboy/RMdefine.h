@@ -50,6 +50,9 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define SHUTTER_P2_START_POSITION_X 512
 #define SHUTTER_START_POSITION_Y -668
 
+// alert grow에서 사용하는 깜박임 속도
+#define PLAY_ALERT_GROW_ANIMATION_SPEED 50
+
 // shutter 관련 플레이어 HP 설정
 #define PLAYER_HP_MAX		100
 #define PLAYER_HP_MP_RATE	6.5f

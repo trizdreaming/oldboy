@@ -313,11 +313,15 @@
     <ClInclude Include="RMchildAlbumImage.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMchuldTitleModeSelector.h">
+    <ClInclude Include="RMchildTitleModeSelector.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMchildJudgeMessage.h" />
-    <ClInclude Include="RMchildSelectBar.h" />
+    <ClInclude Include="RMchildJudgeMessage.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMchildSelectBar.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -527,11 +531,15 @@
     <ClCompile Include="RMchildAlbumImage.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMchuldTitleModeSelector.cpp">
+    <ClCompile Include="RMchildTitleModeSelector.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMchildJudgeMessage.cpp" />
-    <ClCompile Include="RMchildSelectBar.cpp" />
+    <ClCompile Include="RMchildJudgeMessage.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildSelectBar.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

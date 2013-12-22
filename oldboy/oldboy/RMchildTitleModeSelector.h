@@ -1,12 +1,12 @@
 #pragma once
 #include "RMobject.h"
 #include "RMmacro.h"
-class CRMchuldTitleModeSelector :
+class CRMchildTitleModeSelector :
 	public CRMobject
 {
 public:
-	CRMchuldTitleModeSelector(void);
-	~CRMchuldTitleModeSelector(void);
+	CRMchildTitleModeSelector(void);
+	~CRMchildTitleModeSelector(void);
 
 	virtual void	Update();
 

@@ -2,7 +2,7 @@
 #include "RMenumSet.h"
 #include "RMmacro.h"
 
-class CRMchuldTitleModeSelector;
+class CRMchildTitleModeSelector;
 class CRMmainLoop
 {
 	SINGLETON(CRMmainLoop);
@@ -59,6 +59,6 @@ private:
 
 	bool							m_AirTomoOn;
 
-	CRMchuldTitleModeSelector*		m_ModeSelector;
+	CRMchildTitleModeSelector*		m_ModeSelector;
 };
 

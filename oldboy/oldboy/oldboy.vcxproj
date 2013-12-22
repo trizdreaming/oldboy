@@ -121,7 +121,7 @@
     <ClInclude Include="RMchildJudgeMessage.h" />
     <ClInclude Include="RMchildSelectBar.h" />
     <ClInclude Include="RMchildUIResultImage.h" />
-    <ClInclude Include="RMchuldTitleModeSelector.h" />
+    <ClInclude Include="RMchildTitleModeSelector.h" />
     <ClInclude Include="RMconst.h" />
     <ClInclude Include="RMeffectManager.h" />
     <ClInclude Include="RMchildGauge.h" />
@@ -201,7 +201,7 @@
     <ClCompile Include="RMchildJudgeMessage.cpp" />
     <ClCompile Include="RMchildSelectBar.cpp" />
     <ClCompile Include="RMchildUIResultImage.cpp" />
-    <ClCompile Include="RMchuldTitleModeSelector.cpp" />
+    <ClCompile Include="RMchildTitleModeSelector.cpp" />
     <ClCompile Include="RMconst.cpp" />
     <ClCompile Include="RMeffectManager.cpp" />
     <ClCompile Include="RMchildGauge.cpp" />

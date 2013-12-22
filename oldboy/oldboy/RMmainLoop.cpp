@@ -37,7 +37,7 @@
 #include "RMairTomo.h"
 #include "RMchildUIResultImage.h"
 #include "RMchildAlbumImage.h"
-#include "RMchuldTitleModeSelector.h"
+#include "RMchildTitleModeSelector.h"
 #include "RMchildJudgeMessage.h"
 #include "RMchildSelectBar.h"
 
@@ -589,7 +589,7 @@ HRESULT CRMmainLoop::CreateObject()
 
 
 	// title MODE용 이미지
-	m_ModeSelector = new CRMchuldTitleModeSelector;
+	m_ModeSelector = new CRMchildTitleModeSelector;
 	m_ModeSelector->SetWidgetType(WIDGET_TITLE_MODE_SINGLE);
 	m_ModeSelector->SetPosition(390, 400);
 	m_ModeSelector->SetSceneType(SCENE_TITLE);

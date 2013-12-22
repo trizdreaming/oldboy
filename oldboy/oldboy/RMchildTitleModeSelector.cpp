@@ -1,19 +1,19 @@
 #include "stdafx.h"
-#include "RMchuldTitleModeSelector.h"
+#include "RMchildTitleModeSelector.h"
 
 
-CRMchuldTitleModeSelector::CRMchuldTitleModeSelector(void)
+CRMchildTitleModeSelector::CRMchildTitleModeSelector(void)
 {
 	m_ModeIndex = 0;
 	m_MaxModes = MODE_MAX - 1;
 }
 
 
-CRMchuldTitleModeSelector::~CRMchuldTitleModeSelector(void)
+CRMchildTitleModeSelector::~CRMchildTitleModeSelector(void)
 {
 }
 
-void CRMchuldTitleModeSelector::Update()
+void CRMchildTitleModeSelector::Update()
 {
 	SetVisibleByScene();
 	
@@ -36,18 +36,18 @@ void CRMchuldTitleModeSelector::Update()
 	}
 }
 
-void CRMchuldTitleModeSelector::ModeUp()
+void CRMchildTitleModeSelector::ModeUp()
 {
 	m_ModeIndex += m_MaxModes;
 	--m_ModeIndex %= m_MaxModes;
 }
 
-void CRMchuldTitleModeSelector::ModeDown()
+void CRMchildTitleModeSelector::ModeDown()
 {
 	++m_ModeIndex %= m_MaxModes;
 }
 
-ModeType CRMchuldTitleModeSelector::GetModeType()
+ModeType CRMchildTitleModeSelector::GetModeType()
 {
 	switch ( m_ModeIndex )
 	{
@@ -64,7 +64,7 @@ ModeType CRMchuldTitleModeSelector::GetModeType()
 	return MODE_NONE;
 }
 
-void CRMchuldTitleModeSelector::ModeExit()
+void CRMchildTitleModeSelector::ModeExit()
 {
 	m_ModeIndex = MODE_EXIT - 1;
 }

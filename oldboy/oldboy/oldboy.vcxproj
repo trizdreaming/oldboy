@@ -118,6 +118,7 @@
     <ClInclude Include="RMchildAlbumImage.h" />
     <ClInclude Include="RMchildAlertGrow.h" />
     <ClInclude Include="RMchildBGImage.h" />
+    <ClInclude Include="RMchildCpuMode.h" />
     <ClInclude Include="RMchildEffectImage.h" />
     <ClInclude Include="RMchildJudgeMessage.h" />
     <ClInclude Include="RMchildSelectBar.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="RMchildAlbumImage.cpp" />
     <ClCompile Include="RMchildAlertGrow.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />
+    <ClCompile Include="RMchildCpuMode.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
     <ClCompile Include="RMchildJudgeMessage.cpp" />
     <ClCompile Include="RMchildSelectBar.cpp" />

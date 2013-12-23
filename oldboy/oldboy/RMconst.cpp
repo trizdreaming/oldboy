@@ -62,6 +62,8 @@ const wchar_t* UI_IMAGE_RESULT_WIN_FAIL		= L"./Resource/image_result_win_fail.pn
 const wchar_t* UI_IMAGE_RESULT_LOSE_CLEAR	= L"./Resource/image_result_lose_clear.png";
 const wchar_t* UI_IMAGE_RESULT_LOSE_FAIL	= L"./Resource/image_result_lose_fail.png";
 
+const wchar_t* UI_IMAGE_PLAY_CPU_MODE		= L"./Resource/image_ui_cpu_play.png";
+
 
 extern const wchar_t* TITLE_MODE_SINGLE		= L"./Resource/TITLE_MODE_SINGLE.png";
 extern const wchar_t* TITLE_MODE_DUAL		= L"./Resource/TITLE_MODE_DUAL.png";

@@ -130,6 +130,8 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( UI_IMAGE_RESULT_LOSE_CLEAR, WIDGET_UI_IMAGE_RESULT_LOSE_CLEAR );
 	hr = TextureMaker( UI_IMAGE_RESULT_LOSE_FAIL, WIDGET_UI_IMAGE_RESULT_LOSE_FAIL );
 
+	hr = TextureMaker( UI_IMAGE_PLAY_CPU_MODE, WIDGET_UI_IMAGE_PLAY_CPU_MODE );
+
 	//////////////////////////////////////////////////////////////////////////
 	// TITLE MODE
 	//////////////////////////////////////////////////////////////////////////

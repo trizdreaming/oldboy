@@ -69,6 +69,8 @@ extern const wchar_t* UI_IMAGE_RESULT_WIN_FAIL;
 extern const wchar_t* UI_IMAGE_RESULT_LOSE_CLEAR;
 extern const wchar_t* UI_IMAGE_RESULT_LOSE_FAIL;
 
+extern const wchar_t* UI_IMAGE_PLAY_CPU_MODE;
+
 extern const wchar_t* TITLE_MODE_SINGLE;
 extern const wchar_t* TITLE_MODE_DUAL;
 extern const wchar_t* TITLE_MODE_TUTORIAL;

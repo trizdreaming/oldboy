@@ -25,6 +25,8 @@ public:
 
 	std::string				GetPlayMusicName() { return m_PlayMusicName; }
 
+	bool					IsAirTomoOn() { return m_AirTomoOn; }
+
 private:
 
 	void	FindMusicData();

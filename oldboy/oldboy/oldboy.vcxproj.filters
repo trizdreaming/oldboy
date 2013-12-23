@@ -322,7 +322,12 @@
     <ClInclude Include="RMchildSelectBar.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMchildAlertGrow.h" />
+    <ClInclude Include="RMchildAlertGrow.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMchildCpuMode.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -541,7 +546,12 @@
     <ClCompile Include="RMchildSelectBar.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMchildAlertGrow.cpp" />
+    <ClCompile Include="RMchildAlertGrow.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildCpuMode.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

@@ -1,6 +1,8 @@
 ﻿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMinput.h"
+#include "RMmainLoop.h"
+#include "RMpauseManager.h"
 
 CRMinput::CRMinput(void)
 {
@@ -28,6 +30,21 @@ void CRMinput::UpdateKeyState()
 		{
 			m_NowKeyState[i] = false;
 		}
+	}
+
+	// cpu모드일때는 키입력 무시 퍼스화면에서는 입력 가능
+	if ( CRMpauseManager::GetInstance()->IsPause() )
+	{
+		return;
+	}
+	if ( CRMmainLoop::GetInstance()->IsAirTomoOn() && CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
+	{
+		m_PrevKeyState[KEY_TABLE_P2_TARGET1] = false;
+		m_NowKeyState[KEY_TABLE_P2_TARGET1] = false;
+		m_PrevKeyState[KEY_TABLE_P2_TARGET2] = false;
+		m_NowKeyState[KEY_TABLE_P2_TARGET2] = false;
+		m_PrevKeyState[KEY_TABLE_P2_ATTACK] = false;
+		m_NowKeyState[KEY_TABLE_P2_ATTACK] = false;
 	}
 }
 

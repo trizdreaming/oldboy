@@ -145,49 +145,58 @@ HRESULT CRMresourceManager::CreateTexture()
 	//////////////////////////////////////////////////////////////////////////
 	
 	// Item_T1_Duplicate
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Color.png", WIDGET_ITEM_T1_DUPLICATE_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Duplicate_Gray.png", WIDGET_ITEM_T1_DUPLICATE_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t1_duplicate.png", WIDGET_ITEM_T1_DUPLICATE_CARD );
+	hr = TextureMaker( ITEM_TI_DUPLICATE_COLOR, WIDGET_ITEM_T1_DUPLICATE_COLOR );
+	hr = TextureMaker( ITEM_TI_DUPLICATE_COLOR_OUT, WIDGET_ITEM_T1_DUPLICATE_COLOR_OUT );
+	hr = TextureMaker( ITEM_TI_DUPLICATE_GRAY, WIDGET_ITEM_T1_DUPLICATE_GRAY );
+	hr = TextureMaker( ITEM_TI_DUPLICATE_CARD, WIDGET_ITEM_T1_DUPLICATE_CARD );
 
 	// Item_T1_Mist
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Color.png", WIDGET_ITEM_T1_MIST_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_Cloud_Gray.png", WIDGET_ITEM_T1_MIST_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t1_mist.png", WIDGET_ITEM_T1_MIST_CARD );
+	hr = TextureMaker( ITEM_TI_CLOUD_COLOR, WIDGET_ITEM_T1_MIST_COLOR );
+	hr = TextureMaker( ITEM_TI_CLOUD_COLOR_OUT, WIDGET_ITEM_T1_MIST_COLOR_OUT );
+	hr = TextureMaker( ITEM_TI_CLOUD_GRAY, WIDGET_ITEM_T1_MIST_GRAY );
+	hr = TextureMaker( ITEM_TI_CLOUD_CARD, WIDGET_ITEM_T1_MIST_CARD );
 
 	// Item_T1_ScoreUp
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Color.png", WIDGET_ITEM_T1_SCORE_UP_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png", WIDGET_ITEM_T1_SCORE_UP_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t1_scoreup.png", WIDGET_ITEM_T1_SCORE_UP_CARD );
+	hr = TextureMaker( ITEM_TI_SCORE_UP_COLOR, WIDGET_ITEM_T1_SCORE_UP_COLOR );
+	hr = TextureMaker( ITEM_TI_SCORE_UP_COLOR_OUT, WIDGET_ITEM_T1_SCORE_UP_COLOR_OUT );
+	hr = TextureMaker( ITEM_TI_SCORE_UP_GRAY, WIDGET_ITEM_T1_SCORE_UP_GRAY );
+	hr = TextureMaker( ITEM_TI_SCORE_UP_CARD, WIDGET_ITEM_T1_SCORE_UP_CARD );
 
 	// Item_T2_Barrier
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Color.png", WIDGET_ITEM_T2_BARRIER_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Barrier_Gray.png", WIDGET_ITEM_T2_BARRIER_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t2_barrier.png", WIDGET_ITEM_T2_BARRIER_CARD );
+	hr = TextureMaker( ITEM_T2_BARRIER_COLOR, WIDGET_ITEM_T2_BARRIER_COLOR );
+	hr = TextureMaker( ITEM_T2_BARRIER_COLOR_OUT, WIDGET_ITEM_T2_BARRIER_COLOR_OUT );
+	hr = TextureMaker( ITEM_T2_BARRIER_GRAY, WIDGET_ITEM_T2_BARRIER_GRAY );
+	hr = TextureMaker( ITEM_T2_BARRIER_CARD, WIDGET_ITEM_T2_BARRIER_CARD );
 
 	// Item_T2_Delay
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Color.png", WIDGET_ITEM_T2_DELAY_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Delay_Gray.png", WIDGET_ITEM_T2_DELAY_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t2_delay.png", WIDGET_ITEM_T2_DELAY_CARD );
+	hr = TextureMaker( ITEM_T2_DELAY_COLOR, WIDGET_ITEM_T2_DELAY_COLOR );
+	hr = TextureMaker( ITEM_T2_DELAY_COLOR_OUT, WIDGET_ITEM_T2_DELAY_COLOR_OUT );
+	hr = TextureMaker( ITEM_T2_DELAY_GRAY, WIDGET_ITEM_T2_DELAY_GRAY );
+	hr = TextureMaker( ITEM_T2_DELAY_CARD, WIDGET_ITEM_T2_DELAY_CARD );
 
 	// Item_T2_GaugeClear
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Color.png", WIDGET_ITEM_T2_GAUGE_CLEAR_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_GaugeClear_Gray.png", WIDGET_ITEM_T2_GAUGE_CLEAR_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t2_gaugeclear.png", WIDGET_ITEM_T2_GAUGE_CLEAR_CARD );
+	hr = TextureMaker( ITEM_T2_GAUGE_CLEAR_COLOR, WIDGET_ITEM_T2_GAUGE_CLEAR_COLOR );
+	hr = TextureMaker( ITEM_T2_GAUGE_CLEAR_COLOR_OUT, WIDGET_ITEM_T2_GAUGE_CLEAR_COLOR_OUT );
+	hr = TextureMaker( ITEM_T2_GAUGE_CLEAR_GRAY, WIDGET_ITEM_T2_GAUGE_CLEAR_GRAY );
+	hr = TextureMaker( ITEM_T2_GAUGE_CLEAR_CARD, WIDGET_ITEM_T2_GAUGE_CLEAR_CARD );
 
 	// Item_T2_Rotate
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Color.png", WIDGET_ITEM_T2_ROTATE_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T2_Rotate_Gray.png", WIDGET_ITEM_T2_ROTATE_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t2_rotate.png", WIDGET_ITEM_T2_ROTATE_CARD );
+	hr = TextureMaker( ITEM_T2_ROTATE_COLOR, WIDGET_ITEM_T2_ROTATE_COLOR );
+	hr = TextureMaker( ITEM_T2_ROTATE_COLOR_OUT, WIDGET_ITEM_T2_ROTATE_COLOR_OUT );
+	hr = TextureMaker( ITEM_T2_ROTATE_GRAY, WIDGET_ITEM_T2_ROTATE_GRAY );
+	hr = TextureMaker( ITEM_T2_ROTATE_CARD, WIDGET_ITEM_T2_ROTATE_CARD );
 
 	// Item_T3_Recovery
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Color.png", WIDGET_ITEM_T3_RECOVERY_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Recovery_Gray.png", WIDGET_ITEM_T3_RECOVERY_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t3_recovery.png", WIDGET_ITEM_T3_RECOVERY_CARD );
+	hr = TextureMaker( ITEM_T3_RECOVERY_COLOR, WIDGET_ITEM_T3_RECOVERY_COLOR );
+	hr = TextureMaker( ITEM_T3_RECOVERY_COLOR_OUT, WIDGET_ITEM_T3_RECOVERY_COLOR_OUT );
+	hr = TextureMaker( ITEM_T3_RECOVERY_GRAY, WIDGET_ITEM_T3_RECOVERY_GRAY );
+	hr = TextureMaker( ITEM_T3_RECOVERY_CARD, WIDGET_ITEM_T3_RECOVERY_CARD );
 
 	// Item_T3_Reverse
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Color.png", WIDGET_ITEM_T3_REVERSE_COLOR );
-	hr = TextureMaker( L"./Resource/itemSet/Item_T3_Reverse_Gray.png", WIDGET_ITEM_T3_REVERSE_GRAY );
-	hr = TextureMaker( L"./Resource/cardSet/t3_reverse.png", WIDGET_ITEM_T3_REVERSE_CARD );
+	hr = TextureMaker( ITEM_T3_REVERSE_COLOR, WIDGET_ITEM_T3_REVERSE_COLOR );
+	hr = TextureMaker( ITEM_T3_REVERSE_COLOR_OUT, WIDGET_ITEM_T3_REVERSE_COLOR_OUT );
+	hr = TextureMaker( ITEM_T3_REVERSE_GRAY, WIDGET_ITEM_T3_REVERSE_GRAY );
+	hr = TextureMaker( ITEM_T3_REVERSE_CARD, WIDGET_ITEM_T3_REVERSE_CARD );
 
 	return hr;
 }

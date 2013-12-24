@@ -65,10 +65,51 @@ const wchar_t* UI_IMAGE_RESULT_LOSE_FAIL	= L"./Resource/image_result_lose_fail.p
 const wchar_t* UI_IMAGE_PLAY_CPU_MODE		= L"./Resource/image_ui_cpu_play.png";
 
 
-extern const wchar_t* TITLE_MODE_SINGLE		= L"./Resource/TITLE_MODE_SINGLE.png";
-extern const wchar_t* TITLE_MODE_DUAL		= L"./Resource/TITLE_MODE_DUAL.png";
-extern const wchar_t* TITLE_MODE_TUTORIAL	= L"./Resource/TITLE_MODE_TUTORIAL.png";
-extern const wchar_t* TITLE_MODE_EXIT		= L"./Resource/TITLE_MODE_EXIT.png";
+const wchar_t* TITLE_MODE_SINGLE		= L"./Resource/TITLE_MODE_SINGLE.png";
+const wchar_t* TITLE_MODE_DUAL		= L"./Resource/TITLE_MODE_DUAL.png";
+const wchar_t* TITLE_MODE_TUTORIAL	= L"./Resource/TITLE_MODE_TUTORIAL.png";
+const wchar_t* TITLE_MODE_EXIT		= L"./Resource/TITLE_MODE_EXIT.png";
+
+
+const wchar_t* ITEM_TI_DUPLICATE_COLOR				= L"./Resource/itemSet/Item_T1_Duplicate_Color.png";
+const wchar_t* ITEM_TI_CLOUD_COLOR					= L"./Resource/itemSet/Item_T1_Cloud_Color.png";
+const wchar_t* ITEM_TI_SCORE_UP_COLOR				= L"./Resource/itemSet/Item_T1_ScoreUp_Color.png";
+const wchar_t* ITEM_T2_BARRIER_COLOR				= L"./Resource/itemSet/Item_T2_Barrier_Color.png";
+const wchar_t* ITEM_T2_DELAY_COLOR					= L"./Resource/itemSet/Item_T2_Delay_Color.png";
+const wchar_t* ITEM_T2_GAUGE_CLEAR_COLOR			= L"./Resource/itemSet/Item_T2_GaugeClear_Color.png";
+const wchar_t* ITEM_T2_ROTATE_COLOR					= L"./Resource/itemSet/Item_T2_Rotate_Color.png";
+const wchar_t* ITEM_T3_RECOVERY_COLOR				= L"./Resource/itemSet/Item_T3_Recovery_Color.png";
+const wchar_t* ITEM_T3_REVERSE_COLOR				= L"./Resource/itemSet/Item_T3_Reverse_Color.png";
+
+const wchar_t* ITEM_TI_DUPLICATE_COLOR_OUT			= L"./Resource/itemSet/Item_T1_Duplicate_Color_Out.png";
+const wchar_t* ITEM_TI_CLOUD_COLOR_OUT				= L"./Resource/itemSet/Item_T1_Cloud_Color_Out.png";
+const wchar_t* ITEM_TI_SCORE_UP_COLOR_OUT			= L"./Resource/itemSet/Item_T1_ScoreUp_Color_Out.png";
+const wchar_t* ITEM_T2_BARRIER_COLOR_OUT			= L"./Resource/itemSet/Item_T2_Barrier_Color_Out.png";
+const wchar_t* ITEM_T2_DELAY_COLOR_OUT				= L"./Resource/itemSet/Item_T2_Delay_Color_Out.png";
+const wchar_t* ITEM_T2_GAUGE_CLEAR_COLOR_OUT		= L"./Resource/itemSet/Item_T2_GaugeClear_Color_Out.png";
+const wchar_t* ITEM_T2_ROTATE_COLOR_OUT				= L"./Resource/itemSet/Item_T2_Rotate_Color_Out.png";
+const wchar_t* ITEM_T3_RECOVERY_COLOR_OUT			= L"./Resource/itemSet/Item_T3_Recovery_Color_Out.png";
+const wchar_t* ITEM_T3_REVERSE_COLOR_OUT			= L"./Resource/itemSet/Item_T3_Reverse_Color_Out.png";
+
+const wchar_t* ITEM_TI_DUPLICATE_GRAY				= L"./Resource/itemSet/Item_T1_Duplicate_Gray.png";
+const wchar_t* ITEM_TI_CLOUD_GRAY					= L"./Resource/itemSet/Item_T1_Cloud_Gray.png";
+const wchar_t* ITEM_TI_SCORE_UP_GRAY				= L"./Resource/itemSet/Item_T1_ScoreUp_Gray.png";
+const wchar_t* ITEM_T2_BARRIER_GRAY					= L"./Resource/itemSet/Item_T2_Barrier_Gray.png";
+const wchar_t* ITEM_T2_DELAY_GRAY					= L"./Resource/itemSet/Item_T2_Delay_Gray.png";
+const wchar_t* ITEM_T2_GAUGE_CLEAR_GRAY				= L"./Resource/itemSet/Item_T2_GaugeClear_Gray.png";
+const wchar_t* ITEM_T2_ROTATE_GRAY					= L"./Resource/itemSet/Item_T2_Rotate_Gray.png";
+const wchar_t* ITEM_T3_RECOVERY_GRAY				= L"./Resource/itemSet/Item_T3_Recovery_Gray.png";
+const wchar_t* ITEM_T3_REVERSE_GRAY					= L"./Resource/itemSet/Item_T3_Reverse_Gray.png";
+
+const wchar_t* ITEM_TI_DUPLICATE_CARD				= L"./Resource/cardSet/t1_duplicate.png";
+const wchar_t* ITEM_TI_CLOUD_CARD					= L"./Resource/cardSet/t1_mist.png";
+const wchar_t* ITEM_TI_SCORE_UP_CARD				= L"./Resource/cardSet/t1_scoreup.png";
+const wchar_t* ITEM_T2_BARRIER_CARD					= L"./Resource/cardSet/t2_barrier.png";
+const wchar_t* ITEM_T2_DELAY_CARD					= L"./Resource/cardSet/t2_delay.png";
+const wchar_t* ITEM_T2_GAUGE_CLEAR_CARD				= L"./Resource/cardSet/t2_gaugeclear.png";
+const wchar_t* ITEM_T2_ROTATE_CARD					= L"./Resource/cardSet/t2_rotate.png";
+const wchar_t* ITEM_T3_RECOVERY_CARD				= L"./Resource/cardSet/t3_recovery.png";
+const wchar_t* ITEM_T3_REVERSE_CARD					= L"./Resource/cardSet/t3_reverse.png";
 
 
 const wchar_t* PLAY_IMAGE_JUDGE_RING		= L"./Resource/judgeRing.png";

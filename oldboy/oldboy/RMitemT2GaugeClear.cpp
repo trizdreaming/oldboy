@@ -7,6 +7,7 @@ CRMitemT2GaugeClear::CRMitemT2GaugeClear(void)
 {
 	m_WidgetType = WIDGET_ITEM_T2_GAUGE_CLEAR_GRAY;
 	m_WidgetTypeForColor = WIDGET_ITEM_T2_GAUGE_CLEAR_COLOR;
+	m_WidgetTypeForColorOut = WIDGET_ITEM_T2_GAUGE_CLEAR_COLOR_OUT;
 	m_WidgetTypeOfCard = WIDGET_ITEM_T2_GAUGE_CLEAR_CARD;
 	m_TimeSlice = 3000;
 }

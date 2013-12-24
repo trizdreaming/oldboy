@@ -9,6 +9,7 @@ public:
 	~CRMitem(void);
 
 	virtual WidgetType		GetWidgetTypeForColor() { return m_WidgetTypeForColor; }
+	virtual WidgetType		GetWidgetTypeForColorOut() { return m_WidgetTypeForColorOut; }
 	virtual WidgetType		GetWidgetTypeForGray() { return GetWidgetType(); }
 	virtual	WidgetType		GetWidgetTypeOfCard() { return m_WidgetTypeOfCard; }
 	
@@ -22,6 +23,7 @@ protected:
 	virtual void	DeActive() { m_Active = false; }
 
 	WidgetType		m_WidgetTypeForColor;
+	WidgetType		m_WidgetTypeForColorOut;
 	WidgetType		m_WidgetTypeOfCard;
 
 	UINT			m_TimeSlice;

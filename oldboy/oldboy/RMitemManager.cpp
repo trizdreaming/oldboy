@@ -472,15 +472,21 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier ) const
 	{
 		if ( thisItem == m_NowItem[player] )
 		{
-			// 아이템이 발동 불가 상황이면 다른 이미지? 보여줌 일단은 그냥 회색
-			
+			// 아이템이 발동 불가 상황이면 다른 이미지 보여줌
+			// 나를 위한 아이템은 사용가능하게 보이기
 			if ( m_ItemPools[player][thisItem]->GetOwnPlayer() == m_ItemPools[player][thisItem]->GetTargerPlayer() )
 			{
+				// 내가 공격받는 중이면 회복 아이템은 사용 불가로 보이기
+				if ( CRMitemManager::GetInstance()->GetActivatedItem(player) )
+				{
+					return m_ItemPools[player][thisItem]->GetWidgetTypeForColorOut();
+				}
 				return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
 			}
+			// 상대방이 공격이나 힐링중이면 색이 안보이게 하기
 			if ( m_ActiveItem[ m_ItemPools[player][thisItem]->GetTargerPlayer() ] != ITEM_TYPE_NONE)
 			{
-				return m_ItemPools[player][thisItem]->GetWidgetTypeForGray();
+				return m_ItemPools[player][thisItem]->GetWidgetTypeForColorOut();
 			}
 			else
 			{

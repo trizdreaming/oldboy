@@ -10,6 +10,7 @@ CRMitemT3Recovery::CRMitemT3Recovery(void)
 	//////////////////////////////////////////////////////////////////////////
 	m_WidgetType = WIDGET_ITEM_T3_RECOVERY_GRAY;
 	m_WidgetTypeForColor = WIDGET_ITEM_T3_RECOVERY_COLOR;
+	m_WidgetTypeForColorOut = WIDGET_ITEM_T3_RECOVERY_COLOR_OUT;
 	m_WidgetTypeOfCard = WIDGET_ITEM_T3_RECOVERY_CARD;
 }
 

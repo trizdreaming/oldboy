@@ -76,6 +76,48 @@ extern const wchar_t* TITLE_MODE_DUAL;
 extern const wchar_t* TITLE_MODE_TUTORIAL;
 extern const wchar_t* TITLE_MODE_EXIT;
 
+
+extern const wchar_t* ITEM_TI_DUPLICATE_COLOR;
+extern const wchar_t* ITEM_TI_CLOUD_COLOR;
+extern const wchar_t* ITEM_TI_SCORE_UP_COLOR;
+extern const wchar_t* ITEM_T2_BARRIER_COLOR;
+extern const wchar_t* ITEM_T2_DELAY_COLOR;
+extern const wchar_t* ITEM_T2_GAUGE_CLEAR_COLOR;
+extern const wchar_t* ITEM_T2_ROTATE_COLOR;
+extern const wchar_t* ITEM_T3_RECOVERY_COLOR;
+extern const wchar_t* ITEM_T3_REVERSE_COLOR;
+
+extern const wchar_t* ITEM_TI_DUPLICATE_COLOR_OUT;
+extern const wchar_t* ITEM_TI_CLOUD_COLOR_OUT;
+extern const wchar_t* ITEM_TI_SCORE_UP_COLOR_OUT;
+extern const wchar_t* ITEM_T2_BARRIER_COLOR_OUT;
+extern const wchar_t* ITEM_T2_DELAY_COLOR_OUT;
+extern const wchar_t* ITEM_T2_GAUGE_CLEAR_COLOR_OUT;
+extern const wchar_t* ITEM_T2_ROTATE_COLOR_OUT;
+extern const wchar_t* ITEM_T3_RECOVERY_COLOR_OUT;
+extern const wchar_t* ITEM_T3_REVERSE_COLOR_OUT;
+
+extern const wchar_t* ITEM_TI_DUPLICATE_GRAY;
+extern const wchar_t* ITEM_TI_CLOUD_GRAY;
+extern const wchar_t* ITEM_TI_SCORE_UP_GRAY;
+extern const wchar_t* ITEM_T2_BARRIER_GRAY;
+extern const wchar_t* ITEM_T2_DELAY_GRAY;
+extern const wchar_t* ITEM_T2_GAUGE_CLEAR_GRAY;
+extern const wchar_t* ITEM_T2_ROTATE_GRAY;
+extern const wchar_t* ITEM_T3_RECOVERY_GRAY;
+extern const wchar_t* ITEM_T3_REVERSE_GRAY;
+
+extern const wchar_t* ITEM_TI_DUPLICATE_CARD;
+extern const wchar_t* ITEM_TI_CLOUD_CARD;
+extern const wchar_t* ITEM_TI_SCORE_UP_CARD;
+extern const wchar_t* ITEM_T2_BARRIER_CARD;
+extern const wchar_t* ITEM_T2_DELAY_CARD;
+extern const wchar_t* ITEM_T2_GAUGE_CLEAR_CARD;
+extern const wchar_t* ITEM_T2_ROTATE_CARD;
+extern const wchar_t* ITEM_T3_RECOVERY_CARD;
+extern const wchar_t* ITEM_T3_REVERSE_CARD;
+
+
 extern const wchar_t* PLAY_IMAGE_JUDGE_RING;
 extern const wchar_t* PLAY_IMAGE_BLUE_GAUGE;
 extern const wchar_t* PLAY_IMAGE_RED_GAUGE;

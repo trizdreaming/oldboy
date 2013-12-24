@@ -6,6 +6,7 @@ CRMitemT2Rotate::CRMitemT2Rotate(void)
 {
 	m_WidgetType = WIDGET_ITEM_T2_ROTATE_GRAY;
 	m_WidgetTypeForColor = WIDGET_ITEM_T2_ROTATE_COLOR;
+	m_WidgetTypeForColorOut = WIDGET_ITEM_T2_ROTATE_COLOR_OUT;
 	m_WidgetTypeOfCard = WIDGET_ITEM_T2_ROTATE_CARD;
 }
 

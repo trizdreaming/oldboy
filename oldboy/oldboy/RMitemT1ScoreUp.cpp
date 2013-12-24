@@ -7,6 +7,7 @@ CRMitemT1ScoreUp::CRMitemT1ScoreUp(void)
 {
 	m_WidgetType = WIDGET_ITEM_T1_SCORE_UP_GRAY;
 	m_WidgetTypeForColor = WIDGET_ITEM_T1_SCORE_UP_COLOR;
+	m_WidgetTypeForColorOut = WIDGET_ITEM_T1_SCORE_UP_COLOR_OUT;
 	m_WidgetTypeOfCard = WIDGET_ITEM_T1_SCORE_UP_CARD;
 }
 

@@ -7,6 +7,7 @@ CRMitemT2Delay::CRMitemT2Delay(void)
 {
 	m_WidgetType = WIDGET_ITEM_T2_DELAY_GRAY;
 	m_WidgetTypeForColor = WIDGET_ITEM_T2_DELAY_COLOR;
+	m_WidgetTypeForColorOut = WIDGET_ITEM_T2_DELAY_COLOR_OUT;
 	m_WidgetTypeOfCard = WIDGET_ITEM_T2_DELAY_CARD;
 }
 

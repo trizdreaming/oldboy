@@ -6,6 +6,7 @@
 
 CRMitem::CRMitem(void) :
 	m_WidgetTypeForColor(WIDGET_NONE),
+	m_WidgetTypeForColorOut(WIDGET_NONE),
 	m_TargetPlayer(PLAYER_NONE),
 	m_Active(false),
 	m_TimeSlice(5000),

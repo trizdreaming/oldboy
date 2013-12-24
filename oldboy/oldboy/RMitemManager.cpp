@@ -462,15 +462,31 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier ) const
 {
 	ItemType thisItem = m_TierItem[tier];
 	PlayerNumber player = PLAYER_ONE;
-	
+
 	if ( tier > TIER_1P_2P_DIVIDE )
+	{
 		player = PLAYER_TWO;
+	}
 
 	if ( m_ItemPools[player][thisItem] != nullptr )
 	{
 		if ( thisItem == m_NowItem[player] )
 		{
-			return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
+			// 아이템이 발동 불가 상황이면 다른 이미지? 보여줌 일단은 그냥 회색
+			
+			if ( m_ItemPools[player][thisItem]->GetOwnPlayer() == m_ItemPools[player][thisItem]->GetTargerPlayer() )
+			{
+				return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
+			}
+			if ( m_ActiveItem[ m_ItemPools[player][thisItem]->GetTargerPlayer() ] != ITEM_TYPE_NONE)
+			{
+				return m_ItemPools[player][thisItem]->GetWidgetTypeForGray();
+			}
+			else
+			{
+				return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
+			}
+			
 		}
 		else
 		{

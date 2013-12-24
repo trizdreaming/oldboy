@@ -5,6 +5,7 @@
 #include "RMsound.h"
 #include "RMmacro.h"
 #include "RMitemManager.h"
+#include "RMplayer2P.h"
 
 
 CRMairTomo::CRMairTomo(void)
@@ -88,11 +89,17 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 
 void CRMairTomo::PlayVirtualPlayer()
 {
+
 	if ( m_InputReadyList.size() == 0 )
 	{
 		return;
 	}
 	
+	if ( CRMplayer2P::GetInstance()->IsDead() )
+	{
+		return;
+	}
+
 	std::list<UINT>::iterator iterTime = m_InputReadyList.begin();
 	std::list<WidgetType>::iterator iterType = m_InputReadyType.begin();
 
@@ -118,6 +125,12 @@ void CRMairTomo::PlayVirtualPlayer()
 
 void CRMairTomo::ItemVirtualPlayer()
 {
+	// 죽었을때 아이템 사용 막기
+	if ( CRMplayer2P::GetInstance()->IsDead() )
+	{
+		return;
+	}
+
 	if ( m_ReadyItem % 10 == 0 )
 	{
 		CRMinput::GetInstance()->SetVirtualKeyStatusByKey(KEY_TABLE_P2_ATTACK);

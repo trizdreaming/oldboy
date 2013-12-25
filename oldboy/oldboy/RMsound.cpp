@@ -55,7 +55,7 @@ HRESULT CRMsound::CreateSound()
 		return S_FALSE;
 	}
 	
-	m_Result = m_SystemS->init(9, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
+	m_Result = m_SystemS->init(64, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
 		
 	if ( CheckError() != S_OK )
 	{

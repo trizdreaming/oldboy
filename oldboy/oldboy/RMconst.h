@@ -47,6 +47,12 @@ extern const char* SE_PAUSE_FLIP;
 extern const char* SE_PAUSE_OK;
 extern const char* SE_PAUSE_OPEN;
 
+extern const char* SE_PLAY_ITEM_ATTACK;
+extern const char* SE_PLAY_ITEM_HEAL;
+extern const char* SE_PLAY_TIER1_FULL;
+extern const char* SE_PLAY_TIER2_FULL;
+extern const char* SE_PLAY_TIER3_FULL;
+
 extern const wchar_t* OPENING_VIDEO_FILE;
 
 extern const wchar_t* BG_IMAGE_TITLE;

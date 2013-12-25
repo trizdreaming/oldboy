@@ -41,6 +41,12 @@ const char* SE_PAUSE_FLIP			= "./Resource/se/SE_PAUSE_FLIP.mp3";
 const char* SE_PAUSE_OK				= "./Resource/se/SE_PAUSE_OK.mp3";
 const char* SE_PAUSE_OPEN			= "./Resource/se/SE_PAUSE_OPEN.mp3";
 
+const char* SE_PLAY_ITEM_ATTACK		= "./Resource/se/SE_PLAY_ITEM_ATTACK.wav";
+const char* SE_PLAY_ITEM_HEAL		= "./Resource/se/SE_PLAY_ITEM_HEAL.wav";
+const char* SE_PLAY_TIER1_FULL		= "./Resource/se/SE_PLAY_TIER1_FULL.wav";
+const char* SE_PLAY_TIER2_FULL		= "./Resource/se/SE_PLAY_TIER2_FULL.wav";
+const char* SE_PLAY_TIER3_FULL		= "./Resource/se/SE_PLAY_TIER3_FULL.wav";
+
 const wchar_t* OPENING_VIDEO_FILE	= L"./Resource/sample.avi";
 
 const wchar_t* BG_IMAGE_TITLE	= L"./Resource/image_bg_00_01.png";

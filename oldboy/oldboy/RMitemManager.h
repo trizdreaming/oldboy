@@ -48,6 +48,7 @@ public:
 private:
 	// 발동 가능한 아이템을 체크 할 배열
 	std::array<ItemType, PLAYER_MAX>				m_NowItem;
+	std::array<ItemType, PLAYER_MAX>				m_PrevItem;
 
 	// 현재 발동 중인 아이템이 들어갈 배열
 	std::array<ItemType, PLAYER_MAX>				m_ActiveItem;

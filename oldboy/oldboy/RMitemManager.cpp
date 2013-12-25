@@ -18,11 +18,13 @@
 #include "RMpauseManager.h"
 #include "RMrandomGenerator.h"
 #include "RMairTomo.h"
+#include "RMsound.h"
 
 
 CRMitemManager::CRMitemManager(void)
 {
 	ZeroMemory(&m_NowItem, sizeof(m_NowItem));
+	ZeroMemory(&m_PrevItem, sizeof(m_PrevItem));
 	ZeroMemory(&m_ItemPools, sizeof(m_ItemPools));
 	ZeroMemory(&m_TierItem, sizeof(m_TierItem));
 	ZeroMemory(&m_ActiveItem, sizeof(m_ActiveItem));
@@ -260,6 +262,24 @@ void CRMitemManager::Update()
 		}
 	}
 
+	// 아이템 티어가 바뀌면 효과음 p1
+	if ( m_NowItem[PLAYER_ONE] != m_PrevItem[PLAYER_ONE] )
+	{
+		m_PrevItem[PLAYER_ONE] = m_NowItem[PLAYER_ONE];
+		if ( p1GaugeRate > 0.9f )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_TIER3_FULL);
+		}
+		else if ( p1GaugeRate > 0.6f )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_TIER2_FULL);
+		}
+		else if ( p1GaugeRate > 0.3f )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_TIER1_FULL);
+		}
+	}
+
 	if ( p2GaugeRate > 0.9f )
 	{
 		m_NowItem[PLAYER_TWO] = m_TierItem[TIER_2P_THREE];
@@ -291,6 +311,23 @@ void CRMitemManager::Update()
 		}
 	}
 
+	// 아이템 티어가 바뀌면 효과음 p1
+	if ( m_NowItem[PLAYER_TWO] != m_PrevItem[PLAYER_TWO] )
+	{
+		m_PrevItem[PLAYER_TWO] = m_NowItem[PLAYER_TWO];
+		if ( p2GaugeRate > 0.9f )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_TIER3_FULL);
+		}
+		else if ( p2GaugeRate > 0.6f )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_TIER2_FULL);
+		}
+		else if ( p2GaugeRate > 0.3f )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_TIER1_FULL);
+		}
+	}
 	// 2. 공격 키 입력 받기
 	// 3. MP 상황에 맞춰 공격 가능 최대 티어로 m_NowItem[공격 키 입력 들어온 플레이어]의 아이템 타입 설정 
 	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_NowItem[PLAYER_ONE] != ITEM_TYPE_NONE )
@@ -304,8 +341,10 @@ void CRMitemManager::Update()
 
 		if ( thisItem->m_TargetPlayer == PLAYER_ONE )
 		{
+			CRMsound::GetInstance()->PlayEffectItemUse(SOUND_EFFECT_PLAY_ITEM_HEAL);
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 			{
+				
 				if ( m_ActiveItem[PLAYER_ONE] == ITEM_T2_BARRIER )
 				{
 					DeactiveItem(PLAYER_ONE);
@@ -326,6 +365,7 @@ void CRMitemManager::Update()
 			{
 				return;
 			}
+			CRMsound::GetInstance()->PlayEffectItemUse(SOUND_EFFECT_PLAY_ITEM_ATTACK);
 			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 			{
 				if ( m_ActiveItem[PLAYER_TWO] == ITEM_T2_BARRIER )
@@ -338,7 +378,8 @@ void CRMitemManager::Update()
 			m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_ONE];
 		}
 		m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
-		
+		m_PrevItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+
 		if( thisItem != nullptr )
 		{
 			thisItem->Active();
@@ -362,6 +403,7 @@ void CRMitemManager::Update()
 			{
 				return;
 			}
+			CRMsound::GetInstance()->PlayEffectItemUse(SOUND_EFFECT_PLAY_ITEM_ATTACK);
 			if ( m_ActiveItem[PLAYER_ONE] != ITEM_TYPE_NONE )
 			{
 				if ( m_ActiveItem[PLAYER_ONE] == ITEM_T2_BARRIER )
@@ -375,6 +417,7 @@ void CRMitemManager::Update()
 		}
 		else if ( thisItem->m_TargetPlayer == PLAYER_TWO )
 		{
+			CRMsound::GetInstance()->PlayEffectItemUse(SOUND_EFFECT_PLAY_ITEM_HEAL);
 			if ( m_ActiveItem[PLAYER_TWO] != ITEM_TYPE_NONE )
 			{
 				if ( m_ActiveItem[PLAYER_TWO] == ITEM_T2_BARRIER )
@@ -392,6 +435,7 @@ void CRMitemManager::Update()
 			m_ActiveItem[PLAYER_TWO] = m_NowItem[PLAYER_TWO];
 		}
 		m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+		m_PrevItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 
 		if( thisItem != nullptr )
 		{
@@ -528,6 +572,8 @@ void CRMitemManager::Reset()
 	m_ActiveItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 	m_NowItem[PLAYER_ONE] = ITEM_TYPE_NONE;
 	m_NowItem[PLAYER_TWO] = ITEM_TYPE_NONE;
+	m_PrevItem[PLAYER_ONE] = ITEM_TYPE_NONE;
+	m_PrevItem[PLAYER_TWO] = ITEM_TYPE_NONE;
 }
 
 bool CRMitemManager::IsActivedItemForSelf( PlayerNumber player ) const

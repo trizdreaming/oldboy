@@ -10,6 +10,8 @@ CRMsound::CRMsound(void):
 	m_SystemS(nullptr),
 	m_ChannelBG(nullptr),
 	m_ChannelSE(nullptr),
+	m_ChannelSEItemUse(nullptr),
+	m_ChannelSETier(nullptr),
 	m_Result(FMOD_ERR_UNINITIALIZED)
 {
 	ZeroMemory(&m_SoundArray, sizeof(m_SoundArray));
@@ -53,7 +55,7 @@ HRESULT CRMsound::CreateSound()
 		return S_FALSE;
 	}
 	
-	m_Result = m_SystemS->init(2, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
+	m_Result = m_SystemS->init(9, FMOD_INIT_NORMAL, 0); // Initialize FMOD.
 		
 	if ( CheckError() != S_OK )
 	{
@@ -172,6 +174,41 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_PLAY_ITEM_ATTACK, SOUND_EFFECT_PLAY_ITEM_ATTACK );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PLAY_ITEM_HEAL, SOUND_EFFECT_PLAY_ITEM_HEAL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PLAY_TIER1_FULL, SOUND_EFFECT_PLAY_TIER1_FULL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PLAY_TIER2_FULL, SOUND_EFFECT_PLAY_TIER2_FULL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PLAY_TIER3_FULL, SOUND_EFFECT_PLAY_TIER3_FULL );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );
@@ -245,6 +282,26 @@ void CRMsound::PlayEffect( SoundType soundType )
 	}
 }
 
+// 효과음 재생2
+void CRMsound::PlayEffectItemUse( SoundType soundType )
+{
+	if ( m_Result == FMOD_OK )
+	{
+		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundArray[soundType], false, &m_ChannelSEItemUse );
+		m_ChannelSEItemUse->setVolume( 1.0f );
+		CheckError();
+	}
+}
+
+void CRMsound::PlayEffectTier( SoundType soundType )
+{
+	if ( m_Result == FMOD_OK )
+	{
+		m_Result = m_SystemS->playSound( FMOD_CHANNEL_FREE, m_SoundArray[soundType], false, &m_ChannelSETier );
+		m_ChannelSETier->setVolume( 1.0f );
+		CheckError();
+	}
+}
 
 // 해제 처리
 void CRMsound::DeleteSound()

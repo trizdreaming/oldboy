@@ -21,7 +21,9 @@ public:
 
 	void				PlaySound( SoundType soundType, bool isLoop = true );
 	void				PlayEffect( SoundType soundType );
-	
+	void				PlayEffectItemUse( SoundType soundType );
+	void				PlayEffectTier( SoundType soundType );
+
 	// 사운드 일시정지를 위한 함수
 	HRESULT				SetPauseBG( const bool isPause = true );
 
@@ -36,6 +38,8 @@ private:
 	FMOD::System*		m_SystemS;
 	FMOD::Channel*		m_ChannelBG;
 	FMOD::Channel*		m_ChannelSE;
+	FMOD::Channel*		m_ChannelSEItemUse;
+	FMOD::Channel*		m_ChannelSETier;
 	FMOD_RESULT			m_Result;
 
 	//FMOD::Sound*	m_Sound;

@@ -11,7 +11,10 @@
 CRMchildItemCardDisplay::CRMchildItemCardDisplay(void):
 	m_TimeSlice(30),
 	m_PrevTime(0),
-	m_FlickFlag(true)
+	m_FlickFlag(true),
+	m_PositionXOriginal(0.0f),
+	m_PositionYOriginal(0.0f),
+	m_WidthOriginal(0.0f)
 {
 }
 
@@ -38,7 +41,8 @@ void CRMchildItemCardDisplay::Update()
 	if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_TYPE_NONE )
 	{
 		m_Visible = false;
-		//m_Rotation = 0;
+		 //m_Rotation = 0;
+
 		return;
 	}
 
@@ -70,56 +74,9 @@ void CRMchildItemCardDisplay::Update()
 	}
 }
 
-	/*
-	if ( m_OrderNumber == 29 )
-	{
-		if ( m_PrevTime + m_TimeSlice < thisTime )
-		{
-			if( m_FlickFlag == true )
-			{
-				m_Alpha -= 0.02f;
-
-				if( m_Alpha <= 0.3f )
-				{
-					m_FlickFlag = false;
-				}
-			}
-			else
-			{
-				m_Alpha += 0.1f;
-
-				if ( m_Alpha >= 1.0f )
-				{
-					m_FlickFlag = true;
-				}
-			}
-			m_PrevTime = thisTime;
-		}
-	}
-	else
-	{
-		if ( m_OrderFlag == false )
-		{
-			if ( m_PrevTime + (m_OrderNumber * 50) < thisTime )
-			{
-				m_OrderFlag = true;
-				m_MoveOffset = 0;
-			}
-		}
-		else
-		{
-			++m_Rotation;
-			++m_MoveOffset;
-			m_Alpha -= 0.05f;
-
-			if ( m_Rotation > 20 )
-			{
-				m_PrevTime = thisTime;
-				m_OrderFlag = false;
-				m_MoveOffset = 0.f;
-				m_Rotation = 0.f;
-				m_Alpha = 1.f;
-			}
-		}
-	}
-	*/
+void CRMchildItemCardDisplay::SetPosition( float x, float y )
+{
+	CRMobject::SetPosition(x, y);
+	m_PositionXOriginal = x;
+	m_PositionYOriginal = y;
+}

@@ -17,6 +17,5 @@ public:
 private:
 	WidgetType		m_Original_type;
 	UINT			m_StartTime;
-	UINT			m_PrevTime;
 };
 

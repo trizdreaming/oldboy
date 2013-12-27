@@ -10,7 +10,8 @@
 
 
 CRMchildNote::CRMchildNote(void) :
-	m_StartTime(0)
+	m_StartTime(0),
+	m_Original_type(WIDGET_NONE)
 {
 }
 
@@ -41,18 +42,12 @@ void CRMchildNote::Update()
 	if ( m_PositionY < SCREEN_SIZE_Y + NOTE_SIZE )
 	{
 		UINT thisTime = timeGetTime();
-		
-		if ( m_PrevTime + 1666 > thisTime )
-		{
-			return;
-		}
+		int elapsedTime = thisTime - m_StartTime;
 
 		m_PositionY = static_cast<float>
-			( NOTE_START_POSITION_Y + ( (thisTime - m_StartTime) / 120000 ) * ( (-NOTE_START_POSITION_Y + SCREEN_SIZE_Y + NOTE_SIZE) / 120) );
-
-		m_PrevTime = thisTime;
-
-		printConsole ("S : %d   N : %d  A : %f  Y : %f \n", m_StartTime, thisTime, m_Alpha, m_PositionY);
+			( NOTE_START_POSITION_Y + ( static_cast<float>(elapsedTime) / 16) * ( (-NOTE_START_POSITION_Y + SCREEN_SIZE_Y + NOTE_SIZE) / 140) );
+		
+		printConsole ("E : %d  A : %f  Y : %f \n", elapsedTime, m_Alpha, m_PositionY);
 
 		if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T2_ROTATE )
 		{
@@ -149,5 +144,4 @@ void CRMchildNote::SetWidgetType( WidgetType widgetType )
 void CRMchildNote::StartMove()
 {
 	m_StartTime = timeGetTime();
-	m_PrevTime = m_StartTime;
 }

@@ -14,7 +14,6 @@
 #include "RMinput.h"
 #include "RMpauseManager.h"
 #include "RMairTomo.h"
-#include "RMchildNote.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -32,7 +31,7 @@ CRMjudgeManager::~CRMjudgeManager(void)
 
 void CRMjudgeManager::StartNote( PlayerNumber player , WidgetType widgetType ) const
 {
-	CRMchildNote* thisNote = dynamic_cast<CRMchildNote*> (CRMobjectManager::GetInstance()->GetObjectFront( LAYER_MEMORY_POOL ));
+	CRMobject* thisNote = CRMobjectManager::GetInstance()->GetObjectFront( LAYER_MEMORY_POOL );
 	if ( thisNote == nullptr )
 	{
 		return; 
@@ -47,7 +46,6 @@ void CRMjudgeManager::StartNote( PlayerNumber player , WidgetType widgetType ) c
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
 		thisNote->SetPlayer( PLAYER_ONE );
-		thisNote->StartMove();
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE1 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 	}
@@ -58,7 +56,6 @@ void CRMjudgeManager::StartNote( PlayerNumber player , WidgetType widgetType ) c
 		thisNote->SetVisible(true);
 		thisNote->SetSceneType( SCENE_PLAY );
 		thisNote->SetPlayer( PLAYER_TWO );
-		thisNote->StartMove();
 		CRMobjectManager::GetInstance()->AddObject( thisNote , LAYER_NOTE2 );
 		CRMobjectManager::GetInstance()->DeleteNoteListFront( LAYER_MEMORY_POOL );
 	}

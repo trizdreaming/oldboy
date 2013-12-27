@@ -14,7 +14,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 #define SCREEN_SIZE_X 1024 // 1024 + 16
 #define SCREEN_SIZE_Y 662  // 668 + 32
 
-#define NOTE_SIZE			80
+#define NOTE_SIZE 100
 
 #define MAX_NOTE_IN_POOL	200
 #define MAX_EFFECT			20
@@ -25,7 +25,7 @@ EXTERN_C IMAGE_DOS_HEADER __ImageBase;
 // judge Manager 에서 사용하는 값으로 노트의 시작 위치를 담당
 #define NOTE_ONE_START_POSITION_X	405
 #define NOTE_TWO_START_POSITION_X	920
-#define NOTE_START_POSITION_Y		-80
+#define NOTE_START_POSITION_Y		-100
 
 // 아이템 시작 위치
 #define ITEM_DISPLAY_POSITION_1P_X		270

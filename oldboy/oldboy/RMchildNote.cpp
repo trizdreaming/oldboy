@@ -9,8 +9,7 @@
 #include "RMitemManager.h"
 
 
-CRMchildNote::CRMchildNote(void) :
-	m_StartTime(0)
+CRMchildNote::CRMchildNote(void)
 {
 }
 
@@ -40,19 +39,7 @@ void CRMchildNote::Update()
 
 	if ( m_PositionY < SCREEN_SIZE_Y + NOTE_SIZE )
 	{
-		UINT thisTime = timeGetTime();
-		
-		if ( m_PrevTime + 1666 > thisTime )
-		{
-			return;
-		}
-
-		m_PositionY = static_cast<float>
-			( NOTE_START_POSITION_Y + ( (thisTime - m_StartTime) / 120000 ) * ( (-NOTE_START_POSITION_Y + SCREEN_SIZE_Y + NOTE_SIZE) / 120) );
-
-		m_PrevTime = thisTime;
-
-		printConsole ("S : %d   N : %d  A : %f  Y : %f \n", m_StartTime, thisTime, m_Alpha, m_PositionY);
+		m_PositionY += 5;
 
 		if ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) == ITEM_T2_ROTATE )
 		{
@@ -144,10 +131,4 @@ void CRMchildNote::SetWidgetType( WidgetType widgetType )
 {
 	m_Original_type = widgetType;
 	CRMobject::SetWidgetType(widgetType);
-}
-
-void CRMchildNote::StartMove()
-{
-	m_StartTime = timeGetTime();
-	m_PrevTime = m_StartTime;
 }

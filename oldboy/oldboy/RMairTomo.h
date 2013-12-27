@@ -13,6 +13,8 @@ public:
 	void	PlayVirtualPlayer();
 	void	ItemVirtualPlayer();
 
+	void	SetPerfectTime( UINT PerfectTime ) { m_PerfectTime = PerfectTime; }
+
 private:
 	CRMairTomo(void);
 	~CRMairTomo(void);
@@ -25,5 +27,6 @@ private:
 	std::list<WidgetType>	m_InputReadyType;
 
 	UINT					m_ReadyItem;
+	UINT					m_PerfectTime;
 };
 

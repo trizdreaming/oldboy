@@ -115,6 +115,7 @@
     <ClInclude Include="LibraryTinyXML\xpath_static.h" />
     <ClInclude Include="LibraryTinyXML\xpath_stream.h" />
     <ClInclude Include="LibraryTinyXML\xpath_syntax.h" />
+    <ClInclude Include="RMchildAirTomoFixer.h" />
     <ClInclude Include="RMchildAlbumImage.h" />
     <ClInclude Include="RMchildAlertGrow.h" />
     <ClInclude Include="RMchildBGImage.h" />
@@ -197,6 +198,7 @@
     <ClCompile Include="LibraryTinyXML\xpath_stream.cpp" />
     <ClCompile Include="LibraryTinyXML\xpath_syntax.cpp" />
     <ClCompile Include="oldboy.cpp" />
+    <ClCompile Include="RMchildAirTomoFixer.cpp" />
     <ClCompile Include="RMchildAlbumImage.cpp" />
     <ClCompile Include="RMchildAlertGrow.cpp" />
     <ClCompile Include="RMchildBGImage.cpp" />

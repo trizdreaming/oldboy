@@ -42,6 +42,7 @@
 #include "RMchildSelectBar.h"
 #include "RMchildAlertGrow.h"
 #include "RMchildCpuMode.h"
+#include "RMchildAirTomoFixer.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -582,7 +583,10 @@ HRESULT CRMmainLoop::CreateObject()
 		CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_NOTE_HIT);
 	}
 
-
+	newObject = new CRMchildAirTomoFixer();
+	newObject->SetWidgetType(WIDGET_NOTE_NORMAL_1);
+	newObject->SetPosition( DEFAULT_POSITION_X, NOTE_START_POSITION_Y );
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
 
 	newObject = new CRMchildAlertGrow();
 	newObject->SetWidgetType( WIDGET_PLAY_ALERT_GROW_RED );

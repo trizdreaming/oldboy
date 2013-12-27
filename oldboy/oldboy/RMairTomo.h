@@ -13,7 +13,9 @@ public:
 	void	PlayVirtualPlayer();
 	void	ItemVirtualPlayer();
 
-	void	SetPerfectTime( UINT PerfectTime ) { m_PerfectTime = PerfectTime; }
+	void	SetPerfectTime( UINT PerfectTime );
+
+	bool	IsStart() { return m_IsStart; };
 
 private:
 	CRMairTomo(void);
@@ -28,5 +30,6 @@ private:
 
 	UINT					m_ReadyItem;
 	UINT					m_PerfectTime;
+	bool					m_IsStart;
 };
 

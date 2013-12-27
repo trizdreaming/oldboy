@@ -328,7 +328,9 @@
     <ClInclude Include="RMchildCpuMode.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMchildAirTomoFixer.h" />
+    <ClInclude Include="RMchildAirTomoFixer.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -553,7 +555,9 @@
     <ClCompile Include="RMchildCpuMode.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMchildAirTomoFixer.cpp" />
+    <ClCompile Include="RMchildAirTomoFixer.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

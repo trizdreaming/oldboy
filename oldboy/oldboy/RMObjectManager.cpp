@@ -449,6 +449,11 @@ void CRMobjectManager::ShowTooltip()
 		return;
 	}
 
+	for ( auto& iter : m_ObjectListLayerShutter )
+	{
+		iter->Update();
+	}
+
 	thisTooltip->Render();
 }
 

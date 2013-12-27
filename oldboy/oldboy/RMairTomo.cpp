@@ -29,11 +29,24 @@ void CRMairTomo::Initialize()
 	m_InputReadyType.clear();
 
 	m_ReadyItem = 0;
+	m_PerfectTime = 2260;
+	m_IsStart = true;
 }
-
+void CRMairTomo::SetPerfectTime( UINT PerfectTime )
+{
+	if ( PerfectTime > 2400 )
+	{
+		m_PerfectTime = 2250;
+	}
+	else
+	{
+		m_PerfectTime = PerfectTime;
+	}
+	
+}
 void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UINT BeforeNoteTime )
 {
-	
+	m_IsStart = false;
 	m_KeyInputReadyType = NextNoteType;
 	//printConsole("virtual Player CALL SetRandomJudge! %d\n",NextNoteTime);
 	int delayTime = NextNoteTime - BeforeNoteTime;
@@ -72,11 +85,11 @@ void CRMairTomo::SetRandomJudge( UINT NextNoteTime, WidgetType NextNoteType , UI
 
 	if ( temp == 0)
 	{
-		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(2260, 2260 + m_Mental);
+		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(m_PerfectTime, m_PerfectTime + m_Mental);
 	}
 	else
 	{
-		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(2260 - m_Mental, 2260);
+		m_KeyInputReadyTime = NextNoteTime + CRMrandomGenerator::GetInstance()->GetRandom(m_PerfectTime - m_Mental, m_PerfectTime);
 	}
 
 	printConsole("Mental : %d %d \n", m_Mental, static_cast<int>(m_KeyInputReadyTime - NextNoteTime));
@@ -105,7 +118,7 @@ void CRMairTomo::PlayVirtualPlayer()
 
 	if ( CRMsound::GetInstance()->GetPlayTime() > *iterTime)
 	{
-		
+		//printf_s("COM-%d \n",CRMsound::GetInstance()->GetPlayTime());
 		if ( *iterType == WIDGET_NOTE_NORMAL_1 )
 		{
 			CRMinput::GetInstance()->SetVirtualKeyStatusByKey(KEY_TABLE_P2_TARGET1);

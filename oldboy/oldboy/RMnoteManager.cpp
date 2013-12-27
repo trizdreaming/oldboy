@@ -116,7 +116,7 @@ void CRMnoteManager::StartNote()
 			if ( m_ElapsedTime > (m_P1NoteMiddleTime + m_PausedTime) )
 			{
 				int noteTurm = (m_P1NoteMiddleTime - m_P1NoteBeforeTime);
-				printf_s("delay :%d \n",noteTurm);
+				//printf_s("delay :%d \n",noteTurm);
 				if ( noteTurm > 100 )
 				{
 					CRMjudgeManager::GetInstance()->StartNote( PLAYER_ONE , m_P1NoteReadyType );

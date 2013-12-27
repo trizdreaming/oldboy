@@ -9,6 +9,7 @@ public:
 	virtual ~CRMchildAirTomoFixer(void);
 
 	virtual void	Update();
+	void			StartFixer();
 private:
 	UINT			m_StartTime;
 };

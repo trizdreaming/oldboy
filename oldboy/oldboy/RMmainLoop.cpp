@@ -585,8 +585,9 @@ HRESULT CRMmainLoop::CreateObject()
 
 	newObject = new CRMchildAirTomoFixer();
 	newObject->SetWidgetType(WIDGET_NOTE_NORMAL_1);
+	newObject->SetSceneType(SCENE_PLAY);
 	newObject->SetPosition( DEFAULT_POSITION_X, NOTE_START_POSITION_Y );
-	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_SHUTTER);
 
 	newObject = new CRMchildAlertGrow();
 	newObject->SetWidgetType( WIDGET_PLAY_ALERT_GROW_RED );
@@ -784,6 +785,7 @@ void CRMmainLoop::TestSound()
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN )
 	{
+		//printf_s("HUMAN-%d\n",CRMsound::GetInstance()->GetPlayTime());
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );
 		return;
 	}
@@ -1166,6 +1168,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 			if ( elapsedTime > 3000 )
 			{
+				CRMairTomo::GetInstance()->SetPerfectTime(2260);
 				break;
 			}
 		}

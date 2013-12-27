@@ -45,7 +45,7 @@ void CRMchildNote::Update()
 		int elapsedTime = thisTime - m_StartTime;
 
 		m_PositionY = static_cast<float>
-			( NOTE_START_POSITION_Y + ( static_cast<float>(elapsedTime) / 16) * ( (-NOTE_START_POSITION_Y + SCREEN_SIZE_Y + NOTE_SIZE) / 140) );
+			( NOTE_START_POSITION_Y + ( static_cast<double>(elapsedTime) / 16.66667) * ( static_cast<double>(-NOTE_START_POSITION_Y + SCREEN_SIZE_Y + NOTE_SIZE) / 160) );
 		
 		printConsole ("E : %d  A : %f  Y : %f \n", elapsedTime, m_Alpha, m_PositionY);
 

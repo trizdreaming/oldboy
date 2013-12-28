@@ -43,6 +43,7 @@
 #include "RMchildAlertGrow.h"
 #include "RMchildCpuMode.h"
 #include "RMchildAirTomoFixer.h"
+#include "RMglobalParameterManager.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -1169,6 +1170,7 @@ HRESULT CRMmainLoop::GoNextScene()
 			if ( elapsedTime > 3000 )
 			{
 				CRMairTomo::GetInstance()->SetPerfectTime(2260);
+				CRMglobalParameterManager::GetInstance()->Initialize();
 				break;
 			}
 		}

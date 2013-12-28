@@ -5,6 +5,7 @@
 #include "RMmainLoop.h"
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
+#include "RMglobalParameterManager.h"
 
 
 CRMchildShutter::CRMchildShutter(void)
@@ -78,5 +79,13 @@ void CRMchildShutter::Update()
 	if ( (int)m_PositionY != (int)resultPosition )
 	{
 		m_PositionY += ( (resultPosition - m_PositionY) / 20 );
+		if ( m_PlayerNumber == PLAYER_ONE )
+		{
+			CRMglobalParameterManager::GetInstance()->SetShutterP1PositionY(m_PositionY);
+		}
+		else
+		{
+			CRMglobalParameterManager::GetInstance()->SetShutterP2PositionY(m_PositionY);
+		}
 	}
 }

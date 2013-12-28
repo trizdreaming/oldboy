@@ -331,6 +331,7 @@
     <ClInclude Include="RMchildAirTomoFixer.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMglobalParameterManager.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -558,6 +559,7 @@
     <ClCompile Include="RMchildAirTomoFixer.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
+    <ClCompile Include="RMglobalParameterManager.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

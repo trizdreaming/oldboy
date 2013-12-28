@@ -136,6 +136,7 @@
     <ClInclude Include="RMdefine.h" />
     <ClInclude Include="RMdummyRender.h" />
     <ClInclude Include="RMenumSet.h" />
+    <ClInclude Include="RMglobalParameterManager.h" />
     <ClInclude Include="RMimage.h" />
     <ClInclude Include="Resource.h" />
     <ClInclude Include="RMinput.h" />
@@ -217,6 +218,7 @@
     <ClCompile Include="RMchildPauseImage.cpp" />
     <ClCompile Include="RMchildShutter.cpp" />
     <ClCompile Include="RMdummyRender.cpp" />
+    <ClCompile Include="RMglobalParameterManager.cpp" />
     <ClCompile Include="RMimage.cpp" />
     <ClCompile Include="RMinput.cpp" />
     <ClCompile Include="RMitem.cpp" />

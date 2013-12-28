@@ -3,6 +3,7 @@
 #include "RMmainLoop.h"
 #include "RMitemManager.h"
 #include "RMdefine.h"
+#include "RMglobalParameterManager.h"
 
 
 CRMchildAlertGrow::CRMchildAlertGrow(void) :
@@ -47,6 +48,18 @@ void CRMchildAlertGrow::Update()
 			m_WidgetType = WIDGET_PLAY_ALERT_GROW_RED;
 			break;
 		}
+
+		if ( m_PlayerNumber == PLAYER_ONE )
+		{
+			m_PositionY = CRMglobalParameterManager::GetInstance()->GetShutterP1PositionY();
+		}
+		else
+		{
+			m_PositionY = CRMglobalParameterManager::GetInstance()->GetShutterP2PositionY();
+		}
+
+		m_PositionY += -SHUTTER_START_POSITION_Y;
+		m_Height = SCREEN_SIZE_Y - m_PositionY;
 
 		++m_AnimationFrame;
 

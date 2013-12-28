@@ -136,6 +136,7 @@ extern const wchar_t* PLAY_IMAGE_JUDGE_NONE;
 
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE;
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_RED;
+extern const wchar_t* PLAY_IMAGE_ALERT_GROW_GRAY;
 
 extern const wchar_t* PLAY_IMAGE_DANGER_LINE;
 

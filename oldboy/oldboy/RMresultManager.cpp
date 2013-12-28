@@ -44,6 +44,15 @@ void CRMresultManager::DrawLabel( int offsetX, int offsetY, float R, float G, fl
 	UINT totalScoreP1 = player1->GetCount(COUNT_SCORE) + ( player1->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	UINT totalScoreP2 = player2->GetCount(COUNT_SCORE) + ( player2->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 
+	if ( !player1->IsDead() )
+	{
+		totalScoreP1 += SCORE_CLEAR_BONUS;
+	}
+	if ( !player2->IsDead() )
+	{
+		totalScoreP2 += SCORE_CLEAR_BONUS;
+	}
+
 	CRMlabel* p1Perfect = new CRMlabel();
 	p1Perfect->CreateLabel( L"p1Perfect" + labelName , string2wstring( std::to_string( player1->GetCount(COUNT_PERFECT) ) ), LABEL_FONT_NORMAL, 35.0f );
 	p1Perfect->SetRGBA( R, G, B, 1.f );

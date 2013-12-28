@@ -40,9 +40,11 @@ void CRMchildAlertGrow::Update()
 		switch ( CRMitemManager::GetInstance()->GetActivatedItem(m_PlayerNumber) )
 		{
 		case ITEM_T1_SCORE_UP:
-		case ITEM_T2_BARRIER:
 		case ITEM_T3_RECOVERY:
 			m_WidgetType = WIDGET_PLAY_ALERT_GROW_BLUE;
+			break;
+		case ITEM_T2_BARRIER:
+			m_WidgetType = WIDGET_PLAY_ALERT_GROW_GRAY;
 			break;
 		default:
 			m_WidgetType = WIDGET_PLAY_ALERT_GROW_RED;

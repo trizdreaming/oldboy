@@ -29,6 +29,15 @@ void CRMchildUIResultImage::Update()
 	UINT myTotalScore = playerMe->GetCount(COUNT_SCORE) + ( playerMe->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 	UINT enemyTotalScore = playerEnemy->GetCount(COUNT_SCORE) + ( playerEnemy->GetCount(COUNT_MAX_COMBO) * SCORE_MAX_COMBO_RATE );
 
+	if ( !playerMe->IsDead() )
+	{
+		myTotalScore += SCORE_CLEAR_BONUS;
+	}
+	if ( !playerEnemy->IsDead() )
+	{
+		enemyTotalScore += SCORE_CLEAR_BONUS;
+	}
+
 	if ( myTotalScore > enemyTotalScore )
 	{
 		if ( playerMe->IsDead() )

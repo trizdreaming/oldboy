@@ -3,19 +3,19 @@
     <!-- Settings for Music -->
 	<Title>HeavenAndHell</Title>
 	<Artist>Caesar</Artist>
-	<Level>4</Level>
+	<Level>3</Level>
     <Image>
         <imageAlbum>album-normal.png</imageAlbum>
-        <imageBackground>back3.png</imageBackground>
+        <imageBackground>image_back_normal.png</imageBackground>
         <imageShutter>image_sh_01_01.png</imageShutter>
         <imageNote1>note1.png</imageNote1>
         <imageNote2>note2.png</imageNote2>
         <imageNoteEffect>note3.png</imageNoteEffect>
     </Image>
     <Sound>
-        <soundBackground>gundae.mp3</soundBackground>
-        <soundNoteEffect1>sound_effect_01_01.wav</soundNoteEffect1>
-        <soundNoteEffect2>sound_effect_02_01.wav</soundNoteEffect2>
+        <soundBackground>sakuranbo.mp3</soundBackground>
+        <soundNoteEffect1>taiko000.wav</soundNoteEffect1>
+        <soundNoteEffect2>taiko001.wav</soundNoteEffect2>
     </Sound>
     <Note>note.xml</Note>
 </Music>

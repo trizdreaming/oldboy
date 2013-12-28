@@ -760,22 +760,18 @@ HRESULT CRMmainLoop::CreateObject()
 
 	CRMchildItemCardDisplay* itemCardObject = nullptr;
 	
-//	for ( int i = 0 ; i < 30; ++i )
-//	{
 	itemCardObject = new CRMchildItemCardDisplay();
-	itemCardObject->SetPosition(115, 200);
+	itemCardObject->SetPosition(130, 250);
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_ONE);
-	//itemCardObject->SetOrder(i);
 	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
 
 	itemCardObject = new CRMchildItemCardDisplay();
-	itemCardObject->SetPosition(627, 200);
+	itemCardObject->SetPosition(640, 250);
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_TWO);
-	//itemCardObject->SetOrder(i);
 	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
-//	}
+
 	return hr;
 }
 

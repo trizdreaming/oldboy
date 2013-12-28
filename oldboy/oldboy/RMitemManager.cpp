@@ -521,7 +521,8 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier ) const
 			if ( m_ItemPools[player][thisItem]->GetOwnPlayer() == m_ItemPools[player][thisItem]->GetTargerPlayer() )
 			{
 				// 내가 공격받는 중이면 회복 아이템은 사용 불가로 보이기
-				if ( CRMitemManager::GetInstance()->GetActivatedItem(player) )
+				if ( CRMitemManager::GetInstance()->GetActivatedItem(player) != ITEM_TYPE_NONE &&
+					CRMitemManager::GetInstance()->GetActivatedItem(player) != ITEM_T2_BARRIER )
 				{
 					return m_ItemPools[player][thisItem]->GetWidgetTypeForColorOut();
 				}

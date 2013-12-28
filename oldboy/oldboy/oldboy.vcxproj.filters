@@ -331,8 +331,12 @@
     <ClInclude Include="RMchildAirTomoFixer.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
-    <ClInclude Include="RMglobalParameterManager.h" />
-    <ClInclude Include="RMchildDangerLine.h" />
+    <ClInclude Include="RMchildDangerLine.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMglobalParameterManager.h">
+      <Filter>RhythmMatch\Object</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -560,8 +564,12 @@
     <ClCompile Include="RMchildAirTomoFixer.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
-    <ClCompile Include="RMglobalParameterManager.cpp" />
-    <ClCompile Include="RMchildDangerLine.cpp" />
+    <ClCompile Include="RMchildDangerLine.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMglobalParameterManager.cpp">
+      <Filter>RhythmMatch\Object</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

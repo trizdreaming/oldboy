@@ -801,7 +801,7 @@ void CRMmainLoop::TestSound()
 	}
 	if ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN )
 	{
-		//printf_s("HUMAN-%d\n",CRMsound::GetInstance()->GetPlayTime());
+		// printf_s("HUMAN-%d\n",CRMsound::GetInstance()->GetPlayTime());
 		CRMsound::GetInstance()->PlayEffect( SOUND_NOTE_1 );
 		return;
 	}

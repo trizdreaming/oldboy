@@ -44,6 +44,7 @@
 #include "RMchildCpuMode.h"
 #include "RMchildAirTomoFixer.h"
 #include "RMglobalParameterManager.h"
+#include "RMchildDangerLine.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -603,6 +604,20 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetSceneType(SCENE_PLAY);
 	newObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
+
+	newObject = new CRMchildDangerLine();
+	newObject->SetWidgetType( WIDGET_PLAY_DANGER_LINE );
+	newObject->SetPosition( SHUTTER_P1_START_POSITION_X - 5 , 0 );
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_SHUTTER);
+
+	newObject = new CRMchildDangerLine();
+	newObject->SetWidgetType( WIDGET_PLAY_DANGER_LINE );
+	newObject->SetPosition( SHUTTER_P2_START_POSITION_X - 2 , 0 );
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_TWO);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_SHUTTER);
 
 	newObject = new CRMchildCpuMode();
 	newObject->SetWidgetType( WIDGET_UI_IMAGE_PLAY_CPU_MODE );

@@ -332,6 +332,7 @@
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
     <ClInclude Include="RMglobalParameterManager.h" />
+    <ClInclude Include="RMchildDangerLine.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -560,6 +561,7 @@
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
     <ClCompile Include="RMglobalParameterManager.cpp" />
+    <ClCompile Include="RMchildDangerLine.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

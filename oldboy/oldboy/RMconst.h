@@ -53,6 +53,8 @@ extern const char* SE_PLAY_TIER1_FULL;
 extern const char* SE_PLAY_TIER2_FULL;
 extern const char* SE_PLAY_TIER3_FULL;
 
+extern const char* SE_PLAY_DANGER_SIREN1;
+
 extern const wchar_t* OPENING_VIDEO_FILE;
 
 extern const wchar_t* BG_IMAGE_TITLE;
@@ -134,6 +136,8 @@ extern const wchar_t* PLAY_IMAGE_JUDGE_NONE;
 
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE;
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_RED;
+
+extern const wchar_t* PLAY_IMAGE_DANGER_LINE;
 
 extern const wchar_t* PAUSE_IMAGE_PLAY_CANCEL;
 extern const wchar_t* PAUSE_IMAGE_PLAY_OK;

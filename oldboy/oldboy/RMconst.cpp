@@ -47,6 +47,8 @@ const char* SE_PLAY_TIER1_FULL		= "./Resource/se/SE_PLAY_TIER1_FULL.wav";
 const char* SE_PLAY_TIER2_FULL		= "./Resource/se/SE_PLAY_TIER2_FULL.wav";
 const char* SE_PLAY_TIER3_FULL		= "./Resource/se/SE_PLAY_TIER3_FULL.wav";
 
+const char* SE_PLAY_DANGER_SIREN1	= "./Resource/se/SE_DANGER_SIREN1.wav";
+
 const wchar_t* OPENING_VIDEO_FILE	= L"./Resource/sample.avi";
 
 const wchar_t* BG_IMAGE_TITLE	= L"./Resource/image_bg_00_01.png";
@@ -129,10 +131,12 @@ const wchar_t* PLAY_IMAGE_JUDGE_NONE		= L"./Resource/image_play_judge_none.png";
 const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE	= L"./Resource/image_alert_grow_blue.png";
 const wchar_t* PLAY_IMAGE_ALERT_GROW_RED	= L"./Resource/image_alert_grow_red.png";
 
-const wchar_t* PAUSE_IMAGE_PLAY_CANCEL	= L"./Resource/image_pa_play_01.png";
-const wchar_t* PAUSE_IMAGE_PLAY_OK		= L"./Resource/image_pa_play_02.png";
-const wchar_t* PAUSE_IMAGE_TITLE_CANCEL	= L"./Resource/image_pa_title_01.png";
-const wchar_t* PAUSE_IMAGE_TITLE_OK		= L"./Resource/image_pa_title_02.png";
+const wchar_t* PLAY_IMAGE_DANGER_LINE		= L"./Resource/image_danger_line.png";
+
+const wchar_t* PAUSE_IMAGE_PLAY_CANCEL		= L"./Resource/image_pa_play_01.png";
+const wchar_t* PAUSE_IMAGE_PLAY_OK			= L"./Resource/image_pa_play_02.png";
+const wchar_t* PAUSE_IMAGE_TITLE_CANCEL		= L"./Resource/image_pa_title_01.png";
+const wchar_t* PAUSE_IMAGE_TITLE_OK			= L"./Resource/image_pa_title_02.png";
 
 // Error 관련 
 // 현재 에러는 콘솔 창에서 표현되는 것

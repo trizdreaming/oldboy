@@ -209,6 +209,13 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_PLAY_DANGER_SIREN1, SOUND_EFFECT_PLAY_DANGER_SIREN1 );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );

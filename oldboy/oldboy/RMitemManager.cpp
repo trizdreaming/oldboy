@@ -529,7 +529,7 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier ) const
 				return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
 			}
 			// 상대방이 공격이나 힐링중이면 색이 안보이게 하기
-			if ( m_ActiveItem[ m_ItemPools[player][thisItem]->GetTargerPlayer() ] != ITEM_TYPE_NONE)
+			if ( m_ActiveItem[ m_ItemPools[player][thisItem]->GetTargerPlayer() ] != ITEM_TYPE_NONE )
 			{
 				// 베리어만 색으로 표시
 				if ( m_ActiveItem[ m_ItemPools[player][thisItem]->GetTargerPlayer() ] == ITEM_T2_BARRIER)
@@ -540,6 +540,13 @@ WidgetType CRMitemManager::GetWidgetType( ItemTierType tier ) const
 			}
 			else
 			{
+				if ( (m_ItemPools[player][thisItem]->GetTargerPlayer() == PLAYER_ONE &&
+					CRMplayer1P::GetInstance()->IsDead()) ||
+					(m_ItemPools[player][thisItem]->GetTargerPlayer() == PLAYER_TWO &&
+					CRMplayer2P::GetInstance()->IsDead()) )
+				{
+					return m_ItemPools[player][thisItem]->GetWidgetTypeForColorOut();
+				}
 				return m_ItemPools[player][thisItem]->GetWidgetTypeForColor();
 			}
 			

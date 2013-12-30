@@ -146,8 +146,9 @@ void CRMchildItemCardDisplay::Update()
 				m_PositionY = m_PositionYOriginal;
 				m_Width = m_WidthOriginal;
 				m_Height = m_HeightOriginal;
-				m_Alpha = 1.0f;
 				m_OneTimeFinishFlag = true;
+				m_Alpha = 1.0f;
+				m_Visible = false;
 			}
 
 			m_PrevTime = thisTime;

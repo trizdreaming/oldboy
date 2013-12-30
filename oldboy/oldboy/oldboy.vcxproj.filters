@@ -337,6 +337,7 @@
     <ClInclude Include="RMglobalParameterManager.h">
       <Filter>RhythmMatch\Object</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildJudgeEffecter.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -570,6 +571,7 @@
     <ClCompile Include="RMglobalParameterManager.cpp">
       <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
+    <ClCompile Include="RMchildJudgeEffecter.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="oldboy.rc">

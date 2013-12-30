@@ -14,6 +14,7 @@
 #include "RMinput.h"
 #include "RMpauseManager.h"
 #include "RMairTomo.h"
+#include "RMglobalParameterManager.h"
 
 CRMjudgeManager::CRMjudgeManager(void)
 {
@@ -273,6 +274,8 @@ void CRMjudgeManager::PrintScore( PlayerNumber player, JudgeType judgeType )
 	{
 		m_P1JudgeTypeTemp = judgeType;
 	}
+
+	CRMglobalParameterManager::GetInstance()->SetPlayerJudgeType(player, judgeType);
 
 	std::wstring score;
 

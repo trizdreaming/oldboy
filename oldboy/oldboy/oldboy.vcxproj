@@ -122,6 +122,7 @@
     <ClInclude Include="RMchildCpuMode.h" />
     <ClInclude Include="RMchildDangerLine.h" />
     <ClInclude Include="RMchildEffectImage.h" />
+    <ClInclude Include="RMchildJudgeEffecter.h" />
     <ClInclude Include="RMchildJudgeMessage.h" />
     <ClInclude Include="RMchildSelectBar.h" />
     <ClInclude Include="RMchildUIResultImage.h" />
@@ -207,6 +208,7 @@
     <ClCompile Include="RMchildCpuMode.cpp" />
     <ClCompile Include="RMchildDangerLine.cpp" />
     <ClCompile Include="RMchildEffectImage.cpp" />
+    <ClCompile Include="RMchildJudgeEffecter.cpp" />
     <ClCompile Include="RMchildJudgeMessage.cpp" />
     <ClCompile Include="RMchildSelectBar.cpp" />
     <ClCompile Include="RMchildUIResultImage.cpp" />

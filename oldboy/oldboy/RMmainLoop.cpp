@@ -45,6 +45,7 @@
 #include "RMchildAirTomoFixer.h"
 #include "RMglobalParameterManager.h"
 #include "RMchildDangerLine.h"
+#include "RMchildJudgeEffecter.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -536,6 +537,20 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetWidgetType(WIDGET_JUDGE_RING);
 	newObject->SetPosition(895, 530);
 	newObject->SetSceneType(SCENE_PLAY);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_JUDGE_GAUGE);
+
+	newObject = new CRMchildJudgeEffecter();
+	newObject->SetWidgetType(WIDGET_PLAY_JUDGE_EFFECT_NONE);
+	newObject->SetPosition(352-35, 500-38);
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_ONE);
+	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_JUDGE_GAUGE);
+
+	newObject = new CRMchildJudgeEffecter();
+	newObject->SetWidgetType(WIDGET_PLAY_JUDGE_EFFECT_NONE);
+	newObject->SetPosition(865-35, 500-38);
+	newObject->SetSceneType(SCENE_PLAY);
+	newObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_JUDGE_GAUGE);
 
 	// 플레이 화면 판정 이미지

@@ -1,5 +1,6 @@
 #pragma once
 #include "RMmacro.h"
+#include "RMenumSet.h"
 
 /************************************************************************/
 /* 이리저리 관계 따져가면서 데이터 전달하지 말고 그냥 여기서 데이터를 가져갑시다.                                                                     */
@@ -19,8 +20,15 @@ public:
 	float				GetShutterP1PositionY() { return m_ShutterP1PositionY; }
 	float				GetShutterP2PositionY() { return m_ShutterP2PositionY; }
 
+	void				SetPlayerJudgeType( PlayerNumber playerNumber, JudgeType judgeType );			
+	JudgeType			GetP1JudgeType() { return m_JudgeTypeP1; }			
+	JudgeType			GetP2JudgeType() { return m_JudgeTypeP2; }
+
 private:
 	float				m_ShutterP1PositionY;
 	float				m_ShutterP2PositionY;
+
+	JudgeType			m_JudgeTypeP1;
+	JudgeType			m_JudgeTypeP2;
 };
 

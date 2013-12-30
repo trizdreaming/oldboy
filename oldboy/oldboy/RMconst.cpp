@@ -128,6 +128,11 @@ const wchar_t* PLAY_IMAGE_JUDGE_GOOD		= L"./Resource/image_play_judge_good.png";
 const wchar_t* PLAY_IMAGE_JUDGE_MISS		= L"./Resource/image_play_judge_miss.png";
 const wchar_t* PLAY_IMAGE_JUDGE_NONE		= L"./Resource/image_play_judge_none.png";
 
+const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_PERFECT		= L"./Resource/judge_ring_effect_perfect.png";
+const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_GOOD			= L"./Resource/judge_ring_effect_good.png";
+const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_MISS			= L"./Resource/judge_ring_effect_miss.png";
+const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_NONE			= L"./Resource/judge_ring_effect_none.png";
+
 const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE	= L"./Resource/image_alert_grow_blue.png";
 const wchar_t* PLAY_IMAGE_ALERT_GROW_RED	= L"./Resource/image_alert_grow_red.png";
 const wchar_t* PLAY_IMAGE_ALERT_GROW_GRAY	= L"./Resource/image_alert_grow_gray.png";

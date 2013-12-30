@@ -134,6 +134,11 @@ extern const wchar_t* PLAY_IMAGE_JUDGE_GOOD;
 extern const wchar_t* PLAY_IMAGE_JUDGE_MISS;
 extern const wchar_t* PLAY_IMAGE_JUDGE_NONE;
 
+extern const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_PERFECT;
+extern const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_GOOD;
+extern const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_MISS;
+extern const wchar_t* PLAY_IMAGE_JUDGE_EFFECT_NONE;
+
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_BLUE;
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_RED;
 extern const wchar_t* PLAY_IMAGE_ALERT_GROW_GRAY;

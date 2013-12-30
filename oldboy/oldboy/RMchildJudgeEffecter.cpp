@@ -39,7 +39,11 @@ void CRMchildJudgeEffecter::Update()
 
 	CRMglobalParameterManager::GetInstance()->SetPlayerJudgeType(m_PlayerNumber, JUDGE_NONE);
 
-	m_Rotation += 15;
+	m_Rotation += 15.0f;
+	if ( m_Rotation > 360.0f )
+	{
+		m_Rotation -= 360.0f;
+	}
 
 	switch ( NowJudgeType )
 	{

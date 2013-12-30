@@ -1,6 +1,7 @@
 ﻿#include "stdafx.h"
+#include "RMmacro.h"
 #include "RMplayer.h"
-
+#include "RMsound.h"
 
 CRMplayer::CRMplayer(void) :
 	m_PrevIsCombo(false),
@@ -40,6 +41,14 @@ void CRMplayer::CalcCombo()
 		if ( m_Count[COUNT_COMBO] > m_Count[COUNT_MAX_COMBO] )
 		{
 			m_Count[COUNT_MAX_COMBO] = m_Count[COUNT_COMBO];
+		}
+		if ( m_Count[COUNT_COMBO] == 50 )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_50_COMBO);
+		}
+		else if ( m_Count[COUNT_COMBO] == 100 )
+		{
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_100_COMBO);
 		}
 	}
 }

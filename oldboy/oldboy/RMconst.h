@@ -56,6 +56,9 @@ extern const char* SE_PLAY_TIER3_FULL;
 extern const char* SE_PLAY_DANGER_SIREN1;
 extern const char* SE_PLAY_SHUTTER_DOWN;
 
+extern const char* SE_PLAY_50_COMBO;
+extern const char* SE_PLAY_100_COMBO;
+
 extern const wchar_t* OPENING_VIDEO_FILE;
 
 extern const wchar_t* BG_IMAGE_TITLE;

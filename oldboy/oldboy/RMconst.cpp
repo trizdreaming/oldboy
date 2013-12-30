@@ -50,6 +50,9 @@ const char* SE_PLAY_TIER3_FULL		= "./Resource/se/SE_PLAY_TIER3_FULL.wav";
 const char* SE_PLAY_DANGER_SIREN1	= "./Resource/se/SE_DANGER_SIREN1.wav";
 const char* SE_PLAY_SHUTTER_DOWN	= "./Resource/se/SE_PLAY_SHUTTER_DOWN.wav";
 
+const char* SE_PLAY_50_COMBO		= "./Resource/se/SE_PLAY_50_COMBO.wav";
+const char* SE_PLAY_100_COMBO		= "./Resource/se/SE_PLAY_100_COMBO.wav";
+
 const wchar_t* OPENING_VIDEO_FILE	= L"./Resource/sample.avi";
 
 const wchar_t* BG_IMAGE_TITLE	= L"./Resource/image_bg_00_01.png";

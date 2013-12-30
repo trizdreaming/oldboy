@@ -69,6 +69,8 @@ void CRMchildShutter::Update()
 	if ( m_PositionY > SHUTTER_DEAD_LINE + SHUTTER_START_POSITION_Y )
 	{
 		resultPosition = 0;
+
+		// 소리 중복 발생을 피하기 위해 살아 있을 때에만 셔터 닫김 효과음 재생
 		if ( !m_IsDead )
 		{
 			m_IsDead = true;

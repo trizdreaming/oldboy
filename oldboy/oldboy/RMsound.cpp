@@ -223,6 +223,20 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_PLAY_50_COMBO, SOUND_EFFECT_PLAY_50_COMBO );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
+	hr = LoadSound( SE_PLAY_100_COMBO, SOUND_EFFECT_PLAY_100_COMBO );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );

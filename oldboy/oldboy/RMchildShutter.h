@@ -9,5 +9,8 @@ public:
 	virtual ~CRMchildShutter(void);
 
 	virtual void	Update();
+
+private:
+	bool			m_IsDead;
 };
 

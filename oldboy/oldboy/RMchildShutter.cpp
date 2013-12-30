@@ -6,9 +6,11 @@
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
 #include "RMglobalParameterManager.h"
+#include "RMsound.h"
 
 
-CRMchildShutter::CRMchildShutter(void)
+CRMchildShutter::CRMchildShutter(void) :
+	m_IsDead(false)
 {
 }
 
@@ -29,6 +31,7 @@ void CRMchildShutter::Update()
 		{
 			printConsole( "셔터 초기화 \n" );
 			m_PositionY = SHUTTER_START_POSITION_Y;
+			m_IsDead = false;
 		}
 		return;
 	}
@@ -66,6 +69,11 @@ void CRMchildShutter::Update()
 	if ( m_PositionY > SHUTTER_DEAD_LINE + SHUTTER_START_POSITION_Y )
 	{
 		resultPosition = 0;
+		if ( !m_IsDead )
+		{
+			m_IsDead = true;
+			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_SHUTTER_DOWN);
+		}
 	}
 	else if ( m_PlayerNumber == PLAYER_ONE)
 	{

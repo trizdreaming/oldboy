@@ -216,6 +216,13 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_PLAY_SHUTTER_DOWN, SOUND_EFFECT_PLAY_SHUTTER_DOWN );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	filePath = MUSIC_FOLDER;
 	filePath.append( musicFolderName );
 	filePath.append( FOLDER_SLASH );

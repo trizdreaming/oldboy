@@ -60,7 +60,7 @@ void CRMchildDangerLine::Update()
 		return;
 	}
 
-	if ( playerHP < 31 )
+	if ( playerHP < 41 )
 	{
 		animationSpeed = 10;
 	}
@@ -81,7 +81,7 @@ void CRMchildDangerLine::Update()
 	if ( m_AnimationFrame > ( animationSpeed * 2 ) )
 	{
 		m_AnimationFrame = 0;
-		if ( playerHP < 31 )
+		if ( playerHP < 41 )
 		{
 			CRMsound::GetInstance()->PlayEffectTier(SOUND_EFFECT_PLAY_DANGER_SIREN1);
 		}

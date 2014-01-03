@@ -1,6 +1,5 @@
 ﻿#pragma once
 #include "RMenumSet.h"
-#include "RMmacro.h"
 
 class CRMchildTitleModeSelector;
 class CRMmainLoop
@@ -20,15 +19,14 @@ public:
 	HRESULT					GoNextScene();
 	HRESULT					GoPrevScene();
 
-	HWND					GetHwnd() { return m_Hwnd; }				// 윈도우 핸들 반환
-	static LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);	// 객체 없이도 사용 가능하도록 static으로 함
-
 	std::string				GetPlayMusicName() { return m_PlayMusicName; }
 
 	bool					IsAirTomoOn() { return m_AirTomoOn; }
+	HWND					GetHwnd() { return m_Hwnd; }				// 윈도우 핸들 반환
 
 private:
-
+	static LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);	// 객체 없이도 사용 가능하도록 static으로 함
+	
 	void	FindMusicData();
 
 	// 임시 테스트 함수

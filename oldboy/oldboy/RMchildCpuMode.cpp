@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMchildCpuMode.h"
 #include "RMmainLoop.h"
 #include "RMdefine.h"

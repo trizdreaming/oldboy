@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMchildSelectBar.h"
 #include "RMmainLoop.h"
 #include "RMxmlLoader.h"

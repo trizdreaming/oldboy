@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMchildDangerLine.h"
 #include "RMmainLoop.h"
 #include "RMdefine.h"

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMchildAlertGrow.h"
 #include "RMmainLoop.h"
 #include "RMitemManager.h"

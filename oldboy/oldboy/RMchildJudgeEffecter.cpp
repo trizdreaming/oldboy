@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMchildJudgeEffecter.h"
 #include "RMmainLoop.h"
 #include "RMglobalParameterManager.h"

@@ -1,4 +1,5 @@
 #include "stdafx.h"
+#include "RMmacro.h"
 #include "RMchildJudgeMessage.h"
 #include "RMmainLoop.h"
 #include "RMjudgeManager.h"

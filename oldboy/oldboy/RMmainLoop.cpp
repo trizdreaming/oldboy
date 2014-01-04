@@ -54,8 +54,7 @@ CRMmainLoop::CRMmainLoop(void):
 	m_FpsCheckTime(0),
 	m_MusicSelectIndex(0),
 	m_SceneType(SCENE_OPENING),
-	m_Hwnd(NULL),
-	m_AirTomoOn(false)
+	m_Hwnd(NULL)
 {
 	m_Fps = ( 1000 / 60 ) + 1;
 }
@@ -871,9 +870,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 	}
 #endif
 	
-	// 에어 친구 소환
-	CRMjudgeManager::GetInstance()->SetVirtualPlayerMode( m_AirTomoOn );
-	CRMitemManager::GetInstance()->SetVirtualPlayerMode( m_AirTomoOn );
+	
 
 	HRESULT hr = S_OK;
 
@@ -1061,11 +1058,11 @@ HRESULT CRMmainLoop::TestKeyboard()
 		switch ( modeType )
 		{
 		case MODE_SINGLE:
-			m_AirTomoOn = true;
+			CRMglobalParameterManager::GetInstance()->SetAirTomoMode( true );
 			hr = GoNextScene();
 			break;
 		case MODE_DUAL:
-			m_AirTomoOn = false;
+			CRMglobalParameterManager::GetInstance()->SetAirTomoMode( false );
 			hr = GoNextScene();
 			break;
 		case MODE_TUTORIAL:
@@ -1220,9 +1217,19 @@ HRESULT CRMmainLoop::GoNextScene()
 	{
 		CRMobjectManager::GetInstance()->RemoveAllNote();
 		
+		// 둘다 죽으면 fail 효과음 컴터모드에서 나 죽으면 fail 아니면 둘중 하나라도 이기면 clear효과음
+		// 풀콤보면 clear효과음이 아니라 풀콤효과음
 		if ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() )
 		{
 			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FAIL );
+		}
+		else if ( CRMplayer1P::GetInstance()->IsDead() && CRMglobalParameterManager::GetInstance()->GetAirTomoMode() )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FAIL );
+		}
+		else if ( CRMplayer1P::GetInstance()->GetCount(COUNT_MISS) == 0 || CRMplayer2P::GetInstance()->GetCount(COUNT_MISS) == 0 )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FULLCOMBO );
 		}
 		else
 		{

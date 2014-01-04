@@ -19,6 +19,7 @@
 #include "RMrandomGenerator.h"
 #include "RMairTomo.h"
 #include "RMsound.h"
+#include "RMglobalParameterManager.h"
 
 
 CRMitemManager::CRMitemManager(void)
@@ -171,7 +172,7 @@ void CRMitemManager::Update()
 	// 공격 구현
 	//////////////////////////////////////////////////////////////////////////
 	
-	if ( m_VirtualPlayerOn )
+	if ( CRMglobalParameterManager::GetInstance()->GetAirTomoMode() )
 	{
 		CRMairTomo::GetInstance()->ItemVirtualPlayer();
 	}
@@ -598,9 +599,4 @@ bool CRMitemManager::IsActivedItemForSelf( PlayerNumber player ) const
 	{
 		return false;
 	}
-}
-
-void CRMitemManager::SetVirtualPlayerMode( bool VirPlayerOn )
-{
-	m_VirtualPlayerOn = VirPlayerOn;
 }

@@ -21,7 +21,6 @@ public:
 
 	std::string				GetPlayMusicName() { return m_PlayMusicName; }
 
-	bool					IsAirTomoOn() { return m_AirTomoOn; }
 	HWND					GetHwnd() { return m_Hwnd; }				// 윈도우 핸들 반환
 
 private:
@@ -56,8 +55,6 @@ private:
 	std::vector<std::string>		m_MusicVector;
 
 	std::string						m_PlayMusicName;
-
-	bool							m_AirTomoOn;
 
 	CRMchildTitleModeSelector*		m_ModeSelector;
 };

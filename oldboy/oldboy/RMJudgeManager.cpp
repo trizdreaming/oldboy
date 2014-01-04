@@ -19,7 +19,6 @@
 CRMjudgeManager::CRMjudgeManager(void)
 {
 	ZeroMemory(&m_IsItemRecoverOn, sizeof(m_IsItemRecoverOn));
-	m_VirtualPlayerOn = false;
 
 	m_P1JudgeTypeTemp = JUDGE_NONE;
 	m_P2JudgeTypeTemp = JUDGE_NONE;
@@ -214,7 +213,7 @@ bool CRMjudgeManager::IsKeyInputRight( CRMobject* note , PlayerNumber player ) c
 		target2 = KEY_TABLE_P2_TARGET2;
 	}
 
-	if (player == PLAYER_TWO && m_VirtualPlayerOn)
+	if ( player == PLAYER_TWO && CRMglobalParameterManager::GetInstance()->GetAirTomoMode() )
 	{
 		CRMairTomo::GetInstance()->PlayVirtualPlayer();
 	}
@@ -342,11 +341,6 @@ void CRMjudgeManager::StartItemRecovery( PlayerNumber player )
 void CRMjudgeManager::StopItemRecovery( PlayerNumber player )
 {
 	m_IsItemRecoverOn[player] = false;
-}
-
-void CRMjudgeManager::SetVirtualPlayerMode( bool VirPlayerOn )
-{
-	m_VirtualPlayerOn = VirPlayerOn;
 }
 
 void CRMjudgeManager::InitializeJudgeType()

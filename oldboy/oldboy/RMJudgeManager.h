@@ -23,8 +23,6 @@ public:
 	void						StartItemRecovery( PlayerNumber player );
 	void						StopItemRecovery( PlayerNumber player );
 
-	void						SetVirtualPlayerMode( bool VirPlayerOn );
-
 	void						InitializeJudgeType();
 	JudgeType					GetJudgeType( PlayerNumber player );
 
@@ -34,7 +32,6 @@ private:
 	bool						IsKeyInputRight( CRMobject* note , PlayerNumber player ) const;
 
 	std::array<bool, PLAYER_MAX>	m_IsItemRecoverOn;
-	bool							m_VirtualPlayerOn;
 
 	JudgeType						m_P1JudgeTypeTemp;
 	JudgeType						m_P2JudgeTypeTemp;

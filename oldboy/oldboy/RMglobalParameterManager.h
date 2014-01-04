@@ -24,11 +24,16 @@ public:
 	JudgeType			GetP1JudgeType() { return m_JudgeTypeP1; }			
 	JudgeType			GetP2JudgeType() { return m_JudgeTypeP2; }
 
+	void				SetAirTomoMode( bool airTomoOn ) { m_AirTomoOn = airTomoOn; }
+	bool				GetAirTomoMode() { return m_AirTomoOn; }
+
 private:
 	float				m_ShutterP1PositionY;
 	float				m_ShutterP2PositionY;
 
 	JudgeType			m_JudgeTypeP1;
 	JudgeType			m_JudgeTypeP2;
+
+	bool				m_AirTomoOn;
 };
 

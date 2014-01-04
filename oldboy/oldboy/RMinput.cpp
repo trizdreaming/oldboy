@@ -1,8 +1,9 @@
 ﻿#include "stdafx.h"
 #include "RMmacro.h"
 #include "RMinput.h"
-#include "RMmainLoop.h"
 #include "RMpauseManager.h"
+#include "RMglobalParameterManager.h"
+#include "RMmainLoop.h"
 
 CRMinput::CRMinput(void)
 {
@@ -37,7 +38,7 @@ void CRMinput::UpdateKeyState()
 	{
 		return;
 	}
-	if ( CRMmainLoop::GetInstance()->IsAirTomoOn() && CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
+	if ( CRMglobalParameterManager::GetInstance()->GetAirTomoMode() && CRMmainLoop::GetInstance()->GetNowScene() == SCENE_PLAY )
 	{
 		m_PrevKeyState[KEY_TABLE_P2_TARGET1] = false;
 		m_NowKeyState[KEY_TABLE_P2_TARGET1] = false;

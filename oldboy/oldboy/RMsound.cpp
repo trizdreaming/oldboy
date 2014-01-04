@@ -146,6 +146,13 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
+	hr = LoadSound( SE_RESULT_FULLCOMBO, SOUND_EFFECT_RESULT_FULLCOMBO );
+	if ( CheckError() != S_OK )
+	{
+		DeleteSound();
+		return hr;
+	}
+
 	hr = LoadSound( SE_PAUSE_CANCEL, SOUND_EFFECT_PAUSE_CANCEL );
 	if ( CheckError() != S_OK )
 	{

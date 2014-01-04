@@ -36,6 +36,7 @@ const char* SE_SELECT_MUSIC_FLIP	= "./Resource/se/SE_SELECT_MUSIC_FLIP.mp3";
 const char* SE_SELECT_MUSIC_START	= "./Resource/se/SE_SELECT_MUSIC_START.mp3";
 const char* SE_RESULT_CLEAR			= "./Resource/se/SE_RESULT_CLEAR.mp3";
 const char* SE_RESULT_FAIL			= "./Resource/se/SE_RESULT_FAIL.mp3";
+const char* SE_RESULT_FULLCOMBO		= "./Resource/se/SE_RESULT_FULLCOMBO.mp3";
 const char* SE_PAUSE_CANCEL			= "./Resource/se/SE_PAUSE_CANCEL.mp3";
 const char* SE_PAUSE_FLIP			= "./Resource/se/SE_PAUSE_FLIP.mp3";
 const char* SE_PAUSE_OK				= "./Resource/se/SE_PAUSE_OK.mp3";

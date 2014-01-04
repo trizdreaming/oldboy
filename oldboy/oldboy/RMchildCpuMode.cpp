@@ -3,6 +3,7 @@
 #include "RMchildCpuMode.h"
 #include "RMmainLoop.h"
 #include "RMdefine.h"
+#include "RMglobalParameterManager.h"
 
 
 CRMchildCpuMode::CRMchildCpuMode(void) :
@@ -27,7 +28,7 @@ void CRMchildCpuMode::Update()
 	}
 
 
-	if ( CRMmainLoop::GetInstance()->IsAirTomoOn() )
+	if ( CRMglobalParameterManager::GetInstance()->GetAirTomoMode() )
 	{
 		m_Visible = true;
 

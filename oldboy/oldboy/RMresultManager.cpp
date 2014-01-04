@@ -7,6 +7,7 @@
 #include "RMplayer1P.h"
 #include "RMplayer2P.h"
 #include "RMsound.h"
+#include "RMglobalParameterManager.h"
 
 
 CRMresultManager::CRMresultManager(void)

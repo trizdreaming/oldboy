@@ -40,7 +40,19 @@ void CRMchildJudgeEffecter::Update()
 
 	CRMglobalParameterManager::GetInstance()->SetPlayerJudgeType(m_PlayerNumber, JUDGE_NONE);
 
-	m_Rotation += 15.0f;
+	if ( m_AnimationFrame < 3 )
+	{
+		m_Rotation += 15.0f;
+	}
+	else if ( m_AnimationFrame < 8 )
+	{
+		m_Rotation += 20.0f;
+	}
+	else
+	{
+		m_Rotation += 12.0f;
+	}
+	
 	if ( m_Rotation > 360.0f )
 	{
 		m_Rotation -= 360.0f;
@@ -61,7 +73,7 @@ void CRMchildJudgeEffecter::Update()
 		m_AnimationFrame = 0;
 		break;
 	default:
-		if ( m_AnimationFrame > 8 )
+		if ( m_AnimationFrame > 12 )
 		{
 			m_WidgetType = WIDGET_PLAY_JUDGE_EFFECT_NONE;
 			m_AnimationFrame = 0;

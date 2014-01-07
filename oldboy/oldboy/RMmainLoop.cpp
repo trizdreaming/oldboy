@@ -881,6 +881,261 @@ HRESULT CRMmainLoop::TestKeyboard()
 		hr = GoNextScene();
 	}
 
+	//////////////////////////////////////////////////////////////////////////
+	// * 아케이드용 
+
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex % m_MusicVector.size() );
+		hr = GoNextScene();
+	}
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		++m_MusicSelectIndex %= m_MusicVector.size();
+		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex );
+
+		//////////////////////////////////////////////////////////////////////////
+		// 앨범 이미지 스크롤링용 코드
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->SetPauseBG( true );
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
+
+		CRMobjectManager::GetInstance()->DownAlbumImage();
+		bool isFinish = false;
+
+		while ( !isFinish )
+		{
+			Sleep(0);
+			{
+				CRMdummyRender dummyRender;
+				isFinish = CRMobjectManager::GetInstance()->ShowMovingAlbumImage();
+			}
+		}
+
+
+
+
+		//////////////////////////////////////////////////////////////////////////
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+	}
+
+
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_TARGET2 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+	{
+		m_MusicSelectIndex += m_MusicVector.size(); // 언더플로우 방지
+		--m_MusicSelectIndex %= m_MusicVector.size();
+		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex );
+
+		//////////////////////////////////////////////////////////////////////////
+		// 앨범 이미지 스크롤링용 코드
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->SetPauseBG( true );
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
+
+		CRMobjectManager::GetInstance()->UpAlbumImage();
+		bool isFinish = false;
+
+		while ( !isFinish )
+		{
+			Sleep(0);
+			{
+				CRMdummyRender dummyRender;
+				isFinish = CRMobjectManager::GetInstance()->ShowMovingAlbumImage();
+			}
+		}
+		//////////////////////////////////////////////////////////////////////////
+
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+		if ( hr != S_OK )
+		{
+			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+			return hr;
+		}
+
+		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+	}
+
+
+
+	// 2[
+	if ( !CRMglobalParameterManager::GetInstance()->GetAirTomoMode() )
+	{
+	
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+		{
+			m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex % m_MusicVector.size() );
+			hr = GoNextScene();
+		}
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET1 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+		{
+			++m_MusicSelectIndex %= m_MusicVector.size();
+			m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex );
+
+			//////////////////////////////////////////////////////////////////////////
+			// 앨범 이미지 스크롤링용 코드
+
+			hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			CRMsound::GetInstance()->SetPauseBG( true );
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
+
+			CRMobjectManager::GetInstance()->DownAlbumImage();
+			bool isFinish = false;
+
+			while ( !isFinish )
+			{
+				Sleep(0);
+				{
+					CRMdummyRender dummyRender;
+					isFinish = CRMobjectManager::GetInstance()->ShowMovingAlbumImage();
+				}
+			}
+
+
+
+
+			//////////////////////////////////////////////////////////////////////////
+
+			hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+		}
+
+
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_TARGET2 ) == KEY_STATUS_DOWN ) && m_SceneType == SCENE_SELECT_MUSIC )
+		{
+			m_MusicSelectIndex += m_MusicVector.size(); // 언더플로우 방지
+			--m_MusicSelectIndex %= m_MusicVector.size();
+			m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex );
+
+			//////////////////////////////////////////////////////////////////////////
+			// 앨범 이미지 스크롤링용 코드
+
+			hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			CRMsound::GetInstance()->SetPauseBG( true );
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_FLIP );
+
+			CRMobjectManager::GetInstance()->UpAlbumImage();
+			bool isFinish = false;
+
+			while ( !isFinish )
+			{
+				Sleep(0);
+				{
+					CRMdummyRender dummyRender;
+					isFinish = CRMobjectManager::GetInstance()->ShowMovingAlbumImage();
+				}
+			}
+			//////////////////////////////////////////////////////////////////////////
+
+			hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+		}
+
+		if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P2_ATTACK ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_CALL );
+			hr = GoNextScene();
+		}
+	}
+
+	if ( ( CRMinput::GetInstance()->GetKeyStatusByKey( KEY_TABLE_P1_ATTACK ) == KEY_STATUS_UP ) && m_SceneType == SCENE_RESULT )
+	{
+		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_CALL );
+		hr = GoNextScene();
+	}
+
+
+	// * 아케이드 끝
+	//////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////
+
+
+
 
 	//////////////////////////////////////////////////////////////////////////
 	// 곡 선택 

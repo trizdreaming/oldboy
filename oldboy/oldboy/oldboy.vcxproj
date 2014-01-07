@@ -125,6 +125,8 @@
     <ClInclude Include="RMchildJudgeEffecter.h" />
     <ClInclude Include="RMchildJudgeMessage.h" />
     <ClInclude Include="RMchildSelectBar.h" />
+    <ClInclude Include="RMchildTutorialPress.h" />
+    <ClInclude Include="RMchildTutorialScript.h" />
     <ClInclude Include="RMchildUIResultImage.h" />
     <ClInclude Include="RMchildTitleModeSelector.h" />
     <ClInclude Include="RMconst.h" />
@@ -211,6 +213,8 @@
     <ClCompile Include="RMchildJudgeEffecter.cpp" />
     <ClCompile Include="RMchildJudgeMessage.cpp" />
     <ClCompile Include="RMchildSelectBar.cpp" />
+    <ClCompile Include="RMchildTutorialPress.cpp" />
+    <ClCompile Include="RMchildTutorialScript.cpp" />
     <ClCompile Include="RMchildUIResultImage.cpp" />
     <ClCompile Include="RMchildTitleModeSelector.cpp" />
     <ClCompile Include="RMconst.cpp" />

@@ -90,7 +90,7 @@ HRESULT CRMsound::LoadSound( const std::string& filePath, SoundType soundType )
 }
 
 // 곡에 맞춰 폴더의 음악을 로딩
-HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
+HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName, ModeType modeType )
 {
 	HRESULT hr = S_FALSE;
 
@@ -244,38 +244,77 @@ HRESULT CRMsound::LoadPlaySound( const std::string& musicFolderName )
 		return hr;
 	}
 
-	filePath = MUSIC_FOLDER;
-	filePath.append( musicFolderName );
-	filePath.append( FOLDER_SLASH );
-	filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() );
-	hr = LoadSound( filePath, SOUND_BG_PLAY );
-	if ( CheckError() != S_OK )
+	if (modeType != MODE_TUTORIAL)
 	{
-		DeleteSound();
-		return hr;
-	}
+		filePath = MUSIC_FOLDER;
+		filePath.append( musicFolderName );
+		filePath.append( FOLDER_SLASH );
+		filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() );
+		hr = LoadSound( filePath, SOUND_BG_PLAY );
+		if ( CheckError() != S_OK )
+		{
+			DeleteSound();
+			return hr;
+		}
 
-	filePath = MUSIC_FOLDER;
-	filePath.append(musicFolderName);
-	filePath.append(FOLDER_SLASH);
-	filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() );
-	hr = LoadSound( filePath, SOUND_NOTE_1 );
-	if ( CheckError() != S_OK )
-	{
-		DeleteSound();
-		return hr;
-	}
+		filePath = MUSIC_FOLDER;
+		filePath.append(musicFolderName);
+		filePath.append(FOLDER_SLASH);
+		filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() );
+		hr = LoadSound( filePath, SOUND_NOTE_1 );
+		if ( CheckError() != S_OK )
+		{
+			DeleteSound();
+			return hr;
+		}
 
-	filePath = MUSIC_FOLDER;
-	filePath.append( musicFolderName );
-	filePath.append( FOLDER_SLASH );
-	filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() );
-	hr = LoadSound( filePath, SOUND_NOTE_2 );
-	if ( CheckError() != S_OK )
-	{
-		DeleteSound();
-		return hr;
+		filePath = MUSIC_FOLDER;
+		filePath.append( musicFolderName );
+		filePath.append( FOLDER_SLASH );
+		filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() );
+		hr = LoadSound( filePath, SOUND_NOTE_2 );
+		if ( CheckError() != S_OK )
+		{
+			DeleteSound();
+			return hr;
+		}
 	}
+	else if (modeType == MODE_TUTORIAL)
+	{
+		filePath = FOLDER_POINT_SLASH;
+		filePath.append( musicFolderName );
+		filePath.append( FOLDER_SLASH );
+		filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundBackground() );
+		hr = LoadSound( filePath, SOUND_BG_PLAY );
+		if ( CheckError() != S_OK )
+		{
+			DeleteSound();
+			return hr;
+		}
+
+		filePath = FOLDER_POINT_SLASH;
+		filePath.append(musicFolderName);
+		filePath.append(FOLDER_SLASH);
+		filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect1() );
+		hr = LoadSound( filePath, SOUND_NOTE_1 );
+		if ( CheckError() != S_OK )
+		{
+			DeleteSound();
+			return hr;
+		}
+
+		filePath = FOLDER_POINT_SLASH;
+		filePath.append( musicFolderName );
+		filePath.append( FOLDER_SLASH );
+		filePath.append( CRMxmlLoader::GetInstance()->GetMusicData( musicFolderName )->GetSoundNoteEffect2() );
+		hr = LoadSound( filePath, SOUND_NOTE_2 );
+		if ( CheckError() != S_OK )
+		{
+			DeleteSound();
+			return hr;
+		}
+	}
+	
 
 	return hr;
 }

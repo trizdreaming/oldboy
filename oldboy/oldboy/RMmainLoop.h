@@ -27,6 +27,7 @@ private:
 	static LRESULT CALLBACK	WndProc(HWND, UINT, WPARAM, LPARAM);	// 객체 없이도 사용 가능하도록 static으로 함
 	
 	void	FindMusicData();
+	void	FindTutorialMusicData();
 
 	// 임시 테스트 함수
 	void	TestSound();
@@ -53,9 +54,13 @@ private:
 	SceneType						m_SceneType;
 
 	std::vector<std::string>		m_MusicVector;
+	std::string						m_TutorialMusic;
+
 
 	std::string						m_PlayMusicName;
 
 	CRMchildTitleModeSelector*		m_ModeSelector;
+
+	ModeType						m_playMode;
 };
 

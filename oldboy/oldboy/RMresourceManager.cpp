@@ -149,6 +149,21 @@ HRESULT CRMresourceManager::CreateTexture()
 	hr = TextureMaker( TITLE_MODE_EXIT, WIDGET_TITLE_MODE_EXIT );
 
 	//////////////////////////////////////////////////////////////////////////
+	// 튜토리얼 이미지 리소스 추가
+	//////////////////////////////////////////////////////////////////////////
+
+	hr = TextureMaker( TUTORIAL_SCRIPT_1, WIDGET_TUTORIAL_SCRIPT_1 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_2, WIDGET_TUTORIAL_SCRIPT_2 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_3, WIDGET_TUTORIAL_SCRIPT_3 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_4, WIDGET_TUTORIAL_SCRIPT_4 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_5, WIDGET_TUTORIAL_SCRIPT_5 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_6, WIDGET_TUTORIAL_SCRIPT_6 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_7, WIDGET_TUTORIAL_SCRIPT_7 );
+	hr = TextureMaker( TUTORIAL_SCRIPT_8, WIDGET_TUTORIAL_SCRIPT_8 );
+
+	hr = TextureMaker( TUTORIAL_PRESS_SCRIPT, WIDGET_TUTORIAL_PRESS );
+
+	//////////////////////////////////////////////////////////////////////////
 	// 아이템 이미지 리소스 추가
 	//////////////////////////////////////////////////////////////////////////
 	
@@ -230,7 +245,7 @@ HRESULT CRMresourceManager::TextureMaker( const std::wstring& path, WidgetType t
 	}
 }
 
-HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
+HRESULT CRMresourceManager::CreateTexture( const std::string& folderName, ModeType modeType )
 {
 	
 	HRESULT hr = S_FALSE;
@@ -249,7 +264,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	// 곡마다 바뀌는 정보 로드
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground() ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageBackground(), modeType ) );
 	
 	if ( hr == S_OK )
 	{
@@ -265,7 +280,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageShutter() ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageShutter(), modeType ) );
 	
 	if ( hr == S_OK )
 	{
@@ -281,7 +296,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote1() ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote1(), modeType ) );
 	
 	if ( hr == S_OK )
 	{
@@ -297,7 +312,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote2() ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNote2(), modeType ) );
 	
 	if ( hr == S_OK )
 	{
@@ -313,7 +328,7 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 	}
 
 	texture = new CRMimage();
-	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNoteEffect() ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageNoteEffect(), modeType ) );
 	
 	if ( hr == S_OK )
 	{
@@ -332,12 +347,12 @@ HRESULT CRMresourceManager::CreateTexture( const std::string& folderName )
 }
 
 
-HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName,  AlbumImageType imageType )
+HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName, ModeType modeType,  AlbumImageType imageType )
 {
 	HRESULT hr = S_FALSE;
 	CRMimage* texture = new CRMimage();
 
-	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageAlbum() ) );
+	hr = texture->CreateImage( GetFilePath( folderName, CRMxmlLoader::GetInstance()->GetMusicData( folderName )->GetImageAlbum(), modeType ) );
 
 	if ( hr == S_OK )
 	{
@@ -362,12 +377,23 @@ HRESULT CRMresourceManager::CreateTextureAlbum( const std::string& folderName,  
 	return hr;
 }
 
-std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName ) const
+std::wstring CRMresourceManager::GetFilePath( const std::string& folderName, const std::string& resourceName, ModeType modeType ) const
 {
-	std::string str = MUSIC_FOLDER;
-	str.append( folderName );
-	str.append( FOLDER_SLASH );
-	str.append( resourceName );
+	std::string str;
+	if (modeType != MODE_TUTORIAL)
+	{
+		str = MUSIC_FOLDER;
+		str.append( folderName );
+		str.append( FOLDER_SLASH );
+		str.append( resourceName );
+	}
+	else if (modeType == MODE_TUTORIAL)
+	{
+		str = FOLDER_POINT_SLASH;
+		str.append( folderName );
+		str.append( FOLDER_SLASH );
+		str.append( resourceName );
+	}
 
 	std::wstring wstr(str.length(),L' ');
 	copy(str.begin(),str.end(),wstr.begin());

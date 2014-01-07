@@ -24,7 +24,7 @@ const wchar_t* LABEL_FONT_NORMAL	= L"Norwester";
 const wchar_t* LABEL_FPS			= L"FPS";
 
 // Resource 관련
-
+const char* FOLDER_POINT_SLASH		= "./";
 const char* FOLDER_SLASH			= "/";
 const char* MUSIC_FOLDER_SEARCH		= "./Music/.\\*"; // 뮤직 폴더 이하 모든 파일 의미
 const char* MUSIC_FOLDER			= "./Music/";
@@ -82,6 +82,21 @@ const wchar_t* TITLE_MODE_SINGLE		= L"./Resource/TITLE_MODE_SINGLE.png";
 const wchar_t* TITLE_MODE_DUAL		= L"./Resource/TITLE_MODE_DUAL.png";
 const wchar_t* TITLE_MODE_TUTORIAL	= L"./Resource/TITLE_MODE_TUTORIAL.png";
 const wchar_t* TITLE_MODE_EXIT		= L"./Resource/TITLE_MODE_EXIT.png";
+
+
+
+const wchar_t* TUTORIAL_SCRIPT_1 = L"./tutorial/script/1.png";
+const wchar_t* TUTORIAL_SCRIPT_2 = L"./tutorial/script/2.png";
+const wchar_t* TUTORIAL_SCRIPT_3 = L"./tutorial/script/3.png";
+const wchar_t* TUTORIAL_SCRIPT_4 = L"./tutorial/script/4.png";
+const wchar_t* TUTORIAL_SCRIPT_5 = L"./tutorial/script/5.png";
+const wchar_t* TUTORIAL_SCRIPT_6 = L"./tutorial/script/6.png";
+const wchar_t* TUTORIAL_SCRIPT_7 = L"./tutorial/script/7.png";
+const wchar_t* TUTORIAL_SCRIPT_8 = L"./tutorial/script/8.png";
+
+const wchar_t* TUTORIAL_PRESS_SCRIPT = L"./tutorial/script/press.png";
+
+
 
 
 const wchar_t* ITEM_TI_DUPLICATE_COLOR				= L"./Resource/itemSet/Item_T1_Duplicate_Color.png";

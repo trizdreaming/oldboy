@@ -340,6 +340,12 @@
     <ClInclude Include="RMchildJudgeEffecter.h">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClInclude>
+    <ClInclude Include="RMchildTutorialScript.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
+    <ClInclude Include="RMchildTutorialPress.h">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="oldboy.cpp">
@@ -574,6 +580,12 @@
       <Filter>RhythmMatch\Object</Filter>
     </ClCompile>
     <ClCompile Include="RMchildJudgeEffecter.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildTutorialScript.cpp">
+      <Filter>RhythmMatch\Object\Children</Filter>
+    </ClCompile>
+    <ClCompile Include="RMchildTutorialPress.cpp">
       <Filter>RhythmMatch\Object\Children</Filter>
     </ClCompile>
   </ItemGroup>

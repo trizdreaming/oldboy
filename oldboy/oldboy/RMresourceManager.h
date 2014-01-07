@@ -17,8 +17,8 @@ public:
 	IWICImagingFactory*			GetImageFactory() const { return m_pWICFactory; }
 
 	HRESULT						CreateTexture();
-	HRESULT						CreateTexture( const std::string& folderName );
-	HRESULT						CreateTextureAlbum( const std::string& folderName, AlbumImageType imageType = ALBUM_IMAGE_STATIC );
+	HRESULT						CreateTexture( const std::string& folderName, ModeType modeType );
+	HRESULT						CreateTextureAlbum( const std::string& folderName, ModeType modeType, AlbumImageType imageType = ALBUM_IMAGE_STATIC );
 
 	CRMimage*					GetTexture( const WidgetType key ) { return m_TextureArray[key]; }
 	
@@ -26,7 +26,7 @@ private:
 	void								InitializeArray();
 	void								InitializeAlbum( AlbumImageType imageType );
 
-	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName ) const;
+	std::wstring						GetFilePath( const std::string& folderName, const std::string& resourceName, ModeType modeType ) const;
 	HRESULT								TextureMaker( const std::wstring& path, WidgetType type );
 
 	IWICImagingFactory*					m_pWICFactory;

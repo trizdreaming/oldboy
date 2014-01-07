@@ -46,6 +46,8 @@
 #include "RMglobalParameterManager.h"
 #include "RMchildDangerLine.h"
 #include "RMchildJudgeEffecter.h"
+#include "RMchildTutorialScript.h"
+#include "RMchildTutorialPress.h"
 
 CRMmainLoop::CRMmainLoop(void):
 	m_NowTime(0),
@@ -54,7 +56,8 @@ CRMmainLoop::CRMmainLoop(void):
 	m_FpsCheckTime(0),
 	m_MusicSelectIndex(0),
 	m_SceneType(SCENE_OPENING),
-	m_Hwnd(NULL)
+	m_Hwnd(NULL),
+	m_playMode(MODE_NONE)
 {
 	m_Fps = ( 1000 / 60 ) + 1;
 }
@@ -74,6 +77,10 @@ void CRMmainLoop::RunMessageLoop()
 	// 음악 데이터를 불러온다.
 	// 음악 데이터를 vector 형식으로 리스팅
 	FindMusicData();
+	FindTutorialMusicData();
+	//////////////////////////////////////////////////////////////////////////
+	//tutorial 용 음악 데이터 로딩 단일!
+	//////////////////////////////////////////////////////////////////////////
 
 	//===================================================================
 	// fmod 사용하기 fmodex.dll파일이 필요하다.
@@ -279,6 +286,16 @@ void CRMmainLoop::RunMessageLoop()
 			}
 
 			//////////////////////////////////////////////////////////////////////////
+			//tutorial
+			//////////////////////////////////////////////////////////////////////////
+			else if	( m_SceneType == SCENE_TUTORIAL )
+			{
+				CRMitemManager::GetInstance()->Update();
+				CRMnoteManager::GetInstance()->StartNote();
+				CRMjudgeManager::GetInstance()->JudgeNote();
+			}
+
+			//////////////////////////////////////////////////////////////////////////
 			// 여기까지
 			//////////////////////////////////////////////////////////////////////////
 
@@ -302,6 +319,7 @@ void CRMmainLoop::FindMusicData()
 {
 	WIN32_FIND_DATAA findFileData;
 	HANDLE hFind = FindFirstFileA( MUSIC_FOLDER_SEARCH, &findFileData );
+	ModeType mode = MODE_MAX;
 
 	if ( hFind == INVALID_HANDLE_VALUE )
 	{
@@ -317,7 +335,7 @@ void CRMmainLoop::FindMusicData()
 			if ( folderName.compare(".") != 0 && folderName.compare("..") != 0 )
 			{
 				HRESULT hr = S_FALSE;
-				hr = CRMxmlLoader::GetInstance()->LoadMusicData( folderName );
+				hr = CRMxmlLoader::GetInstance()->LoadMusicData( folderName, mode );
 				if ( hr != S_OK )
 				{
 					MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
@@ -329,6 +347,25 @@ void CRMmainLoop::FindMusicData()
 		}
 	} while ( FindNextFileA(hFind, &findFileData) != 0);
 	FindClose(hFind);
+
+}
+
+//튜토리얼 용 음악 가져오기
+void CRMmainLoop::FindTutorialMusicData()
+{
+	std:: string folderName;
+	folderName = "tutorial";
+	ModeType mode = MODE_TUTORIAL;
+
+	HRESULT hr = S_FALSE;
+
+	hr = CRMxmlLoader::GetInstance()->LoadMusicData( folderName, mode );
+	if ( hr != S_OK )
+	{
+		MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+		return;
+	}
+	m_TutorialMusic = folderName;
 
 }
 
@@ -678,27 +715,76 @@ HRESULT CRMmainLoop::CreateObject()
 	newObject->SetSceneType(SCENE_SELECT_MUSIC);
 	CRMobjectManager::GetInstance()->AddObject(newObject, LAYER_UI);
 
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_1 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT); 
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_2 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_3 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_4 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_5 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_6 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_7 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+	newObject = new CRMchildTutorialScript();
+	newObject->SetWidgetType( WIDGET_TUTORIAL_SCRIPT_8 );
+	newObject->SetPosition( 0, 0 );
+	newObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddObject(newObject,LAYER_SCRIPT);
+
+
+	CRMchildTutorialPress* pressObject = new CRMchildTutorialPress();
+	pressObject->SetWidgetType( WIDGET_TUTORIAL_PRESS );
+	pressObject->position = POSITION_UP;
+	pressObject->SetPosition( 630, 100 );
+	pressObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddScriptPressImage(pressObject,POSITION_UP);
+
+	pressObject = new CRMchildTutorialPress();
+	pressObject->SetWidgetType( WIDGET_TUTORIAL_PRESS );
+	pressObject->position = POSITION_DOWN;
+	pressObject->SetPosition( 830, 610 );
+	pressObject->SetSceneType(SCENE_TUTORIAL);
+	CRMobjectManager::GetInstance()->AddScriptPressImage(pressObject,POSITION_DOWN);
+
 	//<<<< 여기까지 이미지 자원
-	//>>>> 여기부터 Label 자원
 	
 	//1. 포지션 위치 값 확인하고
 	//2. 고정 값 / 유동 값 적용
 	//3. 유동 값은 각 해당 위치에서 업데이트 되도록 set함수 제작
 	//4. visible 정리 꼭 할 것
 
-	//////////////////////////////////////////////////////////////////////////
-	//music select 관련 label
-	//
-
-
-	//////////////////////////////////////////////////////////////////////////
-	//P1 관련 label
-	//
-
-
-	//////////////////////////////////////////////////////////////////////////
-	//p2 관련 label
-	//
 
 	// 아이템 매니저 생성
 	CRMitemManager::GetInstance()->Create();
@@ -785,6 +871,9 @@ HRESULT CRMmainLoop::CreateObject()
 	itemCardObject->SetSceneType(SCENE_PLAY);
 	itemCardObject->SetPlayer(PLAYER_TWO);
 	CRMobjectManager::GetInstance()->AddObject(itemCardObject, LAYER_CARD);
+
+	//////////////////////////////////////////////////////////////////////////
+
 
 	return hr;
 }
@@ -894,7 +983,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 		//////////////////////////////////////////////////////////////////////////
 		// 앨범 이미지 스크롤링용 코드
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode, ALBUM_IMAGE_DYNAMIC );
 
 		if ( hr != S_OK )
 		{
@@ -918,7 +1007,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 		}
 		//////////////////////////////////////////////////////////////////////////
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -926,7 +1015,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 			return hr;
 		}
 
-		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -946,7 +1035,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 		//////////////////////////////////////////////////////////////////////////
 		// 앨범 이미지 스크롤링용 코드
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, ALBUM_IMAGE_DYNAMIC );
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode, ALBUM_IMAGE_DYNAMIC );
 
 		if ( hr != S_OK )
 		{
@@ -970,7 +1059,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 		}
 		//////////////////////////////////////////////////////////////////////////
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -978,7 +1067,7 @@ HRESULT CRMmainLoop::TestKeyboard()
 			return hr;
 		}
 
-		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -1058,14 +1147,19 @@ HRESULT CRMmainLoop::TestKeyboard()
 		switch ( modeType )
 		{
 		case MODE_SINGLE:
+			m_playMode = MODE_SINGLE;
 			CRMglobalParameterManager::GetInstance()->SetAirTomoMode( true );
 			hr = GoNextScene();
 			break;
 		case MODE_DUAL:
+			m_playMode = MODE_DUAL;
 			CRMglobalParameterManager::GetInstance()->SetAirTomoMode( false );
 			hr = GoNextScene();
 			break;
 		case MODE_TUTORIAL:
+			m_playMode = MODE_TUTORIAL;
+			CRMglobalParameterManager::GetInstance()->SetAirTomoMode( true );
+			hr = GoNextScene();
 			break;
 		case MODE_EXIT:
 			hr = GoPrevScene();
@@ -1113,49 +1207,114 @@ HRESULT CRMmainLoop::GoNextScene()
 
 	if ( m_SceneType == SCENE_TITLE )
 	{
-		m_SceneType = SCENE_SELECT_MUSIC;
-		
-		m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex );
-
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
-		if ( hr != S_OK )
+		if(m_playMode != MODE_TUTORIAL)
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-			return hr;
-		}
+			m_SceneType = SCENE_SELECT_MUSIC;
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName , ALBUM_IMAGE_DYNAMIC );
-		if ( hr != S_OK )
+			m_PlayMusicName = m_MusicVector.at( m_MusicSelectIndex );
+
+			hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode );
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode, ALBUM_IMAGE_DYNAMIC );
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName, m_playMode );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_CALL );
+			CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
+
+			return S_OK;
+		}
+		else if (m_playMode == MODE_TUTORIAL)
 		{
-			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-			return hr;
+			hr = CRMresourceManager::GetInstance()->CreateTexture( m_TutorialMusic, m_playMode );
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			hr = CRMsound::GetInstance()->LoadPlaySound( m_TutorialMusic, m_playMode );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			hr = CRMxmlLoader::GetInstance()->LoadNoteData( m_TutorialMusic, m_playMode );
+
+			if ( hr != S_OK )
+			{
+				MessageBox( NULL, ERROR_LOAD_MUSIC_XML, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
+				return hr;
+			}
+
+			// 효과음 재생
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_START );
+
+			CRMobjectManager::GetInstance()->SetRandomTooltipIndex();
+			DWORD startTime = timeGetTime();
+
+			for ( UINT i = 0 ; i < UINT_MAX ; ++i )
+			{
+				Sleep(0);
+
+				int elapsedTime = timeGetTime() - startTime;
+
+				int gaugePercent = elapsedTime * 100 / 3000;
+				{
+					CRMdummyRender dummyRender;
+					CRMobjectManager::GetInstance()->ShowTooltip();
+					CRMrender::GetInstance()->DrawGauge(gaugePercent);
+				}
+
+				if ( elapsedTime > 3000 )
+				{
+					CRMairTomo::GetInstance()->SetPerfectTime(2260);
+					CRMglobalParameterManager::GetInstance()->Initialize();
+					break;
+				}
+			}
+
+			m_SceneType = SCENE_TUTORIAL;
+
+			//CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, false );
+
+			CRMnoteManager::GetInstance()->Initialize();
+			CRMplayer1P::GetInstance()->Init();
+			CRMplayer2P::GetInstance()->Init();
+			CRMitemManager::GetInstance()->Reset();
+
 		}
-
-		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
-
-		if ( hr != S_OK )
-		{
-			MessageBox( NULL, ERROR_LOAD_SOUND, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
-			return hr;
-		}
-
-		CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_SELECT_MUSIC_CALL );
-		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
-
-		return S_OK;
 	}
 
 	if ( m_SceneType == SCENE_SELECT_MUSIC )
 	{
 		
-		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName );
+		hr = CRMresourceManager::GetInstance()->CreateTexture( m_PlayMusicName, m_playMode );
 		if ( hr != S_OK )
 		{
 			MessageBox( NULL, ERROR_LOAD_IMAGE, ERROR_TITLE_NORMAL, MB_OK | MB_ICONSTOP );
 			return hr;
 		}
 
-		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName );
+		hr = CRMsound::GetInstance()->LoadPlaySound( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -1163,7 +1322,7 @@ HRESULT CRMmainLoop::GoNextScene()
 			return hr;
 		}
 
-		hr = CRMxmlLoader::GetInstance()->LoadNoteData( m_PlayMusicName );
+		hr = CRMxmlLoader::GetInstance()->LoadNoteData( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -1242,6 +1401,35 @@ HRESULT CRMmainLoop::GoNextScene()
 		return S_OK;
 	}
 
+	if ( m_SceneType == SCENE_TUTORIAL )
+	{
+		CRMobjectManager::GetInstance()->RemoveAllNote();
+
+		// 둘다 죽으면 fail 효과음 컴터모드에서 나 죽으면 fail 아니면 둘중 하나라도 이기면 clear효과음
+		// 풀콤보면 clear효과음이 아니라 풀콤효과음
+		if ( CRMplayer1P::GetInstance()->IsDead() && CRMplayer2P::GetInstance()->IsDead() )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FAIL );
+		}
+		else if ( CRMplayer1P::GetInstance()->IsDead() && CRMglobalParameterManager::GetInstance()->GetAirTomoMode() )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FAIL );
+		}
+		else if ( CRMplayer1P::GetInstance()->GetCount(COUNT_MISS) == 0 || CRMplayer2P::GetInstance()->GetCount(COUNT_MISS) == 0 )
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_FULLCOMBO );
+		}
+		else
+		{
+			CRMsound::GetInstance()->PlayEffect( SOUND_EFFECT_RESULT_CLEAR );
+		}
+
+		//CRMsound::GetInstance()->PlaySound( SOUND_BG_TITLE, true );
+		//m_SceneType = SCENE_TITLE;
+
+		return S_OK;
+	}
+
 	if ( m_SceneType == SCENE_RESULT )
 	{
 
@@ -1256,7 +1444,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{
@@ -1307,7 +1495,7 @@ HRESULT CRMmainLoop::GoPrevScene()
 
 		CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, true );
 
-		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName );
+		hr = CRMresourceManager::GetInstance()->CreateTextureAlbum( m_PlayMusicName, m_playMode );
 
 		if ( hr != S_OK )
 		{

@@ -3,15 +3,15 @@
 
 class CRMmusicData;
 class CRMnoteData;
+enum ModeType;
 
 class CRMxmlLoader
 {
 	SINGLETON(CRMxmlLoader);
 
-
 public:
-	HRESULT				LoadMusicData( const std::string& folderName );
-	HRESULT				LoadNoteData( const std::string& folderName );
+	HRESULT				LoadMusicData( std::string& folderName, ModeType modeType );
+	HRESULT				LoadNoteData( const std::string& folderName, ModeType modeType );
 	CRMnoteData*		GetNoteByIndex( const UINT index );
 
 	CRMmusicData*		GetMusicData( const std::string& folderName ) { return m_MusicDataMap[folderName]; }

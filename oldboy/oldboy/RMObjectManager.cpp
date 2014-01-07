@@ -14,6 +14,7 @@ CRMobjectManager::CRMobjectManager(void) :
 	m_TooltipIndex(0)
 {
 	ZeroMemory(&m_ObjectListAlbumImage, sizeof(m_ObjectListAlbumImage));
+	ZeroMemory(&m_ObjectListTutorialPress, sizeof(m_ObjectListTutorialPress));
 }
 
 
@@ -124,6 +125,20 @@ CRMobjectManager::~CRMobjectManager(void)
 		auto toBeDelete = iter;
 		SafeDelete( toBeDelete );
 	}
+
+	for ( auto& iter : m_ObjectListTutorialPress )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+
+	for ( auto& iter : m_ObjectListTutorialScripts )
+	{
+		auto toBeDelete = iter;
+		SafeDelete( toBeDelete );
+	}
+	m_ObjectListTutorialScripts.clear();
+
 }
 
 void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
@@ -174,7 +189,8 @@ void CRMobjectManager::AddObject( CRMobject* object, LayerType layer )
 		case LAYER_TOOLTIP:
 			m_ObjectListTooltips.push_back(object);
 			break;
-		case LAYER_NONE:
+		case LAYER_SCRIPT:
+			m_ObjectListTutorialScripts.push_back(object);
 			break;
 		default:
 			break;
@@ -260,6 +276,21 @@ void CRMobjectManager::Update()
 	{
 		m_ObjectListAlbumImage[ALBUM_IMAGE_STATIC]->Update();
 	}
+
+	if ( m_ObjectListTutorialPress[POSITION_UP] != nullptr )
+	{
+		m_ObjectListTutorialPress[POSITION_UP]->Update();
+	}
+
+	if ( m_ObjectListTutorialPress[POSITION_DOWN] != nullptr )
+	{
+		m_ObjectListTutorialPress[POSITION_DOWN]->Update();
+	}
+
+	for ( auto& iter : m_ObjectListTutorialScripts )
+	{
+		iter->Update();
+	}
 }
 
 void CRMobjectManager::Render() const
@@ -328,6 +359,33 @@ void CRMobjectManager::Render() const
 	{
 		iter->Render();
 	}
+
+	for ( auto& iter : m_ObjectListLayerPause )
+	{
+		iter->Render();
+	}
+
+	for ( auto& iter : m_ObjectListTutorialScripts )
+	{
+		iter->Render();
+	}
+
+	if ( m_ObjectListTutorialPress[POSITION_UP] != nullptr )
+	{
+		//if ( m_ObjectListTutorialPress[POSITION_UP]->GetVisible() == true )
+		{
+			m_ObjectListTutorialPress[POSITION_UP]->Render();
+		}
+	}
+
+	if ( m_ObjectListTutorialPress[POSITION_DOWN] != nullptr )
+	{
+		//if ( m_ObjectListTutorialPress[POSITION_DOWN]->GetVisible() == true )
+		{
+			m_ObjectListTutorialPress[POSITION_DOWN]->Render();
+		}
+	}
+
 }
 
 CRMobject* CRMobjectManager::GetObjectFront( LayerType layer ) const
@@ -500,6 +558,18 @@ void CRMobjectManager::AddAlbumImage( CRMobject* object, AlbumImageType imageTyp
 	if ( object != nullptr )
 	{
 		m_ObjectListAlbumImage[imageType] = object;
+	}
+}
+
+void CRMobjectManager::AddScriptPressImage( CRMobject* object, ScriptPosition scriptPositon )
+{
+	if ( object != nullptr && scriptPositon == POSITION_UP )
+	{
+		m_ObjectListTutorialPress[POSITION_UP] = object;
+	}
+	else if( object != nullptr && scriptPositon == POSITION_DOWN )
+	{
+		m_ObjectListTutorialPress[POSITION_DOWN] = object;
 	}
 }
 

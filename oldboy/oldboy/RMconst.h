@@ -30,7 +30,7 @@ extern const wchar_t* LABEL_FONT_NORMAL;
 extern const wchar_t* LABEL_FPS;
 
 // Resource 관련
-
+extern const char* FOLDER_POINT_SLASH;
 extern const char* FOLDER_SLASH;
 extern const char* MUSIC_FOLDER_SEARCH;	// 뮤직 폴더 이하 모든 파일 의미
 extern const char* MUSIC_FOLDER;
@@ -154,6 +154,18 @@ extern const wchar_t* PAUSE_IMAGE_PLAY_CANCEL;
 extern const wchar_t* PAUSE_IMAGE_PLAY_OK;
 extern const wchar_t* PAUSE_IMAGE_TITLE_CANCEL;
 extern const wchar_t* PAUSE_IMAGE_TITLE_OK;
+
+
+extern const wchar_t* TUTORIAL_SCRIPT_1;
+extern const wchar_t* TUTORIAL_SCRIPT_2;
+extern const wchar_t* TUTORIAL_SCRIPT_3;
+extern const wchar_t* TUTORIAL_SCRIPT_4;
+extern const wchar_t* TUTORIAL_SCRIPT_5;
+extern const wchar_t* TUTORIAL_SCRIPT_6;
+extern const wchar_t* TUTORIAL_SCRIPT_7;
+extern const wchar_t* TUTORIAL_SCRIPT_8;
+extern const wchar_t* TUTORIAL_PRESS_SCRIPT;
+
 
 // Error 관련 
 // 현재 에러는 콘솔 창에서 표현되는 것

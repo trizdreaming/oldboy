@@ -7,6 +7,7 @@
 #include "RMxmlLoader.h"
 #include "RMmusicData.h"
 #include "RMnoteData.h"
+#include "RMenumSet.h"
 
 CRMxmlLoader::CRMxmlLoader(void)
 {
@@ -24,12 +25,18 @@ CRMxmlLoader::~CRMxmlLoader(void)
 }
 
 
-HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
+HRESULT CRMxmlLoader::LoadMusicData( std::string& folderName, ModeType modeType )
 {
 	std::string filePath;
-	filePath.append("./Music/");
+	filePath.append("./");
+	if (modeType != MODE_TUTORIAL)
+	{
+		filePath.append("./Music/");
+	}
 	filePath.append( folderName );
 	filePath.append("/index.xml");
+
+
 	TiXmlDocument document = TiXmlDocument( filePath.c_str() );
 
 	// document.LoadFile(TIXML_ENCODING_UTF8);
@@ -163,13 +170,25 @@ HRESULT CRMxmlLoader::LoadMusicData(const std::string& folderName )
 
 }
 
-HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName )
+HRESULT CRMxmlLoader::LoadNoteData( const std::string& folderName, ModeType modeType )
 {
 	std::string filePath;
-	filePath.append("./Music/");
-	filePath.append( folderName );
-	filePath.append("/");
-	filePath.append( m_MusicDataMap[folderName]->GetNote() );
+	if ( modeType != MODE_TUTORIAL )
+	{
+		
+		filePath.append( MUSIC_FOLDER );
+		filePath.append( folderName );
+		filePath.append( FOLDER_SLASH );
+		filePath.append( m_MusicDataMap[folderName]->GetNote() );
+	}
+	else if ( modeType == MODE_TUTORIAL )
+	{
+		filePath = FOLDER_POINT_SLASH;
+		filePath.append( folderName );
+		filePath.append( FOLDER_SLASH );
+		filePath.append( m_MusicDataMap[folderName]->GetNote() );
+	}
+	
 
 	TiXmlDocument document = TiXmlDocument( filePath.c_str() );
 

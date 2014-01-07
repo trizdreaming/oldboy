@@ -17,7 +17,7 @@ public:
 	HRESULT				CreateSound();
 	
 	HRESULT				LoadSound( const std::string& fileName, SoundType soundType );
-	HRESULT				LoadPlaySound( const std::string& musicFolderName );
+	HRESULT				LoadPlaySound( const std::string& musicFolderName, ModeType modeType );
 
 	void				PlaySound( SoundType soundType, bool isLoop = true );
 	void				PlayEffect( SoundType soundType );

@@ -24,6 +24,7 @@ public:
 
 	void						AddObject( CRMobject* object, LayerType layer );
 	void						AddAlbumImage ( CRMobject* object, AlbumImageType imageType );
+	void						AddScriptPressImage( CRMobject* object, ScriptPosition scriptPositon);
 
 	void						UpAlbumImage();
 	void						DownAlbumImage();
@@ -58,6 +59,9 @@ private:
 	std::list<CRMobject*>		m_ObjectListMemoryPoolOfNote;
 
 	std::vector<CRMobject*>		m_ObjectListTooltips;
+
+	std::list<CRMobject*>		m_ObjectListTutorialScripts;
+	std::array<CRMobject*,POSITION_MAX>	m_ObjectListTutorialPress;
 
 	std::array<CRMobject*, ALBUM_IMAGE_MAX>		m_ObjectListAlbumImage;
 };

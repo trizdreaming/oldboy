@@ -1,0 +1,21 @@
+<?xml version="1.0" ?>
+<Music>
+    <!-- Settings for Music -->
+	<Title>Levan_Polka</Title>
+	<Artist>Loituma_Miku</Artist>
+	<Level>2</Level>
+    <Image>
+        <imageAlbum>album_image.png</imageAlbum>
+        <imageBackground>back_stage.png</imageBackground>
+        <imageShutter>image_sh_01_01.png</imageShutter>
+        <imageNote1>image_nt_01_01.png</imageNote1>
+        <imageNote2>image_nt_02_01.png</imageNote2>
+        <imageNoteEffect>image_nt_01_02.png</imageNoteEffect>
+    </Image>
+    <Sound>
+        <soundBackground>Levan_Polka.mp3</soundBackground>
+        <soundNoteEffect1>sound_effect_01_01.wav</soundNoteEffect1>
+        <soundNoteEffect2>sound_effect_02_01.wav</soundNoteEffect2>
+    </Sound>
+    <Note>note.xml</Note>
+</Music>

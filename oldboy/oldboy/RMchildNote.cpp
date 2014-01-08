@@ -22,8 +22,14 @@ void CRMchildNote::Update()
 {
 	//SetVisibleByScene();
 
-	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
+	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() &&
+		CRMmainLoop::GetInstance()->GetNowScene() != SCENE_TUTORIAL)
 	{
+		m_PositionX = DEFAULT_POSITION_X;
+		m_PositionY = DEFAULT_POSITION_Y;
+		m_Rotation = 0.f;
+		m_Alpha = 1.f;
+
 		return;
 	}
 	

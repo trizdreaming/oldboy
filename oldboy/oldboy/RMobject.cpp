@@ -61,7 +61,12 @@ void CRMobject::Render()
 
 void CRMobject::SetVisibleByScene()
 {
-	if ( m_Scene == CRMmainLoop::GetInstance()->GetNowScene() )
+	if ( CRMmainLoop::GetInstance()->GetNowScene() == SCENE_TUTORIAL &&
+		m_Scene == SCENE_PLAY )
+	{
+		m_Visible = true;
+	}
+	else if ( m_Scene == CRMmainLoop::GetInstance()->GetNowScene() )
 	{
 		m_Visible = true;
 	}

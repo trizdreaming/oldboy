@@ -778,6 +778,12 @@ HRESULT CRMmainLoop::CreateObject()
 	pressObject->SetSceneType(SCENE_TUTORIAL);
 	CRMobjectManager::GetInstance()->AddScriptPressImage(pressObject,POSITION_DOWN);
 
+	//////////////////////////////////////////////////////////////////////////
+	//막장 튜토리얼?
+	//////////////////////////////////////////////////////////////////////////
+
+
+
 	//<<<< 여기까지 이미지 자원
 	
 	//1. 포지션 위치 값 확인하고

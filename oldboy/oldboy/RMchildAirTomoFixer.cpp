@@ -24,7 +24,8 @@ void CRMchildAirTomoFixer::StartFixer()
 
 void CRMchildAirTomoFixer::Update()
 {
-	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() )
+	if ( m_Scene != CRMmainLoop::GetInstance()->GetNowScene() && 
+		CRMmainLoop::GetInstance()->GetNowScene() != SCENE_TUTORIAL )
 	{
 		return;
 	}

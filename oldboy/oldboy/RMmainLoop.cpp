@@ -1300,7 +1300,7 @@ HRESULT CRMmainLoop::GoNextScene()
 
 			m_SceneType = SCENE_TUTORIAL;
 
-			//CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, false );
+			CRMsound::GetInstance()->PlaySound( SOUND_BG_PLAY, false );
 
 			CRMnoteManager::GetInstance()->Initialize();
 			CRMplayer1P::GetInstance()->Init();
